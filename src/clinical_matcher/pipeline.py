@@ -1,4 +1,5 @@
 import operator
+from dataclasses import replace
 from datetime import timedelta
 from typing import Any, Callable, Dict, Iterable, List, Sequence, Tuple
 
@@ -37,7 +38,7 @@ COMPARATORS: Dict[ComparisonOperator, Callable[[Any, Any], bool]] = {
 def _in_time_window(patient: Patient, fact: Fact, atom: AtomicCondition) -> bool:
     window = atom.time_window
     if window is None:
-        return True
+        return fact.observed_at is None or fact.observed_at <= patient.index_date
     if fact.observed_at is None:
         return False
 
@@ -74,17 +75,29 @@ def _compatible(
 
 
 def _evaluate_atom(patient: Patient, atom: AtomicCondition) -> AtomicDecision:
+    field_facts = [fact for fact in patient.facts if fact.field == atom.field]
     facts = [
         fact
-        for fact in patient.facts
-        if fact.field == atom.field and _in_time_window(patient, fact, atom)
+        for fact in field_facts
+        if _in_time_window(patient, fact, atom)
     ]
     if not facts:
+        future_count = sum(
+            fact.observed_at is not None
+            and fact.observed_at > patient.index_date
+            for fact in field_facts
+        )
+        issue = (
+            f"{atom.condition_id}: {future_count} future fact(s) excluded"
+            if future_count
+            else f"{atom.condition_id}: no usable in-window fact"
+        )
         return AtomicDecision(
             condition_id=atom.condition_id,
             truth_value=TruthValue.UNKNOWN,
             evidence_ids=(),
             reason=f"No in-window fact for {atom.field}.",
+            issues=(issue,),
         )
 
     if atom.fact_selection is FactSelection.LATEST:
@@ -95,6 +108,9 @@ def _evaluate_atom(patient: Patient, atom: AtomicCondition) -> AtomicDecision:
                 truth_value=TruthValue.UNKNOWN,
                 evidence_ids=(),
                 reason=f"No dated fact available for latest({atom.field}).",
+                issues=(
+                    f"{atom.condition_id}: latest selection requires a timestamp",
+                ),
             )
         facts = [
             max(
@@ -143,11 +159,16 @@ def _evaluate_atom(patient: Patient, atom: AtomicCondition) -> AtomicDecision:
     )
     if incompatibilities:
         reason += " " + "; ".join(sorted(set(incompatibilities))) + "."
+    issues = tuple(
+        f"{atom.condition_id}: {issue}"
+        for issue in sorted(set(incompatibilities))
+    )
     return AtomicDecision(
         condition_id=atom.condition_id,
         truth_value=truth_value,
         evidence_ids=evidence_ids,
         reason=reason,
+        issues=issues,
     )
 
 
@@ -195,7 +216,15 @@ def _evaluate_expression(
         TruthValue.FALSE: TruthValue.TRUE,
         TruthValue.UNKNOWN: TruthValue.UNKNOWN,
     }[child_value]
-    return inverted, atomic_decisions
+    negated_decisions = tuple(
+        replace(
+            atomic,
+            negated=not atomic.negated,
+            reason=f"Negated by NOT: {atomic.reason}",
+        )
+        for atomic in atomic_decisions
+    )
+    return inverted, negated_decisions
 
 
 def evaluate_criterion(patient: Patient, criterion: Criterion) -> CriterionDecision:
@@ -225,12 +254,26 @@ def evaluate_criterion(patient: Patient, criterion: Criterion) -> CriterionDecis
             for evidence_id in atomic.evidence_ids
         )
     )
+    resolved_atoms = sum(
+        atomic.truth_value is not TruthValue.UNKNOWN
+        for atomic in atomic_decisions
+    )
+    atomic_coverage = round(resolved_atoms / len(atomic_decisions), 6)
+    issues = tuple(
+        dict.fromkeys(
+            issue
+            for atomic in atomic_decisions
+            for issue in atomic.issues
+        )
+    )
     return CriterionDecision(
         criterion_id=criterion.criterion_id,
         criterion_type=criterion.criterion_type,
         decision=decision,
         evidence_ids=evidence_ids,
         atomic_decisions=atomic_decisions,
+        atomic_coverage=atomic_coverage,
+        issues=issues,
         reason=(
             f"{criterion.criterion_type.value} expression resolved to "
             f"{truth_value.value}; criterion decision is {decision.value}."
@@ -277,6 +320,23 @@ def _aggregate(patient: Patient, trial: Trial) -> TrialMatch:
         round(eligible_weight / known_weight, 6) if known_weight else None
     )
     coverage = round(known_weight / total_weight, 6)
+    all_atomic_decisions = [
+        atomic
+        for decision in decisions
+        for atomic in decision.atomic_decisions
+    ]
+    resolved_atomic_count = sum(
+        atomic.truth_value is not TruthValue.UNKNOWN
+        for atomic in all_atomic_decisions
+    )
+    atomic_coverage = round(
+        resolved_atomic_count / len(all_atomic_decisions), 6
+    )
+    data_quality_issues = tuple(
+        dict.fromkeys(
+            issue for decision in decisions for issue in decision.issues
+        )
+    )
     abstention_reasons = tuple(
         f"Hard criterion {decision.criterion_id} is unknown."
         for decision in hard_unknown
@@ -290,20 +350,28 @@ def _aggregate(patient: Patient, trial: Trial) -> TrialMatch:
         decision=overall,
         eligibility_score=eligibility_score,
         coverage=coverage,
+        atomic_coverage=atomic_coverage,
         abstained=overall is Decision.UNKNOWN,
         abstention_reasons=abstention_reasons,
+        data_quality_issues=data_quality_issues,
         criterion_decisions=decisions,
     )
 
 
-def _ranking_key(match: TrialMatch) -> Tuple[float, float, float, str]:
+def _ranking_key(match: TrialMatch) -> Tuple[float, float, float, float, str]:
     decision_priority = {
         Decision.ELIGIBLE: 2.0,
         Decision.UNKNOWN: 1.0,
         Decision.INELIGIBLE: 0.0,
     }[match.decision]
     score = match.eligibility_score if match.eligibility_score is not None else -1.0
-    return (-decision_priority, -score, -match.coverage, match.trial_id)
+    return (
+        -decision_priority,
+        -score,
+        -match.coverage,
+        -match.atomic_coverage,
+        match.trial_id,
+    )
 
 
 def match_patient(patient: Patient, trials: Iterable[Trial]) -> List[TrialMatch]:

@@ -64,7 +64,8 @@ The proposed P1 schema and aggregation semantics are documented in
 [docs/SCHEMA.md](docs/SCHEMA.md). Compound criteria use a restricted
 `ALL/ANY/NOT/ATOM` expression tree with typed values, explicit units, optional
 time windows, and three-valued logic. Eligibility score, evidence coverage, and
-abstention are reported separately.
+abstention are reported separately; atomic coverage and data-quality issues
+keep unresolved OR branches visible.
 
 ## Data access and reproducibility
 

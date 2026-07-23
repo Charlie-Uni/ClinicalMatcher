@@ -50,6 +50,10 @@ Every atom also declares how repeated facts are selected:
 
 There is no implicit default in the wire format.
 
+Facts dated after `index_date` are excluded by default, even when an atom has no
+explicit time window. Future facts are available only through an explicit
+future-directed window. This prevents post-enrollment information leakage.
+
 Numeric comparisons are allowed only when units match exactly. A mismatch
 returns `UNKNOWN`; it is never guessed or silently converted. A reviewed unit
 normalization layer can be added later before evaluation.
@@ -70,6 +74,11 @@ Expression evaluation uses three-valued logic:
 - `ALL`: any false → false; all true → true; otherwise unknown;
 - `ANY`: any true → true; all false → false; otherwise unknown;
 - `NOT`: true/false invert; unknown stays unknown.
+
+Atomic traces under `NOT` retain their factual evidence but are explicitly
+marked `negated`, and their reason states that polarity was inverted. Evidence
+therefore remains provenance for the observed fact without being presented as
+an unqualified explanation of the parent decision.
 
 The expression truth value is then mapped through criterion polarity:
 
@@ -97,8 +106,11 @@ These are separate outputs:
 - `decision`: eligible, ineligible, or unknown under hard-rule semantics;
 - `eligibility_score`: weighted eligible fraction among resolved criteria;
 - `coverage`: resolved criterion weight divided by total criterion weight;
+- `atomic_coverage`: resolved atoms divided by all evaluated atoms;
 - `abstained`: whether the trial decision is unknown;
 - `abstention_reasons`: unresolved hard criteria or absence of usable facts.
+- `data_quality_issues`: incompatible units/types, missing timestamps, excluded
+  future facts, and other unresolved atomic branches.
 
 Unknown is not assigned a score of 0.5. If no criterion is resolved,
 `eligibility_score` is `null` and coverage is zero.
@@ -108,10 +120,21 @@ Ranking uses, in order:
 1. decision class: eligible, then unknown, then ineligible;
 2. eligibility score;
 3. coverage;
-4. stable trial ID tie-break.
+4. atomic coverage;
+5. stable trial ID tie-break.
 
 This is an explicit baseline policy, not a clinically validated utility
 function. P1 evaluation must test alternative aggregation and calibration.
+
+An `ANY` expression may resolve true while another branch remains unknown.
+The criterion is not forced to abstain because the true branch is logically
+sufficient, but the unresolved branch remains visible through atomic coverage
+and data-quality issues.
+
+Whether to expose an additional calibrated confidence such as
+`f(eligibility_score, coverage, atomic_coverage, model uncertainty)` is an open
+P1 decision. The raw eligibility score must remain available and must not
+silently absorb missingness.
 
 ## Independent gold
 

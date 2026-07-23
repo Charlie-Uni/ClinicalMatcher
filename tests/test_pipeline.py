@@ -106,6 +106,19 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(1.0, match.coverage)
         self.assertFalse(match.abstained)
 
+        ranked = match_patient(patient, self.fixture.trials)
+        self.assertEqual(
+            [
+                "synthetic-trial-renal-high",
+                "synthetic-trial-metabolic",
+            ],
+            [item.trial_id for item in ranked],
+        )
+        self.assertGreater(
+            ranked[0].eligibility_score,
+            ranked[1].eligibility_score,
+        )
+
     def test_missing_hard_fact_abstains_without_half_score(self) -> None:
         patient = Patient(
             patient_id="missing",
@@ -132,6 +145,7 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(Decision.UNKNOWN, match.decision)
         self.assertIsNone(match.eligibility_score)
         self.assertEqual(0.0, match.coverage)
+        self.assertEqual(0.0, match.atomic_coverage)
         self.assertTrue(match.abstained)
 
     def test_unit_mismatch_abstains(self) -> None:
@@ -254,10 +268,12 @@ class PipelineTest(unittest.TestCase):
             description="NOT(unknown OR diabetes)",
             expression=expression,
         )
-        self.assertEqual(
-            Decision.INELIGIBLE,
-            evaluate_criterion(patient, criterion).decision,
+        not_decision = evaluate_criterion(patient, criterion)
+        self.assertEqual(Decision.INELIGIBLE, not_decision.decision)
+        self.assertTrue(
+            all(atomic.negated for atomic in not_decision.atomic_decisions)
         )
+        self.assertIn("Negated by NOT", not_decision.atomic_decisions[0].reason)
 
         outside_window = ConditionExpression(
             expression_type=ExpressionType.ATOM,
@@ -280,6 +296,118 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(
             Decision.UNKNOWN,
             evaluate_criterion(patient, exclusion).decision,
+        )
+
+    def test_or_surfaces_incompatible_branch_without_forcing_abstention(self) -> None:
+        patient = Patient(
+            patient_id="or-diagnostics",
+            index_date=date(2026, 1, 1),
+            facts=(
+                Fact(
+                    fact_id="egfr",
+                    field="egfr",
+                    value=TypedValue(ValueType.NUMBER, 80, "wrong-unit"),
+                    evidence_ids=("egfr-evidence",),
+                ),
+                Fact(
+                    fact_id="creatinine",
+                    field="creatinine",
+                    value=TypedValue(ValueType.NUMBER, 1.0, "mg/dL"),
+                    evidence_ids=("creatinine-evidence",),
+                ),
+            ),
+            evidence=(
+                Evidence(
+                    evidence_id="egfr-evidence",
+                    source_id="synthetic-egfr",
+                    text="Synthetic eGFR value with an incompatible unit.",
+                ),
+                Evidence(
+                    evidence_id="creatinine-evidence",
+                    source_id="synthetic-creatinine",
+                    text="Synthetic creatinine 1.0 mg/dL.",
+                ),
+            ),
+        )
+        expression = ConditionExpression(
+            expression_type=ExpressionType.ANY,
+            children=(
+                atom(
+                    "egfr-branch",
+                    "egfr",
+                    ComparisonOperator.GE,
+                    50,
+                    ValueType.NUMBER,
+                    "mL/min/1.73m2",
+                ),
+                atom(
+                    "creatinine-branch",
+                    "creatinine",
+                    ComparisonOperator.LT,
+                    1.5,
+                    ValueType.NUMBER,
+                    "mg/dL",
+                ),
+            ),
+        )
+        criterion = Criterion(
+            criterion_id="renal-or",
+            criterion_type=CriterionType.INCLUSION,
+            description="Synthetic renal OR rule",
+            expression=expression,
+            hard=True,
+        )
+        trial = Trial(trial_id="renal-or-trial", title="Renal OR", criteria=(criterion,))
+        match = match_patient(patient, [trial])[0]
+        self.assertEqual(Decision.ELIGIBLE, match.decision)
+        self.assertFalse(match.abstained)
+        self.assertEqual(1.0, match.coverage)
+        self.assertEqual(0.5, match.atomic_coverage)
+        self.assertTrue(
+            any("unit mismatch" in issue for issue in match.data_quality_issues)
+        )
+
+    def test_future_fact_is_excluded_without_explicit_future_window(self) -> None:
+        patient = Patient(
+            patient_id="future-leakage",
+            index_date=date(2026, 1, 1),
+            facts=(
+                Fact(
+                    fact_id="future-egfr",
+                    field="egfr",
+                    value=TypedValue(ValueType.NUMBER, 80, "unit"),
+                    evidence_ids=("future-evidence",),
+                    observed_at=date(2026, 2, 1),
+                ),
+            ),
+            evidence=(
+                Evidence(
+                    evidence_id="future-evidence",
+                    source_id="synthetic-future-lab",
+                    text="Synthetic measurement after the matching date.",
+                ),
+            ),
+        )
+        criterion = Criterion(
+            criterion_id="egfr-at-index",
+            criterion_type=CriterionType.INCLUSION,
+            description="eGFR available at matching time",
+            expression=atom(
+                "egfr-at-index-atom",
+                "egfr",
+                ComparisonOperator.GE,
+                50,
+                ValueType.NUMBER,
+                "unit",
+                FactSelection.LATEST,
+            ),
+            hard=True,
+        )
+        decision = evaluate_criterion(patient, criterion)
+        self.assertEqual(Decision.UNKNOWN, decision.decision)
+        self.assertEqual((), decision.evidence_ids)
+        self.assertTrue(
+            any("future fact" in issue for issue in decision.issues)
         )
 
     def test_evidence_metrics_use_independent_relevance(self) -> None:

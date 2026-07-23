@@ -67,7 +67,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     "decision": item.decision.value,
                     "eligibility_score": item.eligibility_score,
                     "coverage": item.coverage,
+                    "atomic_coverage": item.atomic_coverage,
                     "abstained": item.abstained,
+                    "data_quality_issues": list(item.data_quality_issues),
                 }
                 for item in matches
             ],

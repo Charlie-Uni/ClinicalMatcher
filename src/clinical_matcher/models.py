@@ -221,6 +221,8 @@ class AtomicDecision:
     truth_value: TruthValue
     evidence_ids: Tuple[str, ...]
     reason: str
+    negated: bool = False
+    issues: Tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -230,6 +232,8 @@ class CriterionDecision:
     decision: Decision
     evidence_ids: Tuple[str, ...]
     atomic_decisions: Tuple[AtomicDecision, ...]
+    atomic_coverage: float
+    issues: Tuple[str, ...]
     reason: str
 
 
@@ -240,6 +244,8 @@ class TrialMatch:
     decision: Decision
     eligibility_score: Optional[float]
     coverage: float
+    atomic_coverage: float
     abstained: bool
     abstention_reasons: Tuple[str, ...]
+    data_quality_issues: Tuple[str, ...]
     criterion_decisions: Tuple[CriterionDecision, ...]
