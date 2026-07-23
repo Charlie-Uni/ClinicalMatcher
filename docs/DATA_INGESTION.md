@@ -103,9 +103,11 @@ clinical-matcher-snapshot verify \
 
 This command defines a candidate pool, not a benchmark. The query, status
 policy, ordering, and any truncation must be reviewed before a release to avoid
-post-hoc selection. If a release retains a frozen registry snapshot for
-reproducibility, its README must retain the attribution, processing date,
-modification notes, and warning that current registry records may differ.
+post-hoc selection. The current gold gate rejects a snapshot whose API result
+was truncated; a smoke-test `--max-studies` must never become a benchmark by
+accident. If a release retains a frozen registry snapshot for reproducibility,
+its README must retain the attribution, processing date, modification notes,
+and warning that current registry records may differ.
 
 ### Patient-trial gold is a release gate
 

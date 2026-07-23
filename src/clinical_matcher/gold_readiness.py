@@ -74,6 +74,8 @@ def build_gold_readiness_report(
     gaps: List[str] = []
     if counts_provenance != "validated_annotation_records":
         gaps.append("gold_counts_not_derived_from_validated_records")
+    if snapshot_manifest["search"]["selection_truncated"]:
+        gaps.append("trial_selection_is_truncated")
     if imported_trials < 2:
         gaps.append("snapshot_requires_multiple_imported_trials")
     if counts.patient_count < 1:

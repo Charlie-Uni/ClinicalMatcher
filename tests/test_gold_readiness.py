@@ -1,3 +1,4 @@
+import copy
 import json
 import tempfile
 import unittest
@@ -123,6 +124,25 @@ class GoldReadinessTest(unittest.TestCase):
             "gold_counts_not_derived_from_validated_records",
             report["blocking_gaps"],
         )
+
+    def test_truncated_trial_selection_cannot_unlock_release(self) -> None:
+        truncated = copy.deepcopy(self.manifest)
+        truncated["search"]["selection_truncated"] = True
+        report = build_gold_readiness_report(
+            snapshot_manifest=truncated,
+            counts=GoldAuditCounts(
+                patient_count=3,
+                trial_count=2,
+                expected_patient_trial_pairs=6,
+                adjudicated_patient_trial_pairs=6,
+                expected_criterion_units=15,
+                adjudicated_criterion_units=15,
+                minimum_annotators_per_unit=2,
+            ),
+            gold_source_description="Synthetic validated gold",
+            counts_provenance="validated_annotation_records",
+        )
+        self.assertIn("trial_selection_is_truncated", report["blocking_gaps"])
 
 
 if __name__ == "__main__":
