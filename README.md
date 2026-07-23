@@ -60,6 +60,12 @@ The smoke test evaluates two independently authored fictional patients against
 two fictional trials. It verifies criterion polarity, evidence links,
 abstention on missing facts, aggregation, and deterministic ranking.
 
+The proposed P1 schema and aggregation semantics are documented in
+[docs/SCHEMA.md](docs/SCHEMA.md). Compound criteria use a restricted
+`ALL/ANY/NOT/ATOM` expression tree with typed values, explicit units, optional
+time windows, and three-valued logic. Eligibility score, evidence coverage, and
+abstention are reported separately.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and

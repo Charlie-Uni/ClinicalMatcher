@@ -20,11 +20,15 @@ restricted data, Ollama, or a GPU.
 
 ## P1 — Task schema and evaluation
 
-- [ ] Freeze the prediction unit as patient × trial × criterion.
-- [ ] Preserve inclusion/exclusion polarity and eligible/ineligible/unknown.
-- [ ] Define evidence, adjudication, provenance, trial relevance, and
-  aggregation semantics.
-- [ ] Build a small adjudicated criterion-evidence relevance set.
+- [x] Draft the prediction unit as patient × trial × criterion.
+- [x] Preserve inclusion/exclusion polarity and eligible/ineligible/unknown.
+- [x] Add typed values, explicit units, index-date time windows, and a
+  restricted compound-condition expression tree.
+- [ ] Review and freeze the draft in `docs/SCHEMA.md`.
+- [ ] Define adjudication, decomposition provenance, and final trial relevance
+  guidance.
+- [x] Add independently authored synthetic criterion-evidence and trial gold.
+- [ ] Build a clinically adjudicated criterion-evidence relevance set.
 - [ ] Split by patient/trial and add exact/semantic near-duplicate checks.
 - [ ] Implement evidence Recall@k/MRR, criterion F1, ranking nDCG/MRR/Recall@k,
   calibration, abstention coverage/risk, bootstrap confidence intervals, and

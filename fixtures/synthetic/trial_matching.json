@@ -1,72 +1,138 @@
 {
-  "fixture_notice": "Independently authored synthetic records; not derived from MIMIC or any real patient.",
+  "fixture_notice": "Independently authored synthetic records and gold judgments; not derived from MIMIC or any real patient.",
   "patients": [
     {
       "patient_id": "synthetic-patient-a",
-      "facts": {
-        "age_years": 55,
-        "egfr": 82,
-        "active_bleeding": false,
-        "diabetes": true
-      },
+      "index_date": "2026-01-01",
+      "facts": [
+        {
+          "fact_id": "a-age-fact",
+          "field": "age",
+          "value": {
+            "value_type": "number",
+            "value": 55,
+            "unit": "years"
+          },
+          "evidence_ids": ["a-demographics"]
+        },
+        {
+          "fact_id": "a-egfr-fact",
+          "field": "egfr",
+          "value": {
+            "value_type": "number",
+            "value": 82,
+            "unit": "mL/min/1.73m2"
+          },
+          "evidence_ids": ["a-renal"],
+          "observed_at": "2025-12-29"
+        },
+        {
+          "fact_id": "a-bleeding-fact",
+          "field": "active_bleeding",
+          "value": {
+            "value_type": "boolean",
+            "value": false
+          },
+          "evidence_ids": ["a-bleeding"],
+          "observed_at": "2025-12-20"
+        },
+        {
+          "fact_id": "a-diabetes-fact",
+          "field": "diabetes",
+          "value": {
+            "value_type": "boolean",
+            "value": true
+          },
+          "evidence_ids": ["a-diabetes"]
+        }
+      ],
       "evidence": [
         {
           "evidence_id": "a-demographics",
-          "field": "age_years",
-          "value": 55,
+          "source_id": "synthetic-note-a",
           "text": "The fictional participant is 55 years old."
         },
         {
           "evidence_id": "a-renal",
-          "field": "egfr",
-          "value": 82,
-          "text": "Synthetic laboratory record: eGFR 82."
+          "source_id": "synthetic-lab-a",
+          "text": "Synthetic laboratory record: eGFR 82 mL/min/1.73m2."
         },
         {
           "evidence_id": "a-bleeding",
-          "field": "active_bleeding",
-          "value": false,
+          "source_id": "synthetic-note-a",
           "text": "The synthetic record states that active bleeding is absent."
         },
         {
           "evidence_id": "a-diabetes",
-          "field": "diabetes",
-          "value": true,
+          "source_id": "synthetic-note-a",
           "text": "The fictional history includes diabetes."
         }
       ]
     },
     {
       "patient_id": "synthetic-patient-b",
-      "facts": {
-        "age_years": 70,
-        "egfr": 40,
-        "active_bleeding": false,
-        "diabetes": false
-      },
+      "index_date": "2026-01-01",
+      "facts": [
+        {
+          "fact_id": "b-age-fact",
+          "field": "age",
+          "value": {
+            "value_type": "number",
+            "value": 70,
+            "unit": "years"
+          },
+          "evidence_ids": ["b-demographics"]
+        },
+        {
+          "fact_id": "b-egfr-fact",
+          "field": "egfr",
+          "value": {
+            "value_type": "number",
+            "value": 40,
+            "unit": "mL/min/1.73m2"
+          },
+          "evidence_ids": ["b-renal"],
+          "observed_at": "2025-12-28"
+        },
+        {
+          "fact_id": "b-bleeding-fact",
+          "field": "active_bleeding",
+          "value": {
+            "value_type": "boolean",
+            "value": false
+          },
+          "evidence_ids": ["b-bleeding"],
+          "observed_at": "2025-12-22"
+        },
+        {
+          "fact_id": "b-diabetes-fact",
+          "field": "diabetes",
+          "value": {
+            "value_type": "boolean",
+            "value": false
+          },
+          "evidence_ids": ["b-diabetes"]
+        }
+      ],
       "evidence": [
         {
           "evidence_id": "b-demographics",
-          "field": "age_years",
-          "value": 70,
+          "source_id": "synthetic-note-b",
           "text": "The fictional participant is 70 years old."
         },
         {
           "evidence_id": "b-renal",
-          "field": "egfr",
-          "value": 40,
-          "text": "Synthetic laboratory record: eGFR 40."
+          "source_id": "synthetic-lab-b",
+          "text": "Synthetic laboratory record: eGFR 40 mL/min/1.73m2."
         },
         {
           "evidence_id": "b-bleeding",
-          "field": "active_bleeding",
-          "value": false,
+          "source_id": "synthetic-note-b",
           "text": "The synthetic record states that active bleeding is absent."
         },
         {
           "evidence_id": "b-diabetes",
-          "field": "diabetes",
-          "value": false,
+          "source_id": "synthetic-note-b",
           "text": "The fictional history states that diabetes is absent."
         }
       ]
@@ -80,29 +146,85 @@
         {
           "criterion_id": "renal-high-age",
           "criterion_type": "inclusion",
-          "field": "age_years",
-          "operator": ">=",
-          "value": 18,
           "description": "Adult participant",
-          "hard": true
+          "hard": true,
+          "expression": {
+            "expression_type": "atom",
+            "atom": {
+              "condition_id": "renal-high-age-min",
+              "field": "age",
+              "operator": ">=",
+              "fact_selection": "any",
+              "expected": {
+                "value_type": "number",
+                "value": 18,
+                "unit": "years"
+              }
+            }
+          }
         },
         {
-          "criterion_id": "renal-high-egfr",
+          "criterion_id": "renal-high-egfr-range",
           "criterion_type": "inclusion",
-          "field": "egfr",
-          "operator": ">=",
-          "value": 50,
-          "description": "eGFR is at least 50",
-          "hard": true
+          "description": "eGFR is between 50 inclusive and 90 exclusive",
+          "hard": true,
+          "expression": {
+            "expression_type": "all",
+            "children": [
+              {
+                "expression_type": "atom",
+                "atom": {
+                  "condition_id": "renal-high-egfr-min",
+                  "field": "egfr",
+                  "operator": ">=",
+                  "fact_selection": "latest",
+                  "expected": {
+                    "value_type": "number",
+                    "value": 50,
+                    "unit": "mL/min/1.73m2"
+                  }
+                }
+              },
+              {
+                "expression_type": "atom",
+                "atom": {
+                  "condition_id": "renal-high-egfr-max",
+                  "field": "egfr",
+                  "operator": "<",
+                  "fact_selection": "latest",
+                  "expected": {
+                    "value_type": "number",
+                    "value": 90,
+                    "unit": "mL/min/1.73m2"
+                  }
+                }
+              }
+            ]
+          }
         },
         {
-          "criterion_id": "renal-high-bleeding",
+          "criterion_id": "renal-high-recent-bleeding",
           "criterion_type": "exclusion",
-          "field": "active_bleeding",
-          "operator": "==",
-          "value": true,
-          "description": "Active bleeding excludes participation",
-          "hard": true
+          "description": "Active bleeding in the prior 30 days excludes participation",
+          "hard": true,
+          "expression": {
+            "expression_type": "atom",
+            "atom": {
+              "condition_id": "renal-high-bleeding-window",
+              "field": "active_bleeding",
+              "operator": "==",
+              "fact_selection": "any",
+              "expected": {
+                "value_type": "boolean",
+                "value": true
+              },
+              "time_window": {
+                "days": 30,
+                "direction": "past",
+                "relative_to": "index_date"
+              }
+            }
+          }
         }
       ]
     },
@@ -113,41 +235,150 @@
         {
           "criterion_id": "metabolic-age",
           "criterion_type": "inclusion",
-          "field": "age_years",
-          "operator": ">=",
-          "value": 21,
           "description": "Participant is at least 21",
-          "hard": true
+          "hard": true,
+          "expression": {
+            "expression_type": "atom",
+            "atom": {
+              "condition_id": "metabolic-age-min",
+              "field": "age",
+              "operator": ">=",
+              "fact_selection": "any",
+              "expected": {
+                "value_type": "number",
+                "value": 21,
+                "unit": "years"
+              }
+            }
+          }
         },
         {
           "criterion_id": "metabolic-egfr",
           "criterion_type": "inclusion",
-          "field": "egfr",
-          "operator": ">=",
-          "value": 30,
           "description": "eGFR is at least 30",
-          "hard": true
+          "hard": true,
+          "expression": {
+            "expression_type": "atom",
+            "atom": {
+              "condition_id": "metabolic-egfr-min",
+              "field": "egfr",
+              "operator": ">=",
+              "fact_selection": "latest",
+              "expected": {
+                "value_type": "number",
+                "value": 30,
+                "unit": "mL/min/1.73m2"
+              }
+            }
+          }
         },
         {
           "criterion_id": "metabolic-diabetes",
           "criterion_type": "exclusion",
-          "field": "diabetes",
-          "operator": "==",
-          "value": true,
-          "description": "Diabetes excludes participation",
-          "hard": true
+          "description": "Diabetes is a soft exclusion",
+          "hard": false,
+          "weight": 1.0,
+          "expression": {
+            "expression_type": "atom",
+            "atom": {
+              "condition_id": "metabolic-diabetes-present",
+              "field": "diabetes",
+              "operator": "==",
+              "fact_selection": "any",
+              "expected": {
+                "value_type": "boolean",
+                "value": true
+              }
+            }
+          }
         }
       ]
     }
   ],
-  "expected_rankings": {
-    "synthetic-patient-a": [
-      "synthetic-trial-renal-high",
-      "synthetic-trial-metabolic"
-    ],
-    "synthetic-patient-b": [
-      "synthetic-trial-metabolic",
-      "synthetic-trial-renal-high"
-    ]
+  "gold": {
+    "criteria": {
+      "synthetic-patient-a": {
+        "synthetic-trial-renal-high": {
+          "renal-high-age": {
+            "decision": "eligible",
+            "evidence_ids": ["a-demographics"]
+          },
+          "renal-high-egfr-range": {
+            "decision": "eligible",
+            "evidence_ids": ["a-renal"]
+          },
+          "renal-high-recent-bleeding": {
+            "decision": "eligible",
+            "evidence_ids": ["a-bleeding"]
+          }
+        },
+        "synthetic-trial-metabolic": {
+          "metabolic-age": {
+            "decision": "eligible",
+            "evidence_ids": ["a-demographics"]
+          },
+          "metabolic-egfr": {
+            "decision": "eligible",
+            "evidence_ids": ["a-renal"]
+          },
+          "metabolic-diabetes": {
+            "decision": "ineligible",
+            "evidence_ids": ["a-diabetes"]
+          }
+        }
+      },
+      "synthetic-patient-b": {
+        "synthetic-trial-renal-high": {
+          "renal-high-age": {
+            "decision": "eligible",
+            "evidence_ids": ["b-demographics"]
+          },
+          "renal-high-egfr-range": {
+            "decision": "ineligible",
+            "evidence_ids": ["b-renal"]
+          },
+          "renal-high-recent-bleeding": {
+            "decision": "eligible",
+            "evidence_ids": ["b-bleeding"]
+          }
+        },
+        "synthetic-trial-metabolic": {
+          "metabolic-age": {
+            "decision": "eligible",
+            "evidence_ids": ["b-demographics"]
+          },
+          "metabolic-egfr": {
+            "decision": "eligible",
+            "evidence_ids": ["b-renal"]
+          },
+          "metabolic-diabetes": {
+            "decision": "eligible",
+            "evidence_ids": ["b-diabetes"]
+          }
+        }
+      }
+    },
+    "trials": {
+      "synthetic-patient-a": {
+        "synthetic-trial-renal-high": {
+          "decision": "eligible",
+          "relevance_grade": 3
+        },
+        "synthetic-trial-metabolic": {
+          "decision": "eligible",
+          "relevance_grade": 2
+        }
+      },
+      "synthetic-patient-b": {
+        "synthetic-trial-renal-high": {
+          "decision": "ineligible",
+          "relevance_grade": 0
+        },
+        "synthetic-trial-metabolic": {
+          "decision": "eligible",
+          "relevance_grade": 3
+        }
+      }
+    }
   }
 }
