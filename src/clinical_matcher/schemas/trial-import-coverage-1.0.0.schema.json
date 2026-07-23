@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/trial-import-coverage-1.0.0.schema.json",
+  "title": "ClinicalTrials.gov criterion parser coverage report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "coverage_version",
+    "snapshot_id",
+    "total_candidates",
+    "imported_count",
+    "skipped_count",
+    "failed_count",
+    "parse_success_rate",
+    "skipped_rate",
+    "failed_rate",
+    "reason_counts",
+    "criteria_count",
+    "outcomes"
+  ],
+  "properties": {
+    "coverage_version": {"const": "1.0.0"},
+    "snapshot_id": {"type": "string", "pattern": "^ctg-[0-9a-f]{16}$"},
+    "total_candidates": {"type": "integer", "minimum": 1},
+    "imported_count": {"type": "integer", "minimum": 0},
+    "skipped_count": {"type": "integer", "minimum": 0},
+    "failed_count": {"type": "integer", "minimum": 0},
+    "parse_success_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "skipped_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "failed_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "reason_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "criteria_count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "minimum", "maximum"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "minimum": {"type": "integer", "minimum": 0},
+        "maximum": {"type": "integer", "minimum": 0}
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_key", "nct_id", "status"],
+        "properties": {
+          "candidate_key": {"type": "string", "minLength": 1},
+          "nct_id": {
+            "type": ["string", "null"],
+            "pattern": "^NCT[0-9]{8}$"
+          },
+          "status": {"enum": ["imported", "skipped", "failed"]},
+          "reason_code": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

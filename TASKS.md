@@ -54,8 +54,16 @@ dataset fingerprint, model IDs, and index fingerprint.
   proposed extended MIMIC dataset.
 - [x] Add a versioned ClinicalTrials.gov API v2 importer with attribution,
   freshness metadata, stable criterion IDs, polarity, and source spans.
-- [ ] Add reviewed multi-trial query/batch selection and freeze a public trial
+- [x] Add cursor-paginated multi-trial batch selection, immutable snapshot
+  manifests, exact query/filter/sort provenance, source/protocol hashes, parser
+  coverage reports, and an offline-only snapshot loader.
+- [x] Add an aggregate gold-readiness gate that prevents a valid trial snapshot
+  from being presented as a benchmark without complete dual-annotated,
+  adjudicated patient-trial and criterion-evidence gold.
+- [ ] Review the AF candidate-selection policy and freeze the public trial
   snapshot for an actual benchmark release.
+- [ ] Build and adjudicate the multi-trial patient-trial gold in the authorized
+  environment; publish only governance-approved aggregate readiness metadata.
 - [ ] Validate patient–criterion labels and evidence spans.
 - [ ] Keep Apixaban as a regression case study, not the primary benchmark.
 

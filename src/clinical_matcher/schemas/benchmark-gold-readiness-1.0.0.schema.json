@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/benchmark-gold-readiness-1.0.0.schema.json",
+  "title": "Aggregate patient-trial benchmark gold readiness gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gold_readiness_version",
+    "snapshot_id",
+    "snapshot_content_sha256",
+    "generated_at",
+    "prediction_units",
+    "gold_source_description",
+    "counts_provenance",
+    "aggregate_counts",
+    "required_imported_trial_count",
+    "status",
+    "benchmark_release_allowed",
+    "blocking_gaps",
+    "claim_boundary"
+  ],
+  "properties": {
+    "gold_readiness_version": {"const": "1.0.0"},
+    "snapshot_id": {"type": "string", "pattern": "^ctg-[0-9a-f]{16}$"},
+    "snapshot_content_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "prediction_units": {
+      "const": ["patient_x_trial", "patient_x_trial_x_criterion"]
+    },
+    "gold_source_description": {"type": "string", "minLength": 1},
+    "counts_provenance": {
+      "enum": [
+        "self_reported_aggregate",
+        "validated_annotation_records"
+      ]
+    },
+    "aggregate_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_count",
+        "trial_count",
+        "expected_patient_trial_pairs",
+        "adjudicated_patient_trial_pairs",
+        "expected_criterion_units",
+        "adjudicated_criterion_units",
+        "minimum_annotators_per_unit",
+        "unresolved_adjudications"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 0},
+        "trial_count": {"type": "integer", "minimum": 0},
+        "expected_patient_trial_pairs": {"type": "integer", "minimum": 0},
+        "adjudicated_patient_trial_pairs": {"type": "integer", "minimum": 0},
+        "expected_criterion_units": {"type": "integer", "minimum": 0},
+        "adjudicated_criterion_units": {"type": "integer", "minimum": 0},
+        "minimum_annotators_per_unit": {"type": "integer", "minimum": 0},
+        "unresolved_adjudications": {"type": "integer", "minimum": 0}
+      }
+    },
+    "required_imported_trial_count": {"type": "integer", "minimum": 0},
+    "status": {"enum": ["ready", "not_ready"]},
+    "benchmark_release_allowed": {"type": "boolean"},
+    "blocking_gaps": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "claim_boundary": {"type": "string", "minLength": 1}
+  }
+}

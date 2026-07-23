@@ -1,6 +1,7 @@
 import hashlib
 import json
 import re
+import urllib.parse
 import urllib.request
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -33,6 +34,10 @@ BULLET_PATTERN = re.compile(
 
 class TrialImportError(ValueError):
     """Raised when a public study cannot be normalized without guessing."""
+
+    def __init__(self, message: str, code: str = "unexpected_import_error") -> None:
+        super().__init__(message)
+        self.code = code
 
 
 @dataclass(frozen=True)
@@ -127,12 +132,16 @@ def parse_eligibility_criteria(
     eligibility_text: str,
 ) -> Tuple[ProtocolCriterion, ...]:
     if not eligibility_text.strip():
-        raise TrialImportError("Eligibility criteria are empty")
+        raise TrialImportError(
+            "Eligibility criteria are empty",
+            code="empty_eligibility",
+        )
     headings = tuple(HEADING_PATTERN.finditer(eligibility_text))
     if not headings:
         raise TrialImportError(
             "Eligibility headings are absent; criterion polarity would be "
-            "ambiguous"
+            "ambiguous",
+            code="ambiguous_polarity",
         )
 
     criteria: List[ProtocolCriterion] = []
@@ -177,7 +186,10 @@ def parse_eligibility_criteria(
                 )
             )
     if not criteria:
-        raise TrialImportError("No criteria could be extracted")
+        raise TrialImportError(
+            "No criteria could be extracted",
+            code="no_extractable_criteria",
+        )
     return tuple(criteria)
 
 
@@ -225,13 +237,22 @@ def normalize_study(
 
     nct_id = identification.get("nctId")
     if not isinstance(nct_id, str) or not NCT_PATTERN.fullmatch(nct_id):
-        raise TrialImportError("Study has no valid NCT identifier")
+        raise TrialImportError(
+            "Study has no valid NCT identifier",
+            code="invalid_nct_id",
+        )
     title = identification.get("briefTitle")
     if not isinstance(title, str) or not title.strip():
-        raise TrialImportError("Study has no brief title")
+        raise TrialImportError(
+            "Study has no brief title",
+            code="missing_title",
+        )
     eligibility_text = eligibility.get("eligibilityCriteria")
     if not isinstance(eligibility_text, str):
-        raise TrialImportError("Study has no eligibility criteria text")
+        raise TrialImportError(
+            "Study has no eligibility criteria text",
+            code="missing_eligibility",
+        )
     registry_snapshot_date = misc.get("versionHolder")
     last_update = status.get("lastUpdatePostDateStruct", {}).get("date")
     api_version = version_payload.get("apiVersion")
@@ -249,7 +270,8 @@ def normalize_study(
     ]
     if missing:
         raise TrialImportError(
-            f"Study provenance is incomplete: {', '.join(missing)}"
+            f"Study provenance is incomplete: {', '.join(missing)}",
+            code="incomplete_provenance",
         )
 
     eligibility_sha256 = hashlib.sha256(
@@ -321,20 +343,133 @@ class ClinicalTrialsClient:
         ) as response:
             payload = json.loads(response.read().decode("utf-8"))
         if not isinstance(payload, dict):
-            raise TrialImportError("ClinicalTrials.gov returned non-object JSON")
+            raise TrialImportError(
+                "ClinicalTrials.gov returned non-object JSON",
+                code="invalid_api_response",
+            )
         return payload
 
     def fetch(self, nct_id: str) -> Tuple[Dict[str, Any], Dict[str, Any]]:
         normalized_id = nct_id.upper()
         if not NCT_PATTERN.fullmatch(normalized_id):
-            raise TrialImportError("NCT ID must match NCT followed by 8 digits")
+            raise TrialImportError(
+                "NCT ID must match NCT followed by 8 digits",
+                code="invalid_nct_id",
+            )
         version = self._get_json(f"{self.api_base}/version")
         study = self._get_json(f"{self.api_base}/studies/{normalized_id}")
         return study, version
+
+    def search(
+        self,
+        query_parameters: Dict[str, str],
+        max_studies: Optional[int] = None,
+    ) -> Tuple[List[Dict[str, Any]], Dict[str, Any], Dict[str, Any]]:
+        """Fetch a deterministic, cursor-paginated public candidate set.
+
+        ``query_parameters`` must not contain the transient ``pageToken``.
+        The exact non-cursor parameters are returned for snapshot provenance.
+        """
+        if "pageToken" in query_parameters:
+            raise TrialImportError(
+                "pageToken is transient and cannot be part of a selection spec",
+                code="invalid_selection",
+            )
+        if max_studies is not None and max_studies < 1:
+            raise TrialImportError(
+                "max_studies must be at least 1",
+                code="invalid_selection",
+            )
+        parameters = {str(key): str(value) for key, value in query_parameters.items()}
+        parameters.setdefault("format", "json")
+        parameters.setdefault("markupFormat", "markdown")
+        parameters.setdefault("countTotal", "true")
+        parameters.setdefault("pageSize", "100")
+        if parameters["format"] != "json":
+            raise TrialImportError(
+                "Snapshot search requires format=json",
+                code="invalid_selection",
+            )
+        try:
+            page_size = int(parameters["pageSize"])
+        except ValueError as error:
+            raise TrialImportError(
+                "pageSize must be an integer",
+                code="invalid_selection",
+            ) from error
+        if not 1 <= page_size <= 1000:
+            raise TrialImportError(
+                "pageSize must be between 1 and 1000",
+                code="invalid_selection",
+            )
+        if not any(key.startswith("query.") for key in parameters):
+            raise TrialImportError(
+                "At least one query.* parameter is required",
+                code="invalid_selection",
+            )
+
+        version = self._get_json(f"{self.api_base}/version")
+        studies: List[Dict[str, Any]] = []
+        page_token: Optional[str] = None
+        seen_page_tokens = set()
+        page_count = 0
+        total_count: Optional[int] = None
+        while True:
+            request_parameters = dict(parameters)
+            if page_token:
+                request_parameters["pageToken"] = page_token
+            query = urllib.parse.urlencode(request_parameters)
+            page = self._get_json(f"{self.api_base}/studies?{query}")
+            page_studies = page.get("studies")
+            if not isinstance(page_studies, list) or not all(
+                isinstance(item, dict) for item in page_studies
+            ):
+                raise TrialImportError(
+                    "ClinicalTrials.gov search response has invalid studies",
+                    code="invalid_api_response",
+                )
+            if total_count is None and isinstance(page.get("totalCount"), int):
+                total_count = page["totalCount"]
+            page_count += 1
+            remaining = (
+                None if max_studies is None else max_studies - len(studies)
+            )
+            if remaining is not None:
+                studies.extend(page_studies[:remaining])
+            else:
+                studies.extend(page_studies)
+            if max_studies is not None and len(studies) >= max_studies:
+                break
+            next_token = page.get("nextPageToken")
+            if next_token is None:
+                break
+            if not isinstance(next_token, str) or not next_token:
+                raise TrialImportError(
+                    "ClinicalTrials.gov returned an invalid nextPageToken",
+                    code="invalid_api_response",
+                )
+            if next_token in seen_page_tokens:
+                raise TrialImportError(
+                    "ClinicalTrials.gov repeated a pagination token",
+                    code="invalid_api_response",
+                )
+            seen_page_tokens.add(next_token)
+            page_token = next_token
+        metadata = {
+            "reported_total_count": total_count,
+            "pages_fetched": page_count,
+            "selection_truncated": (
+                total_count is not None and len(studies) < total_count
+            ),
+        }
+        return studies, version, metadata
 
 
 def load_json(path: Path) -> Dict[str, Any]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
-        raise TrialImportError(f"{path} must contain a JSON object")
+        raise TrialImportError(
+            f"{path} must contain a JSON object",
+            code="invalid_json_fixture",
+        )
     return payload

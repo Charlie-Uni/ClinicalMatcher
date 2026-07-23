@@ -78,9 +78,14 @@ Generated manifests and reports belong under ignored `artifacts/`.
 
 Public ClinicalTrials.gov v2 ingestion and the restricted local patient adapter
 boundary are documented in
-[docs/DATA_INGESTION.md](docs/DATA_INGESTION.md). Live registry snapshots,
-normalized patient files, semantic pair details, and patient-level reports are
-runtime artifacts and are not committed.
+[docs/DATA_INGESTION.md](docs/DATA_INGESTION.md). P2.1 adds cursor-paginated
+batch selection, immutable trial snapshot manifests, parser coverage reports,
+offline-only snapshot loading, and an explicit patient-trial gold-readiness
+gate. Candidate snapshots remain ignored runtime artifacts during development;
+an actual public benchmark snapshot is frozen only after its selection policy,
+attribution, update notice, and gold governance have been reviewed. Normalized
+patient files, semantic pair details, and patient-level reports are never
+committed.
 
 ## Data access and reproducibility
 

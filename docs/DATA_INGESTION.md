@@ -1,6 +1,6 @@
 # Data ingestion boundaries
 
-Status: P2.0 foundation
+Status: P2.1 snapshot and gold-readiness foundation
 
 ClinicalMatcher separates public trial ingestion from restricted patient
 regeneration. Public protocol text may be fetched from its official registry.
@@ -49,10 +49,8 @@ Unbulleted paragraphs are preserved conservatively as whole criteria.
 These records are protocol text blocks, not yet atomic executable conditions.
 P3 decomposition must create atoms with its own provenance and validation.
 
-ClinicalTrials.gov changes daily. Regenerate protocol artifacts before a
-benchmark run, retain the reported data timestamp, attribute the source, and
-document modifications. Live imports belong under ignored `artifacts/`, not as
-stale committed study copies.
+ClinicalTrials.gov changes daily. One-off protocol imports belong under ignored
+`artifacts/`, not as unversioned study copies.
 
 ```bash
 clinical-matcher-import-trial \
@@ -62,6 +60,82 @@ clinical-matcher-import-trial \
 
 For offline tests, `--study-json` and `--version-json` accept the independently
 authored synthetic API-shaped fixtures.
+
+### Immutable multi-trial snapshots
+
+Benchmark evaluation must never query the live registry. The live API is used
+only to build a snapshot; all later decomposition, annotation, retrieval, and
+evaluation load that verified snapshot.
+
+`clinical-matcher-snapshot build` cursor-pages `/api/v2/studies` and records the
+exact disease domain, rationale, `query.*` terms, filters, explicit sort,
+page size, optional limit, API version, and API data timestamp. The snapshot
+retains every selected public source study, including studies the conservative
+parser skipped. Its manifest freezes, for each successfully imported NCT ID:
+
+- registry version holder and last-update date;
+- complete source-study, eligibility-text, and normalized-protocol hashes;
+- source record version and ordered criterion IDs;
+- source and normalized relative paths.
+
+The separate coverage report exposes imported/skipped/failed counts and rates,
+reason codes, and criterion-count ranges. Ambiguous polarity is therefore
+measured rather than silently discarded. `verify` revalidates schemas, path
+containment, record order, coverage arithmetic, all hashes, record versions,
+and criterion IDs. The builder refuses to overwrite an existing destination.
+
+An AF-first candidate build can use a transparent policy such as:
+
+```bash
+clinical-matcher-snapshot build \
+  --disease-domain atrial_fibrillation \
+  --selection-rationale \
+  "All currently recruiting-like AF studies; no outcome-based selection" \
+  --query-param "query.cond=Atrial Fibrillation" \
+  --query-param \
+  "filter.overallStatus=RECRUITING|NOT_YET_RECRUITING|ENROLLING_BY_INVITATION" \
+  --sort "LastUpdatePostDate:desc" \
+  --output-dir artifacts/trial_snapshots/af_candidate_v1
+
+clinical-matcher-snapshot verify \
+  --snapshot-dir artifacts/trial_snapshots/af_candidate_v1
+```
+
+This command defines a candidate pool, not a benchmark. The query, status
+policy, ordering, and any truncation must be reviewed before a release to avoid
+post-hoc selection. If a release retains a frozen registry snapshot for
+reproducibility, its README must retain the attribution, processing date,
+modification notes, and warning that current registry records may differ.
+
+### Patient-trial gold is a release gate
+
+A public trial snapshot supplies trials and protocol criteria only. It does not
+say which patients are eligible or which evidence supports each decision.
+`clinical-matcher-gold-readiness` emits a PHI-free aggregate report and refuses
+a ready status unless:
+
+- the snapshot contains multiple successfully parsed trials;
+- the gold covers the same imported trial count and at least one patient;
+- all declared patient × trial units are adjudicated;
+- all declared patient × trial × criterion evidence units are adjudicated;
+- every unit has at least two independent annotators; and
+- no adjudication remains unresolved.
+
+With no authorized gold, the honest report is intentionally `not_ready`:
+
+```bash
+clinical-matcher-gold-readiness \
+  --snapshot-dir artifacts/trial_snapshots/af_candidate_v1 \
+  --gold-source-description "No adjudicated multi-trial gold available" \
+  --output artifacts/trial_snapshots/af_candidate_v1.gold-readiness.json
+```
+
+CLI counts are recorded as `self_reported_aggregate` and therefore always leave
+the blocking gap `gold_counts_not_derived_from_validated_records`, even when
+all numeric counts look complete. A future authorized annotation validator
+must derive the counts from row-level records and mark their provenance
+`validated_annotation_records`; manually entered counts cannot unlock a
+benchmark claim.
 
 ## Restricted patient sources
 

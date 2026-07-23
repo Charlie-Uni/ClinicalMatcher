@@ -47,6 +47,25 @@ jobs:
           --version-json fixtures/synthetic/clinicaltrials_api_version.json
           --output /tmp/clinicalmatcher-trial.json
       - run: >-
+          clinical-matcher-snapshot build
+          --disease-domain atrial_fibrillation
+          --selection-rationale "Synthetic CI selection; not clinical data"
+          --query-param "query.cond=Atrial Fibrillation"
+          --query-param "filter.overallStatus=RECRUITING|NOT_YET_RECRUITING"
+          --sort "LastUpdatePostDate:desc"
+          --search-response-json
+          fixtures/synthetic/clinicaltrials_api_search_response.json
+          --version-json fixtures/synthetic/clinicaltrials_api_version.json
+          --output-dir /tmp/clinicalmatcher-trial-snapshot
+      - run: >-
+          clinical-matcher-snapshot verify
+          --snapshot-dir /tmp/clinicalmatcher-trial-snapshot
+      - run: >-
+          clinical-matcher-gold-readiness
+          --snapshot-dir /tmp/clinicalmatcher-trial-snapshot
+          --gold-source-description "No clinical gold in public CI"
+          --output /tmp/clinicalmatcher-gold-readiness.json
+      - run: >-
           clinical-matcher-evaluate
           --fixture fixtures/synthetic/trial_matching.json
           --manifest /tmp/clinicalmatcher-split.json
