@@ -1,0 +1,153 @@
+{
+  "fixture_notice": "Independently authored synthetic records; not derived from MIMIC or any real patient.",
+  "patients": [
+    {
+      "patient_id": "synthetic-patient-a",
+      "facts": {
+        "age_years": 55,
+        "egfr": 82,
+        "active_bleeding": false,
+        "diabetes": true
+      },
+      "evidence": [
+        {
+          "evidence_id": "a-demographics",
+          "field": "age_years",
+          "value": 55,
+          "text": "The fictional participant is 55 years old."
+        },
+        {
+          "evidence_id": "a-renal",
+          "field": "egfr",
+          "value": 82,
+          "text": "Synthetic laboratory record: eGFR 82."
+        },
+        {
+          "evidence_id": "a-bleeding",
+          "field": "active_bleeding",
+          "value": false,
+          "text": "The synthetic record states that active bleeding is absent."
+        },
+        {
+          "evidence_id": "a-diabetes",
+          "field": "diabetes",
+          "value": true,
+          "text": "The fictional history includes diabetes."
+        }
+      ]
+    },
+    {
+      "patient_id": "synthetic-patient-b",
+      "facts": {
+        "age_years": 70,
+        "egfr": 40,
+        "active_bleeding": false,
+        "diabetes": false
+      },
+      "evidence": [
+        {
+          "evidence_id": "b-demographics",
+          "field": "age_years",
+          "value": 70,
+          "text": "The fictional participant is 70 years old."
+        },
+        {
+          "evidence_id": "b-renal",
+          "field": "egfr",
+          "value": 40,
+          "text": "Synthetic laboratory record: eGFR 40."
+        },
+        {
+          "evidence_id": "b-bleeding",
+          "field": "active_bleeding",
+          "value": false,
+          "text": "The synthetic record states that active bleeding is absent."
+        },
+        {
+          "evidence_id": "b-diabetes",
+          "field": "diabetes",
+          "value": false,
+          "text": "The fictional history states that diabetes is absent."
+        }
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "trial_id": "synthetic-trial-renal-high",
+      "title": "Synthetic high renal-function study",
+      "criteria": [
+        {
+          "criterion_id": "renal-high-age",
+          "criterion_type": "inclusion",
+          "field": "age_years",
+          "operator": ">=",
+          "value": 18,
+          "description": "Adult participant",
+          "hard": true
+        },
+        {
+          "criterion_id": "renal-high-egfr",
+          "criterion_type": "inclusion",
+          "field": "egfr",
+          "operator": ">=",
+          "value": 50,
+          "description": "eGFR is at least 50",
+          "hard": true
+        },
+        {
+          "criterion_id": "renal-high-bleeding",
+          "criterion_type": "exclusion",
+          "field": "active_bleeding",
+          "operator": "==",
+          "value": true,
+          "description": "Active bleeding excludes participation",
+          "hard": true
+        }
+      ]
+    },
+    {
+      "trial_id": "synthetic-trial-metabolic",
+      "title": "Synthetic metabolic-control study",
+      "criteria": [
+        {
+          "criterion_id": "metabolic-age",
+          "criterion_type": "inclusion",
+          "field": "age_years",
+          "operator": ">=",
+          "value": 21,
+          "description": "Participant is at least 21",
+          "hard": true
+        },
+        {
+          "criterion_id": "metabolic-egfr",
+          "criterion_type": "inclusion",
+          "field": "egfr",
+          "operator": ">=",
+          "value": 30,
+          "description": "eGFR is at least 30",
+          "hard": true
+        },
+        {
+          "criterion_id": "metabolic-diabetes",
+          "criterion_type": "exclusion",
+          "field": "diabetes",
+          "operator": "==",
+          "value": true,
+          "description": "Diabetes excludes participation",
+          "hard": true
+        }
+      ]
+    }
+  ],
+  "expected_rankings": {
+    "synthetic-patient-a": [
+      "synthetic-trial-renal-high",
+      "synthetic-trial-metabolic"
+    ],
+    "synthetic-patient-b": [
+      "synthetic-trial-metabolic",
+      "synthetic-trial-renal-high"
+    ]
+  }
+}

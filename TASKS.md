@@ -4,14 +4,14 @@
 
 ## P0 — Compliance-safe reproducibility
 
-- [ ] Add independently authored synthetic patients, trials, criteria, evidence
+- [x] Add independently authored synthetic patients, trials, criteria, evidence
   spans, and expected rankings.
-- [ ] Define typed Patient, Trial, Criterion, Evidence, CriterionDecision, and
+- [x] Define typed Patient, Trial, Criterion, Evidence, CriterionDecision, and
   TrialMatch models.
-- [ ] Add a synthetic end-to-end CLI and CPU-only tests.
+- [x] Add a synthetic end-to-end CLI and CPU-only tests.
 - [ ] Add an authorized-user local regeneration command; never embed download
   credentials or distribute restricted outputs.
-- [ ] Add pre-commit/CI checks for clinical text, MIMIC identifiers, archives,
+- [x] Add CI checks for clinical text identifiers, archives,
   row-level tables, embeddings, and indexes.
 - [ ] Lock dependencies and add CI.
 

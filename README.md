@@ -45,6 +45,21 @@ The implementation backlog and acceptance criteria are in [TASKS.md](TASKS.md).
 The evidence-based scope audit is in
 [docs/PROJECT_AUDIT.md](docs/PROJECT_AUDIT.md).
 
+## Quick start
+
+The baseline uses only the Python standard library:
+
+```bash
+python -m pip install -e .
+python scripts/check_public_data.py
+python -m unittest discover -s tests -v
+clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
+```
+
+The smoke test evaluates two independently authored fictional patients against
+two fictional trials. It verifies criterion polarity, evidence links,
+abstention on missing facts, aggregation, and deterministic ranking.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and
@@ -64,3 +79,7 @@ The reproducibility goal is:
 Pinned external repositories and integration boundaries are recorded in
 [docs/REFERENCES.md](docs/REFERENCES.md). They are references, not vendored
 source trees.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE).

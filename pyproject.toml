@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-matcher"
+version = "0.1.0"
+description = "Compliance-safe research pipeline for explainable patient-to-trial matching"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [{name = "Charlie-Uni"}]
+dependencies = []
+
+[project.scripts]
+clinical-matcher-smoke = "clinical_matcher.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
