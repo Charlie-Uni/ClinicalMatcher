@@ -11,16 +11,20 @@ from clinical_matcher.evaluation import (
 from clinical_matcher.fixture import load_fixture
 from clinical_matcher.models import (
     AtomicCondition,
+    AtomProvenance,
     ComparisonOperator,
     ConditionExpression,
     Criterion,
+    CriterionSource,
     CriterionType,
     Decision,
+    DecompositionMethod,
     Evidence,
     ExpressionType,
     Fact,
     FactSelection,
     Patient,
+    SourceSpan,
     TimeDirection,
     TimeWindow,
     Trial,
@@ -31,6 +35,21 @@ from clinical_matcher.pipeline import evaluate_criterion, match_patient
 
 
 FIXTURE = Path("fixtures/synthetic/trial_matching.json")
+INCLUSION_SOURCE_ID = "synthetic-test-source-inclusion"
+EXCLUSION_SOURCE_ID = "synthetic-test-source-exclusion"
+
+
+def source(criterion_type: CriterionType) -> CriterionSource:
+    return CriterionSource(
+        source_id=(
+            INCLUSION_SOURCE_ID
+            if criterion_type is CriterionType.INCLUSION
+            else EXCLUSION_SOURCE_ID
+        ),
+        source_text="Synthetic test criterion.",
+        section=criterion_type,
+        document_version="synthetic-test-v1",
+    )
 
 
 def atom(
@@ -41,6 +60,7 @@ def atom(
     value_type: ValueType,
     unit: Optional[str] = None,
     fact_selection: FactSelection = FactSelection.ANY,
+    source_id: str = INCLUSION_SOURCE_ID,
 ) -> ConditionExpression:
     return ConditionExpression(
         expression_type=ExpressionType.ATOM,
@@ -50,6 +70,11 @@ def atom(
             operator=operator_,
             expected=TypedValue(value_type=value_type, value=value, unit=unit),
             fact_selection=fact_selection,
+            provenance=AtomProvenance(
+                source_id=source_id,
+                source_span=SourceSpan(start=0, end=9),
+                method=DecompositionMethod.HUMAN,
+            ),
         ),
     )
 
@@ -130,6 +155,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="requires-lab",
             criterion_type=CriterionType.INCLUSION,
             description="A fictional lab is required",
+            source=source(CriterionType.INCLUSION),
             hard=True,
             expression=atom(
                 "requires-lab-atom",
@@ -172,6 +198,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="creatinine-limit",
             criterion_type=CriterionType.INCLUSION,
             description="Unit safety test",
+            source=source(CriterionType.INCLUSION),
             hard=True,
             expression=atom(
                 "creatinine-max",
@@ -223,6 +250,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="latest-egfr",
             criterion_type=CriterionType.INCLUSION,
             description="Latest eGFR must be at least 50",
+            source=source(CriterionType.INCLUSION),
             expression=atom(
                 "latest-egfr-atom",
                 "egfr",
@@ -266,6 +294,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="not-any",
             criterion_type=CriterionType.INCLUSION,
             description="NOT(unknown OR diabetes)",
+            source=source(CriterionType.INCLUSION),
             expression=expression,
         )
         not_decision = evaluate_criterion(patient, criterion)
@@ -283,6 +312,11 @@ class PipelineTest(unittest.TestCase):
                 operator=ComparisonOperator.EQ,
                 expected=TypedValue(ValueType.BOOLEAN, True),
                 fact_selection=FactSelection.ANY,
+                provenance=AtomProvenance(
+                    source_id=EXCLUSION_SOURCE_ID,
+                    source_span=SourceSpan(start=0, end=9),
+                    method=DecompositionMethod.HUMAN,
+                ),
                 time_window=TimeWindow(days=1, direction=TimeDirection.PAST),
             ),
         )
@@ -290,6 +324,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="recent-event",
             criterion_type=CriterionType.EXCLUSION,
             description="Event in the previous day",
+            source=source(CriterionType.EXCLUSION),
             expression=outside_window,
             hard=True,
         )
@@ -354,10 +389,15 @@ class PipelineTest(unittest.TestCase):
             criterion_id="renal-or",
             criterion_type=CriterionType.INCLUSION,
             description="Synthetic renal OR rule",
+            source=source(CriterionType.INCLUSION),
             expression=expression,
             hard=True,
         )
-        trial = Trial(trial_id="renal-or-trial", title="Renal OR", criteria=(criterion,))
+        trial = Trial(
+            trial_id="renal-or-trial",
+            title="Renal OR",
+            criteria=(criterion,),
+        )
         match = match_patient(patient, [trial])[0]
         self.assertEqual(Decision.ELIGIBLE, match.decision)
         self.assertFalse(match.abstained)
@@ -392,6 +432,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="egfr-at-index",
             criterion_type=CriterionType.INCLUSION,
             description="eGFR available at matching time",
+            source=source(CriterionType.INCLUSION),
             expression=atom(
                 "egfr-at-index-atom",
                 "egfr",
@@ -448,6 +489,7 @@ class PipelineTest(unittest.TestCase):
             criterion_id="invalid-string-order",
             criterion_type=CriterionType.INCLUSION,
             description="Ordering strings is not permitted",
+            source=source(CriterionType.INCLUSION),
             expression=atom(
                 "invalid-string-order-atom",
                 "status",

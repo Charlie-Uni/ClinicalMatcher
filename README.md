@@ -47,11 +47,12 @@ The evidence-based scope audit is in
 
 ## Quick start
 
-The baseline uses only the Python standard library:
+The baseline is CPU-only and has one runtime validation dependency:
 
 ```bash
 python -m pip install -e .
 python scripts/check_public_data.py
+clinical-matcher-validate fixtures/synthetic/trial_matching.json
 python -m unittest discover -s tests -v
 clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
 ```
@@ -60,12 +61,13 @@ The smoke test evaluates two independently authored fictional patients against
 two fictional trials. It verifies criterion polarity, evidence links,
 abstention on missing facts, aggregation, and deterministic ranking.
 
-The proposed P1 schema and aggregation semantics are documented in
+The frozen P1 `1.0.0` schema and aggregation semantics are documented in
 [docs/SCHEMA.md](docs/SCHEMA.md). Compound criteria use a restricted
 `ALL/ANY/NOT/ATOM` expression tree with typed values, explicit units, optional
 time windows, and three-valued logic. Eligibility score, evidence coverage, and
 abstention are reported separately; atomic coverage and data-quality issues
-keep unresolved OR branches visible.
+keep unresolved OR branches visible. Schema changes are recorded in
+[docs/SCHEMA_MIGRATIONS.md](docs/SCHEMA_MIGRATIONS.md).
 
 ## Data access and reproducibility
 

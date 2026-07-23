@@ -1,7 +1,15 @@
 # Schema decision record
 
-Status: proposed for P1 freeze
-Version: `0.2-draft`
+Status: frozen baseline
+Version: `1.0.0`
+
+The executable wire-format contract is
+[`src/clinical_matcher/schemas/clinicalmatcher-1.0.0.schema.json`](../src/clinical_matcher/schemas/clinicalmatcher-1.0.0.schema.json).
+The JSON Schema validates document shape and primitive constraints. The Python
+loader additionally validates relationships that JSON Schema cannot express,
+including referenced evidence IDs, source-span bounds, unique IDs, and complete
+gold coverage. Documents without an exact supported `schema_version` are
+rejected; migration is never implicit.
 
 ## Prediction units
 
@@ -31,6 +39,21 @@ implicit unit conversion are not allowed.
 
 Query decomposition must output this structure and retain a mapping from every
 atom to the source criterion text.
+
+## Decomposition provenance
+
+Every criterion stores its immutable source ID, verbatim source text,
+inclusion/exclusion section, and protocol document version. Every atom stores:
+
+- the matching criterion source ID;
+- a zero-based, end-exclusive character span into the source text;
+- the decomposition method: `human`, `rule`, or `llm`;
+- for `llm`, the model ID and prompt version.
+
+The loader rejects source-ID mismatches and spans beyond the source text.
+Human/rule records cannot contain model metadata, while LLM records must
+contain it. The provenance identifies how a decomposition was produced; it
+does not certify clinical correctness.
 
 ## Typed facts and units
 
@@ -148,11 +171,31 @@ Retrieval metrics use the independently authored gold evidence IDs, never the
 evidence links produced by the evaluator. Ranking metrics use graded gold
 relevance, never scores derived from the ranking function.
 
+Each gold item contains at least two annotations with unique annotator IDs,
+followed by a separate adjudication record. Criterion annotations record a
+three-way decision, supporting evidence IDs, and a rationale. Trial annotations
+record a decision, relevance grade, and rationale. Evaluation reads only the
+adjudicated result while preserving disagreements for later agreement analysis.
+
+Trial relevance uses an ordinal research ranking label:
+
+- `0`: contraindicated or not a viable match;
+- `1`: weak match, with major unresolved or limiting criteria;
+- `2`: plausible match, with only limited uncertainty or soft limitations;
+- `3`: strong match, with the relevant criteria supported.
+
+The grade is not a probability, enrollment decision, or substitute for
+criterion-level labels. Clinical data must use a reviewed annotation manual
+with examples and explicit adjudication rules before these labels are treated
+as benchmark gold.
+
+The current fixture is independently authored synthetic test data. Its two
+synthetic annotations exercise the data contract; they do not constitute a
+clinically adjudicated benchmark.
+
 ## Deferred before production use
 
 - terminology and unit conversion registry;
 - temporal interval and data-coverage semantics beyond index-date windows;
-- provenance for decomposition and adjudication;
 - calibrated probabilities and abstention thresholds;
-- versioned JSON Schema or equivalent wire-format validation;
 - clinically reviewed aggregation policy.

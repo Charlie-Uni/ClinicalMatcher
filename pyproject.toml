@@ -10,10 +10,14 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 authors = [{name = "Charlie-Uni"}]
-dependencies = []
+dependencies = ["jsonschema>=4.23,<5"]
 
 [project.scripts]
 clinical-matcher-smoke = "clinical_matcher.cli:main"
+clinical-matcher-validate = "clinical_matcher.validate_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+clinical_matcher = ["schemas/*.json"]

@@ -13,7 +13,9 @@
             "value": 55,
             "unit": "years"
           },
-          "evidence_ids": ["a-demographics"]
+          "evidence_ids": [
+            "a-demographics"
+          ]
         },
         {
           "fact_id": "a-egfr-fact",
@@ -23,7 +25,9 @@
             "value": 82,
             "unit": "mL/min/1.73m2"
           },
-          "evidence_ids": ["a-renal"],
+          "evidence_ids": [
+            "a-renal"
+          ],
           "observed_at": "2025-12-29"
         },
         {
@@ -33,7 +37,9 @@
             "value_type": "boolean",
             "value": false
           },
-          "evidence_ids": ["a-bleeding"],
+          "evidence_ids": [
+            "a-bleeding"
+          ],
           "observed_at": "2025-12-20"
         },
         {
@@ -43,7 +49,9 @@
             "value_type": "boolean",
             "value": true
           },
-          "evidence_ids": ["a-diabetes"]
+          "evidence_ids": [
+            "a-diabetes"
+          ]
         }
       ],
       "evidence": [
@@ -81,7 +89,9 @@
             "value": 70,
             "unit": "years"
           },
-          "evidence_ids": ["b-demographics"]
+          "evidence_ids": [
+            "b-demographics"
+          ]
         },
         {
           "fact_id": "b-egfr-fact",
@@ -91,7 +101,9 @@
             "value": 40,
             "unit": "mL/min/1.73m2"
           },
-          "evidence_ids": ["b-renal"],
+          "evidence_ids": [
+            "b-renal"
+          ],
           "observed_at": "2025-12-28"
         },
         {
@@ -101,7 +113,9 @@
             "value_type": "boolean",
             "value": false
           },
-          "evidence_ids": ["b-bleeding"],
+          "evidence_ids": [
+            "b-bleeding"
+          ],
           "observed_at": "2025-12-22"
         },
         {
@@ -111,7 +125,9 @@
             "value_type": "boolean",
             "value": false
           },
-          "evidence_ids": ["b-diabetes"]
+          "evidence_ids": [
+            "b-diabetes"
+          ]
         }
       ],
       "evidence": [
@@ -159,8 +175,22 @@
                 "value_type": "number",
                 "value": 18,
                 "unit": "years"
+              },
+              "provenance": {
+                "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-age",
+                "source_span": {
+                  "start": 0,
+                  "end": 17
+                },
+                "method": "human"
               }
             }
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-age",
+            "source_text": "Adult participant",
+            "section": "inclusion",
+            "document_version": "synthetic-v1"
           }
         },
         {
@@ -182,6 +212,14 @@
                     "value_type": "number",
                     "value": 50,
                     "unit": "mL/min/1.73m2"
+                  },
+                  "provenance": {
+                    "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-egfr-range",
+                    "source_span": {
+                      "start": 0,
+                      "end": 45
+                    },
+                    "method": "human"
                   }
                 }
               },
@@ -196,10 +234,24 @@
                     "value_type": "number",
                     "value": 90,
                     "unit": "mL/min/1.73m2"
+                  },
+                  "provenance": {
+                    "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-egfr-range",
+                    "source_span": {
+                      "start": 0,
+                      "end": 45
+                    },
+                    "method": "human"
                   }
                 }
               }
             ]
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-egfr-range",
+            "source_text": "eGFR is between 50 inclusive and 90 exclusive",
+            "section": "inclusion",
+            "document_version": "synthetic-v1"
           }
         },
         {
@@ -222,8 +274,22 @@
                 "days": 30,
                 "direction": "past",
                 "relative_to": "index_date"
+              },
+              "provenance": {
+                "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-recent-bleeding",
+                "source_span": {
+                  "start": 0,
+                  "end": 59
+                },
+                "method": "human"
               }
             }
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-renal-high:renal-high-recent-bleeding",
+            "source_text": "Active bleeding in the prior 30 days excludes participation",
+            "section": "exclusion",
+            "document_version": "synthetic-v1"
           }
         }
       ]
@@ -248,8 +314,22 @@
                 "value_type": "number",
                 "value": 21,
                 "unit": "years"
+              },
+              "provenance": {
+                "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-age",
+                "source_span": {
+                  "start": 0,
+                  "end": 26
+                },
+                "method": "human"
               }
             }
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-age",
+            "source_text": "Participant is at least 21",
+            "section": "inclusion",
+            "document_version": "synthetic-v1"
           }
         },
         {
@@ -268,8 +348,22 @@
                 "value_type": "number",
                 "value": 30,
                 "unit": "mL/min/1.73m2"
+              },
+              "provenance": {
+                "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-egfr",
+                "source_span": {
+                  "start": 0,
+                  "end": 19
+                },
+                "method": "human"
               }
             }
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-egfr",
+            "source_text": "eGFR is at least 30",
+            "section": "inclusion",
+            "document_version": "synthetic-v1"
           }
         },
         {
@@ -288,8 +382,22 @@
               "expected": {
                 "value_type": "boolean",
                 "value": true
+              },
+              "provenance": {
+                "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-diabetes",
+                "source_span": {
+                  "start": 0,
+                  "end": 28
+                },
+                "method": "human"
               }
             }
+          },
+          "source": {
+            "source_id": "synthetic-protocol:synthetic-trial-metabolic:metabolic-diabetes",
+            "source_text": "Diabetes is a soft exclusion",
+            "section": "exclusion",
+            "document_version": "synthetic-v1"
           }
         }
       ]
@@ -300,60 +408,348 @@
       "synthetic-patient-a": {
         "synthetic-trial-renal-high": {
           "renal-high-age": {
-            "decision": "eligible",
-            "evidence_ids": ["a-demographics"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "a-demographics"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "renal-high-egfr-range": {
-            "decision": "eligible",
-            "evidence_ids": ["a-renal"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-renal"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-renal"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "a-renal"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "renal-high-recent-bleeding": {
-            "decision": "eligible",
-            "evidence_ids": ["a-bleeding"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-bleeding"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-bleeding"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "a-bleeding"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           }
         },
         "synthetic-trial-metabolic": {
           "metabolic-age": {
-            "decision": "eligible",
-            "evidence_ids": ["a-demographics"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "a-demographics"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "metabolic-egfr": {
-            "decision": "eligible",
-            "evidence_ids": ["a-renal"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-renal"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "a-renal"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "a-renal"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "metabolic-diabetes": {
-            "decision": "ineligible",
-            "evidence_ids": ["a-diabetes"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "ineligible",
+                "evidence_ids": [
+                  "a-diabetes"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "ineligible",
+                "evidence_ids": [
+                  "a-diabetes"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "ineligible",
+              "evidence_ids": [
+                "a-diabetes"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           }
         }
       },
       "synthetic-patient-b": {
         "synthetic-trial-renal-high": {
           "renal-high-age": {
-            "decision": "eligible",
-            "evidence_ids": ["b-demographics"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "b-demographics"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "renal-high-egfr-range": {
-            "decision": "ineligible",
-            "evidence_ids": ["b-renal"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "ineligible",
+                "evidence_ids": [
+                  "b-renal"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "ineligible",
+                "evidence_ids": [
+                  "b-renal"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "ineligible",
+              "evidence_ids": [
+                "b-renal"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "renal-high-recent-bleeding": {
-            "decision": "eligible",
-            "evidence_ids": ["b-bleeding"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-bleeding"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-bleeding"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "b-bleeding"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           }
         },
         "synthetic-trial-metabolic": {
           "metabolic-age": {
-            "decision": "eligible",
-            "evidence_ids": ["b-demographics"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-demographics"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "b-demographics"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "metabolic-egfr": {
-            "decision": "eligible",
-            "evidence_ids": ["b-renal"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-renal"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-renal"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "b-renal"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           },
           "metabolic-diabetes": {
-            "decision": "eligible",
-            "evidence_ids": ["b-diabetes"]
+            "annotations": [
+              {
+                "annotator_id": "synthetic-annotator-a",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-diabetes"
+                ],
+                "rationale": "Independent synthetic criterion review A."
+              },
+              {
+                "annotator_id": "synthetic-annotator-b",
+                "decision": "eligible",
+                "evidence_ids": [
+                  "b-diabetes"
+                ],
+                "rationale": "Independent synthetic criterion review B."
+              }
+            ],
+            "adjudication": {
+              "adjudicator_id": "synthetic-adjudicator",
+              "decision": "eligible",
+              "evidence_ids": [
+                "b-diabetes"
+              ],
+              "rationale": "Synthetic consensus adjudication."
+            }
           }
         }
       }
@@ -361,24 +757,97 @@
     "trials": {
       "synthetic-patient-a": {
         "synthetic-trial-renal-high": {
-          "decision": "eligible",
-          "relevance_grade": 3
+          "annotations": [
+            {
+              "annotator_id": "synthetic-annotator-a",
+              "decision": "eligible",
+              "relevance_grade": 3,
+              "rationale": "Independent synthetic trial review A."
+            },
+            {
+              "annotator_id": "synthetic-annotator-b",
+              "decision": "eligible",
+              "relevance_grade": 3,
+              "rationale": "Independent synthetic trial review B."
+            }
+          ],
+          "adjudication": {
+            "adjudicator_id": "synthetic-adjudicator",
+            "decision": "eligible",
+            "relevance_grade": 3,
+            "rationale": "Synthetic consensus adjudication."
+          }
         },
         "synthetic-trial-metabolic": {
-          "decision": "eligible",
-          "relevance_grade": 2
+          "annotations": [
+            {
+              "annotator_id": "synthetic-annotator-a",
+              "decision": "eligible",
+              "relevance_grade": 2,
+              "rationale": "Independent synthetic trial review A."
+            },
+            {
+              "annotator_id": "synthetic-annotator-b",
+              "decision": "eligible",
+              "relevance_grade": 2,
+              "rationale": "Independent synthetic trial review B."
+            }
+          ],
+          "adjudication": {
+            "adjudicator_id": "synthetic-adjudicator",
+            "decision": "eligible",
+            "relevance_grade": 2,
+            "rationale": "Synthetic consensus adjudication."
+          }
         }
       },
       "synthetic-patient-b": {
         "synthetic-trial-renal-high": {
-          "decision": "ineligible",
-          "relevance_grade": 0
+          "annotations": [
+            {
+              "annotator_id": "synthetic-annotator-a",
+              "decision": "ineligible",
+              "relevance_grade": 0,
+              "rationale": "Independent synthetic trial review A."
+            },
+            {
+              "annotator_id": "synthetic-annotator-b",
+              "decision": "ineligible",
+              "relevance_grade": 0,
+              "rationale": "Independent synthetic trial review B."
+            }
+          ],
+          "adjudication": {
+            "adjudicator_id": "synthetic-adjudicator",
+            "decision": "ineligible",
+            "relevance_grade": 0,
+            "rationale": "Synthetic consensus adjudication."
+          }
         },
         "synthetic-trial-metabolic": {
-          "decision": "eligible",
-          "relevance_grade": 3
+          "annotations": [
+            {
+              "annotator_id": "synthetic-annotator-a",
+              "decision": "eligible",
+              "relevance_grade": 3,
+              "rationale": "Independent synthetic trial review A."
+            },
+            {
+              "annotator_id": "synthetic-annotator-b",
+              "decision": "eligible",
+              "relevance_grade": 3,
+              "rationale": "Independent synthetic trial review B."
+            }
+          ],
+          "adjudication": {
+            "adjudicator_id": "synthetic-adjudicator",
+            "decision": "eligible",
+            "relevance_grade": 3,
+            "rationale": "Synthetic consensus adjudication."
+          }
         }
       }
     }
-  }
+  },
+  "schema_version": "1.0.0"
 }

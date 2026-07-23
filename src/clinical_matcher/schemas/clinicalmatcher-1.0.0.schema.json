@@ -1,0 +1,700 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/clinicalmatcher-1.0.0.schema.json",
+  "title": "ClinicalMatcher dataset and adjudicated gold",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "fixture_notice",
+    "patients",
+    "trials",
+    "gold"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "fixture_notice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/patient"
+      }
+    },
+    "trials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/trial"
+      }
+    },
+    "gold": {
+      "$ref": "#/$defs/gold"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "decision": {
+      "enum": [
+        "eligible",
+        "ineligible",
+        "unknown"
+      ]
+    },
+    "typedValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "number"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "date"
+            },
+            "value": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "source_id",
+        "text"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact_id",
+        "field",
+        "value",
+        "evidence_ids"
+      ],
+      "properties": {
+        "fact_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "field": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "value": {
+          "$ref": "#/$defs/typedValue"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/stringArray",
+          "minItems": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "patient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_id",
+        "index_date",
+        "facts",
+        "evidence"
+      ],
+      "properties": {
+        "patient_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "index_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    },
+    "timeWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "days",
+        "direction",
+        "relative_to"
+      ],
+      "properties": {
+        "days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "direction": {
+          "enum": [
+            "past",
+            "future"
+          ]
+        },
+        "relative_to": {
+          "const": "index_date"
+        }
+      }
+    },
+    "sourceSpan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "provenance": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_id",
+            "source_span",
+            "method"
+          ],
+          "properties": {
+            "source_id": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "source_span": {
+              "$ref": "#/$defs/sourceSpan"
+            },
+            "method": {
+              "enum": [
+                "human",
+                "rule"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_id",
+            "source_span",
+            "method",
+            "model_id",
+            "prompt_version"
+          ],
+          "properties": {
+            "source_id": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "source_span": {
+              "$ref": "#/$defs/sourceSpan"
+            },
+            "method": {
+              "const": "llm"
+            },
+            "model_id": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "prompt_version": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          }
+        }
+      ]
+    },
+    "atom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_id",
+        "field",
+        "operator",
+        "expected",
+        "fact_selection",
+        "provenance"
+      ],
+      "properties": {
+        "condition_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "field": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "operator": {
+          "enum": [
+            "==",
+            "!=",
+            ">",
+            ">=",
+            "<",
+            "<="
+          ]
+        },
+        "expected": {
+          "$ref": "#/$defs/typedValue"
+        },
+        "fact_selection": {
+          "enum": [
+            "any",
+            "all",
+            "latest"
+          ]
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "time_window": {
+          "$ref": "#/$defs/timeWindow"
+        }
+      }
+    },
+    "expression": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expression_type",
+            "atom"
+          ],
+          "properties": {
+            "expression_type": {
+              "const": "atom"
+            },
+            "atom": {
+              "$ref": "#/$defs/atom"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expression_type",
+            "children"
+          ],
+          "properties": {
+            "expression_type": {
+              "enum": [
+                "all",
+                "any"
+              ]
+            },
+            "children": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/expression"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "expression_type",
+            "children"
+          ],
+          "properties": {
+            "expression_type": {
+              "const": "not"
+            },
+            "children": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "$ref": "#/$defs/expression"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "criterionSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_text",
+        "section",
+        "document_version"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_text": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "section": {
+          "enum": [
+            "inclusion",
+            "exclusion"
+          ]
+        },
+        "document_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "criterion_type",
+        "description",
+        "source",
+        "hard",
+        "expression"
+      ],
+      "properties": {
+        "criterion_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "criterion_type": {
+          "enum": [
+            "inclusion",
+            "exclusion"
+          ]
+        },
+        "description": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source": {
+          "$ref": "#/$defs/criterionSource"
+        },
+        "hard": {
+          "type": "boolean"
+        },
+        "weight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "expression": {
+          "$ref": "#/$defs/expression"
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trial_id",
+        "title",
+        "criteria"
+      ],
+      "properties": {
+        "trial_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/criterion"
+          }
+        }
+      }
+    },
+    "criterionAnnotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotator_id",
+        "decision",
+        "evidence_ids",
+        "rationale"
+      ],
+      "properties": {
+        "annotator_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "criterionAdjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adjudicator_id",
+        "decision",
+        "evidence_ids",
+        "rationale"
+      ],
+      "properties": {
+        "adjudicator_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "criterionJudgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotations",
+        "adjudication"
+      ],
+      "properties": {
+        "annotations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/criterionAnnotation"
+          }
+        },
+        "adjudication": {
+          "$ref": "#/$defs/criterionAdjudication"
+        }
+      }
+    },
+    "trialAnnotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotator_id",
+        "decision",
+        "relevance_grade",
+        "rationale"
+      ],
+      "properties": {
+        "annotator_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "relevance_grade": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "trialAdjudication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adjudicator_id",
+        "decision",
+        "relevance_grade",
+        "rationale"
+      ],
+      "properties": {
+        "adjudicator_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        },
+        "relevance_grade": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rationale": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "trialJudgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotations",
+        "adjudication"
+      ],
+      "properties": {
+        "annotations": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/trialAnnotation"
+          }
+        },
+        "adjudication": {
+          "$ref": "#/$defs/trialAdjudication"
+        }
+      }
+    },
+    "criterionMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/criterionJudgment"
+      }
+    },
+    "trialCriterionMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/criterionMap"
+      }
+    },
+    "patientCriterionMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/trialCriterionMap"
+      }
+    },
+    "trialJudgmentMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/trialJudgment"
+      }
+    },
+    "patientTrialMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/trialJudgmentMap"
+      }
+    },
+    "gold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criteria",
+        "trials"
+      ],
+      "properties": {
+        "criteria": {
+          "$ref": "#/$defs/patientCriterionMap"
+        },
+        "trials": {
+          "$ref": "#/$defs/patientTrialMap"
+        }
+      }
+    }
+  }
+}

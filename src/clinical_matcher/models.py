@@ -55,6 +55,12 @@ class FactSelection(str, Enum):
     LATEST = "latest"
 
 
+class DecompositionMethod(str, Enum):
+    HUMAN = "human"
+    RULE = "rule"
+    LLM = "llm"
+
+
 @dataclass(frozen=True)
 class TypedValue:
     value_type: ValueType
@@ -142,13 +148,67 @@ class TimeWindow:
 
 
 @dataclass(frozen=True)
+class SourceSpan:
+    start: int
+    end: int
+
+    def __post_init__(self) -> None:
+        if self.start < 0 or self.end <= self.start:
+            raise ValueError("SourceSpan must satisfy 0 <= start < end")
+
+
+@dataclass(frozen=True)
+class CriterionSource:
+    source_id: str
+    source_text: str
+    section: CriterionType
+    document_version: str
+
+    def __post_init__(self) -> None:
+        if not all(
+            (self.source_id, self.source_text, self.document_version)
+        ):
+            raise ValueError("Criterion source fields must be non-empty")
+
+
+@dataclass(frozen=True)
+class AtomProvenance:
+    source_id: str
+    source_span: SourceSpan
+    method: DecompositionMethod
+    model_id: Optional[str] = None
+    prompt_version: Optional[str] = None
+
+    def __post_init__(self) -> None:
+        if not self.source_id:
+            raise ValueError("Atom provenance source_id must be non-empty")
+        if self.method is DecompositionMethod.LLM and not (
+            self.model_id and self.prompt_version
+        ):
+            raise ValueError(
+                "LLM decomposition requires model_id and prompt_version"
+            )
+        if self.method is not DecompositionMethod.LLM and (
+            self.model_id or self.prompt_version
+        ):
+            raise ValueError(
+                "model_id/prompt_version are reserved for LLM decomposition"
+            )
+
+
+@dataclass(frozen=True)
 class AtomicCondition:
     condition_id: str
     field: str
     operator: ComparisonOperator
     expected: TypedValue
     fact_selection: FactSelection
+    provenance: AtomProvenance
     time_window: Optional[TimeWindow] = None
+
+    def __post_init__(self) -> None:
+        if not self.condition_id or not self.field:
+            raise ValueError("Atomic condition ID and field must be non-empty")
 
 
 @dataclass(frozen=True)
@@ -173,13 +233,37 @@ class Criterion:
     criterion_id: str
     criterion_type: CriterionType
     description: str
+    source: CriterionSource
     expression: ConditionExpression
     hard: bool = False
     weight: float = 1.0
 
     def __post_init__(self) -> None:
+        if not self.criterion_id or not self.description:
+            raise ValueError("Criterion ID and description must be non-empty")
         if self.weight <= 0:
             raise ValueError("Criterion.weight must be positive")
+        if self.source.section is not self.criterion_type:
+            raise ValueError("Criterion source section must match criterion type")
+
+        def atoms(expression: ConditionExpression) -> Tuple[AtomicCondition, ...]:
+            if expression.expression_type is ExpressionType.ATOM:
+                if expression.atom is None:
+                    raise ValueError("Validated ATOM unexpectedly has no atom")
+                return (expression.atom,)
+            return tuple(
+                atom
+                for child in expression.children
+                for atom in atoms(child)
+            )
+
+        for atom in atoms(self.expression):
+            if atom.provenance.source_id != self.source.source_id:
+                raise ValueError(
+                    "Atomic provenance must reference its criterion source"
+                )
+            if atom.provenance.source_span.end > len(self.source.source_text):
+                raise ValueError("Atomic provenance span exceeds source text")
 
 
 @dataclass(frozen=True)
@@ -189,6 +273,8 @@ class Trial:
     criteria: Tuple[Criterion, ...]
 
     def __post_init__(self) -> None:
+        if not self.trial_id or not self.title:
+            raise ValueError("Trial ID and title must be non-empty")
         if not self.criteria:
             raise ValueError("Trial must contain at least one criterion")
         criterion_ids = [criterion.criterion_id for criterion in self.criteria]
@@ -213,6 +299,9 @@ class Trial:
         ]
         if len(atom_ids) != len(set(atom_ids)):
             raise ValueError("Trial atomic condition IDs must be unique")
+        source_ids = [criterion.source.source_id for criterion in self.criteria]
+        if len(source_ids) != len(set(source_ids)):
+            raise ValueError("Trial criterion source IDs must be unique")
 
 
 @dataclass(frozen=True)

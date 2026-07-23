@@ -24,9 +24,11 @@ restricted data, Ollama, or a GPU.
 - [x] Preserve inclusion/exclusion polarity and eligible/ineligible/unknown.
 - [x] Add typed values, explicit units, index-date time windows, and a
   restricted compound-condition expression tree.
-- [ ] Review and freeze the draft in `docs/SCHEMA.md`.
-- [ ] Define adjudication, decomposition provenance, and final trial relevance
+- [x] Review and freeze schema `1.0.0` in `docs/SCHEMA.md`.
+- [x] Define adjudication, decomposition provenance, and trial relevance
   guidance.
+- [x] Add a versioned JSON Schema, strict validator CLI, semantic link checks,
+  and valid/invalid schema tests.
 - [x] Add independently authored synthetic criterion-evidence and trial gold.
 - [ ] Build a clinically adjudicated criterion-evidence relevance set.
 - [ ] Split by patient/trial and add exact/semantic near-duplicate checks.
