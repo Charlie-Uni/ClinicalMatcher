@@ -110,6 +110,8 @@ class SemanticNearDuplicate:
             raise ValueError("Semantic similarity must be between 0 and 1")
         if not self.dimension or not self.left_id or not self.right_id:
             raise ValueError("Semantic pair fields must be non-empty")
+        if self.left_id == self.right_id:
+            raise ValueError("Semantic pair IDs must be different")
 
 
 def semantic_pairs_from_embeddings(

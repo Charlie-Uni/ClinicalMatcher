@@ -29,6 +29,24 @@ jobs:
           clinical-matcher-check-split
           --manifest /tmp/clinicalmatcher-split.json
       - run: >-
+          clinical-matcher-audit-semantic-scan
+          --manifest /tmp/clinicalmatcher-split.json
+          --semantic-pairs fixtures/synthetic/semantic_pairs_none.json
+          --dimension patient
+          --embedding-model-id synthetic-encoder
+          --embedding-model-revision synthetic-v1
+          --pooling mean
+          --vectors-normalized
+          --search-method exhaustive_cosine
+          --candidate-pairs-evaluated 1
+          --output /tmp/clinicalmatcher-semantic-audit.json
+      - run: >-
+          clinical-matcher-import-trial
+          --nct-id NCT99999999
+          --study-json fixtures/synthetic/clinicaltrials_api_study.json
+          --version-json fixtures/synthetic/clinicaltrials_api_version.json
+          --output /tmp/clinicalmatcher-trial.json
+      - run: >-
           clinical-matcher-evaluate
           --fixture fixtures/synthetic/trial_matching.json
           --manifest /tmp/clinicalmatcher-split.json

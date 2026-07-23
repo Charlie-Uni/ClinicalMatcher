@@ -18,6 +18,9 @@ clinical-matcher-validate = "clinical_matcher.validate_cli:main"
 clinical-matcher-split = "clinical_matcher.split_cli:main"
 clinical-matcher-check-split = "clinical_matcher.split_check_cli:main"
 clinical-matcher-evaluate = "clinical_matcher.evaluate_cli:main"
+clinical-matcher-import-trial = "clinical_matcher.import_trial_cli:main"
+clinical-matcher-audit-semantic-scan = "clinical_matcher.semantic_audit_cli:main"
+clinical-matcher-regenerate-patients = "clinical_matcher.regenerate_patients_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

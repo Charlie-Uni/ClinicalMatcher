@@ -9,8 +9,11 @@
 - [x] Define typed Patient, Trial, Criterion, Evidence, CriterionDecision, and
   TrialMatch models.
 - [x] Add a synthetic end-to-end CLI and CPU-only tests.
-- [ ] Add an authorized-user local regeneration command; never embed download
-  credentials or distribute restricted outputs.
+- [x] Add a compliance-gated authorized-user local regeneration command and
+  normalized patient-source contract; never embed credentials or distribute
+  restricted outputs.
+- [ ] Implement and validate the raw MIMIC/Apixaban-to-patient-source mapper
+  inside an authorized environment.
 - [x] Add CI checks for clinical text identifiers, archives,
   row-level tables, embeddings, and indexes.
 - [ ] Lock dependencies and add CI.
@@ -49,7 +52,10 @@ dataset fingerprint, model IDs, and index fingerprint.
 
 - [ ] Verify access, license, prediction units, and labels before selecting a
   proposed extended MIMIC dataset.
-- [ ] Normalize public trial inclusion/exclusion sections into stable IDs.
+- [x] Add a versioned ClinicalTrials.gov API v2 importer with attribution,
+  freshness metadata, stable criterion IDs, polarity, and source spans.
+- [ ] Add reviewed multi-trial query/batch selection and freeze a public trial
+  snapshot for an actual benchmark release.
 - [ ] Validate patient–criterion labels and evidence spans.
 - [ ] Keep Apixaban as a regression case study, not the primary benchmark.
 

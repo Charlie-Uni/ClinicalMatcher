@@ -76,6 +76,12 @@ retrieval/decision/ranking metrics, patient-cluster bootstrap intervals,
 coverage–risk curves, error attribution, and paired JSON/Markdown run reports.
 Generated manifests and reports belong under ignored `artifacts/`.
 
+Public ClinicalTrials.gov v2 ingestion and the restricted local patient adapter
+boundary are documented in
+[docs/DATA_INGESTION.md](docs/DATA_INGESTION.md). Live registry snapshots,
+normalized patient files, semantic pair details, and patient-level reports are
+runtime artifacts and are not committed.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and

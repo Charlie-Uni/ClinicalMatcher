@@ -242,7 +242,9 @@ def _expression(raw: Dict[str, Any]) -> ConditionExpression:
     )
 
 
-def _patients(raw_patients: List[Dict[str, Any]]) -> Tuple[Patient, ...]:
+def parse_patients(
+    raw_patients: List[Dict[str, Any]],
+) -> Tuple[Patient, ...]:
     return tuple(
         Patient(
             patient_id=item["patient_id"],
@@ -359,7 +361,7 @@ def load_fixture(path: Path) -> SyntheticFixture:
 
     return SyntheticFixture(
         schema_version=raw["schema_version"],
-        patients=_patients(raw["patients"]),
+        patients=parse_patients(raw["patients"]),
         trials=_trials(raw["trials"]),
         gold_criteria=gold_criteria,
         gold_trials=gold_trials,

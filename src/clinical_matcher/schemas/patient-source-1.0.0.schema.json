@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/patient-source-1.0.0.schema.json",
+  "title": "Normalized restricted patient source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "patient_source_version",
+    "source",
+    "patients"
+  ],
+  "properties": {
+    "patient_source_version": {
+      "const": "1.0.0"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "patients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/patient"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "access_policy",
+        "terms_url"
+      ],
+      "properties": {
+        "dataset_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "dataset_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "access_policy": {
+          "enum": [
+            "credentialed",
+            "restricted"
+          ]
+        },
+        "terms_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "typedValue": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "number"
+            },
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value_type",
+            "value"
+          ],
+          "properties": {
+            "value_type": {
+              "const": "date"
+            },
+            "value": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      ]
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact_id",
+        "field",
+        "value",
+        "evidence_ids"
+      ],
+      "properties": {
+        "fact_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "field": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "value": {
+          "$ref": "#/$defs/typedValue"
+        },
+        "evidence_ids": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "source_id",
+        "text"
+      ],
+      "properties": {
+        "evidence_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "text": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "patient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_id",
+        "index_date",
+        "facts",
+        "evidence"
+      ],
+      "properties": {
+        "patient_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "index_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      }
+    }
+  }
+}

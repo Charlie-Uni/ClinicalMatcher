@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/semantic-scan-summary-1.0.0.schema.json",
+  "title": "ClinicalMatcher semantic leakage scan aggregate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary_version",
+    "dataset_sha256",
+    "split_manifest_sha256",
+    "dimension",
+    "threshold",
+    "embedding",
+    "search",
+    "results",
+    "limitations",
+    "disclosure_note"
+  ],
+  "properties": {
+    "summary_version": {
+      "const": "1.0.0"
+    },
+    "dataset_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "split_manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "dimension": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "embedding": {
+      "$ref": "#/$defs/embedding"
+    },
+    "search": {
+      "$ref": "#/$defs/search"
+    },
+    "results": {
+      "$ref": "#/$defs/results"
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "disclosure_note": {
+      "$ref": "#/$defs/nonEmptyString"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "embedding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "model_revision",
+        "pooling",
+        "vectors_normalized"
+      ],
+      "properties": {
+        "model_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "model_revision": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "pooling": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "vectors_normalized": {
+          "type": "boolean"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "exhaustive",
+        "entity_count",
+        "expected_cross_split_pairs",
+        "candidate_pairs_evaluated",
+        "candidate_recall_estimate"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "exhaustive_cosine",
+            "ann_candidates"
+          ]
+        },
+        "exhaustive": {
+          "type": "boolean"
+        },
+        "entity_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_cross_split_pairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_pairs_evaluated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidate_recall_estimate": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retained_pairs_at_or_above_threshold",
+        "cross_split_pairs_at_or_above_threshold",
+        "detailed_pair_payload_sha256",
+        "leakage_assertion_passed"
+      ],
+      "properties": {
+        "retained_pairs_at_or_above_threshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cross_split_pairs_at_or_above_threshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detailed_pair_payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "leakage_assertion_passed": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

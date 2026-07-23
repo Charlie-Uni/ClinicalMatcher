@@ -55,6 +55,14 @@ and accepts candidate pairs from a scalable local ANN scan. Embedding creation
 and large scans belong in the authorized local environment. Neither embeddings,
 clinical text, nor real patient-level manifests are public artifacts.
 
+The assertion is only as complete as its candidate scan. A semantic scan audit
+therefore records the embedding model and revision, pooling, normalization,
+threshold, expected cross-split pair count, evaluated candidate count, and ANN
+candidate-recall estimate. An exhaustive claim fails unless every cross-split
+pair was evaluated; an ANN claim fails without a measured recall estimate.
+`clinical-matcher-audit-semantic-scan` emits an aggregate summary without row
+IDs. The detailed pair file remains local.
+
 ## Metric layers
 
 Retrieval metrics operate on ranked evidence IDs and independently adjudicated
@@ -115,7 +123,7 @@ and the choice is recorded in the run configuration.
 
 Small synthetic splits can have only one patient cluster, producing a
 degenerate interval. Such intervals validate the implementation but carry no
-inferential meaning.
+inferential meaning and must not be presented as performance evidence.
 
 ## Run reports
 

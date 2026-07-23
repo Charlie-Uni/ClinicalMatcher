@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/trial-protocol-1.0.0.schema.json",
+  "title": "Normalized ClinicalTrials.gov eligibility protocol",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_version",
+    "registry",
+    "attribution",
+    "terms_url",
+    "nct_id",
+    "title",
+    "source_url",
+    "source_id",
+    "source_record_version",
+    "registry_snapshot_date",
+    "last_update_posted",
+    "api_version",
+    "api_data_timestamp",
+    "retrieved_at",
+    "importer_code_commit",
+    "eligibility_text",
+    "eligibility_sha256",
+    "sex",
+    "minimum_age",
+    "maximum_age",
+    "healthy_volunteers",
+    "standard_ages",
+    "criteria",
+    "modifications"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "1.0.0"
+    },
+    "registry": {
+      "const": "ClinicalTrials.gov"
+    },
+    "attribution": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "terms_url": {
+      "const": "https://clinicaltrials.gov/about-site/terms-conditions"
+    },
+    "nct_id": {
+      "type": "string",
+      "pattern": "^NCT[0-9]{8}$"
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_id": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "source_record_version": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "registry_snapshot_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "last_update_posted": {
+      "type": "string",
+      "format": "date"
+    },
+    "api_version": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "api_data_timestamp": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "importer_code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "eligibility_text": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "eligibility_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "sex": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minimum_age": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maximum_age": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "healthy_volunteers": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "standard_ages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/criterion"
+      }
+    },
+    "modifications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "criterion_type",
+        "source_id",
+        "source_span",
+        "source_text",
+        "normalized_text"
+      ],
+      "properties": {
+        "criterion_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "criterion_type": {
+          "enum": [
+            "inclusion",
+            "exclusion"
+          ]
+        },
+        "source_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "source_span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "start",
+            "end"
+          ],
+          "properties": {
+            "start": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "source_text": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "normalized_text": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}
