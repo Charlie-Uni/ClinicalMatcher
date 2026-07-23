@@ -1,0 +1,41 @@
+# Model checkpoints and weights
+checkpoints_llm_mi/
+checkpoints_llm_mi_best/
+models/
+
+# Vector databases and indexes
+chroma_apixaban/
+indexes/
+index/
+
+# Embeddings (large binary files)
+*.pt
+faiss_pid.index
+
+# Clinical data (MIMIC — restricted use)
+mimic-iv-ext-apixaban-trial-criteria-questions-1.0.0/
+data/
+private_data/
+
+# Restricted or reproducible local artifacts
+artifacts/
+apixaban_processed.csv
+apixaban_with_*.csv
+annotated_apixaban_combined.xlsx
+test.csv
+工作簿1.xlsx
+*.pt
+*.index
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# OS
+.DS_Store
+
+# Office temporary lock files
+.~lock.*
+.~*
