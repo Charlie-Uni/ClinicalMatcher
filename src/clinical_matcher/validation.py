@@ -13,13 +13,16 @@ class DocumentValidationError(ValueError):
     """Raised when a document violates the versioned public schema."""
 
 
-def load_schema() -> Dict[str, Any]:
-    resource = files("clinical_matcher").joinpath(SCHEMA_RESOURCE)
+def load_schema(schema_resource: str = SCHEMA_RESOURCE) -> Dict[str, Any]:
+    resource = files("clinical_matcher").joinpath(schema_resource)
     return json.loads(resource.read_text(encoding="utf-8"))
 
 
-def validate_document(document: Dict[str, Any]) -> None:
-    schema = load_schema()
+def validate_document(
+    document: Dict[str, Any],
+    schema_resource: str = SCHEMA_RESOURCE,
+) -> None:
+    schema = load_schema(schema_resource)
     Draft202012Validator.check_schema(schema)
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     errors = sorted(validator.iter_errors(document), key=lambda item: list(item.path))
@@ -31,7 +34,10 @@ def validate_document(document: Dict[str, Any]) -> None:
         raise DocumentValidationError("\n".join(messages))
 
 
-def validate_path(path: Path) -> Dict[str, Any]:
+def validate_path(
+    path: Path,
+    schema_resource: str = SCHEMA_RESOURCE,
+) -> Dict[str, Any]:
     document: Dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
-    validate_document(document)
+    validate_document(document, schema_resource)
     return document

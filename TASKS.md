@@ -31,10 +31,16 @@ restricted data, Ollama, or a GPU.
   and valid/invalid schema tests.
 - [x] Add independently authored synthetic criterion-evidence and trial gold.
 - [ ] Build a clinically adjudicated criterion-evidence relevance set.
-- [ ] Split by patient/trial and add exact/semantic near-duplicate checks.
-- [ ] Implement evidence Recall@k/MRR, criterion F1, ranking nDCG/MRR/Recall@k,
-  calibration, abstention coverage/risk, bootstrap confidence intervals, and
-  latency.
+- [x] Add lineage-tracked patient/trial/joint split manifests, exact duplicate
+  assertions, and a semantic near-duplicate assertion interface.
+- [ ] Run and review the local embedding near-duplicate scan on the eventual
+  authorized clinical dataset.
+- [x] Implement separate retrieval Recall@k/MRR/nDCG, criterion macro/micro-F1
+  and confusion matrix, trial nDCG/MRR/Recall@k, error attribution,
+  deterministic coverage–risk, patient-cluster bootstrap intervals, latency,
+  and JSON/Markdown run reports.
+- [ ] Add probabilistic calibration metrics and threshold selection after a
+  model emits validation-set probabilities.
 
 Acceptance: every result has a split manifest, seed, config, code commit,
 dataset fingerprint, model IDs, and index fingerprint.

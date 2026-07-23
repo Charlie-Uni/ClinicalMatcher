@@ -69,6 +69,13 @@ abstention are reported separately; atomic coverage and data-quality issues
 keep unresolved OR branches visible. Schema changes are recorded in
 [docs/SCHEMA_MIGRATIONS.md](docs/SCHEMA_MIGRATIONS.md).
 
+The executable P1 evaluation protocol is documented in
+[docs/EVALUATION.md](docs/EVALUATION.md). It provides lineage-tracked
+patient/trial holdouts, exact and semantic leakage assertions, separate
+retrieval/decision/ranking metrics, patient-cluster bootstrap intervals,
+coverage–risk curves, error attribution, and paired JSON/Markdown run reports.
+Generated manifests and reports belong under ignored `artifacts/`.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and

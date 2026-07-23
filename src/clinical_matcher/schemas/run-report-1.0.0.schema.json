@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/run-report-1.0.0.schema.json",
+  "title": "ClinicalMatcher evaluation run report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "run_id",
+    "generated_at",
+    "provenance",
+    "configuration",
+    "metrics",
+    "errors"
+  ],
+  "properties": {
+    "report_version": {
+      "const": "1.0.0"
+    },
+    "run_id": {
+      "$ref": "#/$defs/sha256"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    },
+    "configuration": {
+      "$ref": "#/$defs/configuration"
+    },
+    "metrics": {
+      "$ref": "#/$defs/metrics"
+    },
+    "errors": {
+      "$ref": "#/$defs/errors"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sha1": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "strategy",
+        "manifest_sha256",
+        "seed",
+        "generated_at",
+        "code_commit",
+        "isolated_dimensions"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "strategy": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "code_commit": {
+          "$ref": "#/$defs/sha1"
+        },
+        "isolated_dimensions": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_commit",
+        "dataset_id",
+        "dataset_schema_version",
+        "dataset_sha256",
+        "parent_dataset_sha256",
+        "split"
+      ],
+      "properties": {
+        "code_commit": {
+          "$ref": "#/$defs/sha1"
+        },
+        "dataset_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "dataset_schema_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "dataset_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "parent_dataset_sha256": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "split": {
+          "$ref": "#/$defs/split"
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "k",
+        "bootstrap_samples",
+        "bootstrap_unit",
+        "selection_score",
+        "evidence_source",
+        "latency_scope",
+        "model_ids",
+        "prompt_versions",
+        "index_fingerprint"
+      ],
+      "properties": {
+        "k": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bootstrap_samples": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "bootstrap_unit": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "selection_score": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "evidence_source": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "latency_scope": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "model_ids": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "prompt_versions": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "index_fingerprint": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retrieval",
+        "decision",
+        "ranking",
+        "coverage_risk",
+        "bootstrap",
+        "latency"
+      ],
+      "properties": {
+        "retrieval": {
+          "type": "object"
+        },
+        "decision": {
+          "type": "object"
+        },
+        "ranking": {
+          "type": "object"
+        },
+        "coverage_risk": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "bootstrap": {
+          "type": "object"
+        },
+        "latency": {
+          "type": "object"
+        }
+      }
+    },
+    "errors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "counts",
+        "cases"
+      ],
+      "properties": {
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "cases": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

@@ -18,3 +18,20 @@ jobs:
       - run: clinical-matcher-validate fixtures/synthetic/trial_matching.json
       - run: python -m unittest discover -s tests -v
       - run: clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
+      - run: >-
+          clinical-matcher-split
+          --fixture fixtures/synthetic/trial_matching.json
+          --strategy patient_holdout
+          --seed 17
+          --test-fraction 0.5
+          --output /tmp/clinicalmatcher-split.json
+      - run: >-
+          clinical-matcher-check-split
+          --manifest /tmp/clinicalmatcher-split.json
+      - run: >-
+          clinical-matcher-evaluate
+          --fixture fixtures/synthetic/trial_matching.json
+          --manifest /tmp/clinicalmatcher-split.json
+          --split test
+          --bootstrap-samples 100
+          --output-dir /tmp/clinicalmatcher-report

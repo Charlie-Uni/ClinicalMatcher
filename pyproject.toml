@@ -15,6 +15,9 @@ dependencies = ["jsonschema>=4.23,<5"]
 [project.scripts]
 clinical-matcher-smoke = "clinical_matcher.cli:main"
 clinical-matcher-validate = "clinical_matcher.validate_cli:main"
+clinical-matcher-split = "clinical_matcher.split_cli:main"
+clinical-matcher-check-split = "clinical_matcher.split_check_cli:main"
+clinical-matcher-evaluate = "clinical_matcher.evaluate_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

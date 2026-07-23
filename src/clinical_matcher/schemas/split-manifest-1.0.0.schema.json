@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/split-manifest-1.0.0.schema.json",
+  "title": "ClinicalMatcher split manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "manifest_sha256",
+    "dataset",
+    "strategy",
+    "isolated_dimensions",
+    "semantic_similarity_threshold",
+    "seed",
+    "generated_at",
+    "code_commit",
+    "generation_command",
+    "splits"
+  ],
+  "properties": {
+    "manifest_version": {
+      "const": "1.0.0"
+    },
+    "manifest_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "dataset": {
+      "$ref": "#/$defs/dataset"
+    },
+    "strategy": {
+      "enum": [
+        "patient_holdout",
+        "trial_holdout",
+        "joint_holdout"
+      ]
+    },
+    "isolated_dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/dimension"
+      }
+    },
+    "semantic_similarity_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "code_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "generation_command": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "splits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "train",
+        "test"
+      ],
+      "properties": {
+        "train": {
+          "$ref": "#/$defs/partition"
+        },
+        "test": {
+          "$ref": "#/$defs/partition"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "dimension": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "schema_version",
+        "content_sha256",
+        "parent_content_sha256"
+      ],
+      "properties": {
+        "dataset_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "schema_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "content_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "parent_content_sha256": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "idMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/dimension"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "hashMap": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/dimension"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "partition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_ids",
+        "content_sha256"
+      ],
+      "properties": {
+        "entity_ids": {
+          "$ref": "#/$defs/idMap"
+        },
+        "content_sha256": {
+          "$ref": "#/$defs/hashMap"
+        }
+      }
+    }
+  }
+}
