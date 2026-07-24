@@ -8,6 +8,11 @@ set. It is not itself a benchmark result. Real patient records, unit manifests,
 independent annotations, rationales, evidence links, and adjudication records
 remain inside the authorized environment.
 
+For the MIMIC-IV-Ext Apixaban source, first run the staging importer described
+in [DATA_INGESTION.md](DATA_INGESTION.md). Because the released extension omits
+usable index dates, any time-dependent trial criterion must remain `unknown`
+unless an authorized MIMIC metadata join supplies and validates the date.
+
 ## Unit and sampling
 
 One pilot unit is one complete `patient × trial` bundle:

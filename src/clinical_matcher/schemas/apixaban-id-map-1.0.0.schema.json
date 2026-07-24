@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-id-map-1.0.0.schema.json",
+  "title": "Restricted Apixaban pseudonym crosswalk",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_id_map_version",
+    "source_csv_sha256",
+    "pseudonymization",
+    "records"
+  ],
+  "properties": {
+    "apixaban_id_map_version": {"const": "1.0.0"},
+    "source_csv_sha256": {"$ref": "#/$defs/sha256"},
+    "pseudonymization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "key_id"],
+      "properties": {
+        "algorithm": {"const": "HMAC-SHA256"},
+        "key_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]{1,64}$"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_id",
+        "source_id",
+        "note_id",
+        "hadm_id"
+      ],
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "pattern": "^patient-[0-9a-f]{24}$"
+        },
+        "source_id": {
+          "type": "string",
+          "pattern": "^note-[0-9a-f]{24}$"
+        },
+        "note_id": {"$ref": "#/$defs/nonEmptyString"},
+        "hadm_id": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    }
+  }
+}

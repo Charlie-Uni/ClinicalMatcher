@@ -168,6 +168,52 @@ must derive the counts from row-level records and mark their provenance
 `validated_annotation_records`; manually entered counts cannot unlock a
 benchmark claim.
 
+## Restricted Apixaban staging import
+
+The official MIMIC-IV-Ext Apixaban release is a credentialed MIMIC derivative,
+not a public fixture. `clinical-matcher-import-apixaban` accepts only the pinned
+`1.0.0` source CSV hash and also verifies the adjacent `SHA256SUMS.txt`. It
+never reads the legacy cleaned workbook as the authoritative source.
+
+Generate and retain one random HMAC key locally:
+
+```bash
+clinical-matcher-import-apixaban generate-key \
+  --output private_data/keys/apixaban-pseudonym-v1.key \
+  --acknowledge-restricted-data-local-only
+```
+
+Then import the official release:
+
+```bash
+clinical-matcher-import-apixaban import \
+  --input-csv \
+  /absolute/path/to/annotated_apixaban_combined.csv \
+  --pseudonym-key-file private_data/keys/apixaban-pseudonym-v1.key \
+  --pseudonym-key-id apixaban-pseudonym-v1 \
+  --output artifacts/patients/apixaban-staging-corpus.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The command writes three ignored local files:
+
+- a staging corpus with HMAC patient/note IDs, exact non-overlapping evidence
+  spans, and the 23 legacy question-answer labels;
+- an owner-only `0600` ID map containing the raw `note_id` and `hadm_id`; and
+- an aggregate import manifest with source/output hashes, counts, adapter
+  version, code commit, and quality blockers.
+
+Empty answers marked `not_specified` remain unresolved. Empty answers that the
+source did not mark are recorded as `source_anomaly`; the adapter never guesses
+a value. The corpus contains no raw IDs, while the separate crosswalk remains
+restricted and enables a later authorized join.
+
+The released note text has its admission and discharge dates redacted and the
+CSV provides no date column. Consequently this output is deliberately a
+staging corpus with `index_date=null`, not a runtime patient source. Temporal
+eligibility evaluation remains blocked until the ID map is joined to official
+MIMIC note metadata and a real index date is validated.
+
 ## Restricted patient sources
 
 The public adapter contract is a versioned normalized JSON source containing:
@@ -195,11 +241,12 @@ clinical-matcher-regenerate-patients \
   --acknowledge-restricted-data-local-only
 ```
 
-The current adapter starts from the normalized patient-source contract. It does
-not yet transform raw MIMIC tables or the Apixaban extension. That
-dataset-specific mapper must be developed and executed only in an authorized
-environment, with schema/column diagnostics and aggregate logs used for remote
-debugging.
+The generic normalized adapter starts from the patient-source contract. The
+Apixaban staging adapter now handles the official extension safely, but
+promotion to the runtime contract still requires the missing authorized
+MIMIC date metadata. Schema/column diagnostics and aggregate manifests may be
+reviewed remotely; the corpus, raw-ID map, keys, and row-level diagnostics may
+not.
 
 ## Disclosure boundary
 

@@ -25,6 +25,7 @@ clinical-matcher-snapshot = "clinical_matcher.snapshot_cli:main"
 clinical-matcher-gold-readiness = "clinical_matcher.gold_readiness_cli:main"
 clinical-matcher-audit-semantic-scan = "clinical_matcher.semantic_audit_cli:main"
 clinical-matcher-regenerate-patients = "clinical_matcher.regenerate_patients_cli:main"
+clinical-matcher-import-apixaban = "clinical_matcher.apixaban_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

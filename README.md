@@ -94,6 +94,11 @@ boundary are documented in
 [docs/ANNOTATION_PROTOCOL.md](docs/ANNOTATION_PROTOCOL.md). Only a validated,
 hash-bound aggregate from completed adjudication can authorize a
 capacity-bound snapshot; manually entered pilot estimates remain provisional.
+The official MIMIC-IV-Ext Apixaban `1.0.0` CSV can now be verified and converted
+locally into an evidence-chunked staging corpus with keyed pseudonyms and a
+separate owner-only raw-ID map. The released extension does not expose usable
+index dates, so the adapter refuses to call that staging output a runtime
+patient source until authorized MIMIC note metadata supplies them.
 
 ## Data access and reproducibility
 

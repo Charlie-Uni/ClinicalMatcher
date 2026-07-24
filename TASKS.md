@@ -12,8 +12,11 @@
 - [x] Add a compliance-gated authorized-user local regeneration command and
   normalized patient-source contract; never embed credentials or distribute
   restricted outputs.
-- [ ] Implement and validate the raw MIMIC/Apixaban-to-patient-source mapper
-  inside an authorized environment.
+- [x] Implement the official MIMIC-IV-Ext Apixaban CSV-to-restricted-staging
+  adapter with pinned checksums, HMAC pseudonyms, a separate raw-ID crosswalk,
+  exact evidence spans, and unresolved missing-label handling.
+- [ ] Join authorized MIMIC note metadata to supply real index dates and
+  promote the staging corpus to the runtime patient-source contract.
 - [x] Add CI checks for clinical text identifiers, archives,
   row-level tables, embeddings, and indexes.
 - [ ] Lock dependencies and add CI.
