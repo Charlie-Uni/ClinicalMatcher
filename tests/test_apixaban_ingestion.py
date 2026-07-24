@@ -92,7 +92,8 @@ class ApixabanIngestionTest(unittest.TestCase):
         )
         license_path = root / "LICENSE.txt"
         license_path.write_text(
-            "The PhysioNet Restricted Health Data License 1.5.0\n",
+            "The PhysioNet Restricted Health Data License\n"
+            "Version 1.5.0\n",
             encoding="utf-8",
         )
         key_path = root / "pseudonym.key"

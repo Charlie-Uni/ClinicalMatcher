@@ -363,7 +363,11 @@ def build_apixaban_staging_corpus(
         encoding="utf-8-sig",
         errors="strict",
     )
-    if LICENSE_ID not in license_text:
+    if not re.search(
+        r"PhysioNet Restricted Health Data License\s+Version\s+1\.5\.0",
+        license_text,
+        re.IGNORECASE,
+    ):
         raise ApixabanImportError(
             "License file does not identify the required restricted license"
         )
