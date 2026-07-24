@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/pilot-summary-1.0.0.schema.json",
+  "title": "PHI-free aggregate annotation pilot summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pilot_summary_version",
+    "summary_sha256",
+    "pilot_id",
+    "generated_at",
+    "code_commit",
+    "validated_for_capacity",
+    "counts",
+    "timing",
+    "agreement",
+    "capacity_inputs",
+    "disclosure_note"
+  ],
+  "properties": {
+    "pilot_summary_version": {"const": "1.0.0"},
+    "summary_sha256": {"$ref": "#/$defs/sha256"},
+    "pilot_id": {"type": "string", "pattern": "^pilot-[A-Za-z0-9._-]+$"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "validated_for_capacity": {"const": true},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotator_count",
+        "patient_trial_unit_count",
+        "criterion_unit_count",
+        "annotation_observation_count",
+        "disputed_patient_trial_unit_count",
+        "unresolved_unit_count"
+      ],
+      "properties": {
+        "annotator_count": {"const": 2},
+        "patient_trial_unit_count": {"type": "integer", "minimum": 2},
+        "criterion_unit_count": {"type": "integer", "minimum": 2},
+        "annotation_observation_count": {"type": "integer", "minimum": 4},
+        "disputed_patient_trial_unit_count": {"type": "integer", "minimum": 0},
+        "unresolved_unit_count": {"const": 0}
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotation_total_person_minutes",
+        "annotation_median_minutes",
+        "annotation_p75_minutes",
+        "adjudication_total_person_minutes",
+        "adjudication_person_minutes_per_disputed_unit"
+      ],
+      "properties": {
+        "annotation_total_person_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "annotation_median_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "annotation_p75_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "adjudication_total_person_minutes": {"type": "number", "minimum": 0},
+        "adjudication_person_minutes_per_disputed_unit": {"type": "number", "minimum": 0}
+      }
+    },
+    "agreement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_trial_disagreement_rate",
+        "trial_decision_exact_agreement",
+        "trial_decision_cohen_kappa",
+        "trial_relevance_exact_agreement",
+        "criterion_decision_exact_agreement",
+        "criterion_decision_cohen_kappa",
+        "criterion_evidence_exact_agreement"
+      ],
+      "properties": {
+        "patient_trial_disagreement_rate": {"$ref": "#/$defs/rate"},
+        "trial_decision_exact_agreement": {"$ref": "#/$defs/rate"},
+        "trial_decision_cohen_kappa": {"type": "number", "minimum": -1, "maximum": 1},
+        "trial_relevance_exact_agreement": {"$ref": "#/$defs/rate"},
+        "criterion_decision_exact_agreement": {"$ref": "#/$defs/rate"},
+        "criterion_decision_cohen_kappa": {"type": "number", "minimum": -1, "maximum": 1},
+        "criterion_evidence_exact_agreement": {"$ref": "#/$defs/rate"}
+      }
+    },
+    "capacity_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotator_count",
+        "required_annotations_per_unit",
+        "minutes_per_annotation",
+        "expected_adjudication_rate",
+        "minutes_per_adjudication",
+        "pilot_unit_count"
+      ],
+      "properties": {
+        "annotator_count": {"const": 2},
+        "required_annotations_per_unit": {"const": 2},
+        "minutes_per_annotation": {"type": "number", "exclusiveMinimum": 0},
+        "expected_adjudication_rate": {"$ref": "#/$defs/rate"},
+        "minutes_per_adjudication": {"type": "number", "minimum": 0},
+        "pilot_unit_count": {"type": "integer", "minimum": 2}
+      }
+    },
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rate": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}

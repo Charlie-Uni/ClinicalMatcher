@@ -38,7 +38,8 @@
         "minutes_per_adjudication",
         "reserve_fraction",
         "estimate_source",
-        "pilot_unit_count"
+        "pilot_unit_count",
+        "pilot_summary_sha256"
       ],
       "properties": {
         "annotator_count": {"type": "integer", "minimum": 2},
@@ -49,9 +50,19 @@
         "minutes_per_adjudication": {"type": "number", "minimum": 0},
         "reserve_fraction": {"type": "number", "minimum": 0, "exclusiveMaximum": 1},
         "estimate_source": {
-          "enum": ["planning_assumption", "pilot_measurement"]
+          "enum": [
+            "planning_assumption",
+            "pilot_measurement",
+            "validated_pilot_summary"
+          ]
         },
-        "pilot_unit_count": {"type": "integer", "minimum": 0}
+        "pilot_unit_count": {"type": "integer", "minimum": 0},
+        "pilot_summary_sha256": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/sha256"}
+          ]
+        }
       }
     },
     "constraints": {

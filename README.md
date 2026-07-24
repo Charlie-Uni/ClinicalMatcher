@@ -89,6 +89,11 @@ development; an actual public benchmark snapshot is frozen only after its
 capacity, selection policy, attribution, update notice, statistical
 limitations, and gold governance have been reviewed. Normalized patient files,
 semantic pair details, and patient-level reports are never committed.
+The executable two-annotator timing-pilot workflow and local-only disclosure
+boundary are documented in
+[docs/ANNOTATION_PROTOCOL.md](docs/ANNOTATION_PROTOCOL.md). Only a validated,
+hash-bound aggregate from completed adjudication can authorize a
+capacity-bound snapshot; manually entered pilot estimates remain provisional.
 
 ## Data access and reproducibility
 

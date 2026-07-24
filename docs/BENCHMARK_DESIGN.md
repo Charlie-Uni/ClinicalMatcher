@@ -28,7 +28,8 @@ Run a small, representative pilot before choosing trial or patient counts:
    adjudication person-minutes, unresolved cases, and criterion counts.
 4. Use a conservative annotation-time estimate, such as the observed 75th
    percentile, rather than the fastest or mean case.
-5. Re-run the capacity plan with `estimate_source=pilot_measurement`.
+5. Generate a validated aggregate with `clinical-matcher-pilot summarize`,
+   then bind the capacity plan to that summary hash.
 
 `minutes_per_adjudication` means total person-minutes. A ten-minute meeting
 attended by two annotators costs twenty person-minutes.
@@ -58,14 +59,9 @@ coverage and more patients per trial.
 
 ```bash
 clinical-matcher-plan-capacity \
-  --annotator-count 2 \
+  --pilot-summary artifacts/benchmark/pilot-summary.json \
   --hours-per-annotator <HOURS_EACH> \
-  --minutes-per-annotation <PILOT_P75_MINUTES> \
-  --expected-adjudication-rate <PILOT_DISAGREEMENT_RATE> \
-  --minutes-per-adjudication <TOTAL_PERSON_MINUTES> \
   --reserve-fraction 0.2 \
-  --estimate-source pilot_measurement \
-  --pilot-unit-count <COMPLETED_PILOT_UNITS> \
   --minimum-trials 2 \
   --maximum-trials <MAX_TRIALS_TO_CONSIDER> \
   --minimum-patients-per-trial <MIN_PATIENTS> \
@@ -73,9 +69,12 @@ clinical-matcher-plan-capacity \
   --output artifacts/benchmark/af-capacity-plan.json
 ```
 
-A planning assumption produces `status=provisional` and cannot authorize a
-snapshot. Only a pilot-derived plan with an explicitly selected feasible design
-sets `snapshot_design_allowed=true`.
+A planning assumption or manually entered pilot estimate produces
+`status=provisional` and cannot authorize a snapshot. Only a schema-validated,
+hash-bound pilot summary derived from two completed independent annotations and
+resolved adjudication, plus an explicitly selected feasible design, sets
+`snapshot_design_allowed=true`. The record workflow is specified in
+[ANNOTATION_PROTOCOL.md](ANNOTATION_PROTOCOL.md).
 
 ## Deterministic trial selection
 

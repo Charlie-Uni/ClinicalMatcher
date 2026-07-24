@@ -24,6 +24,7 @@ class CapacityAssumptions:
     reserve_fraction: float
     estimate_source: str
     pilot_unit_count: int = 0
+    pilot_summary_sha256: Optional[str] = None
 
     def validate(self) -> None:
         if self.annotator_count < 2:
@@ -47,13 +48,34 @@ class CapacityAssumptions:
         if self.estimate_source not in {
             "planning_assumption",
             "pilot_measurement",
+            "validated_pilot_summary",
         }:
             raise ValueError("Unsupported estimate_source")
         if self.pilot_unit_count < 0:
             raise ValueError("pilot_unit_count cannot be negative")
-        if self.estimate_source == "pilot_measurement" and self.pilot_unit_count < 1:
+        if (
+            self.estimate_source
+            in {"pilot_measurement", "validated_pilot_summary"}
+            and self.pilot_unit_count < 1
+        ):
             raise ValueError(
-                "pilot_measurement requires at least one completed pilot unit"
+                "Pilot estimates require at least one completed pilot unit"
+            )
+        if self.estimate_source == "validated_pilot_summary":
+            if (
+                not isinstance(self.pilot_summary_sha256, str)
+                or len(self.pilot_summary_sha256) != 64
+                or any(
+                    character not in "0123456789abcdef"
+                    for character in self.pilot_summary_sha256
+                )
+            ):
+                raise ValueError(
+                    "validated_pilot_summary requires its SHA-256"
+                )
+        elif self.pilot_summary_sha256 is not None:
+            raise ValueError(
+                "pilot_summary_sha256 is only valid for a validated summary"
             )
 
 
@@ -162,7 +184,7 @@ def build_capacity_plan(
         "code_commit": code_commit or current_git_commit(),
         "status": (
             "pilot_validated"
-            if assumptions.estimate_source == "pilot_measurement"
+            if assumptions.estimate_source == "validated_pilot_summary"
             else "provisional"
         ),
         "assumptions": asdict(assumptions),
@@ -191,7 +213,7 @@ def build_capacity_plan(
         "feasible_designs": options,
         "selected_design": selected_design,
         "snapshot_design_allowed": (
-            assumptions.estimate_source == "pilot_measurement"
+            assumptions.estimate_source == "validated_pilot_summary"
             and selected_design is not None
         ),
         "scope_note": (

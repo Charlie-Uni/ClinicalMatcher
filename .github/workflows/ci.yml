@@ -47,14 +47,16 @@ jobs:
           --version-json fixtures/synthetic/clinicaltrials_api_version.json
           --output /tmp/clinicalmatcher-trial.json
       - run: >-
+          clinical-matcher-pilot summarize
+          --manifest fixtures/synthetic/pilot/manifest.json
+          --annotation fixtures/synthetic/pilot/annotation-a.json
+          --annotation fixtures/synthetic/pilot/annotation-b.json
+          --adjudication fixtures/synthetic/pilot/adjudication.json
+          --output /tmp/clinicalmatcher-pilot-summary.json
+      - run: >-
           clinical-matcher-plan-capacity
-          --annotator-count 2
+          --pilot-summary /tmp/clinicalmatcher-pilot-summary.json
           --hours-per-annotator 10
-          --minutes-per-annotation 15
-          --expected-adjudication-rate 0.2
-          --minutes-per-adjudication 10
-          --estimate-source pilot_measurement
-          --pilot-unit-count 8
           --maximum-trials 2
           --selected-trial-count 2
           --output /tmp/clinicalmatcher-capacity.json

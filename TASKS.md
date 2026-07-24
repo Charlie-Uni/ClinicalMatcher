@@ -66,6 +66,9 @@ dataset fingerprint, model IDs, and index fingerprint.
 - [x] Replace recency/first-N trial selection with complete registry retrieval,
   explicit study/status/eligibility/date filters, capacity-plan-derived hash
   sampling, and a row-level public selection audit.
+- [x] Add a restricted-local timing-pilot manifest, two blinded annotation
+  templates, disagreement-aware adjudication, PHI-free aggregate summary,
+  schema validation, and summary-hash-bound capacity planning.
 - [ ] Run the real two-annotator timing pilot and choose a statistically
   defensible feasible trial × patient grid.
 - [ ] Review the AF candidate-selection policy and freeze the public trial

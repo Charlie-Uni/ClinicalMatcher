@@ -9,7 +9,7 @@ from clinical_matcher.capacity import (
 
 
 class CapacityPlanTest(unittest.TestCase):
-    def assumptions(self, estimate_source="pilot_measurement"):
+    def assumptions(self, estimate_source="validated_pilot_summary"):
         return CapacityAssumptions(
             annotator_count=2,
             hours_per_annotator=10,
@@ -19,7 +19,17 @@ class CapacityPlanTest(unittest.TestCase):
             minutes_per_adjudication=10,
             reserve_fraction=0.2,
             estimate_source=estimate_source,
-            pilot_unit_count=8 if estimate_source == "pilot_measurement" else 0,
+            pilot_unit_count=(
+                8
+                if estimate_source
+                in {"pilot_measurement", "validated_pilot_summary"}
+                else 0
+            ),
+            pilot_summary_sha256=(
+                "b" * 64
+                if estimate_source == "validated_pilot_summary"
+                else None
+            ),
         )
 
     def test_reverse_plans_trial_patient_options_from_person_time(self) -> None:
@@ -81,6 +91,25 @@ class CapacityPlanTest(unittest.TestCase):
             **{**assumptions.__dict__, "pilot_unit_count": 0}
         )
         with self.assertRaisesRegex(ValueError, "pilot"):
+            assumptions.validate()
+
+    def test_unvalidated_pilot_measurement_stays_provisional(self) -> None:
+        plan = build_capacity_plan(
+            assumptions=self.assumptions("pilot_measurement"),
+            minimum_trials=2,
+            maximum_trials=3,
+            minimum_patients_per_trial=5,
+            selected_trial_count=3,
+            code_commit="f" * 40,
+        )
+        self.assertFalse(plan["snapshot_design_allowed"])
+
+    def test_validated_source_requires_summary_hash(self) -> None:
+        assumptions = self.assumptions()
+        assumptions = CapacityAssumptions(
+            **{**assumptions.__dict__, "pilot_summary_sha256": None}
+        )
+        with self.assertRaisesRegex(ValueError, "SHA-256"):
             assumptions.validate()
 
 

@@ -1,0 +1,72 @@
+{
+  "annotation_manual_version": "1.0.0",
+  "annotation_status": "completed",
+  "annotator_id": "synthetic-annotator-a",
+  "independence_attestation": {
+    "model_outputs_not_viewed": true,
+    "peer_annotations_not_viewed": true
+  },
+  "manifest_sha256": "e2ed757d254fdde42c153458c4ba7ceab9c11ea4ccae61f9322a8e26ff02eb29",
+  "pilot_annotation_version": "1.0.0",
+  "pilot_id": "pilot-synthetic-ci",
+  "units": [
+    {
+      "active_minutes": 12,
+      "criterion_judgments": [
+        {
+          "criterion_id": "renal-high-age",
+          "decision": "eligible",
+          "evidence_ids": ["a-demographics"],
+          "rationale": "Synthetic age evidence supports the criterion."
+        },
+        {
+          "criterion_id": "renal-high-egfr-range",
+          "decision": "eligible",
+          "evidence_ids": ["a-renal"],
+          "rationale": "Synthetic renal evidence supports the criterion."
+        },
+        {
+          "criterion_id": "renal-high-recent-bleeding",
+          "decision": "eligible",
+          "evidence_ids": ["a-bleeding"],
+          "rationale": "Synthetic bleeding-history evidence supports the criterion."
+        }
+      ],
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "All synthetic hard criteria are satisfied.",
+        "relevance_grade": 3
+      },
+      "unit_id": "pilot-unit-1"
+    },
+    {
+      "active_minutes": 15,
+      "criterion_judgments": [
+        {
+          "criterion_id": "metabolic-age",
+          "decision": "eligible",
+          "evidence_ids": ["b-demographics"],
+          "rationale": "Synthetic age evidence supports the criterion."
+        },
+        {
+          "criterion_id": "metabolic-egfr",
+          "decision": "eligible",
+          "evidence_ids": ["b-renal"],
+          "rationale": "Synthetic renal evidence supports the criterion."
+        },
+        {
+          "criterion_id": "metabolic-diabetes",
+          "decision": "eligible",
+          "evidence_ids": ["b-diabetes"],
+          "rationale": "Synthetic diabetes evidence supports the criterion."
+        }
+      ],
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "All synthetic hard criteria are satisfied.",
+        "relevance_grade": 3
+      },
+      "unit_id": "pilot-unit-2"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "annotation_manual_version": "1.0.0",
+  "annotation_status": "completed",
+  "annotator_id": "synthetic-annotator-b",
+  "independence_attestation": {
+    "model_outputs_not_viewed": true,
+    "peer_annotations_not_viewed": true
+  },
+  "manifest_sha256": "e2ed757d254fdde42c153458c4ba7ceab9c11ea4ccae61f9322a8e26ff02eb29",
+  "pilot_annotation_version": "1.0.0",
+  "pilot_id": "pilot-synthetic-ci",
+  "units": [
+    {
+      "active_minutes": 14,
+      "criterion_judgments": [
+        {
+          "criterion_id": "renal-high-age",
+          "decision": "eligible",
+          "evidence_ids": ["a-demographics"],
+          "rationale": "Independent synthetic age review."
+        },
+        {
+          "criterion_id": "renal-high-egfr-range",
+          "decision": "eligible",
+          "evidence_ids": ["a-renal"],
+          "rationale": "Independent synthetic renal review."
+        },
+        {
+          "criterion_id": "renal-high-recent-bleeding",
+          "decision": "unknown",
+          "evidence_ids": [],
+          "rationale": "The synthetic example intentionally models uncertainty."
+        }
+      ],
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "Synthetic case is potentially relevant but has uncertainty.",
+        "relevance_grade": 2
+      },
+      "unit_id": "pilot-unit-1"
+    },
+    {
+      "active_minutes": 18,
+      "criterion_judgments": [
+        {
+          "criterion_id": "metabolic-age",
+          "decision": "eligible",
+          "evidence_ids": ["b-demographics"],
+          "rationale": "Independent synthetic age review."
+        },
+        {
+          "criterion_id": "metabolic-egfr",
+          "decision": "eligible",
+          "evidence_ids": ["b-renal"],
+          "rationale": "Independent synthetic renal review."
+        },
+        {
+          "criterion_id": "metabolic-diabetes",
+          "decision": "eligible",
+          "evidence_ids": ["b-diabetes"],
+          "rationale": "Independent synthetic diabetes review."
+        }
+      ],
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "All synthetic hard criteria are satisfied.",
+        "relevance_grade": 3
+      },
+      "unit_id": "pilot-unit-2"
+    }
+  ]
+}

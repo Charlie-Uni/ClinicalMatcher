@@ -68,8 +68,10 @@ only to build a snapshot; all later decomposition, annotation, retrieval, and
 evaluation load that verified snapshot.
 
 Benchmark size is first bounded by the pilot-derived double-annotation budget
-described in [BENCHMARK_DESIGN.md](BENCHMARK_DESIGN.md). A provisional,
-assumption-only capacity plan cannot authorize a snapshot.
+described in [BENCHMARK_DESIGN.md](BENCHMARK_DESIGN.md). The executable
+restricted-local record workflow is in
+[ANNOTATION_PROTOCOL.md](ANNOTATION_PROTOCOL.md). A provisional,
+assumption-only or manually entered capacity plan cannot authorize a snapshot.
 
 `clinical-matcher-snapshot build` cursor-pages every `/api/v2/studies` match
 before selection. It records the exact disease domain, rationale, `query.*`

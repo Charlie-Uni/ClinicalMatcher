@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/pilot-adjudication-1.0.0.schema.json",
+  "title": "Patient-trial pilot adjudication",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pilot_adjudication_version",
+    "pilot_id",
+    "manifest_sha256",
+    "annotation_manual_version",
+    "source_annotator_ids",
+    "adjudicator_ids",
+    "adjudication_status",
+    "units"
+  ],
+  "properties": {
+    "pilot_adjudication_version": {"const": "1.0.0"},
+    "pilot_id": {"type": "string", "pattern": "^pilot-[A-Za-z0-9._-]+$"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "annotation_manual_version": {"$ref": "#/$defs/nonEmptyString"},
+    "source_annotator_ids": {"$ref": "#/$defs/idArray"},
+    "adjudicator_ids": {"$ref": "#/$defs/idArray"},
+    "adjudication_status": {"enum": ["draft", "completed"]},
+    "units": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/unit"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nullableString": {"type": ["string", "null"]},
+    "idArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "decision": {"enum": ["eligible", "ineligible", "unknown", null]},
+    "trialJudgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "relevance_grade", "rationale"],
+      "properties": {
+        "decision": {"$ref": "#/$defs/decision"},
+        "relevance_grade": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rationale": {"$ref": "#/$defs/nullableString"}
+      }
+    },
+    "criterionJudgment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "decision",
+        "evidence_ids",
+        "rationale"
+      ],
+      "properties": {
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "decision": {"$ref": "#/$defs/decision"},
+        "evidence_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmptyString"}
+        },
+        "rationale": {"$ref": "#/$defs/nullableString"}
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_id",
+        "resolution_status",
+        "disagreement_types",
+        "active_person_minutes",
+        "trial_judgment",
+        "criterion_judgments"
+      ],
+      "properties": {
+        "unit_id": {"type": "string", "pattern": "^pilot-unit-[A-Za-z0-9._-]+$"},
+        "resolution_status": {
+          "enum": ["unresolved", "resolved", "agreed_without_dispute"]
+        },
+        "disagreement_types": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "trial_decision",
+              "trial_relevance",
+              "criterion_decision",
+              "criterion_evidence"
+            ]
+          }
+        },
+        "active_person_minutes": {"type": "number", "minimum": 0},
+        "trial_judgment": {"$ref": "#/$defs/trialJudgment"},
+        "criterion_judgments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/criterionJudgment"}
+        }
+      }
+    }
+  }
+}

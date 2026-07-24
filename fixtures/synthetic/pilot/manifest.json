@@ -1,0 +1,58 @@
+{
+  "annotation_manual_version": "1.0.0",
+  "annotator_ids": [
+    "synthetic-annotator-a",
+    "synthetic-annotator-b"
+  ],
+  "blinding": {
+    "model_outputs_hidden": true,
+    "peer_annotations_hidden": true
+  },
+  "code_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "created_at": "2026-07-24T08:00:00Z",
+  "disclosure_note": "Independently authored synthetic example; no clinical or restricted data.",
+  "manifest_sha256": "e2ed757d254fdde42c153458c4ba7ceab9c11ea4ccae61f9322a8e26ff02eb29",
+  "pilot_id": "pilot-synthetic-ci",
+  "pilot_manifest_version": "1.0.0",
+  "source": {
+    "access_policy": "synthetic",
+    "patient_source_id": "fixtures/synthetic/trial_matching.json",
+    "patient_source_sha256": "9a363a2b4a898d3072019f2dabb3a56595aa681718368cf73d6f79e16dff9883",
+    "trial_source_id": "fixtures/synthetic/trial_matching.json",
+    "trial_source_sha256": "9a363a2b4a898d3072019f2dabb3a56595aa681718368cf73d6f79e16dff9883"
+  },
+  "units": [
+    {
+      "allowed_evidence_ids": [
+        "a-demographics",
+        "a-renal",
+        "a-bleeding",
+        "a-diabetes"
+      ],
+      "criterion_ids": [
+        "renal-high-age",
+        "renal-high-egfr-range",
+        "renal-high-recent-bleeding"
+      ],
+      "patient_id": "synthetic-patient-a",
+      "trial_id": "synthetic-trial-renal-high",
+      "unit_id": "pilot-unit-1"
+    },
+    {
+      "allowed_evidence_ids": [
+        "b-demographics",
+        "b-renal",
+        "b-bleeding",
+        "b-diabetes"
+      ],
+      "criterion_ids": [
+        "metabolic-age",
+        "metabolic-egfr",
+        "metabolic-diabetes"
+      ],
+      "patient_id": "synthetic-patient-b",
+      "trial_id": "synthetic-trial-metabolic",
+      "unit_id": "pilot-unit-2"
+    }
+  ]
+}

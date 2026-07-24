@@ -1,0 +1,80 @@
+{
+  "adjudication_status": "completed",
+  "adjudicator_ids": ["synthetic-adjudicator"],
+  "annotation_manual_version": "1.0.0",
+  "manifest_sha256": "e2ed757d254fdde42c153458c4ba7ceab9c11ea4ccae61f9322a8e26ff02eb29",
+  "pilot_adjudication_version": "1.0.0",
+  "pilot_id": "pilot-synthetic-ci",
+  "source_annotator_ids": [
+    "synthetic-annotator-a",
+    "synthetic-annotator-b"
+  ],
+  "units": [
+    {
+      "active_person_minutes": 10,
+      "criterion_judgments": [
+        {
+          "criterion_id": "renal-high-age",
+          "decision": "eligible",
+          "evidence_ids": ["a-demographics"],
+          "rationale": "The independently agreed synthetic judgment is retained."
+        },
+        {
+          "criterion_id": "renal-high-egfr-range",
+          "decision": "eligible",
+          "evidence_ids": ["a-renal"],
+          "rationale": "The independently agreed synthetic judgment is retained."
+        },
+        {
+          "criterion_id": "renal-high-recent-bleeding",
+          "decision": "eligible",
+          "evidence_ids": ["a-bleeding"],
+          "rationale": "Synthetic disagreement resolved in favor of the cited evidence."
+        }
+      ],
+      "disagreement_types": [
+        "criterion_decision",
+        "criterion_evidence",
+        "trial_relevance"
+      ],
+      "resolution_status": "resolved",
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "Synthetic relevance dispute resolved after evidence review.",
+        "relevance_grade": 3
+      },
+      "unit_id": "pilot-unit-1"
+    },
+    {
+      "active_person_minutes": 0,
+      "criterion_judgments": [
+        {
+          "criterion_id": "metabolic-age",
+          "decision": "eligible",
+          "evidence_ids": ["b-demographics"],
+          "rationale": "The independently agreed synthetic judgment is retained."
+        },
+        {
+          "criterion_id": "metabolic-egfr",
+          "decision": "eligible",
+          "evidence_ids": ["b-renal"],
+          "rationale": "The independently agreed synthetic judgment is retained."
+        },
+        {
+          "criterion_id": "metabolic-diabetes",
+          "decision": "eligible",
+          "evidence_ids": ["b-diabetes"],
+          "rationale": "The independently agreed synthetic judgment is retained."
+        }
+      ],
+      "disagreement_types": [],
+      "resolution_status": "agreed_without_dispute",
+      "trial_judgment": {
+        "decision": "eligible",
+        "rationale": "The independently agreed synthetic trial judgment is retained.",
+        "relevance_grade": 3
+      },
+      "unit_id": "pilot-unit-2"
+    }
+  ]
+}
