@@ -9,6 +9,11 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from ..splits import current_git_commit
 from ..validation import DocumentValidationError, validate_document
+from .trial_selection import (
+    ReproducibleTrialSelection,
+    select_trials,
+    validate_selection_audit,
+)
 from .trials import (
     CLINICALTRIALS_TERMS_URL,
     NCT_PATTERN,
@@ -19,8 +24,12 @@ from .trials import (
 
 
 SNAPSHOT_VERSION = "1.0.0"
+BENCHMARK_SNAPSHOT_VERSION = "1.1.0"
 COVERAGE_VERSION = "1.0.0"
 SNAPSHOT_SCHEMA_RESOURCE = "schemas/trial-snapshot-1.0.0.schema.json"
+BENCHMARK_SNAPSHOT_SCHEMA_RESOURCE = (
+    "schemas/trial-snapshot-1.1.0.schema.json"
+)
 COVERAGE_SCHEMA_RESOURCE = "schemas/trial-import-coverage-1.0.0.schema.json"
 
 
@@ -117,7 +126,7 @@ def _study_nct_id(study: Dict[str, Any]) -> Optional[str]:
 
 
 def _snapshot_fingerprint_payload(manifest: Dict[str, Any]) -> Dict[str, Any]:
-    return {
+    payload = {
         "snapshot_version": manifest["snapshot_version"],
         "registry": manifest["registry"],
         "api_version": manifest["api_version"],
@@ -128,6 +137,12 @@ def _snapshot_fingerprint_payload(manifest: Dict[str, Any]) -> Dict[str, Any]:
         "candidate_keys": manifest["candidate_keys"],
         "records": manifest["records"],
     }
+    if manifest["snapshot_version"] == BENCHMARK_SNAPSHOT_VERSION:
+        payload["selection_audit_path"] = manifest["selection_audit_path"]
+        payload["selection_audit_sha256"] = manifest[
+            "selection_audit_sha256"
+        ]
+    return payload
 
 
 def _coverage_document(
@@ -205,6 +220,87 @@ def build_trial_snapshot(
         raise SnapshotError("API version payload is missing dataTimestamp")
 
     normalized_selection = selection.normalized()
+    search = {
+        "reported_total_count": None,
+        "pages_fetched": 1,
+        "selection_truncated": False,
+    }
+    if search_metadata:
+        search.update(search_metadata)
+    return _write_trial_snapshot(
+        studies=studies,
+        version_payload=version_payload,
+        normalized_selection=normalized_selection,
+        output_dir=output_dir,
+        search=search,
+        snapshot_version=SNAPSHOT_VERSION,
+        snapshot_schema_resource=SNAPSHOT_SCHEMA_RESOURCE,
+        created_at=created_at,
+        builder_code_commit=builder_code_commit,
+    )
+
+
+def build_benchmark_trial_snapshot(
+    studies: Sequence[Dict[str, Any]],
+    version_payload: Dict[str, Any],
+    registry_reported_total_count: int,
+    pages_fetched: int,
+    selection: ReproducibleTrialSelection,
+    capacity_plan: Dict[str, Any],
+    output_dir: Path,
+    created_at: Optional[str] = None,
+    builder_code_commit: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Build a capacity-bound snapshot from a complete registry result set."""
+    selected, selection_audit = select_trials(
+        studies=studies,
+        registry_reported_total_count=registry_reported_total_count,
+        selection=selection,
+        capacity_plan=capacity_plan,
+    )
+    return _write_trial_snapshot(
+        studies=selected,
+        version_payload=version_payload,
+        normalized_selection=selection_audit["selection"],
+        output_dir=output_dir,
+        search={
+            "registry_reported_total_count": registry_reported_total_count,
+            "fetched_candidate_count": len(studies),
+            "pages_fetched": pages_fetched,
+            "registry_fetch_complete": (
+                len(studies) == registry_reported_total_count
+            ),
+        },
+        snapshot_version=BENCHMARK_SNAPSHOT_VERSION,
+        snapshot_schema_resource=BENCHMARK_SNAPSHOT_SCHEMA_RESOURCE,
+        selection_audit=selection_audit,
+        created_at=created_at,
+        builder_code_commit=builder_code_commit,
+    )
+
+
+def _write_trial_snapshot(
+    studies: Sequence[Dict[str, Any]],
+    version_payload: Dict[str, Any],
+    normalized_selection: Dict[str, Any],
+    output_dir: Path,
+    search: Dict[str, Any],
+    snapshot_version: str,
+    snapshot_schema_resource: str,
+    selection_audit: Optional[Dict[str, Any]] = None,
+    created_at: Optional[str] = None,
+    builder_code_commit: Optional[str] = None,
+) -> Dict[str, Any]:
+    if output_dir.exists():
+        raise SnapshotError(f"Snapshot destination already exists: {output_dir}")
+    if not studies:
+        raise SnapshotError("Cannot build an empty trial snapshot")
+    api_version = version_payload.get("apiVersion")
+    api_data_timestamp = version_payload.get("dataTimestamp")
+    if not isinstance(api_version, str) or not api_version:
+        raise SnapshotError("API version payload is missing apiVersion")
+    if not isinstance(api_data_timestamp, str) or not api_data_timestamp:
+        raise SnapshotError("API version payload is missing dataTimestamp")
     commit = builder_code_commit or current_git_commit()
     timestamp = created_at or _now()
     output_dir.parent.mkdir(parents=True, exist_ok=True)
@@ -291,15 +387,8 @@ def build_trial_snapshot(
                     }
                 )
 
-        search = {
-            "reported_total_count": None,
-            "pages_fetched": 1,
-            "selection_truncated": False,
-        }
-        if search_metadata:
-            search.update(search_metadata)
         manifest: Dict[str, Any] = {
-            "snapshot_version": SNAPSHOT_VERSION,
+            "snapshot_version": snapshot_version,
             "registry": "ClinicalTrials.gov",
             "attribution": (
                 "ClinicalTrials.gov, U.S. National Library of Medicine"
@@ -314,6 +403,13 @@ def build_trial_snapshot(
             "candidate_keys": candidate_keys,
             "records": records,
         }
+        if selection_audit is not None:
+            validate_selection_audit(selection_audit)
+            _write_json(staging / "selection-audit.json", selection_audit)
+            manifest["selection_audit_path"] = "selection-audit.json"
+            manifest["selection_audit_sha256"] = selection_audit[
+                "selection_audit_sha256"
+            ]
         content_sha256 = _sha256(
             _canonical_bytes(_snapshot_fingerprint_payload(manifest))
         )
@@ -327,7 +423,7 @@ def build_trial_snapshot(
         manifest["coverage_report_sha256"] = _sha256(
             _canonical_bytes(coverage)
         )
-        validate_document(manifest, SNAPSHOT_SCHEMA_RESOURCE)
+        validate_document(manifest, snapshot_schema_resource)
         _write_json(staging / "snapshot-manifest.json", manifest)
         staging.rename(output_dir)
     except Exception:
@@ -355,13 +451,52 @@ def build_live_trial_snapshot(
     )
 
 
+def build_live_benchmark_trial_snapshot(
+    client: ClinicalTrialsClient,
+    selection: ReproducibleTrialSelection,
+    capacity_plan: Dict[str, Any],
+    output_dir: Path,
+) -> Dict[str, Any]:
+    """Fetch every registry hit before filtering and capacity-bound sampling."""
+    normalized = selection.normalized(capacity_plan)
+    studies, version, metadata = client.search(
+        normalized["query_parameters"],
+        max_studies=None,
+    )
+    total = metadata["reported_total_count"]
+    if not isinstance(total, int):
+        raise SnapshotError(
+            "ClinicalTrials.gov did not report totalCount; cannot prove a "
+            "complete candidate fetch"
+        )
+    if metadata["selection_truncated"]:
+        raise SnapshotError(
+            "Registry fetch was truncated before deterministic sampling"
+        )
+    return build_benchmark_trial_snapshot(
+        studies=studies,
+        version_payload=version,
+        registry_reported_total_count=total,
+        pages_fetched=metadata["pages_fetched"],
+        selection=selection,
+        capacity_plan=capacity_plan,
+        output_dir=output_dir,
+    )
+
+
 def validate_trial_snapshot(snapshot_dir: Path) -> Dict[str, Any]:
     """Verify schemas, hashes, IDs, record versions, and local file closure."""
     manifest_path = snapshot_dir / "snapshot-manifest.json"
     if not manifest_path.is_file():
         raise SnapshotError(f"Missing snapshot manifest: {manifest_path}")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    validate_document(manifest, SNAPSHOT_SCHEMA_RESOURCE)
+    schema_resource = {
+        SNAPSHOT_VERSION: SNAPSHOT_SCHEMA_RESOURCE,
+        BENCHMARK_SNAPSHOT_VERSION: BENCHMARK_SNAPSHOT_SCHEMA_RESOURCE,
+    }.get(manifest.get("snapshot_version"))
+    if schema_resource is None:
+        raise SnapshotError("Unsupported trial snapshot version")
+    validate_document(manifest, schema_resource)
     if manifest["candidate_keys"] != [
         record["candidate_key"] for record in manifest["records"]
     ]:
@@ -378,6 +513,41 @@ def validate_trial_snapshot(snapshot_dir: Path) -> Dict[str, Any]:
         raise SnapshotError("Snapshot content fingerprint does not match manifest")
     if manifest["snapshot_id"] != f"ctg-{expected_content_hash[:16]}":
         raise SnapshotError("Snapshot ID does not match its content fingerprint")
+    if manifest["snapshot_version"] == BENCHMARK_SNAPSHOT_VERSION:
+        audit_path = _contained_snapshot_path(
+            snapshot_dir,
+            manifest["selection_audit_path"],
+        )
+        selection_audit = json.loads(audit_path.read_text(encoding="utf-8"))
+        validate_selection_audit(selection_audit)
+        if (
+            selection_audit["selection_audit_sha256"]
+            != manifest["selection_audit_sha256"]
+        ):
+            raise SnapshotError("Selection audit hash does not match manifest")
+        if selection_audit["selection"] != manifest["selection"]:
+            raise SnapshotError("Selection policy differs from its audit")
+        selected_audit_records = {
+            record["nct_id"]: record
+            for record in selection_audit["records"]
+            if record["selected"]
+        }
+        if set(selected_audit_records) != {
+            record["nct_id"] for record in manifest["records"]
+        }:
+            raise SnapshotError(
+                "Snapshot records differ from deterministic selection"
+            )
+        for record in manifest["records"]:
+            if (
+                record["source_study_sha256"]
+                != selected_audit_records[record["nct_id"]][
+                    "source_study_sha256"
+                ]
+            ):
+                raise SnapshotError(
+                    "Selected source hash differs from selection audit"
+                )
 
     coverage_path = _contained_snapshot_path(
         snapshot_dir,

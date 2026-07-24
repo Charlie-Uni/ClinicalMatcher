@@ -55,9 +55,16 @@ def build_gold_readiness_report(
     counts_provenance: str = "self_reported_aggregate",
 ) -> Dict[str, Any]:
     """Create a PHI-free aggregate gate; no patient IDs or text are accepted."""
+    snapshot_version = snapshot_manifest.get("snapshot_version")
+    snapshot_schema = {
+        "1.0.0": "schemas/trial-snapshot-1.0.0.schema.json",
+        "1.1.0": "schemas/trial-snapshot-1.1.0.schema.json",
+    }.get(snapshot_version)
+    if snapshot_schema is None:
+        raise ValueError("Unsupported trial snapshot version")
     validate_document(
         snapshot_manifest,
-        "schemas/trial-snapshot-1.0.0.schema.json",
+        snapshot_schema,
     )
     counts.validate()
     if not gold_source_description.strip():
@@ -74,7 +81,10 @@ def build_gold_readiness_report(
     gaps: List[str] = []
     if counts_provenance != "validated_annotation_records":
         gaps.append("gold_counts_not_derived_from_validated_records")
-    if snapshot_manifest["search"]["selection_truncated"]:
+    if (
+        snapshot_version == "1.0.0"
+        and snapshot_manifest["search"]["selection_truncated"]
+    ):
         gaps.append("trial_selection_is_truncated")
     if imported_trials < 2:
         gaps.append("snapshot_requires_multiple_imported_trials")
@@ -82,6 +92,22 @@ def build_gold_readiness_report(
         gaps.append("no_gold_patients")
     if counts.trial_count != imported_trials:
         gaps.append("gold_trial_count_does_not_cover_snapshot")
+    if snapshot_version == "1.1.0":
+        target_trials = snapshot_manifest["selection"]["sampling"][
+            "target_study_count"
+        ]
+        target_patients = snapshot_manifest["selection"]["capacity_binding"][
+            "target_patient_count"
+        ]
+        target_units = snapshot_manifest["selection"]["capacity_binding"][
+            "target_patient_trial_units"
+        ]
+        if imported_trials != target_trials:
+            gaps.append("selected_trial_parse_incomplete")
+        if counts.patient_count != target_patients:
+            gaps.append("gold_patient_count_differs_from_capacity_plan")
+        if counts.expected_patient_trial_pairs != target_units:
+            gaps.append("gold_units_differ_from_capacity_plan")
     if counts.expected_patient_trial_pairs < 1:
         gaps.append("patient_trial_prediction_units_not_defined")
     elif (

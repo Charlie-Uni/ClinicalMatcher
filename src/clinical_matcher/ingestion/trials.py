@@ -455,6 +455,16 @@ class ClinicalTrialsClient:
                 )
             seen_page_tokens.add(next_token)
             page_token = next_token
+        version_after = self._get_json(f"{self.api_base}/version")
+        version_identity = ("apiVersion", "dataTimestamp")
+        if any(
+            version.get(key) != version_after.get(key)
+            for key in version_identity
+        ):
+            raise TrialImportError(
+                "ClinicalTrials.gov data version changed during pagination",
+                code="registry_version_changed_during_fetch",
+            )
         metadata = {
             "reported_total_count": total_count,
             "pages_fetched": page_count,

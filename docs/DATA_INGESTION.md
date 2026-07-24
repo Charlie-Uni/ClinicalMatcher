@@ -67,11 +67,29 @@ Benchmark evaluation must never query the live registry. The live API is used
 only to build a snapshot; all later decomposition, annotation, retrieval, and
 evaluation load that verified snapshot.
 
-`clinical-matcher-snapshot build` cursor-pages `/api/v2/studies` and records the
-exact disease domain, rationale, `query.*` terms, filters, explicit sort,
-page size, optional limit, API version, and API data timestamp. The snapshot
-retains every selected public source study, including studies the conservative
-parser skipped. Its manifest freezes, for each successfully imported NCT ID:
+Benchmark size is first bounded by the pilot-derived double-annotation budget
+described in [BENCHMARK_DESIGN.md](BENCHMARK_DESIGN.md). A provisional,
+assumption-only capacity plan cannot authorize a snapshot.
+
+`clinical-matcher-snapshot build` cursor-pages every `/api/v2/studies` match
+before selection. It records the exact disease domain, rationale, `query.*`
+terms, study types, recruitment statuses, eligibility-text requirement,
+inclusive first-posted date range, page size, API version, and API data
+timestamp. The final trial count is read from the capacity plan.
+The client checks `/api/v2/version` before and after pagination and rejects the
+build if the registry data timestamp changes mid-fetch.
+
+No registry `sort` parameter is used. Selection sorts eligible trials by a
+SHA-256 of method version, capacity-plan hash, and NCT ID; registry response
+order and last-update recency do not affect inclusion. The snapshot retains an
+audit row for every registry hit and records the full flow from registry total
+to fetched, filter-passed, eligible-not-sampled, and finally selected counts.
+Each row includes public selection metadata, source hash, exclusion reasons,
+sampling hash, and inclusion reason.
+
+The snapshot retains every selected public source study, including selected
+studies the conservative parser later skips. Its manifest freezes, for each
+successfully imported NCT ID:
 
 - registry version holder and last-update date;
 - complete source-study, eligibility-text, and normalized-protocol hashes;
@@ -84,30 +102,37 @@ measured rather than silently discarded. `verify` revalidates schemas, path
 containment, record order, coverage arithmetic, all hashes, record versions,
 and criterion IDs. The builder refuses to overwrite an existing destination.
 
-An AF-first candidate build can use a transparent policy such as:
+After a real two-annotator pilot has produced
+`artifacts/benchmark/af-capacity-plan.json`, an AF-first candidate build is:
 
 ```bash
 clinical-matcher-snapshot build \
   --disease-domain atrial_fibrillation \
   --selection-rationale \
-  "All currently recruiting-like AF studies; no outcome-based selection" \
-  --query-param "query.cond=Atrial Fibrillation" \
-  --query-param \
-  "filter.overallStatus=RECRUITING|NOT_YET_RECRUITING|ENROLLING_BY_INVITATION" \
-  --sort "LastUpdatePostDate:desc" \
+  "Capacity-bound deterministic sample from all policy-eligible AF studies" \
+  --query-condition "Atrial Fibrillation" \
+  --study-type INTERVENTIONAL \
+  --overall-status RECRUITING \
+  --overall-status NOT_YET_RECRUITING \
+  --overall-status ENROLLING_BY_INVITATION \
+  --first-posted-from <PREDECLARED_START_DATE> \
+  --first-posted-to <SNAPSHOT_CUTOFF_DATE> \
+  --capacity-plan artifacts/benchmark/af-capacity-plan.json \
   --output-dir artifacts/trial_snapshots/af_candidate_v1
 
 clinical-matcher-snapshot verify \
   --snapshot-dir artifacts/trial_snapshots/af_candidate_v1
 ```
 
-This command defines a candidate pool, not a benchmark. The query, status
-policy, ordering, and any truncation must be reviewed before a release to avoid
-post-hoc selection. The current gold gate rejects a snapshot whose API result
-was truncated; a smoke-test `--max-studies` must never become a benchmark by
-accident. If a release retains a frozen registry snapshot for reproducibility,
-its README must retain the attribution, processing date, modification notes,
-and warning that current registry records may differ.
+This command defines a capacity-bound candidate pool, not a benchmark. It fails
+if the registry total was not fetched completely, too few trials pass filters,
+the capacity plan is provisional, or the plan has no reviewed design. A
+selected trial that the conservative parser cannot segment remains visible and
+prevents gold readiness rather than being silently replaced.
+
+If a release retains a frozen registry snapshot for reproducibility, its README
+must retain the attribution, processing date, modification notes, and warning
+that current registry records may differ.
 
 ### Patient-trial gold is a release gate
 
@@ -117,6 +142,8 @@ say which patients are eligible or which evidence supports each decision.
 a ready status unless:
 
 - the snapshot contains multiple successfully parsed trials;
+- imported trial count, patient count, and patient-trial unit count match the
+  capacity-bound design;
 - the gold covers the same imported trial count and at least one patient;
 - all declared patient × trial units are adjudicated;
 - all declared patient × trial × criterion evidence units are adjudicated;

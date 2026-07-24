@@ -47,12 +47,28 @@ jobs:
           --version-json fixtures/synthetic/clinicaltrials_api_version.json
           --output /tmp/clinicalmatcher-trial.json
       - run: >-
+          clinical-matcher-plan-capacity
+          --annotator-count 2
+          --hours-per-annotator 10
+          --minutes-per-annotation 15
+          --expected-adjudication-rate 0.2
+          --minutes-per-adjudication 10
+          --estimate-source pilot_measurement
+          --pilot-unit-count 8
+          --maximum-trials 2
+          --selected-trial-count 2
+          --output /tmp/clinicalmatcher-capacity.json
+      - run: >-
           clinical-matcher-snapshot build
           --disease-domain atrial_fibrillation
           --selection-rationale "Synthetic CI selection; not clinical data"
-          --query-param "query.cond=Atrial Fibrillation"
-          --query-param "filter.overallStatus=RECRUITING|NOT_YET_RECRUITING"
-          --sort "LastUpdatePostDate:desc"
+          --query-condition "Atrial Fibrillation"
+          --study-type INTERVENTIONAL
+          --overall-status RECRUITING
+          --overall-status NOT_YET_RECRUITING
+          --first-posted-from 2024-01-01
+          --first-posted-to 2025-12-31
+          --capacity-plan /tmp/clinicalmatcher-capacity.json
           --search-response-json
           fixtures/synthetic/clinicaltrials_api_search_response.json
           --version-json fixtures/synthetic/clinicaltrials_api_version.json

@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from clinical_matcher.capacity import CapacityAssumptions, build_capacity_plan
 from clinical_matcher.gold_readiness import (
     BenchmarkNotReadyError,
     GoldAuditCounts,
@@ -12,7 +13,12 @@ from clinical_matcher.gold_readiness import (
 )
 from clinical_matcher.ingestion.snapshots import (
     TrialSelection,
+    build_benchmark_trial_snapshot,
     build_trial_snapshot,
+)
+from clinical_matcher.ingestion.trial_selection import (
+    ReproducibleTrialSelection,
+    TrialFilterPolicy,
 )
 
 
@@ -42,6 +48,55 @@ class GoldReadinessTest(unittest.TestCase):
                 },
             ),
             output_dir=self.snapshot_dir,
+            created_at="2026-07-23T15:00:00Z",
+            builder_code_commit="e" * 40,
+        )
+        capacity_plan = build_capacity_plan(
+            assumptions=CapacityAssumptions(
+                annotator_count=2,
+                hours_per_annotator=10,
+                required_annotations_per_unit=2,
+                minutes_per_annotation=15,
+                expected_adjudication_rate=0.2,
+                minutes_per_adjudication=10,
+                reserve_fraction=0.2,
+                estimate_source="pilot_measurement",
+                pilot_unit_count=8,
+            ),
+            minimum_trials=2,
+            maximum_trials=2,
+            minimum_patients_per_trial=5,
+            selected_trial_count=2,
+            code_commit="e" * 40,
+        )
+        self.benchmark_manifest = build_benchmark_trial_snapshot(
+            studies=response["studies"],
+            version_payload=version,
+            registry_reported_total_count=3,
+            pages_fetched=1,
+            selection=ReproducibleTrialSelection(
+                disease_domain="atrial_fibrillation",
+                rationale="Synthetic capacity-bound benchmark",
+                query_parameters={
+                    "query.cond": "Atrial Fibrillation",
+                    "filter.overallStatus": (
+                        "RECRUITING|NOT_YET_RECRUITING"
+                    ),
+                },
+                filters=TrialFilterPolicy(
+                    study_types=("INTERVENTIONAL",),
+                    overall_statuses=(
+                        "RECRUITING",
+                        "NOT_YET_RECRUITING",
+                    ),
+                    require_eligibility_text=True,
+                    first_posted_from="2024-01-01",
+                    first_posted_to="2025-12-31",
+                ),
+            ),
+            capacity_plan=capacity_plan,
+            output_dir=Path(self.temporary_directory.name)
+            / "benchmark-snapshot",
             created_at="2026-07-23T15:00:00Z",
             builder_code_commit="e" * 40,
         )
@@ -143,6 +198,30 @@ class GoldReadinessTest(unittest.TestCase):
             counts_provenance="validated_annotation_records",
         )
         self.assertIn("trial_selection_is_truncated", report["blocking_gaps"])
+
+    def test_capacity_bound_gold_must_match_planned_grid(self) -> None:
+        report = build_gold_readiness_report(
+            snapshot_manifest=self.benchmark_manifest,
+            counts=GoldAuditCounts(
+                patient_count=14,
+                trial_count=2,
+                expected_patient_trial_pairs=28,
+                adjudicated_patient_trial_pairs=28,
+                expected_criterion_units=50,
+                adjudicated_criterion_units=50,
+                minimum_annotators_per_unit=2,
+            ),
+            gold_source_description="Synthetic validated gold",
+            counts_provenance="validated_annotation_records",
+        )
+        self.assertIn(
+            "gold_patient_count_differs_from_capacity_plan",
+            report["blocking_gaps"],
+        )
+        self.assertIn(
+            "gold_units_differ_from_capacity_plan",
+            report["blocking_gaps"],
+        )
 
 
 if __name__ == "__main__":

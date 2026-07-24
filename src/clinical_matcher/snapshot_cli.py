@@ -1,12 +1,17 @@
 import argparse
+import json
 from pathlib import Path
 from typing import Dict, Optional, Sequence
 
+from .capacity import validate_capacity_plan
 from .ingestion.snapshots import (
-    TrialSelection,
-    build_live_trial_snapshot,
-    build_trial_snapshot,
+    build_benchmark_trial_snapshot,
+    build_live_benchmark_trial_snapshot,
     validate_trial_snapshot,
+)
+from .ingestion.trial_selection import (
+    ReproducibleTrialSelection,
+    TrialFilterPolicy,
 )
 from .ingestion.trials import ClinicalTrialsClient, load_json
 
@@ -34,16 +39,19 @@ def build_parser() -> argparse.ArgumentParser:
     build = subparsers.add_parser("build")
     build.add_argument("--disease-domain", required=True)
     build.add_argument("--selection-rationale", required=True)
+    build.add_argument("--query-condition", required=True)
     build.add_argument(
         "--query-param",
         action="append",
         type=_query_parameter,
-        required=True,
         metavar="KEY=VALUE",
     )
-    build.add_argument("--sort", required=True)
-    build.add_argument("--page-size", type=int, default=100)
-    build.add_argument("--max-studies", type=int)
+    build.add_argument("--study-type", action="append", required=True)
+    build.add_argument("--overall-status", action="append", required=True)
+    build.add_argument("--first-posted-from", required=True)
+    build.add_argument("--first-posted-to", required=True)
+    build.add_argument("--capacity-plan", type=Path, required=True)
+    build.add_argument("--page-size", type=int, default=1000)
     build.add_argument("--output-dir", type=Path, required=True)
     build.add_argument("--search-response-json", type=Path)
     build.add_argument("--version-json", type=Path)
@@ -53,22 +61,47 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _selection(args: argparse.Namespace) -> TrialSelection:
-    query_parameters: Dict[str, str] = dict(args.query_param)
+def _selection(args: argparse.Namespace) -> ReproducibleTrialSelection:
+    pairs = args.query_param or ()
+    if len({key for key, _ in pairs}) != len(pairs):
+        raise ValueError("Duplicate --query-param keys are not allowed")
+    query_parameters: Dict[str, str] = dict(pairs)
+    reserved = {
+        "query.cond",
+        "filter.overallStatus",
+        "format",
+        "markupFormat",
+        "countTotal",
+        "pageSize",
+        "sort",
+    }
+    overlap = reserved & set(query_parameters)
+    if overlap:
+        raise ValueError(
+            "Reserved query parameters must use dedicated CLI arguments: "
+            + ", ".join(sorted(overlap))
+        )
     query_parameters.update(
         {
+            "query.cond": args.query_condition,
+            "filter.overallStatus": "|".join(sorted(set(args.overall_status))),
             "format": "json",
             "markupFormat": "markdown",
             "countTotal": "true",
             "pageSize": str(args.page_size),
-            "sort": args.sort,
         }
     )
-    return TrialSelection(
+    return ReproducibleTrialSelection(
         disease_domain=args.disease_domain,
         rationale=args.selection_rationale,
         query_parameters=query_parameters,
-        max_studies=args.max_studies,
+        filters=TrialFilterPolicy(
+            study_types=tuple(args.study_type),
+            overall_statuses=tuple(args.overall_status),
+            require_eligibility_text=True,
+            first_posted_from=args.first_posted_from,
+            first_posted_to=args.first_posted_to,
+        ),
     )
 
 
@@ -86,6 +119,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return 0
 
     selection = _selection(args)
+    capacity_plan = json.loads(args.capacity_plan.read_text(encoding="utf-8"))
+    validate_capacity_plan(capacity_plan)
+    if not capacity_plan["snapshot_design_allowed"]:
+        raise ValueError(
+            "Capacity plan must be pilot-validated with a selected design"
+        )
     if bool(args.search_response_json) != bool(args.version_json):
         raise ValueError(
             "--search-response-json and --version-json must be supplied together"
@@ -96,30 +135,26 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         studies = response.get("studies")
         if not isinstance(studies, list):
             raise ValueError("Offline search response must contain studies[]")
-        if args.max_studies is not None:
-            studies = studies[: args.max_studies]
         reported_total = response.get("totalCount")
-        search_metadata = {
-            "reported_total_count": (
-                reported_total if isinstance(reported_total, int) else None
-            ),
-            "pages_fetched": 1,
-            "selection_truncated": (
-                isinstance(reported_total, int)
-                and len(studies) < reported_total
-            ),
-        }
-        manifest = build_trial_snapshot(
+        if not isinstance(reported_total, int):
+            raise ValueError("Offline search response must contain totalCount")
+        pages_fetched = response.get("pagesFetched", 1)
+        if not isinstance(pages_fetched, int) or pages_fetched < 1:
+            raise ValueError("Offline pagesFetched must be a positive integer")
+        manifest = build_benchmark_trial_snapshot(
             studies=studies,
             version_payload=version,
+            registry_reported_total_count=reported_total,
+            pages_fetched=pages_fetched,
             selection=selection,
+            capacity_plan=capacity_plan,
             output_dir=args.output_dir,
-            search_metadata=search_metadata,
         )
     else:
-        manifest = build_live_trial_snapshot(
+        manifest = build_live_benchmark_trial_snapshot(
             client=ClinicalTrialsClient(),
             selection=selection,
+            capacity_plan=capacity_plan,
             output_dir=args.output_dir,
         )
     coverage = {
@@ -129,7 +164,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print(
         f"Built {manifest['snapshot_id']} at {args.output_dir}: "
         f"{coverage['imported']} imported, {coverage['skipped']} skipped, "
-        f"{coverage['failed']} failed"
+        f"{coverage['failed']} failed from "
+        f"{manifest['search']['registry_reported_total_count']} registry hits"
     )
     return 0
 

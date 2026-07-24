@@ -81,11 +81,14 @@ boundary are documented in
 [docs/DATA_INGESTION.md](docs/DATA_INGESTION.md). P2.1 adds cursor-paginated
 batch selection, immutable trial snapshot manifests, parser coverage reports,
 offline-only snapshot loading, and an explicit patient-trial gold-readiness
-gate. Candidate snapshots remain ignored runtime artifacts during development;
-an actual public benchmark snapshot is frozen only after its selection policy,
-attribution, update notice, and gold governance have been reviewed. Normalized
-patient files, semantic pair details, and patient-level reports are never
-committed.
+gate. P2.2 adds pilot-derived annotation-capacity planning and removes
+recent-update/first-N sampling: all registry hits are explicitly filtered, then
+sampled by a capacity-plan-derived NCT hash with a complete public selection
+audit. Candidate snapshots remain ignored runtime artifacts during
+development; an actual public benchmark snapshot is frozen only after its
+capacity, selection policy, attribution, update notice, statistical
+limitations, and gold governance have been reviewed. Normalized patient files,
+semantic pair details, and patient-level reports are never committed.
 
 ## Data access and reproducibility
 

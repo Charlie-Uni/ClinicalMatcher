@@ -9,10 +9,18 @@
           "briefTitle": "Synthetic Renal Safety Study"
         },
         "statusModule": {
+          "overallStatus": "RECRUITING",
+          "studyFirstPostDateStruct": {
+            "date": "2024-01-10",
+            "type": "ACTUAL"
+          },
           "lastUpdatePostDateStruct": {
             "date": "2026-07-20",
             "type": "ACTUAL"
           }
+        },
+        "designModule": {
+          "studyType": "INTERVENTIONAL"
         },
         "eligibilityModule": {
           "eligibilityCriteria": "Inclusion Criteria:\n\n* Age 18 years or older\n* eGFR \\>50 mL/min/1.73m2 measured within 30 days\n\nExclusion Criteria:\n\n1. Active bleeding",
@@ -34,10 +42,18 @@
           "briefTitle": "Synthetic Rhythm Monitoring Study"
         },
         "statusModule": {
+          "overallStatus": "NOT_YET_RECRUITING",
+          "studyFirstPostDateStruct": {
+            "date": "2024-05-12",
+            "type": "ACTUAL"
+          },
           "lastUpdatePostDateStruct": {
             "date": "2026-07-19",
             "type": "ACTUAL"
           }
+        },
+        "designModule": {
+          "studyType": "INTERVENTIONAL"
         },
         "eligibilityModule": {
           "eligibilityCriteria": "Key Inclusion Criteria:\n\n- Documented synthetic rhythm condition\n\nKey Exclusion Criteria:\n\n- Synthetic contraindication within 90 days",
@@ -59,10 +75,18 @@
           "briefTitle": "Synthetic Ambiguous Eligibility Study"
         },
         "statusModule": {
+          "overallStatus": "RECRUITING",
+          "studyFirstPostDateStruct": {
+            "date": "2024-08-20",
+            "type": "ACTUAL"
+          },
           "lastUpdatePostDateStruct": {
             "date": "2026-07-18",
             "type": "ACTUAL"
           }
+        },
+        "designModule": {
+          "studyType": "OBSERVATIONAL"
         },
         "eligibilityModule": {
           "eligibilityCriteria": "Adults with the synthetic condition and no contraindication.",

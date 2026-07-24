@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/annotation-capacity-plan-1.0.0.schema.json",
+  "title": "Patient-trial gold annotation capacity plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "capacity_plan_version",
+    "plan_id",
+    "plan_sha256",
+    "generated_at",
+    "code_commit",
+    "status",
+    "assumptions",
+    "constraints",
+    "capacity",
+    "feasible_designs",
+    "selected_design",
+    "snapshot_design_allowed",
+    "scope_note"
+  ],
+  "properties": {
+    "capacity_plan_version": {"const": "1.0.0"},
+    "plan_id": {"type": "string", "pattern": "^capacity-[0-9a-f]{16}$"},
+    "plan_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "status": {"enum": ["provisional", "pilot_validated"]},
+    "assumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annotator_count",
+        "hours_per_annotator",
+        "required_annotations_per_unit",
+        "minutes_per_annotation",
+        "expected_adjudication_rate",
+        "minutes_per_adjudication",
+        "reserve_fraction",
+        "estimate_source",
+        "pilot_unit_count"
+      ],
+      "properties": {
+        "annotator_count": {"type": "integer", "minimum": 2},
+        "hours_per_annotator": {"type": "number", "exclusiveMinimum": 0},
+        "required_annotations_per_unit": {"type": "integer", "minimum": 2},
+        "minutes_per_annotation": {"type": "number", "exclusiveMinimum": 0},
+        "expected_adjudication_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "minutes_per_adjudication": {"type": "number", "minimum": 0},
+        "reserve_fraction": {"type": "number", "minimum": 0, "exclusiveMaximum": 1},
+        "estimate_source": {
+          "enum": ["planning_assumption", "pilot_measurement"]
+        },
+        "pilot_unit_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_trials",
+        "maximum_trials",
+        "minimum_patients_per_trial"
+      ],
+      "properties": {
+        "minimum_trials": {"type": "integer", "minimum": 2},
+        "maximum_trials": {"type": "integer", "minimum": 2},
+        "minimum_patients_per_trial": {"type": "integer", "minimum": 1}
+      }
+    },
+    "capacity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gross_person_minutes",
+        "usable_person_minutes",
+        "annotation_person_minutes_per_unit",
+        "expected_adjudication_person_minutes_per_unit",
+        "expected_person_minutes_per_unit",
+        "maximum_patient_trial_units"
+      ],
+      "properties": {
+        "gross_person_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "usable_person_minutes": {"type": "number", "exclusiveMinimum": 0},
+        "annotation_person_minutes_per_unit": {"type": "number", "exclusiveMinimum": 0},
+        "expected_adjudication_person_minutes_per_unit": {"type": "number", "minimum": 0},
+        "expected_person_minutes_per_unit": {"type": "number", "exclusiveMinimum": 0},
+        "maximum_patient_trial_units": {"type": "integer", "minimum": 0}
+      }
+    },
+    "feasible_designs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/design"}
+    },
+    "selected_design": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/design"}
+      ]
+    },
+    "snapshot_design_allowed": {"type": "boolean"},
+    "scope_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trial_count",
+        "patient_count",
+        "patient_trial_units",
+        "unused_unit_capacity",
+        "estimated_person_minutes"
+      ],
+      "properties": {
+        "trial_count": {"type": "integer", "minimum": 2},
+        "patient_count": {"type": "integer", "minimum": 1},
+        "patient_trial_units": {"type": "integer", "minimum": 2},
+        "unused_unit_capacity": {"type": "integer", "minimum": 0},
+        "estimated_person_minutes": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

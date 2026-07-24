@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/trial-selection-audit-1.0.0.schema.json",
+  "title": "Reproducible ClinicalTrials.gov benchmark selection audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selection_audit_version",
+    "selection_audit_id",
+    "selection_audit_sha256",
+    "selection",
+    "flow",
+    "filter_exclusion_reason_counts",
+    "records"
+  ],
+  "properties": {
+    "selection_audit_version": {"const": "1.0.0"},
+    "selection_audit_id": {
+      "type": "string",
+      "pattern": "^trial-selection-[0-9a-f]{16}$"
+    },
+    "selection_audit_sha256": {"$ref": "#/$defs/sha256"},
+    "selection": {"$ref": "#/$defs/selection"},
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_reported_total_count",
+        "fetched_candidate_count",
+        "filter_passed_count",
+        "filter_excluded_count",
+        "eligible_not_sampled_count",
+        "selected_count"
+      ],
+      "properties": {
+        "registry_reported_total_count": {"type": "integer", "minimum": 0},
+        "fetched_candidate_count": {"type": "integer", "minimum": 0},
+        "filter_passed_count": {"type": "integer", "minimum": 0},
+        "filter_excluded_count": {"type": "integer", "minimum": 0},
+        "eligible_not_sampled_count": {"type": "integer", "minimum": 0},
+        "selected_count": {"type": "integer", "minimum": 2}
+      }
+    },
+    "filter_exclusion_reason_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "records": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disease_domain",
+        "rationale",
+        "query_parameters",
+        "filters",
+        "sampling",
+        "capacity_binding"
+      ],
+      "properties": {
+        "disease_domain": {"$ref": "#/$defs/nonEmptyString"},
+        "rationale": {"$ref": "#/$defs/nonEmptyString"},
+        "query_parameters": {
+          "type": "object",
+          "minProperties": 6,
+          "additionalProperties": {"type": "string"}
+        },
+        "filters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "study_types",
+            "overall_statuses",
+            "require_eligibility_text",
+            "first_posted_from",
+            "first_posted_to"
+          ],
+          "properties": {
+            "study_types": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/nonEmptyString"}
+            },
+            "overall_statuses": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/nonEmptyString"}
+            },
+            "require_eligibility_text": {"const": true},
+            "first_posted_from": {"type": "string", "format": "date"},
+            "first_posted_to": {"type": "string", "format": "date"}
+          }
+        },
+        "sampling": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method",
+            "seed",
+            "target_study_count",
+            "registry_order_used_for_sampling"
+          ],
+          "properties": {
+            "method": {"const": "sha256_seeded_nct_id_v1"},
+            "seed": {"$ref": "#/$defs/nonEmptyString"},
+            "target_study_count": {"type": "integer", "minimum": 2},
+            "registry_order_used_for_sampling": {"const": false}
+          }
+        },
+        "capacity_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "capacity_plan_id",
+            "capacity_plan_sha256",
+            "target_patient_count",
+            "target_patient_trial_units"
+          ],
+          "properties": {
+            "capacity_plan_id": {
+              "type": "string",
+              "pattern": "^capacity-[0-9a-f]{16}$"
+            },
+            "capacity_plan_sha256": {"$ref": "#/$defs/sha256"},
+            "target_patient_count": {"type": "integer", "minimum": 1},
+            "target_patient_trial_units": {"type": "integer", "minimum": 2}
+          }
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nct_id",
+        "study_type",
+        "overall_status",
+        "first_posted",
+        "has_eligibility_text",
+        "source_study_sha256",
+        "filter_passed",
+        "filter_exclusion_reasons",
+        "sampling_hash",
+        "selected",
+        "selection_reason"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "study_type": {"type": ["string", "null"]},
+        "overall_status": {"type": ["string", "null"]},
+        "first_posted": {"type": ["string", "null"]},
+        "has_eligibility_text": {"type": "boolean"},
+        "source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "filter_passed": {"type": "boolean"},
+        "filter_exclusion_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmptyString"}
+        },
+        "sampling_hash": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/sha256"}
+          ]
+        },
+        "selected": {"type": "boolean"},
+        "selection_reason": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    }
+  }
+}

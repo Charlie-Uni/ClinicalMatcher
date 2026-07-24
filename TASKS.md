@@ -60,6 +60,14 @@ dataset fingerprint, model IDs, and index fingerprint.
 - [x] Add an aggregate gold-readiness gate that prevents a valid trial snapshot
   from being presented as a benchmark without complete dual-annotated,
   adjudicated patient-trial and criterion-evidence gold.
+- [x] Add a pilot-aware annotation capacity planner that enumerates feasible
+  trial × patient grids and prevents assumption-only plans from authorizing a
+  snapshot.
+- [x] Replace recency/first-N trial selection with complete registry retrieval,
+  explicit study/status/eligibility/date filters, capacity-plan-derived hash
+  sampling, and a row-level public selection audit.
+- [ ] Run the real two-annotator timing pilot and choose a statistically
+  defensible feasible trial × patient grid.
 - [ ] Review the AF candidate-selection policy and freeze the public trial
   snapshot for an actual benchmark release.
 - [ ] Build and adjudicate the multi-trial patient-trial gold in the authorized
