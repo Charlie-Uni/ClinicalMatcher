@@ -72,6 +72,10 @@ dataset fingerprint, model IDs, and index fingerprint.
 - [x] Add a restricted-local timing-pilot manifest, two blinded annotation
   templates, disagreement-aware adjudication, PHI-free aggregate summary,
   schema validation, and summary-hash-bound capacity planning.
+- [ ] Add the frozen corpus-hash-derived four-patient pilot selector specified
+  in `docs/PILOT_EXECUTION_GUIDE_ZH.md`; never hand-pick or re-roll cases.
+- [ ] Build a network-free restricted annotation pack that joins the selected
+  pseudonymous patient evidence to two frozen public AF trial snapshots.
 - [ ] Run the real two-annotator timing pilot and choose a statistically
   defensible feasible trial × patient grid.
 - [ ] Review the AF candidate-selection policy and freeze the public trial
