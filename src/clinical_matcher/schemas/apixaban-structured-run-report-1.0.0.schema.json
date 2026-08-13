@@ -18,7 +18,7 @@
       "required": [
         "benchmark_sha256", "split_manifest_sha256", "split_name",
         "model_id", "model_manifest_sha256", "engine", "engine_version",
-        "prompt_version", "inference_config_sha256", "prediction_content_sha256",
+        "prompt_version", "inference_config_sha256",
         "code_commit"
       ],
       "properties": {
@@ -32,8 +32,13 @@
         "prompt_version": {"type": "string", "minLength": 1},
         "inference_config_sha256": {"$ref": "#/$defs/sha256"},
         "prediction_content_sha256": {"$ref": "#/$defs/sha256"},
+        "prediction_set_content_sha256": {"$ref": "#/$defs/sha256"},
         "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
-      }
+      },
+      "oneOf": [
+        {"required": ["prediction_content_sha256"]},
+        {"required": ["prediction_set_content_sha256"]}
+      ]
     },
     "hardware": {
       "type": "object", "additionalProperties": false,

@@ -601,7 +601,7 @@ def run_structured_llm_baseline(
         "split_name": split_name,
         "model_manifest_sha256": contract["model"]["ollama_manifest_sha256"],
         "inference_config_sha256": config_hash,
-        "prediction_content_sha256": canonical_sha256(prediction_set),
+        "prediction_set_content_sha256": canonical_sha256(prediction_set),
         "code_commit": commit,
     }
     report = {

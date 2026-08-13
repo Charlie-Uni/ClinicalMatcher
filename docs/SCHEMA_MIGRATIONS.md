@@ -55,4 +55,8 @@ P2.2 also introduces `apixaban-structured-run-report-1.0.0`. It is a separate
 aggregate artifact rather than a prediction-set extension because inference
 latency, token counts, schema validity, truncation, and memory describe the run
 as a whole. The report binds to the benchmark, frozen split, model manifest,
-prompt/configuration, code commit, and prediction-content hash.
+prompt/configuration, code commit, and canonical prediction-set content hash.
+The original validation artifact uses the shorter legacy field name
+`prediction_content_sha256`; new reports use the unambiguous
+`prediction_set_content_sha256`. Schema `1.0.0` accepts exactly one of these
+aliases because both values hash the same complete canonical prediction set.

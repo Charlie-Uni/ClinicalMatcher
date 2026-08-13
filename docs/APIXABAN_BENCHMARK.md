@@ -523,7 +523,8 @@ predictions. There is no regex repair, manual correction, or hidden retry.
 The separate structured run report records schema-valid/invalid requests,
 input retention and truncation, latency mean/p50/p95, prompt/output token
 counts, output throughput, actual model memory, hardware, model digest, prompt
-version, configuration hash, and prediction-content hash. The usual P1.5
+version, configuration hash, and canonical prediction-set content hash. The
+usual P1.5
 evaluator then measures fact accuracy using the same frozen validation split as
 P2.1. Both reports remain owner-only and restricted. `test` additionally
 requires `--acknowledge-locked-test-inference`; final test evaluation is still

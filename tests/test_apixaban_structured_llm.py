@@ -19,6 +19,7 @@ from clinical_matcher.apixaban_structured_llm import (
     write_structured_llm_run,
 )
 from clinical_matcher.semantic_audit import build_semantic_scan_summary
+from clinical_matcher.splits import canonical_sha256
 from tests.test_apixaban_split import build_candidate
 
 
@@ -208,6 +209,10 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
             self.assertEqual("1.2.0", predictions["prediction_set_version"])
             self.assertEqual(1.0, report["structured_output"]["schema_valid_rate"])
             self.assertEqual(0, report["structured_output"]["manual_repairs"])
+            self.assertEqual(
+                canonical_sha256(predictions),
+                report["provenance"]["prediction_set_content_sha256"],
+            )
             self.assertTrue(all(row["abstained"] for row in predictions["predictions"]))
             self.assertTrue(
                 all(call["options"]["temperature"] == 0 for call in client.calls)
