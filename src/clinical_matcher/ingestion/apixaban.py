@@ -309,6 +309,18 @@ def _validate_corpus_semantics(document: Dict[str, Any]) -> None:
         raise ApixabanImportError("Source row numbers must be unique")
 
 
+def validate_apixaban_staging_corpus(document: Dict[str, Any]) -> None:
+    """Validate the schema and cross-record invariants of a staging corpus."""
+    _validate_corpus_semantics(document)
+
+
+def validate_apixaban_import_manifest(document: Dict[str, Any]) -> None:
+    """Validate an import manifest, including its self-authenticating hash."""
+    validate_document(document, MANIFEST_SCHEMA)
+    if _manifest_hash(document) != document["manifest_sha256"]:
+        raise ApixabanImportError("Import manifest hash mismatch")
+
+
 def _validate_id_map_semantics(document: Dict[str, Any]) -> None:
     validate_document(document, ID_MAP_SCHEMA)
     for field in ("patient_id", "source_id", "note_id", "hadm_id"):

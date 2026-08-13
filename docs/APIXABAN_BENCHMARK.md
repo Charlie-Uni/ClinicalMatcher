@@ -145,6 +145,49 @@ Validation checks:
 - no invented unit in the note-only benchmark contract;
 - no direct fact-to-eligibility mapping.
 
-The next task, P1.2, may use `normalize_source_answer` to generate restricted
-benchmark records. That generation must still verify the official source hash
-and keep all patient-level output outside Git.
+## Restricted benchmark materialization
+
+P1.2 converts the verified staging corpus into two new local files:
+
+- `apixaban-fact-benchmark.json`: 100 pseudonymous patient keys and 2,300
+  frozen fact assessments;
+- `apixaban-fact-benchmark.manifest.json`: aggregate counts, provenance hashes,
+  the generating commit, and the benchmark content hash.
+
+The benchmark deliberately does not duplicate note text, evidence chunks, raw
+identifiers, source row numbers, or the raw-ID crosswalk. Runtime code joins it
+to the separately retained staging corpus by `patient_id`. The benchmark still
+contains restricted patient-level derivatives and must never enter Git.
+
+Build it only in the authorized local environment:
+
+```bash
+clinical-matcher-apixaban-benchmark build \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --import-manifest /restricted/path/apixaban-staging-corpus.import-manifest.json \
+  --output /restricted/path/apixaban-fact-benchmark.json \
+  --acknowledge-restricted-data-local-only
+```
+
+Verify an existing output without reading or printing note text:
+
+```bash
+clinical-matcher-apixaban-benchmark verify \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --acknowledge-restricted-data-local-only
+```
+
+Build and verify enforce:
+
+- the pinned official source CSV hash;
+- the staging corpus file hash and self-authenticating import manifest;
+- the frozen 23-question catalog hash and verbatim question definitions;
+- exactly 100 patients, 23 questions, and 2,300 unique patient-question pairs;
+- exactly 2,033 answered, 265 not-specified, and two unresolved anomaly rows;
+- deterministic patient, assessment, and content ordering;
+- explicit unknown/abstention records rather than anomaly repair;
+- owner-only output permissions and refusal to overwrite existing files.
+
+`generated_at` belongs only to the aggregate manifest. The benchmark document
+itself has no timestamp or commit-dependent field, so identical verified input
+produces the same benchmark SHA-256 across repeat runs.
