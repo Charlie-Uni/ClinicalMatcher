@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-fact-assessment-1.0.0.schema.json",
+  "title": "Apixaban note-grounded fact assessment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fact_assessment_version",
+    "question_catalog_version",
+    "assessment_id",
+    "patient_id",
+    "question_id",
+    "question_type",
+    "assessment_source",
+    "fact_status",
+    "value",
+    "unit",
+    "evidence_status",
+    "evidence_ids",
+    "abstained",
+    "abstention_reason"
+  ],
+  "properties": {
+    "fact_assessment_version": {"const": "1.0.0"},
+    "question_catalog_version": {"const": "1.0.0"},
+    "assessment_id": {"$ref": "#/$defs/nonEmptyString"},
+    "patient_id": {"$ref": "#/$defs/nonEmptyString"},
+    "question_id": {
+      "type": "string",
+      "pattern": "^apixaban-q-[0-9a-f]{16}$"
+    },
+    "question_type": {"enum": ["boolean", "numeric"]},
+    "assessment_source": {
+      "enum": ["released_source_label", "rule_prediction", "model_prediction"]
+    },
+    "fact_status": {"enum": ["present", "absent", "unknown"]},
+    "value": {"type": ["boolean", "number", "null"]},
+    "unit": {"type": "null"},
+    "evidence_status": {
+      "enum": ["provided", "not_available_in_source", "not_found"]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "abstained": {"type": "boolean"},
+    "abstention_reason": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "source_not_specified",
+        "source_anomaly",
+        "insufficient_evidence",
+        "invalid_output",
+        "verifier_conflict",
+        "incompatible_unit",
+        "missing_time_context",
+        "other"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"evidence_status": {"const": "provided"}}},
+      "then": {"properties": {"evidence_ids": {"minItems": 1}}},
+      "else": {"properties": {"evidence_ids": {"maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"fact_status": {"const": "unknown"}}},
+      "then": {
+        "properties": {
+          "value": {"type": "null"},
+          "abstained": {"const": true},
+          "abstention_reason": {"type": "string"}
+        }
+      },
+      "else": {
+        "properties": {
+          "abstained": {"const": false},
+          "abstention_reason": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"question_type": {"const": "boolean"}}},
+      "then": {
+        "oneOf": [
+          {
+            "properties": {
+              "fact_status": {"const": "present"},
+              "value": {"const": true}
+            }
+          },
+          {
+            "properties": {
+              "fact_status": {"const": "absent"},
+              "value": {"const": false}
+            }
+          },
+          {
+            "properties": {
+              "fact_status": {"const": "unknown"},
+              "value": {"type": "null"}
+            }
+          }
+        ]
+      },
+      "else": {
+        "oneOf": [
+          {
+            "properties": {
+              "fact_status": {"const": "present"},
+              "value": {"type": "number"}
+            }
+          },
+          {
+            "properties": {
+              "fact_status": {"const": "unknown"},
+              "value": {"type": "null"}
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1}
+  }
+}

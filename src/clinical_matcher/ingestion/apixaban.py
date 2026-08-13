@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from ..apixaban_contract import validate_source_question_definitions
 from ..splits import canonical_sha256, current_git_commit
 from ..validation import validate_document
 from .patients import assert_restricted_local_path
@@ -525,6 +526,8 @@ def build_apixaban_staging_corpus(
         raise ApixabanImportError(
             "Pinned official source must contain 100 notes and 23 criteria"
         )
+    if required_source_sha256 is not None:
+        validate_source_question_definitions(reference_definitions or {})
 
     corpus: Dict[str, Any] = {
         "apixaban_corpus_version": "1.0.0",

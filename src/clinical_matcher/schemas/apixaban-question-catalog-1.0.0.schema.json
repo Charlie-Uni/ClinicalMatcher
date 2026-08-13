@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-question-catalog-1.0.0.schema.json",
+  "title": "MIMIC-IV-Ext Apixaban note-grounded question catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "catalog_version",
+    "catalog_sha256",
+    "source",
+    "semantics",
+    "questions"
+  ],
+  "properties": {
+    "catalog_version": {"const": "1.0.0"},
+    "catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_id", "dataset_version", "source_csv_sha256"],
+      "properties": {
+        "dataset_id": {
+          "const": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions"
+        },
+        "dataset_version": {"const": "1.0.0"},
+        "source_csv_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prediction_target",
+        "eligibility_mapping",
+        "boolean_normalization",
+        "absent_meaning",
+        "numeric_normalization",
+        "unknown_normalization",
+        "unit_policy"
+      ],
+      "properties": {
+        "prediction_target": {"const": "note_grounded_fact_assessment"},
+        "eligibility_mapping": {"const": "separate_criterion_specific_step"},
+        "boolean_normalization": {
+          "const": "Yes=present/true; No=absent/false"
+        },
+        "absent_meaning": {
+          "const": "question_protocol_no_not_confirmed_clinical_absence"
+        },
+        "numeric_normalization": {
+          "const": "finite source number=present"
+        },
+        "unknown_normalization": {
+          "const": "not_specified or source_anomaly=unknown/null"
+        },
+        "unit_policy": {"const": "not_defined_by_source_questions"}
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 23,
+      "maxItems": 23,
+      "items": {"$ref": "#/$defs/question"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "source_criterion_label",
+        "fact_field",
+        "question_type",
+        "source_question",
+        "aggregation",
+        "value_type",
+        "canonical_unit",
+        "unit_policy",
+        "allowed_fact_status",
+        "eligibility_interpretation"
+      ],
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "pattern": "^apixaban-q-[0-9a-f]{16}$"
+        },
+        "source_criterion_label": {"$ref": "#/$defs/nonEmptyString"},
+        "fact_field": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "question_type": {"enum": ["boolean", "numeric"]},
+        "source_question": {"$ref": "#/$defs/nonEmptyString"},
+        "aggregation": {
+          "enum": ["question_defined_boolean", "minimum", "maximum"]
+        },
+        "value_type": {"enum": ["boolean", "number"]},
+        "canonical_unit": {"type": "null"},
+        "unit_policy": {"const": "not_defined_by_source_question"},
+        "allowed_fact_status": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["present", "absent", "unknown"]},
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "eligibility_interpretation": {"const": "fact_only_no_direct_mapping"}
+      }
+    }
+  }
+}

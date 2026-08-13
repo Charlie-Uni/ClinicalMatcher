@@ -69,6 +69,12 @@ abstention are reported separately; atomic coverage and data-quality issues
 keep unresolved OR branches visible. Schema changes are recorded in
 [docs/SCHEMA_MIGRATIONS.md](docs/SCHEMA_MIGRATIONS.md).
 
+The resume-first Apixaban benchmark has a separate frozen note-grounded fact
+contract in [docs/APIXABAN_BENCHMARK.md](docs/APIXABAN_BENCHMARK.md). Its 23
+question definitions distinguish fact truth from eligibility, preserve
+`not_specified` as `unknown`, and do not invent units or evidence gold that the
+official release does not provide.
+
 The executable P1 evaluation protocol is documented in
 [docs/EVALUATION.md](docs/EVALUATION.md). It provides lineage-tracked
 patient/trial holdouts, exact and semantic leakage assertions, separate

@@ -30,6 +30,10 @@ specific inclusion or exclusion criterion. A positive adverse fact such as
 `serious_bleeding = present` must never be treated as `eligible` merely because
 the fact is true.
 
+For the released boolean labels, `absent` means that the note received `No`
+under that question's annotation instructions. It is not proof that the
+condition is clinically absent from the patient's complete record.
+
 The planned multi-source extension means unstructured notes plus structured
 EHR events and a patient-relative timeline. It does not mean medical imaging in
 the resume-first release. Structured EHR facts that were not available to the
@@ -144,7 +148,7 @@ and honest about which results are synthetic.
 
 ## P1 — Freeze and materialize the 2,300-answer main benchmark
 
-- [ ] **P1.1 Freeze the note-grounded prediction contract.** Version a schema
+- [x] **P1.1 Freeze the note-grounded prediction contract.** Version a schema
   for boolean facts, numeric facts, and unknown/not-specified labels, including
   typed values, units where the released question defines them, evidence IDs,
   and abstention metadata.
