@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-prediction-set-1.2.0.schema.json",
+  "title": "Restricted model-generated Apixaban typed-fact prediction set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "prediction_set_version",
+    "benchmark_sha256",
+    "split_manifest_sha256",
+    "split_name",
+    "model_id",
+    "prompt_version",
+    "inference_config_sha256",
+    "generated_at",
+    "code_commit",
+    "predictions"
+  ],
+  "properties": {
+    "prediction_set_version": {"const": "1.2.0"},
+    "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+    "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "split_name": {"enum": ["train", "validation", "test"]},
+    "model_id": {"type": "string", "minLength": 1},
+    "prompt_version": {"type": "string", "minLength": 1},
+    "inference_config_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "predictions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/prediction"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "patientId": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+    "questionId": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+    "evidenceId": {"type": "string", "pattern": "^evidence-[0-9a-f]{24}-[0-9]{3,}$"},
+    "prediction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_id",
+        "question_id",
+        "question_type",
+        "fact_status",
+        "value",
+        "unit",
+        "abstained",
+        "abstention_reason",
+        "evidence_ids",
+        "trace_ids"
+      ],
+      "properties": {
+        "patient_id": {"$ref": "#/$defs/patientId"},
+        "question_id": {"$ref": "#/$defs/questionId"},
+        "question_type": {"enum": ["boolean", "numeric"]},
+        "fact_status": {"enum": ["present", "absent", "unknown"]},
+        "value": {"type": ["boolean", "number", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "abstained": {"type": "boolean"},
+        "abstention_reason": {"type": ["string", "null"]},
+        "evidence_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/evidenceId"}
+        },
+        "trace_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9_.-]+$"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"fact_status": {"const": "unknown"}}},
+          "then": {
+            "properties": {
+              "value": {"type": "null"},
+              "abstained": {"const": true},
+              "abstention_reason": {"type": "string", "minLength": 1}
+            }
+          },
+          "else": {
+            "properties": {
+              "abstained": {"const": false},
+              "abstention_reason": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"question_type": {"const": "boolean"}}},
+          "then": {
+            "oneOf": [
+              {"properties": {"fact_status": {"const": "present"}, "value": {"const": true}}},
+              {"properties": {"fact_status": {"const": "absent"}, "value": {"const": false}}},
+              {"properties": {"fact_status": {"const": "unknown"}, "value": {"type": "null"}}}
+            ]
+          },
+          "else": {
+            "oneOf": [
+              {"properties": {"fact_status": {"const": "present"}, "value": {"type": "number"}}},
+              {"properties": {"fact_status": {"const": "unknown"}, "value": {"type": "null"}}}
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

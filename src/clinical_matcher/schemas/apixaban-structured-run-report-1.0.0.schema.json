@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-structured-run-report-1.0.0.schema.json",
+  "title": "Restricted aggregate local structured-model run report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version", "run_id", "generated_at", "provenance", "hardware",
+    "input_policy", "structured_output", "performance", "limitations",
+    "disclosure_note"
+  ],
+  "properties": {
+    "report_version": {"const": "1.0.0"},
+    "run_id": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "benchmark_sha256", "split_manifest_sha256", "split_name",
+        "model_id", "model_manifest_sha256", "engine", "engine_version",
+        "prompt_version", "inference_config_sha256", "prediction_content_sha256",
+        "code_commit"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "model_id": {"type": "string", "minLength": 1},
+        "model_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "engine": {"const": "Ollama"},
+        "engine_version": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "inference_config_sha256": {"$ref": "#/$defs/sha256"},
+        "prediction_content_sha256": {"$ref": "#/$defs/sha256"},
+        "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "hardware": {
+      "type": "object", "additionalProperties": false,
+      "required": ["system", "chip", "cpu_cores", "memory_bytes", "architecture"],
+      "properties": {
+        "system": {"type": "string", "minLength": 1},
+        "chip": {"type": "string", "minLength": 1},
+        "cpu_cores": {"type": "integer", "minimum": 1},
+        "memory_bytes": {"type": "integer", "minimum": 1},
+        "architecture": {"type": "string", "minLength": 1}
+      }
+    },
+    "input_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "policy_id", "max_note_characters", "configured_context_tokens",
+        "configured_max_output_tokens", "patient_count", "note_characters_total",
+        "note_characters_retained", "retained_character_proportion",
+        "truncated_patient_count"
+      ],
+      "properties": {
+        "policy_id": {"type": "string", "minLength": 1},
+        "max_note_characters": {"type": "integer", "minimum": 1},
+        "configured_context_tokens": {"type": "integer", "minimum": 1},
+        "configured_max_output_tokens": {"type": "integer", "minimum": 1},
+        "patient_count": {"type": "integer", "minimum": 1},
+        "note_characters_total": {"type": "integer", "minimum": 1},
+        "note_characters_retained": {"type": "integer", "minimum": 1},
+        "retained_character_proportion": {"type": "number", "minimum": 0, "maximum": 1},
+        "truncated_patient_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "structured_output": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "request_count", "schema_valid_count", "schema_invalid_count",
+        "schema_valid_rate", "invalid_output_abstention_count",
+        "manual_repairs"
+      ],
+      "properties": {
+        "request_count": {"type": "integer", "minimum": 1},
+        "schema_valid_count": {"type": "integer", "minimum": 0},
+        "schema_invalid_count": {"type": "integer", "minimum": 0},
+        "schema_valid_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "invalid_output_abstention_count": {"type": "integer", "minimum": 0},
+        "manual_repairs": {"const": 0}
+      }
+    },
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "total_duration_seconds", "latency_seconds_mean", "latency_seconds_p50",
+        "latency_seconds_p95", "prompt_tokens", "output_tokens",
+        "output_tokens_per_second", "model_memory_bytes", "model_vram_bytes"
+      ],
+      "properties": {
+        "total_duration_seconds": {"type": "number", "minimum": 0},
+        "latency_seconds_mean": {"type": "number", "minimum": 0},
+        "latency_seconds_p50": {"type": "number", "minimum": 0},
+        "latency_seconds_p95": {"type": "number", "minimum": 0},
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens_per_second": {"type": ["number", "null"], "minimum": 0},
+        "model_memory_bytes": {"type": ["integer", "null"], "minimum": 0},
+        "model_vram_bytes": {"type": ["integer", "null"], "minimum": 0}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

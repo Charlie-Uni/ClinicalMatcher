@@ -26,6 +26,7 @@ from .validation import validate_document
 PREDICTION_SET_SCHEMAS = {
     "1.0.0": "schemas/apixaban-prediction-set-1.0.0.schema.json",
     "1.1.0": "schemas/apixaban-prediction-set-1.1.0.schema.json",
+    "1.2.0": "schemas/apixaban-prediction-set-1.2.0.schema.json",
 }
 EVALUATION_REPORT_VERSION = "1.0.0"
 EVALUATION_REPORT_SCHEMA = (
