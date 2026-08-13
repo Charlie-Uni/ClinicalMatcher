@@ -193,6 +193,10 @@ and honest about which results are synthetic.
   - Verify: no patient/admission overlap, stable rerun hash, acceptable recorded
     label balance, exact duplicate checks, and a locally audited semantic
     near-duplicate scan.
+  - Current gate: the deterministic grouped, label-aware candidate/freeze
+    workflow is implemented. Final freeze still requires an explicitly reviewed
+    proportion/seed decision and a passing local semantic near-duplicate scan;
+    a proposed candidate must not be treated as the locked test set.
 
 - [ ] **P1.5 Extend evaluation for mixed answer types.** Add boolean/unknown
   classification and numeric extraction metrics without conflating them.

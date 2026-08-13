@@ -331,6 +331,11 @@ def _validate_id_map_semantics(document: Dict[str, Any]) -> None:
             )
 
 
+def validate_apixaban_id_map(document: Dict[str, Any]) -> None:
+    """Validate the restricted pseudonym crosswalk and uniqueness rules."""
+    _validate_id_map_semantics(document)
+
+
 def build_apixaban_staging_corpus(
     source_csv: Path,
     checksum_path: Path,

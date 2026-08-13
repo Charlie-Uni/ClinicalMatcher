@@ -250,3 +250,75 @@ clinical-matcher-apixaban-quality verify \
   --public-report /restricted/path/apixaban-quality.public-candidate.json \
   --acknowledge-restricted-data-local-only
 ```
+
+## Patient-grouped split candidates and freezing
+
+P1.4 uses a restricted three-way manifest. It never splits the 2,300 answer
+rows independently. Patients that share an admission or exact note-content
+hash are assigned as one group, and the deterministic greedy objective balances
+both question-level fact status and released source status.
+
+Generate a candidate only after explicitly recording all three fractions and a
+seed. For example, the following proposes 70/15/15 with seed 17; neither value
+is final merely because it appears here:
+
+```bash
+clinical-matcher-apixaban-split candidate \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --benchmark-manifest /restricted/path/apixaban-fact-benchmark.manifest.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --import-manifest /restricted/path/apixaban-staging-corpus.import-manifest.json \
+  --id-map /restricted/path/apixaban-staging-corpus.id-map.json \
+  --quality-report /restricted/path/apixaban-quality.restricted.json \
+  --train-fraction 0.70 \
+  --validation-fraction 0.15 \
+  --test-fraction 0.15 \
+  --seed 17 \
+  --semantic-similarity-threshold 0.95 \
+  --output /restricted/path/apixaban-split.candidate.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The candidate contains pseudonymous membership and note-content fingerprints,
+so it remains local. It records exact split sizes, per-question distributions,
+prevalence deviations, zero-support cells, admission isolation, exact-content
+isolation, source hashes, algorithm version, seed, and generating commit.
+
+The candidate is not frozen until an authorized local embedding scan evaluates
+all cross-split pairs, or an ANN scan reports measured candidate recall. The
+detailed pair file remains local. Audit an already-produced pair file with:
+
+```bash
+clinical-matcher-apixaban-split audit-semantic \
+  --manifest /restricted/path/apixaban-split.candidate.json \
+  --semantic-pairs /restricted/path/semantic-pairs.json \
+  --embedding-model-id MODEL_ID \
+  --embedding-model-revision IMMUTABLE_REVISION \
+  --pooling mean \
+  --vectors-normalized \
+  --search-method exhaustive_cosine \
+  --candidate-pairs-evaluated 2325 \
+  --output /restricted/path/apixaban-split.semantic-summary.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The value 2,325 is correct only for a 70/15/15 split of 100 patients
+(`70×15 + 70×15 + 15×15`). The audit rejects an exhaustive claim when the
+recorded count does not equal every possible cross-split pair.
+
+After reviewing the proposed proportions, balance report, seed choice, and a
+passing semantic scan, freeze the unchanged membership with a non-sensitive
+decision reference:
+
+```bash
+clinical-matcher-apixaban-split freeze \
+  --candidate /restricted/path/apixaban-split.candidate.json \
+  --semantic-summary /restricted/path/apixaban-split.semantic-summary.json \
+  --decision-reference NON_SENSITIVE_REVIEW_REFERENCE \
+  --output /restricted/path/apixaban-split.frozen.json \
+  --acknowledge-restricted-data-local-only
+```
+
+Once frozen, the test membership must not guide prompt, retriever, threshold,
+or model selection. Any later split change requires a new version and an
+explicit reason; it cannot silently replace the locked test set.

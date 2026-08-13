@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-split-manifest-1.0.0.schema.json",
+  "title": "Restricted Apixaban patient-grouped split manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_split_manifest_version",
+    "manifest_sha256",
+    "status",
+    "generated_at",
+    "code_commit",
+    "generation_command",
+    "dataset",
+    "policy",
+    "splits",
+    "balance",
+    "isolation",
+    "freeze",
+    "disclosure_note"
+  ],
+  "properties": {
+    "apixaban_split_manifest_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"enum": ["candidate", "frozen"]},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "generation_command": {"$ref": "#/$defs/nonEmptyString"},
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "benchmark_sha256",
+        "benchmark_manifest_sha256",
+        "staging_corpus_sha256",
+        "import_manifest_sha256",
+        "id_map_sha256",
+        "quality_report_sha256",
+        "question_catalog_sha256"
+      ],
+      "properties": {
+        "dataset_id": {"const": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions"},
+        "dataset_version": {"const": "1.0.0"},
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "benchmark_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "import_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "id_map_sha256": {"$ref": "#/$defs/sha256"},
+        "quality_report_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "algorithm_version",
+        "seed",
+        "requested_fractions",
+        "target_patient_counts",
+        "grouping_dimensions",
+        "label_features",
+        "seed_selection_status",
+        "semantic_similarity_threshold"
+      ],
+      "properties": {
+        "algorithm": {"const": "grouped_multilabel_greedy"},
+        "algorithm_version": {"const": "1.0.0"},
+        "seed": {"type": "integer", "minimum": 0},
+        "requested_fractions": {"$ref": "#/$defs/splitFractions"},
+        "target_patient_counts": {"$ref": "#/$defs/splitCounts"},
+        "grouping_dimensions": {
+          "const": ["patient_id", "admission_id", "exact_note_content"]
+        },
+        "label_features": {
+          "const": ["question_fact_status", "question_source_status"]
+        },
+        "seed_selection_status": {"const": "predeclared_not_searched"},
+        "semantic_similarity_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "splits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["train", "validation", "test"],
+      "properties": {
+        "train": {"$ref": "#/$defs/partition"},
+        "validation": {"$ref": "#/$defs/partition"},
+        "test": {"$ref": "#/$defs/partition"}
+      }
+    },
+    "balance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "maximum_absolute_prevalence_deviation",
+        "mean_absolute_prevalence_deviation",
+        "zero_support_split_label_cell_count",
+        "questions"
+      ],
+      "properties": {
+        "status": {"const": "reported_not_thresholded"},
+        "maximum_absolute_prevalence_deviation": {
+          "type": "number", "minimum": 0, "maximum": 1
+        },
+        "mean_absolute_prevalence_deviation": {
+          "type": "number", "minimum": 0, "maximum": 1
+        },
+        "zero_support_split_label_cell_count": {
+          "type": "integer", "minimum": 0
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/questionBalance"}
+        }
+      }
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "all_patients_assigned_once",
+        "cross_split_patient_overlap_count",
+        "cross_split_admission_overlap_count",
+        "cross_split_exact_note_duplicate_count",
+        "admission_group_count",
+        "multi_patient_admission_group_count",
+        "exact_content_group_count",
+        "multi_patient_exact_content_group_count",
+        "semantic_scan_status"
+      ],
+      "properties": {
+        "all_patients_assigned_once": {"const": true},
+        "cross_split_patient_overlap_count": {"const": 0},
+        "cross_split_admission_overlap_count": {"const": 0},
+        "cross_split_exact_note_duplicate_count": {"const": 0},
+        "admission_group_count": {"type": "integer", "minimum": 1},
+        "multi_patient_admission_group_count": {"type": "integer", "minimum": 0},
+        "exact_content_group_count": {"type": "integer", "minimum": 1},
+        "multi_patient_exact_content_group_count": {"type": "integer", "minimum": 0},
+        "semantic_scan_status": {"enum": ["pending", "passed"]}
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "test_locked",
+        "decision_reference",
+        "audited_candidate_manifest_sha256",
+        "semantic_scan_summary_sha256"
+      ],
+      "properties": {
+        "test_locked": {"type": "boolean"},
+        "decision_reference": {"type": ["string", "null"]},
+        "audited_candidate_manifest_sha256": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]
+        },
+        "semantic_scan_summary_sha256": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]
+        }
+      }
+    },
+    "disclosure_note": {"$ref": "#/$defs/nonEmptyString"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "patientId": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+    "splitFractions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["train", "validation", "test"],
+      "properties": {
+        "train": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "validation": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "test": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1}
+      }
+    },
+    "splitCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["train", "validation", "test"],
+      "properties": {
+        "train": {"type": "integer", "minimum": 1},
+        "validation": {"type": "integer", "minimum": 1},
+        "test": {"type": "integer", "minimum": 1}
+      }
+    },
+    "partition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_count", "patient_ids", "patient_content_sha256"],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "patient_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/patientId"}
+        },
+        "patient_content_sha256": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "factCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "absent", "unknown"],
+      "properties": {
+        "present": {"type": "integer", "minimum": 0},
+        "absent": {"type": "integer", "minimum": 0},
+        "unknown": {"type": "integer", "minimum": 0}
+      }
+    },
+    "sourceCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answered", "not_specified", "source_anomaly"],
+      "properties": {
+        "answered": {"type": "integer", "minimum": 0},
+        "not_specified": {"type": "integer", "minimum": 0},
+        "source_anomaly": {"type": "integer", "minimum": 0}
+      }
+    },
+    "labelCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_status_counts", "source_status_counts"],
+      "properties": {
+        "fact_status_counts": {"$ref": "#/$defs/factCounts"},
+        "source_status_counts": {"$ref": "#/$defs/sourceCounts"}
+      }
+    },
+    "questionBalance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question_id", "overall", "splits"],
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "overall": {"$ref": "#/$defs/labelCounts"},
+        "splits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["train", "validation", "test"],
+          "properties": {
+            "train": {"$ref": "#/$defs/labelCounts"},
+            "validation": {"$ref": "#/$defs/labelCounts"},
+            "test": {"$ref": "#/$defs/labelCounts"}
+          }
+        }
+      }
+    }
+  }
+}
