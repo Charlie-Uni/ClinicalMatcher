@@ -178,6 +178,10 @@ and honest about which results are synthetic.
   - Verify: totals reconcile to 100 patients, 23 questions, and 2,300 answers;
     aggregate cells below a governance-approved disclosure threshold are
     suppressed from public output.
+  - Current gate: the reporter and pending-review suppression projection are
+    implemented; completion still requires the approved threshold and a
+    non-sensitive governance approval reference. A proposed value must not be
+    represented as institutional approval.
 
 - [ ] **P1.4 Freeze a patient-grouped benchmark split.** Create train,
   validation, and locked test membership with deterministic, label-aware group

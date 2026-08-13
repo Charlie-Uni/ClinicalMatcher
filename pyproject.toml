@@ -28,6 +28,7 @@ clinical-matcher-regenerate-patients = "clinical_matcher.regenerate_patients_cli
 clinical-matcher-import-apixaban = "clinical_matcher.apixaban_cli:main"
 clinical-matcher-validate-apixaban-contract = "clinical_matcher.apixaban_contract_cli:main"
 clinical-matcher-apixaban-benchmark = "clinical_matcher.apixaban_benchmark_cli:main"
+clinical-matcher-apixaban-quality = "clinical_matcher.apixaban_quality_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

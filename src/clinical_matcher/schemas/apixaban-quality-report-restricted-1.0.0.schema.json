@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-quality-report-restricted-1.0.0.schema.json",
+  "title": "Restricted Apixaban benchmark data-quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_quality_report_version",
+    "report_sha256",
+    "report_scope",
+    "generated_at",
+    "code_commit",
+    "source",
+    "totals",
+    "questions",
+    "quality",
+    "disclosure_note"
+  ],
+  "properties": {
+    "apixaban_quality_report_version": {"const": "1.0.0"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "report_scope": {"const": "restricted_local"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source": {"$ref": "#/$defs/restrictedSource"},
+    "totals": {"$ref": "#/$defs/totals"},
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/question"}
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "complete_patient_question_grid",
+        "source_anomalies_preserved",
+        "values_removed_count",
+        "plausibility_rule_status"
+      ],
+      "properties": {
+        "complete_patient_question_grid": {"type": "boolean"},
+        "source_anomalies_preserved": {"const": true},
+        "values_removed_count": {"const": 0},
+        "plausibility_rule_status": {
+          "const": "not_assessed_no_reviewed_unit_aware_rules"
+        }
+      }
+    },
+    "disclosure_note": {"$ref": "#/$defs/nonEmptyString"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "restrictedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "benchmark_version",
+        "benchmark_sha256",
+        "benchmark_manifest_sha256",
+        "question_catalog_version",
+        "question_catalog_sha256"
+      ],
+      "properties": {
+        "dataset_id": {"const": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions"},
+        "dataset_version": {"const": "1.0.0"},
+        "benchmark_version": {"const": "1.0.0"},
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "benchmark_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_version": {"const": "1.0.0"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_count",
+        "question_count",
+        "assessment_count",
+        "expected_assessment_count",
+        "missing_patient_question_pair_count",
+        "duplicate_patient_question_pair_count",
+        "complete_patient_count",
+        "incomplete_patient_count",
+        "minimum_assessments_per_patient",
+        "maximum_assessments_per_patient",
+        "boolean_assessment_count",
+        "numeric_assessment_count",
+        "present_count",
+        "absent_count",
+        "unknown_count",
+        "answered_source_count",
+        "not_specified_source_count",
+        "source_anomaly_count"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "question_count": {"type": "integer", "minimum": 1},
+        "assessment_count": {"type": "integer", "minimum": 1},
+        "expected_assessment_count": {"type": "integer", "minimum": 1},
+        "missing_patient_question_pair_count": {"type": "integer", "minimum": 0},
+        "duplicate_patient_question_pair_count": {"type": "integer", "minimum": 0},
+        "complete_patient_count": {"type": "integer", "minimum": 0},
+        "incomplete_patient_count": {"type": "integer", "minimum": 0},
+        "minimum_assessments_per_patient": {"type": "integer", "minimum": 0},
+        "maximum_assessments_per_patient": {"type": "integer", "minimum": 0},
+        "boolean_assessment_count": {"type": "integer", "minimum": 0},
+        "numeric_assessment_count": {"type": "integer", "minimum": 0},
+        "present_count": {"type": "integer", "minimum": 0},
+        "absent_count": {"type": "integer", "minimum": 0},
+        "unknown_count": {"type": "integer", "minimum": 0},
+        "answered_source_count": {"type": "integer", "minimum": 0},
+        "not_specified_source_count": {"type": "integer", "minimum": 0},
+        "source_anomaly_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "statusCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "absent", "unknown"],
+      "properties": {
+        "present": {"type": "integer", "minimum": 0},
+        "absent": {"type": "integer", "minimum": 0},
+        "unknown": {"type": "integer", "minimum": 0}
+      }
+    },
+    "sourceCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answered", "not_specified", "source_anomaly"],
+      "properties": {
+        "answered": {"type": "integer", "minimum": 0},
+        "not_specified": {"type": "integer", "minimum": 0},
+        "source_anomaly": {"type": "integer", "minimum": 0}
+      }
+    },
+    "numericSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "known_value_count",
+        "minimum",
+        "maximum",
+        "plausibility_rule_status",
+        "flagged_implausible_value_count",
+        "removed_value_count"
+      ],
+      "properties": {
+        "known_value_count": {"type": "integer", "minimum": 0},
+        "minimum": {"type": ["number", "null"]},
+        "maximum": {"type": ["number", "null"]},
+        "plausibility_rule_status": {
+          "const": "not_assessed_no_reviewed_unit_aware_rule"
+        },
+        "flagged_implausible_value_count": {"type": "null"},
+        "removed_value_count": {"const": 0}
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "source_criterion_label",
+        "fact_field",
+        "question_type",
+        "aggregation",
+        "assessment_count",
+        "fact_status_counts",
+        "source_status_counts",
+        "unknown_rate",
+        "numeric_summary"
+      ],
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "source_criterion_label": {"$ref": "#/$defs/nonEmptyString"},
+        "fact_field": {"$ref": "#/$defs/nonEmptyString"},
+        "question_type": {"enum": ["boolean", "numeric"]},
+        "aggregation": {"enum": ["question_defined_boolean", "minimum", "maximum"]},
+        "assessment_count": {"type": "integer", "minimum": 1},
+        "fact_status_counts": {"$ref": "#/$defs/statusCounts"},
+        "source_status_counts": {"$ref": "#/$defs/sourceCounts"},
+        "unknown_rate": {"type": "number", "minimum": 0, "maximum": 1},
+        "numeric_summary": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/numericSummary"}
+          ]
+        }
+      }
+    }
+  }
+}

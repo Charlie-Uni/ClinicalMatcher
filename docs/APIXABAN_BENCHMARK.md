@@ -191,3 +191,62 @@ Build and verify enforce:
 `generated_at` belongs only to the aggregate manifest. The benchmark document
 itself has no timestamp or commit-dependent field, so identical verified input
 produces the same benchmark SHA-256 across repeat runs.
+
+## Data-quality reporting and disclosure control
+
+P1.3 produces two local reports from the validated benchmark:
+
+- a restricted report with exact per-question counts and numeric ranges;
+- an aggregate public-release candidate with small-cell and complementary
+  suppression and no numeric extrema.
+
+The restricted report measures patient-grid completeness, missing and duplicate
+patient-question pairs, boolean/numeric totals, fact/source-label counts,
+unknown rates, numeric minima/maxima, and unresolved source anomalies. No value
+is removed. Because catalog `1.0.0` has no canonical units and no reviewed
+unit-aware plausibility rules, the report records plausibility as not assessed
+instead of inventing clinical cutoffs.
+
+Generate a pending-review candidate with an explicit proposed threshold:
+
+```bash
+clinical-matcher-apixaban-quality build \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --benchmark-manifest /restricted/path/apixaban-fact-benchmark.manifest.json \
+  --restricted-output /restricted/path/apixaban-quality.restricted.json \
+  --public-output /restricted/path/apixaban-quality.public-candidate.json \
+  --minimum-cell-size 10 \
+  --acknowledge-restricted-data-local-only
+```
+
+The value `10` above is an example candidate, not a claim of institutional
+approval. Without an approval reference, the generated public projection says
+`governance_status = pending_review` and `release_authorized = false`.
+
+Only after the applicable data-governance authority approves the exact
+threshold may the command add both:
+
+```text
+--governance-approval-reference NON_SENSITIVE_REFERENCE
+--acknowledge-governance-approved-threshold
+```
+
+Suppression rules are deliberately conservative:
+
+- positive counts below the threshold are hidden; zero remains disclosable;
+- if one cell in an additive group is hidden, at least one other positive cell
+  is hidden to prevent subtraction attacks;
+- an unknown rate is hidden whenever its source count is hidden;
+- exact numeric minima and maxima are always withheld from the public
+  projection because each is an individual extreme;
+- public output omits patient/assessment IDs, benchmark fingerprints, the Git
+  commit, note text, and evidence.
+
+Verify both local files with:
+
+```bash
+clinical-matcher-apixaban-quality verify \
+  --restricted-report /restricted/path/apixaban-quality.restricted.json \
+  --public-report /restricted/path/apixaban-quality.public-candidate.json \
+  --acknowledge-restricted-data-local-only
+```
