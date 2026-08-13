@@ -391,8 +391,8 @@ explicit reason; it cannot silently replace the locked test set.
 ## Mixed typed-fact evaluation
 
 P1.5 evaluates the 15 boolean and 8 numeric questions as different tasks. A
-prediction set must conform to
-`apixaban-prediction-set-1.0.0.schema.json` and bind itself to the exact
+prediction set must conform to a supported version of the
+`apixaban-prediction-set` schema and bind itself to the exact
 benchmark hash, frozen split hash, split name, model ID, prompt version,
 generation commit, and generation time. Missing patient-question predictions
 are allowed so that incomplete systems can be measured, but are always scored
@@ -432,3 +432,43 @@ Non-zero tolerances are rejected until a future reviewed canonical-unit
 contract exists. Reports are written owner-only, refuse overwrite, contain no
 note text, and remain restricted because small aggregate cells may still be
 disclosive.
+
+## Deterministic extraction baseline
+
+P2.1 provides a deliberately simple, non-trained reference before local-model
+or retrieval experiments. Rule set `1.0.0` is stored in
+`apixaban-deterministic-rules-1.0.0.json`. It covers all 23 questions with
+reviewed lexical aliases and records that its design is limited to frozen
+question semantics plus train/validation development; locked test answers are
+forbidden input.
+
+Generate validation predictions locally with:
+
+```bash
+clinical-matcher-apixaban-deterministic \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --split validation \
+  --output /restricted/path/deterministic-v1.validation.predictions.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The evidence-linked prediction schema is `1.1.0`. Each row contains stable
+evidence IDs and rule IDs, while the top level records the rule-set hash.
+Boolean positive/negative conflicts abstain. A mention that lacks a
+question-required temporal context abstains. A missing lexical fact abstains,
+except for `med_decisions`, whose frozen source question explicitly says to
+answer no unless inability is evidenced. Numeric rules extract finite source
+numbers, apply the question's min/max aggregation, and implement the explicit
+LVEF instruction to report 55 when the minimum is at least 55. They do not
+invent units, convert measurements, or apply learned plausibility thresholds.
+
+`--split test` requires the additional
+`--acknowledge-locked-test-prediction` flag. Final test evaluation separately
+requires the evaluator's locked-test acknowledgement. Neither flag permits
+test-guided rule, prompt, retriever, threshold, or model selection.
+
+The first real run is intentionally a validation-only engineering baseline.
+Its owner-only aggregate report confirms that the complete restricted pipeline
+runs, but it is exploratory and is not a clinical-performance or publication
+claim. Validation predictions and reports remain outside Git.

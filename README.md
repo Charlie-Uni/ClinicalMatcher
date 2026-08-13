@@ -73,7 +73,10 @@ The resume-first Apixaban benchmark has a separate frozen note-grounded fact
 contract in [docs/APIXABAN_BENCHMARK.md](docs/APIXABAN_BENCHMARK.md). Its 23
 question definitions distinguish fact truth from eligibility, preserve
 `not_specified` as `unknown`, and do not invent units or evidence gold that the
-official release does not provide.
+official release does not provide. Its P2.1 deterministic extraction baseline
+adds versioned lexical, negation, temporal-context, and numeric min/max rules,
+evidence-linked prediction traces, explicit abstention, and a validation-only
+restricted report before any local-model or retrieval experiment.
 
 The executable P1 evaluation protocol is documented in
 [docs/EVALUATION.md](docs/EVALUATION.md). It provides lineage-tracked

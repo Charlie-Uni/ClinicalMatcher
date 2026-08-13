@@ -222,7 +222,7 @@ pipeline.
 
 ## P2 — Establish non-trained baselines before adding retrieval
 
-- [ ] **P2.1 Implement a deterministic extraction baseline.** Add reviewed
+- [x] **P2.1 Implement a deterministic extraction baseline.** Add reviewed
   lexical aliases, negation handling, numeric extraction, min/max aggregation,
   and explicit unknown output for the 23 questions.
   - Entry condition: P1 benchmark and metrics are executable.
@@ -230,6 +230,15 @@ pipeline.
     only; no patient-specific exception or test-answer lookup is allowed.
   - Verify: unit tests cover positive, negative, ambiguous, multiple-value, and
     absent-fact cases; emit a versioned validation/test report.
+  - Completion: rule set `1.0.0` covers all 23 frozen questions and declares
+    that locked test labels were not used. Prediction-set `1.1.0` links every
+    resolved or ambiguous result to evidence and rule IDs; conflict, missing
+    temporal context, and absent evidence produce explicit abstention except
+    for the source-defined medical-decision default. An owner-only validation
+    prediction set and patient-cluster bootstrap report were generated against
+    the frozen split. Locked test evaluation remains deliberately deferred
+    until model selection closes; no validation aggregate is presented as a
+    clinical-performance claim.
 
 - [ ] **P2.2 Implement a local frozen-model structured-output baseline.** Ask a
   pinned open model to return the P1.1 schema from the note and question.
