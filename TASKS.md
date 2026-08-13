@@ -183,7 +183,7 @@ and honest about which results are synthetic.
     non-sensitive governance approval reference. A proposed value must not be
     represented as institutional approval.
 
-- [ ] **P1.4 Freeze a patient-grouped benchmark split.** Create train,
+- [x] **P1.4 Freeze a patient-grouped benchmark split.** Create train,
   validation, and locked test membership with deterministic, label-aware group
   assignment and patient/admission isolation.
   - Entry condition: P1.3 establishes whether the desired class distribution is
@@ -193,13 +193,11 @@ and honest about which results are synthetic.
   - Verify: no patient/admission overlap, stable rerun hash, acceptable recorded
     label balance, exact duplicate checks, and a locally audited semantic
     near-duplicate scan.
-  - Current gate: the deterministic grouped, label-aware candidate/freeze
-    workflow and fixed-revision exhaustive local semantic scanner are
-    implemented, including hash-bound cumulative regrouping when a scan finds
-    cross-split pairs. Final freeze requires a passing authorized local scan
-    and an explicitly reviewed proportion/seed decision; restricted run
-    results stay outside the public task tracker, and a proposed candidate must
-    not be treated as the locked test set.
+  - Completion: the deterministic grouped, label-aware split was frozen only
+    after a passing authorized local semantic scan and an explicit
+    proportion/seed decision. Restricted membership and run details remain
+    outside the public repository; subsequent tuning must not inspect or alter
+    the locked test membership.
 
 - [ ] **P1.5 Extend evaluation for mixed answer types.** Add boolean/unknown
   classification and numeric extraction metrics without conflating them.
