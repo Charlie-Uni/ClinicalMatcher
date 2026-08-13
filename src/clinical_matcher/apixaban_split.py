@@ -37,7 +37,7 @@ SPLIT_SCHEMA = "schemas/apixaban-split-manifest-1.0.0.schema.json"
 SEMANTIC_SCHEMA = "schemas/semantic-scan-summary-1.0.0.schema.json"
 SPLIT_NAMES = ("train", "validation", "test")
 ALGORITHM_NAME = "grouped_multilabel_greedy"
-ALGORITHM_VERSION = "1.0.0"
+ALGORITHM_VERSION = "1.1.0"
 
 
 class ApixabanSplitError(ValueError):
@@ -175,9 +175,93 @@ def _assignment_cost(
             observed = values[token]
             if split_name == candidate:
                 observed += group_tokens[token]
-            target = total * fractions[split_name]
-            cost += ((observed - target) ** 2) / max(total, 1)
+            cost += _token_cost(
+                observed, total, fractions[split_name]
+            )
     return cost
+
+
+def _token_cost(observed: int, total: int, fraction: float) -> float:
+    target = total * fraction
+    return (
+        ((observed - target) ** 2) / max(total, 1)
+        + (25.0 if observed == 0 else 0.0)
+    )
+
+
+def _improve_group_assignment(
+    assigned_groups: Dict[str, List[Tuple[str, ...]]],
+    group_tokens: Mapping[Tuple[str, ...], Counter[str]],
+    current_tokens: Dict[str, Counter[str]],
+    global_tokens: Counter[str],
+    fractions: Mapping[str, float],
+    seed: int,
+) -> None:
+    for _ in range(1000):
+        best = None
+        for left_index, left_name in enumerate(SPLIT_NAMES):
+            for right_name in SPLIT_NAMES[left_index + 1 :]:
+                for left_group in assigned_groups[left_name]:
+                    for right_group in assigned_groups[right_name]:
+                        if len(left_group) != len(right_group):
+                            continue
+                        affected = set(group_tokens[left_group]) | set(
+                            group_tokens[right_group]
+                        )
+                        delta = 0.0
+                        for token in affected:
+                            total = global_tokens[token]
+                            left_before = current_tokens[left_name][token]
+                            right_before = current_tokens[right_name][token]
+                            left_after = (
+                                left_before
+                                - group_tokens[left_group][token]
+                                + group_tokens[right_group][token]
+                            )
+                            right_after = (
+                                right_before
+                                - group_tokens[right_group][token]
+                                + group_tokens[left_group][token]
+                            )
+                            delta += _token_cost(
+                                left_after, total, fractions[left_name]
+                            )
+                            delta += _token_cost(
+                                right_after, total, fractions[right_name]
+                            )
+                            delta -= _token_cost(
+                                left_before, total, fractions[left_name]
+                            )
+                            delta -= _token_cost(
+                                right_before, total, fractions[right_name]
+                            )
+                        tie = _stable_tie(
+                            seed,
+                            f"swap|{left_name}|{'|'.join(left_group)}|"
+                            f"{right_name}|{'|'.join(right_group)}",
+                        )
+                        candidate = (
+                            delta,
+                            tie,
+                            left_name,
+                            right_name,
+                            left_group,
+                            right_group,
+                        )
+                        if best is None or candidate < best:
+                            best = candidate
+        if best is None or best[0] >= -1e-12:
+            return
+        _, _, left_name, right_name, left_group, right_group = best
+        assigned_groups[left_name].remove(left_group)
+        assigned_groups[right_name].remove(right_group)
+        assigned_groups[left_name].append(right_group)
+        assigned_groups[right_name].append(left_group)
+        current_tokens[left_name].subtract(group_tokens[left_group])
+        current_tokens[left_name].update(group_tokens[right_group])
+        current_tokens[right_name].subtract(group_tokens[right_group])
+        current_tokens[right_name].update(group_tokens[left_group])
+    raise ApixabanSplitError("Label-balance swap optimization did not converge")
 
 
 def _assign_groups(
@@ -212,13 +296,16 @@ def _assign_groups(
             _stable_tie(seed, "|".join(group)),
         ),
     )
-    assigned: Dict[str, List[str]] = {name: [] for name in SPLIT_NAMES}
+    assigned_groups: Dict[str, List[Tuple[str, ...]]] = {
+        name: [] for name in SPLIT_NAMES
+    }
     current_tokens = {name: Counter() for name in SPLIT_NAMES}
     for group in ordered:
         candidates = [
             name
             for name in SPLIT_NAMES
-            if len(assigned[name]) + len(group) <= targets[name]
+            if sum(len(item) for item in assigned_groups[name]) + len(group)
+            <= targets[name]
         ]
         if not candidates:
             raise ApixabanSplitError(
@@ -237,8 +324,24 @@ def _assign_groups(
                 _stable_tie(seed, f"{name}|{'|'.join(group)}"),
             ),
         )
-        assigned[selected].extend(group)
+        assigned_groups[selected].append(group)
         current_tokens[selected].update(group_tokens[group])
+    _improve_group_assignment(
+        assigned_groups,
+        group_tokens,
+        current_tokens,
+        global_tokens,
+        fractions,
+        seed,
+    )
+    assigned = {
+        name: [
+            patient_id
+            for group in assigned_groups[name]
+            for patient_id in group
+        ]
+        for name in SPLIT_NAMES
+    }
     if {name: len(values) for name, values in assigned.items()} != dict(targets):
         raise ApixabanSplitError("Generated split sizes do not match targets")
     return {name: tuple(sorted(values)) for name, values in assigned.items()}
@@ -280,6 +383,7 @@ def _balance_report(
     questions = []
     deviations = []
     zero_support = 0
+    unavoidable_zero_support = 0
     for question_id in sorted(by_question):
         overall = _status_counts(by_question[question_id])
         split_counts = {
@@ -290,6 +394,9 @@ def _balance_report(
             for label, overall_count in overall[group_name].items():
                 if overall_count == 0:
                     continue
+                unavoidable_zero_support += max(
+                    0, len(SPLIT_NAMES) - min(overall_count, len(SPLIT_NAMES))
+                )
                 overall_rate = overall_count / len(by_question[question_id])
                 for split_name in SPLIT_NAMES:
                     split_count = split_counts[split_name][group_name][label]
@@ -315,6 +422,12 @@ def _balance_report(
             sum(deviations) / len(deviations) if deviations else 0.0
         ),
         "zero_support_split_label_cell_count": zero_support,
+        "minimum_unavoidable_zero_support_cell_count": (
+            unavoidable_zero_support
+        ),
+        "excess_zero_support_cell_count": (
+            zero_support - unavoidable_zero_support
+        ),
         "questions": questions,
     }
 
@@ -371,6 +484,7 @@ def validate_apixaban_split_manifest(
         raise ApixabanSplitError("Balance report does not cover frozen catalog")
     deviations = []
     zero_support = 0
+    unavoidable_zero_support = 0
     total_patients = len(all_ids)
     for question in balance["questions"]:
         for group_name in ("fact_status_counts", "source_status_counts"):
@@ -395,6 +509,9 @@ def validate_apixaban_split_manifest(
                     )
                 if overall_count == 0:
                     continue
+                unavoidable_zero_support += max(
+                    0, len(SPLIT_NAMES) - min(overall_count, len(SPLIT_NAMES))
+                )
                 overall_rate = overall_count / total_patients
                 for split_name in SPLIT_NAMES:
                     split_count = question["splits"][split_name][group_name][
@@ -415,6 +532,12 @@ def validate_apixaban_split_manifest(
         raise ApixabanSplitError("Balance deviation metrics are incorrect")
     if balance["zero_support_split_label_cell_count"] != zero_support:
         raise ApixabanSplitError("Zero-support balance count is incorrect")
+    if balance["minimum_unavoidable_zero_support_cell_count"] != (
+        unavoidable_zero_support
+    ) or balance["excess_zero_support_cell_count"] != (
+        zero_support - unavoidable_zero_support
+    ):
+        raise ApixabanSplitError("Zero-support feasibility counts are incorrect")
     status = document["status"]
     freeze = document["freeze"]
     if status == "candidate":

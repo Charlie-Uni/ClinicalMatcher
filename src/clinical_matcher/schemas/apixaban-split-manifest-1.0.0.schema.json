@@ -68,7 +68,7 @@
       ],
       "properties": {
         "algorithm": {"const": "grouped_multilabel_greedy"},
-        "algorithm_version": {"const": "1.0.0"},
+        "algorithm_version": {"enum": ["1.0.0", "1.1.0"]},
         "seed": {"type": "integer", "minimum": 0},
         "requested_fractions": {"$ref": "#/$defs/splitFractions"},
         "target_patient_counts": {"$ref": "#/$defs/splitCounts"},
@@ -104,6 +104,8 @@
         "maximum_absolute_prevalence_deviation",
         "mean_absolute_prevalence_deviation",
         "zero_support_split_label_cell_count",
+        "minimum_unavoidable_zero_support_cell_count",
+        "excess_zero_support_cell_count",
         "questions"
       ],
       "properties": {
@@ -115,6 +117,12 @@
           "type": "number", "minimum": 0, "maximum": 1
         },
         "zero_support_split_label_cell_count": {
+          "type": "integer", "minimum": 0
+        },
+        "minimum_unavoidable_zero_support_cell_count": {
+          "type": "integer", "minimum": 0
+        },
+        "excess_zero_support_cell_count": {
           "type": "integer", "minimum": 0
         },
         "questions": {

@@ -281,8 +281,11 @@ clinical-matcher-apixaban-split candidate \
 
 The candidate contains pseudonymous membership and note-content fingerprints,
 so it remains local. It records exact split sizes, per-question distributions,
-prevalence deviations, zero-support cells, admission isolation, exact-content
-isolation, source hashes, algorithm version, seed, and generating commit.
+prevalence deviations, observed and mathematically unavoidable zero-support
+cells, admission isolation, exact-content isolation, source hashes, algorithm
+version, seed, and generating commit. Algorithm `1.1.0` prioritizes attainable
+rare-label coverage and then performs deterministic equal-size group swaps; it
+does not search multiple seeds and select the most favorable result.
 
 The candidate is not frozen until an authorized local embedding scan evaluates
 all cross-split pairs, or an ANN scan reports measured candidate recall. The
