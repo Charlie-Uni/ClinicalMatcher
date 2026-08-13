@@ -1,0 +1,134 @@
+{
+  "rule_set_version": "1.0.0",
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "development_splits": ["train", "validation"],
+  "test_labels_used": false,
+  "method": "reviewed_question_semantics_and_lexical_rules",
+  "negation_cues": [
+    "\\bno(?:\\s+known)?(?:\\s+history\\s+of)?\\b",
+    "\\bden(?:y|ies|ied)\\b",
+    "\\bwithout\\b",
+    "\\bnegative\\s+for\\b",
+    "\\bfree\\s+of\\b",
+    "\\bresolved\\b"
+  ],
+  "uncertainty_cues": [
+    "\\bpossible\\b",
+    "\\bpossibly\\b",
+    "\\bsuspected\\b",
+    "\\brule(?:d)?\\s+out\\b",
+    "\\bcannot\\s+exclude\\b",
+    "\\bfamily\\s+history\\b",
+    "\\bscreen(?:ing|ed)?\\s+for\\b",
+    "\\brisk\\s+of\\b",
+    "\\bevaluate(?:d)?\\s+for\\b"
+  ],
+  "rules": [
+    {
+      "source_criterion_label": "afib",
+      "aliases": ["\\b(?:atrial\\s+fibrillation|a[ -]?fib|afib)\\b"]
+    },
+    {
+      "source_criterion_label": "chads2",
+      "aliases": ["\\bchads?2(?:\\s+score)?\\b"]
+    },
+    {
+      "source_criterion_label": "prior_stroke",
+      "aliases": ["\\b(?:stroke|cerebrovascular\\s+accident|cva|transient\\s+ischemic\\s+attack|tia)\\b"]
+    },
+    {
+      "source_criterion_label": "arterial_hypertension",
+      "aliases": ["\\b(?:arterial\\s+hypertension|hypertension|htn|high\\s+blood\\s+pressure|high\\s+bp)\\b"]
+    },
+    {
+      "source_criterion_label": "t2d",
+      "aliases": ["\\b(?:diabetes(?:\\s+mellitus)?|type\\s*[12]\\s+diabetes|t[12]dm|dm[12])\\b"]
+    },
+    {
+      "source_criterion_label": "blood_glucose",
+      "aliases": ["\\b(?:blood\\s+)?glucose\\b", "\\bglu\\b"]
+    },
+    {
+      "source_criterion_label": "heart_failure",
+      "aliases": ["\\b(?:heart\\s+failure|congestive\\s+heart\\s+failure|chf|hfref|hfpef)\\b"]
+    },
+    {
+      "source_criterion_label": "lvef",
+      "aliases": ["\\b(?:lvef|ejection\\s+fraction|ef)\\b"]
+    },
+    {
+      "source_criterion_label": "surgical_valvular_disease",
+      "aliases": [
+        "\\b(?:valvular|valve)\\s+disease\\s+requiring\\s+surgery\\b",
+        "\\b(?:valve\\s+(?:replacement|surgery)|severe\\s+(?:aortic|mitral)\\s+stenosis)\\b"
+      ]
+    },
+    {
+      "source_criterion_label": "afib_ablation",
+      "aliases": [
+        "\\b(?:atrial\\s+fibrillation|a[ -]?fib|afib).{0,40}\\bablation\\b",
+        "\\bablation\\b.{0,40}\\b(?:atrial\\s+fibrillation|a[ -]?fib|afib)\\b"
+      ]
+    },
+    {
+      "source_criterion_label": "bleeding",
+      "aliases": ["\\b(?:serious|major|gastrointestinal|gi)\\s+(?:bleed(?:ing)?|hemorrhage)\\b"],
+      "required_context": "\\b(?:recent|current|active|this\\s+admission|within\\s+(?:the\\s+)?(?:last|past)?\\s*6\\s+months?|past\\s+6\\s+months?)\\b"
+    },
+    {
+      "source_criterion_label": "peptic_ulcer_disease",
+      "aliases": ["\\b(?:peptic\\s+ulcer(?:\\s+disease)?|pud|gastric\\s+ulcer|duodenal\\s+ulcer)\\b"]
+    },
+    {
+      "source_criterion_label": "PLT",
+      "aliases": ["\\b(?:platelet(?:\\s+count)?|plt)\\b"]
+    },
+    {
+      "source_criterion_label": "HGB",
+      "aliases": ["\\b(?:hemoglobin|haemoglobin|hgb|hb)\\b"]
+    },
+    {
+      "source_criterion_label": "recent_stroke",
+      "aliases": [
+        "\\b(?:recent|acute|current)\\s+(?:ischemic\\s+|ischaemic\\s+|hemorrhagic\\s+)?stroke\\b",
+        "\\bstroke\\b.{0,40}\\b(?:this\\s+admission|within\\s+(?:the\\s+)?last\\s+month)\\b"
+      ]
+    },
+    {
+      "source_criterion_label": "hemorrhagic",
+      "aliases": ["\\b(?:hemorrhagic\\s+tendenc(?:y|ies)|haemorrhagic\\s+tendenc(?:y|ies)|blood\\s+dyscrasia(?:s)?)\\b"]
+    },
+    {
+      "source_criterion_label": "CREAT",
+      "aliases": ["\\b(?:serum\\s+)?creatinine\\b", "\\bcreat\\b"]
+    },
+    {
+      "source_criterion_label": "AST",
+      "aliases": ["\\b(?:aspartate\\s+aminotransferase|ast)\\b"]
+    },
+    {
+      "source_criterion_label": "BILI",
+      "aliases": ["\\b(?:total\\s+bilirubin|tot(?:al)?\\s*bili|bilirubin|bili)\\b"]
+    },
+    {
+      "source_criterion_label": "bipolar",
+      "aliases": ["\\b(?:bipolar\\s+disorder|bipolar)\\b"]
+    },
+    {
+      "source_criterion_label": "schizophrenia",
+      "aliases": ["\\b(?:schizophrenia|schizoaffective(?:\\s+disorder)?)\\b"]
+    },
+    {
+      "source_criterion_label": "mdd",
+      "aliases": ["\\b(?:major\\s+depressive\\s+disorder|mdd|depression)\\b"]
+    },
+    {
+      "source_criterion_label": "med_decisions",
+      "aliases": [
+        "\\b(?:unable|cannot|can(?:not|'t))\\s+to?\\s*(?:make|participate\\s+in)\\s+(?:their\\s+own\\s+)?medical\\s+decisions?\\b",
+        "\\blacks?\\s+(?:medical\\s+)?decision(?:al)?\\s+capacity\\b"
+      ],
+      "default_absent": true
+    }
+  ]
+}

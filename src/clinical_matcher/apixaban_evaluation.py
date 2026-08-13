@@ -23,10 +23,10 @@ from .splits import canonical_sha256, current_git_commit
 from .validation import validate_document
 
 
-PREDICTION_SET_VERSION = "1.0.0"
-PREDICTION_SET_SCHEMA = (
-    "schemas/apixaban-prediction-set-1.0.0.schema.json"
-)
+PREDICTION_SET_SCHEMAS = {
+    "1.0.0": "schemas/apixaban-prediction-set-1.0.0.schema.json",
+    "1.1.0": "schemas/apixaban-prediction-set-1.1.0.schema.json",
+}
 EVALUATION_REPORT_VERSION = "1.0.0"
 EVALUATION_REPORT_SCHEMA = (
     "schemas/apixaban-evaluation-report-1.0.0.schema.json"
@@ -164,7 +164,11 @@ def validate_prediction_set(
     document: Dict[str, Any],
     catalog: Optional[Mapping[str, Any]] = None,
 ) -> None:
-    validate_document(document, PREDICTION_SET_SCHEMA)
+    version = document.get("prediction_set_version")
+    schema = PREDICTION_SET_SCHEMAS.get(version)
+    if schema is None:
+        raise ApixabanEvaluationError("Unsupported prediction-set version")
+    validate_document(document, schema)
     questions = question_index(dict(catalog) if catalog else None)
     seen = set()
     for prediction in document["predictions"]:
