@@ -289,7 +289,64 @@ does not search multiple seeds and select the most favorable result.
 
 The candidate is not frozen until an authorized local embedding scan evaluates
 all cross-split pairs, or an ANN scan reports measured candidate recall. The
-detailed pair file remains local. Audit an already-produced pair file with:
+detailed pair file remains local. Install the optional local scanner with
+`pip install -e '.[semantic-scan]'`, then run the fixed-revision PubMedBERT
+scan in the authorized environment:
+
+```bash
+clinical-matcher-apixaban-split scan-semantic \
+  --manifest /restricted/path/apixaban-split.candidate.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --semantic-pairs-output /restricted/path/apixaban-split.semantic-pairs.json \
+  --summary-output /restricted/path/apixaban-split.semantic-summary.json \
+  --batch-size 16 \
+  --acknowledge-restricted-data-local-only
+```
+
+The default model is `NeuML/pubmedbert-base-embeddings` at immutable revision
+`b79526d6ef3645e0df4530322e266f24c829f5ef` (Apache-2.0). Each evidence chunk
+is encoded locally and L2-normalized; normalized chunk vectors are averaged
+and normalized again to form one patient vector. The encoder input is capped
+at 512 tokens per evidence chunk. The command verifies the
+exact staging-corpus hash, patient membership, and per-patient content hashes
+before encoding. It evaluates only the 2,325 cross-split patient pairs and
+writes neither note text nor embeddings. Pair IDs and similarities remain
+restricted; the summary is text-free but still needs governance review before
+export. A similarity hit exits with status 2 and blocks freezing; it does not
+prove that two patients are clinically identical and should be reviewed
+locally. The model was trained primarily on biomedical literature rather than
+MIMIC notes, and the 0.95 threshold is a conservative predeclared screening
+rule, not a clinically calibrated identity threshold; both limitations remain
+part of the audit interpretation.
+
+If the scan finds cross-split pairs, do not raise the threshold or search for a
+favorable seed. Regenerate a candidate that binds the failed scan and treats
+the retained semantic pairs as grouping edges:
+
+```bash
+clinical-matcher-apixaban-split candidate \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --benchmark-manifest /restricted/path/apixaban-fact-benchmark.manifest.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --import-manifest /restricted/path/apixaban-staging-corpus.import-manifest.json \
+  --id-map /restricted/path/apixaban-staging-corpus.id-map.json \
+  --quality-report /restricted/path/apixaban-quality.restricted.json \
+  --semantic-pairs /restricted/path/apixaban-split.semantic-pairs.json \
+  --semantic-summary /restricted/path/apixaban-split.semantic-summary.json \
+  --semantic-source-candidate /restricted/path/apixaban-split.candidate.json \
+  --train-fraction 0.70 --validation-fraction 0.15 --test-fraction 0.15 \
+  --seed 17 --semantic-similarity-threshold 0.95 \
+  --output /restricted/path/apixaban-split.regrouped-candidate.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The regrouped manifest records hashes for the source candidate, failed scan
+summary, and detailed pair payload. It must be scanned again: a pair that was
+within one split in the first candidate may cross a boundary after regrouping.
+Repeat only until a candidate passes; every iteration remains an auditable
+grouping correction, not seed or threshold selection.
+
+To audit a pair file produced by another authorized implementation, use:
 
 ```bash
 clinical-matcher-apixaban-split audit-semantic \

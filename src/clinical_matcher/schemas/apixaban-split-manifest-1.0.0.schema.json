@@ -68,12 +68,15 @@
       ],
       "properties": {
         "algorithm": {"const": "grouped_multilabel_greedy"},
-        "algorithm_version": {"enum": ["1.0.0", "1.1.0"]},
+        "algorithm_version": {"enum": ["1.0.0", "1.1.0", "1.2.0"]},
         "seed": {"type": "integer", "minimum": 0},
         "requested_fractions": {"$ref": "#/$defs/splitFractions"},
         "target_patient_counts": {"$ref": "#/$defs/splitCounts"},
         "grouping_dimensions": {
-          "const": ["patient_id", "admission_id", "exact_note_content"]
+          "oneOf": [
+            {"const": ["patient_id", "admission_id", "exact_note_content"]},
+            {"const": ["patient_id", "admission_id", "exact_note_content", "semantic_near_duplicate"]}
+          ]
         },
         "label_features": {
           "const": ["question_fact_status", "question_source_status"]
@@ -83,6 +86,22 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        },
+        "semantic_grouping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_candidate_manifest_sha256",
+            "semantic_scan_summary_sha256",
+            "detailed_pair_payload_sha256",
+            "retained_pair_count"
+          ],
+          "properties": {
+            "source_candidate_manifest_sha256": {"$ref": "#/$defs/sha256"},
+            "semantic_scan_summary_sha256": {"$ref": "#/$defs/sha256"},
+            "detailed_pair_payload_sha256": {"$ref": "#/$defs/sha256"},
+            "retained_pair_count": {"type": "integer", "minimum": 1}
+          }
         }
       }
     },

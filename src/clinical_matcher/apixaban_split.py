@@ -24,6 +24,7 @@ from .ingestion.apixaban import (
 )
 from .ingestion.patients import assert_restricted_local_path
 from .splits import (
+    SemanticNearDuplicate,
     SplitManifest,
     SplitPartition,
     canonical_sha256,
@@ -37,7 +38,7 @@ SPLIT_SCHEMA = "schemas/apixaban-split-manifest-1.0.0.schema.json"
 SEMANTIC_SCHEMA = "schemas/semantic-scan-summary-1.0.0.schema.json"
 SPLIT_NAMES = ("train", "validation", "test")
 ALGORITHM_NAME = "grouped_multilabel_greedy"
-ALGORITHM_VERSION = "1.1.0"
+ALGORITHM_VERSION = "1.2.0"
 
 
 class ApixabanSplitError(ValueError):
@@ -87,7 +88,7 @@ def _source_status(assessment: Mapping[str, Any]) -> str:
     raise ApixabanSplitError("Unsupported released-label abstention reason")
 
 
-def _patient_content_hash(patient: Mapping[str, Any]) -> str:
+def patient_content_sha256(patient: Mapping[str, Any]) -> str:
     content = [
         {
             "source_span": evidence["source_span"],
@@ -144,6 +145,7 @@ def _group_patients(
     patient_ids: Sequence[str],
     admission_by_patient: Mapping[str, str],
     content_hash_by_patient: Mapping[str, str],
+    semantic_pairs: Sequence[SemanticNearDuplicate] = (),
 ) -> Tuple[Tuple[str, ...], ...]:
     union = _UnionFind(patient_ids)
     for values in (admission_by_patient, content_hash_by_patient):
@@ -153,6 +155,13 @@ def _group_patients(
         for members in grouped.values():
             for patient_id in members[1:]:
                 union.union(members[0], patient_id)
+    known = set(patient_ids)
+    for pair in semantic_pairs:
+        if pair.dimension != "patient":
+            raise ApixabanSplitError("Semantic grouping dimension must be patient")
+        if pair.left_id not in known or pair.right_id not in known:
+            raise ApixabanSplitError("Semantic grouping contains unknown patient")
+        union.union(pair.left_id, pair.right_id)
     groups: Dict[str, List[str]] = defaultdict(list)
     for patient_id in patient_ids:
         groups[union.find(patient_id)].append(patient_id)
@@ -607,11 +616,24 @@ def build_apixaban_split_candidate(
     generation_command: Optional[str] = None,
     required_source_sha256: Optional[str] = OFFICIAL_SOURCE_SHA256,
     required_counts: Optional[Dict[str, int]] = EXPECTED_OFFICIAL_COUNTS,
+    semantic_pairs: Sequence[SemanticNearDuplicate] = (),
+    semantic_grouping_provenance: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     if seed < 0:
         raise ApixabanSplitError("Seed must be non-negative")
     if not 0 <= semantic_similarity_threshold <= 1:
         raise ApixabanSplitError("Semantic threshold must be between 0 and 1")
+    if bool(semantic_pairs) != bool(semantic_grouping_provenance):
+        raise ApixabanSplitError(
+            "Semantic pairs and grouping provenance must be supplied together"
+        )
+    if any(
+        pair.similarity < semantic_similarity_threshold
+        for pair in semantic_pairs
+    ):
+        raise ApixabanSplitError(
+            "Semantic grouping pairs must meet the candidate threshold"
+        )
     validate_apixaban_benchmark(
         benchmark,
         required_source_sha256=required_source_sha256,
@@ -655,7 +677,7 @@ def build_apixaban_split_candidate(
         for patient_id in patient_ids
     }
     content_hash_by_patient = {
-        patient["patient_id"]: _patient_content_hash(patient)
+        patient["patient_id"]: patient_content_sha256(patient)
         for patient in staging_corpus["patients"]
     }
     admission_by_patient = {
@@ -663,7 +685,10 @@ def build_apixaban_split_candidate(
         for record in id_map["records"]
     }
     groups = _group_patients(
-        patient_ids, admission_by_patient, content_hash_by_patient
+        patient_ids,
+        admission_by_patient,
+        content_hash_by_patient,
+        semantic_pairs,
     )
     targets = _target_counts(len(patient_ids), fractions)
     assignments = _assign_groups(
@@ -720,13 +745,18 @@ def build_apixaban_split_candidate(
                 "patient_id",
                 "admission_id",
                 "exact_note_content",
-            ],
+            ] + (["semantic_near_duplicate"] if semantic_pairs else []),
             "label_features": [
                 "question_fact_status",
                 "question_source_status",
             ],
             "seed_selection_status": "predeclared_not_searched",
             "semantic_similarity_threshold": semantic_similarity_threshold,
+            **(
+                {"semantic_grouping": dict(semantic_grouping_provenance)}
+                if semantic_grouping_provenance
+                else {}
+            ),
         },
         "splits": {
             name: {
@@ -780,6 +810,9 @@ def build_apixaban_split_candidate_from_paths(
     import_manifest_path: Path,
     id_map_path: Path,
     quality_report_path: Path,
+    semantic_pairs_path: Optional[Path] = None,
+    semantic_summary_path: Optional[Path] = None,
+    semantic_source_candidate_path: Optional[Path] = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
     paths = (
@@ -795,7 +828,14 @@ def build_apixaban_split_candidate_from_paths(
         if path.stat().st_mode & 0o077:
             raise ApixabanSplitError(f"Restricted input is not owner-only: {path}")
     verify_apixaban_benchmark_files(
-        benchmark_path, benchmark_manifest_path
+        benchmark_path,
+        benchmark_manifest_path,
+        required_source_sha256=kwargs.get(
+            "required_source_sha256", OFFICIAL_SOURCE_SHA256
+        ),
+        required_counts=kwargs.get(
+            "required_counts", EXPECTED_OFFICIAL_COUNTS
+        ),
     )
     documents = [json.loads(path.read_text(encoding="utf-8")) for path in paths]
     benchmark, benchmark_manifest, staging, import_manifest, id_map, quality = (
@@ -807,6 +847,77 @@ def build_apixaban_split_candidate_from_paths(
         raise ApixabanSplitError("Staging file hash mismatch")
     if file_sha256(id_map_path) != import_manifest["outputs"]["id_map_sha256"]:
         raise ApixabanSplitError("ID-map file hash mismatch")
+    semantic_paths = (
+        semantic_pairs_path,
+        semantic_summary_path,
+        semantic_source_candidate_path,
+    )
+    if any(path is not None for path in semantic_paths):
+        if not all(path is not None for path in semantic_paths):
+            raise ApixabanSplitError(
+                "Semantic regrouping requires pair, summary, and source "
+                "candidate paths"
+            )
+        for path in semantic_paths:
+            assert_restricted_local_path(path)
+            if path.stat().st_mode & 0o077:
+                raise ApixabanSplitError(
+                    f"Restricted semantic input is not owner-only: {path}"
+                )
+        raw_pairs = json.loads(semantic_pairs_path.read_text(encoding="utf-8"))
+        if not isinstance(raw_pairs, list):
+            raise ApixabanSplitError("Semantic pair file must be a JSON array")
+        pairs = tuple(SemanticNearDuplicate(**item) for item in raw_pairs)
+        summary = json.loads(semantic_summary_path.read_text(encoding="utf-8"))
+        validate_document(summary, SEMANTIC_SCHEMA)
+        source_candidate = load_apixaban_split_manifest(
+            semantic_source_candidate_path
+        )
+        if summary["split_manifest_sha256"] != source_candidate[
+            "manifest_sha256"
+        ]:
+            raise ApixabanSplitError(
+                "Semantic summary does not reference the source candidate"
+            )
+        if source_candidate["dataset"]["staging_corpus_sha256"] != file_sha256(
+            staging_corpus_path
+        ):
+            raise ApixabanSplitError(
+                "Semantic source candidate references another staging corpus"
+            )
+        serialized_pairs = sorted(
+            raw_pairs,
+            key=lambda item: (
+                item["dimension"],
+                item["left_id"],
+                item["right_id"],
+                item["similarity"],
+            ),
+        )
+        pair_hash = canonical_sha256(serialized_pairs)
+        if pair_hash != summary["results"]["detailed_pair_payload_sha256"]:
+            raise ApixabanSplitError("Semantic pair payload hash mismatch")
+        if len(pairs) != summary["results"][
+            "retained_pairs_at_or_above_threshold"
+        ]:
+            raise ApixabanSplitError("Semantic pair count does not match summary")
+        if not pairs or summary["results"]["leakage_assertion_passed"]:
+            raise ApixabanSplitError(
+                "Semantic regrouping requires a failed scan with retained pairs"
+            )
+        if summary["threshold"] != kwargs.get(
+            "semantic_similarity_threshold", 0.95
+        ):
+            raise ApixabanSplitError("Semantic regrouping threshold changed")
+        kwargs["semantic_pairs"] = pairs
+        kwargs["semantic_grouping_provenance"] = {
+            "source_candidate_manifest_sha256": source_candidate[
+                "manifest_sha256"
+            ],
+            "semantic_scan_summary_sha256": canonical_sha256(summary),
+            "detailed_pair_payload_sha256": pair_hash,
+            "retained_pair_count": len(pairs),
+        }
     return build_apixaban_split_candidate(
         benchmark,
         benchmark_manifest,
@@ -895,7 +1006,7 @@ def write_apixaban_split_document(
     return output_path
 
 
-def write_private_json(document: Dict[str, Any], output_path: Path) -> Path:
+def write_private_json(document: Any, output_path: Path) -> Path:
     assert_restricted_local_path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     try:

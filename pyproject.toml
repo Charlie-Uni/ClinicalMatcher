@@ -12,6 +12,12 @@ license = {file = "LICENSE"}
 authors = [{name = "Charlie-Uni"}]
 dependencies = ["jsonschema>=4.23,<5"]
 
+[project.optional-dependencies]
+semantic-scan = [
+  "numpy>=1.24,<3",
+  "sentence-transformers==5.1.2",
+]
+
 [project.scripts]
 clinical-matcher-smoke = "clinical_matcher.cli:main"
 clinical-matcher-validate = "clinical_matcher.validate_cli:main"

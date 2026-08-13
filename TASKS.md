@@ -194,9 +194,12 @@ and honest about which results are synthetic.
     label balance, exact duplicate checks, and a locally audited semantic
     near-duplicate scan.
   - Current gate: the deterministic grouped, label-aware candidate/freeze
-    workflow is implemented. Final freeze still requires an explicitly reviewed
-    proportion/seed decision and a passing local semantic near-duplicate scan;
-    a proposed candidate must not be treated as the locked test set.
+    workflow and fixed-revision exhaustive local semantic scanner are
+    implemented. The first actual scan found cross-split pairs, so the
+    hash-bound semantic regrouping path is now implemented and must be rerun
+    until a candidate passes without changing the threshold or searching
+    seeds. Final freeze also requires an explicitly reviewed proportion/seed
+    decision; a proposed candidate must not be treated as the locked test set.
 
 - [ ] **P1.5 Extend evaluation for mixed answer types.** Add boolean/unknown
   classification and numeric extraction metrics without conflating them.

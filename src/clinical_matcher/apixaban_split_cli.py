@@ -12,6 +12,11 @@ from .apixaban_split import (
     write_apixaban_split_document,
     write_private_json,
 )
+from .apixaban_semantic_scan import (
+    DEFAULT_MODEL_ID,
+    DEFAULT_MODEL_REVISION,
+    run_apixaban_semantic_scan,
+)
 from .ingestion.patients import assert_restricted_local_path
 from .semantic_audit import build_semantic_scan_summary
 from .splits import SemanticNearDuplicate, assert_no_split_leakage
@@ -39,6 +44,9 @@ def build_parser() -> argparse.ArgumentParser:
     candidate.add_argument("--import-manifest", type=Path, required=True)
     candidate.add_argument("--id-map", type=Path, required=True)
     candidate.add_argument("--quality-report", type=Path, required=True)
+    candidate.add_argument("--semantic-pairs", type=Path)
+    candidate.add_argument("--semantic-summary", type=Path)
+    candidate.add_argument("--semantic-source-candidate", type=Path)
     candidate.add_argument("--train-fraction", type=float, required=True)
     candidate.add_argument("--validation-fraction", type=float, required=True)
     candidate.add_argument("--test-fraction", type=float, required=True)
@@ -70,6 +78,21 @@ def build_parser() -> argparse.ArgumentParser:
         "--acknowledge-restricted-data-local-only", action="store_true"
     )
 
+    scan = commands.add_parser("scan-semantic")
+    scan.add_argument("--manifest", type=Path, required=True)
+    scan.add_argument("--staging-corpus", type=Path, required=True)
+    scan.add_argument("--semantic-pairs-output", type=Path, required=True)
+    scan.add_argument("--summary-output", type=Path, required=True)
+    scan.add_argument("--embedding-model-id", default=DEFAULT_MODEL_ID)
+    scan.add_argument(
+        "--embedding-model-revision", default=DEFAULT_MODEL_REVISION
+    )
+    scan.add_argument("--batch-size", type=int, default=16)
+    scan.add_argument("--device")
+    scan.add_argument(
+        "--acknowledge-restricted-data-local-only", action="store_true"
+    )
+
     freeze = commands.add_parser("freeze")
     freeze.add_argument("--candidate", type=Path, required=True)
     freeze.add_argument("--semantic-summary", type=Path, required=True)
@@ -98,6 +121,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             args.import_manifest,
             args.id_map,
             args.quality_report,
+            semantic_pairs_path=args.semantic_pairs,
+            semantic_summary_path=args.semantic_summary,
+            semantic_source_candidate_path=args.semantic_source_candidate,
             fractions={
                 "train": args.train_fraction,
                 "validation": args.validation_fraction,
@@ -151,6 +177,29 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         )
         print(f"Local aggregate output: {args.output}")
         return 0
+
+    if args.command == "scan-semantic":
+        summary = run_apixaban_semantic_scan(
+            split_path=args.manifest,
+            staging_path=args.staging_corpus,
+            pair_output_path=args.semantic_pairs_output,
+            summary_output_path=args.summary_output,
+            model_id=args.embedding_model_id,
+            model_revision=args.embedding_model_revision,
+            batch_size=args.batch_size,
+            device=args.device,
+        )
+        results = summary["results"]
+        print(
+            "Exhaustive local semantic scan completed: "
+            f"evaluated={summary['search']['candidate_pairs_evaluated']}, "
+            f"retained={results['retained_pairs_at_or_above_threshold']}, "
+            f"leakage_assertion_passed="
+            f"{results['leakage_assertion_passed']}."
+        )
+        print(f"Restricted pair output: {args.semantic_pairs_output}")
+        print(f"Text-free local summary: {args.summary_output}")
+        return 0 if results["leakage_assertion_passed"] else 2
 
     if args.command == "freeze":
         candidate = load_apixaban_split_manifest(args.candidate)
