@@ -38,3 +38,21 @@ measurable. It does not fabricate the new fields when loading an old file.
 New deterministic outputs use `1.1.0`; converting an old output requires
 regeneration from its original evidence and rules rather than an automatic
 placeholder migration.
+
+## Apixaban prediction set `1.1.0` to `1.2.0`
+
+Version `1.2.0` supports structured local-model inference. It replaces the
+deterministic extractor's `rule_set_sha256` with
+`inference_config_sha256`, and replaces `rule_ids` with general `trace_ids`.
+Stable `evidence_ids` remain mandatory. The evaluator accepts all three
+prediction-set versions and does not silently translate between them.
+
+Version `1.2.0` outputs must be regenerated from the pinned model, prompt,
+input policy, and evidence. A `1.1.0` rule output cannot be relabeled as a model
+output, and a model output cannot invent deterministic rule provenance.
+
+P2.2 also introduces `apixaban-structured-run-report-1.0.0`. It is a separate
+aggregate artifact rather than a prediction-set extension because inference
+latency, token counts, schema validity, truncation, and memory describe the run
+as a whole. The report binds to the benchmark, frozen split, model manifest,
+prompt/configuration, code commit, and prediction-content hash.

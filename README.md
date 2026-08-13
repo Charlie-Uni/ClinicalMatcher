@@ -76,7 +76,10 @@ question definitions distinguish fact truth from eligibility, preserve
 official release does not provide. Its P2.1 deterministic extraction baseline
 adds versioned lexical, negation, temporal-context, and numeric min/max rules,
 evidence-linked prediction traces, explicit abstention, and a validation-only
-restricted report before any local-model or retrieval experiment.
+restricted report before any local-model or retrieval experiment. P2.2 adds a
+loopback-only structured-output baseline using a digest-pinned local Llama 3.1
+8B Q4_K_M model, with versioned prompt/input policy, strict evidence IDs,
+measured invalid-output abstention, and latency/token/memory reporting.
 
 The executable P1 evaluation protocol is documented in
 [docs/EVALUATION.md](docs/EVALUATION.md). It provides lineage-tracked
@@ -135,3 +138,9 @@ source trees.
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
+
+The repository does not distribute Llama model weights. The optional P2.2
+baseline is Built with Llama and uses Llama 3.1 under the separate
+[Llama 3.1 Community License](https://www.llama.com/llama3_1/license/), not
+Apache-2.0 or an OSI open-source license. Llama 3.1 is licensed under the Llama
+3.1 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.

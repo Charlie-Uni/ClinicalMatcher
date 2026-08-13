@@ -472,3 +472,66 @@ The first real run is intentionally a validation-only engineering baseline.
 Its owner-only aggregate report confirms that the complete restricted pipeline
 runs, but it is exploratory and is not a clinical-performance or publication
 claim. Validation predictions and reports remain outside Git.
+
+## Pinned local Llama structured baseline
+
+P2.2 freezes the previously used Llama path as a reproducible local baseline,
+not as a clinical model. The machine-readable contract
+`apixaban-llama-structured-contract-1.0.0.json` pins:
+
+- Llama 3.1 8B Instruct Q4_K_M and the complete Ollama manifest/model-blob
+  digests;
+- Ollama `0.32.6` on `127.0.0.1:11434`, with proxies and cloud fallback
+  disabled by the client;
+- the Llama 3.1 Community License and Acceptable Use Policy, explicitly
+  recording that Llama is open-weight but not OSI open source;
+- `temperature=0`, `seed=17`, 16,384 context tokens, and 4,096 maximum output
+  tokens;
+- prompt `apixaban-23-facts-structured-1.0.0` and the deterministic
+  `ordered-complete-evidence-prefix-v1` input policy;
+- the development hardware profile and research-only use boundary.
+
+The P2.2 short-context policy retains the longest ordered prefix of complete
+evidence chunks within 8,000 characters. It never cuts a chunk and never uses
+labels to select text. This deliberately creates a measurable truncation
+baseline; P2.3 will run the same model, question contract, and decoding policy
+with full notes to isolate the effect of long context.
+
+Start Ollama locally and run validation with:
+
+```bash
+clinical-matcher-apixaban-structured-llm \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --split validation \
+  --output-dir /restricted/path/llama31-structured-v1-validation \
+  --acknowledge-restricted-data-local-only
+```
+
+The command refuses to run if the Ollama version or local model digest differs
+from the contract. The model receives all 23 public question definitions and
+the selected evidence, but no gold answers. The note is marked as untrusted
+quoted data in the system prompt. A dynamic JSON Schema restricts question
+IDs, types, values, units, and evidence IDs to the current request. Every
+question must appear exactly once.
+
+Prediction-set `1.2.0` stores the inference-contract hash and validated typed
+predictions. If a request returns invalid JSON, violates the schema, duplicates
+a question, or omits one, the whole request becomes 23 explicit `unknown`
+predictions. There is no regex repair, manual correction, or hidden retry.
+
+The separate structured run report records schema-valid/invalid requests,
+input retention and truncation, latency mean/p50/p95, prompt/output token
+counts, output throughput, actual model memory, hardware, model digest, prompt
+version, configuration hash, and prediction-content hash. The usual P1.5
+evaluator then measures fact accuracy using the same frozen validation split as
+P2.1. Both reports remain owner-only and restricted. `test` additionally
+requires `--acknowledge-locked-test-inference`; final test evaluation is still
+deferred until model selection is closed.
+
+The completed validation run established an honest engineering baseline: its
+structured format was reliable and aggregate task metrics improved over the
+lexical baseline on several dimensions, but inference was slow on the M3
+MacBook Air, most notes were truncated by design, and unknown recognition
+remained weak. These findings motivate the matched P2.3 long-context comparison
+without supporting any clinical-use claim.

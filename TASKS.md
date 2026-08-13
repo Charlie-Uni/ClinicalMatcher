@@ -240,8 +240,9 @@ pipeline.
     until model selection closes; no validation aggregate is presented as a
     clinical-performance claim.
 
-- [ ] **P2.2 Implement a local frozen-model structured-output baseline.** Ask a
-  pinned open model to return the P1.1 schema from the note and question.
+- [x] **P2.2 Implement a local frozen-model structured-output baseline.** Ask a
+  pinned open-weight model to return the P1.1 typed-fact contract from the note
+  and question.
   - Entry condition: record available hardware, model license, local inference
     path, context limit, and deterministic decoding policy.
   - Constraints: restricted text stays in an approved local environment; no
@@ -249,6 +250,16 @@ pipeline.
     not silently hand-corrected.
   - Verify: schema-valid rate, task metrics, latency, token count, memory, model
     revision, prompt version, and reproducible run report are present.
+  - Completion: the exact local Llama 3.1 8B Instruct Q4_K_M Ollama manifest,
+    Llama Community License status, Ollama version, M3/24 GB hardware, 16K
+    context, zero-temperature seed, 8,000-character complete-chunk prefix, and
+    prompt version are frozen in contract `1.0.0`. The loopback-only client
+    disables proxy/cloud fallback, verifies the model digest before inference,
+    and converts a schema-invalid request to 23 measured abstentions without
+    retry or repair. Prediction-set `1.2.0` and an owner-only aggregate run
+    report record evidence links, schema-valid rate, truncation, latency,
+    tokens, memory, and output throughput. A 15-patient validation run and the
+    P1.5 metrics completed; locked test inference remains deferred.
 
 - [ ] **P2.3 Implement the matched long-context baseline.** Evaluate the same
   frozen model with the full note under a declared truncation/token policy.
