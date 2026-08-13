@@ -456,6 +456,10 @@ def verify_apixaban_benchmark_files(
 ) -> Dict[str, int]:
     for path in (benchmark_path, manifest_path):
         assert_restricted_local_path(path)
+        if path.stat().st_mode & 0o077:
+            raise ApixabanBenchmarkError(
+                f"Restricted benchmark file is not owner-only: {path}"
+            )
     benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     counts = validate_apixaban_benchmark(

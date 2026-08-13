@@ -274,6 +274,17 @@ class ApixabanBenchmarkTest(unittest.TestCase):
                 required_counts=SYNTHETIC_COUNTS,
             )
             self.assertEqual(46, counts["assessment_count"])
+            os.chmod(benchmark_path, 0o644)
+            with self.assertRaisesRegex(
+                ApixabanBenchmarkError, "not owner-only"
+            ):
+                verify_apixaban_benchmark_files(
+                    benchmark_path,
+                    manifest_path,
+                    required_source_sha256=None,
+                    required_counts=SYNTHETIC_COUNTS,
+                )
+            os.chmod(benchmark_path, 0o600)
             with self.assertRaises(FileExistsError):
                 write_apixaban_benchmark(
                     benchmark,

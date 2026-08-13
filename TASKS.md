@@ -159,7 +159,7 @@ and honest about which results are synthetic.
   - Verify: a reviewed mapping table covers exactly 23 unique questions and
     round-trips valid boolean, numeric, and unknown examples.
 
-- [ ] **P1.2 Build the restricted benchmark adapter.** Convert the existing
+- [x] **P1.2 Build the restricted benchmark adapter.** Convert the existing
   verified staging corpus into a local benchmark document containing all 100
   pseudonymous patients and all 2,300 official human-reviewed answers.
   - Entry condition: P1.1 is frozen and the official source hash matches the
