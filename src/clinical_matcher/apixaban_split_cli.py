@@ -44,9 +44,11 @@ def build_parser() -> argparse.ArgumentParser:
     candidate.add_argument("--import-manifest", type=Path, required=True)
     candidate.add_argument("--id-map", type=Path, required=True)
     candidate.add_argument("--quality-report", type=Path, required=True)
-    candidate.add_argument("--semantic-pairs", type=Path)
-    candidate.add_argument("--semantic-summary", type=Path)
-    candidate.add_argument("--semantic-source-candidate", type=Path)
+    candidate.add_argument("--semantic-pairs", type=Path, action="append")
+    candidate.add_argument("--semantic-summary", type=Path, action="append")
+    candidate.add_argument(
+        "--semantic-source-candidate", type=Path, action="append"
+    )
     candidate.add_argument("--train-fraction", type=float, required=True)
     candidate.add_argument("--validation-fraction", type=float, required=True)
     candidate.add_argument("--test-fraction", type=float, required=True)

@@ -810,9 +810,9 @@ def build_apixaban_split_candidate_from_paths(
     import_manifest_path: Path,
     id_map_path: Path,
     quality_report_path: Path,
-    semantic_pairs_path: Optional[Path] = None,
-    semantic_summary_path: Optional[Path] = None,
-    semantic_source_candidate_path: Optional[Path] = None,
+    semantic_pairs_path: Any = None,
+    semantic_summary_path: Any = None,
+    semantic_source_candidate_path: Any = None,
     **kwargs: Any,
 ) -> Dict[str, Any]:
     paths = (
@@ -847,76 +847,123 @@ def build_apixaban_split_candidate_from_paths(
         raise ApixabanSplitError("Staging file hash mismatch")
     if file_sha256(id_map_path) != import_manifest["outputs"]["id_map_sha256"]:
         raise ApixabanSplitError("ID-map file hash mismatch")
-    semantic_paths = (
-        semantic_pairs_path,
-        semantic_summary_path,
-        semantic_source_candidate_path,
-    )
-    if any(path is not None for path in semantic_paths):
-        if not all(path is not None for path in semantic_paths):
+    def path_sequence(value: Any) -> Tuple[Path, ...]:
+        if value is None:
+            return ()
+        if isinstance(value, Path):
+            return (value,)
+        return tuple(value)
+
+    pair_paths = path_sequence(semantic_pairs_path)
+    summary_paths = path_sequence(semantic_summary_path)
+    source_paths = path_sequence(semantic_source_candidate_path)
+    if pair_paths or summary_paths or source_paths:
+        if not (
+            len(pair_paths) == len(summary_paths) == len(source_paths)
+        ):
             raise ApixabanSplitError(
-                "Semantic regrouping requires pair, summary, and source "
-                "candidate paths"
+                "Semantic regrouping requires equally many pair, summary, "
+                "and source-candidate paths"
             )
-        for path in semantic_paths:
-            assert_restricted_local_path(path)
-            if path.stat().st_mode & 0o077:
+        unique_pairs: Dict[Tuple[str, str], SemanticNearDuplicate] = {}
+        iterations = []
+        corpus_hash = file_sha256(staging_corpus_path)
+        for index, (pair_path, summary_path, source_path) in enumerate(
+            zip(pair_paths, summary_paths, source_paths)
+        ):
+            for path in (pair_path, summary_path, source_path):
+                assert_restricted_local_path(path)
+                if path.stat().st_mode & 0o077:
+                    raise ApixabanSplitError(
+                        f"Restricted semantic input is not owner-only: {path}"
+                    )
+            raw_pairs = json.loads(pair_path.read_text(encoding="utf-8"))
+            if not isinstance(raw_pairs, list):
                 raise ApixabanSplitError(
-                    f"Restricted semantic input is not owner-only: {path}"
+                    "Semantic pair file must be a JSON array"
                 )
-        raw_pairs = json.loads(semantic_pairs_path.read_text(encoding="utf-8"))
-        if not isinstance(raw_pairs, list):
-            raise ApixabanSplitError("Semantic pair file must be a JSON array")
-        pairs = tuple(SemanticNearDuplicate(**item) for item in raw_pairs)
-        summary = json.loads(semantic_summary_path.read_text(encoding="utf-8"))
-        validate_document(summary, SEMANTIC_SCHEMA)
-        source_candidate = load_apixaban_split_manifest(
-            semantic_source_candidate_path
-        )
-        if summary["split_manifest_sha256"] != source_candidate[
-            "manifest_sha256"
-        ]:
-            raise ApixabanSplitError(
-                "Semantic summary does not reference the source candidate"
-            )
-        if source_candidate["dataset"]["staging_corpus_sha256"] != file_sha256(
-            staging_corpus_path
-        ):
-            raise ApixabanSplitError(
-                "Semantic source candidate references another staging corpus"
-            )
-        serialized_pairs = sorted(
-            raw_pairs,
-            key=lambda item: (
-                item["dimension"],
-                item["left_id"],
-                item["right_id"],
-                item["similarity"],
-            ),
-        )
-        pair_hash = canonical_sha256(serialized_pairs)
-        if pair_hash != summary["results"]["detailed_pair_payload_sha256"]:
-            raise ApixabanSplitError("Semantic pair payload hash mismatch")
-        if len(pairs) != summary["results"][
-            "retained_pairs_at_or_above_threshold"
-        ]:
-            raise ApixabanSplitError("Semantic pair count does not match summary")
-        if not pairs or summary["results"]["leakage_assertion_passed"]:
-            raise ApixabanSplitError(
-                "Semantic regrouping requires a failed scan with retained pairs"
-            )
-        if summary["threshold"] != kwargs.get(
-            "semantic_similarity_threshold", 0.95
-        ):
-            raise ApixabanSplitError("Semantic regrouping threshold changed")
-        kwargs["semantic_pairs"] = pairs
-        kwargs["semantic_grouping_provenance"] = {
-            "source_candidate_manifest_sha256": source_candidate[
+            pairs = tuple(SemanticNearDuplicate(**item) for item in raw_pairs)
+            summary = json.loads(summary_path.read_text(encoding="utf-8"))
+            validate_document(summary, SEMANTIC_SCHEMA)
+            source_candidate = load_apixaban_split_manifest(source_path)
+            if summary["split_manifest_sha256"] != source_candidate[
                 "manifest_sha256"
-            ],
-            "semantic_scan_summary_sha256": canonical_sha256(summary),
-            "detailed_pair_payload_sha256": pair_hash,
-            "retained_pair_count": len(pairs),
+            ]:
+                raise ApixabanSplitError(
+                    "Semantic summary does not reference the source candidate"
+                )
+            if source_candidate["dataset"][
+                "staging_corpus_sha256"
+            ] != corpus_hash:
+                raise ApixabanSplitError(
+                    "Semantic source candidate references another staging corpus"
+                )
+            recorded = source_candidate["policy"].get("semantic_grouping")
+            if index == 0 and recorded:
+                raise ApixabanSplitError(
+                    "First semantic source candidate must precede regrouping"
+                )
+            if index > 0:
+                inherited = (
+                    recorded.get("iterations")
+                    if recorded and "iterations" in recorded
+                    else ([recorded] if recorded else [])
+                )
+                if inherited != iterations:
+                    raise ApixabanSplitError(
+                        "Semantic regrouping chain does not inherit prior scans"
+                    )
+            serialized_pairs = sorted(
+                raw_pairs,
+                key=lambda item: (
+                    item["dimension"],
+                    item["left_id"],
+                    item["right_id"],
+                    item["similarity"],
+                ),
+            )
+            pair_hash = canonical_sha256(serialized_pairs)
+            if pair_hash != summary["results"][
+                "detailed_pair_payload_sha256"
+            ]:
+                raise ApixabanSplitError("Semantic pair payload hash mismatch")
+            if len(pairs) != summary["results"][
+                "retained_pairs_at_or_above_threshold"
+            ]:
+                raise ApixabanSplitError(
+                    "Semantic pair count does not match summary"
+                )
+            if not pairs or summary["results"]["leakage_assertion_passed"]:
+                raise ApixabanSplitError(
+                    "Semantic regrouping requires a failed scan with pairs"
+                )
+            if summary["threshold"] != kwargs.get(
+                "semantic_similarity_threshold", 0.95
+            ):
+                raise ApixabanSplitError("Semantic regrouping threshold changed")
+            iteration = {
+                "source_candidate_manifest_sha256": source_candidate[
+                    "manifest_sha256"
+                ],
+                "semantic_scan_summary_sha256": canonical_sha256(summary),
+                "detailed_pair_payload_sha256": pair_hash,
+                "retained_pair_count": len(pairs),
+            }
+            iterations.append(iteration)
+            for pair in pairs:
+                key = tuple(sorted((pair.left_id, pair.right_id)))
+                previous = unique_pairs.get(key)
+                if previous and not math.isclose(
+                    previous.similarity, pair.similarity, abs_tol=1e-12
+                ):
+                    raise ApixabanSplitError(
+                        "Repeated semantic pair has inconsistent similarity"
+                    )
+                unique_pairs[key] = pair
+        kwargs["semantic_pairs"] = tuple(unique_pairs.values())
+        kwargs["semantic_grouping_provenance"] = {
+            "iterations": iterations,
+            "total_unique_pair_count": len(unique_pairs),
         }
     return build_apixaban_split_candidate(
         benchmark,

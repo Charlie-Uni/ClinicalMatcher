@@ -248,8 +248,14 @@ class ApixabanSemanticScanTest(unittest.TestCase):
             self.assertEqual(
                 1,
                 regrouped["policy"]["semantic_grouping"][
-                    "retained_pair_count"
+                    "total_unique_pair_count"
                 ],
+            )
+            self.assertEqual(
+                1,
+                len(
+                    regrouped["policy"]["semantic_grouping"]["iterations"]
+                ),
             )
 
 

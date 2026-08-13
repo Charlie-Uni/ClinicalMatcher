@@ -345,6 +345,11 @@ summary, and detailed pair payload. It must be scanned again: a pair that was
 within one split in the first candidate may cross a boundary after regrouping.
 Repeat only until a candidate passes; every iteration remains an auditable
 grouping correction, not seed or threshold selection.
+For a second or later correction, repeat all three flags
+`--semantic-pairs`, `--semantic-summary`, and
+`--semantic-source-candidate` once per scan, in chronological order. The
+builder rejects a chain that omits an earlier scan or does not inherit its
+grouping provenance; all unique edges are accumulated.
 
 To audit a pair file produced by another authorized implementation, use:
 
