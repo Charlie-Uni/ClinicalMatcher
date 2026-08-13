@@ -199,7 +199,7 @@ and honest about which results are synthetic.
     outside the public repository; subsequent tuning must not inspect or alter
     the locked test membership.
 
-- [ ] **P1.5 Extend evaluation for mixed answer types.** Add boolean/unknown
+- [x] **P1.5 Extend evaluation for mixed answer types.** Add boolean/unknown
   classification and numeric extraction metrics without conflating them.
   - Entry condition: P1.1 defines normalization and any numeric tolerance.
   - Constraints: report per-question and macro results; choose tolerances from
@@ -207,6 +207,12 @@ and honest about which results are synthetic.
   - Verify: tests cover exact match, macro/micro F1, unknown F1, MAE, tolerance
     accuracy, missing values, invalid units, and patient-cluster confidence
     intervals.
+  - Completion: the frozen-split-bound evaluator reports boolean and numeric
+    status classification separately from numeric value metrics, includes
+    per-question and macro views, treats missing predictions as errors, and
+    resamples whole patients for confidence intervals. Because catalog 1.0.0
+    has no canonical numeric units, its reviewed zero-tolerance policy measures
+    exact source-value extraction only and makes no clinical-equivalence claim.
 
 Acceptance: one command regenerates and validates the ignored benchmark, one
 frozen split governs all subsequent work, and no test label has influenced the

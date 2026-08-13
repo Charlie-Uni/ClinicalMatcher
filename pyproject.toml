@@ -36,6 +36,7 @@ clinical-matcher-validate-apixaban-contract = "clinical_matcher.apixaban_contrac
 clinical-matcher-apixaban-benchmark = "clinical_matcher.apixaban_benchmark_cli:main"
 clinical-matcher-apixaban-quality = "clinical_matcher.apixaban_quality_cli:main"
 clinical-matcher-apixaban-split = "clinical_matcher.apixaban_split_cli:main"
+clinical-matcher-evaluate-apixaban = "clinical_matcher.apixaban_evaluate_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

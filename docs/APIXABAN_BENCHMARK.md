@@ -387,3 +387,48 @@ clinical-matcher-apixaban-split freeze \
 Once frozen, the test membership must not guide prompt, retriever, threshold,
 or model selection. Any later split change requires a new version and an
 explicit reason; it cannot silently replace the locked test set.
+
+## Mixed typed-fact evaluation
+
+P1.5 evaluates the 15 boolean and 8 numeric questions as different tasks. A
+prediction set must conform to
+`apixaban-prediction-set-1.0.0.schema.json` and bind itself to the exact
+benchmark hash, frozen split hash, split name, model ID, prompt version,
+generation commit, and generation time. Missing patient-question predictions
+are allowed so that incomplete systems can be measured, but are always scored
+as missing rather than silently converted to `unknown`.
+
+Run train or validation evaluation locally with:
+
+```bash
+clinical-matcher-evaluate-apixaban \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --predictions /restricted/path/validation-predictions.json \
+  --split validation \
+  --bootstrap-samples 1000 \
+  --output-dir /restricted/path/validation-report \
+  --acknowledge-restricted-data-local-only
+```
+
+Locked-test evaluation additionally requires
+`--acknowledge-locked-test-evaluation`. That flag does not authorize tuning on
+test results; it makes the deliberate final-evaluation action explicit.
+
+The report separates:
+
+- boolean `present / absent / unknown` accuracy, macro/micro-F1, unknown-F1,
+  and confusion matrix;
+- numeric `present / unknown` status classification;
+- numeric exact match, valid-pair MAE, value coverage, invalid-unit count, and
+  tolerance accuracy using every gold-present value as the primary denominator;
+- per-question results, macro-by-question results, and patient-cluster
+  bootstrap intervals.
+
+Catalog 1.0.0 defines no canonical numeric units. The built-in reviewed policy
+therefore uses zero absolute tolerance for all eight numeric questions. This is
+an exact source-value extraction metric, not a clinical-equivalence claim.
+Non-zero tolerances are rejected until a future reviewed canonical-unit
+contract exists. Reports are written owner-only, refuse overwrite, contain no
+note text, and remain restricted because small aggregate cells may still be
+disclosive.
