@@ -708,3 +708,64 @@ and the answer diagnostic cannot identify evidence relevance. BM25 is therefore
 retained as the cheap lexical comparator for P3.3/P3.4, not selected as a
 superior evidence method. Patient-level run and evaluation artifacts remain
 owner-only outside Git, and no locked-test artifact was created.
+
+## Frozen patient-local MedCPT dense baseline
+
+P3.3 evaluates exactly one biomedical dense retriever rather than collecting
+multiple encoders. The public-domain NCBI MedCPT dual encoder is pinned to
+immutable Hugging Face revisions:
+
+- `ncbi/MedCPT-Query-Encoder` at
+  `d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc`;
+- `ncbi/MedCPT-Article-Encoder` at
+  `d05a736da4bb84ee4057b7f7999485be6ed85465`.
+
+The pinned model cards specify `[CLS]` last-hidden-state representations and a
+768-dimensional shared query/article space. The implementation uses the public
+source question unchanged, capped at 64 tokens. Each exact evidence chunk is
+encoded as an empty title paired with the unnormalized chunk text, capped at
+512 tokens. Vectors are unnormalized float32 values and are ranked by exact dot
+product only within the same patient. Top three and tie-breaking are identical
+to P3.2, so BM25 and dense exposure budgets are directly comparable. The empty
+title is an explicit adaptation: MedCPT was trained on PubMed query/article
+logs, not clinical notes, and its Article Encoder normally receives title plus
+abstract. This domain and input-format mismatch is a limitation, not hidden
+preprocessing.
+
+The runtime freezes Torch 2.2.2, Transformers 4.43.0, CPU inference,
+deterministic algorithms, batch size eight, `trust_remote_code=False`, and
+`local_files_only=True`. Download public weights separately before entering the
+authorized environment; an inference run cannot contact Hugging Face or send
+patient text to an external service. Install the optional local runtime with:
+
+```bash
+pip install -e '.[dense]'
+```
+
+Then build and run the validation index with:
+
+```bash
+clinical-matcher-apixaban-dense \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --evidence-index-manifest /restricted/path/evidence-index.validation.manifest.json \
+  --split validation \
+  --output-dir /restricted/path/medcpt-dense-v1-validation \
+  --acknowledge-restricted-data-local-only
+```
+
+The output directory contains owner-only `vectors.f32`,
+`index-manifest.json`, `retrieval.json`, and `predictions.json`. The manifest
+binds the fixed model revisions, P3.1 evidence index, ordered evidence IDs,
+vector count/dimension/dtype/byte count, vector-file SHA-256, and a deterministic
+index ID. The run validator checks the full patient-question grid, exact patient
+isolation, score ordering, aggregate reconciliation, and that every downstream
+evidence citation belongs to its retrieved top three. All four artifacts remain
+outside Git. As in P3.2, downstream answer metrics are diagnostic because the
+release has no independent evidence-ID relevance gold.
+
+Model provenance: [MedCPT Query Encoder](https://huggingface.co/ncbi/MedCPT-Query-Encoder),
+[MedCPT Article Encoder](https://huggingface.co/ncbi/MedCPT-Article-Encoder), and
+the [MedCPT paper](https://doi.org/10.1093/bioinformatics/btad651). The pinned
+model license files identify the release as a freely available United States
+Government Work and disclaim clinical decision use without professional review.

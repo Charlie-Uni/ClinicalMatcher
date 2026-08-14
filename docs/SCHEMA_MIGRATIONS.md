@@ -85,3 +85,13 @@ complete patient-by-question grid and reconciles every aggregate count. No P2
 or P3.1 artifact is migrated. Because independent evidence-ID gold is absent,
 the schema fixes the boundary that retrieval-relevance metrics are not reported
 and downstream answer metrics are diagnostic only.
+
+P3.3 adds two owner-only artifacts without migrating earlier schemas.
+`apixaban-dense-index-1.0.0` binds the paired MedCPT model revisions, vector
+representation, P3.1 evidence index, ordered evidence IDs, vector-file hash,
+byte/count invariants, and deterministic index identity.
+`apixaban-dense-run-1.0.0` binds that index to the complete patient-question
+retrieval grid, frozen configuration, performance/exposure aggregates, and the
+schema-`1.2.0` downstream prediction set. Neither schema permits note or
+question text. The index manifest, vectors, ranks, pseudonyms, scores, and
+predictions all remain restricted local artifacts.

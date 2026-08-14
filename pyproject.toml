@@ -17,6 +17,11 @@ semantic-scan = [
   "numpy>=1.24,<3",
   "sentence-transformers==5.1.2",
 ]
+dense = [
+  "numpy==1.24.4",
+  "torch==2.2.2",
+  "transformers==4.43.0",
+]
 
 [project.scripts]
 clinical-matcher-smoke = "clinical_matcher.cli:main"
@@ -42,6 +47,7 @@ clinical-matcher-apixaban-structured-llm = "clinical_matcher.apixaban_structured
 clinical-matcher-apixaban-long-context = "clinical_matcher.apixaban_long_context_cli:main"
 clinical-matcher-apixaban-evidence-index = "clinical_matcher.apixaban_evidence_index_cli:main"
 clinical-matcher-apixaban-bm25 = "clinical_matcher.apixaban_bm25_cli:main"
+clinical-matcher-apixaban-dense = "clinical_matcher.apixaban_dense_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

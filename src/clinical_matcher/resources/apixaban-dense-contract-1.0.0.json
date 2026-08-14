@@ -1,0 +1,74 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "apixaban-medcpt-dense-v1",
+  "development_splits": ["train", "validation"],
+  "test_labels_used": false,
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "evidence_chunk_contract_id": "apixaban-preserved-evidence-chunks-v1",
+  "license": {
+    "status": "public_domain_us_government_work",
+    "source": "pinned_huggingface_model_license_files",
+    "commercial_use_restriction": false
+  },
+  "models": {
+    "query_encoder": {
+      "model_id": "ncbi/MedCPT-Query-Encoder",
+      "revision": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc"
+    },
+    "document_encoder": {
+      "model_id": "ncbi/MedCPT-Article-Encoder",
+      "revision": "d05a736da4bb84ee4057b7f7999485be6ed85465"
+    }
+  },
+  "query_input": {
+    "source": "source_question_only",
+    "answer_text_used": false,
+    "fact_field_used": false,
+    "manual_expansion_used": false,
+    "max_length": 64,
+    "truncation": true,
+    "padding": "batch_longest"
+  },
+  "document_input": {
+    "source": "evidence_text_only",
+    "format": "empty_title_plus_evidence_text_pair",
+    "empty_title": true,
+    "max_length": 512,
+    "truncation": true,
+    "padding": "batch_longest",
+    "text_normalization": "none"
+  },
+  "representation": {
+    "pooling": "last_hidden_state_cls",
+    "dtype": "float32",
+    "dimension": 768,
+    "l2_normalized": false
+  },
+  "similarity": {
+    "function": "exact_dot_product",
+    "scope": "within_patient_only"
+  },
+  "selection": {
+    "top_k": 3,
+    "tie_break": ["source_span.start", "evidence_id"],
+    "top_k_rationale": "same_predeclared_exposure_budget_as_bm25_v1"
+  },
+  "runtime": {
+    "transformers_version": "4.43.0",
+    "torch_version": "2.2.2",
+    "device": "cpu",
+    "batch_size": 8,
+    "local_files_only": true,
+    "trust_remote_code": false,
+    "deterministic_algorithms": true
+  },
+  "downstream": {
+    "extractor": "clinicalmatcher-deterministic-extractor@1.0.0",
+    "purpose": "answer_metric_diagnostic_not_evidence_relevance_gold"
+  },
+  "limitations": [
+    "trained_on_pubmed_search_logs_not_clinical_notes",
+    "empty_title_adapts_article_encoder_to_note_chunks",
+    "no_independent_evidence_id_gold"
+  ]
+}

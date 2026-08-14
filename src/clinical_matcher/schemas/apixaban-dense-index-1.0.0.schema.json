@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-dense-index-1.0.0.schema.json",
+  "title": "Restricted Apixaban MedCPT dense index manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dense_index_version", "manifest_sha256", "generated_at", "code_commit",
+    "provenance", "model", "index", "counts", "disclosure_note"
+  ],
+  "properties": {
+    "dense_index_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "benchmark_sha256", "split_manifest_sha256", "split_name",
+        "evidence_index_manifest_sha256", "evidence_index_id",
+        "dense_contract_sha256"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "evidence_index_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "evidence_index_id": {"type": "string", "pattern": "^apixaban-evidence-index-[0-9a-f]{24}$"},
+        "dense_contract_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "model": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "query_model_id", "query_revision", "document_model_id",
+        "document_revision", "pooling", "dtype", "dimension",
+        "l2_normalized", "similarity", "device"
+      ],
+      "properties": {
+        "query_model_id": {"const": "ncbi/MedCPT-Query-Encoder"},
+        "query_revision": {"const": "d83a36cc6b8e3a5c5e9d9d6ba156808c1643dcbc"},
+        "document_model_id": {"const": "ncbi/MedCPT-Article-Encoder"},
+        "document_revision": {"const": "d05a736da4bb84ee4057b7f7999485be6ed85465"},
+        "pooling": {"const": "last_hidden_state_cls"},
+        "dtype": {"const": "float32_little_endian"},
+        "dimension": {"const": 768},
+        "l2_normalized": {"const": false},
+        "similarity": {"const": "exact_dot_product"},
+        "device": {"const": "cpu"}
+      }
+    },
+    "index": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "index_id", "vector_file", "vector_file_sha256", "byte_count",
+        "ordered_evidence_ids"
+      ],
+      "properties": {
+        "index_id": {"type": "string", "pattern": "^apixaban-medcpt-index-[0-9a-f]{24}$"},
+        "vector_file": {"const": "vectors.f32"},
+        "vector_file_sha256": {"$ref": "#/$defs/sha256"},
+        "byte_count": {"type": "integer", "minimum": 1},
+        "ordered_evidence_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"$ref": "#/$defs/evidenceId"}
+        }
+      }
+    },
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["patient_count", "document_count", "vector_count"],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "document_count": {"type": "integer", "minimum": 1},
+        "vector_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "evidenceId": {"type": "string", "pattern": "^evidence-[0-9a-f]{24}-[0-9]{3,}$"}
+  }
+}

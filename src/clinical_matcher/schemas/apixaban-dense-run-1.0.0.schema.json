@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-dense-run-1.0.0.schema.json",
+  "title": "Restricted Apixaban MedCPT dense retrieval run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "dense_run_version", "run_sha256", "generated_at", "code_commit",
+    "provenance", "configuration", "counts", "performance",
+    "evaluation_boundary", "results", "disclosure_note"
+  ],
+  "properties": {
+    "dense_run_version": {"const": "1.0.0"},
+    "run_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "benchmark_sha256", "split_manifest_sha256", "split_name",
+        "evidence_index_manifest_sha256", "evidence_index_id",
+        "dense_contract_sha256", "dense_index_manifest_sha256",
+        "dense_index_id", "question_catalog_sha256",
+        "prediction_set_content_sha256"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "evidence_index_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "evidence_index_id": {"type": "string", "minLength": 1},
+        "dense_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "dense_index_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "dense_index_id": {"type": "string", "pattern": "^apixaban-medcpt-index-[0-9a-f]{24}$"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "prediction_set_content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "configuration": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "contract_id", "query_source", "document_format", "pooling",
+        "dimension", "l2_normalized", "similarity", "top_k",
+        "tie_break", "retrieval_scope"
+      ],
+      "properties": {
+        "contract_id": {"const": "apixaban-medcpt-dense-v1"},
+        "query_source": {"const": "source_question_only"},
+        "document_format": {"const": "empty_title_plus_evidence_text_pair"},
+        "pooling": {"const": "last_hidden_state_cls"},
+        "dimension": {"const": 768},
+        "l2_normalized": {"const": false},
+        "similarity": {"const": "exact_dot_product"},
+        "top_k": {"const": 3},
+        "tie_break": {"const": ["source_span.start", "evidence_id"]},
+        "retrieval_scope": {"const": "within_patient_only"}
+      }
+    },
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "patient_count", "question_count", "query_count", "document_count",
+        "selected_document_count", "candidate_document_comparisons"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "question_count": {"type": "integer", "minimum": 1},
+        "query_count": {"type": "integer", "minimum": 1},
+        "document_count": {"type": "integer", "minimum": 1},
+        "selected_document_count": {"type": "integer", "minimum": 1},
+        "candidate_document_comparisons": {"type": "integer", "minimum": 1}
+      }
+    },
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "model_load_ms", "document_encoding_ms", "query_encoding_ms",
+        "retrieval_total_ms", "retrieval_mean_ms", "retrieval_p50_ms",
+        "retrieval_p95_ms", "vector_index_size_bytes",
+        "unique_evidence_characters", "full_question_context_characters",
+        "selected_evidence_characters", "selected_character_proportion"
+      ],
+      "properties": {
+        "model_load_ms": {"type": "number", "minimum": 0},
+        "document_encoding_ms": {"type": "number", "minimum": 0},
+        "query_encoding_ms": {"type": "number", "minimum": 0},
+        "retrieval_total_ms": {"type": "number", "minimum": 0},
+        "retrieval_mean_ms": {"type": "number", "minimum": 0},
+        "retrieval_p50_ms": {"type": "number", "minimum": 0},
+        "retrieval_p95_ms": {"type": "number", "minimum": 0},
+        "vector_index_size_bytes": {"type": "integer", "minimum": 1},
+        "unique_evidence_characters": {"type": "integer", "minimum": 1},
+        "full_question_context_characters": {"type": "integer", "minimum": 1},
+        "selected_evidence_characters": {"type": "integer", "minimum": 1},
+        "selected_character_proportion": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "evaluation_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "independent_evidence_gold_available", "retrieval_relevance_metrics_reported",
+        "downstream_answer_metrics_supported", "interpretation"
+      ],
+      "properties": {
+        "independent_evidence_gold_available": {"const": false},
+        "retrieval_relevance_metrics_reported": {"const": false},
+        "downstream_answer_metrics_supported": {"const": true},
+        "interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "results": {
+      "type": "array", "minItems": 1,
+      "items": {"$ref": "#/$defs/queryResult"}
+    },
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rankedEvidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "score", "rank"],
+      "properties": {
+        "evidence_id": {"type": "string", "pattern": "^evidence-[0-9a-f]{24}-[0-9]{3,}$"},
+        "score": {"type": "number"},
+        "rank": {"type": "integer", "minimum": 1}
+      }
+    },
+    "queryResult": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "patient_id", "question_id", "query_sha256", "candidate_count",
+        "selected_evidence"
+      ],
+      "properties": {
+        "patient_id": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "query_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_count": {"type": "integer", "minimum": 1},
+        "selected_evidence": {
+          "type": "array", "minItems": 1, "maxItems": 3,
+          "items": {"$ref": "#/$defs/rankedEvidence"}
+        }
+      }
+    }
+  }
+}
