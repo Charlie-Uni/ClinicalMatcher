@@ -337,13 +337,35 @@ baselines before any retriever or fine-tuning claim.
     claim. All patient-level rankings, predictions, and reports remain local;
     locked-test retrieval was not run.
 
-- [ ] **P3.3 Implement one validated dense retriever.** Pin one embedding model
+- [x] **P3.3 Implement one validated dense retriever.** Pin one embedding model
   and revision, pooling, normalization, dimension, and similarity metric.
   - Entry condition: license, local data handling, and hardware are acceptable.
   - Constraints: start with one model; do not collect multiple encoders without
     a predeclared comparison question.
   - Verify: vector/document count consistency, patient isolation, deterministic
     index fingerprint, controlled retrieval tests, and downstream metrics.
+  - Completion: contract `apixaban-medcpt-dense-v1` freezes the public-domain
+    NCBI MedCPT Query/Article encoders at immutable revisions, official `[CLS]`
+    pooling, 768-dimensional unnormalized float32 vectors, exact dot product,
+    source-question-only queries, empty-title plus exact-evidence document pairs,
+    CPU deterministic inference, local-files-only loading, and the same top-3
+    exposure budget as BM25. The paired checkpoints total about 876 MB and ran
+    locally within available hardware. Strict owner-only index/run schemas bind
+    the P3.1 index, ordered evidence IDs, model revisions, vector bytes/hash,
+    complete patient-question grid, and downstream citations. A controlled
+    synthetic synonym check ranked an eGFR statement first for a renal-impairment
+    query. Validation encoded all 107 chunks for 15 patients at implementation
+    commit `6e5c273`; two independent CPU builds produced the identical 328,704
+    byte vector SHA and index ID. Document encoding took 22.09 s, query encoding
+    1.02 s, and exact retrieval averaged 0.312 ms/query locally. Top-3 exposure
+    was 42.9% of full-note-per-question characters (57.1% lower). Typed exact
+    match was 0.3159 (95% patient-bootstrap CI 0.2638–0.3710), not an overall
+    improvement over BM25 or full evidence. However, numeric value coverage
+    recovered from BM25's 0.3671 to 0.5443 and numeric-status accuracy from
+    0.5667 to 0.6833, near the full-evidence values 0.5696 and 0.7000. MedCPT is
+    retained as a complementary dense input to P3.4 fusion, not as a standalone
+    superiority claim. No independent evidence relevance is claimed, all
+    vectors/results remain local, and locked test was untouched.
 
 - [ ] **P3.4 Add fusion, then reranking only if justified.** Compare BM25,
   dense, and reciprocal-rank fusion; add one cross-encoder reranker only after

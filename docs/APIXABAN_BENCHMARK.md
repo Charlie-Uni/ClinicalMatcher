@@ -769,3 +769,28 @@ Model provenance: [MedCPT Query Encoder](https://huggingface.co/ncbi/MedCPT-Quer
 the [MedCPT paper](https://doi.org/10.1093/bioinformatics/btad651). The pinned
 model license files identify the release as a freely available United States
 Government Work and disclaim clinical decision use without professional review.
+
+The implementation was first checked on public synthetic text: for the query
+"Does the patient have severe renal impairment?", MedCPT ranked a chunk stating
+an eGFR of 25 above unrelated rhythm and platelet chunks, demonstrating the
+intended non-identical lexical match. This controlled check validates mechanics,
+not clinical relevance on the restricted corpus.
+
+The frozen validation run from implementation commit `6e5c273` encoded all 107
+chunks for 15 patients. Two independent offline CPU builds produced exactly the
+same 328,704-byte vector-file SHA-256 and deterministic index ID. On the first
+local run, model loading took 1.38 s, document encoding 22.09 s, all 23 public
+questions 1.02 s, and exact patient-local retrieval averaged 0.312 ms/query.
+Top-three chunks represented 42.9% of the per-question full-note character
+exposure, a 57.1% reduction. These timings are descriptive for this machine.
+
+Under the unchanged downstream evaluator, typed exact match was 0.3159 (95%
+patient-bootstrap CI 0.2638–0.3710), versus 0.3188 for BM25 and 0.3275 for the
+full-evidence deterministic comparator. The intervals overlap, so MedCPT is not
+an overall quality improvement. Its complementary value is numeric retrieval:
+numeric value coverage recovered from BM25's 0.3671 to 0.5443 and numeric-status
+accuracy from 0.5667 to 0.6833, close to full evidence at 0.5696 and 0.7000.
+Boolean accuracy was slightly lower than both comparators. This predeclared
+single-model result supports testing BM25+dense fusion in P3.4; it does not
+justify adding another encoder or claiming evidence relevance. All index and
+row-level outputs remain owner-only, and locked test remains untouched.
