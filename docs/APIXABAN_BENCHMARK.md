@@ -847,3 +847,31 @@ resource/exposure statistics and the unchanged downstream answer diagnostic.
 The locked test is not used during fusion selection. A cross-encoder reranker
 is explicitly absent from version 1.0.0 and remains deferred until this simple
 fusion has been measured; adding one is not an automatic next step.
+
+The frozen validation run at implementation commit `57075ef` completed the
+same 345 patient-question queries over 15 patients. It reused the existing
+328,704-byte dense vector file and created no additional index. Model loading
+took 2.80 s, encoding the 23 public questions took 2.19 s, and exact ranking
+plus fusion averaged 0.421 ms/query. The complete offline process peaked at
+approximately 832 MiB resident memory, including both MedCPT encoders. Fused
+top-three chunks represented 43.5% of full-note-per-question characters.
+
+Fusion changed the ranking rather than merely copying one component: its
+ordered top three exactly matched BM25 for 38/345 queries and dense for 32/345;
+its top result matched BM25 for 202 queries and dense for 174. Nevertheless,
+the downstream diagnostic did not improve. Typed exact match was 0.3159 (95%
+patient-bootstrap CI 0.2609–0.3740), equal to dense and below BM25 at 0.3188.
+Numeric value coverage was 0.5063, below dense at 0.5443, and numeric-status
+accuracy was 0.6583, below dense at 0.6833. Boolean accuracy was 0.2533, also
+slightly below both components. The confidence intervals overlap and there is
+still no independent evidence relevance gold, so these values cannot establish
+retrieval superiority.
+
+RRF is therefore retained only as a reproducible negative ablation and is not
+the selected retrieval path. Under the predeclared “rerank only if justified”
+rule, a cross-encoder was not added: increasing model complexity after fusion
+failed to improve the available validation diagnostic would not be supported by
+these data. This is a stopping decision, not evidence that reranking can never
+help on a future independently annotated evidence benchmark. All row-level
+fusion and evaluation artifacts remain owner-only outside Git, and the locked
+test was untouched.

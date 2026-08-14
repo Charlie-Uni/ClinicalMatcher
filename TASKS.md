@@ -367,7 +367,7 @@ baselines before any retriever or fine-tuning claim.
     superiority claim. No independent evidence relevance is claimed, all
     vectors/results remain local, and locked test was untouched.
 
-- [ ] **P3.4 Add fusion, then reranking only if justified.** Compare BM25,
+- [x] **P3.4 Add fusion, then reranking only if justified.** Compare BM25,
   dense, and reciprocal-rank fusion; add one cross-encoder reranker only after
   fusion is measured.
   - Entry condition: P3.2 and P3.3 reports share the same split and query set.
@@ -375,6 +375,27 @@ baselines before any retriever or fine-tuning claim.
     added stage must have an ablation and resource measurement.
   - Verify: paired validation/test reports include downstream quality, latency,
     memory, index size, and confidence intervals.
+  - Completion: contract `apixaban-bm25-medcpt-rrf-v1` froze equal-weight
+    rank-only RRF with `k=60`, all strictly positive patient-local BM25
+    candidates, all patient-local dense candidates, no parameter search, the
+    unchanged top-3 budget, and no reranker before validation. The restricted
+    run schema binds both component run hashes, dense-index identity, complete
+    query grid, component ranks, recomputable fusion scores, downstream
+    predictions, and owner-only output. At commit `57075ef`, validation
+    completed all 345 queries over 15 patients. Fusion averaged 0.421 ms/query,
+    reused the existing 328,704-byte dense vectors with no additional index,
+    selected 43.5% of full-note-per-question characters, and the offline
+    process peaked at about 832 MiB RSS including MedCPT model loading. Typed
+    exact match was 0.3159 (95% patient-bootstrap CI 0.2609–0.3740), equal to
+    dense and below BM25 at 0.3188; numeric value coverage was 0.5063 versus
+    0.5443 dense, and numeric-status accuracy was 0.6583 versus 0.6833 dense.
+    RRF therefore did not improve the validation diagnostic and is retained
+    only as a measured ablation, not the selected retrieval path. Under the
+    predeclared “rerank only if justified” rule, no cross-encoder was added.
+    Independent evidence relevance is still unavailable, all row-level
+    artifacts remain local, and locked test was untouched; final test reporting
+    remains gated on a later frozen end-to-end selection rather than being used
+    to rescue this ablation.
 
 - [ ] **P3.5 State the evidence-evaluation boundary.** Use independent evidence
   gold where it exists; otherwise report answer-containing-span diagnostics and
