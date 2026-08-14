@@ -48,6 +48,7 @@ clinical-matcher-apixaban-long-context = "clinical_matcher.apixaban_long_context
 clinical-matcher-apixaban-evidence-index = "clinical_matcher.apixaban_evidence_index_cli:main"
 clinical-matcher-apixaban-bm25 = "clinical_matcher.apixaban_bm25_cli:main"
 clinical-matcher-apixaban-dense = "clinical_matcher.apixaban_dense_cli:main"
+clinical-matcher-apixaban-rrf = "clinical_matcher.apixaban_rrf_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

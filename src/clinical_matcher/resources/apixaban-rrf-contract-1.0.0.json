@@ -1,0 +1,35 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "apixaban-bm25-medcpt-rrf-v1",
+  "development_splits": ["train", "validation"],
+  "test_labels_used": false,
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "components": {
+    "bm25_contract_id": "apixaban-patient-bm25-v1",
+    "bm25_input_depth": "all_strictly_positive_score_patient_candidates",
+    "dense_contract_id": "apixaban-medcpt-dense-v1",
+    "dense_input_depth": "all_patient_candidates",
+    "same_split_query_and_evidence_index_required": true
+  },
+  "fusion": {
+    "method": "reciprocal_rank_fusion",
+    "rank_constant": 60,
+    "formula": "sum(1/(60+rank))",
+    "component_weights": {"bm25": 1.0, "dense": 1.0},
+    "score_normalization": "none_rank_only",
+    "parameter_search_used": false
+  },
+  "selection": {
+    "top_k": 3,
+    "tie_break": ["source_span.start", "evidence_id"],
+    "exposure_budget": "same_as_bm25_and_dense_v1"
+  },
+  "downstream": {
+    "extractor": "clinicalmatcher-deterministic-extractor@1.0.0",
+    "purpose": "answer_metric_diagnostic_not_evidence_relevance_gold"
+  },
+  "reranker": {
+    "included": false,
+    "decision": "deferred_until_rrf_validation_is_measured"
+  }
+}

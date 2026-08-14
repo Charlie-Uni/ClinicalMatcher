@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-rrf-run-1.0.0.schema.json",
+  "title": "Restricted Apixaban BM25 plus MedCPT RRF run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rrf_run_version", "run_sha256", "generated_at", "code_commit",
+    "provenance", "configuration", "counts", "performance",
+    "evaluation_boundary", "results", "disclosure_note"
+  ],
+  "properties": {
+    "rrf_run_version": {"const": "1.0.0"},
+    "run_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "benchmark_sha256", "split_manifest_sha256", "split_name",
+        "evidence_index_manifest_sha256", "evidence_index_id",
+        "bm25_run_sha256", "dense_run_sha256", "dense_index_manifest_sha256",
+        "dense_index_id", "rrf_contract_sha256", "question_catalog_sha256",
+        "prediction_set_content_sha256"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "evidence_index_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "evidence_index_id": {"type": "string", "minLength": 1},
+        "bm25_run_sha256": {"$ref": "#/$defs/sha256"},
+        "dense_run_sha256": {"$ref": "#/$defs/sha256"},
+        "dense_index_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "dense_index_id": {"type": "string", "minLength": 1},
+        "rrf_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "prediction_set_content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "configuration": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "contract_id", "method", "rank_constant", "formula",
+        "component_weights", "bm25_input_depth", "dense_input_depth",
+        "top_k", "tie_break", "retrieval_scope", "reranker_included"
+      ],
+      "properties": {
+        "contract_id": {"const": "apixaban-bm25-medcpt-rrf-v1"},
+        "method": {"const": "reciprocal_rank_fusion"},
+        "rank_constant": {"const": 60},
+        "formula": {"const": "sum(1/(60+rank))"},
+        "component_weights": {"const": {"bm25": 1.0, "dense": 1.0}},
+        "bm25_input_depth": {"const": "all_strictly_positive_score_patient_candidates"},
+        "dense_input_depth": {"const": "all_patient_candidates"},
+        "top_k": {"const": 3},
+        "tie_break": {"const": ["source_span.start", "evidence_id"]},
+        "retrieval_scope": {"const": "within_patient_only"},
+        "reranker_included": {"const": false}
+      }
+    },
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "patient_count", "question_count", "query_count", "document_count",
+        "bm25_positive_candidate_count", "dense_candidate_count",
+        "fused_unique_candidate_count", "selected_document_count",
+        "selected_with_both_ranks_count", "selected_with_dense_only_rank_count"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "question_count": {"type": "integer", "minimum": 1},
+        "query_count": {"type": "integer", "minimum": 1},
+        "document_count": {"type": "integer", "minimum": 1},
+        "bm25_positive_candidate_count": {"type": "integer", "minimum": 0},
+        "dense_candidate_count": {"type": "integer", "minimum": 1},
+        "fused_unique_candidate_count": {"type": "integer", "minimum": 1},
+        "selected_document_count": {"type": "integer", "minimum": 1},
+        "selected_with_both_ranks_count": {"type": "integer", "minimum": 0},
+        "selected_with_dense_only_rank_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "model_load_ms", "dense_vector_load_ms", "query_encoding_ms",
+        "ranking_and_fusion_total_ms", "ranking_and_fusion_mean_ms",
+        "ranking_and_fusion_p50_ms", "ranking_and_fusion_p95_ms",
+        "unique_evidence_characters", "full_question_context_characters",
+        "selected_evidence_characters", "selected_character_proportion"
+      ],
+      "properties": {
+        "model_load_ms": {"type": "number", "minimum": 0},
+        "dense_vector_load_ms": {"type": "number", "minimum": 0},
+        "query_encoding_ms": {"type": "number", "minimum": 0},
+        "ranking_and_fusion_total_ms": {"type": "number", "minimum": 0},
+        "ranking_and_fusion_mean_ms": {"type": "number", "minimum": 0},
+        "ranking_and_fusion_p50_ms": {"type": "number", "minimum": 0},
+        "ranking_and_fusion_p95_ms": {"type": "number", "minimum": 0},
+        "unique_evidence_characters": {"type": "integer", "minimum": 1},
+        "full_question_context_characters": {"type": "integer", "minimum": 1},
+        "selected_evidence_characters": {"type": "integer", "minimum": 1},
+        "selected_character_proportion": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "evaluation_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "independent_evidence_gold_available", "retrieval_relevance_metrics_reported",
+        "downstream_answer_metrics_supported", "interpretation"
+      ],
+      "properties": {
+        "independent_evidence_gold_available": {"const": false},
+        "retrieval_relevance_metrics_reported": {"const": false},
+        "downstream_answer_metrics_supported": {"const": true},
+        "interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "results": {
+      "type": "array", "minItems": 1,
+      "items": {"$ref": "#/$defs/queryResult"}
+    },
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rankedEvidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "score", "rank", "bm25_rank", "dense_rank"],
+      "properties": {
+        "evidence_id": {"type": "string", "pattern": "^evidence-[0-9a-f]{24}-[0-9]{3,}$"},
+        "score": {"type": "number", "exclusiveMinimum": 0},
+        "rank": {"type": "integer", "minimum": 1},
+        "bm25_rank": {"type": ["integer", "null"], "minimum": 1},
+        "dense_rank": {"type": "integer", "minimum": 1}
+      }
+    },
+    "queryResult": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "patient_id", "question_id", "query_sha256", "candidate_count",
+        "bm25_positive_candidate_count", "dense_candidate_count",
+        "fused_unique_candidate_count", "selected_evidence"
+      ],
+      "properties": {
+        "patient_id": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "query_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_count": {"type": "integer", "minimum": 1},
+        "bm25_positive_candidate_count": {"type": "integer", "minimum": 0},
+        "dense_candidate_count": {"type": "integer", "minimum": 1},
+        "fused_unique_candidate_count": {"type": "integer", "minimum": 1},
+        "selected_evidence": {
+          "type": "array", "minItems": 1, "maxItems": 3,
+          "items": {"$ref": "#/$defs/rankedEvidence"}
+        }
+      }
+    }
+  }
+}

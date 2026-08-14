@@ -794,3 +794,56 @@ Boolean accuracy was slightly lower than both comparators. This predeclared
 single-model result supports testing BM25+dense fusion in P3.4; it does not
 justify adding another encoder or claiming evidence relevance. All index and
 row-level outputs remain owner-only, and locked test remains untouched.
+
+## Frozen BM25–MedCPT reciprocal-rank fusion
+
+P3.4 first measures a rank-only fusion before considering any learned
+reranker. Contract `apixaban-bm25-medcpt-rrf-v1` was frozen before the fusion
+validation run. It combines the already frozen P3.2 BM25 and P3.3 MedCPT
+rankings with equal-weight reciprocal-rank fusion:
+
+```text
+RRF(d) = sum(1 / (60 + rank_retriever(d)))
+```
+
+There is no parameter search or score normalization. BM25 contributes every
+patient-local candidate with a strictly positive BM25 score; its zero-score
+tail is excluded under the existing lexical contract. Dense retrieval
+contributes every candidate for that patient. This full-depth input matters:
+moderate agreement below either component's exposed top three can still promote
+an item. The fused output preserves the same top-three exposure budget and the
+existing `source_span.start`, then `evidence_id`, deterministic tie-break. The
+constant 60 is fixed rather than tuned on these 15 validation patients.
+
+The runner rejects component runs unless their benchmark, frozen split,
+split name, evidence index, question catalog, query grid, and dense-index
+identity agree. It then reconstructs both rankings from the exact evidence
+index and frozen dense vectors and requires each reconstructed component top
+three to match the cited run. The semantic validator independently recomputes
+every stored RRF score from its BM25 and dense ranks. These checks prevent a
+fusion artifact from naming component hashes that did not produce its ranking.
+
+Run validation fusion only after the two component runs exist:
+
+```bash
+clinical-matcher-apixaban-rrf \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --evidence-index-manifest /restricted/path/evidence-index.validation.manifest.json \
+  --bm25-run /restricted/path/bm25-v1-validation/retrieval.json \
+  --dense-run /restricted/path/medcpt-dense-v1-validation/retrieval.json \
+  --dense-index-manifest /restricted/path/medcpt-dense-v1-validation/index-manifest.json \
+  --dense-vectors /restricted/path/medcpt-dense-v1-validation/vectors.f32 \
+  --split validation \
+  --output-dir /restricted/path/rrf60-v1-validation \
+  --acknowledge-restricted-data-local-only
+```
+
+`retrieval.json` and `predictions.json` are created owner-only and must remain
+outside Git. They contain no note or question text, but patient pseudonyms,
+rankings, derived scores, and predictions are still restricted. No independent
+evidence-ID gold has appeared, so real-data reporting remains limited to
+resource/exposure statistics and the unchanged downstream answer diagnostic.
+The locked test is not used during fusion selection. A cross-encoder reranker
+is explicitly absent from version 1.0.0 and remains deferred until this simple
+fusion has been measured; adding one is not an automatic next step.

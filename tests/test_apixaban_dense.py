@@ -22,6 +22,7 @@ from clinical_matcher.apixaban_evidence_index import (
 )
 from clinical_matcher.retrieval.dense import (
     DensePatientRetriever,
+    deserialize_float32_vectors,
     serialize_float32_vectors,
 )
 from clinical_matcher.splits import canonical_sha256
@@ -126,6 +127,12 @@ class DenseRetrieverTests(unittest.TestCase):
             payload,
             serialize_float32_vectors([[1.0, -2.0], [0.5, 4.0]]),
         )
+        self.assertEqual(
+            ((1.0, -2.0), (0.5, 4.0)),
+            deserialize_float32_vectors(payload, dimension=2, count=2),
+        )
+        with self.assertRaisesRegex(ValueError, "byte count"):
+            deserialize_float32_vectors(payload[:-1], dimension=2, count=2)
 
 
 class ApixabanDenseRunTests(unittest.TestCase):

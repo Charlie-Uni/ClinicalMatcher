@@ -36,6 +36,21 @@ def serialize_float32_vectors(vectors: Sequence[Sequence[float]]) -> bytes:
     )
 
 
+def deserialize_float32_vectors(
+    payload: bytes, *, dimension: int, count: int
+) -> Tuple[Vector, ...]:
+    if dimension < 1 or count < 1:
+        raise ValueError("Dense vector shape must be positive")
+    expected = dimension * count * 4
+    if len(payload) != expected:
+        raise ValueError("Dense vector byte count does not match shape")
+    values = struct.unpack(f"<{dimension * count}f", payload)
+    return tuple(
+        tuple(values[start : start + dimension])
+        for start in range(0, len(values), dimension)
+    )
+
+
 class DensePatientRetriever:
     """Exact dot-product retrieval isolated within each patient."""
 

@@ -95,3 +95,12 @@ retrieval grid, frozen configuration, performance/exposure aggregates, and the
 schema-`1.2.0` downstream prediction set. Neither schema permits note or
 question text. The index manifest, vectors, ranks, pseudonyms, scores, and
 predictions all remain restricted local artifacts.
+
+P3.4 introduces owner-only `apixaban-rrf-run-1.0.0` without migrating the BM25,
+dense-index, dense-run, or prediction schemas. It binds the exact component run
+hashes and dense index identity to a complete patient-question fusion grid,
+fixed RRF-60 configuration, component input depths, per-item component ranks,
+recomputable fusion scores, resource/exposure aggregates, and a schema-`1.2.0`
+downstream prediction set. The schema contains no note or question text and
+fixes `reranker_included=false`. Ranks, scores, patient pseudonyms, predictions,
+and the fusion run remain restricted local artifacts.
