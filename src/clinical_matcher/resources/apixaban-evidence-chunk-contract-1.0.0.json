@@ -1,0 +1,50 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "apixaban-preserved-evidence-chunks-v1",
+  "source_corpus_version": "1.0.0",
+  "input_projection": {
+    "allowed_fields": [
+      "patients[].patient_id",
+      "patients[].source_id",
+      "patients[].evidence[].evidence_id",
+      "patients[].evidence[].source_id",
+      "patients[].evidence[].source_span.start",
+      "patients[].evidence[].source_span.end",
+      "patients[].evidence[].text"
+    ],
+    "forbidden_fields": [
+      "patients[].legacy_questions",
+      "benchmark.assessments",
+      "prediction_sets",
+      "test_labels"
+    ],
+    "answer_labels_used": false,
+    "queries_used": false
+  },
+  "chunking": {
+    "strategy": "preserve_staging_chunks_without_rechunking",
+    "text_normalization": "none",
+    "overlap_characters": 0,
+    "maximum_characters_source": "staging.adapter.evidence_chunk_max_characters",
+    "ordering": ["patient_id", "source_span.start", "evidence_id"],
+    "evidence_id_rule": "evidence-{patient_hmac_token}-{one_based_zero_padded_ordinal}",
+    "source_span_semantics": "zero_based_half_open_exact_characters",
+    "section_metadata_policy": "explicit_unavailable_for_staging_corpus_1.0.0"
+  },
+  "index": {
+    "retrieval_scope": "within_patient_only",
+    "document_key": "evidence_id",
+    "content_field": "text",
+    "index_version_derivation": [
+      "chunk_contract_sha256",
+      "split_name",
+      "patient_membership_sha256",
+      "index_input_sha256"
+    ]
+  },
+  "privacy": {
+    "classification": "restricted_mimic_derivative",
+    "storage": "owner_only_local_gitignored",
+    "public_text_allowed": false
+  }
+}

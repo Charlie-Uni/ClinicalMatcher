@@ -582,3 +582,53 @@ single serial run is reported descriptively and is not treated as a stable
 speed advantage. The long-context configuration is now a frozen comparator;
 model selection will proceed to evidence retrieval without further P2.3
 tuning or test access.
+
+## Frozen evidence-index input contract
+
+P3.1 preserves the evidence chunks created by the reviewed staging adapter; it
+does not re-split or normalize note text. The public contract
+`apixaban-evidence-chunk-contract-1.0.0.json` permits only patient/source IDs,
+evidence IDs, exact half-open character spans, and evidence text as index
+inputs. Legacy answers, benchmark assessments, prediction outputs, and test
+labels are explicitly forbidden. Queries are also excluded at this stage, so
+chunk/index construction cannot adapt to a question or answer.
+
+For every selected split, the builder asserts that:
+
+- evidence IDs are globally unique and follow the patient-HMAC/ordinal rule;
+- each evidence source belongs to exactly one patient;
+- spans start at zero, are contiguous and non-overlapping, and reconstruct the
+  exact unnormalized chunk text;
+- chunks respect the maximum declared by the source adapter;
+- retrieval scope is `within_patient_only`;
+- unavailable section metadata remains explicitly unavailable rather than
+  being guessed.
+
+The restricted manifest binds the frozen split, staging-corpus hash, public
+contract hash, patient membership, ordered evidence IDs, complete index-input
+projection, code commit, and deterministic `index_id`. Changing evidence text,
+membership, ordering semantics, or the chunk contract therefore creates a new
+index version. The manifest contains no note text but remains local because its
+hashes and counts derive from restricted data.
+
+Build and independently reproduce a validation manifest with:
+
+```bash
+clinical-matcher-apixaban-evidence-index build \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --split validation \
+  --output /restricted/path/evidence-index.validation.manifest.json \
+  --acknowledge-restricted-data-local-only
+
+clinical-matcher-apixaban-evidence-index verify \
+  --manifest /restricted/path/evidence-index.validation.manifest.json \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --acknowledge-restricted-data-local-only
+```
+
+Building a locked-test manifest additionally requires
+`--acknowledge-locked-test-indexing`; it remains deferred during model
+development. P3.1 does not build embeddings, claim evidence relevance, or
+measure downstream effectiveness. Those belong to P3.2–P3.5.

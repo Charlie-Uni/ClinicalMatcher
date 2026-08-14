@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-evidence-index-manifest-1.0.0.schema.json",
+  "title": "Restricted Apixaban evidence index input manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_index_manifest_version", "manifest_sha256", "generated_at",
+    "code_commit", "source", "contract", "index", "counts",
+    "validation", "limitations", "disclosure_note"
+  ],
+  "properties": {
+    "evidence_index_manifest_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "staging_corpus_sha256", "split_manifest_sha256", "split_name",
+        "corpus_version", "adapter_name", "adapter_version",
+        "declared_max_chunk_characters"
+      ],
+      "properties": {
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "corpus_version": {"const": "1.0.0"},
+        "adapter_name": {"const": "mimic-iv-ext-apixaban-csv"},
+        "adapter_version": {"const": "1.0.0"},
+        "declared_max_chunk_characters": {"type": "integer", "minimum": 256}
+      }
+    },
+    "contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_id", "contract_sha256", "answer_labels_used", "queries_used"],
+      "properties": {
+        "contract_id": {"const": "apixaban-preserved-evidence-chunks-v1"},
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "answer_labels_used": {"const": false},
+        "queries_used": {"const": false}
+      }
+    },
+    "index": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "index_id", "index_input_sha256", "ordered_evidence_ids_sha256",
+        "patient_membership_sha256", "retrieval_scope",
+        "section_metadata_status"
+      ],
+      "properties": {
+        "index_id": {"type": "string", "pattern": "^apixaban-evidence-index-[0-9a-f]{24}$"},
+        "index_input_sha256": {"$ref": "#/$defs/sha256"},
+        "ordered_evidence_ids_sha256": {"$ref": "#/$defs/sha256"},
+        "patient_membership_sha256": {"$ref": "#/$defs/sha256"},
+        "retrieval_scope": {"const": "within_patient_only"},
+        "section_metadata_status": {"const": "unavailable_in_staging_corpus_1.0.0"}
+      }
+    },
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "patient_count", "source_count", "evidence_chunk_count",
+        "evidence_character_count", "maximum_observed_chunk_characters"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "source_count": {"type": "integer", "minimum": 1},
+        "evidence_chunk_count": {"type": "integer", "minimum": 1},
+        "evidence_character_count": {"type": "integer", "minimum": 1},
+        "maximum_observed_chunk_characters": {"type": "integer", "minimum": 1}
+      }
+    },
+    "validation": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "stable_evidence_ids", "global_evidence_ids_unique",
+        "source_ids_match_patient", "spans_start_at_zero",
+        "spans_contiguous_non_overlapping", "text_lengths_match_spans",
+        "chunks_within_declared_maximum", "patient_isolation_enforced",
+        "text_normalization_applied"
+      ],
+      "properties": {
+        "stable_evidence_ids": {"const": true},
+        "global_evidence_ids_unique": {"const": true},
+        "source_ids_match_patient": {"const": true},
+        "spans_start_at_zero": {"const": true},
+        "spans_contiguous_non_overlapping": {"const": true},
+        "text_lengths_match_spans": {"const": true},
+        "chunks_within_declared_maximum": {"const": true},
+        "patient_isolation_enforced": {"const": true},
+        "text_normalization_applied": {"const": false}
+      }
+    },
+    "limitations": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "disclosure_note": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

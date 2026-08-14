@@ -67,3 +67,11 @@ and new reports may record note-character exposure, maximum observed prompt
 tokens, and the number of requests whose observed prompt token count reached
 the configured context limit. These fields are optional in the schema so the
 already frozen P2.2 report remains valid; current writers emit all three.
+
+P3.1 introduces `apixaban-evidence-index-manifest-1.0.0`. This owner-only
+aggregate manifest does not contain note text or row-level labels. It freezes
+the evidence-only index projection, patient-local retrieval scope, chunk
+contract hash, split/corpus provenance, deterministic index ID, counts, and
+span/isolation validation results. It is deliberately separate from the
+staging-corpus schema: P3.1 preserves the already frozen evidence chunks, so no
+P2 corpus, split, prediction, or report needs migration or regeneration.
