@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "apixaban-patient-bm25-v1",
+  "development_splits": ["train", "validation"],
+  "test_labels_used": false,
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "evidence_chunk_contract_id": "apixaban-preserved-evidence-chunks-v1",
+  "query": {
+    "source": "source_question_only",
+    "answer_text_used": false,
+    "fact_field_used": false,
+    "manual_expansion_used": false
+  },
+  "tokenizer": {
+    "implementation": "python_re_unicode_v1",
+    "pattern": "[^\\W_]+(?:[./-][^\\W_]+)*",
+    "case_normalization": "unicode_casefold",
+    "stopwords": "none",
+    "stemming": "none",
+    "text_normalization_beyond_tokenization": "none"
+  },
+  "bm25": {
+    "variant": "BM25Okapi_positive_idf",
+    "k1": 1.2,
+    "b": 0.75,
+    "idf": "log(1+(N-df+0.5)/(df+0.5))",
+    "document_frequency_scope": "within_patient"
+  },
+  "selection": {
+    "top_k": 3,
+    "minimum_score_exclusive": 0.0,
+    "tie_break": ["source_span.start", "evidence_id"],
+    "retrieval_scope": "within_patient_only",
+    "top_k_rationale": "predeclared_maximum_approximately_6000_source_characters_per_question"
+  },
+  "downstream": {
+    "extractor": "clinicalmatcher-deterministic-extractor@1.0.0",
+    "purpose": "answer_metric_diagnostic_not_evidence_relevance_gold"
+  }
+}

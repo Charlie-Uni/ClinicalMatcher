@@ -41,6 +41,7 @@ clinical-matcher-apixaban-deterministic = "clinical_matcher.apixaban_determinist
 clinical-matcher-apixaban-structured-llm = "clinical_matcher.apixaban_structured_llm_cli:main"
 clinical-matcher-apixaban-long-context = "clinical_matcher.apixaban_long_context_cli:main"
 clinical-matcher-apixaban-evidence-index = "clinical_matcher.apixaban_evidence_index_cli:main"
+clinical-matcher-apixaban-bm25 = "clinical_matcher.apixaban_bm25_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

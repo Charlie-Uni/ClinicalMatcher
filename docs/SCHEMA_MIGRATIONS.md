@@ -75,3 +75,13 @@ contract hash, split/corpus provenance, deterministic index ID, counts, and
 span/isolation validation results. It is deliberately separate from the
 staging-corpus schema: P3.1 preserves the already frozen evidence chunks, so no
 P2 corpus, split, prediction, or report needs migration or regeneration.
+
+P3.2 introduces the owner-only `apixaban-bm25-run-1.0.0` artifact and reuses
+prediction-set schema `1.2.0` for the downstream deterministic diagnostic. The
+BM25 artifact stores IDs, query hashes, ranks, positive scores, frozen
+configuration, performance/exposure aggregates, and complete provenance, but
+no note or question text. Its semantic validator additionally requires the
+complete patient-by-question grid and reconciles every aggregate count. No P2
+or P3.1 artifact is migrated. Because independent evidence-ID gold is absent,
+the schema fixes the boundary that retrieval-relevance metrics are not reported
+and downstream answer metrics are diagnostic only.

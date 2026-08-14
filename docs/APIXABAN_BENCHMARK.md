@@ -640,3 +640,54 @@ contiguous exact spans, source/patient isolation, the declared 2,000-character
 maximum, and no text normalization. The manifest remains owner-only and local;
 its restricted hashes and deterministic index ID are intentionally not copied
 into this public document. No test manifest was built.
+
+## Frozen patient-local BM25 baseline
+
+P3.2 adds a dependency-free BM25 implementation behind the common
+`EvidenceRetriever` protocol. Each question is searched only against evidence
+belonging to the same patient. The versioned public contract freezes:
+
+- the unchanged public `source_question` as the complete query, with no answer
+  text, fact-field name, manual expansion, or test label;
+- Unicode case-folding and the declared token regular expression, with no
+  stemming, stopword removal, or additional text normalization;
+- positive-IDF BM25 with `k1=1.2`, `b=0.75`, and document frequencies computed
+  within one patient;
+- at most three positive-score chunks, tied by source start then evidence ID.
+
+Top three was predeclared as a bounded exposure policy of approximately 6,000
+source characters per question under the frozen 2,000-character chunk limit;
+it was not selected against validation labels. The owner-only run artifact
+binds the split, evidence-index manifest, question catalog, BM25 contract,
+prediction-set content, configuration, and commit. It records deterministic
+serialized-index size, build/retrieval timing, candidate comparisons, and
+selected-versus-full-note character exposure. Timings are descriptive local
+measurements rather than machine-independent benchmarks.
+
+Run validation retrieval and its separately identifiable downstream diagnostic
+with:
+
+```bash
+clinical-matcher-apixaban-bm25 \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --evidence-index-manifest /restricted/path/evidence-index.validation.manifest.json \
+  --split validation \
+  --output-dir /restricted/path/bm25-v1-validation \
+  --acknowledge-restricted-data-local-only
+```
+
+`retrieval.json` contains no note text or question text, but patient IDs,
+rankings, scores, and restricted-data-derived hashes still make it a local-only
+artifact. `predictions.json` applies the already frozen deterministic fact
+extractor to only the selected chunks and uses prediction-set schema `1.2.0`.
+Its answer metrics can show downstream information retention, but they do not
+establish retrieval relevance.
+
+The official release has no independent human-authored evidence-ID gold.
+Consequently P3.2 does **not** report Evidence Recall@k, MRR, or nDCG on real
+patients. Ranking correctness is tested on controlled synthetic examples; the
+real validation run reports resource/exposure statistics and downstream answer
+metrics only. Calling lexical answer occurrence or rule-generated links
+clinical relevance would be circular and is explicitly outside this baseline.
+Locked-test retrieval and evaluation remain deferred.

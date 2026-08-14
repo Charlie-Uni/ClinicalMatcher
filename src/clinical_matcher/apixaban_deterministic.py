@@ -322,15 +322,31 @@ def extract_patient_predictions(
     }
     predictions = []
     for question in resolved_catalog["questions"]:
-        rule = by_label[question["source_criterion_label"]]
-        if question["question_type"] == "boolean":
-            prediction = _boolean_prediction(
-                patient, question, rule, resolved_rules
+        predictions.append(
+            extract_question_prediction(
+                patient,
+                question,
+                by_label[question["source_criterion_label"]],
+                resolved_rules,
             )
-        else:
-            prediction = _numeric_prediction(patient, question, rule)
-        predictions.append(prediction)
+        )
     return predictions
+
+
+def extract_question_prediction(
+    patient: Mapping[str, Any],
+    question: Mapping[str, Any],
+    rule: Mapping[str, Any],
+    rule_set: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """Apply one reviewed fact rule to a caller-selected evidence subset."""
+    if rule["source_criterion_label"] != question["source_criterion_label"]:
+        raise ApixabanDeterministicError("Question and rule labels differ")
+    if question["question_type"] == "boolean":
+        return _boolean_prediction(patient, question, rule, rule_set)
+    if question["question_type"] == "numeric":
+        return _numeric_prediction(patient, question, rule)
+    raise ApixabanDeterministicError("Unsupported question type")
 
 
 def build_deterministic_prediction_set(
