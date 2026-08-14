@@ -568,3 +568,17 @@ input may recover omitted evidence, but it also increases sensitive-text
 exposure, latency, and distraction; P2.3 is retained only if validation
 evidence supports it. Patient text and row-level predictions remain restricted
 and outside Git, and the locked test remains untouched.
+
+The frozen validation run completed for all 15 patients with every application
+evidence chunk retained, no observed prompt reaching the 32,768-token limit,
+and every response passing the structured schema without repair. Results were
+mixed under the unchanged P1.5 evaluator: overall typed exact match and boolean
+classification improved relative to P2.2, while numeric status quality, value
+coverage, and tolerance accuracy declined. Patient-bootstrap intervals from
+only 15 clusters were wide and overlapping, so this is not evidence that full
+notes are generally superior. Full-note input also increased prompt volume,
+sensitive-text exposure, and model memory. The lower latency observed in this
+single serial run is reported descriptively and is not treated as a stable
+speed advantage. The long-context configuration is now a frozen comparator;
+model selection will proceed to evidence retrieval without further P2.3
+tuning or test access.

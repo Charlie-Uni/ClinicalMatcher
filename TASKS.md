@@ -261,7 +261,7 @@ pipeline.
     tokens, memory, and output throughput. A 15-patient validation run and the
     P1.5 metrics completed; locked test inference remains deferred.
 
-- [ ] **P2.3 Implement the matched long-context baseline.** Evaluate the same
+- [x] **P2.3 Implement the matched long-context baseline.** Evaluate the same
   frozen model with the full note under a declared truncation/token policy.
   - Entry condition: P2.2 model and output contract are stable.
   - Constraints: use the same question and decision semantics as later RAG;
@@ -269,6 +269,19 @@ pipeline.
     context.
   - Verify: report retained-text proportion, truncation count, effectiveness,
     latency, tokens, memory, and privacy-exposure proxy.
+  - Completion: contract `1.0.0` changes only the input policy and context
+    window relative to P2.2: the same pinned Llama manifest, prompt, 23-question
+    schema, seed, decoding, invalid-output policy, and validation split are
+    retained. The owner-only 15-patient run preserved every complete evidence
+    chunk, reached neither the application truncation boundary nor the declared
+    context limit, and produced schema-valid output for every request. The same
+    P1.5 evaluator found mixed validation effects: typed and boolean aggregate
+    scores improved, while numeric status, coverage, and tolerance measures did
+    not. Patient-bootstrap intervals remain wide and overlapping. Full-note
+    input also increased prompt/text exposure and model memory; its lower
+    latency in this single sequential run is descriptive, not a speed claim.
+    P2.3 is therefore frozen as an honest baseline rather than tuned further;
+    locked test inference remains deferred and P3 proceeds with retrieval.
 
 Acceptance: rules, frozen structured inference, and long context provide honest
 baselines before any retriever or fine-tuning claim.
