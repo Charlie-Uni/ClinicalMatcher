@@ -310,13 +310,32 @@ baselines before any retriever or fine-tuning claim.
     reproduced from the frozen split/corpus with identical hashes. Locked test
     indexing remains deferred; no embedding or retrieval-quality claim is made.
 
-- [ ] **P3.2 Implement BM25 behind a common retriever interface.** Return ranked
+- [x] **P3.2 Implement BM25 behind a common retriever interface.** Return ranked
   evidence IDs and scores for each question.
   - Entry condition: P3.1 is frozen.
   - Constraints: no answer text or test labels enter query construction; record
     tokenizer, normalization, and BM25 parameters.
   - Verify: controlled ranking tests, patient isolation, deterministic output,
     latency/index-size measurement, and downstream answer metrics.
+  - Completion: contract `apixaban-patient-bm25-v1` freezes source-question-only
+    queries, Unicode tokenization without hidden normalization, positive-IDF
+    BM25 (`k1=1.2`, `b=0.75`), patient-local document frequencies, positive-score
+    top-3 selection, and deterministic tie-breaking. A common retriever protocol,
+    strict owner-only run schema, complete patient-question-grid validation,
+    evidence/prediction binding, controlled synthetic ranking tests, and locked
+    test acknowledgements are implemented. Validation processed 15 patients,
+    107 evidence chunks, and all 345 patient-question queries from implementation
+    commit `ed8d700`; every query returned three positive-score chunks. The
+    deterministic serialized index proxy was 209,197 bytes, index construction
+    took 9.59 ms, and retrieval averaged 0.035 ms/query on this local run.
+    Selected text was 43.4% of per-question full-note exposure (56.6% lower).
+    Under the unchanged evaluator, typed exact match was 0.3188 (95% patient
+    bootstrap CI 0.2638–0.3797) versus 0.3275 for the full-evidence deterministic
+    comparator, while numeric value coverage fell from 0.5696 to 0.3671. The
+    intervals overlap and the release has no independent evidence-ID gold, so
+    this is a resource/downstream diagnostic—not a relevance or superiority
+    claim. All patient-level rankings, predictions, and reports remain local;
+    locked-test retrieval was not run.
 
 - [ ] **P3.3 Implement one validated dense retriever.** Pin one embedding model
   and revision, pooling, normalization, dimension, and similarity metric.

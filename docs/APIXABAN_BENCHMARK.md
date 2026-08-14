@@ -691,3 +691,20 @@ real validation run reports resource/exposure statistics and downstream answer
 metrics only. Calling lexical answer occurrence or rule-generated links
 clinical relevance would be circular and is explicitly outside this baseline.
 Locked-test retrieval and evaluation remain deferred.
+
+The frozen validation run from implementation commit `ed8d700` completed all
+345 patient-question queries over 15 patients and 107 chunks. Each query had a
+positive lexical match and selected three chunks. The deterministic serialized
+index proxy was 209,197 bytes; local index construction took 9.59 ms and mean
+retrieval took 0.035 ms/query. Selected chunks represented 43.4% of the
+per-question full-note character exposure, a 56.6% reduction.
+
+The unchanged downstream evaluator reported typed exact match 0.3188 (95%
+patient-bootstrap CI 0.2638–0.3797), compared with 0.3275 (0.2696–0.3913) for
+the full-evidence deterministic comparator. Boolean macro-F1 was essentially
+unchanged, while numeric value coverage fell from 0.5696 to 0.3671 and numeric
+status accuracy fell from 0.7000 to 0.5667. These small-sample intervals overlap,
+and the answer diagnostic cannot identify evidence relevance. BM25 is therefore
+retained as the cheap lexical comparator for P3.3/P3.4, not selected as a
+superior evidence method. Patient-level run and evaluation artifacts remain
+owner-only outside Git, and no locked-test artifact was created.
