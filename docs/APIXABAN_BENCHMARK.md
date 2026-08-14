@@ -632,3 +632,11 @@ Building a locked-test manifest additionally requires
 `--acknowledge-locked-test-indexing`; it remains deferred during model
 development. P3.1 does not build embeddings, claim evidence relevance, or
 measure downstream effectiveness. Those belong to P3.2–P3.5.
+
+The first frozen validation manifest covers 15 patient-local sources and 107
+existing evidence chunks. Independent verification reproduced the same index
+identity and confirmed stable IDs, globally unique evidence documents,
+contiguous exact spans, source/patient isolation, the declared 2,000-character
+maximum, and no text normalization. The manifest remains owner-only and local;
+its restricted hashes and deterministic index ID are intentionally not copied
+into this public document. No test manifest was built.

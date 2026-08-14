@@ -290,7 +290,7 @@ baselines before any retriever or fine-tuning claim.
 
 ## P3 — Conventional evidence retrieval
 
-- [ ] **P3.1 Freeze the evidence-chunk contract.** Define deterministic chunks,
+- [x] **P3.1 Freeze the evidence-chunk contract.** Define deterministic chunks,
   stable evidence IDs, note offsets, section metadata when available, and an
   index manifest.
   - Entry condition: prove that chunk generation does not read answer labels.
@@ -298,6 +298,17 @@ baselines before any retriever or fine-tuning claim.
     restricted local artifacts; changing chunking creates a new index version.
   - Verify: chunks reconstruct their source spans, never cross patients, cover
     documented text according to policy, and regenerate to the same hash.
+  - Completion: contract `apixaban-preserved-evidence-chunks-v1` preserves the
+    staging adapter's exact chunks without re-splitting or normalization and
+    permits only evidence fields; legacy answers, benchmark/prediction labels,
+    and queries are forbidden. The patient-local builder verifies HMAC-bound
+    evidence IDs, global uniqueness, exact zero-based half-open spans,
+    contiguous source coverage, declared chunk limits, and source/patient
+    isolation. Missing section metadata is explicit rather than inferred. An
+    owner-only validation manifest covering 15 patients and 107 chunks was
+    generated from implementation commit `95db920`, then independently
+    reproduced from the frozen split/corpus with identical hashes. Locked test
+    indexing remains deferred; no embedding or retrieval-quality claim is made.
 
 - [ ] **P3.2 Implement BM25 behind a common retriever interface.** Return ranked
   evidence IDs and scores for each question.
