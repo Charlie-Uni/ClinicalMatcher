@@ -61,14 +61,17 @@
       ],
       "properties": {
         "policy_id": {"type": "string", "minLength": 1},
-        "max_note_characters": {"type": "integer", "minimum": 1},
+        "max_note_characters": {"type": ["integer", "null"], "minimum": 1},
         "configured_context_tokens": {"type": "integer", "minimum": 1},
         "configured_max_output_tokens": {"type": "integer", "minimum": 1},
         "patient_count": {"type": "integer", "minimum": 1},
         "note_characters_total": {"type": "integer", "minimum": 1},
         "note_characters_retained": {"type": "integer", "minimum": 1},
         "retained_character_proportion": {"type": "number", "minimum": 0, "maximum": 1},
-        "truncated_patient_count": {"type": "integer", "minimum": 0}
+        "truncated_patient_count": {"type": "integer", "minimum": 0},
+        "privacy_exposure_proxy_characters": {"type": "integer", "minimum": 1},
+        "maximum_prompt_tokens_observed": {"type": "integer", "minimum": 0},
+        "context_limit_reached_count": {"type": "integer", "minimum": 0}
       }
     },
     "structured_output": {

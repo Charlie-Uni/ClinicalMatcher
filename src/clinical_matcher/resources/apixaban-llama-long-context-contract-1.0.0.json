@@ -1,0 +1,55 @@
+{
+  "contract_version": "1.0.0",
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "development_splits": ["train", "validation"],
+  "test_labels_used": false,
+  "model": {
+    "provider": "Meta",
+    "family": "Llama 3.1",
+    "parameter_count": "8B",
+    "ollama_model_name": "llama3.1:latest",
+    "ollama_manifest_sha256": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+    "model_blob_sha256": "667b0c1932bc6ffc593ed1d03f895bf2dc8dc6df21db3042284a6f4416b06a29",
+    "quantization": "Q4_K_M",
+    "advertised_context_tokens": 131072
+  },
+  "license": {
+    "name": "Llama 3.1 Community License Agreement",
+    "version_release_date": "2024-07-23",
+    "open_weight": true,
+    "osi_open_source": false,
+    "acceptable_use_policy_applies": true
+  },
+  "runtime": {
+    "engine": "Ollama",
+    "engine_version": "0.32.6",
+    "endpoint": "http://127.0.0.1:11434",
+    "network_policy": "loopback_only_no_cloud_fallback",
+    "structured_output_api": "/api/chat"
+  },
+  "decoding": {
+    "temperature": 0,
+    "seed": 17,
+    "num_ctx": 32768,
+    "num_predict": 4096,
+    "stream": false,
+    "keep_alive": "5m"
+  },
+  "input_policy": {
+    "policy_id": "all-complete-evidence-v1",
+    "max_note_characters": null,
+    "partial_evidence_chunks_allowed": false,
+    "question_batch_size": 23,
+    "selection_uses_labels": false
+  },
+  "prompt_version": "apixaban-23-facts-structured-1.0.0",
+  "invalid_output_policy": "whole_request_abstains_no_manual_repair",
+  "intended_use": "offline_research_baseline_not_clinical_decision_support",
+  "development_hardware": {
+    "system": "Darwin",
+    "chip": "Apple M3",
+    "cpu_cores": 8,
+    "memory_bytes": 25769803776,
+    "architecture": "arm64"
+  }
+}

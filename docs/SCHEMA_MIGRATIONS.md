@@ -60,3 +60,10 @@ The original validation artifact uses the shorter legacy field name
 `prediction_content_sha256`; new reports use the unambiguous
 `prediction_set_content_sha256`. Schema `1.0.0` accepts exactly one of these
 aliases because both values hash the same complete canonical prediction set.
+
+P2.3 reuses run-report schema `1.0.0` without invalidating P2.2 artifacts. The
+`max_note_characters` field may be `null` only for a no-character-cap policy,
+and new reports may record note-character exposure, maximum observed prompt
+tokens, and the number of requests whose observed prompt token count reached
+the configured context limit. These fields are optional in the schema so the
+already frozen P2.2 report remains valid; current writers emit all three.

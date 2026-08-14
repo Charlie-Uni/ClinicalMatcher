@@ -31,6 +31,9 @@ CONTRACT_VERSION = "1.0.0"
 CONTRACT_RESOURCE = (
     "resources/apixaban-llama-structured-contract-1.0.0.json"
 )
+LONG_CONTEXT_CONTRACT_RESOURCE = (
+    "resources/apixaban-llama-long-context-contract-1.0.0.json"
+)
 PREDICTION_SET_VERSION = "1.2.0"
 RUN_REPORT_VERSION = "1.0.0"
 RUN_REPORT_SCHEMA = (
@@ -50,10 +53,44 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def load_structured_llm_contract() -> Dict[str, Any]:
-    resource = files("clinical_matcher").joinpath(CONTRACT_RESOURCE)
+def _load_contract_resource(resource_name: str) -> Dict[str, Any]:
+    resource = files("clinical_matcher").joinpath(resource_name)
     document: Dict[str, Any] = json.loads(resource.read_text(encoding="utf-8"))
     validate_structured_llm_contract(document)
+    return document
+
+
+def load_structured_llm_contract() -> Dict[str, Any]:
+    return _load_contract_resource(CONTRACT_RESOURCE)
+
+
+def load_long_context_contract() -> Dict[str, Any]:
+    document = _load_contract_resource(LONG_CONTEXT_CONTRACT_RESOURCE)
+    reference = load_structured_llm_contract()
+    for field in (
+        "question_catalog_sha256",
+        "development_splits",
+        "test_labels_used",
+        "model",
+        "license",
+        "runtime",
+        "prompt_version",
+        "invalid_output_policy",
+        "intended_use",
+        "development_hardware",
+    ):
+        if document[field] != reference[field]:
+            raise ApixabanStructuredLLMError(
+                f"Long-context contract changed matched field: {field}"
+            )
+    short_decoding = dict(reference["decoding"])
+    long_decoding = dict(document["decoding"])
+    short_decoding.pop("num_ctx")
+    long_decoding.pop("num_ctx")
+    if long_decoding != short_decoding:
+        raise ApixabanStructuredLLMError(
+            "Long-context contract changed decoding beyond num_ctx"
+        )
     return document
 
 
@@ -105,6 +142,20 @@ def validate_structured_llm_contract(
         raise ApixabanStructuredLLMError("Partial evidence chunks are unsupported")
     if policy["selection_uses_labels"] is not False:
         raise ApixabanStructuredLLMError("Input selection must not use labels")
+    policy_id = policy["policy_id"]
+    cap = policy["max_note_characters"]
+    if policy_id == "ordered-complete-evidence-prefix-v1":
+        if not isinstance(cap, int) or isinstance(cap, bool) or cap < 1:
+            raise ApixabanStructuredLLMError(
+                "Prefix policy requires a positive character cap"
+            )
+    elif policy_id == "all-complete-evidence-v1":
+        if cap is not None:
+            raise ApixabanStructuredLLMError(
+                "Full-note policy must not impose a character cap"
+            )
+    else:
+        raise ApixabanStructuredLLMError("Unsupported structured input policy")
     if document["invalid_output_policy"] != (
         "whole_request_abstains_no_manual_repair"
     ):
@@ -217,6 +268,22 @@ def select_complete_evidence_prefix(
             "Character cap is too small for the first complete evidence chunk"
         )
     return selected, retained, total
+
+
+def select_input_evidence(
+    patient: Mapping[str, Any], policy: Mapping[str, Any]
+) -> Tuple[List[Mapping[str, Any]], int, int]:
+    if policy["policy_id"] == "ordered-complete-evidence-prefix-v1":
+        return select_complete_evidence_prefix(
+            patient, policy["max_note_characters"]
+        )
+    if policy["policy_id"] == "all-complete-evidence-v1":
+        evidence = list(patient["evidence"])
+        if not evidence:
+            raise ApixabanStructuredLLMError("Patient has no evidence chunks")
+        total = sum(len(item["text"]) for item in evidence)
+        return evidence, total, total
+    raise ApixabanStructuredLLMError("Unsupported structured input policy")
 
 
 def _evidence_array_schema(evidence_ids: Sequence[str], minimum: int = 0) -> Dict[str, Any]:
@@ -476,6 +543,7 @@ def run_structured_llm_baseline(
     hardware: Optional[Mapping[str, Any]] = None,
     generated_at: Optional[str] = None,
     code_commit: Optional[str] = None,
+    contract: Optional[Mapping[str, Any]] = None,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     if split_name not in {"train", "validation", "test"}:
         raise ApixabanStructuredLLMError("Unsupported split name")
@@ -491,11 +559,14 @@ def run_structured_llm_baseline(
     staging = json.loads(staging_corpus_path.read_text(encoding="utf-8"))
     validate_scan_inputs(split, staging, staging_corpus_path)
     catalog = load_question_catalog()
-    contract = load_structured_llm_contract()
+    resolved_contract = dict(contract or load_structured_llm_contract())
+    validate_structured_llm_contract(resolved_contract, catalog)
     if split["dataset"]["question_catalog_sha256"] != catalog["catalog_sha256"]:
         raise ApixabanStructuredLLMError("Frozen split catalog hash mismatch")
-    resolved_client = client or OllamaLoopbackClient(contract["runtime"]["endpoint"])
-    verify_local_runtime(resolved_client, contract)
+    resolved_client = client or OllamaLoopbackClient(
+        resolved_contract["runtime"]["endpoint"]
+    )
+    verify_local_runtime(resolved_client, resolved_contract)
     patient_ids = set(split["splits"][split_name]["patient_ids"])
     patients = sorted(
         (item for item in staging["patients"] if item["patient_id"] in patient_ids),
@@ -504,8 +575,9 @@ def run_structured_llm_baseline(
     if {item["patient_id"] for item in patients} != patient_ids:
         raise ApixabanStructuredLLMError("Split patient membership is incomplete")
 
-    decoding = contract["decoding"]
-    cap = contract["input_policy"]["max_note_characters"]
+    decoding = resolved_contract["decoding"]
+    input_policy = resolved_contract["input_policy"]
+    cap = input_policy["max_note_characters"]
     predictions: List[Dict[str, Any]] = []
     latencies: List[float] = []
     prompt_tokens = 0
@@ -517,15 +589,17 @@ def run_structured_llm_baseline(
     total_characters = 0
     retained_characters = 0
     truncated_count = 0
+    prompt_token_counts: List[int] = []
+    context_limit_reached_count = 0
     for index, patient in enumerate(patients, start=1):
-        evidence, retained, total = select_complete_evidence_prefix(patient, cap)
+        evidence, retained, total = select_input_evidence(patient, input_policy)
         total_characters += total
         retained_characters += retained
         truncated_count += int(retained < total)
         evidence_ids = [item["evidence_id"] for item in evidence]
         schema = structured_output_schema(catalog, evidence_ids)
         payload = {
-            "model": contract["model"]["ollama_model_name"],
+            "model": resolved_contract["model"]["ollama_model_name"],
             "messages": build_messages(catalog, evidence),
             "stream": False,
             "format": schema,
@@ -541,7 +615,12 @@ def run_structured_llm_baseline(
         response = resolved_client.chat(payload)
         latency = time.monotonic() - started
         latencies.append(latency)
-        prompt_tokens += int(response.get("prompt_eval_count", 0) or 0)
+        response_prompt_tokens = int(response.get("prompt_eval_count", 0) or 0)
+        prompt_tokens += response_prompt_tokens
+        prompt_token_counts.append(response_prompt_tokens)
+        context_limit_reached_count += int(
+            response_prompt_tokens >= decoding["num_ctx"]
+        )
         output_tokens += int(response.get("eval_count", 0) or 0)
         evaluation_duration_ns += int(response.get("eval_duration", 0) or 0)
         content = response.get("message", {}).get("content")
@@ -563,14 +642,14 @@ def run_structured_llm_baseline(
 
     commit = code_commit or current_git_commit()
     timestamp = generated_at or _now()
-    config_hash = canonical_sha256(contract)
+    config_hash = canonical_sha256(resolved_contract)
     prediction_set = {
         "prediction_set_version": PREDICTION_SET_VERSION,
         "benchmark_sha256": split["dataset"]["benchmark_sha256"],
         "split_manifest_sha256": split["manifest_sha256"],
         "split_name": split_name,
-        "model_id": model_id(contract),
-        "prompt_version": contract["prompt_version"],
+        "model_id": model_id(resolved_contract),
+        "prompt_version": resolved_contract["prompt_version"],
         "inference_config_sha256": config_hash,
         "generated_at": timestamp,
         "code_commit": commit,
@@ -579,7 +658,7 @@ def run_structured_llm_baseline(
     validate_prediction_set(prediction_set, catalog)
     memory, vram = _memory_from_ps(
         resolved_client.running_models(),
-        contract["model"]["ollama_manifest_sha256"],
+        resolved_contract["model"]["ollama_manifest_sha256"],
     )
     duration_seconds = evaluation_duration_ns / 1_000_000_000
     performance = {
@@ -599,7 +678,7 @@ def run_structured_llm_baseline(
         "benchmark_sha256": split["dataset"]["benchmark_sha256"],
         "split_manifest_sha256": split["manifest_sha256"],
         "split_name": split_name,
-        "model_manifest_sha256": contract["model"]["ollama_manifest_sha256"],
+        "model_manifest_sha256": resolved_contract["model"]["ollama_manifest_sha256"],
         "inference_config_sha256": config_hash,
         "prediction_set_content_sha256": canonical_sha256(prediction_set),
         "code_commit": commit,
@@ -610,14 +689,14 @@ def run_structured_llm_baseline(
         "generated_at": timestamp,
         "provenance": {
             **report_seed,
-            "model_id": model_id(contract),
-            "engine": contract["runtime"]["engine"],
-            "engine_version": contract["runtime"]["engine_version"],
-            "prompt_version": contract["prompt_version"],
+            "model_id": model_id(resolved_contract),
+            "engine": resolved_contract["runtime"]["engine"],
+            "engine_version": resolved_contract["runtime"]["engine_version"],
+            "prompt_version": resolved_contract["prompt_version"],
         },
         "hardware": dict(hardware or detect_hardware()),
         "input_policy": {
-            "policy_id": contract["input_policy"]["policy_id"],
+            "policy_id": input_policy["policy_id"],
             "max_note_characters": cap,
             "configured_context_tokens": decoding["num_ctx"],
             "configured_max_output_tokens": decoding["num_predict"],
@@ -626,6 +705,9 @@ def run_structured_llm_baseline(
             "note_characters_retained": retained_characters,
             "retained_character_proportion": retained_characters / total_characters,
             "truncated_patient_count": truncated_count,
+            "privacy_exposure_proxy_characters": retained_characters,
+            "maximum_prompt_tokens_observed": max(prompt_token_counts),
+            "context_limit_reached_count": context_limit_reached_count,
         },
         "structured_output": {
             "request_count": len(patients),
@@ -638,7 +720,12 @@ def run_structured_llm_baseline(
         "performance": performance,
         "limitations": [
             "This is an open-weight Llama research baseline, not an OSI-open-source or clinically validated model.",
-            "The ordered complete-chunk prefix may omit relevant evidence; P2.3 will measure matched full-note long context.",
+            (
+                "The ordered complete-chunk prefix may omit relevant evidence."
+                if input_policy["policy_id"] == "ordered-complete-evidence-prefix-v1"
+                else "The full note increases local sensitive-text exposure and may dilute relevant evidence."
+            ),
+            "Prompt token counts at the configured context limit are reported as potential runtime truncation; the API does not provide a stronger per-request truncation flag.",
             "Temperature zero and a seed reduce variability but do not prove bitwise determinism across runtime or hardware changes.",
             "A schema-valid response can still be clinically or factually wrong.",
         ],

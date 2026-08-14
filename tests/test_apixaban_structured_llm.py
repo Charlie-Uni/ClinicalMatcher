@@ -10,10 +10,12 @@ from clinical_matcher.apixaban_structured_llm import (
     ApixabanStructuredLLMError,
     OllamaLoopbackClient,
     build_messages,
+    load_long_context_contract,
     load_structured_llm_contract,
     parse_structured_output,
     run_structured_llm_baseline,
     select_complete_evidence_prefix,
+    select_input_evidence,
     structured_output_schema,
     verify_local_runtime,
     write_structured_llm_run,
@@ -150,6 +152,31 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
         self.assertEqual(8, retained)
         self.assertEqual(12, total)
 
+    def test_long_context_contract_is_matched_and_selects_all_complete_chunks(self):
+        long_contract = load_long_context_contract()
+        self.assertEqual(self.contract["model"], long_contract["model"])
+        self.assertEqual(
+            self.contract["prompt_version"], long_contract["prompt_version"]
+        )
+        self.assertEqual(17, long_contract["decoding"]["seed"])
+        self.assertEqual(32768, long_contract["decoding"]["num_ctx"])
+        self.assertEqual(
+            "all-complete-evidence-v1",
+            long_contract["input_policy"]["policy_id"],
+        )
+        patient = {
+            "evidence": [
+                {"evidence_id": "e1", "text": "a" * 4},
+                {"evidence_id": "e2", "text": "b" * 5},
+            ]
+        }
+        selected, retained, total = select_input_evidence(
+            patient, long_contract["input_policy"]
+        )
+        self.assertEqual(["e1", "e2"], [item["evidence_id"] for item in selected])
+        self.assertEqual(9, retained)
+        self.assertEqual(9, total)
+
     def test_dynamic_schema_requires_every_question_once(self):
         evidence_ids = ["evidence-0123456789abcdef01234567-000"]
         schema = structured_output_schema(self.catalog, evidence_ids)
@@ -210,6 +237,14 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
             self.assertEqual(1.0, report["structured_output"]["schema_valid_rate"])
             self.assertEqual(0, report["structured_output"]["manual_repairs"])
             self.assertEqual(
+                report["input_policy"]["note_characters_retained"],
+                report["input_policy"]["privacy_exposure_proxy_characters"],
+            )
+            self.assertEqual(
+                100, report["input_policy"]["maximum_prompt_tokens_observed"]
+            )
+            self.assertEqual(0, report["input_policy"]["context_limit_reached_count"])
+            self.assertEqual(
                 canonical_sha256(predictions),
                 report["provenance"]["prediction_set_content_sha256"],
             )
@@ -225,6 +260,46 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
             self.assertEqual(0, os.stat(report_path).st_mode & 0o077)
             with self.assertRaises(FileExistsError):
                 write_structured_llm_run(predictions, report, output)
+
+    def test_long_context_run_retains_full_note_with_same_task_contract(self):
+        frozen, inputs = _frozen_candidate()
+        long_contract = load_long_context_contract()
+        client = _FakeClient(valid=True)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            split_path = root / "split.json"
+            corpus_path = root / "corpus.json"
+            _write_private(split_path, frozen)
+            _write_private(corpus_path, inputs[2])
+            predictions, report = run_structured_llm_baseline(
+                split_path,
+                corpus_path,
+                "validation",
+                client=client,
+                hardware=long_contract["development_hardware"],
+                generated_at="2026-08-14T10:00:00Z",
+                code_commit="b" * 40,
+                contract=long_contract,
+            )
+            self.assertEqual(
+                self.contract["model"]["ollama_manifest_sha256"],
+                report["provenance"]["model_manifest_sha256"],
+            )
+            self.assertEqual(
+                self.contract["prompt_version"], predictions["prompt_version"]
+            )
+            self.assertEqual(
+                "all-complete-evidence-v1",
+                report["input_policy"]["policy_id"],
+            )
+            self.assertIsNone(report["input_policy"]["max_note_characters"])
+            self.assertEqual(
+                1.0, report["input_policy"]["retained_character_proportion"]
+            )
+            self.assertEqual(0, report["input_policy"]["truncated_patient_count"])
+            self.assertTrue(
+                all(call["options"]["num_ctx"] == 32768 for call in client.calls)
+            )
 
     def test_invalid_model_output_becomes_measured_abstention_without_repair(self):
         frozen, inputs = _frozen_candidate()

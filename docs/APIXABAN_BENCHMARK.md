@@ -536,3 +536,35 @@ lexical baseline on several dimensions, but inference was slow on the M3
 MacBook Air, most notes were truncated by design, and unknown recognition
 remained weak. These findings motivate the matched P2.3 long-context comparison
 without supporting any clinical-use claim.
+
+## Matched full-note long-context baseline
+
+P2.3 changes only the note-input policy and configured context window. The
+contract `apixaban-llama-long-context-contract-1.0.0.json` is checked against
+the P2.2 contract at load time: model and manifest digest, runtime, license,
+prompt, 23-question catalog, seed, temperature, output-token limit, invalid
+output handling, hardware declaration, and development-only split boundary
+must match. The context window is 32,768 tokens and
+`all-complete-evidence-v1` passes every ordered evidence chunk without using
+labels or applying a character cap.
+
+Run the matched validation comparison locally with:
+
+```bash
+clinical-matcher-apixaban-long-context \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --split validation \
+  --output-dir /restricted/path/llama31-long-context-v1-validation \
+  --acknowledge-restricted-data-local-only
+```
+
+The aggregate report records source-text retention, patients truncated by the
+application, note characters exposed to the local model as a privacy-exposure
+proxy, maximum observed prompt tokens, and requests whose prompt-token count
+reached the declared context limit. The last signal is conservative: Ollama's
+response does not expose a stronger per-request truncation flag. Full-note
+input may recover omitted evidence, but it also increases sensitive-text
+exposure, latency, and distraction; P2.3 is retained only if validation
+evidence supports it. Patient text and row-level predictions remain restricted
+and outside Git, and the locked test remains untouched.

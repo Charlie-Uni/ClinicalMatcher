@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from typing import Optional, Sequence
+from typing import Any, Mapping, Optional, Sequence
 
 from .apixaban_structured_llm import (
     run_structured_llm_baseline,
@@ -8,10 +8,11 @@ from .apixaban_structured_llm import (
 )
 
 
-def build_parser() -> argparse.ArgumentParser:
+def build_parser(long_context: bool = False) -> argparse.ArgumentParser:
+    baseline = "long-context" if long_context else "structured-output"
     parser = argparse.ArgumentParser(
         description=(
-            "Run the pinned local Llama 3.1 structured-output baseline against "
+            f"Run the pinned local Llama 3.1 {baseline} baseline against "
             "a frozen restricted Apixaban split."
         )
     )
@@ -30,8 +31,12 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: Optional[Sequence[str]] = None) -> int:
-    args = build_parser().parse_args(argv)
+def run_cli(
+    argv: Optional[Sequence[str]] = None,
+    contract: Optional[Mapping[str, Any]] = None,
+    long_context: bool = False,
+) -> int:
+    args = build_parser(long_context=long_context).parse_args(argv)
     if not args.acknowledge_restricted_data_local_only:
         raise ValueError("--acknowledge-restricted-data-local-only is required")
     if args.split == "test" and not args.acknowledge_locked_test_inference:
@@ -48,6 +53,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         staging_corpus_path=args.staging_corpus,
         split_name=args.split,
         progress=progress,
+        contract=contract,
     )
     prediction_path, report_path = write_structured_llm_run(
         predictions, report, args.output_dir
@@ -55,6 +61,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print(f"Wrote restricted predictions: {prediction_path}")
     print(f"Wrote restricted aggregate run report: {report_path}")
     return 0
+
+
+def main(argv: Optional[Sequence[str]] = None) -> int:
+    return run_cli(argv)
 
 
 if __name__ == "__main__":
