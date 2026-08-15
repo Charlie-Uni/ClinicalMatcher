@@ -41,3 +41,34 @@ Because current models expose no probability, the report contains two
 deterministic coverage–risk operating points: before policy and after policy.
 Risk is typed exact-match error among answered note-grounded facts. These points
 are not a calibrated curve or a clinical eligibility result.
+
+## Frozen validation results
+
+Implementation commit `5284dec77ba8feb51d853621f7f70c587ad2dd71` was
+applied to the same two frozen 15-patient validation outputs. Projection and
+report files remain owner-only outside Git.
+
+| Output | Coverage before | Coverage after | Risk before | Risk after | Decision changes |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Structured prefix | 0.744928 | 0.742029 | 0.357977 | 0.359375 | 1 |
+| Matched long context | 0.794203 | 0.785507 | 0.321168 | 0.324723 | 3 |
+
+For structured prefix, the projection/report file SHA-256 values are
+`8fa9aa6ce9d379c71fc594981a8d20b1aec04b09e8ef8b0a955f28d7b518cc25`
+and `ae8a5ace13e999353a713f1509d115b503c2b7fc177f2b03a4f977dfb6365a0d`.
+For matched long context, they are
+`ccdd1e417253ece9b9a78d0975dfd0a116716b8c09bd673772b3806295c36ef0`
+and `8df83ea01ce0c800afbc85cab6156b42d2ba5e3c6810fc51ce63d21aeefe7de6`.
+All four files have mode `0600`.
+
+The policy converted the 1 and 3 evidence-free known facts identified by the
+readiness audit to `missing_evidence`; it normalized the existing 88 and 71
+unknown rows to `missing_fact`. No invalid-schema, unusable-evidence, or unit
+failure was present. Verifier conflict input remained `not_evaluable`, not an
+evaluated zero.
+
+Typed exact-match error counts among answered facts did not fall (92 and 88).
+The removed evidence-free predictions happened to agree with fact gold, so
+coverage fell and selective risk rose slightly. This is an evidence-safety
+baseline, not an accuracy or calibration improvement. The P4 phase-level claim
+that abstention reduces risk is therefore not yet satisfied.

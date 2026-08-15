@@ -488,13 +488,26 @@ novelty.
     hashes and limitations are recorded in `docs/NEUROSYMBOLIC_AUDIT.md`;
     neither report is an eligibility result or a P4.2 completion claim.
 
-- [ ] **P4.3 Add deterministic abstention baselines.** Abstain on missing facts,
+- [x] **P4.3 Add deterministic abstention baselines.** Abstain on missing facts,
   invalid schema, unusable evidence, incompatible units, and verifier conflict.
   - Entry condition: each abstention reason has a machine-readable code.
   - Constraints: unknown is not assigned an arbitrary probability or folded
     into an eligibility score.
   - Verify: coverage-risk curves and reason counts reproduce exactly; known and
     unknown cases are tested separately.
+  - Completion: policy `1.0.0` writes a separate hash-bound prediction
+    projection and never edits its source. Six mutually exclusive reason codes
+    have fixed precedence: invalid schema, unusable evidence, missing evidence,
+    incompatible unit, verifier conflict, and missing fact. Unknown receives no
+    probability. Synthetic tests cover every reason, precedence, known versus
+    unknown, source immutability, exact risk recomputation, content tampering,
+    and unavailable conflict input. Owner-only validation projections changed
+    1 structured-prefix and 3 long-context known rows to `missing_evidence` and
+    normalized existing unknown rows. Coverage decreased and typed selective
+    risk rose slightly because the removed unsupported rows happened to match
+    fact gold; the result is recorded as a safety baseline, not a performance
+    or calibration gain. Exact operating points and artifact hashes are in
+    `docs/ABSTENTION_POLICY.md`; locked test remained untouched.
 
 - [ ] **P4.4 Add probabilistic calibration only when probabilities exist.** Fit
   calibration and review thresholds using validation predictions, then freeze
