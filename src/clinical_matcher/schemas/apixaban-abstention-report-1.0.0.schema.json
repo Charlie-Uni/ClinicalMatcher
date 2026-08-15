@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-abstention-report-1.0.0.schema.json",
+  "title": "Restricted deterministic Apixaban abstention report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_version", "generated_at", "code_commit", "provenance", "policy", "counts", "reason_counts", "coverage_risk_operating_points", "verifier_conflict_input", "limitations"],
+  "properties": {
+    "report_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_prediction_sha256", "projected_prediction_content_sha256", "staging_corpus_sha256", "split_manifest_sha256", "question_catalog_sha256", "split_name", "source_model_id", "projected_model_id"],
+      "properties": {
+        "source_prediction_sha256": {"$ref": "#/$defs/sha256"},
+        "projected_prediction_content_sha256": {"$ref": "#/$defs/sha256"},
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "source_model_id": {"type": "string", "minLength": 1},
+        "projected_model_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_version", "reason_codes", "precedence", "known_fact_requires_patient_local_evidence", "unit_must_equal_catalog_contract", "unknown_probability", "probabilities_used", "test_labels_used"],
+      "properties": {
+        "policy_version": {"const": "1.0.0"},
+        "reason_codes": {"$ref": "#/$defs/reasons"},
+        "precedence": {"$ref": "#/$defs/reasons"},
+        "known_fact_requires_patient_local_evidence": {"const": true},
+        "unit_must_equal_catalog_contract": {"const": true},
+        "unknown_probability": {"type": "null"},
+        "probabilities_used": {"const": false},
+        "test_labels_used": {"const": false}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_count", "row_count", "retained_known_count", "abstained_count", "decision_changed_count", "metadata_changed_count"],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "row_count": {"type": "integer", "minimum": 1},
+        "retained_known_count": {"type": "integer", "minimum": 0},
+        "abstained_count": {"type": "integer", "minimum": 0},
+        "decision_changed_count": {"type": "integer", "minimum": 0},
+        "metadata_changed_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "reason_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["invalid_schema", "unusable_evidence", "missing_evidence", "incompatible_unit", "verifier_conflict", "missing_fact"],
+      "properties": {
+        "invalid_schema": {"type": "integer", "minimum": 0},
+        "unusable_evidence": {"type": "integer", "minimum": 0},
+        "missing_evidence": {"type": "integer", "minimum": 0},
+        "incompatible_unit": {"type": "integer", "minimum": 0},
+        "verifier_conflict": {"type": "integer", "minimum": 0},
+        "missing_fact": {"type": "integer", "minimum": 0}
+      }
+    },
+    "coverage_risk_operating_points": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before_policy", "after_policy"],
+      "properties": {
+        "before_policy": {"$ref": "#/$defs/point"},
+        "after_policy": {"$ref": "#/$defs/point"}
+      }
+    },
+    "verifier_conflict_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "provided_pair_count", "reason"],
+      "properties": {
+        "status": {"enum": ["evaluated", "not_evaluable"]},
+        "provided_pair_count": {"type": "integer", "minimum": 0},
+        "reason": {"type": ["string", "null"]}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reasons": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"enum": ["invalid_schema", "unusable_evidence", "missing_evidence", "incompatible_unit", "verifier_conflict", "missing_fact"]}
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answered_count", "abstained_count", "total_count", "coverage", "error_count", "risk"],
+      "properties": {
+        "answered_count": {"type": "integer", "minimum": 0},
+        "abstained_count": {"type": "integer", "minimum": 0},
+        "total_count": {"type": "integer", "minimum": 1},
+        "coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "error_count": {"type": "integer", "minimum": 0},
+        "risk": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}
