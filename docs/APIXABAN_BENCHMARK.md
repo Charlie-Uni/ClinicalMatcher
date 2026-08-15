@@ -882,3 +882,29 @@ these data. This is a stopping decision, not evidence that reranking can never
 help on a future independently annotated evidence benchmark. All row-level
 fusion and evaluation artifacts remain owner-only outside Git, and the locked
 test was untouched.
+
+## Frozen evidence-evaluation boundary
+
+P3.5 audited the official release rather than inferring evidence annotation
+from the presence of full note text. All supplied file hashes matched. The CSV
+contains 2,300 human-reviewed answer rows but no evidence ID, source span,
+supporting sentence, rationale, or relevance field. Consequently real-patient
+Evidence Recall@k, MRR, and nDCG remain unavailable: evidence-gold coverage is
+0/2,300, not a measured score of zero.
+
+The separately frozen weak diagnostic asks whether a released numeric answer
+that is literally present in full context remains as an exact decimal token in
+the retrieved top one or top three chunks. It excludes boolean/unknown rows,
+ambiguous LVEF=55 protocol values, and values absent from full context. On the
+15-patient validation split, 75/120 numeric rows were evaluable. Occurrence@1
+and @3 were 0.280/0.600 for BM25, 0.680/0.973 for MedCPT, and 0.480/0.933 for
+RRF. This supports only the limited statement that MedCPT retained literal
+numeric tokens more often under this definition. It does not establish that a
+matching chunk is relevant, sufficient, or clinically correct; an unrelated
+number can match, and nonliteral evidence is excluded by construction.
+
+The complete audit, exclusions, reporting requirements, and future evidence-
+gold requirements are in
+[`EVIDENCE_EVALUATION_BOUNDARY.md`](EVIDENCE_EVALUATION_BOUNDARY.md). The
+restricted aggregate report contains neither patient IDs nor text and remains
+outside Git. Locked test was untouched.

@@ -397,7 +397,7 @@ baselines before any retriever or fine-tuning claim.
     remains gated on a later frozen end-to-end selection rather than being used
     to rescue this ablation.
 
-- [ ] **P3.5 State the evidence-evaluation boundary.** Use independent evidence
+- [x] **P3.5 State the evidence-evaluation boundary.** Use independent evidence
   gold where it exists; otherwise report answer-containing-span diagnostics and
   downstream task accuracy as separate, limited signals.
   - Entry condition: audit the official release for genuinely human-authored
@@ -420,9 +420,14 @@ baselines before any retriever or fine-tuning claim.
     contract now limits the weak diagnostic to exact decimal-token occurrence
     for known numeric answers that are literally matchable in full context;
     boolean, unknown, ambiguous LVEF=55, and full-context non-occurrence cases
-    are excluded. Remaining before completion: run the frozen aggregate
-    diagnostic against BM25, dense, and RRF, record coverage/exclusions, and
-    confirm locked test remains untouched.
+    are excluded. At implementation commit `c5c0852`, the restricted
+    validation report reconciled all 345 rows: 120 were numeric, 41 unknown
+    rows, two ambiguous LVEF=55 values, and two full-context non-occurrences
+    were excluded, leaving 75 evaluable rows. Numeric occurrence@1/@3 was
+    0.280/0.600 for BM25, 0.680/0.973 for MedCPT, and 0.480/0.933 for RRF.
+    These are explicitly weak literal-token retention diagnostics, not evidence
+    Recall or relevance. The aggregate report is owner-only, contains no
+    patient IDs or text, and locked test remained untouched.
 
 Acceptance: the simplest reproducible retriever that improves held-out answer
 quality is selected; unhelpful stages are removed rather than retained for

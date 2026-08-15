@@ -1,6 +1,6 @@
 # Evidence evaluation boundary
 
-Status: official-release audit complete; weak diagnostic frozen before run
+Status: frozen and measured for P3.5
 
 Scope: MIMIC-IV-Ext Apixaban release `1.0.0` and the P3.1–P3.4
 patient-local retrieval experiments.
@@ -40,7 +40,7 @@ Evidence Recall@k, MRR, and nDCG evaluation.
 | --- | --- | ---: | --- | --- |
 | Real-patient Evidence Recall@k, MRR, nDCG | None in official release | 0/2,300 | All official rows | Unavailable; do not compute or report |
 | Controlled retrieval-order tests | Independently authored synthetic fixtures | Fixture cases only | All real patients | Synthetic mechanics test only; no clinical-performance claim |
-| Exact numeric-token occurrence@1/@3 | Official numeric answer, gated by exact occurrence in full context | Validation run pending | Boolean, unknown, ambiguous LVEF=55, and full-context non-occurrence | Weak diagnostic only; never call it relevance gold |
+| Exact numeric-token occurrence@1/@3 | Official numeric answer, gated by exact occurrence in full context | Validation: 75/120 numeric rows | 41 unknown, 2 ambiguous LVEF=55, 2 full-context non-occurrences; all 225 boolean rows outside scope | Weak diagnostic only; never call it relevance gold |
 | Downstream fact-answer metrics | Human-reviewed official `answer` and `not_specified` fields | Validation: 345/2,300 rows (15 patients × 23 questions) | Train and locked test during development | Diagnostic information-retention signal, not retrieval relevance |
 
 The existing BM25, MedCPT, and RRF run schemas therefore fix
@@ -66,6 +66,41 @@ equality. Scientific notation and numbers embedded in alphanumeric identifiers
 are not matched. The diagnostic compares the already frozen BM25, MedCPT, and
 RRF runs and emits aggregate counts only. No matching parameter is selected
 from validation results, and locked test is unavailable to the runner.
+
+Run the frozen diagnostic only after all three validation retrieval artifacts
+exist:
+
+```bash
+clinical-matcher-apixaban-numeric-occurrence \
+  --benchmark /restricted/path/apixaban-fact-benchmark.json \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --staging-corpus /restricted/path/apixaban-staging-corpus.json \
+  --bm25-run /restricted/path/bm25-validation/retrieval.json \
+  --dense-run /restricted/path/dense-validation/retrieval.json \
+  --rrf-run /restricted/path/rrf-validation/retrieval.json \
+  --output /restricted/path/numeric-occurrence-validation.json \
+  --acknowledge-restricted-data-local-only
+```
+
+The writer refuses overwrite and creates the aggregate report with owner-only
+permissions. The report remains restricted even though it contains no row-level
+identifiers or text.
+
+At implementation commit `c5c0852`, the restricted validation run reconciled
+all 345 rows. Of 120 numeric rows, 75 were evaluable after excluding 41 unknown
+answers, two ambiguous LVEF=55 protocol values, and two values without an exact
+token anywhere in full context. BM25 retained the token in 21/75 top-one and
+45/75 top-three selections (0.280 and 0.600). MedCPT retained it in 51/75 and
+73/75 (0.680 and 0.973). RRF retained it in 36/75 and 70/75 (0.480 and 0.933).
+The aggregate report remains owner-only outside Git, and locked test was not
+read.
+
+This weak result is consistent with the downstream numeric-coverage pattern:
+MedCPT preserves literal numeric values more often than BM25, while RRF does
+not improve over MedCPT. It is not a relevance result. A matching number may be
+unrelated to the question, and exact-token gating excludes nonliteral answers;
+therefore the rates cannot be compared to evidence Recall@k or used to claim
+that all necessary clinical evidence was retrieved.
 
 ## Mandatory reporting fields
 
