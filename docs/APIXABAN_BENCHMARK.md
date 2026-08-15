@@ -119,6 +119,13 @@ Model or rule predictions may use `provided` only when their evidence IDs
 exist in the corresponding patient document. Automatically generated evidence
 links cannot be used as their own retrieval gold.
 
+The P3.5 field-level release audit and draft reporting rules are recorded in
+[`EVIDENCE_EVALUATION_BOUNDARY.md`](EVIDENCE_EVALUATION_BOUNDARY.md). It records
+zero evidence-linked rows out of 2,300 official question–answer pairs; this is
+why real-patient Evidence Recall@k, MRR, and nDCG are absent rather than zero.
+The weak answer-containing-span diagnostic remains pending an explicit,
+reviewed definition.
+
 ## Validation
 
 Validate the bundled catalog:

@@ -72,6 +72,13 @@ gold evidence:
 - evidence MRR;
 - evidence nDCG@k.
 
+These metrics are available only when that independent gold exists. The
+official MIMIC-IV-Ext Apixaban `1.0.0` release contains human-reviewed answers
+but no evidence IDs or source spans, so its real-patient evidence-gold coverage
+is `0/2300` and none of these three metrics is reported. See
+[`EVIDENCE_EVALUATION_BOUNDARY.md`](EVIDENCE_EVALUATION_BOUNDARY.md) for the
+release audit, permitted diagnostics, exclusions, and unlock conditions.
+
 Decision metrics operate on criterion labels:
 
 - three-class confusion matrix;
@@ -138,6 +145,11 @@ intervals, coverage–risk points, and error attribution. The stable run ID is a
 hash of the reproducibility specification; wall-clock time is not part of it.
 The configuration names the timed code scope so latency values from different
 pipelines are not compared under ambiguous boundaries.
+
+Every future retrieval metric must also name its gold artifact and authorship,
+content hash, evaluated numerator/denominator, exclusions, signal tier
+(primary, weak/silver, or diagnostic), and split. A linking rule may never be
+evaluated against links produced by the same rule.
 
 Real-data manifests and reports contain row-level identifiers and therefore
 must stay under the ignored local `artifacts/` directory.

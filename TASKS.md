@@ -406,6 +406,20 @@ baselines before any retriever or fine-tuning claim.
     same rule; do not call lexical answer occurrence clinical relevance.
   - Verify: every reported retrieval metric names its gold source, coverage,
     exclusions, and whether it is primary, weak/silver, or diagnostic only.
+  - Audit status: the official MIMIC-IV-Ext Apixaban `1.0.0` release was audited
+    against its supplied hashes and actual CSV structure. It contains 2,300
+    human-reviewed answer rows for 100 notes and 23 questions, but its eight
+    fields contain no evidence ID, supporting sentence, source span, rationale,
+    or relevance annotation. Real evidence-gold coverage is therefore 0/2,300,
+    and all official rows are excluded from Evidence Recall@k, MRR, and nDCG.
+    `docs/EVIDENCE_EVALUATION_BOUNDARY.md` records the source, coverage,
+    exclusions, signal tiers, circularity prohibitions, mandatory future report
+    fields, and requirements that would unlock primary evidence metrics.
+    Existing BM25, dense, and RRF schemas already enforce that no real
+    retrieval-relevance metric is reported. Remaining before completion:
+    approve, implement, and run one explicitly weak answer-containing-span
+    diagnostic without using locked test labels; do not infer its matching
+    rule from the data or silently broaden it to boolean/unknown cases.
 
 Acceptance: the simplest reproducible retriever that improves held-out answer
 quality is selected; unhelpful stages are removed rather than retained for
