@@ -50,6 +50,7 @@ clinical-matcher-apixaban-bm25 = "clinical_matcher.apixaban_bm25_cli:main"
 clinical-matcher-apixaban-dense = "clinical_matcher.apixaban_dense_cli:main"
 clinical-matcher-apixaban-rrf = "clinical_matcher.apixaban_rrf_cli:main"
 clinical-matcher-apixaban-numeric-occurrence = "clinical_matcher.apixaban_numeric_occurrence_cli:main"
+clinical-matcher-apixaban-neurosymbolic-audit = "clinical_matcher.apixaban_neurosymbolic_audit_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

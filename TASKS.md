@@ -467,6 +467,17 @@ novelty.
     review-required status in the audit trace.
   - Verify: controlled counterexamples for every check, conflict-rate report,
     before/after error analysis, and no future-fact leakage.
+  - Current gate: real-output readiness audit `1.0.0` validates frozen-split
+    lineage, exact patient-question coverage, numeric types, the source unit
+    contract, patient-local evidence links, and known-fact evidence
+    missingness. It emits only an owner-only aggregate report. The official
+    source has null index dates, no observation dates or claim-level negation
+    trace, and explicitly labels every question `fact_only_no_direct_mapping`;
+    current model outputs also contain no criterion decision. Time, negation,
+    polarity, conflict rate, and before/after analysis therefore remain
+    `not_evaluable` rather than being reported as zero. P4.2 stays unchecked
+    until a reviewed real criterion binding and the required temporal/decision
+    fields exist.
 
 - [ ] **P4.3 Add deterministic abstention baselines.** Abstain on missing facts,
   invalid schema, unusable evidence, incompatible units, and verifier conflict.

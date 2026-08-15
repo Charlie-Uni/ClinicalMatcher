@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-neurosymbolic-audit-1.0.0.schema.json",
+  "title": "Restricted Apixaban real-output neuro-symbolic readiness audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["audit_version", "generated_at", "code_commit", "provenance", "population", "checks", "review_required_count", "model_verifier_conflicts", "before_after_error_analysis", "release_gate", "limitations"],
+  "properties": {
+    "audit_version": {"const": "1.0.0"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prediction_set_sha256", "staging_corpus_sha256", "split_manifest_sha256", "question_catalog_sha256", "split_name", "model_id", "prompt_version"],
+      "properties": {
+        "prediction_set_sha256": {"$ref": "#/$defs/sha256"},
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"enum": ["train", "validation", "test"]},
+        "model_id": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_count", "row_count", "boolean_row_count", "numeric_row_count", "present_count", "absent_count", "unknown_count"],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "row_count": {"type": "integer", "minimum": 1},
+        "boolean_row_count": {"type": "integer", "minimum": 0},
+        "numeric_row_count": {"type": "integer", "minimum": 0},
+        "present_count": {"type": "integer", "minimum": 0},
+        "absent_count": {"type": "integer", "minimum": 0},
+        "unknown_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numeric_type", "unit_contract", "evidence_link", "missingness", "time", "negation", "criterion_polarity"],
+      "properties": {
+        "numeric_type": {"$ref": "#/$defs/check"},
+        "unit_contract": {"$ref": "#/$defs/check"},
+        "evidence_link": {"$ref": "#/$defs/check"},
+        "missingness": {"$ref": "#/$defs/check"},
+        "time": {"$ref": "#/$defs/check"},
+        "negation": {"$ref": "#/$defs/check"},
+        "criterion_polarity": {"$ref": "#/$defs/check"}
+      }
+    },
+    "review_required_count": {"type": "integer", "minimum": 0},
+    "model_verifier_conflicts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "comparison_count", "conflict_count", "conflict_rate", "reason"],
+      "properties": {
+        "status": {"enum": ["evaluated", "not_evaluable"]},
+        "comparison_count": {"type": "integer", "minimum": 0},
+        "conflict_count": {"type": "integer", "minimum": 0},
+        "conflict_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "reason": {"type": ["string", "null"]}
+      }
+    },
+    "before_after_error_analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {"const": "not_evaluable"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "release_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_integrity_checks_pass", "eligibility_audit_complete", "p4_2_complete", "blocking_reasons"],
+      "properties": {
+        "fact_integrity_checks_pass": {"type": "boolean"},
+        "eligibility_audit_complete": {"const": false},
+        "p4_2_complete": {"const": false},
+        "blocking_reasons": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluable_count", "pass_count", "fail_count", "not_evaluable_count", "not_evaluable_reason", "complete_for_declared_boundary"],
+      "properties": {
+        "evaluable_count": {"type": "integer", "minimum": 0},
+        "pass_count": {"type": "integer", "minimum": 0},
+        "fail_count": {"type": "integer", "minimum": 0},
+        "not_evaluable_count": {"type": "integer", "minimum": 0},
+        "not_evaluable_reason": {"type": ["string", "null"]},
+        "complete_for_declared_boundary": {"const": true}
+      }
+    }
+  }
+}
