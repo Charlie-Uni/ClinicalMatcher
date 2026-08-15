@@ -478,6 +478,15 @@ novelty.
     `not_evaluable` rather than being reported as zero. P4.2 stays unchecked
     until a reviewed real criterion binding and the required temporal/decision
     fields exist.
+  - Validation result: owner-only audits of the frozen structured-prefix and
+    matched long-context Llama outputs each covered 15 validation patients and
+    all 345 patient-question rows. Numeric shape, the null-unit source
+    contract, and patient-local evidence ownership had zero failures. Strict
+    known-fact evidence missingness flagged 1 and 3 review-required rows,
+    respectively; all were the contract's existing evidence-free
+    `med_decisions=absent` exception. No output was overwritten. The two report
+    hashes and limitations are recorded in `docs/NEUROSYMBOLIC_AUDIT.md`;
+    neither report is an eligibility result or a P4.2 completion claim.
 
 - [ ] **P4.3 Add deterministic abstention baselines.** Abstain on missing facts,
   invalid schema, unusable evidence, incompatible units, and verifier conflict.
