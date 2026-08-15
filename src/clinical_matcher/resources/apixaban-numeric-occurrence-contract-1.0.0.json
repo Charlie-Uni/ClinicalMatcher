@@ -1,0 +1,42 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "apixaban-numeric-answer-occurrence-v1",
+  "split_name": "validation",
+  "test_labels_used": false,
+  "population": {
+    "included_question_type": "numeric",
+    "included_fact_status": "present",
+    "full_context_exact_occurrence_required": true,
+    "excluded_question_types": ["boolean"],
+    "excluded_fact_statuses": ["unknown"],
+    "excluded_protocol_values": [
+      {
+        "source_criterion_label": "lvef",
+        "value": 55,
+        "reason": "source_protocol_maps_any_minimum_at_or_above_55_to_55"
+      }
+    ]
+  },
+  "numeric_matching": {
+    "method": "independent_decimal_token_exact_value",
+    "token_pattern": "(?<![A-Za-z0-9_.])[-+]?(?:[0-9]{1,3}(?:,[0-9]{3})+(?:\\.[0-9]+)?|[0-9]+(?:\\.[0-9]+)?|\\.[0-9]+)(?![A-Za-z0-9_.])",
+    "thousands_separator": ",",
+    "comparison": "exact_decimal_equality",
+    "scientific_notation_supported": false,
+    "selected_match_scope": "within_any_individual_selected_chunk"
+  },
+  "retrievers": ["bm25", "medcpt_dense", "rrf60"],
+  "cutoffs": [1, 3],
+  "interpretation": {
+    "signal_tier": "weak_diagnostic",
+    "independent_evidence_gold": false,
+    "evidence_relevance_metric": false,
+    "allowed_claim": "retrieved_chunks_retain_an_exact_gold_numeric_token",
+    "forbidden_claim": "retrieved_chunks_are_clinically_relevant_or_complete"
+  },
+  "privacy": {
+    "patient_level_output_allowed": false,
+    "note_text_output_allowed": false,
+    "restricted_aggregate_report": true
+  }
+}

@@ -416,10 +416,13 @@ baselines before any retriever or fine-tuning claim.
     exclusions, signal tiers, circularity prohibitions, mandatory future report
     fields, and requirements that would unlock primary evidence metrics.
     Existing BM25, dense, and RRF schemas already enforce that no real
-    retrieval-relevance metric is reported. Remaining before completion:
-    approve, implement, and run one explicitly weak answer-containing-span
-    diagnostic without using locked test labels; do not infer its matching
-    rule from the data or silently broaden it to boolean/unknown cases.
+    retrieval-relevance metric is reported. The approved validation-only
+    contract now limits the weak diagnostic to exact decimal-token occurrence
+    for known numeric answers that are literally matchable in full context;
+    boolean, unknown, ambiguous LVEF=55, and full-context non-occurrence cases
+    are excluded. Remaining before completion: run the frozen aggregate
+    diagnostic against BM25, dense, and RRF, record coverage/exclusions, and
+    confirm locked test remains untouched.
 
 Acceptance: the simplest reproducible retriever that improves held-out answer
 quality is selected; unhelpful stages are removed rather than retained for

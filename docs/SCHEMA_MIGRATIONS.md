@@ -104,3 +104,12 @@ recomputable fusion scores, resource/exposure aggregates, and a schema-`1.2.0`
 downstream prediction set. The schema contains no note or question text and
 fixes `reranker_included=false`. Ranks, scores, patient pseudonyms, predictions,
 and the fusion run remain restricted local artifacts.
+
+P3.5 adds owner-only aggregate
+`apixaban-numeric-occurrence-report-1.0.0` without migrating any retrieval or
+prediction artifact. It binds the official benchmark and staging hashes,
+frozen validation split, three component run hashes, question catalog, and
+versioned weak-diagnostic contract. It records only reconciled population
+exclusions and exact numeric-token occurrence@1/@3 counts/rates—never note
+text, patient IDs, per-row results, or evidence-relevance metrics. The report
+remains restricted because its aggregates are derived from MIMIC text/labels.

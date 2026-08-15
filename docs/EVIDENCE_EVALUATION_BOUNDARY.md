@@ -1,6 +1,6 @@
 # Evidence evaluation boundary
 
-Status: official-release audit complete; weak diagnostic definition pending
+Status: official-release audit complete; weak diagnostic frozen before run
 
 Scope: MIMIC-IV-Ext Apixaban release `1.0.0` and the P3.1–P3.4
 patient-local retrieval experiments.
@@ -40,7 +40,7 @@ Evidence Recall@k, MRR, and nDCG evaluation.
 | --- | --- | ---: | --- | --- |
 | Real-patient Evidence Recall@k, MRR, nDCG | None in official release | 0/2,300 | All official rows | Unavailable; do not compute or report |
 | Controlled retrieval-order tests | Independently authored synthetic fixtures | Fixture cases only | All real patients | Synthetic mechanics test only; no clinical-performance claim |
-| Answer-containing-span match | Definition pending approval | Not currently reported | Must exclude cases the approved rule cannot interpret | Weak diagnostic only; never call it relevance gold |
+| Exact numeric-token occurrence@1/@3 | Official numeric answer, gated by exact occurrence in full context | Validation run pending | Boolean, unknown, ambiguous LVEF=55, and full-context non-occurrence | Weak diagnostic only; never call it relevance gold |
 | Downstream fact-answer metrics | Human-reviewed official `answer` and `not_specified` fields | Validation: 345/2,300 rows (15 patients × 23 questions) | Train and locked test during development | Diagnostic information-retention signal, not retrieval relevance |
 
 The existing BM25, MedCPT, and RRF run schemas therefore fix
@@ -48,6 +48,24 @@ The existing BM25, MedCPT, and RRF run schemas therefore fix
 `retrieval_relevance_metrics_reported=false`. Their typed exact match,
 boolean, unknown, and numeric results are downstream diagnostics. They cannot
 support a claim that the selected chunks are clinically relevant or complete.
+
+## Frozen weak diagnostic
+
+Contract `apixaban-numeric-answer-occurrence-v1` defines one validation-only
+diagnostic. A row enters its denominator only when the official question is
+numeric, the released fact status is present, and the released number appears
+as an independent decimal token somewhere in the complete note. Boolean and
+unknown rows are excluded. LVEF answers equal to 55 are also excluded because
+the source protocol maps any minimum at or above 55 to 55, so the released
+value may not be a literal observation.
+
+For each included row, occurrence@1 and occurrence@3 ask only whether the same
+decimal value appears within any one of the selected chunks. Commas are removed
+from thousands-grouped numbers and values are compared with exact decimal
+equality. Scientific notation and numbers embedded in alphanumeric identifiers
+are not matched. The diagnostic compares the already frozen BM25, MedCPT, and
+RRF runs and emits aggregate counts only. No matching parameter is selected
+from validation results, and locked test is unavailable to the runner.
 
 ## Mandatory reporting fields
 
