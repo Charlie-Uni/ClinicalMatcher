@@ -92,6 +92,24 @@ incompatibility prevents a safe decision.
 
 ## Three-valued logic and criterion polarity
 
+### Model-fact binding boundary
+
+Frozen model prediction sets are not eligibility decisions. A model row is
+first validated against its prediction-set schema and question catalog. The
+catalog supplies the normalized fact field, while the model supplies the typed
+value, declared unit, uncertainty status, and evidence IDs. A known row becomes
+a core `Fact` only when every cited evidence ID exists in the supplied
+patient-local evidence inventory and the explicitly supplied criterion uses
+that field.
+
+Unknown rows, known rows without evidence, unknown evidence references, and
+criterion-field mismatches do not create facts. They produce an `UNKNOWN`
+criterion result plus a fixed mapping reason. Inclusion/exclusion polarity is
+applied only by the existing typed criterion verifier; it is never inferred
+from fact truth alone. Prediction records currently have no observation date,
+so temporal mapping beyond the core verifier's safe unknown behavior remains a
+P4.2 boundary.
+
 Expression evaluation uses three-valued logic:
 
 - `ALL`: any false → false; all true → true; otherwise unknown;

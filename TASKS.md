@@ -437,7 +437,7 @@ novelty.
 
 ## P4 — Structured reasoning, verification, and abstention
 
-- [ ] **P4.1 Connect model fact outputs to the existing typed verifier.** Parse
+- [x] **P4.1 Connect model fact outputs to the existing typed verifier.** Parse
   boolean, numeric, unit, evidence, and uncertainty fields and deterministically
   map a fact to criterion polarity only when a specific criterion is supplied.
   - Entry condition: at least one P2/P3 model emits the P1.1 contract.
@@ -445,6 +445,17 @@ novelty.
     evidence cannot be invented during mapping.
   - Verify: tests cover adverse positive facts, inclusion/exclusion reversal,
     numeric thresholds, unknown, and missing evidence.
+  - Completion: adapter `1.0.0` accepts only a schema-valid P1.1/P2 prediction
+    set and an explicitly supplied criterion. It obtains the normalized fact
+    field from the frozen catalog, preserves boolean/numeric values and units,
+    and creates a core fact only when every cited evidence ID exists in the
+    supplied patient-local inventory. Model unknown, missing/unknown evidence,
+    and unrelated criterion fields remain `UNKNOWN` with fixed mapping reasons;
+    the existing verifier alone applies inclusion/exclusion polarity. Synthetic
+    counterexamples cover adverse positive facts, polarity reversal, numeric
+    thresholds, uncertainty, evidence failures, unrelated criteria, and invalid
+    prediction schema. Observation time is unavailable in P1.1/P2 outputs and
+    remains an explicit P4.2 boundary.
 
 - [ ] **P4.2 Complete real-output neuro-symbolic checks.** Apply numeric, unit,
   time, negation, evidence-link, missingness, and polarity checks to model
