@@ -518,6 +518,11 @@ novelty.
     report small-sample limitations.
   - Verify: Brier score, calibration error, reliability/coverage-risk outputs,
     frozen threshold provenance, and no test-set threshold tuning.
+  - Current gate: frozen Llama prediction-set `1.2.0` exposes neither class
+    probabilities nor a reproducible continuous confidence score. The P4.3
+    deterministic answered fraction is coverage, not calibrated confidence.
+    P4.4 remains deferred; no synthetic probability, Brier score, calibration
+    error, or tuned threshold may be reported from the current outputs.
 
 - [ ] **P4.5 Produce mutually exclusive error attribution.** Separate retrieval
   failure, reasoning failure with usable evidence, numeric/unit/time/negation
@@ -526,6 +531,17 @@ novelty.
   - Constraints: attribution is diagnostic, not causal proof.
   - Verify: categories reconcile to the total errors and representative cases
     are reviewed only inside the authorized environment.
+  - Current gate: observable attribution contract `1.0.0` assigns each row by
+    frozen precedence to unsupported answering, source-unit error, abstention
+    on a known gold fact, numeric value error, cited fact-status error, or a
+    remaining typed error. It validates the complete frozen grid and writes an
+    owner-only aggregate report with no row identifiers. Retrieval failure,
+    reasoning failure with relevant evidence, time, negation, and true false
+    abstention remain `not_evaluable`: the official source has no evidence
+    relevance gold, dates, or claim-negation trace. A patient-local citation is
+    not treated as relevant evidence. P4.5 stays unchecked until authorized
+    representative-case review is recorded and the missing causal dimensions
+    are either supported by reviewed gold/trace fields or formally scoped out.
 
 Acceptance: verification and abstention reduce risk under a declared coverage
 trade-off and do not hide unresolved clinical information.
