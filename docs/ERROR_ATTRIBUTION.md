@@ -73,3 +73,34 @@ errors must still be reviewed inside the authorized environment, and the
 requested causal categories require adjudicated evidence relevance plus
 temporal and negation trace fields. No restricted example may be copied into
 the public repository as proof of review.
+
+## Validation result
+
+Contract `1.0.0` was run from implementation commit `347375b` on both frozen
+15-patient validation outputs and their separate P4.3 projections. Each report
+reconciled all 345 patient-question rows. The aggregate results were:
+
+| Output | Typed mismatches | Unsupported | Gold-known abstention proxy | Cited status | Numeric value | Attributed total |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Structured source | 158 | 1 | 66 | 76 | 16 | 159 |
+| Structured after P4.3 | 159 | 0 | 67 | 76 | 16 | 159 |
+| Long-context source | 134 | 3 | 46 | 75 | 13 | 137 |
+| Long-context after P4.3 | 137 | 0 | 49 | 75 | 13 | 137 |
+
+Unit-contract and remaining typed-error counts were zero in all four runs.
+P4.3 removed all 1 and 3 unsupported known answers, respectively, but those
+rows happened to match the released fact label and became abstentions on known
+gold. The error union therefore stayed at 159/137. This is a safety-policy
+trade-off, not a quality improvement. It also does not establish that the
+long-context prompt is superior: evaluation used only 15 validation patients,
+and evidence relevance is unlabelled.
+
+The owner-only aggregate report SHA-256 values are:
+
+- structured source: `b259098870081a7e3662eb8df9b404b9b5ff86bded5b0c2ae9da79378cfb50fb`;
+- structured after P4.3: `e6fbd9a995576ac8cee6a28b127d93783ffd07836383f45ee4268be95a7aeb9f`;
+- long-context source: `3a818785b3161ee9ae39bc05e905283340777479a7c7eb9c864e1eed9ba8d932`;
+- long-context after P4.3: `64f01a98caeffbe647f77011b9d1991caf62d3318fb65b974ce361547bc5c718`.
+
+No locked-test prediction was read or evaluated. Representative-case review
+remains pending inside the authorized environment, so P4.5 remains open.

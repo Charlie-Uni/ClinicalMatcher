@@ -542,6 +542,14 @@ novelty.
     not treated as relevant evidence. P4.5 stays unchecked until authorized
     representative-case review is recorded and the missing causal dimensions
     are either supported by reviewed gold/trace fields or formally scoped out.
+  - Validation result: owner-only aggregate reports from implementation commit
+    `347375b` reconciled all 345 validation rows for the structured and
+    long-context Llama outputs and their separate P4.3 projections. P4.3
+    removed 1 and 3 unsupported known answers, respectively, but each became an
+    abstention on a known released label; attributed totals therefore remained
+    159/137 rather than improving. Exact category counts, artifact hashes, and
+    interpretation limits are recorded in `docs/ERROR_ATTRIBUTION.md`. Locked
+    test remained untouched and representative-case review remains pending.
 
 Acceptance: verification and abstention reduce risk under a declared coverage
 trade-off and do not hide unresolved clinical information.
