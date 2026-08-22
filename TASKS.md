@@ -585,34 +585,79 @@ trade-off and do not hide unresolved clinical information.
     license, or expected value is inadequate.
   - Verify: decision record pins model/tokenizer revisions, license, memory
     estimate, training budget, and metric required to justify retention.
+  - Current decision: the full pre-training procedure is recorded in
+    `docs/P5_TRAINING_DECISION.md`. The primary route is local MLX QLoRA with
+    pinned Llama-3.2-3B-Instruct and an untuned same-base comparison. Real
+    restricted data and derived adapters remain local; Colab is synthetic
+    mechanism testing only. P5.1 remains open until the conversion chain,
+    synthetic memory result, calibration-only patient manifest, thresholds,
+    train-fit-only complete-sequence input policy, training budget, runtime
+    route, and row-filter tests pass.
+  - Progress: calibration reservation contract `1.0.0` implements a fixed
+    source-bound SHA-256 ranking over the frozen train membership, requires an
+    explicit count, writes owner-only output, and has no validation/test label
+    input. The real manifest remains deliberately ungenerated until its patient
+    count is approved and the code has a clean commit.
+  - Progress: the separate local mechanism environment now records CPython
+    3.11.16, `mlx==0.31.2`, `mlx-lm==0.31.3`, their official release commits,
+    and all observed exact package versions in `requirements-mlx.txt`. An Apple
+    GPU import/compute and LoRA-CLI smoke test passed. This does not substitute
+    for the gated 3B conversion or synthetic memory/throughput dry run.
 
-- [ ] **P5.2 Export training folds to the pinned MedicalGPT SFT format.** Build
-  a versioned adapter from P1.1 records to training JSONL.
+- [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
+  formats.** Build a versioned adapter from P1.1 records to the owner-only
+  canonical JSONL, then derive the MLX-LM training representation and the
+  MedicalGPT-compatible export.
   - Entry condition: the split manifest is frozen and MedicalGPT remains pinned
     to the reviewed commit in `docs/REFERENCES.md`.
   - Constraints: export train only for fitting; validation is separate; test
     records, labels, outputs, and patient text never enter training artifacts.
   - Verify: schema validation, exact patient-membership assertions, dataset
     hash, chat-template snapshot, sample round-trip, and label distribution.
+  - Evidence supervision: export D deterministic-rule silver first and use a
+    frozen-teacher E source only as audited backoff for uncovered gold-known
+    rows. Keep source-level provenance and stratified coverage reports. These
+    links are weak citation proxies and may never be retrieval relevance gold.
+    Every source is manually audited before use; failed candidates are removed
+    and coverage is recomputed before D-only or D+E can pass. The first run uses
+    stock whole-completion loss: retain known rows only when
+    accepted silver is visible in the student input, retain unknown rows with a
+    legal empty list, retain `med_decisions=absent, value=false` under the sole
+    known empty-evidence exception, and report all excluded known rows and
+    distribution shifts. The exception is reported but excluded from citation
+    coverage gates. If the predeclared overall/per-question coverage gate
+    fails, stop
+    P5.2 and review field-selective loss as a separate fallback rather than
+    silently adding a custom trainer. Exact rules and closure gates are in
+    `docs/P5_TRAINING_DECISION.md`.
 
 - [ ] **P5.3 Run one LoRA-SFT experiment in a separate environment.** Record
   base model, adapter config, seed, optimizer, schedule, precision, checkpoint,
-  CUDA, Transformers, PEFT, and MedicalGPT versions.
+  MLX and MLX-LM versions. Record Transformers, PEFT, MedicalGPT, and CUDA only
+  for a synthetic compatibility run that actually uses them.
   - Entry condition: P5.1 and P5.2 pass; restricted data remains local.
   - Constraints: no unrestricted tracking service receives prompts or patient
     text; training loss alone is not evidence of benefit.
   - Verify: resume/load test, held-out validation report, adapter provenance,
     and reproducible inference on synthetic fixtures.
+  - First-run checkpoint rule: use a fixed training budget and evaluate only
+    the endpoint checkpoint; intermediate checkpoints are recovery artifacts,
+    not task-metric candidates. The local MLX environment uses one reviewed
+    exact-version `requirements-mlx.txt`, not a second lock infrastructure.
 
 - [ ] **P5.4 Evaluate whether the adapter earns its complexity.** Compare rules,
-  frozen model, frozen+RAG, LoRA-SFT, LoRA+RAG, and LoRA+RAG+verifier on the same
-  locked test split.
+  existing 8B/RAG references, and the primary matched untuned-3B versus
+  tuned-3B pair on validation. Treat P4.3/verifier as pre/post deterministic
+  projection, not a separate experimental arm.
   - Entry condition: model and retriever selection are frozen on validation.
   - Constraints: disclose overfitting, invalid output, unknown recall, latency,
     and memory; remove LoRA from the final default if it does not provide a
     meaningful held-out benefit.
   - Verify: paired report with patient-bootstrap intervals and a documented
     keep/drop decision.
+  - Locked-test boundary: P5.4 freezes the validation-stage decision and final
+    configuration. P7.2 performs the only locked-test exposure as one batch and
+    reuses those immutable artifacts for all final P5/P7 reporting.
 
 Acceptance: LoRA is described as a successful contribution only if it beats a
 strong frozen baseline without degrading evidence linkage or unknown handling.
@@ -699,7 +744,10 @@ from structured EHR or is honestly reported as unsupported and omitted.
   attribution, latency, tokens, memory, and limitations.
   - Entry condition: P7.1 is frozen and the worktree/config are clean.
   - Constraints: patient-level output remains restricted; only reviewed
-    aggregates and disclosure-safe examples can be public.
+    aggregates and disclosure-safe examples can be public. Execute every
+    frozen final arm in one batch; after any test result is visible, do not
+    rerun inference, replace a component/checkpoint, or change a threshold.
+    P5 and P7 reports must reuse these immutable test artifacts.
   - Verify: JSON and Markdown reports agree, totals reconcile, the public-data
     guard passes, and no metric lacks dataset/split/model provenance.
 

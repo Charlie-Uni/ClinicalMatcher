@@ -30,10 +30,31 @@ Integration decision:
   adapter into the format MedicalGPT expects.
 - Start with SFT. GRPO is gated on a stable SFT baseline, deterministic format
   checks, non-gameable rewards, held-out evaluation, and available GPU compute.
-- Pin model, tokenizer, chat template, dataset hash, MedicalGPT commit, PEFT,
-  Transformers, TRL, and CUDA versions for every run.
+- The first real SFT run uses local MLX/MLX-LM. Pin model, tokenizer, chat
+  template, dataset hash, MLX versions, conversion settings, and artifacts for
+  that run. Pin the MedicalGPT commit, PEFT, Transformers, TRL, and CUDA only
+  for a separate synthetic compatibility run that actually uses that stack.
 - Recheck the actual model ID in every example script before execution; a script
   example is not evidence that a model exists or is compatible.
+
+## MLX and MLX-LM
+
+- MLX repository: <https://github.com/ml-explore/mlx>
+- MLX release: `v0.31.2`, commit
+  `68cf2fddd8de5edd8ab3d926391772b2e2cedad8`
+- MLX-LM repository: <https://github.com/ml-explore/mlx-lm>
+- MLX-LM release: `v0.31.3`, commit
+  `ed1fca4cef15a824c5f1702c80f70b4cffc8e4dd`
+- License: MIT
+- Intended role: local Apple-Silicon conversion, inference, and LoRA/QLoRA
+  training for P5
+
+Integration decision:
+
+- Keep this exact-version environment separate from the public CPU lock.
+- Do not treat a framework smoke test as a model conversion or training result.
+- Pin the source-model revision, tokenizer/chat template, conversion command,
+  converted artifact hashes, and run configuration before real training.
 
 ## LightRAG
 
