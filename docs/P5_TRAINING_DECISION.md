@@ -192,11 +192,30 @@ inspected:
 - each source must achieve at least 90% `support`; `ambiguous` is counted as a
   failure in that rate.
 
-The names and executable definitions of the two proposed zero-tolerance audit
-categories are not yet approved. They must not be guessed from existing error
-labels. Until they are explicitly frozen together with the sampling strata,
-the complete audit gate remains open and no real D/E artifact may claim
-`passed_predeclared_thresholds`.
+The two approved zero-tolerance audit categories are:
+
+1. `cross_patient_citation`: a silver row cites any evidence ID that is not in
+   that patient's own evidence inventory in the frozen staging corpus.
+2. `student_invisible_citation`: a silver row cites any evidence ID that is not
+   in the visible chunk set for that patient-question row under the frozen
+   input policy and input plan.
+
+Both are machine-checkable invariants, not sampling estimates. The silver
+generator must assert them over the complete candidate set and fail closed on
+any violation; the manual audit re-confirms zero occurrences in its reviewed
+sample. Any observed instance at any stage is a pipeline defect: fix the
+generator, regenerate the entire silver artifact, and perform fresh sampling
+and a fresh audit. Removing only the offending row and continuing is
+prohibited. Because `student_invisible_citation` depends on the visible chunk
+set, real candidate generation and both coverage gates remain blocked until
+the input policy is frozen.
+
+Each source's audit sample uses the deterministic hash rule and is stratified
+jointly by question ID, answer type (`numeric` or `boolean`), and fact status
+(`present` or `absent`). It must include at least one row from every question
+that produced accepted candidates. The sampling algorithm version, salt,
+per-stratum allocation rule, review rubric, and reviewer count must be frozen
+before any candidate content is inspected.
 
 Reports must show, at minimum:
 
@@ -206,7 +225,7 @@ Reports must show, at minimum:
 - coverage by question ID, numeric/boolean type, and present/absent status;
 - default-absent and other structurally non-citable rows separately;
 - rows rejected for typed disagreement, missing evidence, invalid ownership,
-  ambiguity, or failed manual citation review.
+  student invisibility, ambiguity, or failed manual citation review.
 
 An aggregate percentage alone cannot pass the gate if a citation-required
 question or answer class has collapsed coverage. Every silver source must pass

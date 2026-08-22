@@ -603,9 +603,15 @@ trade-off and do not hide unresolved clinical information.
     inspected: overall citation-required known coverage at least 60%; every
     applicable question both at least 30% and at least five accepted rows; at
     most 100 deterministically sampled reviews per source; and support rate at
-    least 90%, with ambiguous counted as failure. The full gate remains open
-    because the two zero-tolerance categories and sampling strata are not yet
-    named and must not be inferred by the implementation.
+    least 90%, with ambiguous counted as failure. The two zero-tolerance
+    categories are now frozen as any cross-patient citation and any citation
+    outside the student-visible chunk set. Both must be checked over the full
+    candidate artifact, and either defect forces complete regeneration rather
+    than row deletion. Audit samples are jointly stratified by question ID,
+    numeric/boolean answer type, and present/absent fact status, with every
+    represented question sampled. The full gate remains open until the input
+    policy and the sampling algorithm version, salt, allocation, rubric, and
+    reviewer count are frozen before candidate inspection.
   - Progress: the separate local mechanism environment now records CPython
     3.11.16, `mlx==0.31.2`, `mlx-lm==0.31.3`, their official release commits,
     and all observed exact package versions in `requirements-mlx.txt`. An Apple
