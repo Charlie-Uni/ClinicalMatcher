@@ -19,6 +19,13 @@ FACT_ASSESSMENT_SCHEMA = (
     "schemas/apixaban-fact-assessment-1.0.0.schema.json"
 )
 
+KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION = {
+    "source_criterion_label": "med_decisions",
+    "fact_status": "absent",
+    "value": False,
+    "basis": "source_question_default_absent",
+}
+
 
 class ApixabanContractError(ValueError):
     """Raised when the frozen note-grounded task contract is violated."""
@@ -113,6 +120,20 @@ def question_index(
         question["question_id"]: question
         for question in resolved["questions"]
     }
+
+
+def known_fact_allows_empty_evidence(
+    question: Mapping[str, Any], prediction: Mapping[str, Any]
+) -> bool:
+    """Return whether the frozen source question permits a known empty citation."""
+
+    exception = KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION
+    return (
+        question["source_criterion_label"]
+        == exception["source_criterion_label"]
+        and prediction["fact_status"] == exception["fact_status"]
+        and prediction["value"] is exception["value"]
+    )
 
 
 def validate_source_question_definitions(

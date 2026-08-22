@@ -10,8 +10,8 @@ cases.
 The report uses one fixed precedence so each row contributes to at most one
 error category:
 
-1. `unsupported_answering`: a known fact has no citation or cites evidence
-   outside that patient's frozen evidence inventory;
+1. `unsupported_answering`: a citation-required known fact has no citation or
+   cites evidence outside that patient's frozen evidence inventory;
 2. `unit_contract_error`: the output unit differs from the frozen source
    contract;
 3. `abstention_on_gold_known`: the output is unknown while the released fact
@@ -25,8 +25,11 @@ error category:
 The error universe is the union of typed gold mismatches and known-answer
 evidence/unit contract violations. Consequently, a prediction that happens to
 match the fact label but answers without usable evidence remains an attributed
-safety error. Category totals plus rows with no attributed error must equal
-the complete split grid.
+safety error. Contract `1.1.0` mirrors the P4.3 exception for
+`med_decisions=absent, value=false`; that source-defined result is not an
+unsupported answer merely because its citation list is empty. No other known
+result is exempt. Category totals plus rows with no attributed error must
+equal the complete split grid.
 
 ## Causal boundary
 
@@ -76,9 +79,10 @@ the public repository as proof of review.
 
 ## Validation result
 
-Contract `1.0.0` was run from implementation commit `347375b` on both frozen
-15-patient validation outputs and their separate P4.3 projections. Each report
-reconciled all 345 patient-question rows. The aggregate results were:
+Historical contract `1.0.0` was run from implementation commit `347375b` on
+both frozen 15-patient validation outputs and their separate P4.3 projections.
+Each report reconciled all 345 patient-question rows. The aggregate results
+were:
 
 | Output | Typed mismatches | Unsupported | Gold-known abstention proxy | Cited status | Numeric value | Attributed total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -104,3 +108,5 @@ The owner-only aggregate report SHA-256 values are:
 
 No locked-test prediction was read or evaluated. Representative-case review
 remains pending inside the authorized environment, so P4.5 remains open.
+New reports use contract `1.1.0`; the table and hashes above remain historical
+`1.0.0` artifacts and are not silently reinterpreted.

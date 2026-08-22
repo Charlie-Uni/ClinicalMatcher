@@ -53,9 +53,10 @@ Every known fact without evidence was an `absent` result for the frozen
 `med_decisions` question. The structured-output contract intentionally permits
 that historical source-defined default without evidence. P4.1's strict adapter
 does not permit it to enter the typed verifier, so the readiness audit correctly
-marks these rows for review. P4.3 must decide explicitly whether to preserve a
-dedicated default reason or abstain; this result does not silently choose either
-policy.
+marks these rows for review. P4.3 policy `1.0.0` abstained on them; the later
+approved `1.1.0` policy preserves only `med_decisions=absent, value=false` as a
+known empty-citation exception. The report hashes above remain historical and
+are not relabeled.
 
 All 345 rows in each run remain unevaluable for time, claim-level negation,
 criterion polarity, and model–verifier conflict. Conflict rate is therefore

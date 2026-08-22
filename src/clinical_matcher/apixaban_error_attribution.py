@@ -17,7 +17,12 @@ from .apixaban_benchmark import (
     file_sha256,
     validate_apixaban_benchmark,
 )
-from .apixaban_contract import load_question_catalog, question_index
+from .apixaban_contract import (
+    KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION,
+    known_fact_allows_empty_evidence,
+    load_question_catalog,
+    question_index,
+)
 from .apixaban_evaluation import validate_prediction_set
 from .apixaban_split import load_apixaban_split_manifest, write_private_json
 from .ingestion.apixaban import validate_apixaban_staging_corpus
@@ -26,8 +31,11 @@ from .splits import current_git_commit
 from .validation import validate_document
 
 
-REPORT_VERSION = "1.0.0"
-REPORT_SCHEMA = "schemas/apixaban-error-attribution-report-1.0.0.schema.json"
+REPORT_VERSION = "1.1.0"
+REPORT_SCHEMAS = {
+    "1.0.0": "schemas/apixaban-error-attribution-report-1.0.0.schema.json",
+    "1.1.0": "schemas/apixaban-error-attribution-report-1.1.0.schema.json",
+}
 ERROR_CATEGORIES = (
     "unsupported_answering",
     "unit_contract_error",
@@ -92,6 +100,7 @@ def _attribute_row(
     *,
     gold: Mapping[str, Any],
     prediction: Mapping[str, Any],
+    question: Mapping[str, Any],
     canonical_unit: Optional[str],
     patient_evidence_ids: Set[str],
 ) -> Optional[str]:
@@ -99,7 +108,12 @@ def _attribute_row(
 
     cited = set(prediction["evidence_ids"])
     known_prediction = prediction["fact_status"] != "unknown"
-    if known_prediction and (not cited or not cited.issubset(patient_evidence_ids)):
+    missing_required_evidence = (
+        not cited and not known_fact_allows_empty_evidence(question, prediction)
+    )
+    if known_prediction and (
+        missing_required_evidence or not cited.issubset(patient_evidence_ids)
+    ):
         return "unsupported_answering"
     if prediction["unit"] != canonical_unit:
         return "unit_contract_error"
@@ -127,7 +141,13 @@ def _dimension_report() -> Dict[str, Dict[str, Optional[str]]]:
 
 
 def validate_error_attribution_report(document: Dict[str, Any]) -> None:
-    validate_document(document, REPORT_SCHEMA)
+    report_version = document.get("report_version")
+    schema = REPORT_SCHEMAS.get(report_version)
+    if schema is None:
+        raise ApixabanErrorAttributionError(
+            f"Unsupported error-attribution report version: {report_version!r}"
+        )
+    validate_document(document, schema)
     population = document["population"]
     attributed = sum(document["category_counts"].values())
     if attributed != population["attributed_error_count"]:
@@ -140,7 +160,7 @@ def validate_error_attribution_report(document: Dict[str, Any]) -> None:
         )
     if document["policy"]["precedence"] != list(ERROR_CATEGORIES):
         raise ApixabanErrorAttributionError(
-            "Error-attribution precedence is not frozen 1.0.0"
+            f"Error-attribution precedence is not frozen {report_version}"
         )
     if document["requested_dimensions"] != _dimension_report():
         raise ApixabanErrorAttributionError(
@@ -235,18 +255,24 @@ def build_error_attribution_report(
     for key in sorted(expected_pairs):
         prediction = predictions_by_key[key]
         gold = gold_by_key[key]
-        canonical_unit = questions[prediction["question_id"]]["canonical_unit"]
+        question = questions[prediction["question_id"]]
+        canonical_unit = question["canonical_unit"]
         if not _typed_correct(gold, prediction, canonical_unit):
             typed_mismatch_count += 1
         cited = set(prediction["evidence_ids"])
         patient_evidence = evidence_by_patient[prediction["patient_id"]]
         if prediction["fact_status"] != "unknown" and (
-            not cited or not cited.issubset(patient_evidence)
+            (
+                not cited
+                and not known_fact_allows_empty_evidence(question, prediction)
+            )
+            or not cited.issubset(patient_evidence)
         ):
             known_without_usable_evidence_count += 1
         category = _attribute_row(
             gold=gold,
             prediction=prediction,
+            question=question,
             canonical_unit=canonical_unit,
             patient_evidence_ids=patient_evidence,
         )
@@ -271,12 +297,15 @@ def build_error_attribution_report(
             "prompt_version": prediction_set["prompt_version"],
         },
         "policy": {
-            "policy_version": "1.0.0",
+            "policy_version": "1.1.0",
             "error_universe": (
                 "typed_gold_mismatch_or_known_fact_evidence_or_unit_contract_violation"
             ),
             "precedence": list(ERROR_CATEGORIES),
             "diagnostic_not_causal_proof": True,
+            "known_fact_empty_evidence_exceptions": [
+                dict(KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION)
+            ],
             "test_labels_used_for_design": False,
         },
         "population": {

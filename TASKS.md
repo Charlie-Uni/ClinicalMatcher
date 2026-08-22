@@ -508,13 +508,16 @@ novelty.
     into an eligibility score.
   - Verify: coverage-risk curves and reason counts reproduce exactly; known and
     unknown cases are tested separately.
-  - Completion: policy `1.0.0` writes a separate hash-bound prediction
+  - Completion: policy `1.1.0` writes a separate hash-bound prediction
     projection and never edits its source. Six mutually exclusive reason codes
     have fixed precedence: invalid schema, unusable evidence, missing evidence,
     incompatible unit, verifier conflict, and missing fact. Unknown receives no
     probability. Synthetic tests cover every reason, precedence, known versus
     unknown, source immutability, exact risk recomputation, content tampering,
-    and unavailable conflict input. Owner-only validation projections changed
+    and unavailable conflict input. Version `1.1.0` adds one source-question
+    exception: `med_decisions=absent, value=false` may remain known with an
+    empty citation; present and every other known fact still require evidence.
+    Historical owner-only validation projections used `1.0.0` and changed
     1 structured-prefix and 3 long-context known rows to `missing_evidence` and
     normalized existing unknown rows. Coverage decreased and typed selective
     risk rose slightly because the removed unsupported rows happened to match
@@ -544,7 +547,7 @@ novelty.
   - Constraints: attribution is diagnostic, not causal proof.
   - Verify: categories reconcile to the total errors and representative cases
     are reviewed only inside the authorized environment.
-  - Current gate: observable attribution contract `1.0.0` assigns each row by
+  - Current gate: observable attribution contract `1.1.0` assigns each row by
     frozen precedence to unsupported answering, source-unit error, abstention
     on a known gold fact, numeric value error, cited fact-status error, or a
     remaining typed error. It validates the complete frozen grid and writes an
@@ -555,6 +558,9 @@ novelty.
     not treated as relevant evidence. P4.5 stays unchecked until authorized
     representative-case review is recorded and the missing causal dimensions
     are either supported by reviewed gold/trace fields or formally scoped out.
+    Version `1.1.0` mirrors the P4.3 source-question exception so
+    `med_decisions=absent, value=false` with an empty citation is not mislabeled
+    unsupported; historical aggregate reports remain version `1.0.0`.
   - Validation result: owner-only aggregate reports from implementation commit
     `347375b` reconciled all 345 validation rows for the structured and
     long-context Llama outputs and their separate P4.3 projections. P4.3

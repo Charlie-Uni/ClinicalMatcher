@@ -10,7 +10,12 @@ from .apixaban_benchmark import (
     file_sha256,
     validate_apixaban_benchmark,
 )
-from .apixaban_contract import load_question_catalog, question_index
+from .apixaban_contract import (
+    KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION,
+    known_fact_allows_empty_evidence,
+    load_question_catalog,
+    question_index,
+)
 from .apixaban_evaluation import validate_prediction_set
 from .apixaban_neurosymbolic_audit import (
     build_neurosymbolic_readiness_report,
@@ -25,9 +30,12 @@ from .splits import canonical_sha256, current_git_commit
 from .validation import validate_document
 
 
-POLICY_VERSION = "1.0.0"
-REPORT_VERSION = "1.0.0"
-REPORT_SCHEMA = "schemas/apixaban-abstention-report-1.0.0.schema.json"
+POLICY_VERSION = "1.1.0"
+REPORT_VERSION = "1.1.0"
+REPORT_SCHEMAS = {
+    "1.0.0": "schemas/apixaban-abstention-report-1.0.0.schema.json",
+    "1.1.0": "schemas/apixaban-abstention-report-1.1.0.schema.json",
+}
 REASON_CODES = (
     "invalid_schema",
     "unusable_evidence",
@@ -53,11 +61,21 @@ def abstention_policy() -> Dict[str, Any]:
         "reason_codes": list(REASON_CODES),
         "precedence": list(POLICY_PRECEDENCE),
         "known_fact_requires_patient_local_evidence": True,
+        "known_fact_empty_evidence_exceptions": [
+            dict(KNOWN_FACT_EMPTY_EVIDENCE_EXCEPTION)
+        ],
         "unit_must_equal_catalog_contract": True,
         "unknown_probability": None,
         "probabilities_used": False,
         "test_labels_used": False,
     }
+
+
+def _legacy_abstention_policy_1_0_0() -> Dict[str, Any]:
+    policy = abstention_policy()
+    policy["policy_version"] = "1.0.0"
+    policy.pop("known_fact_empty_evidence_exceptions")
+    return policy
 
 
 def _invalid_model_schema(prediction: Mapping[str, Any]) -> bool:
@@ -79,7 +97,11 @@ def _reason_for(
     cited = set(prediction["evidence_ids"])
     if not cited.issubset(known_evidence_ids):
         return "unusable_evidence"
-    if prediction["fact_status"] != "unknown" and not cited:
+    if (
+        prediction["fact_status"] != "unknown"
+        and not cited
+        and not known_fact_allows_empty_evidence(question, prediction)
+    ):
         return "missing_evidence"
     if prediction["unit"] != question["canonical_unit"]:
         return "incompatible_unit"
@@ -158,7 +180,13 @@ def _operating_point(
 
 
 def validate_abstention_report(document: Dict[str, Any]) -> None:
-    validate_document(document, REPORT_SCHEMA)
+    report_version = document.get("report_version")
+    schema = REPORT_SCHEMAS.get(report_version)
+    if schema is None:
+        raise ApixabanAbstentionError(
+            f"Unsupported abstention report version: {report_version!r}"
+        )
+    validate_document(document, schema)
     counts = document["counts"]
     if counts["retained_known_count"] + counts["abstained_count"] != counts[
         "row_count"
@@ -187,8 +215,15 @@ def validate_abstention_report(document: Dict[str, Any]) -> None:
         )
         if point["risk"] != expected_risk:
             raise ApixabanAbstentionError(f"{name} risk is inconsistent")
-    if document["policy"] != abstention_policy():
-        raise ApixabanAbstentionError("Abstention policy is not frozen 1.0.0")
+    expected_policy = (
+        abstention_policy()
+        if report_version == "1.1.0"
+        else _legacy_abstention_policy_1_0_0()
+    )
+    if document["policy"] != expected_policy:
+        raise ApixabanAbstentionError(
+            f"Abstention policy is not frozen {report_version}"
+        )
     conflict_input = document["verifier_conflict_input"]
     if conflict_input["status"] == "not_evaluable" and (
         conflict_input["provided_pair_count"] != 0

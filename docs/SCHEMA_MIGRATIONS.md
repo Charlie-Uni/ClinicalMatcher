@@ -24,6 +24,18 @@ conversion command. A converter must preserve the original file, emit its
 source and target versions, and fail rather than invent required provenance or
 gold labels.
 
+## Apixaban abstention and error-attribution reports `1.0.0` to `1.1.0`
+
+Version `1.1.0` records the sole source-question exception permitting
+`med_decisions=absent, value=false` to remain known without an evidence ID.
+The exception is machine-readable in each report policy. Error attribution
+uses the same rule so it does not classify that result as unsupported.
+
+Existing `1.0.0` reports remain valid historical artifacts and are never
+relabeled or converted because their row-level outcomes may differ. To produce
+`1.1.0`, rerun the pinned source prediction through the new policy inside the
+authorized environment and record new hashes.
+
 ## Apixaban prediction set `1.0.0` to `1.1.0`
 
 Version `1.1.0` adds evidence-level traceability for deterministic and later

@@ -75,6 +75,116 @@ class ApixabanAbstentionTests(unittest.TestCase):
         self.assertEqual(22 / 23, after["coverage"])
         self.assertEqual(0.0, after["risk"])
 
+    def test_med_decisions_absent_may_remain_known_without_evidence(self):
+        predictions = prediction_set(self.catalog)
+        med_question_id = next(
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        )
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        row.update(
+            {
+                "fact_status": "absent",
+                "value": False,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+
+        projection, report = self.apply(predictions)
+
+        projected = next(
+            item
+            for item in projection["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        self.assertEqual("absent", projected["fact_status"])
+        self.assertFalse(projected["value"])
+        self.assertEqual([], projected["evidence_ids"])
+        self.assertIsNone(projected["abstention_reason"])
+        self.assertEqual(0, report["reason_counts"]["missing_evidence"])
+        self.assertEqual("1.1.0", report["policy"]["policy_version"])
+        self.assertEqual(
+            "med_decisions",
+            report["policy"]["known_fact_empty_evidence_exceptions"][0][
+                "source_criterion_label"
+            ],
+        )
+
+    def test_med_decisions_present_still_requires_evidence(self):
+        predictions = prediction_set(self.catalog)
+        med_question_id = next(
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        )
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        row.update(
+            {
+                "fact_status": "present",
+                "value": True,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+
+        projection, report = self.apply(predictions)
+
+        projected = next(
+            item
+            for item in projection["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        self.assertEqual("unknown", projected["fact_status"])
+        self.assertEqual("missing_evidence", projected["abstention_reason"])
+        self.assertEqual(1, report["reason_counts"]["missing_evidence"])
+
+    def test_other_absent_fact_still_requires_evidence(self):
+        predictions = prediction_set(self.catalog)
+        med_question_ids = {
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        }
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_type"] == "boolean"
+            and item["question_id"] not in med_question_ids
+        )
+        question_id = row["question_id"]
+        row.update(
+            {
+                "fact_status": "absent",
+                "value": False,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+
+        projection, report = self.apply(predictions)
+
+        projected = next(
+            item
+            for item in projection["predictions"]
+            if item["question_id"] == question_id
+        )
+        self.assertEqual("unknown", projected["fact_status"])
+        self.assertEqual("missing_evidence", projected["abstention_reason"])
+        self.assertEqual(1, report["reason_counts"]["missing_evidence"])
+
     def test_existing_unknown_gets_missing_fact_code_without_half_score(self):
         predictions = prediction_set(self.catalog)
         row = predictions["predictions"][0]
@@ -209,6 +319,15 @@ class ApixabanAbstentionTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ApixabanAbstentionError, "coverage"):
             validate_abstention_report(report)
+
+    def test_historical_1_0_report_remains_valid_without_relabeling(self):
+        predictions = prediction_set(self.catalog)
+        _, report = self.apply(predictions)
+        report["report_version"] = "1.0.0"
+        report["policy"]["policy_version"] = "1.0.0"
+        report["policy"].pop("known_fact_empty_evidence_exceptions")
+
+        validate_abstention_report(report)
 
     def test_risk_counts_wrong_answer_among_retained_known_facts(self):
         predictions = prediction_set(self.catalog)

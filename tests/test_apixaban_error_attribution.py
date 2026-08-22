@@ -83,10 +83,11 @@ class ApixabanErrorAttributionTests(unittest.TestCase):
             cls.catalog, cls.base_predictions
         )
 
-    def report(self, predictions=None):
+    def report(self, predictions=None, benchmark=None):
+        resolved_predictions = predictions or copy.deepcopy(self.base_predictions)
         return build_error_attribution_report(
-            prediction_set=predictions or copy.deepcopy(self.base_predictions),
-            benchmark=copy.deepcopy(self.benchmark),
+            prediction_set=resolved_predictions,
+            benchmark=copy.deepcopy(benchmark or self.benchmark),
             staging_corpus=copy.deepcopy(self.staging),
             expected_patient_ids=[PATIENT_ID],
             prediction_set_sha256="1" * 64,
@@ -103,6 +104,91 @@ class ApixabanErrorAttributionTests(unittest.TestCase):
         self.assertEqual(0, report["population"]["attributed_error_count"])
         self.assertEqual(23, report["population"]["no_attributed_error_count"])
         self.assertEqual(0, sum(report["category_counts"].values()))
+
+    def test_med_decisions_absent_empty_evidence_is_not_unsupported(self):
+        predictions = copy.deepcopy(self.base_predictions)
+        med_question_id = next(
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        )
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        row.update(
+            {
+                "fact_status": "absent",
+                "value": False,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+        benchmark = benchmark_from_predictions(self.catalog, predictions)
+
+        report = self.report(predictions, benchmark=benchmark)
+
+        self.assertEqual(0, report["category_counts"]["unsupported_answering"])
+        self.assertEqual(0, report["population"]["known_without_usable_evidence_count"])
+        self.assertEqual("1.1.0", report["policy"]["policy_version"])
+
+    def test_med_decisions_present_empty_evidence_is_unsupported(self):
+        predictions = copy.deepcopy(self.base_predictions)
+        med_question_id = next(
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        )
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_id"] == med_question_id
+        )
+        row.update(
+            {
+                "fact_status": "present",
+                "value": True,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+
+        report = self.report(predictions)
+
+        self.assertEqual(1, report["category_counts"]["unsupported_answering"])
+        self.assertEqual(1, report["population"]["known_without_usable_evidence_count"])
+
+    def test_other_absent_empty_evidence_is_unsupported(self):
+        predictions = copy.deepcopy(self.base_predictions)
+        med_question_ids = {
+            question["question_id"]
+            for question in self.catalog["questions"]
+            if question["source_criterion_label"] == "med_decisions"
+        }
+        row = next(
+            item
+            for item in predictions["predictions"]
+            if item["question_type"] == "boolean"
+            and item["question_id"] not in med_question_ids
+        )
+        row.update(
+            {
+                "fact_status": "absent",
+                "value": False,
+                "evidence_ids": [],
+                "abstained": False,
+                "abstention_reason": None,
+            }
+        )
+        benchmark = benchmark_from_predictions(self.catalog, predictions)
+
+        report = self.report(predictions, benchmark=benchmark)
+
+        self.assertEqual(1, report["category_counts"]["unsupported_answering"])
+        self.assertEqual(1, report["population"]["known_without_usable_evidence_count"])
 
     def test_observable_categories_are_mutually_exclusive_and_reconcile(self):
         predictions = copy.deepcopy(self.base_predictions)
@@ -186,6 +272,14 @@ class ApixabanErrorAttributionTests(unittest.TestCase):
             ApixabanErrorAttributionError, "reconcile"
         ):
             validate_error_attribution_report(report)
+
+    def test_historical_1_0_report_remains_valid_without_relabeling(self):
+        report = self.report()
+        report["report_version"] = "1.0.0"
+        report["policy"]["policy_version"] = "1.0.0"
+        report["policy"].pop("known_fact_empty_evidence_exceptions")
+
+        validate_error_attribution_report(report)
 
     def test_report_validator_rejects_false_evaluability_claim(self):
         report = self.report()
