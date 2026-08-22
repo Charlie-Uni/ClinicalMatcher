@@ -11,26 +11,55 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install -e .
-      - run: python scripts/check_public_data.py
-      - run: clinical-matcher-validate fixtures/synthetic/trial_matching.json
-      - run: clinical-matcher-validate-apixaban-contract
-      - run: python -m unittest discover -s tests -v
-      - run: clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
+          python-version: "3.11.16"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.12.5"
+          enable-cache: true
+      - run: uv venv --python 3.11.16
       - run: >-
-          clinical-matcher-split
+          uv pip sync
+          --python .venv/bin/python
+          --require-hashes
+          --strict
+          requirements/public-py311.lock
+      - run: >-
+          uv pip install
+          --python .venv/bin/python
+          --no-deps
+          --no-build-isolation
+          -e .
+      - run: >-
+          uv pip compile
+          pyproject.toml
+          requirements/public-build.in
+          --python-version 3.11
+          --universal
+          --generate-hashes
+          --no-emit-package clinical-matcher
+          --output-file requirements/public-py311.lock
+      - run: git diff --exit-code -- requirements/public-py311.lock
+      - run: uv run --no-sync python scripts/check_public_data.py
+      - run: >-
+          uv run --no-sync
+          clinical-matcher-validate fixtures/synthetic/trial_matching.json
+      - run: uv run --no-sync clinical-matcher-validate-apixaban-contract
+      - run: uv run --no-sync python -m unittest discover -s tests -v
+      - run: >-
+          uv run --no-sync clinical-matcher-smoke
+          --fixture fixtures/synthetic/trial_matching.json
+      - run: >-
+          uv run --no-sync clinical-matcher-split
           --fixture fixtures/synthetic/trial_matching.json
           --strategy patient_holdout
           --seed 17
           --test-fraction 0.5
           --output /tmp/clinicalmatcher-split.json
       - run: >-
-          clinical-matcher-check-split
+          uv run --no-sync clinical-matcher-check-split
           --manifest /tmp/clinicalmatcher-split.json
       - run: >-
-          clinical-matcher-audit-semantic-scan
+          uv run --no-sync clinical-matcher-audit-semantic-scan
           --manifest /tmp/clinicalmatcher-split.json
           --semantic-pairs fixtures/synthetic/semantic_pairs_none.json
           --dimension patient
@@ -42,27 +71,27 @@ jobs:
           --candidate-pairs-evaluated 1
           --output /tmp/clinicalmatcher-semantic-audit.json
       - run: >-
-          clinical-matcher-import-trial
+          uv run --no-sync clinical-matcher-import-trial
           --nct-id NCT99999999
           --study-json fixtures/synthetic/clinicaltrials_api_study.json
           --version-json fixtures/synthetic/clinicaltrials_api_version.json
           --output /tmp/clinicalmatcher-trial.json
       - run: >-
-          clinical-matcher-pilot summarize
+          uv run --no-sync clinical-matcher-pilot summarize
           --manifest fixtures/synthetic/pilot/manifest.json
           --annotation fixtures/synthetic/pilot/annotation-a.json
           --annotation fixtures/synthetic/pilot/annotation-b.json
           --adjudication fixtures/synthetic/pilot/adjudication.json
           --output /tmp/clinicalmatcher-pilot-summary.json
       - run: >-
-          clinical-matcher-plan-capacity
+          uv run --no-sync clinical-matcher-plan-capacity
           --pilot-summary /tmp/clinicalmatcher-pilot-summary.json
           --hours-per-annotator 10
           --maximum-trials 2
           --selected-trial-count 2
           --output /tmp/clinicalmatcher-capacity.json
       - run: >-
-          clinical-matcher-snapshot build
+          uv run --no-sync clinical-matcher-snapshot build
           --disease-domain atrial_fibrillation
           --selection-rationale "Synthetic CI selection; not clinical data"
           --query-condition "Atrial Fibrillation"
@@ -77,15 +106,15 @@ jobs:
           --version-json fixtures/synthetic/clinicaltrials_api_version.json
           --output-dir /tmp/clinicalmatcher-trial-snapshot
       - run: >-
-          clinical-matcher-snapshot verify
+          uv run --no-sync clinical-matcher-snapshot verify
           --snapshot-dir /tmp/clinicalmatcher-trial-snapshot
       - run: >-
-          clinical-matcher-gold-readiness
+          uv run --no-sync clinical-matcher-gold-readiness
           --snapshot-dir /tmp/clinicalmatcher-trial-snapshot
           --gold-source-description "No clinical gold in public CI"
           --output /tmp/clinicalmatcher-gold-readiness.json
       - run: >-
-          clinical-matcher-evaluate
+          uv run --no-sync clinical-matcher-evaluate
           --fixture fixtures/synthetic/trial_matching.json
           --manifest /tmp/clinicalmatcher-split.json
           --split test

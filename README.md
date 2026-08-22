@@ -47,15 +47,22 @@ The evidence-based scope audit is in
 
 ## Quick start
 
-The baseline is CPU-only and has one runtime validation dependency:
+The supported public runtime is CPU-only CPython 3.11. Its direct and
+transitive dependencies are hash-locked separately from GPU training and
+legacy experiments:
 
 ```bash
-python -m pip install -e .
-python scripts/check_public_data.py
-clinical-matcher-validate fixtures/synthetic/trial_matching.json
-python -m unittest discover -s tests -v
-clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
+uv venv --python 3.11
+uv pip sync --python .venv/bin/python --require-hashes --strict requirements/public-py311.lock
+uv pip install --python .venv/bin/python --no-deps --no-build-isolation -e .
+uv run --no-sync python scripts/check_public_data.py
+uv run --no-sync clinical-matcher-validate fixtures/synthetic/trial_matching.json
+uv run --no-sync python -m unittest discover -s tests -v
+uv run --no-sync clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
 ```
+
+See [requirements/README.md](requirements/README.md) for the pinned uv version,
+Windows paths, lock regeneration, and the GPU-environment separation policy.
 
 The smoke test evaluates two independently authored fictional patients against
 two fictional trials. It verifies criterion polarity, evidence links,

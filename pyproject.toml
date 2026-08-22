@@ -7,7 +7,7 @@ name = "clinical-matcher"
 version = "0.1.0"
 description = "Compliance-safe research pipeline for explainable patient-to-trial matching"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11,<3.12"
 license = {file = "LICENSE"}
 authors = [{name = "Charlie-Uni"}]
 dependencies = ["jsonschema>=4.23,<5"]

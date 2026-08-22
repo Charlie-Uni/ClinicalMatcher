@@ -132,14 +132,27 @@ If a task cannot pass the gate, record the blocker and leave it unchecked.
     model calls, and GPU requirements.
   - Verify: `.github/workflows/ci.yml` passes from a public clean clone.
 
-- [ ] **F0.8 Lock the public runtime and test dependencies.** Add a reviewed,
-  reproducible lock strategy without coupling the later GPU training stack to
+- [x] **F0.8 Lock the public runtime and test dependencies.** Add a reviewed,
+  reproducible lock strategy without coupling the later training stack to
   the lightweight public package.
   - Entry condition: select one supported lock tool and Python-version policy.
-  - Constraints: keep MedicalGPT/PEFT/CUDA dependencies in a separate optional
-    environment; do not add a large framework before its task begins.
+  - Constraints: keep MLX and any optional MedicalGPT/PEFT/CUDA dependencies in
+    separate training environments; do not add a large framework before its
+    task begins.
   - Verify: recreate a fresh environment from the lock and pass the complete
     public CI workflow.
+  - Frozen decision: CPython 3.11.x, with CI on 3.11.16, and `uv` 0.12.5.
+    `requirements/public-py311.lock` contains the hash-locked public runtime
+    and build backend only. The P5 training stack remains absent until P5.1
+    freezes its model, framework, accelerator target, and execution environment.
+  - Completion: on 2026-08-21, an ARM64 macOS environment was rebuilt with
+    CPython 3.11.16 and `uv` 0.12.5. Strict hash sync installed the seven locked
+    public/build packages, and the frozen compile command reproduced
+    `requirements/public-py311.lock` byte for byte. A separate clean Git
+    snapshot then passed the public-data guard, both public contract validators,
+    all 246 tests, and every synthetic end-to-end command in CI. No MLX,
+    MedicalGPT, PEFT, CUDA, model weight, or restricted-data dependency entered
+    the public lock.
 
 Acceptance: a clean public clone is deterministic, compliance-safe, CPU-only,
 and honest about which results are synthetic.
