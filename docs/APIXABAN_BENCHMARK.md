@@ -395,6 +395,33 @@ Once frozen, the test membership must not guide prompt, retriever, threshold,
 or model selection. Any later split change requires a new version and an
 explicit reason; it cannot silently replace the locked test set.
 
+## Calibration-only reservation before SFT
+
+Before any P5 export or fitting, reserve an explicitly approved number of
+patients from the frozen `train` partition. The command has no default count:
+replace `N` only after the reservation size is approved.
+
+```bash
+clinical-matcher-reserve-apixaban-calibration \
+  --frozen-split /restricted/path/apixaban-split.frozen.json \
+  --calibration-patient-count N \
+  --output /restricted/path/apixaban-calibration-reservation.json \
+  --acknowledge-restricted-data-local-only
+```
+
+Version `1.0.0` ranks train patient pseudonyms by SHA-256 over the algorithm
+version, fixed selection salt, staging-corpus hash, frozen-split hash, and
+patient ID. It writes sorted `train_fit` and `calibration_only` memberships,
+their content hashes, and complete lineage to a new owner-only file. Candidate
+splits, implicit counts, overlap, incomplete train coverage, changed source
+hashes, and overwrites fail closed. Validation and locked-test membership are
+not selection inputs, and their labels remain unused.
+
+The reservation manifest is restricted row-level metadata. It must stay
+outside Git and ordinary online services. Calibration-only patients cannot
+contribute training rows, silver citations, early stopping, or training-loss
+summaries.
+
 ## Mixed typed-fact evaluation
 
 P1.5 evaluates the 15 boolean and 8 numeric questions as different tasks. A

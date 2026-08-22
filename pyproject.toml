@@ -53,6 +53,8 @@ clinical-matcher-apixaban-numeric-occurrence = "clinical_matcher.apixaban_numeri
 clinical-matcher-apixaban-neurosymbolic-audit = "clinical_matcher.apixaban_neurosymbolic_audit_cli:main"
 clinical-matcher-apixaban-abstention = "clinical_matcher.apixaban_abstention_cli:main"
 clinical-matcher-apixaban-error-attribution = "clinical_matcher.apixaban_error_attribution_cli:main"
+clinical-matcher-reserve-apixaban-calibration = "clinical_matcher.apixaban_calibration_cli:main"
+clinical-matcher-check-synthetic-upload = "clinical_matcher.synthetic_upload_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

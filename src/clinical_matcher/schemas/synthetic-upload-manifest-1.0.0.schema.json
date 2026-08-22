@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/synthetic-upload-manifest-1.0.0.schema.json",
+  "title": "Synthetic-only external upload bundle manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "synthetic_upload_manifest_version",
+    "manifest_sha256",
+    "generated_at",
+    "code_commit",
+    "generation_command",
+    "attestation",
+    "constraints",
+    "files"
+  ],
+  "properties": {
+    "synthetic_upload_manifest_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "generation_command": {"type": "string", "minLength": 1},
+    "attestation": {"const": "independently_authored_synthetic_only"},
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_file_set_required",
+        "restricted_or_clinical_data_allowed",
+        "symbolic_links_allowed"
+      ],
+      "properties": {
+        "exact_file_set_required": {"const": true},
+        "restricted_or_clinical_data_allowed": {"const": false},
+        "symbolic_links_allowed": {"const": false}
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "size_bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "size_bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}
