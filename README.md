@@ -122,6 +122,16 @@ separate owner-only raw-ID map. The released extension does not expose usable
 index dates, so the adapter refuses to call that staging output a runtime
 patient source until authorized MIMIC note metadata supplies them.
 
+P5 includes an owner-only SFT export boundary for authorized local work. Its
+canonical patient-question records are the sole source for both MLX-LM
+`messages` and MedicalGPT-compatible ShareGPT JSONL. The exporter excludes
+calibration, validation, and locked-test patients; filters known rows without
+accepted audited silver citations; preserves legal empty citations for gold
+unknowns and the source-defined `med_decisions` default-absent exception; and
+fails if a supervised citation is not visible to the student. These artifacts
+contain restricted text and must remain under ignored local paths. Silver
+citations are explicitly not evidence-relevance gold.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and

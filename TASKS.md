@@ -614,6 +614,15 @@ trade-off and do not hide unresolved clinical information.
     records, labels, outputs, and patient text never enter training artifacts.
   - Verify: schema validation, exact patient-membership assertions, dataset
     hash, chat-template snapshot, sample round-trip, and label distribution.
+  - Progress: canonical record and export-manifest contracts `1.0.0` now derive
+    MLX `messages` and MedicalGPT ShareGPT `conversations` from one semantic
+    source. Synthetic tests enforce exact train-fit coverage, calibration/
+    validation/test exclusion, D-before-E accepted-silver precedence, typed
+    agreement, patient ownership, visible citations, known-row filtering,
+    empty-unknown/default-absent targets, owner-only outputs, hash binding, and
+    cross-format message equality. This does not close P5.2: the real input
+    policy, threshold-approved D/E audit artifacts, tokenizer chat-template
+    snapshot, and owner-only real export remain pending.
   - Evidence supervision: export D deterministic-rule silver first and use a
     frozen-teacher E source only as audited backoff for uncovered gold-known
     rows. Keep source-level provenance and stratified coverage reports. These

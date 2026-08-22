@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-sft-record-1.0.0.schema.json",
+  "title": "Restricted canonical Apixaban SFT record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_sft_record_version",
+    "record_id",
+    "patient_id",
+    "question_id",
+    "question_type",
+    "input",
+    "target",
+    "supervision"
+  ],
+  "properties": {
+    "apixaban_sft_record_version": {"const": "1.0.0"},
+    "record_id": {"type": "string", "pattern": "^apixaban-sft-[0-9a-f]{24}$"},
+    "patient_id": {"$ref": "#/$defs/patientId"},
+    "question_id": {"$ref": "#/$defs/questionId"},
+    "question_type": {"enum": ["boolean", "numeric"]},
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_policy_id",
+        "input_policy_sha256",
+        "prompt_version",
+        "source_question",
+        "visible_evidence"
+      ],
+      "properties": {
+        "input_policy_id": {"$ref": "#/$defs/nonEmptyString"},
+        "input_policy_sha256": {"$ref": "#/$defs/sha256"},
+        "prompt_version": {"$ref": "#/$defs/nonEmptyString"},
+        "source_question": {"$ref": "#/$defs/nonEmptyString"},
+        "visible_evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidence"}
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact_status",
+        "value",
+        "unit",
+        "abstained",
+        "abstention_reason",
+        "evidence_ids"
+      ],
+      "properties": {
+        "fact_status": {"enum": ["present", "absent", "unknown"]},
+        "value": {"type": ["boolean", "number", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "abstained": {"type": "boolean"},
+        "abstention_reason": {"type": ["string", "null"]},
+        "evidence_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/evidenceId"}
+        }
+      }
+    },
+    "supervision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_policy",
+        "citation_required",
+        "silver_source",
+        "silver_source_artifact_sha256",
+        "silver_quality_audit_sha256"
+      ],
+      "properties": {
+        "row_policy": {
+          "enum": [
+            "accepted_audited_silver",
+            "gold_unknown_empty_evidence",
+            "source_default_absent_empty_evidence"
+          ]
+        },
+        "citation_required": {"type": "boolean"},
+        "silver_source": {"type": ["string", "null"], "enum": [null, "D", "E"]},
+        "silver_source_artifact_sha256": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]
+        },
+        "silver_quality_audit_sha256": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"supervision": {"properties": {"row_policy": {"const": "accepted_audited_silver"}}}}},
+      "then": {
+        "properties": {
+          "supervision": {
+            "properties": {
+              "citation_required": {"const": true},
+              "silver_source": {"enum": ["D", "E"]},
+              "silver_source_artifact_sha256": {"$ref": "#/$defs/sha256"},
+              "silver_quality_audit_sha256": {"$ref": "#/$defs/sha256"}
+            }
+          },
+          "target": {"properties": {"evidence_ids": {"minItems": 1}}}
+        }
+      },
+      "else": {
+        "properties": {
+          "supervision": {
+            "properties": {
+              "citation_required": {"const": false},
+              "silver_source": {"type": "null"},
+              "silver_source_artifact_sha256": {"type": "null"},
+              "silver_quality_audit_sha256": {"type": "null"}
+            }
+          },
+          "target": {"properties": {"evidence_ids": {"maxItems": 0}}}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "patientId": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+    "questionId": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+    "evidenceId": {"type": "string", "pattern": "^evidence-[0-9a-f]{24}-[0-9]{3,}$"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "source_id", "source_span", "text"],
+      "properties": {
+        "evidence_id": {"$ref": "#/$defs/evidenceId"},
+        "source_id": {"type": "string", "pattern": "^note-[0-9a-f]{24}$"},
+        "source_span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": {"type": "integer", "minimum": 0},
+            "end": {"type": "integer", "minimum": 1}
+          }
+        },
+        "text": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    }
+  }
+}

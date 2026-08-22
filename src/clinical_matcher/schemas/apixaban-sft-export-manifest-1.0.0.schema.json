@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-sft-export-manifest-1.0.0.schema.json",
+  "title": "Restricted Apixaban SFT export manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_sft_export_manifest_version",
+    "manifest_sha256",
+    "generated_at",
+    "code_commit",
+    "generation_command",
+    "source",
+    "input_contract",
+    "row_policy",
+    "counts",
+    "per_question",
+    "outputs",
+    "restrictions"
+  ],
+  "properties": {
+    "apixaban_sft_export_manifest_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "generation_command": {"$ref": "#/$defs/nonEmptyString"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "benchmark_sha256",
+        "staging_corpus_sha256",
+        "split_manifest_sha256",
+        "calibration_reservation_sha256",
+        "question_catalog_sha256"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "calibration_reservation_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "input_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_policy_id",
+        "input_policy_sha256",
+        "prompt_version",
+        "system_instruction_sha256"
+      ],
+      "properties": {
+        "input_policy_id": {"$ref": "#/$defs/nonEmptyString"},
+        "input_policy_sha256": {"$ref": "#/$defs/sha256"},
+        "prompt_version": {"$ref": "#/$defs/nonEmptyString"},
+        "system_instruction_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "row_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "training_partition",
+        "calibration_excluded",
+        "validation_excluded",
+        "test_excluded",
+        "silver_priority",
+        "uncovered_known_action"
+      ],
+      "properties": {
+        "version": {"const": "1.0.0"},
+        "training_partition": {"const": "train_fit"},
+        "calibration_excluded": {"const": true},
+        "validation_excluded": {"const": true},
+        "test_excluded": {"const": true},
+        "silver_priority": {"const": ["D", "E"]},
+        "uncovered_known_action": {"const": "exclude"}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "train_fit_patient_count",
+        "eligible_pair_count",
+        "included_row_count",
+        "excluded_known_without_silver_count",
+        "accepted_d_count",
+        "accepted_e_count",
+        "unknown_empty_evidence_count",
+        "default_absent_exception_count"
+      ],
+      "properties": {
+        "train_fit_patient_count": {"type": "integer", "minimum": 1},
+        "eligible_pair_count": {"type": "integer", "minimum": 1},
+        "included_row_count": {"type": "integer", "minimum": 1},
+        "excluded_known_without_silver_count": {"type": "integer", "minimum": 0},
+        "accepted_d_count": {"type": "integer", "minimum": 0},
+        "accepted_e_count": {"type": "integer", "minimum": 0},
+        "unknown_empty_evidence_count": {"type": "integer", "minimum": 0},
+        "default_absent_exception_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "per_question": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_id",
+          "eligible_pair_count",
+          "included_row_count",
+          "excluded_known_without_silver_count",
+          "accepted_d_count",
+          "accepted_e_count",
+          "unknown_empty_evidence_count",
+          "default_absent_exception_count"
+        ],
+        "properties": {
+          "question_id": {"$ref": "#/$defs/questionId"},
+          "eligible_pair_count": {"type": "integer", "minimum": 1},
+          "included_row_count": {"type": "integer", "minimum": 0},
+          "excluded_known_without_silver_count": {"type": "integer", "minimum": 0},
+          "accepted_d_count": {"type": "integer", "minimum": 0},
+          "accepted_e_count": {"type": "integer", "minimum": 0},
+          "unknown_empty_evidence_count": {"type": "integer", "minimum": 0},
+          "default_absent_exception_count": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_jsonl_sha256", "mlx_jsonl_sha256", "medicalgpt_jsonl_sha256"],
+      "properties": {
+        "canonical_jsonl_sha256": {"$ref": "#/$defs/sha256"},
+        "mlx_jsonl_sha256": {"$ref": "#/$defs/sha256"},
+        "medicalgpt_jsonl_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "restrictions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contains_restricted_text", "owner_only", "online_upload_permitted", "silver_is_evidence_gold"],
+      "properties": {
+        "contains_restricted_text": {"const": true},
+        "owner_only": {"const": true},
+        "online_upload_permitted": {"const": false},
+        "silver_is_evidence_gold": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "questionId": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"}
+  }
+}
