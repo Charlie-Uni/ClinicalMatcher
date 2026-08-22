@@ -210,12 +210,58 @@ prohibited. Because `student_invisible_citation` depends on the visible chunk
 set, real candidate generation and both coverage gates remain blocked until
 the input policy is frozen.
 
-Each source's audit sample uses the deterministic hash rule and is stratified
-jointly by question ID, answer type (`numeric` or `boolean`), and fact status
-(`present` or `absent`). It must include at least one row from every question
-that produced accepted candidates. The sampling algorithm version, salt,
-per-stratum allocation rule, review rubric, and reviewer count must be frozen
-before any candidate content is inspected.
+The audit sampling protocol is
+`sha256_stratified_silver_audit_sampling/1.0.0`. Its selection salt is
+`clinicalmatcher-p5-silver-audit-v1`. For each source (`D` or `E`), a row's
+sampling digest is SHA-256 over the UTF-8 encoding of the `"\0"`-joined tuple:
+
+1. exact algorithm identifier
+   `sha256_stratified_silver_audit_sampling/1.0.0`;
+2. selection salt;
+3. the **pre-audit silver candidate artifact** `artifact_sha256`;
+4. patient ID;
+5. question ID.
+
+Every component must be non-empty and contain no NUL character; validation
+fails closed before hashing otherwise.
+
+The pre-audit artifact distinction is mandatory: an artifact cannot be called
+accepted silver until its quality audit passes. Binding the digest to its
+candidate-artifact hash makes a sample unique and reproducible for that
+artifact. Complete regeneration after a zero-tolerance defect changes the
+artifact hash and therefore requires a fresh sample structurally, rather than
+by operator memory.
+
+Per-source allocation protocol `1.0.0` has review budget `N=100`. Review every
+candidate when a source has at most 100. Otherwise:
+
+1. define the non-empty strata as question ID by fact status (`present` or
+   `absent`); record the question-derived answer type (`numeric` or `boolean`)
+   for every stratum;
+2. assign one row to every non-empty stratum, which also guarantees at least
+   one row from every question that produced candidates eligible for audit;
+3. distribute the remaining budget by largest remainder in proportion to each
+   stratum's remaining capacity (`candidate_count - 1`), not its original
+   count, so no stratum can receive more rows than it contains; break equal
+   remainders by ascending `(question_id, fact_status)`;
+4. select the lowest sampling digests within each stratum.
+
+Review rubric `1.0.0` presents the source question, released gold typed answer,
+cited chunk text with evidence IDs, and D rule or E teacher provenance. The
+reviewer records exactly one judgment: `support`, `not_support`, or
+`ambiguous`. A numeric row is `support` only when the cited text supports the
+exact extracted value in the question-required clinical context. Catalog
+`1.0.0` defines `canonical_unit = null`, so this audit must not infer or claim
+a gold unit; a unit visible in source text may be retained as citation
+metadata but cannot be retroactively attributed to the released label. A
+boolean row is `support` only after explicitly checking negation, personal
+versus family history, and uncertain or hedged wording. Every reviewed row
+also re-confirms zero occurrences of both zero-tolerance categories.
+
+Exactly one reviewer, the data owner, performs this training-signal quality
+check. It is not independent evidence gold. The audit package and judgment
+record contain restricted note text, remain owner-only, and are hash-bound to
+the pre-audit candidate artifact and this protocol version.
 
 Reports must show, at minimum:
 
@@ -230,14 +276,12 @@ Reports must show, at minimum:
 An aggregate percentage alone cannot pass the gate if a citation-required
 question or answer class has collapsed coverage. Every silver source must pass
 a deterministic, stratified, owner-only manual review before any of its rows
-enter training, including a D-only path. The sampling algorithm, sample size,
-review rubric, reviewer count, disagreements, and artifact hash must be frozen
-before review. Reviewed `not_support` and `ambiguous` candidates are removed,
-then coverage is recomputed and all overall/per-question gates are applied
-again. Only audited D coverage decides whether E is needed; if E is generated,
-E is audited and D+E coverage is recomputed once more. One reviewer is
-acceptable for this training-signal audit only if the result is described as a
-single-reviewer quality check, not independent evidence gold.
+enter training, including a D-only path. Reviewed `not_support` and `ambiguous`
+candidates are removed, then coverage is recomputed and all overall/per-question
+gates are applied again. Only audited D coverage decides whether E is needed;
+if E is generated, E is audited and D+E coverage is recomputed once more. Any
+protocol revision after candidate inspection invalidates that audit and
+requires a newly versioned protocol, fresh sampling, and fresh review.
 
 ### First-run row policy
 

@@ -609,9 +609,16 @@ trade-off and do not hide unresolved clinical information.
     candidate artifact, and either defect forces complete regeneration rather
     than row deletion. Audit samples are jointly stratified by question ID,
     numeric/boolean answer type, and present/absent fact status, with every
-    represented question sampled. The full gate remains open until the input
-    policy and the sampling algorithm version, salt, allocation, rubric, and
-    reviewer count are frozen before candidate inspection.
+    represented question sampled. Sampling protocol
+    `sha256_stratified_silver_audit_sampling/1.0.0` freezes the artifact-bound
+    SHA-256 tuple and salt, `N=100`, floor-one allocation, capacity-safe
+    largest-remainder distribution, exact three-label rubric, and one-owner
+    review. The input is explicitly a pre-audit candidate artifact; accepted
+    silver exists only after the audit passes. Numeric review checks exact
+    value and context without inventing a gold unit because catalog `1.0.0`
+    defines `canonical_unit = null`. The full gate remains open until the input
+    policy is frozen and the builder, validator, and calculator pass synthetic
+    tests before any real candidate content is inspected.
   - Progress: the separate local mechanism environment now records CPython
     3.11.16, `mlx==0.31.2`, `mlx-lm==0.31.3`, their official release commits,
     and all observed exact package versions in `requirements-mlx.txt`. An Apple
