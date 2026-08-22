@@ -590,14 +590,22 @@ trade-off and do not hide unresolved clinical information.
     pinned Llama-3.2-3B-Instruct and an untuned same-base comparison. Real
     restricted data and derived adapters remain local; Colab is synthetic
     mechanism testing only. P5.1 remains open until the conversion chain,
-    synthetic memory result, calibration-only patient manifest, thresholds,
-    train-fit-only complete-sequence input policy, training budget, runtime
-    route, and row-filter tests pass.
+    synthetic memory result, complete threshold gate, train-fit-only
+    complete-sequence input policy, training budget, runtime route, and
+    row-filter tests pass.
   - Progress: calibration reservation contract `1.0.0` implements a fixed
     source-bound SHA-256 ranking over the frozen train membership, requires an
     explicit count, writes owner-only output, and has no validation/test label
-    input. The real manifest remains deliberately ungenerated until its patient
-    count is approved and the code has a clean commit.
+    input. The owner approved 15 calibration-only patients from the frozen
+    70-patient train split, leaving 55 train-fit patients; the real manifest is
+    generated and validated only in the authorized local environment.
+  - Progress: the owner approved the numerical D/E gates before coverage was
+    inspected: overall citation-required known coverage at least 60%; every
+    applicable question both at least 30% and at least five accepted rows; at
+    most 100 deterministically sampled reviews per source; and support rate at
+    least 90%, with ambiguous counted as failure. The full gate remains open
+    because the two zero-tolerance categories and sampling strata are not yet
+    named and must not be inferred by the implementation.
   - Progress: the separate local mechanism environment now records CPython
     3.11.16, `mlx==0.31.2`, `mlx-lm==0.31.3`, their official release commits,
     and all observed exact package versions in `requirements-mlx.txt`. An Apple

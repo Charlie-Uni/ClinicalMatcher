@@ -102,11 +102,11 @@ The exporter must prove patient-level membership, stable ordering, source and
 split hashes, label distribution, JSON-schema validity, round-trip integrity,
 and chat-template rendering consistency.
 
-Before export, a deterministic patient-hash rule must reserve a
-calibration-only subset from the training patients. Its size, salt/algorithm
-version, patient-list hash, and derived manifest must be frozen before any
-fitting. These patients may not contribute examples, silver labels, early
-stopping, or training-loss summaries.
+Before export, a deterministic patient-hash rule reserves exactly 15
+calibration-only patients from the 70 frozen training patients, leaving 55
+train-fit patients. Its salt/algorithm version, patient-list hash, and derived
+manifest must be frozen before any fitting. These patients may not contribute
+examples, silver labels, early stopping, or training-loss summaries.
 
 Reservation implementation `1.0.0` is available through
 `clinical-matcher-reserve-apixaban-calibration`. It accepts only a frozen split,
@@ -114,8 +114,9 @@ has no default patient count, uses the fixed SHA-256 policy documented in
 `docs/APIXABAN_BENCHMARK.md`, validates source-bound membership, and writes a
 new owner-only manifest without overwrite. Synthetic tests cover deterministic
 repeat, train-only selection, boundary counts, source/membership tampering, and
-private output. The real reservation remains ungenerated until the owner
-approves the exact count and the implementation is on a clean recorded commit.
+private output. The owner approved the count of 15 before generation. The real
+reservation is an owner-only restricted artifact and must remain outside Git
+and ordinary online services.
 
 The training unit is one patient-question pair. P5.1 must select one primary
 input policy before export and record its visible chunk set, context/truncation
@@ -179,8 +180,25 @@ validation-based model selection.
 
 ### Coverage and quality gates
 
-Before looking at generated coverage values, the owner must approve the exact
-coverage and manual-audit thresholds. Reports must show, at minimum:
+The owner approved these numerical gates before generated coverage was
+inspected:
+
+- accepted silver must cover at least 60% of all citation-required gold-known
+  train-fit rows;
+- every citation-required question must independently reach both 30% coverage
+  and at least five accepted rows;
+- each D/E source audit reviews all candidates when it has at most 100, or a
+  deterministic hash-stratified sample capped at 100 otherwise;
+- each source must achieve at least 90% `support`; `ambiguous` is counted as a
+  failure in that rate.
+
+The names and executable definitions of the two proposed zero-tolerance audit
+categories are not yet approved. They must not be guessed from existing error
+labels. Until they are explicitly frozen together with the sampling strata,
+the complete audit gate remains open and no real D/E artifact may claim
+`passed_predeclared_thresholds`.
+
+Reports must show, at minimum:
 
 - all gold-known train-fit rows as the reported population;
 - citation-required gold-known rows as the silver-gate denominator;

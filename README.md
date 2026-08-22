@@ -54,12 +54,16 @@ legacy experiments:
 ```bash
 uv venv --python 3.11
 uv pip sync --python .venv/bin/python --require-hashes --strict requirements/public-py311.lock
-uv pip install --python .venv/bin/python --no-deps --no-build-isolation -e .
+uv pip install --python .venv/bin/python --no-deps --no-build-isolation --reinstall .
 uv run --no-sync python scripts/check_public_data.py
 uv run --no-sync clinical-matcher-validate fixtures/synthetic/trial_matching.json
 uv run --no-sync python -m unittest discover -s tests -v
 uv run --no-sync clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
 ```
+
+Reinstall the current worktree immediately before local verification; running
+the test command alone after source changes may exercise a stale installed
+wheel rather than the edited source.
 
 See [requirements/README.md](requirements/README.md) for the pinned uv version,
 Windows paths, lock regeneration, and the GPU-environment separation policy.

@@ -397,14 +397,15 @@ explicit reason; it cannot silently replace the locked test set.
 
 ## Calibration-only reservation before SFT
 
-Before any P5 export or fitting, reserve an explicitly approved number of
-patients from the frozen `train` partition. The command has no default count:
-replace `N` only after the reservation size is approved.
+Before any P5 export or fitting, reserve the approved 15 patients from the
+frozen 70-patient `train` partition, leaving 55 train-fit patients. The command
+still has no default count so a later protocol cannot silently inherit this
+decision.
 
 ```bash
 clinical-matcher-reserve-apixaban-calibration \
   --frozen-split /restricted/path/apixaban-split.frozen.json \
-  --calibration-patient-count N \
+  --calibration-patient-count 15 \
   --output /restricted/path/apixaban-calibration-reservation.json \
   --acknowledge-restricted-data-local-only
 ```

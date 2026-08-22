@@ -16,24 +16,23 @@ Create the environment from a clean clone:
 ```bash
 uv venv --python 3.11
 uv pip sync --python .venv/bin/python --require-hashes --strict requirements/public-py311.lock
-uv pip install --python .venv/bin/python --no-deps --no-build-isolation -e .
+uv pip install --python .venv/bin/python --no-deps --no-build-isolation --reinstall .
 uv run --no-sync python -m unittest discover -s tests -v
 ```
+
+The final two commands are one verification sequence: reinstall the current
+worktree immediately before every local test run. Running the test command
+alone after a source change can silently exercise a stale wheel snapshot.
 
 On Windows, use `.venv\\Scripts\\python.exe` instead of
 `.venv/bin/python` in the two `uv pip` commands.
 
-On macOS, a file-provider-managed folder can occasionally propagate the Finder
-`hidden` flag into `.venv`; Python then skips editable-install `.pth` files. If
-`python -v` reports `Skipping hidden .pth file`, keep the same locked
-environment but install the project itself as a normal local wheel:
-
-```bash
-uv pip install --python .venv/bin/python --no-deps --no-build-isolation --reinstall .
-```
-
-Re-run that command after source changes. This fallback changes only the local
-project install mode; CI and the dependency lock remain unchanged.
+The normal-wheel reinstall is intentional. On macOS, a file-provider-managed
+folder can propagate the Finder `hidden` flag into `.venv`, causing Python to
+skip editable-install `.pth` files. Reinstalling the worktree before tests
+avoids that platform-specific failure and prevents a previously installed
+wheel from being mistaken for current-source verification. It changes only
+the local project install mode; CI and the dependency lock remain unchanged.
 
 After reviewing a public dependency change, regenerate the lock with exactly:
 
