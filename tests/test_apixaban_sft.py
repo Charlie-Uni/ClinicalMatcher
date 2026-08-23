@@ -20,6 +20,9 @@ from clinical_matcher.apixaban_sft import (
     validate_apixaban_sft_export_manifest,
     write_apixaban_sft_export,
 )
+from clinical_matcher.apixaban_sft_contract import (
+    load_apixaban_sft_length_contract,
+)
 from clinical_matcher.apixaban_sft_cli import main
 from clinical_matcher.apixaban_split import (
     freeze_apixaban_split,
@@ -34,6 +37,24 @@ def _self_hash(document, field):
     unsigned = dict(document)
     unsigned.pop(field, None)
     return canonical_sha256(unsigned)
+
+
+class FakeTokenizer:
+    def __init__(self, target_tokens=None):
+        self.target_tokens = target_tokens
+
+    def apply_chat_template(self, messages, *, tokenize, add_generation_prompt):
+        prompt_tokens = 11 + sum(
+            max(1, len(message["content"]) // 4) for message in messages[:2]
+        )
+        if len(messages) == 2:
+            count = prompt_tokens
+        else:
+            target = self.target_tokens
+            if target is None:
+                target = max(1, len(messages[2]["content"]) // 4)
+            count = prompt_tokens + target
+        return list(range(count))
 
 
 def _frozen_inputs():
@@ -72,17 +93,28 @@ def _frozen_inputs():
 
 def _input_plan(corpus, reservation):
     catalog = load_question_catalog()
+    contract = load_apixaban_sft_length_contract()
     train_fit = reservation["partitions"]["train_fit"]["patient_ids"]
     patients = {item["patient_id"]: item for item in corpus["patients"]}
     document = {
-        "input_plan_version": "1.0.0",
-        "input_policy_id": "synthetic-all-chunks-v1",
+        "input_plan_version": "1.1.0",
+        "input_policy_id": contract["input_policy"]["input_policy_id"],
         "input_policy_sha256": "pending",
-        "prompt_version": "synthetic-sft-prompt-v1",
-        "system_instruction": (
-            "Return one typed JSON fact assessment grounded only in the "
-            "provided synthetic evidence."
-        ),
+        "prompt_version": contract["prompt"]["prompt_version"],
+        "system_instruction": contract["prompt"]["system_instruction"],
+        "context": {
+            "length_report_sha256": "f" * 64,
+            "model_id": contract["model"]["model_id"],
+            "model_revision": contract["model"]["revision"],
+            "tokenizer_sha256": contract["tokenizer"]["files"]["tokenizer.json"],
+            "tokenizer_config_sha256": contract["tokenizer"]["files"][
+                "tokenizer_config.json"
+            ],
+            "chat_template_sha256": contract["tokenizer"]["chat_template_sha256"],
+            "output_reserve_tokens": 512,
+            "max_seq_len": 2048,
+            "overflow_policy": "measured_failure_abstention_no_truncation",
+        },
         "rows": [
             {
                 "patient_id": patient_id,
@@ -175,6 +207,7 @@ def _build_export(with_e=True, leave_uncovered=True):
         input_plan,
         d_silver,
         e_silver,
+        tokenizer=FakeTokenizer(),
         generated_at="2026-08-22T01:00:00Z",
         code_commit="b" * 40,
         generation_command="synthetic SFT export test",
@@ -247,6 +280,23 @@ class ApixabanSFTExportTests(unittest.TestCase):
             self.assertEqual([], row["target"]["evidence_ids"])
             self.assertIsNone(row["supervision"]["silver_source"])
 
+    def test_export_rejects_target_longer_than_frozen_reserve(self):
+        _, inputs = _build_export(with_e=False, leave_uncovered=False)
+        corpus, benchmark, split, reservation, input_plan, d_silver = inputs
+        with self.assertRaisesRegex(
+            ValueError, "target exceeds the frozen output reserve"
+        ):
+            build_apixaban_sft_export(
+                corpus,
+                benchmark,
+                split,
+                reservation,
+                input_plan,
+                d_silver,
+                tokenizer=FakeTokenizer(target_tokens=513),
+                generation_command="synthetic target overflow test",
+            )
+
     def test_accepted_silver_must_be_visible_and_match_gold(self):
         _, inputs = _build_export(with_e=False, leave_uncovered=False)
         corpus, benchmark, split, reservation, input_plan, d_silver = inputs
@@ -265,7 +315,9 @@ class ApixabanSFTExportTests(unittest.TestCase):
         )
         row["evidence_ids"] = [other["evidence"][0]["evidence_id"]]
         plan["input_policy_sha256"] = _self_hash(plan, "input_policy_sha256")
-        with self.assertRaisesRegex(ApixabanSFTError, "outside its patient"):
+        with self.assertRaisesRegex(
+            ApixabanSFTError, "every complete patient chunk"
+        ):
             build_apixaban_sft_export(
                 corpus,
                 benchmark,
@@ -273,6 +325,7 @@ class ApixabanSFTExportTests(unittest.TestCase):
                 reservation,
                 plan,
                 d_silver,
+                tokenizer=FakeTokenizer(),
                 generation_command="synthetic invalid visibility test",
             )
 
@@ -287,6 +340,7 @@ class ApixabanSFTExportTests(unittest.TestCase):
                 reservation,
                 input_plan,
                 wrong,
+                tokenizer=FakeTokenizer(),
                 generation_command="synthetic invalid typed silver test",
             )
 
@@ -316,6 +370,7 @@ class ApixabanSFTExportTests(unittest.TestCase):
                 input_plan,
                 d_silver,
                 e_silver,
+                tokenizer=FakeTokenizer(),
                 generation_command="synthetic overlap test",
             )
 
@@ -325,7 +380,9 @@ class ApixabanSFTExportTests(unittest.TestCase):
             root = Path(directory) / "sft"
             paths = write_apixaban_sft_export(*result, root)
             self.assertEqual(4, len(paths))
-            self.assertTrue(all((os.stat(path).st_mode & 0o777) == 0o600 for path in paths))
+            self.assertTrue(
+                all((os.stat(path).st_mode & 0o777) == 0o600 for path in paths)
+            )
             manifest = result[-1]
             for filename, key in (
                 ("canonical.jsonl", "canonical_jsonl_sha256"),
@@ -355,12 +412,15 @@ class ApixabanSFTExportTests(unittest.TestCase):
                 reservation,
                 tampered_plan,
                 d_silver,
+                tokenizer=FakeTokenizer(),
                 generation_command="synthetic incomplete plan test",
             )
         manifest = copy.deepcopy(result[-1])
         manifest["counts"]["included_row_count"] += 1
         manifest["manifest_sha256"] = _self_hash(manifest, "manifest_sha256")
-        with self.assertRaisesRegex(ApixabanSFTError, "do not reconcile"):
+        with self.assertRaisesRegex(
+            ApixabanSFTError, "differs from included rows|do not reconcile"
+        ):
             validate_apixaban_sft_export_manifest(manifest)
 
         duplicated_question = copy.deepcopy(result[-1])
@@ -399,6 +459,7 @@ class ApixabanSFTExportTests(unittest.TestCase):
                     "--calibration-reservation", "/restricted/calibration.json",
                     "--input-plan", "/restricted/input-plan.json",
                     "--accepted-d-silver", "/restricted/d-silver.json",
+                    "--tokenizer-directory", "/restricted/tokenizer",
                     "--output-dir", "/restricted/sft",
                 ]
             )

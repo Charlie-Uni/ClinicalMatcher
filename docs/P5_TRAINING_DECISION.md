@@ -121,8 +121,14 @@ The local mechanism environment was materialized on 2026-08-22 with CPython
   `68cf2fddd8de5edd8ab3d926391772b2e2cedad8`;
 - `mlx-lm==0.31.3`, release commit
   `ed1fca4cef15a824c5f1702c80f70b4cffc8e4dd`;
-- the complete observed 34-package environment is recorded in
+- the complete observed 39-package environment is recorded in
   `requirements-mlx.txt`.
+
+The five project-validation dependencies (`attrs`, `jsonschema`,
+`jsonschema-specifications`, `referencing`, and `rpds-py`) reuse the exact
+versions from the frozen public lock. They make the owner-only length and SFT
+validation CLIs self-contained in the MLX environment; they do not add a
+second model stack.
 
 This pair was selected because MLX-LM 0.31.3 declares `mlx>=0.31.2` and its
 release is paired with MLX 0.31.2. A local import/Metal matrix-compute smoke
@@ -197,6 +203,30 @@ input policy before export and record its visible chunk set, context/truncation
 rule, and policy hash. The untuned and tuned 8B runs use that same policy. A
 silver citation must be a subset of the chunks visible to the student for that
 row; the exporter fails rather than training an unreachable citation.
+
+The owner froze the following input and length contract on 2026-08-23, before
+the train-fit length report was generated:
+
+- input policy `all-complete-evidence-v1` exposes every complete evidence chunk
+  in source order, with no retriever, label-based selection, partial-chunk
+  slicing, or truncation;
+- prompt `apixaban-single-fact-sft-1.0.0` includes injection resistance, the
+  source-defined boolean and numeric rules, and the explicit instruction
+  `For numeric facts with no value in the note, return unknown.`;
+- every row reserves 512 output tokens, and an actual rendered target above
+  512 stops export rather than being truncated;
+- candidate context tiers are 2,048, 4,096, 8,192, and 16,384 tokens. The
+  selected tier is the smallest tier for which the rendered system and user
+  prompt, chat-template generation overhead, and 512-token reserve fit all
+  55-by-23 train-fit rows.
+
+The machine-readable contract is version `1.0.0`. The aggregate length report
+contains only distribution summaries and tier counts, is hash-bound to the
+source, tokenizer, chat template, prompt, and code commit, and is owner-only.
+It contains no patient text, patient IDs, or row-level lengths. Validation and
+test rows do not participate in selection. A future holdout row that exceeds
+the frozen tier is recorded as a measured failure/abstention and is never
+silently truncated.
 
 Context selection uses token-length statistics from train-fit patients only.
 Calibration-only, validation, and test patients do not influence the selected
@@ -450,6 +480,8 @@ P5.1 stays unchecked until all of the following are recorded and verified:
 - approved evidence coverage and manual-audit thresholds;
 - approved primary metric, safety thresholds, training budget, and stop rule;
 - one frozen patient-question input policy and visible-citation assertion;
+- a train-fit-only length report selecting one approved tier, followed by a
+  synthetic memory/throughput pass at that exact tier;
 - synthetic tests for row filtering, exclusion accounting, and empty-unknown
   targets;
 - an exact-version `requirements-mlx.txt` training environment record;

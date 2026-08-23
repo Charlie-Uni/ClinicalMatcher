@@ -25,6 +25,9 @@ from clinical_matcher.apixaban_silver_audit import (
     write_silver_audit_package,
 )
 from clinical_matcher.apixaban_silver_audit_cli import main
+from clinical_matcher.apixaban_sft_contract import (
+    load_apixaban_sft_length_contract,
+)
 from clinical_matcher.apixaban_split import (
     build_apixaban_split_candidate,
     freeze_apixaban_split,
@@ -173,13 +176,27 @@ def _frozen_inputs():
 
 
 def _input_plan(corpus, reservation):
+    contract = load_apixaban_sft_length_contract()
     patients = {item["patient_id"]: item for item in corpus["patients"]}
     document = {
-        "input_plan_version": "1.0.0",
-        "input_policy_id": "synthetic-all-chunks-v1",
+        "input_plan_version": "1.1.0",
+        "input_policy_id": contract["input_policy"]["input_policy_id"],
         "input_policy_sha256": "pending",
-        "prompt_version": "synthetic-audit-prompt-v1",
-        "system_instruction": "Return one grounded typed answer from synthetic evidence.",
+        "prompt_version": contract["prompt"]["prompt_version"],
+        "system_instruction": contract["prompt"]["system_instruction"],
+        "context": {
+            "length_report_sha256": "f" * 64,
+            "model_id": contract["model"]["model_id"],
+            "model_revision": contract["model"]["revision"],
+            "tokenizer_sha256": contract["tokenizer"]["files"]["tokenizer.json"],
+            "tokenizer_config_sha256": contract["tokenizer"]["files"][
+                "tokenizer_config.json"
+            ],
+            "chat_template_sha256": contract["tokenizer"]["chat_template_sha256"],
+            "output_reserve_tokens": 512,
+            "max_seq_len": 2048,
+            "overflow_policy": "measured_failure_abstention_no_truncation",
+        },
         "rows": [
             {
                 "patient_id": patient_id,

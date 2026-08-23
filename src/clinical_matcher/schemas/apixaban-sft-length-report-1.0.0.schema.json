@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-sft-length-report-1.0.0.schema.json",
+  "title": "Restricted aggregate Apixaban SFT length report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "apixaban_sft_length_report_version",
+    "manifest_sha256",
+    "generated_at",
+    "code_commit",
+    "generation_command",
+    "source",
+    "contract",
+    "population",
+    "lengths",
+    "tier_coverage",
+    "selection",
+    "restrictions"
+  ],
+  "properties": {
+    "apixaban_sft_length_report_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "generation_command": {"$ref": "#/$defs/nonEmptyString"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "staging_corpus_sha256",
+        "benchmark_sha256",
+        "split_manifest_sha256",
+        "calibration_reservation_sha256",
+        "question_catalog_sha256",
+        "candidate_input_sha256"
+      ],
+      "properties": {
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "calibration_reservation_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_input_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_sha256",
+        "model_id",
+        "model_revision",
+        "tokenizer_file_sha256",
+        "tokenizer_config_sha256",
+        "chat_template_sha256",
+        "input_policy_id",
+        "prompt_version",
+        "system_instruction_sha256",
+        "output_reserve_tokens",
+        "fit_formula"
+      ],
+      "properties": {
+        "contract_sha256": {"$ref": "#/$defs/sha256"},
+        "model_id": {"const": "meta-llama/Llama-3.1-8B-Instruct"},
+        "model_revision": {"const": "0e9e39f249a16976918f6564b8830bc894c89659"},
+        "tokenizer_file_sha256": {"$ref": "#/$defs/sha256"},
+        "tokenizer_config_sha256": {"$ref": "#/$defs/sha256"},
+        "chat_template_sha256": {"$ref": "#/$defs/sha256"},
+        "input_policy_id": {"const": "all-complete-evidence-v1"},
+        "prompt_version": {"const": "apixaban-single-fact-sft-1.0.0"},
+        "system_instruction_sha256": {"$ref": "#/$defs/sha256"},
+        "output_reserve_tokens": {"const": 512},
+        "fit_formula": {"const": "rendered_prompt_tokens_plus_512_lte_context_tier"}
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "partition",
+        "patient_count",
+        "question_count",
+        "row_count",
+        "calibration_patients_used",
+        "validation_patients_used",
+        "test_patients_used",
+        "labels_used"
+      ],
+      "properties": {
+        "partition": {"const": "train_fit"},
+        "patient_count": {"type": "integer", "minimum": 1},
+        "question_count": {"const": 23},
+        "row_count": {"type": "integer", "minimum": 23},
+        "calibration_patients_used": {"const": false},
+        "validation_patients_used": {"const": false},
+        "test_patients_used": {"const": false},
+        "labels_used": {"const": false}
+      }
+    },
+    "lengths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "reserved_total_tokens"],
+      "properties": {
+        "prompt_tokens": {"$ref": "#/$defs/summary"},
+        "reserved_total_tokens": {"$ref": "#/$defs/summary"}
+      }
+    },
+    "tier_coverage": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["context_tier", "fit_row_count", "overflow_row_count"],
+        "properties": {
+          "context_tier": {"enum": [2048, 4096, 8192, 16384]},
+          "fit_row_count": {"type": "integer", "minimum": 0},
+          "overflow_row_count": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule", "status", "selected_context_tier", "holdout_overflow_policy"],
+      "properties": {
+        "rule": {"const": "smallest_tier_with_100_percent_train_fit_rows"},
+        "status": {"enum": ["selected", "no_approved_tier_fits"]},
+        "selected_context_tier": {
+          "oneOf": [{"type": "null"}, {"enum": [2048, 4096, 8192, 16384]}]
+        },
+        "holdout_overflow_policy": {"const": "measured_failure_abstention_no_truncation"}
+      }
+    },
+    "restrictions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contains_restricted_aggregate",
+        "contains_patient_text",
+        "contains_patient_ids",
+        "contains_row_lengths",
+        "owner_only",
+        "online_upload_permitted"
+      ],
+      "properties": {
+        "contains_restricted_aggregate": {"const": true},
+        "contains_patient_text": {"const": false},
+        "contains_patient_ids": {"const": false},
+        "contains_row_lengths": {"const": false},
+        "owner_only": {"const": true},
+        "online_upload_permitted": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "values_sha256", "minimum", "p50", "p90", "p95", "p99", "maximum"],
+      "properties": {
+        "count": {"type": "integer", "minimum": 1},
+        "values_sha256": {"$ref": "#/$defs/sha256"},
+        "minimum": {"type": "integer", "minimum": 1},
+        "p50": {"type": "integer", "minimum": 1},
+        "p90": {"type": "integer", "minimum": 1},
+        "p95": {"type": "integer", "minimum": 1},
+        "p99": {"type": "integer", "minimum": 1},
+        "maximum": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Sequence
 
 from .apixaban_sft import build_apixaban_sft_export, write_apixaban_sft_export
+from .apixaban_sft_length import load_frozen_apixaban_sft_tokenizer
 from .ingestion.patients import assert_restricted_local_path
 
 
@@ -31,6 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--input-plan", type=Path, required=True)
     parser.add_argument("--accepted-d-silver", type=Path, required=True)
     parser.add_argument("--accepted-e-silver", type=Path)
+    parser.add_argument("--tokenizer-directory", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument(
         "--i-understand-restricted-data-stays-local",
@@ -61,6 +63,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         _load_private_json(args.input_plan),
         _load_private_json(args.accepted_d_silver),
         e_silver,
+        tokenizer=load_frozen_apixaban_sft_tokenizer(args.tokenizer_directory),
         generation_command="clinical-matcher-export-apixaban-sft",
     )
     paths = write_apixaban_sft_export(*result, args.output_dir)

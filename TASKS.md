@@ -634,6 +634,15 @@ trade-off and do not hide unresolved clinical information.
     tier cannot close P5.1. The prior Ollama Q4_K_M validation result is only a
     conversion-health diagnostic because its artifact, runtime, and input
     policy are not identical to the new matched untuned/tuned chain.
+  - Progress: machine-readable length contract `1.0.0` freezes
+    `all-complete-evidence-v1`, prompt
+    `apixaban-single-fact-sft-1.0.0`, a 512-token output reserve, and the
+    smallest-100%-fit rule over 2,048/4,096/8,192/16,384-token tiers. The
+    owner-only report uses only the 55-by-23 train-fit grid and emits no patient
+    text, IDs, or row lengths. Input-plan `1.1.0` binds the selected report,
+    model/tokenizer/chat-template hashes, tier, and no-truncation holdout
+    policy. Mechanism tests do not substitute for the pending real report or
+    exact-tier 8B memory gate.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
@@ -645,15 +654,19 @@ trade-off and do not hide unresolved clinical information.
     records, labels, outputs, and patient text never enter training artifacts.
   - Verify: schema validation, exact patient-membership assertions, dataset
     hash, chat-template snapshot, sample round-trip, and label distribution.
-  - Progress: canonical record and export-manifest contracts `1.0.0` now derive
+  - Progress: canonical record contract `1.0.0` and export-manifest contract
+    `1.1.0` now derive
     MLX `messages` and MedicalGPT ShareGPT `conversations` from one semantic
     source. Synthetic tests enforce exact train-fit coverage, calibration/
     validation/test exclusion, D-before-E accepted-silver precedence, typed
     agreement, patient ownership, visible citations, known-row filtering,
     empty-unknown/default-absent targets, owner-only outputs, hash binding, and
-    cross-format message equality. This does not close P5.2: the real input
-    policy, threshold-approved D/E audit artifacts, tokenizer chat-template
-    snapshot, and owner-only real export remain pending.
+    cross-format message equality. Export `1.1.0` additionally re-renders every
+    training row with the frozen tokenizer and fails if its actual target
+    exceeds 512 tokens or its prompt plus reserve exceeds the selected tier.
+    This does not close P5.2: the real length-bound input plan,
+    threshold-approved D/E audit artifacts, and owner-only real export remain
+    pending.
   - Silver-audit mechanism: contracts `1.0.0` now separate pre-audit
     candidates, deterministic hash-stratified review packages, completed
     single-owner judgments, quality reports, and accepted silver. Synthetic

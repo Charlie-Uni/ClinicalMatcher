@@ -20,6 +20,12 @@ from .apixaban_contract import (
     question_index,
 )
 from .apixaban_split import validate_apixaban_split_manifest
+from .apixaban_sft_contract import (
+    INPUT_PLAN_VERSION,
+    assert_apixaban_sft_sequence_fits,
+    build_apixaban_sft_prompt_messages,
+    load_apixaban_sft_length_contract,
+)
 from .ingestion.apixaban import validate_apixaban_staging_corpus
 from .ingestion.patients import assert_restricted_local_path
 from .splits import canonical_sha256, current_git_commit
@@ -28,11 +34,10 @@ from .validation import validate_document
 
 SFT_RECORD_VERSION = "1.0.0"
 SFT_RECORD_SCHEMA = "schemas/apixaban-sft-record-1.0.0.schema.json"
-SFT_EXPORT_MANIFEST_VERSION = "1.0.0"
+SFT_EXPORT_MANIFEST_VERSION = "1.1.0"
 SFT_EXPORT_MANIFEST_SCHEMA = (
-    "schemas/apixaban-sft-export-manifest-1.0.0.schema.json"
+    "schemas/apixaban-sft-export-manifest-1.1.0.schema.json"
 )
-INPUT_PLAN_VERSION = "1.0.0"
 ACCEPTED_SILVER_VERSION = "1.0.0"
 ROW_POLICY_VERSION = "1.0.0"
 
@@ -90,6 +95,7 @@ def validate_apixaban_sft_input_plan(
         "input_policy_sha256",
         "prompt_version",
         "system_instruction",
+        "context",
         "rows",
     }
     if set(document) != required:
@@ -99,6 +105,53 @@ def validate_apixaban_sft_input_plan(
     for field in ("input_policy_id", "prompt_version", "system_instruction"):
         if not isinstance(document[field], str) or not document[field].strip():
             raise ApixabanSFTError(f"SFT input-plan {field} must be non-empty")
+    contract = load_apixaban_sft_length_contract()
+    if document["input_policy_id"] != contract["input_policy"]["input_policy_id"]:
+        raise ApixabanSFTError("SFT input policy differs from the frozen contract")
+    if document["prompt_version"] != contract["prompt"]["prompt_version"]:
+        raise ApixabanSFTError("SFT prompt version differs from the frozen contract")
+    if document["system_instruction"] != contract["prompt"]["system_instruction"]:
+        raise ApixabanSFTError(
+            "SFT system instruction differs from the frozen contract"
+        )
+    context = document["context"]
+    if set(context) != {
+        "length_report_sha256",
+        "model_id",
+        "model_revision",
+        "tokenizer_sha256",
+        "tokenizer_config_sha256",
+        "chat_template_sha256",
+        "output_reserve_tokens",
+        "max_seq_len",
+        "overflow_policy",
+    }:
+        raise ApixabanSFTError("SFT input-plan context fields are incomplete")
+    expected_context = {
+        "model_id": contract["model"]["model_id"],
+        "model_revision": contract["model"]["revision"],
+        "tokenizer_sha256": contract["tokenizer"]["files"]["tokenizer.json"],
+        "tokenizer_config_sha256": contract["tokenizer"]["files"][
+            "tokenizer_config.json"
+        ],
+        "chat_template_sha256": contract["tokenizer"]["chat_template_sha256"],
+        "output_reserve_tokens": contract["length_policy"][
+            "output_reserve_tokens"
+        ],
+        "overflow_policy": contract["length_policy"]["holdout_overflow_policy"],
+    }
+    for field, expected in expected_context.items():
+        if context[field] != expected:
+            raise ApixabanSFTError(
+                f"SFT input-plan context {field} differs from approval"
+            )
+    for field in ("length_report_sha256",):
+        if not isinstance(context[field], str) or not re.fullmatch(
+            r"[0-9a-f]{64}", context[field]
+        ):
+            raise ApixabanSFTError(f"SFT input-plan context {field} is invalid")
+    if context["max_seq_len"] not in contract["length_policy"]["context_tiers"]:
+        raise ApixabanSFTError("SFT input-plan context tier is not approved")
     if _self_hash(document, "input_policy_sha256") != document[
         "input_policy_sha256"
     ]:
@@ -248,23 +301,16 @@ def _target_from_assessment(
 def _messages(
     record: Mapping[str, Any], system_instruction: str
 ) -> list[Dict[str, str]]:
-    user_payload = {
-        "question_id": record["question_id"],
-        "question_type": record["question_type"],
-        "source_question": record["input"]["source_question"],
-        "evidence": record["input"]["visible_evidence"],
-    }
-    return [
-        {"role": "system", "content": system_instruction},
+    messages = build_apixaban_sft_prompt_messages(
         {
-            "role": "user",
-            "content": json.dumps(
-                user_payload,
-                ensure_ascii=False,
-                separators=(",", ":"),
-                sort_keys=True,
-            ),
+            "question_id": record["question_id"],
+            "question_type": record["question_type"],
+            "source_question": record["input"]["source_question"],
         },
+        record["input"]["visible_evidence"],
+        system_instruction,
+    )
+    return messages + [
         {
             "role": "assistant",
             "content": json.dumps(
@@ -327,6 +373,7 @@ def build_apixaban_sft_export(
     accepted_d_silver: Dict[str, Any],
     accepted_e_silver: Optional[Dict[str, Any]] = None,
     *,
+    tokenizer: Any,
     generated_at: Optional[str] = None,
     code_commit: Optional[str] = None,
     generation_command: str,
@@ -417,9 +464,9 @@ def build_apixaban_sft_export(
         evidence_by_id = {
             item["evidence_id"]: item for item in patient["evidence"]
         }
-        if not set(visible_ids).issubset(evidence_by_id):
+        if visible_ids != list(evidence_by_id):
             raise ApixabanSFTError(
-                "Input plan references evidence outside its patient"
+                "Input plan must expose every complete patient chunk in source order"
             )
         visible_evidence = [evidence_by_id[item] for item in visible_ids]
         counts = per_question[question_id]
@@ -529,6 +576,16 @@ def build_apixaban_sft_export(
         for record in records
     ]
     _assert_rendering_consistency(mlx_rows, medicalgpt_rows)
+    context = input_plan["context"]
+    sequence_lengths = [
+        assert_apixaban_sft_sequence_fits(
+            tokenizer,
+            row["messages"],
+            max_seq_len=context["max_seq_len"],
+            output_reserve_tokens=context["output_reserve_tokens"],
+        )
+        for row in mlx_rows
+    ]
 
     canonical_payload = _jsonl_bytes(records)
     mlx_payload = _jsonl_bytes(mlx_rows)
@@ -564,6 +621,7 @@ def build_apixaban_sft_export(
             "system_instruction_sha256": hashlib.sha256(
                 input_plan["system_instruction"].encode("utf-8")
             ).hexdigest(),
+            **context,
         },
         "row_policy": {
             "version": ROW_POLICY_VERSION,
@@ -590,6 +648,20 @@ def build_apixaban_sft_export(
             "mlx_jsonl_sha256": _sha256_bytes(mlx_payload),
             "medicalgpt_jsonl_sha256": _sha256_bytes(medicalgpt_payload),
         },
+        "sequence_validation": {
+            "row_count": len(sequence_lengths),
+            "max_prompt_tokens": max(
+                item["prompt_tokens"] for item in sequence_lengths
+            ),
+            "max_actual_target_tokens": max(
+                item["target_tokens"] for item in sequence_lengths
+            ),
+            "max_full_tokens": max(
+                item["full_tokens"] for item in sequence_lengths
+            ),
+            "every_target_within_reserve": True,
+            "every_reserved_sequence_within_context": True,
+        },
         "restrictions": {
             "contains_restricted_text": True,
             "owner_only": True,
@@ -607,6 +679,46 @@ def validate_apixaban_sft_export_manifest(document: Dict[str, Any]) -> None:
     if _self_hash(document, "manifest_sha256") != document["manifest_sha256"]:
         raise ApixabanSFTError("SFT export manifest hash mismatch")
     counts = document["counts"]
+    contract = load_apixaban_sft_length_contract()
+    input_contract = document["input_contract"]
+    expected_context = {
+        "model_id": contract["model"]["model_id"],
+        "model_revision": contract["model"]["revision"],
+        "tokenizer_sha256": contract["tokenizer"]["files"]["tokenizer.json"],
+        "tokenizer_config_sha256": contract["tokenizer"]["files"][
+            "tokenizer_config.json"
+        ],
+        "chat_template_sha256": contract["tokenizer"]["chat_template_sha256"],
+        "output_reserve_tokens": contract["length_policy"][
+            "output_reserve_tokens"
+        ],
+        "overflow_policy": contract["length_policy"]["holdout_overflow_policy"],
+    }
+    for field, expected in expected_context.items():
+        if input_contract[field] != expected:
+            raise ApixabanSFTError(
+                f"SFT export input contract {field} differs from approval"
+            )
+    if input_contract["max_seq_len"] not in contract["length_policy"][
+        "context_tiers"
+    ]:
+        raise ApixabanSFTError("SFT export context tier is not approved")
+    sequence = document["sequence_validation"]
+    if sequence["row_count"] != counts["included_row_count"]:
+        raise ApixabanSFTError(
+            "SFT sequence-validation count differs from included rows"
+        )
+    if sequence["max_actual_target_tokens"] > input_contract[
+        "output_reserve_tokens"
+    ]:
+        raise ApixabanSFTError("SFT target exceeds the frozen reserve")
+    if (
+        sequence["max_prompt_tokens"] + input_contract["output_reserve_tokens"]
+        > input_contract["max_seq_len"]
+    ):
+        raise ApixabanSFTError("SFT reserved sequence exceeds its context tier")
+    if sequence["max_full_tokens"] > input_contract["max_seq_len"]:
+        raise ApixabanSFTError("SFT full sequence exceeds its context tier")
     if counts["included_row_count"] + counts[
         "excluded_known_without_silver_count"
     ] != counts["eligible_pair_count"]:
