@@ -56,6 +56,7 @@ clinical-matcher-apixaban-error-attribution = "clinical_matcher.apixaban_error_a
 clinical-matcher-reserve-apixaban-calibration = "clinical_matcher.apixaban_calibration_cli:main"
 clinical-matcher-check-synthetic-upload = "clinical_matcher.synthetic_upload_cli:main"
 clinical-matcher-export-apixaban-sft = "clinical_matcher.apixaban_sft_cli:main"
+clinical-matcher-apixaban-silver-audit = "clinical_matcher.apixaban_silver_audit_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

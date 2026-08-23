@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-silver-judgment-1.0.0.schema.json",
+  "title": "Completed owner-only Apixaban silver citation judgments",
+  "type": "object", "additionalProperties": false,
+  "required": ["apixaban_silver_judgment_version", "judgment_sha256", "status", "completed_at", "audit_package_sha256", "candidate_artifact_sha256", "protocol", "reviewer", "rows"],
+  "properties": {
+    "apixaban_silver_judgment_version": {"const": "1.0.0"}, "judgment_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "completed"}, "completed_at": {"type": "string", "format": "date-time"},
+    "audit_package_sha256": {"$ref": "#/$defs/sha256"}, "candidate_artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "protocol": {"$ref": "#/$defs/protocol"},
+    "reviewer": {"type": "object", "additionalProperties": false, "required": ["count", "role", "independent_evidence_gold"], "properties": {"count": {"const": 1}, "role": {"const": "data_owner"}, "independent_evidence_gold": {"const": false}}},
+    "rows": {"type": "array", "minItems": 1, "maxItems": 100, "items": {"$ref": "#/$defs/row"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "text": {"type": "string", "minLength": 1, "pattern": "^[^\\u0000]+$"},
+    "protocol": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sampling_algorithm", "selection_salt", "allocation_version", "rubric_version", "review_budget", "reviewer_count", "reviewer_role"],
+      "properties": {"sampling_algorithm": {"const": "sha256_stratified_silver_audit_sampling/1.0.0"}, "selection_salt": {"const": "clinicalmatcher-p5-silver-audit-v1"}, "allocation_version": {"const": "1.0.0"}, "rubric_version": {"const": "1.0.0"}, "review_budget": {"const": 100}, "reviewer_count": {"const": 1}, "reviewer_role": {"const": "data_owner"}}
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evidence_id", "source_id", "source_span", "text"],
+      "properties": {"evidence_id": {"$ref": "#/$defs/text"}, "source_id": {"$ref": "#/$defs/text"}, "text": {"$ref": "#/$defs/text"}, "source_span": {"type": "object", "additionalProperties": false, "required": ["start", "end"], "properties": {"start": {"type": "integer", "minimum": 0}, "end": {"type": "integer", "minimum": 1}}}}
+    },
+    "row": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sampling_digest", "patient_id", "question_id", "question_type", "fact_status", "value", "unit", "source_question", "cited_evidence", "silver_source", "provenance_ids", "machine_checks", "judgment", "zero_tolerance_reconfirmed"],
+      "properties": {
+        "sampling_digest": {"$ref": "#/$defs/sha256"}, "patient_id": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"}, "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "question_type": {"enum": ["boolean", "numeric"]}, "fact_status": {"enum": ["present", "absent"]}, "value": {"type": ["boolean", "number"]}, "unit": {"type": "null"},
+        "source_question": {"$ref": "#/$defs/text"}, "cited_evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+        "silver_source": {"enum": ["D", "E"]}, "provenance_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+        "machine_checks": {"type": "object", "additionalProperties": false, "required": ["cross_patient_citation", "student_invisible_citation"], "properties": {"cross_patient_citation": {"const": false}, "student_invisible_citation": {"const": false}}},
+        "judgment": {"enum": ["support", "not_support", "ambiguous"]},
+        "zero_tolerance_reconfirmed": {"type": "object", "additionalProperties": false, "required": ["cross_patient_citation", "student_invisible_citation"], "properties": {"cross_patient_citation": {"const": false}, "student_invisible_citation": {"const": false}}}
+      }
+    }
+  }
+}

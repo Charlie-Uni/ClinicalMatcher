@@ -644,6 +644,14 @@ trade-off and do not hide unresolved clinical information.
     cross-format message equality. This does not close P5.2: the real input
     policy, threshold-approved D/E audit artifacts, tokenizer chat-template
     snapshot, and owner-only real export remain pending.
+  - Silver-audit mechanism: contracts `1.0.0` now separate pre-audit
+    candidates, deterministic hash-stratified review packages, completed
+    single-owner judgments, quality reports, and accepted silver. Synthetic
+    tests cover the 100-row allocation cap, complete-set ownership/visibility
+    failures, immutable judgment binding, the 90% source gate, reviewed-failure
+    removal, coverage recomputation, owner-only writes, and CLI acknowledgement.
+    This is mechanism evidence only; no real candidate has been generated or
+    inspected and no gate is claimed to have passed.
   - Evidence supervision: export D deterministic-rule silver first and use a
     frozen-teacher E source only as audited backoff for uncovered gold-known
     rows. Keep source-level provenance and stratified coverage reports. These

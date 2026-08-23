@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-silver-candidate-1.0.0.schema.json",
+  "title": "Restricted pre-audit Apixaban silver citation candidates",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["apixaban_silver_candidate_version", "artifact_sha256", "source", "source_artifact_sha256", "generation_counts", "rows"],
+  "properties": {
+    "apixaban_silver_candidate_version": {"const": "1.0.0"},
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "source": {"enum": ["D", "E"]},
+    "source_artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "generation_counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["proposed_count", "accepted_candidate_count", "typed_disagreement_count", "missing_evidence_count", "invalid_ownership_count", "student_invisibility_count"],
+      "properties": {
+        "proposed_count": {"type": "integer", "minimum": 1}, "accepted_candidate_count": {"type": "integer", "minimum": 1},
+        "typed_disagreement_count": {"type": "integer", "minimum": 0}, "missing_evidence_count": {"type": "integer", "minimum": 0},
+        "invalid_ownership_count": {"const": 0}, "student_invisibility_count": {"const": 0}
+      }
+    },
+    "rows": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/row"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1, "pattern": "^[^\\u0000]+$"},
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_id", "question_id", "question_type", "fact_status", "value", "unit", "evidence_ids", "provenance_ids"],
+      "properties": {
+        "patient_id": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "question_type": {"enum": ["boolean", "numeric"]},
+        "fact_status": {"enum": ["present", "absent"]},
+        "value": {"type": ["boolean", "number"]},
+        "unit": {"type": "null"},
+        "evidence_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}},
+        "provenance_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}}
+      }
+    }
+  }
+}

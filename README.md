@@ -136,6 +136,15 @@ fails if a supervised citation is not visible to the student. These artifacts
 contain restricted text and must remain under ignored local paths. Silver
 citations are explicitly not evidence-relevance gold.
 
+The companion `clinical-matcher-apixaban-silver-audit` command builds the
+deterministic owner-only review package, finalizes one data-owner judgment
+record, and applies the frozen source-quality and coverage gates. It rejects
+cross-patient or student-invisible citations over the complete candidate set,
+removes sampled `not_support` and `ambiguous` rows before recomputing coverage,
+and emits SFT-compatible accepted silver only after every applicable gate
+passes. Synthetic tests exercise this mechanism; real execution remains
+blocked until the input/context policy and D/E candidates are frozen locally.
+
 ## Data access and reproducibility
 
 Do not add restricted patient data to this repository. Public development and

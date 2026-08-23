@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-silver-quality-audit-1.0.0.schema.json",
+  "title": "Owner-only Apixaban silver quality gate report",
+  "type": "object", "additionalProperties": false,
+  "required": ["apixaban_silver_quality_audit_version", "quality_audit_sha256", "generated_at", "code_commit", "generation_command", "status", "protocol", "source", "source_audits", "population", "coverage", "rejections", "restrictions"],
+  "properties": {
+    "apixaban_silver_quality_audit_version": {"const": "1.0.0"},
+    "quality_audit_sha256": {"$ref": "#/$defs/sha256"}, "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "generation_command": {"type": "string", "minLength": 1},
+    "status": {"enum": ["passed_predeclared_thresholds", "failed_source_quality", "needs_e_backoff", "failed_coverage"]},
+    "protocol": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sampling_algorithm", "minimum_source_support_percent", "minimum_overall_coverage_percent", "minimum_question_coverage_percent", "minimum_question_accepted_rows"],
+      "properties": {
+        "sampling_algorithm": {"const": "sha256_stratified_silver_audit_sampling/1.0.0"},
+        "minimum_source_support_percent": {"const": 90}, "minimum_overall_coverage_percent": {"const": 60},
+        "minimum_question_coverage_percent": {"const": 30}, "minimum_question_accepted_rows": {"const": 5}
+      }
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["benchmark_sha256", "staging_corpus_sha256", "split_manifest_sha256", "calibration_reservation_sha256", "input_policy_sha256", "question_catalog_sha256"],
+      "properties": {"benchmark_sha256": {"$ref": "#/$defs/sha256"}, "staging_corpus_sha256": {"$ref": "#/$defs/sha256"}, "split_manifest_sha256": {"$ref": "#/$defs/sha256"}, "calibration_reservation_sha256": {"$ref": "#/$defs/sha256"}, "input_policy_sha256": {"$ref": "#/$defs/sha256"}, "question_catalog_sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "source_audits": {"type": "array", "minItems": 1, "maxItems": 2, "items": {"$ref": "#/$defs/sourceAudit"}},
+    "population": {
+      "type": "object", "additionalProperties": false,
+      "required": ["train_fit_patient_count", "train_fit_assessment_count", "gold_known_count", "gold_unknown_count", "default_absent_exception_count", "citation_required_count"],
+      "properties": {
+        "train_fit_patient_count": {"type": "integer", "minimum": 1}, "train_fit_assessment_count": {"type": "integer", "minimum": 1},
+        "gold_known_count": {"type": "integer", "minimum": 0}, "gold_unknown_count": {"type": "integer", "minimum": 0},
+        "default_absent_exception_count": {"type": "integer", "minimum": 0}, "citation_required_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "coverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["citation_required_count", "accepted_count", "accepted_d_count", "accepted_e_count", "coverage_percent", "overall_passed", "all_questions_passed", "per_question", "by_answer_type", "by_fact_status"],
+      "properties": {
+        "citation_required_count": {"type": "integer", "minimum": 1}, "accepted_count": {"type": "integer", "minimum": 0},
+        "accepted_d_count": {"type": "integer", "minimum": 0}, "accepted_e_count": {"type": "integer", "minimum": 0},
+        "coverage_percent": {"type": "number", "minimum": 0, "maximum": 100}, "overall_passed": {"type": "boolean"}, "all_questions_passed": {"type": "boolean"},
+        "per_question": {"type": "array", "minItems": 23, "maxItems": 23, "items": {"$ref": "#/$defs/questionCoverage"}},
+        "by_answer_type": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/typeCoverage"}},
+        "by_fact_status": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/statusCoverage"}}
+      }
+    },
+    "rejections": {
+      "type": "object", "additionalProperties": false,
+      "required": ["typed_disagreement_count", "missing_evidence_count", "invalid_ownership_count", "student_invisibility_count", "ambiguous_count", "not_support_count", "failed_manual_review_count"],
+      "properties": {
+        "typed_disagreement_count": {"type": "integer", "minimum": 0}, "missing_evidence_count": {"type": "integer", "minimum": 0}, "invalid_ownership_count": {"const": 0}, "student_invisibility_count": {"const": 0},
+        "ambiguous_count": {"type": "integer", "minimum": 0}, "not_support_count": {"type": "integer", "minimum": 0}, "failed_manual_review_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "restrictions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["owner_only", "online_upload_permitted", "silver_is_evidence_gold", "test_labels_used"],
+      "properties": {"owner_only": {"const": true}, "online_upload_permitted": {"const": false}, "silver_is_evidence_gold": {"const": false}, "test_labels_used": {"const": false}}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceAudit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source", "candidate_artifact_sha256", "audit_package_sha256", "judgment_sha256", "candidate_count", "sample_count", "support_count", "not_support_count", "ambiguous_count", "support_percent", "source_quality_passed", "reviewed_failure_removed_count", "accepted_after_review_count"],
+      "properties": {
+        "source": {"enum": ["D", "E"]}, "candidate_artifact_sha256": {"$ref": "#/$defs/sha256"}, "audit_package_sha256": {"$ref": "#/$defs/sha256"}, "judgment_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_count": {"type": "integer", "minimum": 1}, "sample_count": {"type": "integer", "minimum": 1, "maximum": 100},
+        "support_count": {"type": "integer", "minimum": 0}, "not_support_count": {"type": "integer", "minimum": 0}, "ambiguous_count": {"type": "integer", "minimum": 0},
+        "support_percent": {"type": "number", "minimum": 0, "maximum": 100}, "source_quality_passed": {"type": "boolean"},
+        "reviewed_failure_removed_count": {"type": "integer", "minimum": 0}, "accepted_after_review_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "questionCoverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["question_id", "question_type", "citation_required_count", "accepted_count", "coverage_percent", "applicable", "passed"],
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"}, "question_type": {"enum": ["boolean", "numeric"]},
+        "citation_required_count": {"type": "integer", "minimum": 0}, "accepted_count": {"type": "integer", "minimum": 0},
+        "coverage_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100}, "applicable": {"type": "boolean"}, "passed": {"type": "boolean"}
+      }
+    },
+    "typeCoverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["answer_type", "citation_required_count", "accepted_count", "coverage_percent"],
+      "properties": {"answer_type": {"enum": ["boolean", "numeric"]}, "citation_required_count": {"type": "integer", "minimum": 0}, "accepted_count": {"type": "integer", "minimum": 0}, "coverage_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100}}
+    },
+    "statusCoverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["fact_status", "citation_required_count", "accepted_count", "coverage_percent"],
+      "properties": {"fact_status": {"enum": ["present", "absent"]}, "citation_required_count": {"type": "integer", "minimum": 0}, "accepted_count": {"type": "integer", "minimum": 0}, "coverage_percent": {"type": ["number", "null"], "minimum": 0, "maximum": 100}}
+    }
+  }
+}
