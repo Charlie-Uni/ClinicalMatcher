@@ -175,9 +175,7 @@ baseline is Built with Llama and uses Llama 3.1 under the separate
 Apache-2.0 or an OSI open-source license. Llama 3.1 is licensed under the Llama
 3.1 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.
 
-The optional P5 adaptation is also Built with Llama and selects
-`meta-llama/Llama-3.2-3B-Instruct` under the separate
-[Llama 3.2 Community License](https://www.llama.com/llama3_2/license/), not
-Apache-2.0 or an OSI open-source license. Llama 3.2 is licensed under the Llama
-3.2 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.
-No P5 adapter or converted model artifact is distributed by this repository.
+The optional P5 adaptation is also Built with Llama and selects the official
+`meta-llama/Llama-3.1-8B-Instruct` under that separate Llama 3.1 Community
+License. No P5 adapter or converted model artifact is distributed by this
+repository.

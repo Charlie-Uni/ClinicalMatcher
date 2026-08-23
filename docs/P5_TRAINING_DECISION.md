@@ -24,16 +24,44 @@ held-out improvement has occurred.
 
 ## Base model and local training route
 
-- Primary base: `meta-llama/Llama-3.2-3B-Instruct`.
+- Primary base: `meta-llama/Llama-3.1-8B-Instruct`.
 - Hugging Face revision:
-  `0cb88a4f764b7a12671c53f0838cd831a0843b95`.
-- License boundary: Llama 3.2 Community License; the final documentation must
+  `0e9e39f249a16976918f6564b8830bc894c89659`.
+- License boundary: Llama 3.1 Community License; the final documentation must
   retain the applicable attribution and use restrictions.
 - Real training target: local Apple Silicon through MLX/MLX-LM. No CUDA or
   Colab dependency is part of the restricted-data path.
 - Primary precision: 4-bit QLoRA to preserve unified-memory headroom for the
   frozen context policy. A short bf16 LoRA feasibility run may be recorded, but
   it may not silently replace the primary configuration.
+
+The owner approved this revision on 2026-08-23 before tokenizer-length
+statistics, silver generation, or real fitting. Llama 3.2 3B access remained
+unapproved, while official Llama 3.1 8B access was verified. The 8B choice also
+preserves the earlier Llama 3.1 evaluation lineage and is closer to the
+original 7B-class project requirement. It is not retained merely because it is
+larger: the 24 GB unified-memory Mac must pass the frozen-context synthetic
+memory and throughput gate before restricted training. Failure stops the 8B
+route and triggers a separately reviewed fallback; it must not be hidden by
+silently shortening inputs or changing the task.
+
+The source tokenizer/configuration subset was downloaded from the frozen
+revision into the ignored local artifact directory and verified as follows:
+
+| Source file | SHA-256 |
+|---|---|
+| `config.json` | `29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e` |
+| `generation_config.json` | `189fb0c0d7fd8a527db217c0a60a0e013f0394cd8800f9697a666a9e75e5f7fd` |
+| `special_tokens_map.json` | `6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec` |
+| `tokenizer.json` | `79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4` |
+| `tokenizer_config.json` | `177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424` |
+
+The SHA-256 of the exact UTF-8 `chat_template` string stored in
+`tokenizer_config.json` is
+`e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65`.
+Its declared `model_max_length` is 131,072 tokens; that metadata is not a
+training-context decision. The real context tier remains blocked on the
+train-fit-only complete-sequence length report and the 8B feasibility run.
 
 The reproducibility pin is the complete conversion chain, not only the source
 model revision. Before P5.1 closes, the record must add:
@@ -65,7 +93,7 @@ The local mechanism environment was materialized on 2026-08-22 with CPython
 This pair was selected because MLX-LM 0.31.3 declares `mlx>=0.31.2` and its
 release is paired with MLX 0.31.2. A local import/Metal matrix-compute smoke
 test and `mlx_lm.lora --help` passed on the Apple GPU. This is only a framework
-mechanism check: it is not the required 3B synthetic memory/throughput dry run,
+mechanism check: it is not the required 8B synthetic memory/throughput dry run,
 does not pin the model conversion artifacts, and does not close P5.1.
 
 Apple Silicon bitwise identity is not promised. Reproducibility means pinned
@@ -74,10 +102,11 @@ checks.
 
 ## Fair baseline and runtime contract
 
-The primary SFT comparison is an untuned Llama-3.2-3B-Instruct run using the
+The primary SFT comparison is an untuned Llama-3.1-8B-Instruct run using the
 same prompt, context policy, output contract, decoding route, and evaluation
-split as the tuned adapter. Existing Llama-3.1-8B structured and long-context
-runs remain reference lines, not the causal estimate of SFT gain.
+split as the tuned adapter. Existing Ollama Llama-3.1-8B structured and
+long-context runs use a different model artifact/runtime/input policy and
+remain reference lines, not the causal estimate of SFT gain.
 
 Deployment is decided by an ordered compatibility test:
 
@@ -88,7 +117,7 @@ Deployment is decided by an ordered compatibility test:
 
 No route may be described as equivalent until schema features, including
 array uniqueness and allowed evidence identifiers, have been tested. The
-untuned and tuned 3B runs must use the same selected route.
+untuned and tuned 8B runs must use the same selected route.
 
 ## Canonical training source and split boundary
 
@@ -120,7 +149,7 @@ and ordinary online services.
 
 The training unit is one patient-question pair. P5.1 must select one primary
 input policy before export and record its visible chunk set, context/truncation
-rule, and policy hash. The untuned and tuned 3B runs use that same policy. A
+rule, and policy hash. The untuned and tuned 8B runs use that same policy. A
 silver citation must be a subset of the chunks visible to the student for that
 row; the exporter fails rather than training an unreachable citation.
 
@@ -328,10 +357,11 @@ checkpoints exist for recovery only and are not searched with task metrics. A
 future switch to MLX-native validation-loss selection would require a recorded
 revision before training, not a post-hoc checkpoint search.
 
-The primary validation comparison is untuned 3B versus tuned 3B under the same
-input policy and runtime. Existing rules, 8B, and RAG results are descriptive
-context. P4.3/verifier output is the deterministic post-processing view of a
-prediction, not an additional experimental arm. Validation reports must
+The primary validation comparison is matched untuned 8B versus tuned 8B under
+the same input policy and runtime. Existing rules, prior Ollama 8B, and RAG
+results are descriptive context. P4.3/verifier output is the deterministic
+post-processing view of a prediction, not an additional experimental arm.
+Validation reports must
 include:
 
 - typed metrics before P4.3 projection;
@@ -361,7 +391,7 @@ P5.1 stays unchecked until all of the following are recorded and verified:
 - complete MLX conversion and training pins;
 - synthetic memory/throughput feasibility result;
 - deterministic calibration-only patient reservation;
-- untuned 3B baseline contract and runtime route;
+- untuned 8B baseline contract and runtime route;
 - approved evidence coverage and manual-audit thresholds;
 - approved primary metric, safety thresholds, training budget, and stop rule;
 - one frozen patient-question input policy and visible-citation assertion;

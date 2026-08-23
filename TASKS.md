@@ -577,8 +577,8 @@ trade-off and do not hide unresolved clinical information.
 
 ## P5 — MedicalGPT-compatible LoRA-SFT adaptation
 
-- [ ] **P5.1 Freeze the training decision.** Select a license-compatible 3B–7B
-  class base model, LoRA or QLoRA precision, local hardware budget, context
+- [ ] **P5.1 Freeze the training decision.** Select one license-compatible
+  local base model, LoRA or QLoRA precision, local hardware budget, context
   policy, and success criterion against the frozen-model baseline.
   - Entry condition: P2 and the chosen P3/P4 baseline are complete.
   - Constraints: choose one primary model; training is optional if compute,
@@ -587,7 +587,7 @@ trade-off and do not hide unresolved clinical information.
     estimate, training budget, and metric required to justify retention.
   - Current decision: the full pre-training procedure is recorded in
     `docs/P5_TRAINING_DECISION.md`. The primary route is local MLX QLoRA with
-    pinned Llama-3.2-3B-Instruct and an untuned same-base comparison. Real
+    pinned Llama-3.1-8B-Instruct and an untuned same-base comparison. Real
     restricted data and derived adapters remain local; Colab is synthetic
     mechanism testing only. P5.1 remains open until the conversion chain,
     synthetic memory result, complete threshold gate, train-fit-only
@@ -622,8 +622,10 @@ trade-off and do not hide unresolved clinical information.
   - Progress: the separate local mechanism environment now records CPython
     3.11.16, `mlx==0.31.2`, `mlx-lm==0.31.3`, their official release commits,
     and all observed exact package versions in `requirements-mlx.txt`. An Apple
-    GPU import/compute and LoRA-CLI smoke test passed. This does not substitute
-    for the gated 3B conversion or synthetic memory/throughput dry run.
+    GPU import/compute and LoRA-CLI smoke test passed. Official Llama 3.1 8B
+    access, source revision, tokenizer/config hashes, and the exact chat-template
+    hash are now verified. This does not substitute for the 8B conversion or
+    synthetic memory/throughput dry run.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
@@ -684,8 +686,8 @@ trade-off and do not hide unresolved clinical information.
     exact-version `requirements-mlx.txt`, not a second lock infrastructure.
 
 - [ ] **P5.4 Evaluate whether the adapter earns its complexity.** Compare rules,
-  existing 8B/RAG references, and the primary matched untuned-3B versus
-  tuned-3B pair on validation. Treat P4.3/verifier as pre/post deterministic
+  existing Ollama-8B/RAG references, and the primary matched untuned-8B versus
+  tuned-8B pair on validation. Treat P4.3/verifier as pre/post deterministic
   projection, not a separate experimental arm.
   - Entry condition: model and retriever selection are frozen on validation.
   - Constraints: disclose overfitting, invalid output, unknown recall, latency,
