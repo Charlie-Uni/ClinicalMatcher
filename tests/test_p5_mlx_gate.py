@@ -4,6 +4,7 @@ import json
 import os
 import tempfile
 import unittest
+from collections import UserDict
 from pathlib import Path
 from unittest.mock import patch
 
@@ -21,6 +22,7 @@ from clinical_matcher.p5_mlx_gate import (
 )
 from clinical_matcher.p5_mlx_gate_cli import (
     _assert_resolved_lora_modules,
+    _rendered_token_ids,
     _training_namespace,
 )
 
@@ -30,6 +32,11 @@ class LinearSyntheticTokenizer:
         payload = json.dumps(messages)
         repetitions = payload.count(" evidence")
         return list(range(100 + repetitions))
+
+
+class MappingTokenizer:
+    def apply_chat_template(self, messages, *, tokenize, add_generation_prompt):
+        return UserDict({"input_ids": [1, 2, 3]})
 
 
 def _write(path: Path, content: bytes) -> None:
@@ -54,6 +61,12 @@ class P5MLXGateTests(unittest.TestCase):
         self.assertEqual(4, len(rows))
         self.assertEqual(64, len(jsonl_sha256(rows)))
         self.assertNotIn("patient_id", json.dumps(rows))
+
+    def test_token_id_probe_accepts_transformers_mapping_result(self):
+        self.assertEqual(
+            [1, 2, 3],
+            _rendered_token_ids(MappingTokenizer(), [{"role": "user", "content": "x"}]),
+        )
 
     def test_training_namespace_pins_optimizer_and_lora_targets(self):
         contract = load_p5_mlx_gate_contract()

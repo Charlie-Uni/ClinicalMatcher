@@ -7,7 +7,7 @@ import platform
 import sys
 import types
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any, Dict, Mapping, Optional, Sequence
 
 from .p5_mlx_gate import (
     P5MLXGateError,
@@ -77,7 +77,7 @@ def _rendered_token_ids(tokenizer: Any, messages: Sequence[Dict[str, str]]) -> l
     rendered = tokenizer.apply_chat_template(
         list(messages), tokenize=True, add_generation_prompt=False
     )
-    if isinstance(rendered, dict):
+    if isinstance(rendered, Mapping):
         rendered = rendered.get("input_ids")
     if hasattr(rendered, "tolist"):
         rendered = rendered.tolist()
