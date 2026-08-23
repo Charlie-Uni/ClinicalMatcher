@@ -1,4 +1,4 @@
-# Exact local Apple-Silicon environment observed on 2026-08-22.
+# Exact local Apple-Silicon environment frozen on 2026-08-23.
 # This is separate from the CPU-only public lock. It records the first P5
 # MLX/MLX-LM mechanism environment; model conversion and real training remain
 # gated by docs/P5_TRAINING_DECISION.md.
@@ -35,6 +35,7 @@ rich==15.0.0
 rpds-py==2026.6.3
 safetensors==0.8.0
 sentencepiece==0.2.2
+setuptools==84.0.0
 shellingham==1.5.4
 tokenizers==0.22.2
 tqdm==4.70.0

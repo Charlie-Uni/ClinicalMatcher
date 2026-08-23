@@ -58,6 +58,7 @@ clinical-matcher-check-synthetic-upload = "clinical_matcher.synthetic_upload_cli
 clinical-matcher-export-apixaban-sft = "clinical_matcher.apixaban_sft_cli:main"
 clinical-matcher-apixaban-sft-length = "clinical_matcher.apixaban_sft_length_cli:main"
 clinical-matcher-apixaban-silver-audit = "clinical_matcher.apixaban_silver_audit_cli:main"
+clinical-matcher-p5-mlx-gate = "clinical_matcher.p5_mlx_gate_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

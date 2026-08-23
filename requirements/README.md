@@ -56,10 +56,14 @@ reviewed.
   ```bash
   uv venv --python 3.11.16 artifacts/venvs/mlx-p5
   uv pip sync --python artifacts/venvs/mlx-p5/bin/python requirements-mlx.txt
+  uv pip install --python artifacts/venvs/mlx-p5/bin/python --no-deps --no-build-isolation --reinstall .
   ```
 
   The environment path is ignored through `artifacts/`; the requirements file
-  contains no model, credential, or restricted-data reference. Optional
+  contains no model, credential, or restricted-data reference. The exact
+  `setuptools` pin exists only so the separate environment can reinstall the
+  current first-party wheel without an unpinned build-isolation download.
+  Optional
   MedicalGPT/PEFT/CUDA synthetic compatibility work remains separate and pins
   only the dependencies it actually uses.
 - Optional dense and semantic-scan dependencies remain opt-in and are not part

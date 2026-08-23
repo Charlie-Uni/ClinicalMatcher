@@ -648,6 +648,15 @@ trade-off and do not hide unresolved clinical information.
     token tier. Neither restricted artifact nor its aggregate internals enter
     Git. P5.1 remains open because the 8B 4-bit route must now pass its
     synthetic memory/throughput dry run at exactly 16,384 tokens.
+  - Approved 16K gate: contract `p5-mlx-qlora-16k-gate/1.0.0` pins affine
+    4-bit/group-64 conversion; rank-8/scale-20/dropout-0 LoRA over the last 16
+    layers and seven explicit Llama projection suffixes; Adam with explicit
+    betas/epsilon/no-weight-decay and constant `1e-5`; micro-batch 1,
+    accumulation 4, prompt masking, gradient checkpointing, and seed 17. The
+    manifest must record the actually resolved full target-module list,
+    seconds/step, tokens/second, peak memory/stage, and the pinned default loss's
+    unchunked full-logits behavior. Eight synthetic micro-iterations provide two
+    measurement windows and are mechanism/feasibility evidence only.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only

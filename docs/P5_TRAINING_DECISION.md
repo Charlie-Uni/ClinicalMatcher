@@ -109,26 +109,40 @@ sequentially; they need not coexist once their immutable predictions and run
 records have passed validation. No deletion occurs merely because this policy
 is documented: each execution still resolves and reviews the exact target.
 
+The pinned Hugging Face source weights are downloaded into the ignored,
+task-specific model directory rather than the shared Hugging Face cache. The
+small tokenizer, configuration, license, and use-policy files remain protected.
+After the converted 4-bit artifact has been hashed, load-checked, recorded in a
+durably re-read manifest, and shown to be recoverable from the pinned revision,
+only the manifest-listed source weight shards and their index may be deleted.
+Deleting a whole shared cache, an unresolved glob, or the protected files is
+prohibited. If a tool nevertheless uses the shared cache, only its exact pinned
+repository revision may be removed through a cache-aware command that preserves
+other repositories and revisions; an indiscriminate cache purge remains
+prohibited.
+
 The public CPU package and local MLX training environment remain separate, but
 P5 does not introduce a second lock system. A reviewed `requirements-mlx.txt`
 with exact versions, together with the model/conversion/run manifest, is the
 training-environment record for the first experiment.
 
-The local mechanism environment was materialized on 2026-08-22 with CPython
+The local mechanism environment was frozen on 2026-08-23 with CPython
 3.11.16 on ARM64 macOS 26.5.2:
 
 - `mlx==0.31.2`, release commit
   `68cf2fddd8de5edd8ab3d926391772b2e2cedad8`;
 - `mlx-lm==0.31.3`, release commit
   `ed1fca4cef15a824c5f1702c80f70b4cffc8e4dd`;
-- the complete observed 39-package environment is recorded in
+- the complete 40-package environment is recorded in
   `requirements-mlx.txt`.
 
 The five project-validation dependencies (`attrs`, `jsonschema`,
 `jsonschema-specifications`, `referencing`, and `rpds-py`) reuse the exact
 versions from the frozen public lock. They make the owner-only length and SFT
 validation CLIs self-contained in the MLX environment; they do not add a
-second model stack.
+second model stack. The exact `setuptools==84.0.0` pin permits first-party
+wheel reinstall without an unpinned build-isolation download; it is build
+plumbing, not a model dependency.
 
 This pair was selected because MLX-LM 0.31.3 declares `mlx>=0.31.2` and its
 release is paired with MLX 0.31.2. A local import/Metal matrix-compute smoke
@@ -256,6 +270,27 @@ and enters the separately reviewed fallback procedure; the length report and
 memory report may not be declared independently successful while their joint
 configuration is infeasible. The failure cannot be hidden by post-hoc chunk
 slicing, label-informed selection, or a silent context reduction.
+
+Gate contract `p5-mlx-qlora-16k-gate/1.0.0` freezes 4-bit affine quantization
+with group size 64; LoRA rank 8, scale 20, dropout 0 over the last 16 layers;
+micro-batch 1 with four-step gradient accumulation; prompt-loss masking;
+gradient checkpointing; and seed 17. The intended Llama target keys are
+`q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, and `down_proj`
+under their attention/MLP paths. The run manifest must record the complete
+resolved module-name list from the loaded converted model and fail if its
+suffixes differ from that contract.
+
+The optimizer is specifically `mlx.optimizers.Adam`, learning rate `1e-5`,
+betas `[0.9, 0.999]`, epsilon `1e-8`, `bias_correction=false`, no weight decay,
+and a constant schedule with no warmup. The synthetic gate runs eight
+micro-iterations, producing two four-step measurement windows. This is long
+enough to cross two optimizer-update boundaries without pretending to be a
+training-quality experiment. At least one rendered synthetic sequence must be
+exactly 16,384 tokens. The gate records seconds/step, tokens/second, peak memory,
+and the peak stage. Pinned MLX-LM `0.31.3` uses its default loss, which
+materializes full vocabulary logits and does not use chunked cross-entropy; this
+fact is recorded before execution so an OOM is not misdiagnosed. Any later
+memory-relevant parameter change requires a fresh gate.
 
 ## Evidence-ID supervision
 

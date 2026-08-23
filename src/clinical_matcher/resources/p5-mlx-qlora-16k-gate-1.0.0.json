@@ -1,0 +1,67 @@
+{
+  "gate_contract_version": "1.0.0",
+  "model": {
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "mlx": "0.31.2",
+    "mlx_lm": "0.31.3"
+  },
+  "quantization": {"bits": 4, "group_size": 64, "mode": "affine"},
+  "lora": {
+    "fine_tune_type": "lora",
+    "num_layers": 16,
+    "rank": 8,
+    "scale": 20.0,
+    "dropout": 0.0,
+    "target_module_keys": [
+      "self_attn.q_proj",
+      "self_attn.k_proj",
+      "self_attn.v_proj",
+      "self_attn.o_proj",
+      "mlp.gate_proj",
+      "mlp.up_proj",
+      "mlp.down_proj"
+    ]
+  },
+  "optimizer": {
+    "implementation": "mlx.optimizers.Adam",
+    "learning_rate": 0.00001,
+    "betas": [0.9, 0.999],
+    "eps": 1e-8,
+    "bias_correction": false,
+    "weight_decay": 0.0,
+    "schedule": "constant",
+    "warmup_steps": 0
+  },
+  "training_shape": {
+    "max_seq_length": 16384,
+    "micro_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "mask_prompt": true,
+    "gradient_checkpointing": true,
+    "seed": 17
+  },
+  "dry_run": {
+    "synthetic_only": true,
+    "iterations": 8,
+    "steps_per_report": 4,
+    "external_reporting": false,
+    "required_outputs": [
+      "seconds_per_step",
+      "tokens_per_second",
+      "peak_memory_gb",
+      "peak_stage",
+      "resolved_target_modules"
+    ],
+    "sequence_requirement": "at_least_one_rendered_sequence_equals_16384_tokens",
+    "parameter_change_policy": "rerun_gate_before_restricted_training"
+  },
+  "loss_implementation": {
+    "source": "mlx_lm.tuner.trainer.default_loss",
+    "chunked_cross_entropy": false,
+    "full_logits_materialized": true
+  }
+}
