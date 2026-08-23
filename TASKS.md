@@ -643,6 +643,11 @@ trade-off and do not hide unresolved clinical information.
     model/tokenizer/chat-template hashes, tier, and no-truncation holdout
     policy. Mechanism tests do not substitute for the pending real report or
     exact-tier 8B memory gate.
+  - Real local execution: the owner-only train-fit length report and bound
+    input plan were generated with commit `2d938bb` and selected the 16,384
+    token tier. Neither restricted artifact nor its aggregate internals enter
+    Git. P5.1 remains open because the 8B 4-bit route must now pass its
+    synthetic memory/throughput dry run at exactly 16,384 tokens.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only

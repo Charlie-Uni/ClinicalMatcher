@@ -228,6 +228,15 @@ test rows do not participate in selection. A future holdout row that exceeds
 the frozen tier is recorded as a measured failure/abstention and is never
 silently truncated.
 
+The owner-only real report was generated locally on 2026-08-23 from the frozen
+55-by-23 train-fit grid using code commit
+`2d938bb03eadb791c12b88bdc17ab234729456c4`. The smallest tier fitting every
+rendered prompt plus the 512-token reserve was **16,384 tokens**. The report,
+input plan, patient-level rows, and restricted aggregate statistics remain
+outside Git. This selects the configuration to test; it does not pass the
+joint gate. The 8B route remains blocked until a synthetic 16,384-token QLoRA
+memory/throughput run succeeds on the 24 GB machine.
+
 Context selection uses token-length statistics from train-fit patients only.
 Calibration-only, validation, and test patients do not influence the selected
 length tier. Only owner-only aggregates may be written. Every candidate
