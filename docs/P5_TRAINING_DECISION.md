@@ -365,6 +365,32 @@ stack, so that remains an inference rather than a recorded cause. Contract
 `1.1.0` therefore does not pass the mechanism gate. P5.1 remains open, and no
 additional fallback or parameter change is authorized by this failure.
 
+### Approved attention-allocation diagnostic
+
+The owner approved diagnostic contract
+`p5-mlx-attention-diagnostic/1.0.0` on 2026-08-24. It uses synthetic arrays
+only, cannot read restricted data, cannot run the full model or trainer, and
+cannot authorize a training fallback. Before execution it freezes the exact
+prediction `2 * 32 * (L - 1)^2` bytes for the grouped-query attention score
+shape `[1, 8, 4, L - 1, L - 1]` in bfloat16: 1,073,217,600 bytes at 4K,
+4,293,918,784 bytes at 8K, and 17,177,772,096 bytes at 16K.
+
+The diagnostic has three outputs: process-isolated allocation probes for all
+three tiers in pinned MLX; a small causal SDPA query-gradient probe in the
+pinned and latest-stable MLX environments; and a hash-bound audit of official
+MLX source for the pinned release, latest stable release, and current main
+commit. Successful allocation-probe tensors must match the predicted shape and
+byte count exactly. A failed allocation counts as confirming evidence only if
+the allocator-reported request equals that same predeclared byte count. Peak
+memory remains an aggregate secondary observation and is never substituted for
+the single-buffer byte prediction.
+
+After execution, the historical sentence describing the first failure as
+consistent with full-vocabulary logits must remain visible but receive an
+additive correction that cites the new diagnostic artifact hash. Regardless of
+the result, work returns to owner review; no package upgrade, shorter context,
+different model, or execution-environment change follows automatically.
+
 ## Evidence-ID supervision
 
 ### Semantics

@@ -685,6 +685,13 @@ trade-off and do not hide unresolved clinical information.
     allocation to full-sequence vocabulary logits; the allocator did not expose
     enough provenance to prove the next source. No throughput was produced, no
     further fallback is selected, and P5.1 remains stopped for owner review.
+  - [ ] Approved allocation-source diagnostic: with synthetic arrays only,
+    verify the predeclared `2 * 32 * (L - 1)^2` byte prediction at the 4K, 8K,
+    and 16K tiers; execute a small isolated SDPA gradient probe; and audit the
+    pinned, latest-stable, and current-main official MLX Metal VJP routes by
+    commit and source hash. This diagnostic changes no training parameter and
+    authorizes no fallback. Its result must correct the earlier logits
+    attribution by additive revision note and then return to owner review.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only

@@ -1,0 +1,102 @@
+{
+  "diagnostic_contract_version": "1.0.0",
+  "approved_on": "2026-08-24",
+  "scope": {
+    "synthetic_only": true,
+    "restricted_data_allowed": false,
+    "changes_training_configuration": false,
+    "authorizes_fallback": false
+  },
+  "failed_gate_evidence": [
+    {
+      "manifest_sha256": "43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5",
+      "requested_allocation_bytes": 17177772096
+    },
+    {
+      "manifest_sha256": "1d8b751d2608a7c74f8410474fb96d99af9ba50dc1a7bf629b06347de977b720",
+      "requested_allocation_bytes": 17177772096
+    }
+  ],
+  "attention_geometry": {
+    "batch_size": 1,
+    "query_heads": 32,
+    "key_value_heads": 8,
+    "grouped_query_repeats": 4,
+    "head_dimension": 128,
+    "dtype": "bfloat16",
+    "bytes_per_element": 2,
+    "causal_shift_tokens": 1
+  },
+  "allocation_prediction": {
+    "formula": "bytes_per_element * query_heads * (context_tier - causal_shift_tokens)^2",
+    "score_shape_formula": [
+      "batch_size",
+      "key_value_heads",
+      "grouped_query_repeats",
+      "input_length",
+      "input_length"
+    ],
+    "tiers": [
+      {
+        "context_tier": 4096,
+        "input_length": 4095,
+        "predicted_score_bytes": 1073217600
+      },
+      {
+        "context_tier": 8192,
+        "input_length": 8191,
+        "predicted_score_bytes": 4293918784
+      },
+      {
+        "context_tier": 16384,
+        "input_length": 16383,
+        "predicted_score_bytes": 17177772096
+      }
+    ]
+  },
+  "probe_protocol": {
+    "allocation_probe_environment": {
+      "python": "3.11.16",
+      "mlx": "0.31.2"
+    },
+    "allocation_probe": "explicit_pinned_sdpa_fallback_qk_transpose_matmul",
+    "allocation_probe_lengths": [4096, 8192, 16384],
+    "gradient_probe": "fast_sdpa_causal_query_gradient",
+    "gradient_probe_input_length": 256,
+    "gradient_probe_environments": [
+      {"label": "pinned", "mlx": "0.31.2"},
+      {"label": "latest_stable", "mlx": "0.32.1"}
+    ],
+    "process_isolation_required": true,
+    "full_model_or_trainer_allowed": false
+  },
+  "official_source_audit": {
+    "pinned": {
+      "mlx_version": "0.31.2",
+      "commit": "68cf2fddd8de5edd8ab3d926391772b2e2cedad8",
+      "fast_cpp_sha256": "fa9c12db58e5aee9cff7ed02c155413be22701bdb3987e25a664f2607ffe318e",
+      "metal_sdpa_cpp_sha256": "d09e7ec5101bf93754761ad5b8381fd874599c0642eab161bc8d148abaf95f66",
+      "training_forces_unfused_fallback": true,
+      "metal_vjp_use_fallback": true,
+      "metal_vjp_eval_gpu": "NYI"
+    },
+    "latest_stable": {
+      "mlx_version": "0.32.1",
+      "commit": "3a6219917e4535575ce5bce2fc2ba27a483a709b",
+      "metal_sdpa_cpp_sha256": "397f250d897dc5f1d0757c7abed8edc92cc7b6de0fb59ad5a7fd1dfd8c003ca2",
+      "training_forces_unfused_fallback": true,
+      "metal_vjp_use_fallback": true,
+      "metal_vjp_eval_gpu": "NYI"
+    },
+    "main_checked_at": {
+      "checked_at": "2026-08-24",
+      "commit": "d9077d8316ad7305497a3ecf2296bd0e0e99a627",
+      "committed_at": "2026-08-23T10:07:03Z",
+      "metal_sdpa_cpp_sha256": "215ebac6495706cf01a2635c4dcec29802e130165ed8704f212d789679d2e673",
+      "training_forces_unfused_fallback": true,
+      "metal_vjp_use_fallback": true,
+      "metal_vjp_eval_gpu": "NYI"
+    }
+  },
+  "stop_policy": "diagnose_only_then_require_new_owner_review"
+}
