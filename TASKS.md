@@ -663,7 +663,18 @@ trade-off and do not hide unresolved clinical information.
     completed micro-iteration because a requested 17,177,772,096-byte buffer
     exceeded Metal's 14,302,248,960-byte single-buffer limit. No throughput
     estimate was produced. P5.1 remains open and the exact 8B + 16K + default
-    full-logits-loss route is rejected; no fallback has been selected.
+    full-logits-loss route is rejected; that failure alone selected no fallback.
+  - Approved fallback revision: after separate owner review, gate contract
+    `1.1.0` keeps the 8B model, complete 16K input, whole-completion supervision,
+    optimizer, LoRA parameters, and seed unchanged. It injects a content-hashed
+    completion-only vocabulary projection into the stock pinned trainer; full
+    sequence hidden states are still computed, and no completion field receives
+    selective masking. The earlier field-selective-loss proposal remains
+    rejected. Synthetic boundary tests cover prompt/completion length one, the
+    512-token output bound, and the causal `prompt_offset - 1` transition. A
+    pinned Apple-MLX test must match the native mask-prompt loss and every
+    trainable-parameter gradient before a fresh exact-16K gate. Any subsequent
+    failure stops for a new owner review.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only

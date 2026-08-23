@@ -17,10 +17,12 @@ from clinical_matcher.p5_mlx_gate import (
     load_p5_mlx_gate_contract,
     validate_p5_mlx_gate_contract,
     validate_p5_mlx_model_artifact_manifest,
+    verify_p5_mlx_completion_loss_module,
     verify_directory_inventory,
     write_owner_only_json,
 )
 from clinical_matcher.p5_mlx_gate_cli import (
+    _GateCallback,
     _assert_resolved_lora_modules,
     _rendered_token_ids,
     _training_namespace,
@@ -46,8 +48,19 @@ def _write(path: Path, content: bytes) -> None:
 class P5MLXGateTests(unittest.TestCase):
     def test_contract_is_exact_and_tampering_fails(self):
         contract = load_p5_mlx_gate_contract()
+        self.assertEqual("1.1.0", contract["gate_contract_version"])
         self.assertEqual("mlx.optimizers.Adam", contract["optimizer"]["implementation"])
         self.assertFalse(contract["loss_implementation"]["chunked_cross_entropy"])
+        self.assertFalse(
+            contract["loss_implementation"]["completion_internal_field_masking"]
+        )
+        self.assertFalse(
+            contract["fallback_revision"]["supervision_semantics_changed"]
+        )
+        self.assertEqual(
+            contract["loss_implementation"]["module_sha256"],
+            verify_p5_mlx_completion_loss_module(contract),
+        )
         tampered = copy.deepcopy(contract)
         tampered["optimizer"]["eps"] = 1e-7
         with self.assertRaisesRegex(P5MLXGateError, "owner approval"):
@@ -92,6 +105,33 @@ class P5MLXGateTests(unittest.TestCase):
         _assert_resolved_lora_modules(names, contract)
         with self.assertRaisesRegex(P5MLXGateError, "expected 112"):
             _assert_resolved_lora_modules(names[:-1], contract)
+
+    def test_gate_callback_reports_supervised_and_full_input_throughput(self):
+        callback = _GateCallback(input_tokens_per_step=16384)
+        callback.on_train_loss_report(
+            {
+                "iteration": 1,
+                "iterations_per_second": 0.5,
+                "tokens_per_second": 128.0,
+                "peak_memory": 9.5,
+                "train_loss": 0.25,
+                "learning_rate": 1e-5,
+                "trained_tokens": 256,
+            }
+        )
+        self.assertEqual(
+            {
+                "iteration": 1,
+                "seconds_per_step": 2.0,
+                "supervised_tokens_per_second": 128.0,
+                "input_tokens_per_second": 8192.0,
+                "peak_memory_gb": 9.5,
+                "train_loss": 0.25,
+                "learning_rate": 1e-5,
+                "trained_tokens": 256,
+            },
+            callback.training_reports[0],
+        )
 
     def test_artifact_manifest_binds_files_and_deletion_allowlist(self):
         with tempfile.TemporaryDirectory() as directory:

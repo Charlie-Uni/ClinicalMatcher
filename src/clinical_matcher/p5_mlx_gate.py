@@ -14,7 +14,7 @@ from .apixaban_sft_contract import (
 from .splits import canonical_sha256
 
 
-GATE_RESOURCE = "resources/p5-mlx-qlora-16k-gate-1.0.0.json"
+GATE_RESOURCE = "resources/p5-mlx-qlora-16k-gate-1.1.0.json"
 
 
 class P5MLXGateError(ValueError):
@@ -39,10 +39,11 @@ def validate_p5_mlx_gate_contract(document: Mapping[str, Any]) -> None:
         "training_shape",
         "dry_run",
         "loss_implementation",
+        "fallback_revision",
     }:
         raise P5MLXGateError("P5 MLX gate-contract fields are incomplete")
     expected = {
-        "gate_contract_version": "1.0.0",
+        "gate_contract_version": "1.1.0",
         "model": {
             "model_id": "meta-llama/Llama-3.1-8B-Instruct",
             "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
@@ -90,7 +91,8 @@ def validate_p5_mlx_gate_contract(document: Mapping[str, Any]) -> None:
             "external_reporting": False,
             "required_outputs": [
                 "seconds_per_step",
-                "tokens_per_second",
+                "supervised_tokens_per_second",
+                "input_tokens_per_second",
                 "peak_memory_gb",
                 "peak_stage",
                 "resolved_target_modules",
@@ -103,9 +105,36 @@ def validate_p5_mlx_gate_contract(document: Mapping[str, Any]) -> None:
             ),
         },
         "loss_implementation": {
-            "source": "mlx_lm.tuner.trainer.default_loss",
+            "implementation_version": "1.0.0",
+            "source": (
+                "clinical_matcher.p5_mlx_completion_loss."
+                "completion_only_projection_loss"
+            ),
+            "module_sha256": (
+                "d95ca72cacbb63ec027c83324e015331dccbcdddcc8b9ffbe6e8f42cad518d60"
+            ),
+            "reference_source": "mlx_lm.tuner.trainer.default_loss",
+            "stock_trainer": "mlx_lm.tuner.trainer.train",
+            "objective": "pinned_mask_prompt_whole_completion_cross_entropy",
+            "full_sequence_hidden_states": True,
+            "prompt_token_logits_materialized": False,
+            "projection_window_tokens": 544,
+            "output_reserve_tokens": 512,
+            "pinned_batch_padding_tokens": 32,
+            "completion_internal_field_masking": False,
             "chunked_cross_entropy": False,
-            "full_logits_materialized": True,
+            "full_logits_materialized": False,
+        },
+        "fallback_revision": {
+            "approved_on": "2026-08-24",
+            "trigger_failed_gate_sha256": (
+                "43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5"
+            ),
+            "trigger_allocation_bytes": 17177772096,
+            "metal_max_buffer_bytes": 14302248960,
+            "supervision_semantics_changed": False,
+            "field_selective_loss_remains_rejected": True,
+            "failure_policy": "stop_and_require_new_owner_review",
         },
     }
     if dict(document) != expected:
@@ -115,6 +144,23 @@ def validate_p5_mlx_gate_contract(document: Mapping[str, Any]) -> None:
 def p5_mlx_gate_contract_sha256(contract: Mapping[str, Any]) -> str:
     validate_p5_mlx_gate_contract(contract)
     return canonical_sha256(dict(contract))
+
+
+def verify_p5_mlx_completion_loss_module(contract: Mapping[str, Any]) -> str:
+    validate_p5_mlx_gate_contract(contract)
+    from . import p5_mlx_completion_loss
+
+    module_path = Path(p5_mlx_completion_loss.__file__).resolve(strict=True)
+    observed = sha256_path(module_path)
+    expected = contract["loss_implementation"]["module_sha256"]
+    if observed != expected:
+        raise P5MLXGateError("Completion-only loss module SHA-256 differs from gate")
+    if (
+        p5_mlx_completion_loss.LOSS_IMPLEMENTATION_VERSION
+        != contract["loss_implementation"]["implementation_version"]
+    ):
+        raise P5MLXGateError("Completion-only loss implementation version differs")
+    return observed
 
 
 def _synthetic_messages(filler_repetitions: int) -> list[Dict[str, str]]:

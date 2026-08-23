@@ -315,6 +315,36 @@ feasible on this machine and does not pass P5.1. No shorter context, different
 loss, or different base model is selected by this failure. Any fallback is a
 new owner-reviewed contract and requires a fresh exact-configuration gate.
 
+### Approved completion-only projection revision
+
+On 2026-08-24 the owner separately approved gate contract
+`p5-mlx-qlora-16k-gate/1.1.0`, triggered only by failed-run manifest
+`43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5`.
+The model, full 16,384-token input, whole-completion targets, prompt mask,
+optimizer, LoRA configuration, gradient accumulation, and seed remain
+unchanged. The revision changes only how the identical masked loss is
+calculated: the complete sequence still produces hidden states, while the
+vocabulary projection is limited to the 544-position tail that provably covers
+the 512-token output reserve plus the pinned iterator's 32-token padding slack.
+
+This is not the rejected field-selective-loss proposal. No JSON field or token
+inside the assistant completion receives a different weight or mask, and the
+earlier proposal to omit evidence-ID loss on selected completion spans remains
+rejected. The stock `mlx_lm.tuner.trainer.train` loop and exact Adam
+configuration remain in use; only its documented `loss` argument receives
+`clinical_matcher.p5_mlx_completion_loss.completion_only_projection_loss`.
+Implementation `1.0.0` is pinned by source SHA-256
+`d95ca72cacbb63ec027c83324e015331dccbcdddcc8b9ffbe6e8f42cad518d60`.
+
+Before the revised 8B gate, public synthetic boundary tests and an Apple-MLX
+test against pinned `mlx_lm.tuner.trainer.default_loss` must establish: the
+first completion target is predicted from hidden position
+`prompt_offset - 1`; completion length one, prompt length one, and completion
+length 512 are covered; loss values match under tight tolerance; and gradients
+match for every trainable parameter. Passing those tests authorizes only a
+fresh synthetic 16K gate. If another allocation or runtime stage fails, work
+stops for another owner review; no chained parameter change is permitted.
+
 ## Evidence-ID supervision
 
 ### Semantics

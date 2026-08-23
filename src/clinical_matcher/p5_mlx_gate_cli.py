@@ -21,6 +21,7 @@ from .p5_mlx_gate import (
     load_p5_mlx_gate_contract,
     p5_mlx_gate_contract_sha256,
     validate_p5_mlx_model_artifact_manifest,
+    verify_p5_mlx_completion_loss_module,
     verify_directory_inventory,
     write_owner_only_json,
 )
@@ -154,16 +155,22 @@ def create_model_manifest(
 
 
 class _GateCallback:
-    def __init__(self) -> None:
+    def __init__(self, input_tokens_per_step: int) -> None:
         self.training_reports: list[Dict[str, Any]] = []
+        self.input_tokens_per_step = input_tokens_per_step
 
     def on_train_loss_report(self, train_info: Dict[str, Any]) -> None:
+        iterations_per_second = float(train_info["iterations_per_second"])
         self.training_reports.append(
             {
                 "iteration": int(train_info["iteration"]),
-                "seconds_per_step": 1.0
-                / float(train_info["iterations_per_second"]),
-                "tokens_per_second": float(train_info["tokens_per_second"]),
+                "seconds_per_step": 1.0 / iterations_per_second,
+                "supervised_tokens_per_second": float(
+                    train_info["tokens_per_second"]
+                ),
+                "input_tokens_per_second": (
+                    self.input_tokens_per_step * iterations_per_second
+                ),
                 "peak_memory_gb": float(train_info["peak_memory"]),
                 "train_loss": float(train_info["train_loss"]),
                 "learning_rate": float(train_info["learning_rate"]),
@@ -238,6 +245,72 @@ def _training_namespace(
         },
         mask_prompt=contract["training_shape"]["mask_prompt"],
         clear_cache_threshold=0,
+        loss_implementation=dict(contract["loss_implementation"]),
+    )
+
+
+def _train_model_with_completion_loss(
+    args: types.SimpleNamespace,
+    model: Any,
+    train_set: Any,
+    callback: _GateCallback,
+) -> None:
+    import mlx.core as mx
+    import mlx.optimizers as optim
+    from mlx_lm.tuner.datasets import CacheDataset
+    from mlx_lm.tuner.trainer import TrainingArgs, train
+    from mlx_lm.tuner.utils import linear_to_lora_layers, print_trainable_parameters
+    from mlx_lm.utils import save_config
+
+    from .p5_mlx_completion_loss import completion_only_projection_loss
+
+    if args.fine_tune_type != "lora":
+        raise P5MLXGateError("Completion-loss gate permits LoRA only")
+    if args.optimizer != "adam" or args.lr_schedule is not None:
+        raise P5MLXGateError(
+            "Completion-loss gate requires pinned Adam with no LR schedule"
+        )
+    if args.mask_prompt is not True:
+        raise P5MLXGateError(
+            "Completion-loss gate requires the frozen mask_prompt supervision"
+        )
+    mx.random.seed(args.seed)
+    model.freeze()
+    if args.num_layers > len(model.layers):
+        raise P5MLXGateError("Requested LoRA layers exceed loaded model layers")
+    linear_to_lora_layers(model, args.num_layers, args.lora_parameters)
+    print_trainable_parameters(model)
+
+    adapter_path = Path(args.adapter_path)
+    adapter_path.mkdir(parents=True, exist_ok=True)
+    adapter_file = adapter_path / "adapters.safetensors"
+    save_config(vars(args), adapter_path / "adapter_config.json")
+
+    training_args = TrainingArgs(
+        batch_size=args.batch_size,
+        iters=args.iters,
+        val_batches=args.val_batches,
+        steps_per_report=args.steps_per_report,
+        steps_per_eval=args.steps_per_eval,
+        steps_per_save=args.save_every,
+        adapter_file=adapter_file,
+        max_seq_length=args.max_seq_length,
+        grad_checkpoint=args.grad_checkpoint,
+        grad_accumulation_steps=args.grad_accumulation_steps,
+        clear_cache_threshold=args.clear_cache_threshold,
+    )
+    optimizer = optim.Adam(
+        learning_rate=args.learning_rate,
+        **args.optimizer_config["adam"],
+    )
+    train(
+        model=model,
+        args=training_args,
+        optimizer=optimizer,
+        train_dataset=CacheDataset(train_set),
+        val_dataset=CacheDataset([]),
+        loss=completion_only_projection_loss,
+        training_callback=callback,
     )
 
 
@@ -247,10 +320,12 @@ def run_gate(
     output_directory: Path,
 ) -> Dict[str, Any]:
     import mlx.core as mx
-    from mlx_lm.lora import train_model
     from mlx_lm.tuner.datasets import create_dataset
 
+    from .p5_mlx_completion_loss import completion_projection_bounds
+
     contract = load_p5_mlx_gate_contract()
+    loss_module_sha256 = verify_p5_mlx_completion_loss_module(contract)
     model_manifest = _load_json(model_manifest_path)
     validate_p5_mlx_model_artifact_manifest(model_manifest)
     verify_directory_inventory(
@@ -276,6 +351,7 @@ def run_gate(
         "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
         "environment": versions,
         "loss_implementation": dict(contract["loss_implementation"]),
+        "observed_loss_module_sha256": loss_module_sha256,
         "training_shape": dict(contract["training_shape"]),
         "optimizer": dict(contract["optimizer"]),
         "lora": dict(contract["lora"]),
@@ -289,7 +365,8 @@ def run_gate(
     exact_length: int | None = None
     rows: list[Dict[str, Any]] = []
     active_stage = "model_load"
-    callback = _GateCallback()
+    callback = _GateCallback(contract["training_shape"]["max_seq_length"])
+    projection_bounds: Dict[str, int] | None = None
     result: Dict[str, Any]
     try:
         model, tokenizer, load_peak = _load_mlx_model(converted_directory)
@@ -299,17 +376,29 @@ def run_gate(
             mask_prompt=contract["training_shape"]["mask_prompt"]
         )
         train_set = create_dataset(rows, tokenizer, dataset_config)
-        processed_lengths = [len(train_set.process(row)[0]) for row in rows]
+        processed_rows = [train_set.process(row) for row in rows]
+        processed_lengths = [len(item[0]) for item in processed_rows]
         if processed_lengths != [contract["training_shape"]["max_seq_length"]] * len(
             rows
         ):
             raise P5MLXGateError(
                 "Stock MLX-LM dataset did not preserve exact 16,384-token rows"
             )
+        all_projection_bounds = [
+            completion_projection_bounds(
+                batch_token_count=len(tokens),
+                prompt_offset=prompt_offset,
+                full_token_count=len(tokens),
+            )
+            for tokens, prompt_offset in processed_rows
+        ]
+        if any(item != all_projection_bounds[0] for item in all_projection_bounds):
+            raise P5MLXGateError("Synthetic gate rows have inconsistent loss bounds")
+        projection_bounds = all_projection_bounds[0]
         mx.reset_peak_memory()
         active_stage = "adapter_setup_and_training"
         args = _training_namespace(contract, output_directory / "adapters")
-        train_model(args, model, train_set, [], callback)
+        _train_model_with_completion_loss(args, model, train_set, callback)
         resolved = _resolved_lora_modules(model)
         _assert_resolved_lora_modules(resolved, contract)
         training_peak = mx.get_peak_memory() / 1e9
@@ -334,6 +423,7 @@ def run_gate(
                 "rendered_tokens_per_row": exact_length,
                 "synthetic_jsonl_sha256": jsonl_sha256(rows),
                 "no_truncation": True,
+                "completion_projection_bounds": projection_bounds,
             },
             "resolved_target_modules": resolved,
             "training_reports": callback.training_reports,
@@ -341,6 +431,7 @@ def run_gate(
             "peak_stage": peak_stage,
             "peak_memory_gb": stages[peak_stage],
             "loss_implementation": dict(contract["loss_implementation"]),
+            "observed_loss_module_sha256": loss_module_sha256,
             "adapter_inventory": adapter_inventory,
             "adapter_inventory_sha256": inventory_sha256(adapter_inventory),
             "failure": None,
@@ -367,6 +458,7 @@ def run_gate(
                     "rendered_tokens_per_row": exact_length,
                     "synthetic_jsonl_sha256": jsonl_sha256(rows),
                     "no_truncation": True,
+                    "completion_projection_bounds": projection_bounds,
                 }
                 if rows and exact_length is not None
                 else None
@@ -377,6 +469,7 @@ def run_gate(
             "peak_stage": peak_stage,
             "peak_memory_gb": stages[peak_stage],
             "loss_implementation": dict(contract["loss_implementation"]),
+            "observed_loss_module_sha256": loss_module_sha256,
             "adapter_inventory": None,
             "adapter_inventory_sha256": None,
             "failure": {"type": type(error).__name__, "message": str(error)},

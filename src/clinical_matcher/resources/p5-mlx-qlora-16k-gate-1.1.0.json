@@ -1,0 +1,88 @@
+{
+  "gate_contract_version": "1.1.0",
+  "model": {
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "mlx": "0.31.2",
+    "mlx_lm": "0.31.3"
+  },
+  "quantization": {"bits": 4, "group_size": 64, "mode": "affine"},
+  "lora": {
+    "fine_tune_type": "lora",
+    "num_layers": 16,
+    "rank": 8,
+    "scale": 20.0,
+    "dropout": 0.0,
+    "target_module_keys": [
+      "self_attn.q_proj",
+      "self_attn.k_proj",
+      "self_attn.v_proj",
+      "self_attn.o_proj",
+      "mlp.gate_proj",
+      "mlp.up_proj",
+      "mlp.down_proj"
+    ]
+  },
+  "optimizer": {
+    "implementation": "mlx.optimizers.Adam",
+    "learning_rate": 0.00001,
+    "betas": [0.9, 0.999],
+    "eps": 1e-8,
+    "bias_correction": false,
+    "weight_decay": 0.0,
+    "schedule": "constant",
+    "warmup_steps": 0
+  },
+  "training_shape": {
+    "max_seq_length": 16384,
+    "micro_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "mask_prompt": true,
+    "gradient_checkpointing": true,
+    "seed": 17
+  },
+  "dry_run": {
+    "synthetic_only": true,
+    "iterations": 8,
+    "steps_per_report": 4,
+    "external_reporting": false,
+    "required_outputs": [
+      "seconds_per_step",
+      "supervised_tokens_per_second",
+      "input_tokens_per_second",
+      "peak_memory_gb",
+      "peak_stage",
+      "resolved_target_modules"
+    ],
+    "sequence_requirement": "at_least_one_rendered_sequence_equals_16384_tokens",
+    "parameter_change_policy": "rerun_gate_before_restricted_training"
+  },
+  "loss_implementation": {
+    "implementation_version": "1.0.0",
+    "source": "clinical_matcher.p5_mlx_completion_loss.completion_only_projection_loss",
+    "module_sha256": "d95ca72cacbb63ec027c83324e015331dccbcdddcc8b9ffbe6e8f42cad518d60",
+    "reference_source": "mlx_lm.tuner.trainer.default_loss",
+    "stock_trainer": "mlx_lm.tuner.trainer.train",
+    "objective": "pinned_mask_prompt_whole_completion_cross_entropy",
+    "full_sequence_hidden_states": true,
+    "prompt_token_logits_materialized": false,
+    "projection_window_tokens": 544,
+    "output_reserve_tokens": 512,
+    "pinned_batch_padding_tokens": 32,
+    "completion_internal_field_masking": false,
+    "chunked_cross_entropy": false,
+    "full_logits_materialized": false
+  },
+  "fallback_revision": {
+    "approved_on": "2026-08-24",
+    "trigger_failed_gate_sha256": "43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5",
+    "trigger_allocation_bytes": 17177772096,
+    "metal_max_buffer_bytes": 14302248960,
+    "supervision_semantics_changed": false,
+    "field_selective_loss_remains_rejected": true,
+    "failure_policy": "stop_and_require_new_owner_review"
+  }
+}
