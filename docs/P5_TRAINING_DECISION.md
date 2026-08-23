@@ -427,17 +427,19 @@ gate or empties a required question/class, P5.2 stops. Field-selective evidence
 loss may then be proposed as a separately reviewed fallback; it is not part of
 the first dry run or baseline implementation.
 
-Exporter contract `1.0.0` implements this row policy without choosing the
-still-open thresholds. It accepts only a frozen split, its source-bound
+Canonical-row contract `1.0.0` and exporter contract `1.1.0` implement this
+row policy under the approved thresholds. The exporter accepts only a frozen
+split, its source-bound
 calibration reservation, a self-hashed exact train-fit input plan, and D/E
 artifacts that explicitly attest that predeclared audit thresholds passed.
 It fails on holdout membership, typed disagreement, cross-patient or invisible
 citations, D/E overlap, incomplete input grids, and provenance tampering. One
 canonical restricted record is then rendered losslessly to MLX `messages` and
 MedicalGPT ShareGPT `conversations`; the exporter verifies message equality,
-file hashes, owner-only permissions, and exclusion counts. Passing synthetic
-tests is mechanism evidence only. It is not approval of the real input policy,
-the audit thresholds, or any silver citation as evidence gold.
+file hashes, owner-only permissions, exclusion counts, and frozen-tokenizer
+sequence limits. Passing synthetic tests is mechanism evidence only. It is not
+evidence that a real silver artifact passed its audit, or that any silver
+citation is evidence gold.
 
 Mechanically attaching retrieval top-k IDs after inference is prohibited when
 presented as model-generated grounding. A future architecture may expose
