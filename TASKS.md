@@ -657,6 +657,13 @@ trade-off and do not hide unresolved clinical information.
     seconds/step, tokens/second, peak memory/stage, and the pinned default loss's
     unchunked full-logits behavior. Eight synthetic micro-iterations provide two
     measurement windows and are mechanism/feasibility evidence only.
+  - Real gate result: the 4-bit conversion and Metal load passed, with exact
+    source/converted token-ID equivalence on the 16,384-token probe and 112
+    resolved LoRA modules. Stock MLX-LM training then failed before its first
+    completed micro-iteration because a requested 17,177,772,096-byte buffer
+    exceeded Metal's 14,302,248,960-byte single-buffer limit. No throughput
+    estimate was produced. P5.1 remains open and the exact 8B + 16K + default
+    full-logits-loss route is rejected; no fallback has been selected.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only

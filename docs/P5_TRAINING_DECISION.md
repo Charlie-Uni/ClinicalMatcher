@@ -292,6 +292,29 @@ materializes full vocabulary logits and does not use chunked cross-entropy; this
 fact is recorded before execution so an OOM is not misdiagnosed. Any later
 memory-relevant parameter change requires a fresh gate.
 
+The frozen gate was executed locally on 2026-08-23 from implementation commit
+`1b4cabf`. Conversion manifest
+`577a5de3af1f21753202e2949f37e76292a6cf03a1413eb9001ac3da63dc096e`
+records 16,069,739,560 source bytes and a 4,534,758,247-byte converted artifact,
+plus a successful Metal load and exact converted/source token-ID equivalence on
+the 16,384-token probe. The converted model resolved exactly 112 LoRA modules:
+the seven approved projection suffixes in each of layers 16 through 31.
+
+The stock-loss 16,384-token training gate **failed before its first completed
+micro-iteration**. MLX attempted one 17,177,772,096-byte allocation, exceeding
+the Metal maximum buffer size of 14,302,248,960 bytes. This is consistent with
+the predeclared unchunked full-vocabulary-logits risk. The owner-only failed-run
+manifest hash is
+`43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5`;
+it contains no patient data. No seconds/step or tokens/second estimate exists
+because no step completed. The approximately 5.16 GB observed peak excludes the
+rejected 17.18 GB allocation and must not be reported as the required memory.
+
+Therefore the frozen **8B + 16K + stock MLX-LM default-loss** route is not
+feasible on this machine and does not pass P5.1. No shorter context, different
+loss, or different base model is selected by this failure. Any fallback is a
+new owner-reviewed contract and requires a fresh exact-configuration gate.
+
 ## Evidence-ID supervision
 
 ### Semantics
