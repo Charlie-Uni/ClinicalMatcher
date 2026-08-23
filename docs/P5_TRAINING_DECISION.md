@@ -310,6 +310,12 @@ it contains no patient data. No seconds/step or tokens/second estimate exists
 because no step completed. The approximately 5.16 GB observed peak excludes the
 rejected 17.18 GB allocation and must not be reported as the required memory.
 
+**Revision note (2026-08-24):** the preceding consistency statement is retained
+as the historical pre-diagnostic interpretation, but it is incorrect. The
+completed allocation-source diagnostic below identifies the requested buffer as
+the explicit grouped-query attention-score matrix, not the vocabulary-logit
+tensor. This additive correction does not rewrite the original gate record.
+
 Therefore the frozen **8B + 16K + stock MLX-LM default-loss** route is not
 feasible on this machine and does not pass P5.1. No shorter context, different
 loss, or different base model is selected by this failure. Any fallback is a
@@ -390,6 +396,51 @@ consistent with full-vocabulary logits must remain visible but receive an
 additive correction that cites the new diagnostic artifact hash. Regardless of
 the result, work returns to owner review; no package upgrade, shorter context,
 different model, or execution-environment change follows automatically.
+
+### Attention-allocation diagnostic result
+
+The approved diagnostic completed on 2026-08-24 without reading restricted
+data or changing the training configuration. The three isolated pinned-MLX
+allocation probes matched the frozen quadratic prediction exactly:
+
+- 4,096-token tier: shape `[1, 8, 4, 4095, 4095]`, predicted and observed
+  1,073,217,600 bytes; result manifest
+  `c4efb33ca479dc1bc1d3b5d05fc66bc276667770ac264124d5acc1d07ff4d470`;
+- 8,192-token tier: shape `[1, 8, 4, 8191, 8191]`, predicted and observed
+  4,293,918,784 bytes; result manifest
+  `3b7d81a550da8351510884f672ea5c6a0fdb8e65890705cd2270c6ce7b44243c`;
+- 16,384-token tier: shape `[1, 8, 4, 16383, 16383]`, predicted
+  17,177,772,096 bytes; Metal rejected exactly 17,177,772,096 bytes against its
+  14,302,248,960-byte single-buffer limit; result manifest
+  `d15c756df1a48d95734ea8c66ceeeca98655cfdce520efb146eb7def977cb128`.
+
+Therefore the failed buffer is the explicit bfloat16 grouped-query
+attention-score tensor: `2 * 32 * (L - 1)^2` bytes. This is direct
+three-tier allocation evidence, not an inference from the 16K byte count alone.
+The small causal SDPA query-gradient probes also executed in pinned MLX 0.31.2
+and latest-stable MLX 0.32.1; their result manifests are respectively
+`28ea04bb054fde47a562887a921668f7c49fd0bdf6824505b747274e3a288b62`
+and
+`49e601bf113e649c56d315d4f4feec9647f1028025d0f1e80daa47976fc85b72`.
+Those small probes establish executable gradient behavior only; they do not by
+themselves establish a fused or memory-efficient backward route.
+
+The hash-bound official-source audit in diagnostic contract
+`912d3bf67ed491a86b7f03f0815152cdcfad174c0bf4359eaa4cb125d7741a8f`
+finds the same decisive limitation in pinned MLX 0.31.2, latest-stable MLX
+0.32.1, and current main commit
+`d9077d8316ad7305497a3ecf2296bd0e0e99a627`: Metal training forces the
+unfused fallback, the SDPA VJP selects fallback, and its Metal GPU evaluator is
+not implemented. Consequently, upgrading to the currently released MLX or the
+audited current main does not provide a memory-efficient Metal SDPA backward
+path for this gate.
+
+The completion-only vocabulary projection remains a tested, semantically
+equivalent optimization and is not reverted, but it cannot remove this earlier
+attention allocation. Under the audited official MLX implementations, local
+8B + 16K training remains infeasible on this machine. P5.1 remains open and
+returns to owner review; this result selects no shorter context, new execution
+environment, different model, or postponement policy.
 
 ## Evidence-ID supervision
 
