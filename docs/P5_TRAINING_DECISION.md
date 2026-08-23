@@ -75,6 +75,40 @@ model revision. Before P5.1 closes, the record must add:
    and the endpoint-checkpoint rule;
 6. measured peak memory and throughput from a synthetic dry run.
 
+### Disk-bounded artifact lifecycle
+
+Disk lifecycle is a required conversion constraint, not an optional cleanup.
+The 2026-08-23 preflight found 41 GiB available on the data volume. That leaves
+no defensible operating headroom for the planning estimates of the source bf16
+weights, converted MLX 4-bit base, fused fp16/GGUF intermediate, and final
+Q4_K_M artifacts to coexist, and actual binary sizes may exceed the estimate.
+Actual byte sizes, rather than these estimates, must be recorded in the run
+manifest.
+
+Every large stage uses a task-specific ignored path. The shared Hugging Face
+cache, restricted corpus, benchmark, split, calibration reservation, tokenizer,
+license, configuration, adapters, and final required evaluation artifacts are
+never cleanup targets. For each regenerable model intermediate, the required
+order is:
+
+1. record the exact source revision, command, tool versions, parameters, byte
+   size, and SHA-256;
+2. build the downstream artifact into a distinct explicit path;
+3. verify the downstream hash and perform its applicable load or numerical
+   compatibility check;
+4. durably write and re-read the conversion manifest;
+5. delete only the now-regenerable upstream intermediate by its resolved exact
+   task path, then record the deletion and recovery recipe.
+
+A hash without a verified downstream artifact and recovery recipe is not
+sufficient authorization to delete. Moving an intermediate to Trash does not
+count because it does not release the required space. The source conversion is
+shared by untuned and tuned runs rather than duplicated. Runtime-A untuned and
+tuned fused/GGUF artifacts may be produced, evaluated, hashed, and retired
+sequentially; they need not coexist once their immutable predictions and run
+records have passed validation. No deletion occurs merely because this policy
+is documented: each execution still resolves and reviews the exact target.
+
 The public CPU package and local MLX training environment remain separate, but
 P5 does not introduce a second lock system. A reviewed `requirements-mlx.txt`
 with exact versions, together with the model/conversion/run manifest, is the
@@ -107,6 +141,17 @@ same prompt, context policy, output contract, decoding route, and evaluation
 split as the tuned adapter. Existing Ollama Llama-3.1-8B structured and
 long-context runs use a different model artifact/runtime/input policy and
 remain reference lines, not the causal estimate of SFT gain.
+
+Because the old Ollama reference and the new primary chain share the Llama 3.1
+8B Instruct family, the already-required untuned validation run provides a
+useful conversion-health diagnostic at no additional inference run. Broadly
+consistent behavior is expected, but numerical equivalence is not: the old
+artifact is Ollama Q4_K_M, while the new source conversion, runtime, prompt
+rendering, and patient-question input policy may differ. A material discrepancy
+triggers inspection of conversion, quantization, tokenizer/chat template,
+runtime, prompt, and input-policy provenance before interpreting model quality.
+This is diagnostic only, has no retrospective pass threshold, and may not
+replace the matched untuned-8B versus tuned-8B primary comparison.
 
 Deployment is decided by an ordered compatibility test:
 
@@ -162,6 +207,16 @@ fixed schema-derived output reserve. Synthetic memory dry-runs use that total
 sequence length, not the bare note length. The tokenizer, chat template,
 length tier, and complete-chunk truncation rule are frozen before citation
 visibility and D/E coverage are computed.
+
+The synthetic memory/throughput gate must exercise the exact context tier
+selected by that owner-only complete-sequence report, including the same chat
+template, instruction, question, schema overhead, visible complete chunks, and
+fixed output reserve. Passing a shorter tier does not close the gate. If the
+length-selected tier fails on the 24 GB machine, the 8B route fails as a whole
+and enters the separately reviewed fallback procedure; the length report and
+memory report may not be declared independently successful while their joint
+configuration is infeasible. The failure cannot be hidden by post-hoc chunk
+slicing, label-informed selection, or a silent context reduction.
 
 ## Evidence-ID supervision
 

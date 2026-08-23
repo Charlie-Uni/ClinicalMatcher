@@ -626,6 +626,14 @@ trade-off and do not hide unresolved clinical information.
     access, source revision, tokenizer/config hashes, and the exact chat-template
     hash are now verified. This does not substitute for the 8B conversion or
     synthetic memory/throughput dry run.
+  - Progress: the 41 GiB disk preflight makes sequential hash/verify/manifest/
+    delete handling mandatory for regenerable conversion intermediates; shared
+    caches, restricted data, tokenizer/license files, adapters, and required
+    evaluation artifacts are never cleanup targets. The memory dry run must
+    test the exact train-fit-length-selected context tier; a shorter passing
+    tier cannot close P5.1. The prior Ollama Q4_K_M validation result is only a
+    conversion-health diagnostic because its artifact, runtime, and input
+    policy are not identical to the new matched untuned/tuned chain.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
