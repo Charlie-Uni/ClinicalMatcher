@@ -345,6 +345,26 @@ match for every trainable parameter. Passing those tests authorizes only a
 fresh synthetic 16K gate. If another allocation or runtime stage fails, work
 stops for another owner review; no chained parameter change is permitted.
 
+The prerequisites passed on 2026-08-24: the public suite completed 292 tests
+(two Apple-only cases skipped there), the pinned Apple-MLX loss/gradient and
+stock-trainer injection cases passed locally, public-data checks passed, and CI
+run `32645060172` was green for commit `ef3018c`. The ensuing exact gate still
+failed before its first completed micro-iteration. Its self-hashed result
+manifest is
+`1d8b751d2608a7c74f8410474fb96d99af9ba50dc1a7bf629b06347de977b720`.
+The run verified a 16,384-token untruncated row, a 544-position projected tail,
+39 supervised positions, all 112 intended LoRA modules, and the pinned loss
+module hash, then requested the identical 17,177,772,096-byte buffer against
+Metal's 14,302,248,960-byte limit. No throughput window completed.
+
+This result disproves the prior attribution of that exact allocation to the
+full-sequence vocabulary-logit tensor: restricting vocabulary projection did
+not alter the request. The size is numerically compatible with a quadratic
+16K attention-like intermediate, but the Metal error contains no allocation
+stack, so that remains an inference rather than a recorded cause. Contract
+`1.1.0` therefore does not pass the mechanism gate. P5.1 remains open, and no
+additional fallback or parameter change is authorized by this failure.
+
 ## Evidence-ID supervision
 
 ### Semantics

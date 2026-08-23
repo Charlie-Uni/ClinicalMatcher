@@ -675,6 +675,16 @@ trade-off and do not hide unresolved clinical information.
     pinned Apple-MLX test must match the native mask-prompt loss and every
     trainable-parameter gradient before a fresh exact-16K gate. Any subsequent
     failure stops for a new owner review.
+  - Revised-gate result: the exact contract `1.1.0` run failed before its first
+    completed micro-iteration and again requested the identical
+    17,177,772,096-byte allocation. Result manifest
+    `1d8b751d2608a7c74f8410474fb96d99af9ba50dc1a7bf629b06347de977b720`
+    binds the 544-position projection window, 39 supervised positions in the
+    synthetic row, the approved loss-module hash, all 112 LoRA targets, and the
+    unchanged Metal limit. This falsifies the earlier attribution of that exact
+    allocation to full-sequence vocabulary logits; the allocator did not expose
+    enough provenance to prove the next source. No throughput was produced, no
+    further fallback is selected, and P5.1 remains stopped for owner review.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
