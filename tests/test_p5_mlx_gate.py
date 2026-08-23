@@ -136,9 +136,25 @@ class P5MLXGateTests(unittest.TestCase):
                     mlx_lm_version="0.31.3",
                     python_version="3.11.16",
                     load_check_passed=True,
+                    tokenizer_compatibility={
+                        "method": "frozen_16384_synthetic_probe_v1",
+                        "rendered_tokens": 16384,
+                        "source_token_ids_sha256": "a" * 64,
+                        "converted_token_ids_sha256": "a" * 64,
+                        "source_chat_template_sha256": "b" * 64,
+                        "converted_chat_template_sha256": "b" * 64,
+                        "exact_token_ids_equal": True,
+                        "chat_template_equal": True,
+                    },
                     generated_at="2026-08-23T00:00:00Z",
                 )
             validate_p5_mlx_model_artifact_manifest(manifest)
+            incompatible = copy.deepcopy(manifest)
+            incompatible["converted"]["tokenizer_compatibility"][
+                "exact_token_ids_equal"
+            ] = False
+            with self.assertRaisesRegex(P5MLXGateError, "token IDs differ"):
+                validate_p5_mlx_model_artifact_manifest(incompatible)
             self.assertIn(
                 "tokenizer.json", manifest["source_deletion_policy"]["retain"]
             )

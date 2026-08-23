@@ -283,6 +283,7 @@ def build_p5_mlx_model_artifact_manifest(
     mlx_lm_version: str,
     python_version: str,
     load_check_passed: bool,
+    tokenizer_compatibility: Mapping[str, Any],
     generated_at: str | None = None,
 ) -> Dict[str, Any]:
     contract = load_p5_mlx_gate_contract()
@@ -310,18 +311,6 @@ def build_p5_mlx_model_artifact_manifest(
         path.endswith(".safetensors") for path in converted_files
     ):
         raise P5MLXGateError("Converted MLX artifact is incomplete")
-    for relative in (
-        "generation_config.json",
-        "special_tokens_map.json",
-        "tokenizer.json",
-        "tokenizer_config.json",
-    ):
-        converted_path = converted_directory / relative
-        expected_sha256 = length_contract["tokenizer"]["files"][relative]
-        if not converted_path.is_file() or sha256_path(converted_path) != expected_sha256:
-            raise P5MLXGateError(
-                f"Converted tokenizer file differs from the frozen pin: {relative}"
-            )
     config = json.loads((converted_directory / "config.json").read_text("utf-8"))
     if config.get("quantization") != {
         "group_size": contract["quantization"]["group_size"],
@@ -373,6 +362,7 @@ def build_p5_mlx_model_artifact_manifest(
             "inventory_sha256": inventory_sha256(converted_inventory),
             "quantization": dict(contract["quantization"]),
             "load_check": "passed",
+            "tokenizer_compatibility": dict(tokenizer_compatibility),
         },
         "source_deletion_policy": {
             "allowed_after_gate": source_weight_files,
@@ -448,6 +438,32 @@ def validate_p5_mlx_model_artifact_manifest(document: Mapping[str, Any]) -> None
         raise P5MLXGateError("MLX artifact quantization differs from the gate")
     if document["converted"].get("load_check") != "passed":
         raise P5MLXGateError("MLX artifact load check did not pass")
+    compatibility = document["converted"].get("tokenizer_compatibility")
+    if not isinstance(compatibility, Mapping) or set(compatibility) != {
+        "method",
+        "rendered_tokens",
+        "source_token_ids_sha256",
+        "converted_token_ids_sha256",
+        "source_chat_template_sha256",
+        "converted_chat_template_sha256",
+        "exact_token_ids_equal",
+        "chat_template_equal",
+    }:
+        raise P5MLXGateError("MLX tokenizer compatibility record is incomplete")
+    if compatibility["method"] != "frozen_16384_synthetic_probe_v1":
+        raise P5MLXGateError("MLX tokenizer compatibility method differs")
+    if compatibility["rendered_tokens"] != 16384:
+        raise P5MLXGateError("MLX tokenizer probe did not exercise 16,384 tokens")
+    if compatibility["exact_token_ids_equal"] is not True or (
+        compatibility["source_token_ids_sha256"]
+        != compatibility["converted_token_ids_sha256"]
+    ):
+        raise P5MLXGateError("Converted tokenizer token IDs differ from source")
+    if compatibility["chat_template_equal"] is not True or (
+        compatibility["source_chat_template_sha256"]
+        != compatibility["converted_chat_template_sha256"]
+    ):
+        raise P5MLXGateError("Converted chat template differs from source")
     policy = document["source_deletion_policy"]
     if policy.get("whole_cache_purge") is not False:
         raise P5MLXGateError("Whole-cache deletion is prohibited")

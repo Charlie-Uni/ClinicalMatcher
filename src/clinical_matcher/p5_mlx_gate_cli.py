@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import importlib.metadata
 import json
 import os
@@ -23,6 +24,7 @@ from .p5_mlx_gate import (
     verify_directory_inventory,
     write_owner_only_json,
 )
+from .apixaban_sft_length import load_frozen_apixaban_sft_tokenizer
 
 
 def _load_json(path: Path) -> Dict[str, Any]:
@@ -71,12 +73,61 @@ def _load_mlx_model(model_directory: Path):
     return model, tokenizer, mx.get_peak_memory() / 1e9
 
 
+def _rendered_token_ids(tokenizer: Any, messages: Sequence[Dict[str, str]]) -> list[int]:
+    rendered = tokenizer.apply_chat_template(
+        list(messages), tokenize=True, add_generation_prompt=False
+    )
+    if isinstance(rendered, dict):
+        rendered = rendered.get("input_ids")
+    if hasattr(rendered, "tolist"):
+        rendered = rendered.tolist()
+    if not isinstance(rendered, list) or not all(
+        isinstance(token, int) for token in rendered
+    ):
+        raise P5MLXGateError("Tokenizer compatibility probe returned invalid IDs")
+    return rendered
+
+
+def _token_id_sha256(token_ids: Sequence[int]) -> str:
+    return hashlib.sha256(
+        json.dumps(list(token_ids), separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+
+
+def _tokenizer_compatibility(
+    source_directory: Path, converted_tokenizer: Any
+) -> Dict[str, Any]:
+    source_tokenizer = load_frozen_apixaban_sft_tokenizer(source_directory)
+    rows, exact_length = build_exact_length_synthetic_gate_rows(
+        source_tokenizer, row_count=1
+    )
+    messages = rows[0]["messages"]
+    source_ids = _rendered_token_ids(source_tokenizer, messages)
+    converted_ids = _rendered_token_ids(converted_tokenizer, messages)
+    source_template = source_tokenizer.chat_template or ""
+    converted_template = converted_tokenizer.chat_template or ""
+    return {
+        "method": "frozen_16384_synthetic_probe_v1",
+        "rendered_tokens": exact_length,
+        "source_token_ids_sha256": _token_id_sha256(source_ids),
+        "converted_token_ids_sha256": _token_id_sha256(converted_ids),
+        "source_chat_template_sha256": hashlib.sha256(
+            source_template.encode("utf-8")
+        ).hexdigest(),
+        "converted_chat_template_sha256": hashlib.sha256(
+            converted_template.encode("utf-8")
+        ).hexdigest(),
+        "exact_token_ids_equal": source_ids == converted_ids,
+        "chat_template_equal": source_template == converted_template,
+    }
+
+
 def create_model_manifest(
     source_directory: Path,
     converted_directory: Path,
     output_path: Path,
 ) -> Dict[str, Any]:
-    model, _, _ = _load_mlx_model(converted_directory)
+    model, converted_tokenizer, _ = _load_mlx_model(converted_directory)
     del model
     versions = _versions()
     manifest = build_p5_mlx_model_artifact_manifest(
@@ -86,6 +137,9 @@ def create_model_manifest(
         mlx_lm_version=versions["mlx_lm"],
         python_version=versions["python"],
         load_check_passed=True,
+        tokenizer_compatibility=_tokenizer_compatibility(
+            source_directory, converted_tokenizer
+        ),
     )
     write_owner_only_json(manifest, output_path)
     persisted = _load_json(output_path)
