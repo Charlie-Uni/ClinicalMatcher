@@ -22,6 +22,7 @@ from .p5_mlx_gate import (
     load_p5_mlx_8k_probe_contract,
     load_p5_mlx_gate_contract,
     p5_mlx_execution_contract_sha256,
+    sha256_path,
     validate_p5_mlx_model_artifact_manifest,
     verify_p5_mlx_completion_loss_module,
     verify_directory_inventory,
@@ -36,6 +37,12 @@ def _load_json(path: Path) -> Dict[str, Any]:
     if not isinstance(document, dict):
         raise P5MLXGateError(f"Expected a JSON object: {path}")
     return document
+
+
+NATIVE_METAL_OOM_MESSAGE = (
+    "[METAL] Command buffer execution failed: Insufficient Memory "
+    "(00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory)"
+)
 
 
 def _write_owner_only_jsonl(rows: Sequence[Dict[str, Any]], path: Path) -> None:
@@ -77,6 +84,85 @@ def _tracked_worktree_clean() -> bool:
     if unstaged.returncode not in {0, 1} or staged.returncode not in {0, 1}:
         raise P5MLXGateError("Cannot inspect tracked worktree state")
     return unstaged.returncode == 0 and staged.returncode == 0
+
+
+def record_8k_native_abort(output_directory: Path) -> Dict[str, Any]:
+    preflight_path = output_directory / "preflight.json"
+    synthetic_path = output_directory / "synthetic-train.jsonl"
+    adapter_config_path = output_directory / "adapters" / "adapter_config.json"
+    result_path = output_directory / "gate-result.json"
+    if result_path.exists():
+        raise FileExistsError(f"Gate result already exists: {result_path}")
+    for path in (preflight_path, synthetic_path, adapter_config_path):
+        if not path.is_file() or path.is_symlink():
+            raise P5MLXGateError(f"Native-abort record requires regular file: {path}")
+    preflight = _load_json(preflight_path)
+    if preflight.get("preflight_sha256") != _self_hash(
+        preflight, "preflight_sha256"
+    ):
+        raise P5MLXGateError("8K probe preflight hash differs")
+    contract = load_p5_mlx_8k_probe_contract()
+    if preflight.get("probe_contract_sha256") != p5_mlx_execution_contract_sha256(
+        contract
+    ):
+        raise P5MLXGateError("8K probe preflight contract hash differs")
+    if preflight.get("training_shape") != contract["training_shape"]:
+        raise P5MLXGateError("8K probe preflight training shape differs")
+    if preflight.get("environment") != contract["environment"]:
+        raise P5MLXGateError("8K probe preflight environment differs")
+    if preflight.get("tracked_worktree_clean") is not True:
+        raise P5MLXGateError("8K probe did not start from a clean tracked worktree")
+    tracked_worktree_clean = _tracked_worktree_clean()
+    if not tracked_worktree_clean:
+        raise P5MLXGateError("Native-abort recorder requires a clean tracked worktree")
+    partial_inventory = [
+        {
+            "path": path.relative_to(output_directory).as_posix(),
+            "bytes": path.stat().st_size,
+            "sha256": sha256_path(path),
+        }
+        for path in (preflight_path, synthetic_path, adapter_config_path)
+    ]
+    result: Dict[str, Any] = {
+        "gate_result_version": "1.0.0",
+        "generated_at": _utc_now(),
+        "status": "failed_native_process_abort",
+        "scope": "synthetic_8k_feasibility_probe_only_not_policy_revision",
+        "probe_contract_sha256": preflight["probe_contract_sha256"],
+        "preflight_sha256": preflight["preflight_sha256"],
+        "model_artifact_manifest_sha256": preflight[
+            "model_artifact_manifest_sha256"
+        ],
+        "probe_implementation_commit": preflight["implementation_commit"],
+        "recorder_implementation_commit": current_git_commit(),
+        "tracked_worktree_clean": tracked_worktree_clean,
+        "environment": dict(preflight["environment"]),
+        "training_shape": dict(preflight["training_shape"]),
+        "loss_implementation": dict(preflight["loss_implementation"]),
+        "observed_loss_module_sha256": preflight[
+            "observed_loss_module_sha256"
+        ],
+        "partial_artifact_inventory": partial_inventory,
+        "partial_artifact_inventory_sha256": inventory_sha256(partial_inventory),
+        "training_reports": [],
+        "peak_memory_gb": None,
+        "reference_budget_projection": None,
+        "failure": {
+            "type": "native_metal_command_buffer_out_of_memory",
+            "process_exit_code": 134,
+            "signal": "SIGABRT",
+            "message": NATIVE_METAL_OOM_MESSAGE,
+            "observation_source": (
+                "operator_recorded_from_terminal_after_uncatchable_native_abort"
+            ),
+            "no_completed_throughput_window": True,
+            "single_buffer_limit_error_observed": False,
+        },
+        "manifest_sha256": "pending",
+    }
+    result["manifest_sha256"] = _self_hash(result)
+    write_owner_only_json(result, result_path)
+    return result
 
 
 def _load_mlx_model(model_directory: Path):
@@ -558,6 +644,8 @@ def build_parser() -> argparse.ArgumentParser:
     probe.add_argument("--converted-model", type=Path, required=True)
     probe.add_argument("--model-manifest", type=Path, required=True)
     probe.add_argument("--output-dir", type=Path, required=True)
+    abort = subparsers.add_parser("record-8k-native-abort")
+    abort.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -570,6 +658,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print(
             "Pinned MLX model manifest written: "
             f"{args.output} ({manifest['manifest_sha256']})"
+        )
+        return 0
+    if args.command == "record-8k-native-abort":
+        result = record_8k_native_abort(args.output_dir)
+        print(
+            "8K native-abort result recorded: "
+            f"{args.output_dir / 'gate-result.json'} "
+            f"({result['manifest_sha256']})"
         )
         return 0
     contract = (

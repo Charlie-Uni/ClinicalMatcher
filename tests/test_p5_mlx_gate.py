@@ -10,12 +10,14 @@ from unittest.mock import patch
 
 from clinical_matcher.p5_mlx_gate import (
     P5MLXGateError,
+    _self_hash,
     build_exact_length_synthetic_gate_rows,
     build_p5_mlx_model_artifact_manifest,
     inventory_directory,
     jsonl_sha256,
     load_p5_mlx_8k_probe_contract,
     load_p5_mlx_gate_contract,
+    p5_mlx_execution_contract_sha256,
     validate_p5_mlx_gate_contract,
     validate_p5_mlx_8k_probe_contract,
     validate_p5_mlx_model_artifact_manifest,
@@ -29,6 +31,7 @@ from clinical_matcher.p5_mlx_gate_cli import (
     _rendered_token_ids,
     _training_namespace,
     _tracked_worktree_clean,
+    record_8k_native_abort,
 )
 
 
@@ -177,6 +180,47 @@ class P5MLXGateTests(unittest.TestCase):
             side_effect=[dirty, clean],
         ):
             self.assertFalse(_tracked_worktree_clean())
+
+    def test_native_abort_record_is_hash_bound_and_owner_only(self):
+        contract = load_p5_mlx_8k_probe_contract()
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            (output / "adapters").mkdir()
+            preflight = {
+                "preflight_sha256": "pending",
+                "probe_contract_sha256": p5_mlx_execution_contract_sha256(
+                    contract
+                ),
+                "model_artifact_manifest_sha256": "a" * 64,
+                "implementation_commit": "b" * 40,
+                "tracked_worktree_clean": True,
+                "environment": dict(contract["environment"]),
+                "training_shape": dict(contract["training_shape"]),
+                "loss_implementation": dict(contract["loss_implementation"]),
+                "observed_loss_module_sha256": contract["loss_implementation"][
+                    "module_sha256"
+                ],
+            }
+            preflight["preflight_sha256"] = _self_hash(
+                preflight, "preflight_sha256"
+            )
+            (output / "preflight.json").write_text(json.dumps(preflight))
+            (output / "synthetic-train.jsonl").write_text("{}\n")
+            (output / "adapters" / "adapter_config.json").write_text("{}")
+            with patch(
+                "clinical_matcher.p5_mlx_gate_cli._tracked_worktree_clean",
+                return_value=True,
+            ), patch(
+                "clinical_matcher.p5_mlx_gate_cli.current_git_commit",
+                return_value="c" * 40,
+            ):
+                result = record_8k_native_abort(output)
+            self.assertEqual("failed_native_process_abort", result["status"])
+            self.assertEqual([], result["training_reports"])
+            self.assertIsNone(result["peak_memory_gb"])
+            self.assertEqual(0o600, (output / "gate-result.json").stat().st_mode & 0o777)
+            with self.assertRaises(FileExistsError):
+                record_8k_native_abort(output)
 
     def test_artifact_manifest_binds_files_and_deletion_allowlist(self):
         with tempfile.TemporaryDirectory() as directory:
