@@ -1,7 +1,7 @@
 # P5 training decision record
 
-Status: **decision procedure frozen; P5.1 remains open until the recorded gates
-pass.**
+Status: **real SFT deferred after the frozen local feasibility gates failed;
+the reusable training infrastructure remains retained.**
 
 This record defines the P5 LoRA-SFT path before restricted training data are
 exported. It does not claim that training, evidence relevance evaluation, or a
@@ -368,8 +368,9 @@ full-sequence vocabulary-logit tensor: restricting vocabulary projection did
 not alter the request. The size is numerically compatible with a quadratic
 16K attention-like intermediate, but the Metal error contains no allocation
 stack, so that remains an inference rather than a recorded cause. Contract
-`1.1.0` therefore does not pass the mechanism gate. P5.1 remains open, and no
-additional fallback or parameter change is authorized by this failure.
+`1.1.0` therefore did not pass the mechanism gate. At that stage P5.1 returned
+to owner review, and no additional fallback or parameter change was authorized
+by this failure.
 
 ### Approved attention-allocation diagnostic
 
@@ -438,8 +439,8 @@ path for this gate.
 The completion-only vocabulary projection remains a tested, semantically
 equivalent optimization and is not reverted, but it cannot remove this earlier
 attention allocation. Under the audited official MLX implementations, local
-8B + 16K training remains infeasible on this machine. P5.1 remains open and
-returns to owner review; this result selects no shorter context, new execution
+8B + 16K training remains infeasible on this machine. At that stage P5.1
+returned to owner review; this result selected no shorter context, new execution
 environment, different model, or postponement policy.
 
 ### Owner-selected staged 8K investigation
@@ -486,6 +487,58 @@ before inspecting the owner-only length report. The 5%/63-row and per-question
 thresholds remain frozen but unevaluated, the input policy remains unchanged,
 and no 8K input-plan version or silver-grid revision is authorized. P5.1 returns
 to owner review; neither a retry nor postponement follows automatically.
+
+### Owner decision: defer real SFT
+
+On 2026-08-24 the owner selected the explicit postponement path. The deferred
+configuration family is narrowly scoped to **Llama-3.1-8B-Instruct QLoRA at
+16,384 or 8,192 tokens through the audited MLX Metal training paths up to
+MLX 0.32.1 on this M3 machine with 24 GB unified memory**. The actual full
+training-gate failures were executed with pinned `mlx==0.31.2` and
+`mlx-lm==0.31.3`: the stock 16K failure manifest is
+`43937dea18fe54609c549edfd69ff8bedacfebd2e9131b5b0d8d2d79d080c2d5`,
+the completion-only 16K failure manifest is
+`1d8b751d2608a7c74f8410474fb96d99af9ba50dc1a7bf629b06347de977b720`,
+and the completion-only 8K failure manifest is
+`926b074c4901e9ff394d2791454a436651b8fc44ac610200cee9e42f4ef22799`.
+MLX 0.32.1 was exercised by the isolated gradient probe and inspected in the
+hash-bound source audit; it was not a third full training run. That audit found
+no memory-efficient Metal SDPA backward path that would invalidate the observed
+16K attention boundary.
+
+This decision does **not** establish that local training in general, Apple
+Silicon training in general, or SFT in general is infeasible. It establishes a
+reproducible negative feasibility result only for the configuration family and
+machine above: 16K reaches the exact single-buffer boundary of the explicit
+grouped-query attention-score tensor, while 8K passes that individual
+allocation size but aborts on aggregate device memory before a measurement
+window completes.
+
+Real SFT may restart only after a new owner-reviewed contract is triggered by
+at least one of the following:
+
+1. a compliant execution environment with an acceptable zero-retention data
+   boundary becomes available;
+2. an official MLX release provides a memory-efficient SDPA backward path for
+   this Metal training route, confirmed by a new source audit and exact gate;
+3. the owner approves an alternative base-model and context-tier contract,
+   including its matched untuned baseline and fresh feasibility gate.
+
+Two remaining local changes are explicitly not selected now. A 4K context may
+fit aggregate memory, but using it would be a third erosion of the frozen
+complete-input policy. Because the owner-only length report was deliberately
+not inspected after the 8K failure, a 4K exclusion rate above the frozen 5%
+screen is a risk inference, not an observed result. A non-gated 3B model at 8K,
+such as Qwen2.5-3B, is also a technically plausible future contract, but it
+would reopen the model-lineage decision and require a new matched untuned
+baseline. Neither option is authorized without a new owner review.
+
+The completed exporter, calibration reservation, silver-audit gate, length
+contract, conversion manifests, and equivalence-tested completion-only loss
+remain verified project assets. Deferral does not convert them into completed
+training evidence, and none may be described as a successful real SFT run.
+The active implementation mainline now moves to public eligibility-criteria
+decomposition; no restricted patient data are required for that work.
 
 ## Evidence-ID supervision
 
@@ -710,9 +763,11 @@ after all configuration decisions. P5 and P7 reuse the same immutable test
 artifacts; no second test inference, checkpoint swap, threshold change, or
 component replacement is allowed after results are visible.
 
-## Closure checklist
+## Deferred-restart checklist
 
-P5.1 stays unchecked until all of the following are recorded and verified:
+P5.1 is closed as an owner-approved deferral decision. A future real SFT run
+remains prohibited until a restart condition above is approved and every
+applicable item below is recorded or revalidated for the new contract:
 
 - complete MLX conversion and training pins;
 - synthetic memory/throughput feasibility result;

@@ -577,7 +577,7 @@ trade-off and do not hide unresolved clinical information.
 
 ## P5 — MedicalGPT-compatible LoRA-SFT adaptation
 
-- [ ] **P5.1 Freeze the training decision.** Select one license-compatible
+- [x] **P5.1 Freeze the training decision.** Select one license-compatible
   local base model, LoRA or QLoRA precision, local hardware budget, context
   policy, and success criterion against the frozen-model baseline.
   - Entry condition: P2 and the chosen P3/P4 baseline are complete.
@@ -585,14 +585,14 @@ trade-off and do not hide unresolved clinical information.
     license, or expected value is inadequate.
   - Verify: decision record pins model/tokenizer revisions, license, memory
     estimate, training budget, and metric required to justify retention.
-  - Current decision: the full pre-training procedure is recorded in
+  - Final decision: the full pre-training procedure and its failed feasibility
+    evidence are recorded in
     `docs/P5_TRAINING_DECISION.md`. The primary route is local MLX QLoRA with
     pinned Llama-3.1-8B-Instruct and an untuned same-base comparison. Real
     restricted data and derived adapters remain local; Colab is synthetic
-    mechanism testing only. P5.1 remains open until the conversion chain,
-    synthetic memory result, complete threshold gate, train-fit-only
-    complete-sequence input policy, training budget, runtime route, and
-    row-filter tests pass.
+    mechanism testing only. The owner has now deferred real SFT after the exact
+    16K and staged 8K gates failed on the local M3 24 GB configuration. P5.1 is
+    complete as a frozen **defer** decision, not as a successful training run.
   - Progress: calibration reservation contract `1.0.0` implements a fixed
     source-bound SHA-256 ranking over the frozen train membership, requires an
     explicit count, writes owner-only output, and has no validation/test label
@@ -646,8 +646,8 @@ trade-off and do not hide unresolved clinical information.
   - Real local execution: the owner-only train-fit length report and bound
     input plan were generated with commit `2d938bb` and selected the 16,384
     token tier. Neither restricted artifact nor its aggregate internals enter
-    Git. P5.1 remains open because the 8B 4-bit route must now pass its
-    synthetic memory/throughput dry run at exactly 16,384 tokens.
+    Git. At that stage P5.1 remained open because the 8B 4-bit route still had
+    to pass its synthetic memory/throughput dry run at exactly 16,384 tokens.
   - Approved 16K gate: contract `p5-mlx-qlora-16k-gate/1.0.0` pins affine
     4-bit/group-64 conversion; rank-8/scale-20/dropout-0 LoRA over the last 16
     layers and seven explicit Llama projection suffixes; Adam with explicit
@@ -662,8 +662,9 @@ trade-off and do not hide unresolved clinical information.
     resolved LoRA modules. Stock MLX-LM training then failed before its first
     completed micro-iteration because a requested 17,177,772,096-byte buffer
     exceeded Metal's 14,302,248,960-byte single-buffer limit. No throughput
-    estimate was produced. P5.1 remains open and the exact 8B + 16K + default
-    full-logits-loss route is rejected; that failure alone selected no fallback.
+    estimate was produced. At that stage the exact 8B + 16K + default
+    full-logits-loss route was rejected and P5.1 returned to owner review; that
+    failure alone selected no fallback.
   - Approved fallback revision: after separate owner review, gate contract
     `1.1.0` keeps the 8B model, complete 16K input, whole-completion supervision,
     optimizer, LoRA parameters, and seed unchanged. It injects a content-hashed
@@ -684,7 +685,7 @@ trade-off and do not hide unresolved clinical information.
     unchanged Metal limit. This falsifies the earlier attribution of that exact
     allocation to full-sequence vocabulary logits; the allocator did not expose
     enough provenance to prove the next source. No throughput was produced, no
-    further fallback is selected, and P5.1 remains stopped for owner review.
+    further fallback was selected, and P5.1 returned to owner review.
   - [x] Approved allocation-source diagnostic: with synthetic arrays only,
     verify the predeclared `2 * 32 * (L - 1)^2` byte prediction at the 4K, 8K,
     and 16K tiers; execute a small isolated SDPA gradient probe; and audit the
@@ -699,8 +700,8 @@ trade-off and do not hide unresolved clinical information.
     hash-bound official-source audit found that pinned, latest-stable, and
     current-main Metal training/VJP paths all retain the unfused fallback.
     The historical logits attribution now has an additive correction in
-    `docs/P5_TRAINING_DECISION.md`. P5.1 remains open for owner review; no
-    fallback was selected.
+    `docs/P5_TRAINING_DECISION.md`. At that stage P5.1 returned to owner review;
+    no fallback was selected.
   - [x] Staged 8K investigation, step 1: run the synthetic-only 8,192-token
     completion-loss probe with every other frozen training parameter unchanged.
     Record peak memory, both throughput windows, and the conservative projected
@@ -719,19 +720,39 @@ trade-off and do not hide unresolved clinical information.
     coverage gate. The threshold is frozen in contract `1.0.0`, but its
     owner-only report evaluation was deliberately not run because step 1
     failed.
-  - [ ] Staged 8K investigation, step 3: only if steps 1 and 2 pass, issue new
+  - [x] Staged 8K investigation, step 3 disposition: only if steps 1 and 2
+    pass, issue new
     input-policy/input-plan versions, exclude whole overflowing training rows
     while keeping the 1,265-row reporting denominator, align the silver
     candidate grid, preserve holdout measured abstention without truncation,
     and run a newly frozen exact 8K formal gate. A compliant GPU environment
     remains the conditional route back to the unchanged 16K contract.
-    Status: blocked on a new owner decision after the failed 8K feasibility
-    probe; no policy, input plan, silver grid, or restricted artifact changed.
+    Status: closed without execution because step 1 failed and the owner chose
+    formal postponement. No policy, input plan, silver grid, or restricted
+    artifact changed.
+  - Deferral boundary: the affected family is Llama-3.1-8B-Instruct QLoRA at
+    16,384 or 8,192 tokens through audited MLX Metal paths up to 0.32.1 on this
+    M3 24 GB machine. Full training failures were run on pinned MLX 0.31.2;
+    0.32.1 was an isolated gradient probe and source audit, not a full training
+    run. This is not evidence that all local training, Apple Silicon training,
+    or SFT is infeasible.
+  - Restart conditions: a compliant zero-retention execution environment; an
+    official MLX memory-efficient SDPA backward path for this training route;
+    or an owner-approved alternative base-model/context-tier contract with a
+    matched untuned baseline and fresh gate.
+  - Rejected for the current run: 4K would further erode the frozen complete
+    input policy, and its likely exclusion risk remains an inference because
+    the restricted length report was not inspected after the 8K failure. A
+    non-gated 3B-at-8K route remains a future candidate contract but would
+    reopen model selection and matched-baseline work; it is not silently
+    selected now.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
   canonical JSONL, then derive the MLX-LM training representation and the
   MedicalGPT-compatible export.
+  - Status: implementation assets are retained, but real export is deferred
+    with the P5.1 training family until a restart condition is approved.
   - Entry condition: the split manifest is frozen and MedicalGPT remains pinned
     to the reviewed commit in `docs/REFERENCES.md`.
   - Constraints: export train only for fitting; validation is separate; test
@@ -780,6 +801,7 @@ trade-off and do not hide unresolved clinical information.
   base model, adapter config, seed, optimizer, schedule, precision, checkpoint,
   MLX and MLX-LM versions. Record Transformers, PEFT, MedicalGPT, and CUDA only
   for a synthetic compatibility run that actually uses them.
+  - Status: deferred; no successful real SFT run is claimed.
   - Entry condition: P5.1 and P5.2 pass; restricted data remains local.
   - Constraints: no unrestricted tracking service receives prompts or patient
     text; training loss alone is not evidence of benefit.
@@ -794,6 +816,7 @@ trade-off and do not hide unresolved clinical information.
   existing Ollama-8B/RAG references, and the primary matched untuned-8B versus
   tuned-8B pair on validation. Treat P4.3/verifier as pre/post deterministic
   projection, not a separate experimental arm.
+  - Status: deferred because no retained real adapter exists.
   - Entry condition: model and retriever selection are frozen on validation.
   - Constraints: disclose overfitting, invalid output, unknown recall, latency,
     and memory; remove LoRA from the final default if it does not provide a
@@ -806,6 +829,83 @@ trade-off and do not hide unresolved clinical information.
 
 Acceptance: LoRA is described as a successful contribution only if it beats a
 strong frozen baseline without degrading evidence linkage or unknown handling.
+
+---
+
+## P5D — Public eligibility-criteria decomposition (active mainline)
+
+- [ ] **P5D.1 Freeze the public decomposition benchmark contract.** Define the
+  prediction unit as one immutable ClinicalTrials.gov criterion text block to
+  one frozen-schema `ATOM/ALL/ANY/NOT` expression tree.
+  - Entry condition: use only a verified, immutable public trial snapshot; no
+    live API response is an evaluation input.
+  - Constraints: freeze criterion selection, sample size, reviewer count,
+    annotation instructions, matching rules, and split policy before any model
+    output is inspected. These choices require owner approval and may not be
+    inferred from model convenience.
+  - Verify: every item binds NCT ID, study version/update date, eligibility and
+    protocol hashes, criterion ID/type, exact source text, and source span.
+
+- [ ] **P5D.2 Implement a versioned decomposition-gold contract and offline
+  annotation workflow.** Represent independently human-produced expression
+  trees with atom source spans and typed condition fields.
+  - Entry condition: P5D.1 is frozen.
+  - Constraints: public trial text and its human annotations may enter Git;
+    patient records, MIMIC text, and patient-derived labels are outside this
+    task. Gold must be created without exposing annotators to model output.
+  - Verify: strict JSON Schema plus semantic validation enforce expression
+    arity, unique condition IDs, exact source-span slicing, criterion-source
+    identity, typed operator/value compatibility, and annotation provenance.
+
+- [ ] **P5D.3 Implement the independent decomposition evaluator.** Report atom
+  precision/recall, operator-structure agreement, and source-span alignment.
+  - Entry condition: matching and normalization rules are frozen before gold
+    or predictions are scored.
+  - Constraints: a tree merely loading or executing in the verifier is a
+    validity floor, not evidence of semantic correctness. Do not substitute
+    verifier-pass rate for gold comparison or select matching rules after
+    seeing model errors.
+  - Verify: synthetic tests cover exact matches, missing/extra atoms, wrong
+    comparison/value/type, wrong `ALL/ANY/NOT` structure, shifted spans, invalid
+    provenance, and empty/invalid predictions; report denominators explicitly.
+
+- [ ] **P5D.4 Build and independently annotate the approved small public gold
+  set.** Annotate source text first, then freeze and hash the resulting gold
+  artifact before model inference.
+  - Entry condition: P5D.1-P5D.3 pass and the owner has approved the workload.
+  - Constraints: annotation disagreements and reviewer limitations are
+    reported honestly; model-generated trees cannot become gold through human
+    acceptance after the fact.
+  - Verify: every selected criterion has the required annotation record, all
+    hashes and source spans revalidate, and the committed artifact passes the
+    public-data guard.
+
+- [ ] **P5D.5 Run the pinned local Llama decomposition baseline.** Use the
+  existing loopback-only Ollama Llama-3.1-8B inference route with a new frozen
+  decomposition prompt and constrained output contract.
+  - Entry condition: gold is frozen and hidden from prompt/config decisions;
+    pin the exact local model manifest, Ollama version, prompt version, seed or
+    deterministic decoding settings, and output schema.
+  - Constraints: no new base-model selection, no training, no restricted data,
+    and no external inference endpoint. Failed/invalid outputs remain measured
+    failures rather than hand-corrected predictions.
+  - Verify: a clean public run produces hash-bound machine-readable predictions
+    and a report separating schema validity from semantic gold metrics.
+
+- [ ] **P5D.6 Perform decomposition error analysis and decide retention.** Trace
+  atom omissions/additions, value/operator mistakes, logical-structure errors,
+  and span/provenance failures without changing the frozen gold or evaluator.
+  - Entry condition: P5D.5 completes once under the frozen contract.
+  - Constraints: any prompt revision is a new development run and cannot
+    overwrite prior predictions. The decomposition gold may later satisfy one
+    semantic-oracle prerequisite for X3, but it does not by itself authorize
+    GRPO or any reward design.
+  - Verify: JSON and Markdown reports reconcile, examples contain public trial
+    text only, and the keep/revise decision names the observed failure modes.
+
+Acceptance: a public criterion can be transformed into a traceable typed
+expression tree and evaluated against independently created decomposition gold;
+verifier validity and semantic accuracy remain separate claims.
 
 ---
 
@@ -879,7 +979,8 @@ from structured EHR or is honestly reported as unsupported and omitted.
 - [ ] **P7.1 Freeze one final system configuration.** Select components using
   validation results and record the exact dataset, split, code, model, prompt,
   index, verifier, threshold, and hardware specification.
-  - Entry condition: required mainline ablations are complete.
+  - Entry condition: required mainline ablations and the P5D decomposition
+    retention decision are complete.
   - Constraints: no post-test component swapping; conditional components that
     failed their keep criterion are excluded.
   - Verify: configuration hash is immutable and recreates the validation run.

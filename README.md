@@ -142,8 +142,20 @@ record, and applies the frozen source-quality and coverage gates. It rejects
 cross-patient or student-invisible citations over the complete candidate set,
 removes sampled `not_support` and `ambiguous` rows before recomputing coverage,
 and emits SFT-compatible accepted silver only after every applicable gate
-passes. Synthetic tests exercise this mechanism; real execution remains
-blocked until the input/context policy and D/E candidates are frozen locally.
+passes. Synthetic tests exercise this mechanism. Real SFT is currently deferred
+for the narrowly recorded local 8B QLoRA configuration after the exact 16K and
+8K feasibility gates failed; this is not a general claim that SFT or local
+training is infeasible. The evidence, restart conditions, and retained
+infrastructure are recorded in
+[docs/P5_TRAINING_DECISION.md](docs/P5_TRAINING_DECISION.md).
+
+The active public mainline is now eligibility-criteria decomposition:
+immutable ClinicalTrials.gov criterion text to the frozen typed
+`ATOM/ALL/ANY/NOT` expression tree. The gold-first plan keeps human annotations
+independent of model output and evaluates atom recovery, logical structure, and
+source-span alignment separately from basic schema/verifier validity. The
+benchmark contract must be owner-approved before public gold is selected or a
+local Llama baseline is run; see P5D in [TASKS.md](TASKS.md).
 
 ## Data access and reproducibility
 
