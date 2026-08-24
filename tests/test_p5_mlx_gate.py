@@ -28,6 +28,7 @@ from clinical_matcher.p5_mlx_gate_cli import (
     _assert_resolved_lora_modules,
     _rendered_token_ids,
     _training_namespace,
+    _tracked_worktree_clean,
 )
 
 
@@ -162,6 +163,20 @@ class P5MLXGateTests(unittest.TestCase):
             },
             callback.training_reports[0],
         )
+
+    def test_tracked_worktree_check_requires_both_diffs_clean(self):
+        clean = unittest.mock.Mock(returncode=0)
+        dirty = unittest.mock.Mock(returncode=1)
+        with patch(
+            "clinical_matcher.p5_mlx_gate_cli.subprocess.run",
+            side_effect=[clean, clean],
+        ):
+            self.assertTrue(_tracked_worktree_clean())
+        with patch(
+            "clinical_matcher.p5_mlx_gate_cli.subprocess.run",
+            side_effect=[dirty, clean],
+        ):
+            self.assertFalse(_tracked_worktree_clean())
 
     def test_artifact_manifest_binds_files_and_deletion_allowlist(self):
         with tempfile.TemporaryDirectory() as directory:

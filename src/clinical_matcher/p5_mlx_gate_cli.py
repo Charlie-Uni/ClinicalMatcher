@@ -4,6 +4,7 @@ import importlib.metadata
 import json
 import os
 import platform
+import subprocess
 import sys
 import types
 from pathlib import Path
@@ -27,6 +28,7 @@ from .p5_mlx_gate import (
     write_owner_only_json,
 )
 from .apixaban_sft_length import load_frozen_apixaban_sft_tokenizer
+from .splits import current_git_commit
 
 
 def _load_json(path: Path) -> Dict[str, Any]:
@@ -61,6 +63,20 @@ def _versions() -> Dict[str, str]:
         "mlx": importlib.metadata.version("mlx"),
         "mlx_lm": importlib.metadata.version("mlx-lm"),
     }
+
+
+def _tracked_worktree_clean() -> bool:
+    unstaged = subprocess.run(
+        ["git", "diff", "--quiet"], check=False, capture_output=True
+    )
+    staged = subprocess.run(
+        ["git", "diff", "--cached", "--quiet"],
+        check=False,
+        capture_output=True,
+    )
+    if unstaged.returncode not in {0, 1} or staged.returncode not in {0, 1}:
+        raise P5MLXGateError("Cannot inspect tracked worktree state")
+    return unstaged.returncode == 0 and staged.returncode == 0
 
 
 def _load_mlx_model(model_directory: Path):
@@ -337,6 +353,10 @@ def run_gate(
         if is_probe
         else "synthetic_feasibility_only_not_model_quality"
     )
+    implementation_commit = current_git_commit()
+    tracked_worktree_clean = _tracked_worktree_clean()
+    if is_probe and not tracked_worktree_clean:
+        raise P5MLXGateError("8K probe requires a clean tracked worktree")
     loss_module_sha256 = verify_p5_mlx_completion_loss_module(contract)
     model_manifest = _load_json(model_manifest_path)
     validate_p5_mlx_model_artifact_manifest(model_manifest)
@@ -359,6 +379,8 @@ def run_gate(
         "preflight_version": "1.0.0",
         "generated_at": _utc_now(),
         "status": "started",
+        "implementation_commit": implementation_commit,
+        "tracked_worktree_clean": tracked_worktree_clean,
         contract_hash_field: p5_mlx_execution_contract_sha256(contract),
         "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
         "environment": versions,
@@ -429,6 +451,8 @@ def run_gate(
             "gate_result_version": "1.0.0",
             "generated_at": _utc_now(),
             "status": "passed_mechanism_gate",
+            "implementation_commit": implementation_commit,
+            "tracked_worktree_clean": tracked_worktree_clean,
             "scope": result_scope,
             contract_hash_field: preflight[contract_hash_field],
             "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
@@ -478,6 +502,8 @@ def run_gate(
             "gate_result_version": "1.0.0",
             "generated_at": _utc_now(),
             "status": "failed",
+            "implementation_commit": implementation_commit,
+            "tracked_worktree_clean": tracked_worktree_clean,
             "scope": result_scope,
             contract_hash_field: preflight[contract_hash_field],
             "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
