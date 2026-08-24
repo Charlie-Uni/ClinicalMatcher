@@ -14,8 +14,10 @@ from clinical_matcher.p5_mlx_gate import (
     build_p5_mlx_model_artifact_manifest,
     inventory_directory,
     jsonl_sha256,
+    load_p5_mlx_8k_probe_contract,
     load_p5_mlx_gate_contract,
     validate_p5_mlx_gate_contract,
+    validate_p5_mlx_8k_probe_contract,
     validate_p5_mlx_model_artifact_manifest,
     verify_p5_mlx_completion_loss_module,
     verify_directory_inventory,
@@ -66,6 +68,25 @@ class P5MLXGateTests(unittest.TestCase):
         with self.assertRaisesRegex(P5MLXGateError, "owner approval"):
             validate_p5_mlx_gate_contract(tampered)
 
+    def test_8k_probe_freezes_scope_configuration_and_length_screen(self):
+        probe = load_p5_mlx_8k_probe_contract()
+        gate = load_p5_mlx_gate_contract()
+        self.assertEqual(8192, probe["training_shape"]["max_seq_length"])
+        self.assertFalse(probe["scope"]["changes_frozen_input_policy"])
+        self.assertFalse(probe["scope"]["authorizes_fallback"])
+        self.assertEqual(gate["lora"], probe["lora"])
+        self.assertEqual(gate["optimizer"], probe["optimizer"])
+        self.assertEqual(gate["loss_implementation"], probe["loss_implementation"])
+        self.assertEqual(63, probe["length_screen"]["maximum_overflow_rows"])
+        self.assertEqual(
+            0.05, probe["length_screen"]["maximum_overflow_fraction"]
+        )
+        self.assertTrue(probe["length_screen"]["screen_all_questions_without_labels"])
+        tampered = copy.deepcopy(probe)
+        tampered["length_screen"]["maximum_overflow_rows"] = 64
+        with self.assertRaisesRegex(P5MLXGateError, "owner approval"):
+            validate_p5_mlx_8k_probe_contract(tampered)
+
     def test_builds_exact_16384_token_synthetic_rows(self):
         rows, length = build_exact_length_synthetic_gate_rows(
             LinearSyntheticTokenizer(), row_count=4
@@ -74,6 +95,15 @@ class P5MLXGateTests(unittest.TestCase):
         self.assertEqual(4, len(rows))
         self.assertEqual(64, len(jsonl_sha256(rows)))
         self.assertNotIn("patient_id", json.dumps(rows))
+
+    def test_builds_exact_8192_token_probe_rows(self):
+        rows, length = build_exact_length_synthetic_gate_rows(
+            LinearSyntheticTokenizer(),
+            row_count=4,
+            contract=load_p5_mlx_8k_probe_contract(),
+        )
+        self.assertEqual(8192, length)
+        self.assertEqual(4, len(rows))
 
     def test_token_id_probe_accepts_transformers_mapping_result(self):
         self.assertEqual(

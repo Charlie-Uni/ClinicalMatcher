@@ -15,6 +15,7 @@ from .splits import canonical_sha256
 
 
 GATE_RESOURCE = "resources/p5-mlx-qlora-16k-gate-1.1.0.json"
+EIGHT_K_PROBE_RESOURCE = "resources/p5-mlx-qlora-8k-probe-1.0.0.json"
 
 
 class P5MLXGateError(ValueError):
@@ -25,6 +26,13 @@ def load_p5_mlx_gate_contract() -> Dict[str, Any]:
     resource = files("clinical_matcher").joinpath(GATE_RESOURCE)
     document = json.loads(resource.read_text(encoding="utf-8"))
     validate_p5_mlx_gate_contract(document)
+    return document
+
+
+def load_p5_mlx_8k_probe_contract() -> Dict[str, Any]:
+    resource = files("clinical_matcher").joinpath(EIGHT_K_PROBE_RESOURCE)
+    document = json.loads(resource.read_text(encoding="utf-8"))
+    validate_p5_mlx_8k_probe_contract(document)
     return document
 
 
@@ -141,13 +149,102 @@ def validate_p5_mlx_gate_contract(document: Mapping[str, Any]) -> None:
         raise P5MLXGateError("P5 MLX gate contract differs from owner approval")
 
 
+def validate_p5_mlx_8k_probe_contract(document: Mapping[str, Any]) -> None:
+    base = load_p5_mlx_gate_contract()
+    expected = {
+        "probe_contract_version": "1.0.0",
+        "approved_on": "2026-08-24",
+        "source_gate_contract_sha256": p5_mlx_gate_contract_sha256(base),
+        "scope": {
+            "synthetic_only": True,
+            "restricted_data_allowed": False,
+            "changes_frozen_input_policy": False,
+            "authorizes_fallback": False,
+        },
+        "evidence": {
+            "attention_diagnostic_contract_sha256": (
+                "912d3bf67ed491a86b7f03f0815152cdcfad174c0bf4359eaa4cb125d7741a8f"
+            ),
+            "allocation_result_manifest_sha256s": {
+                "4096": (
+                    "c4efb33ca479dc1bc1d3b5d05fc66bc276667770ac264124d5acc1d07ff4d470"
+                ),
+                "8192": (
+                    "3b7d81a550da8351510884f672ea5c6a0fdb8e65890705cd2270c6ce7b44243c"
+                ),
+                "16384": (
+                    "d15c756df1a48d95734ea8c66ceeeca98655cfdce520efb146eb7def977cb128"
+                ),
+            },
+        },
+        "model": dict(base["model"]),
+        "environment": dict(base["environment"]),
+        "quantization": dict(base["quantization"]),
+        "lora": dict(base["lora"]),
+        "optimizer": dict(base["optimizer"]),
+        "training_shape": {
+            **base["training_shape"],
+            "max_seq_length": 8192,
+        },
+        "dry_run": {
+            **base["dry_run"],
+            "sequence_requirement": (
+                "at_least_one_rendered_sequence_equals_8192_tokens"
+            ),
+        },
+        "loss_implementation": dict(base["loss_implementation"]),
+        "reference_budget": {
+            "grid_rows_per_epoch": 1265,
+            "seconds_per_step_rule": "maximum_of_two_report_windows",
+            "wall_clock_formula": (
+                "seconds_per_step_times_1265_divided_by_3600"
+            ),
+        },
+        "length_screen": {
+            "freeze_before_reading_owner_report": True,
+            "context_tier": 8192,
+            "original_grid_rows": 1265,
+            "maximum_overflow_fraction": 0.05,
+            "maximum_overflow_rows": 63,
+            "per_question_denominator": (
+                "original_train_fit_rows_for_that_question"
+            ),
+            "minimum_retained_fraction_per_question": 0.3,
+            "minimum_retained_rows_per_question": 5,
+            "screen_all_questions_without_labels": True,
+            "later_silver_gate_is_not_replaced": True,
+            "pass_rule": "all_overall_and_per_question_conditions_must_pass",
+        },
+        "stop_policy": (
+            "probe_and_length_screen_then_return_to_owner_review_before_revision"
+        ),
+    }
+    if dict(document) != expected:
+        raise P5MLXGateError("P5 MLX 8K probe contract differs from owner approval")
+
+
+def validate_p5_mlx_execution_contract(document: Mapping[str, Any]) -> None:
+    if "gate_contract_version" in document:
+        validate_p5_mlx_gate_contract(document)
+        return
+    if "probe_contract_version" in document:
+        validate_p5_mlx_8k_probe_contract(document)
+        return
+    raise P5MLXGateError("Unknown P5 MLX execution contract")
+
+
+def p5_mlx_execution_contract_sha256(contract: Mapping[str, Any]) -> str:
+    validate_p5_mlx_execution_contract(contract)
+    return canonical_sha256(dict(contract))
+
+
 def p5_mlx_gate_contract_sha256(contract: Mapping[str, Any]) -> str:
     validate_p5_mlx_gate_contract(contract)
     return canonical_sha256(dict(contract))
 
 
 def verify_p5_mlx_completion_loss_module(contract: Mapping[str, Any]) -> str:
-    validate_p5_mlx_gate_contract(contract)
+    validate_p5_mlx_execution_contract(contract)
     from . import p5_mlx_completion_loss
 
     module_path = Path(p5_mlx_completion_loss.__file__).resolve(strict=True)
@@ -211,8 +308,10 @@ def build_exact_length_synthetic_gate_rows(
     tokenizer: Any,
     *,
     row_count: int = 4,
+    contract: Mapping[str, Any] | None = None,
 ) -> Tuple[list[Dict[str, Any]], int]:
-    contract = load_p5_mlx_gate_contract()
+    contract = dict(contract or load_p5_mlx_gate_contract())
+    validate_p5_mlx_execution_contract(contract)
     target_length = contract["training_shape"]["max_seq_length"]
     if row_count < 1:
         raise P5MLXGateError("Synthetic gate requires at least one row")
@@ -240,7 +339,7 @@ def build_exact_length_synthetic_gate_rows(
             break
     if best_messages is None or best_length != target_length:
         raise P5MLXGateError(
-            "Could not construct an exact 16,384-token synthetic gate row"
+            f"Could not construct an exact {target_length:,}-token synthetic row"
         )
     rows = [{"messages": list(best_messages)} for _ in range(row_count)]
     return rows, best_length

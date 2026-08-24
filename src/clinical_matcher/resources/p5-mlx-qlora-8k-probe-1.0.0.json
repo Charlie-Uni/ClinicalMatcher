@@ -1,0 +1,118 @@
+{
+  "probe_contract_version": "1.0.0",
+  "approved_on": "2026-08-24",
+  "source_gate_contract_sha256": "21283e943c6f0d9a37392f89cda08c0ae5697c685ac54dbafcf2c82c2581a6dd",
+  "scope": {
+    "synthetic_only": true,
+    "restricted_data_allowed": false,
+    "changes_frozen_input_policy": false,
+    "authorizes_fallback": false
+  },
+  "evidence": {
+    "attention_diagnostic_contract_sha256": "912d3bf67ed491a86b7f03f0815152cdcfad174c0bf4359eaa4cb125d7741a8f",
+    "allocation_result_manifest_sha256s": {
+      "4096": "c4efb33ca479dc1bc1d3b5d05fc66bc276667770ac264124d5acc1d07ff4d470",
+      "8192": "3b7d81a550da8351510884f672ea5c6a0fdb8e65890705cd2270c6ce7b44243c",
+      "16384": "d15c756df1a48d95734ea8c66ceeeca98655cfdce520efb146eb7def977cb128"
+    }
+  },
+  "model": {
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+  },
+  "environment": {
+    "python": "3.11.16",
+    "mlx": "0.31.2",
+    "mlx_lm": "0.31.3"
+  },
+  "quantization": {
+    "bits": 4,
+    "group_size": 64,
+    "mode": "affine"
+  },
+  "lora": {
+    "fine_tune_type": "lora",
+    "num_layers": 16,
+    "rank": 8,
+    "scale": 20.0,
+    "dropout": 0.0,
+    "target_module_keys": [
+      "self_attn.q_proj",
+      "self_attn.k_proj",
+      "self_attn.v_proj",
+      "self_attn.o_proj",
+      "mlp.gate_proj",
+      "mlp.up_proj",
+      "mlp.down_proj"
+    ]
+  },
+  "optimizer": {
+    "implementation": "mlx.optimizers.Adam",
+    "learning_rate": 0.00001,
+    "betas": [0.9, 0.999],
+    "eps": 1e-8,
+    "bias_correction": false,
+    "weight_decay": 0.0,
+    "schedule": "constant",
+    "warmup_steps": 0
+  },
+  "training_shape": {
+    "max_seq_length": 8192,
+    "micro_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "mask_prompt": true,
+    "gradient_checkpointing": true,
+    "seed": 17
+  },
+  "dry_run": {
+    "synthetic_only": true,
+    "iterations": 8,
+    "steps_per_report": 4,
+    "external_reporting": false,
+    "required_outputs": [
+      "seconds_per_step",
+      "supervised_tokens_per_second",
+      "input_tokens_per_second",
+      "peak_memory_gb",
+      "peak_stage",
+      "resolved_target_modules"
+    ],
+    "sequence_requirement": "at_least_one_rendered_sequence_equals_8192_tokens",
+    "parameter_change_policy": "rerun_gate_before_restricted_training"
+  },
+  "loss_implementation": {
+    "implementation_version": "1.0.0",
+    "source": "clinical_matcher.p5_mlx_completion_loss.completion_only_projection_loss",
+    "module_sha256": "d95ca72cacbb63ec027c83324e015331dccbcdddcc8b9ffbe6e8f42cad518d60",
+    "reference_source": "mlx_lm.tuner.trainer.default_loss",
+    "stock_trainer": "mlx_lm.tuner.trainer.train",
+    "objective": "pinned_mask_prompt_whole_completion_cross_entropy",
+    "full_sequence_hidden_states": true,
+    "prompt_token_logits_materialized": false,
+    "projection_window_tokens": 544,
+    "output_reserve_tokens": 512,
+    "pinned_batch_padding_tokens": 32,
+    "completion_internal_field_masking": false,
+    "chunked_cross_entropy": false,
+    "full_logits_materialized": false
+  },
+  "reference_budget": {
+    "grid_rows_per_epoch": 1265,
+    "seconds_per_step_rule": "maximum_of_two_report_windows",
+    "wall_clock_formula": "seconds_per_step_times_1265_divided_by_3600"
+  },
+  "length_screen": {
+    "freeze_before_reading_owner_report": true,
+    "context_tier": 8192,
+    "original_grid_rows": 1265,
+    "maximum_overflow_fraction": 0.05,
+    "maximum_overflow_rows": 63,
+    "per_question_denominator": "original_train_fit_rows_for_that_question",
+    "minimum_retained_fraction_per_question": 0.3,
+    "minimum_retained_rows_per_question": 5,
+    "screen_all_questions_without_labels": true,
+    "later_silver_gate_is_not_replaced": true,
+    "pass_rule": "all_overall_and_per_question_conditions_must_pass"
+  },
+  "stop_policy": "probe_and_length_screen_then_return_to_owner_review_before_revision"
+}

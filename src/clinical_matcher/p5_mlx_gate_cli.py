@@ -18,8 +18,9 @@ from .p5_mlx_gate import (
     inventory_directory,
     inventory_sha256,
     jsonl_sha256,
+    load_p5_mlx_8k_probe_contract,
     load_p5_mlx_gate_contract,
-    p5_mlx_gate_contract_sha256,
+    p5_mlx_execution_contract_sha256,
     validate_p5_mlx_model_artifact_manifest,
     verify_p5_mlx_completion_loss_module,
     verify_directory_inventory,
@@ -318,13 +319,24 @@ def run_gate(
     converted_directory: Path,
     model_manifest_path: Path,
     output_directory: Path,
+    *,
+    contract: Mapping[str, Any] | None = None,
 ) -> Dict[str, Any]:
     import mlx.core as mx
     from mlx_lm.tuner.datasets import create_dataset
 
     from .p5_mlx_completion_loss import completion_projection_bounds
 
-    contract = load_p5_mlx_gate_contract()
+    contract = dict(contract or load_p5_mlx_gate_contract())
+    is_probe = "probe_contract_version" in contract
+    contract_hash_field = (
+        "probe_contract_sha256" if is_probe else "gate_contract_sha256"
+    )
+    result_scope = (
+        "synthetic_8k_feasibility_probe_only_not_policy_revision"
+        if is_probe
+        else "synthetic_feasibility_only_not_model_quality"
+    )
     loss_module_sha256 = verify_p5_mlx_completion_loss_module(contract)
     model_manifest = _load_json(model_manifest_path)
     validate_p5_mlx_model_artifact_manifest(model_manifest)
@@ -347,7 +359,7 @@ def run_gate(
         "preflight_version": "1.0.0",
         "generated_at": _utc_now(),
         "status": "started",
-        "gate_contract_sha256": p5_mlx_gate_contract_sha256(contract),
+        contract_hash_field: p5_mlx_execution_contract_sha256(contract),
         "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
         "environment": versions,
         "loss_implementation": dict(contract["loss_implementation"]),
@@ -370,7 +382,9 @@ def run_gate(
     result: Dict[str, Any]
     try:
         model, tokenizer, load_peak = _load_mlx_model(converted_directory)
-        rows, exact_length = build_exact_length_synthetic_gate_rows(tokenizer)
+        rows, exact_length = build_exact_length_synthetic_gate_rows(
+            tokenizer, contract=contract
+        )
         _write_owner_only_jsonl(rows, output_directory / "synthetic-train.jsonl")
         dataset_config = types.SimpleNamespace(
             mask_prompt=contract["training_shape"]["mask_prompt"]
@@ -382,7 +396,8 @@ def run_gate(
             rows
         ):
             raise P5MLXGateError(
-                "Stock MLX-LM dataset did not preserve exact 16,384-token rows"
+                "Stock MLX-LM dataset did not preserve exact "
+                f"{contract['training_shape']['max_seq_length']:,}-token rows"
             )
         all_projection_bounds = [
             completion_projection_bounds(
@@ -414,8 +429,8 @@ def run_gate(
             "gate_result_version": "1.0.0",
             "generated_at": _utc_now(),
             "status": "passed_mechanism_gate",
-            "scope": "synthetic_feasibility_only_not_model_quality",
-            "gate_contract_sha256": preflight["gate_contract_sha256"],
+            "scope": result_scope,
+            contract_hash_field: preflight[contract_hash_field],
             "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
             "environment": versions,
             "sequence": {
@@ -437,6 +452,21 @@ def run_gate(
             "failure": None,
             "manifest_sha256": "pending",
         }
+        if is_probe:
+            seconds_per_step = max(
+                item["seconds_per_step"] for item in callback.training_reports
+            )
+            reference_rows = contract["reference_budget"]["grid_rows_per_epoch"]
+            result["reference_budget_projection"] = {
+                "grid_rows_per_epoch": reference_rows,
+                "seconds_per_step_rule": contract["reference_budget"][
+                    "seconds_per_step_rule"
+                ],
+                "selected_seconds_per_step": seconds_per_step,
+                "projected_epoch_hours": seconds_per_step
+                * reference_rows
+                / 3600.0,
+            }
     except Exception as error:
         resolved = _resolved_lora_modules(model) if model is not None else []
         failure_peak = mx.get_peak_memory() / 1e9
@@ -448,8 +478,8 @@ def run_gate(
             "gate_result_version": "1.0.0",
             "generated_at": _utc_now(),
             "status": "failed",
-            "scope": "synthetic_feasibility_only_not_model_quality",
-            "gate_contract_sha256": preflight["gate_contract_sha256"],
+            "scope": result_scope,
+            contract_hash_field: preflight[contract_hash_field],
             "model_artifact_manifest_sha256": model_manifest["manifest_sha256"],
             "environment": versions,
             "sequence": (
@@ -475,6 +505,8 @@ def run_gate(
             "failure": {"type": type(error).__name__, "message": str(error)},
             "manifest_sha256": "pending",
         }
+        if is_probe:
+            result["reference_budget_projection"] = None
         result["manifest_sha256"] = _self_hash(result)
         write_owner_only_json(result, output_directory / "gate-result.json")
         raise
@@ -485,7 +517,7 @@ def run_gate(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Prepare and run the frozen local P5 MLX 16K feasibility gate"
+        description="Prepare and run frozen local P5 MLX feasibility checks"
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
     manifest = subparsers.add_parser("manifest")
@@ -496,6 +528,10 @@ def build_parser() -> argparse.ArgumentParser:
     gate.add_argument("--converted-model", type=Path, required=True)
     gate.add_argument("--model-manifest", type=Path, required=True)
     gate.add_argument("--output-dir", type=Path, required=True)
+    probe = subparsers.add_parser("probe-8k")
+    probe.add_argument("--converted-model", type=Path, required=True)
+    probe.add_argument("--model-manifest", type=Path, required=True)
+    probe.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -510,9 +546,24 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             f"{args.output} ({manifest['manifest_sha256']})"
         )
         return 0
-    result = run_gate(args.converted_model, args.model_manifest, args.output_dir)
+    contract = (
+        load_p5_mlx_8k_probe_contract()
+        if args.command == "probe-8k"
+        else load_p5_mlx_gate_contract()
+    )
+    result = run_gate(
+        args.converted_model,
+        args.model_manifest,
+        args.output_dir,
+        contract=contract,
+    )
+    label = (
+        "8K MLX feasibility probe"
+        if args.command == "probe-8k"
+        else "16K MLX gate"
+    )
     print(
-        "Synthetic 16K MLX gate passed: "
+        f"Synthetic {label} passed: "
         f"{args.output_dir / 'gate-result.json'} ({result['manifest_sha256']})"
     )
     return 0

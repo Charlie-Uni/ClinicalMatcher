@@ -442,6 +442,27 @@ attention allocation. Under the audited official MLX implementations, local
 returns to owner review; this result selects no shorter context, new execution
 environment, different model, or postponement policy.
 
+### Owner-selected staged 8K investigation
+
+On 2026-08-24 the owner selected the local 8K path for investigation without
+yet revising the frozen input policy. Contract
+`p5-mlx-qlora-8k-probe/1.0.0` first authorizes a synthetic-only 8,192-token
+probe using the same converted 8B model, completion-only loss, LoRA targets,
+optimizer, batch/accumulation configuration, checkpointing, and seed as the
+failed 16K gate. It records peak memory, both throughput windows, and a
+conservative one-epoch projection using the slower reported seconds/step times
+the original 1,265-row grid. Passing this probe is feasibility evidence only.
+
+Before reading the owner-only report's 8K coverage count, the following
+length-only screen is frozen: at most 5% of the original 1,265 rows may overflow
+(therefore at most 63 rows), and every question must retain at least 30% of its
+original train-fit rows and at least five rows. All questions are screened
+without labels, which conservatively covers the later citation-required
+subset. This necessary screen does not replace the already frozen silver
+coverage gate. Both the synthetic probe and the length screen must pass before
+an 8K policy revision may be drafted; neither result automatically changes the
+policy or authorizes restricted training.
+
 ## Evidence-ID supervision
 
 ### Semantics
