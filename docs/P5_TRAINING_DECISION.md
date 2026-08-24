@@ -463,6 +463,30 @@ coverage gate. Both the synthetic probe and the length screen must pass before
 an 8K policy revision may be drafted; neither result automatically changes the
 policy or authorizes restricted training.
 
+The exact 8K probe was executed locally on 2026-08-24 from implementation
+commit `68c9ef8`. It did **not** pass. After starting adapter setup and training,
+the native Metal process terminated with `SIGABRT` / exit code 134 and reported
+command-buffer `Insufficient Memory`
+(`kIOGPUCommandBufferCallbackErrorOutOfMemory`). This was not the earlier
+14,302,248,960-byte single-buffer-limit error. The native abort occurred before
+either four-step reporting window completed, so no seconds/step, epoch wall
+clock, or reliable peak-memory measurement exists and none may be inferred.
+
+Because a C++ native abort cannot be caught by the Python trainer, a separate
+post-failure recorder bound the preflight, exact synthetic JSONL, and partial
+adapter configuration without rerunning the probe. The owner-only failure
+manifest is
+`926b074c4901e9ff394d2791454a436651b8fc44ac610200cee9e42f4ef22799`;
+it records probe commit `68c9ef8`, recorder commit `6944730`, the frozen
+contract/model/loss hashes, the empty throughput-report list, and the terminal
+observation source. It contains no patient data.
+
+Under the predeclared staged decision, this failed step 1 stops the 8K route
+before inspecting the owner-only length report. The 5%/63-row and per-question
+thresholds remain frozen but unevaluated, the input policy remains unchanged,
+and no 8K input-plan version or silver-grid revision is authorized. P5.1 returns
+to owner review; neither a retry nor postponement follows automatically.
+
 ## Evidence-ID supervision
 
 ### Semantics

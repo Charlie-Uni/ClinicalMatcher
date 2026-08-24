@@ -701,21 +701,32 @@ trade-off and do not hide unresolved clinical information.
     The historical logits attribution now has an additive correction in
     `docs/P5_TRAINING_DECISION.md`. P5.1 remains open for owner review; no
     fallback was selected.
-  - [ ] Staged 8K investigation, step 1: run the synthetic-only 8,192-token
+  - [x] Staged 8K investigation, step 1: run the synthetic-only 8,192-token
     completion-loss probe with every other frozen training parameter unchanged.
     Record peak memory, both throughput windows, and the conservative projected
     wall clock for 1,265 steps. Passing does not revise the input policy.
-  - [ ] Staged 8K investigation, step 2: before reading the owner-only 8K count,
+    Result: the native Metal process aborted with command-buffer insufficient
+    memory before either reporting window completed. No peak-memory or
+    throughput estimate is reported. Owner-only failure manifest
+    `926b074c4901e9ff394d2791454a436651b8fc44ac610200cee9e42f4ef22799`
+    binds the clean probe commit, contract/model/loss hashes, partial synthetic
+    artifacts, exit code 134, and the explicit lack of completed reports.
+  - [x] Staged 8K investigation, step 2 threshold freeze: before reading the
+    owner-only 8K count,
     freeze the screen at no more than 5%/63 overflow rows, with every question
     retaining at least 30% and at least five of its original train-fit rows.
     This label-free screen is necessary but does not replace the later silver
-    coverage gate.
+    coverage gate. The threshold is frozen in contract `1.0.0`, but its
+    owner-only report evaluation was deliberately not run because step 1
+    failed.
   - [ ] Staged 8K investigation, step 3: only if steps 1 and 2 pass, issue new
     input-policy/input-plan versions, exclude whole overflowing training rows
     while keeping the 1,265-row reporting denominator, align the silver
     candidate grid, preserve holdout measured abstention without truncation,
     and run a newly frozen exact 8K formal gate. A compliant GPU environment
     remains the conditional route back to the unchanged 16K contract.
+    Status: blocked on a new owner decision after the failed 8K feasibility
+    probe; no policy, input plan, silver grid, or restricted artifact changed.
 
 - [ ] **P5.2 Export training folds to the canonical SFT dataset and compatibility
   formats.** Build a versioned adapter from P1.1 records to the owner-only
