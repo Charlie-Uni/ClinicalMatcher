@@ -845,6 +845,16 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     inferred from model convenience.
   - Verify: every item binds NCT ID, study version/update date, eligibility and
     protocol hashes, criterion ID/type, exact source text, and source span.
+  - Candidate freeze draft: `docs/DECOMPOSITION_BENCHMARK_PROTOCOL.md` proposes
+    80 criteria; equal 40-item dev/test splits; trial-level isolation; joint
+    inclusion/exclusion and label-independent low/medium/high complexity
+    quotas; at most eight criteria per trial; deterministic hash selection;
+    two independent annotators plus adjudication; a predeclared single-owner
+    downgrade; canonical NOT pushdown/associative flattening/commutative sort;
+    exact full-field atom matching; separate structure/span metrics; and
+    pre-adjudication IAA. It remains a draft until the owner approves the exact
+    numbers and rules. No sampling or annotation is authorized yet, and the
+    current standard-mode staffing is one confirmed annotator.
 
 - [ ] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
