@@ -22,6 +22,13 @@ from clinical_matcher.decomposition_benchmark import (
     validate_decomposition_selection_document,
     write_new_json,
 )
+from clinical_matcher.decomposition_evaluation import (
+    DecompositionEvaluationError,
+    evaluate_decomposition,
+    normalize_decomposition_expression,
+    render_decomposition_evaluation_markdown,
+    validate_decomposition_evaluation_report,
+)
 
 
 COMMIT = "a" * 40
@@ -185,6 +192,34 @@ def completed_annotation(document, catalog):
             },
         }
     return finalize_annotation(document, catalog, draft)
+
+
+def llm_expression(expression, model_id="local-llama", prompt_version="prompt-v1"):
+    result = copy.deepcopy(expression)
+
+    def replace_provenance(node):
+        if node["expression_type"] == "atom":
+            provenance = node["atom"]["provenance"]
+            provenance["method"] = "llm"
+            provenance["model_id"] = model_id
+            provenance["prompt_version"] = prompt_version
+            return
+        for child in node["children"]:
+            replace_provenance(child)
+
+    replace_provenance(result)
+    return result
+
+
+def predictions_from_annotation(annotation):
+    return [
+        {
+            "nct_id": item["nct_id"],
+            "criterion_id": item["criterion_id"],
+            "expression": llm_expression(item["expression"]),
+        }
+        for item in annotation["items"]
+    ]
 
 
 class DecompositionSelectionTest(unittest.TestCase):
@@ -429,6 +464,225 @@ class DecompositionAnnotationTest(unittest.TestCase):
             DecompositionAnnotationError, "attestations"
         ):
             finalize_annotation(self.selection, self.catalog, template)
+
+
+class DecompositionEvaluationTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.selection = selection()
+        cls.catalog = catalog_for(cls.selection)
+        cls.gold = completed_annotation(cls.selection, cls.catalog)
+
+    def evaluate(self, predictions, gold=None):
+        return evaluate_decomposition(
+            self.selection,
+            self.catalog,
+            gold or self.gold,
+            predictions,
+            model_id="local-llama",
+            prompt_version="prompt-v1",
+            bootstrap_samples=20,
+            bootstrap_seed=23,
+        )
+
+    def complex_gold(self):
+        gold = copy.deepcopy(self.gold)
+        first = gold["items"][0]
+        first_atom = copy.deepcopy(first["expression"])
+        second_atom = copy.deepcopy(first_atom)
+        second_atom["atom"]["condition_id"] = "condition-extra"
+        second_atom["atom"]["operator"] = "<="
+        second_atom["atom"]["expected"]["value"] = 65
+        first["expression"] = {
+            "expression_type": "all",
+            "children": [first_atom, second_atom],
+        }
+        return finalize_annotation(self.selection, self.catalog, gold)
+
+    def test_exact_predictions_score_one_and_report_is_self_validating(self):
+        predictions = predictions_from_annotation(self.gold)
+        report = self.evaluate(predictions)
+        validate_decomposition_evaluation_report(report)
+        self.assertEqual(report, self.evaluate(list(reversed(predictions))))
+        self.assertEqual(40, report["denominators"]["criteria"])
+        self.assertEqual(40, report["denominators"]["gold_atoms"])
+        self.assertEqual(40, report["denominators"]["predicted_atoms"])
+        for metric in (
+            "normalized_tree_exact_rate",
+            "operator_topology_exact_rate",
+            "atom_micro_precision",
+            "atom_micro_recall",
+            "atom_micro_f1",
+            "atom_macro_f1",
+            "span_exact_rate",
+            "span_mean_iou",
+            "schema_valid_rate",
+            "verifier_load_rate",
+        ):
+            self.assertEqual(1.0, report["metrics"][metric], metric)
+        self.assertEqual(20, report["bootstrap"]["samples"])
+        self.assertGreaterEqual(report["bootstrap"]["trial_count"], 5)
+        markdown = render_decomposition_evaluation_markdown(report)
+        self.assertIn("Invalid and missing predictions remain", markdown)
+
+        tampered = copy.deepcopy(report)
+        tampered["metrics"]["atom_micro_f1"] = 0.5
+        with self.assertRaisesRegex(
+            DecompositionEvaluationError, "hash mismatch"
+        ):
+            validate_decomposition_evaluation_report(tampered)
+
+    def test_missing_and_invalid_predictions_remain_in_denominator(self):
+        empty_report = self.evaluate([])
+        self.assertEqual(40, empty_report["failure_counts"]["missing"])
+        self.assertEqual(0.0, empty_report["metrics"]["atom_micro_recall"])
+        self.assertEqual(0.0, empty_report["metrics"]["schema_valid_rate"])
+        self.assertEqual(40, empty_report["denominators"]["criteria"])
+
+        predictions = predictions_from_annotation(self.gold)
+        predictions[0]["expression"] = {}
+        predictions[1]["expression"] = None
+        report = self.evaluate(predictions)
+        self.assertEqual(1, report["failure_counts"]["schema_invalid"])
+        self.assertEqual(1, report["failure_counts"]["missing"])
+        self.assertEqual(38, report["metrics"]["schema_valid_count"])
+        self.assertEqual(38, report["metrics"]["verifier_load_count"])
+        self.assertEqual(38, report["denominators"]["predicted_atoms"])
+
+    def test_wrong_operator_value_and_type_receive_no_partial_atom_credit(self):
+        mutations = (
+            ("operator", lambda atom: atom.update(operator=">")),
+            ("value", lambda atom: atom["expected"].update(value=21)),
+            (
+                "type",
+                lambda atom: atom.update(
+                    operator="==",
+                    expected={"value_type": "string", "value": "18"},
+                ),
+            ),
+        )
+        for label, mutate in mutations:
+            with self.subTest(label=label):
+                predictions = predictions_from_annotation(self.gold)
+                mutate(predictions[0]["expression"]["atom"])
+                report = self.evaluate(predictions)
+                self.assertEqual(
+                    39, report["denominators"]["identity_matched_atoms"]
+                )
+                self.assertLess(report["metrics"]["atom_micro_f1"], 1.0)
+                self.assertEqual(1.0, report["metrics"]["schema_valid_rate"])
+
+    def test_shifted_span_changes_span_metrics_not_atom_matching(self):
+        predictions = predictions_from_annotation(self.gold)
+        predictions[0]["expression"]["atom"]["provenance"]["source_span"] = {
+            "start": 1,
+            "end": 3,
+        }
+        report = self.evaluate(predictions)
+        self.assertEqual(40, report["denominators"]["identity_matched_atoms"])
+        self.assertEqual(39, report["metrics"]["span_exact_count"])
+        self.assertEqual(39 / 40, report["metrics"]["span_exact_rate"])
+        self.assertLess(report["metrics"]["span_mean_iou"], 1.0)
+        self.assertEqual(1.0, report["metrics"]["atom_micro_f1"])
+
+    def test_invalid_provenance_is_schema_valid_but_fails_verifier_load(self):
+        predictions = predictions_from_annotation(self.gold)
+        predictions[0]["expression"]["atom"]["provenance"]["model_id"] = (
+            "another-model"
+        )
+        report = self.evaluate(predictions)
+        self.assertEqual(
+            1, report["failure_counts"]["prediction_provenance_mismatch"]
+        )
+        self.assertEqual(40, report["metrics"]["schema_valid_count"])
+        self.assertEqual(39, report["metrics"]["verifier_load_count"])
+        self.assertEqual(40, report["denominators"]["criteria"])
+
+    def test_structure_is_separate_and_equivalence_review_never_changes_score(self):
+        gold = self.complex_gold()
+        predictions = predictions_from_annotation(gold)
+        predictions[0]["expression"]["expression_type"] = "any"
+        report = self.evaluate(predictions, gold=gold)
+        self.assertEqual(1.0, report["metrics"]["atom_micro_f1"])
+        self.assertEqual(39, report["metrics"]["normalized_tree_exact_count"])
+        self.assertEqual(39, report["metrics"]["operator_topology_exact_count"])
+        self.assertEqual(1, report["equivalence_review"]["queued_count"])
+        self.assertFalse(
+            report["equivalence_review"]["affects_primary_metrics"]
+        )
+
+    def test_missing_extra_atoms_and_wrong_not_structure_are_distinct(self):
+        gold = self.complex_gold()
+
+        missing = predictions_from_annotation(gold)
+        missing[0]["expression"] = missing[0]["expression"]["children"][0]
+        missing_report = self.evaluate(missing, gold=gold)
+        self.assertEqual(41, missing_report["denominators"]["gold_atoms"])
+        self.assertEqual(40, missing_report["denominators"]["predicted_atoms"])
+        self.assertEqual(40, missing_report["denominators"]["identity_matched_atoms"])
+
+        extra = predictions_from_annotation(self.gold)
+        original = extra[0]["expression"]
+        additional = copy.deepcopy(original)
+        additional["atom"]["condition_id"] = "additional-prediction"
+        additional["atom"]["operator"] = "<="
+        additional["atom"]["expected"]["value"] = 65
+        extra[0]["expression"] = {
+            "expression_type": "all",
+            "children": [original, additional],
+        }
+        extra_report = self.evaluate(extra)
+        self.assertEqual(40, extra_report["denominators"]["gold_atoms"])
+        self.assertEqual(41, extra_report["denominators"]["predicted_atoms"])
+        self.assertEqual(40, extra_report["denominators"]["identity_matched_atoms"])
+
+        wrong_not = predictions_from_annotation(gold)
+        wrong_not[0]["expression"] = {
+            "expression_type": "not",
+            "children": [wrong_not[0]["expression"]],
+        }
+        not_report = self.evaluate(wrong_not, gold=gold)
+        self.assertEqual(39, not_report["metrics"]["operator_topology_exact_count"])
+        self.assertLess(not_report["metrics"]["atom_micro_recall"], 1.0)
+
+    def test_not_pushdown_flattening_and_decimal_canonicalization_are_frozen(self):
+        atom_a = llm_expression(self.gold["items"][0]["expression"])
+        atom_b = copy.deepcopy(atom_a)
+        atom_b["atom"]["condition_id"] = "second"
+        atom_b["atom"]["expected"]["value"] = 50.0
+        atom_a["atom"]["expected"]["value"] = 50
+        left = {
+            "expression_type": "not",
+            "children": [
+                {"expression_type": "any", "children": [atom_a, atom_b]}
+            ],
+        }
+        right = {
+            "expression_type": "all",
+            "children": [
+                {"expression_type": "not", "children": [atom_b]},
+                {"expression_type": "not", "children": [atom_a]},
+            ],
+        }
+        self.assertEqual(
+            normalize_decomposition_expression(left),
+            normalize_decomposition_expression(right),
+        )
+
+    def test_prediction_identity_and_duplicate_condition_ids_fail_closed(self):
+        predictions = predictions_from_annotation(self.gold)
+        predictions[1]["expression"]["atom"]["condition_id"] = predictions[0][
+            "expression"
+        ]["atom"]["condition_id"]
+        report = self.evaluate(predictions)
+        self.assertEqual(2, report["failure_counts"]["duplicate_condition_id"])
+
+        unexpected = predictions_from_annotation(self.gold)
+        unexpected[0]["criterion_id"] = "not-selected"
+        with self.assertRaisesRegex(
+            DecompositionEvaluationError, "unselected criterion"
+        ):
+            self.evaluate(unexpected)
 
 
 if __name__ == "__main__":

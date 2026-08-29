@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-evaluation-report-1.0.0.schema.json",
+  "title": "Public criteria-decomposition evaluation report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decomposition_evaluation_version", "protocol_version",
+    "normalization_version", "matching_version", "report_id",
+    "report_sha256", "selection_manifest_id", "selection_manifest_sha256",
+    "concept_catalog_id", "concept_catalog_sha256", "gold_annotation_id",
+    "gold_annotation_sha256", "split", "model_id", "prompt_version",
+    "prediction_payload_sha256", "denominators", "metrics",
+    "failure_counts", "equivalence_review", "bootstrap", "items"
+  ],
+  "properties": {
+    "decomposition_evaluation_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "normalization_version": {"const": "decomposition-normalization/1.0.0"},
+    "matching_version": {"const": "decomposition-atom-matching/1.0.0"},
+    "report_id": {"type": "string", "pattern": "^decomposition-evaluation-(dev|test)-[0-9a-f]{16}$"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "concept_catalog_id": {"type": "string", "pattern": "^decomposition-catalog-(dev|test)-[0-9a-f]{16}$"},
+    "concept_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "gold_annotation_id": {"type": "string", "pattern": "^decomposition-annotation-(dev|test)-[0-9a-f]{16}$"},
+    "gold_annotation_sha256": {"$ref": "#/$defs/sha256"},
+    "split": {"enum": ["dev", "test"]},
+    "model_id": {"$ref": "#/$defs/nonEmptyString"},
+    "prompt_version": {"$ref": "#/$defs/nonEmptyString"},
+    "prediction_payload_sha256": {"$ref": "#/$defs/sha256"},
+    "denominators": {"$ref": "#/$defs/denominators"},
+    "metrics": {"$ref": "#/$defs/metrics"},
+    "failure_counts": {
+      "type": "object",
+      "propertyNames": {"$ref": "#/$defs/nonEmptyString"},
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "equivalence_review": {"$ref": "#/$defs/equivalenceReview"},
+    "bootstrap": {"$ref": "#/$defs/bootstrap"},
+    "items": {
+      "type": "array",
+      "minItems": 40,
+      "maxItems": 40,
+      "items": {"$ref": "#/$defs/item"}
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "count": {"type": "integer", "minimum": 0},
+    "denominators": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criteria", "gold_atoms", "predicted_atoms",
+        "identity_matched_atoms", "span_scored_atoms"
+      ],
+      "properties": {
+        "criteria": {"const": 40},
+        "gold_atoms": {"$ref": "#/$defs/count"},
+        "predicted_atoms": {"$ref": "#/$defs/count"},
+        "identity_matched_atoms": {"$ref": "#/$defs/count"},
+        "span_scored_atoms": {"$ref": "#/$defs/count"}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normalized_tree_exact_count", "normalized_tree_exact_rate",
+        "operator_topology_exact_count", "operator_topology_exact_rate",
+        "atom_micro_precision", "atom_micro_recall", "atom_micro_f1",
+        "atom_macro_f1", "span_exact_count", "span_exact_rate",
+        "span_mean_iou", "schema_valid_count", "schema_valid_rate",
+        "verifier_load_count", "verifier_load_rate", "concept_micro_precision",
+        "concept_micro_recall", "concept_micro_f1",
+        "equivalence_review_queued_count"
+      ],
+      "properties": {
+        "normalized_tree_exact_count": {"$ref": "#/$defs/count"},
+        "normalized_tree_exact_rate": {"$ref": "#/$defs/rate"},
+        "operator_topology_exact_count": {"$ref": "#/$defs/count"},
+        "operator_topology_exact_rate": {"$ref": "#/$defs/rate"},
+        "atom_micro_precision": {"$ref": "#/$defs/rate"},
+        "atom_micro_recall": {"$ref": "#/$defs/rate"},
+        "atom_micro_f1": {"$ref": "#/$defs/rate"},
+        "atom_macro_f1": {"$ref": "#/$defs/rate"},
+        "span_exact_count": {"$ref": "#/$defs/count"},
+        "span_exact_rate": {"$ref": "#/$defs/rate"},
+        "span_mean_iou": {"$ref": "#/$defs/rate"},
+        "schema_valid_count": {"$ref": "#/$defs/count"},
+        "schema_valid_rate": {"$ref": "#/$defs/rate"},
+        "verifier_load_count": {"$ref": "#/$defs/count"},
+        "verifier_load_rate": {"$ref": "#/$defs/rate"},
+        "concept_micro_precision": {"$ref": "#/$defs/rate"},
+        "concept_micro_recall": {"$ref": "#/$defs/rate"},
+        "concept_micro_f1": {"$ref": "#/$defs/rate"},
+        "equivalence_review_queued_count": {"$ref": "#/$defs/count"}
+      }
+    },
+    "equivalenceReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "queued_count", "reviewed_equivalent_count",
+        "reviewed_not_equivalent_count", "reviewed_uncertain_count",
+        "queued_items", "affects_primary_metrics"
+      ],
+      "properties": {
+        "queued_count": {"$ref": "#/$defs/count"},
+        "reviewed_equivalent_count": {"const": 0},
+        "reviewed_not_equivalent_count": {"const": 0},
+        "reviewed_uncertain_count": {"const": 0},
+        "queued_items": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/itemIdentity"}
+        },
+        "affects_primary_metrics": {"const": false}
+      }
+    },
+    "interval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "estimate", "lower", "upper", "confidence", "samples", "cluster_count"
+      ],
+      "properties": {
+        "estimate": {"$ref": "#/$defs/rate"},
+        "lower": {"$ref": "#/$defs/rate"},
+        "upper": {"$ref": "#/$defs/rate"},
+        "confidence": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "samples": {"type": "integer", "minimum": 1},
+        "cluster_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "bootstrap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cluster_key", "trial_count", "samples", "seed", "confidence", "intervals"],
+      "properties": {
+        "cluster_key": {"const": "nct_id"},
+        "trial_count": {"type": "integer", "minimum": 5},
+        "samples": {"type": "integer", "minimum": 1},
+        "seed": {"type": "integer"},
+        "confidence": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "intervals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "normalized_tree_exact_rate", "operator_topology_exact_rate",
+            "atom_micro_precision", "atom_micro_recall", "atom_micro_f1",
+            "atom_macro_f1", "span_exact_rate", "span_mean_iou"
+          ],
+          "properties": {
+            "normalized_tree_exact_rate": {"$ref": "#/$defs/interval"},
+            "operator_topology_exact_rate": {"$ref": "#/$defs/interval"},
+            "atom_micro_precision": {"$ref": "#/$defs/interval"},
+            "atom_micro_recall": {"$ref": "#/$defs/interval"},
+            "atom_micro_f1": {"$ref": "#/$defs/interval"},
+            "atom_macro_f1": {"$ref": "#/$defs/interval"},
+            "span_exact_rate": {"$ref": "#/$defs/interval"},
+            "span_mean_iou": {"$ref": "#/$defs/interval"}
+          }
+        }
+      }
+    },
+    "itemIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nct_id", "criterion_id"],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nct_id", "criterion_id", "status", "schema_valid",
+        "verifier_load", "normalized_tree_exact", "operator_topology_exact",
+        "gold_atoms", "predicted_atoms", "matched_atoms", "concept_gold",
+        "concept_predicted", "concept_matched", "span_exact", "span_iou_sum",
+        "equivalence_review_queued"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "status": {"$ref": "#/$defs/nonEmptyString"},
+        "schema_valid": {"type": "boolean"},
+        "verifier_load": {"type": "boolean"},
+        "normalized_tree_exact": {"type": "boolean"},
+        "operator_topology_exact": {"type": "boolean"},
+        "gold_atoms": {"$ref": "#/$defs/count"},
+        "predicted_atoms": {"$ref": "#/$defs/count"},
+        "matched_atoms": {"$ref": "#/$defs/count"},
+        "concept_gold": {"$ref": "#/$defs/count"},
+        "concept_predicted": {"$ref": "#/$defs/count"},
+        "concept_matched": {"$ref": "#/$defs/count"},
+        "span_exact": {"$ref": "#/$defs/count"},
+        "span_iou_sum": {"type": "number", "minimum": 0},
+        "equivalence_review_queued": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -873,7 +873,7 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     adjudication/final-gold layer is implemented against the frozen P5D.3
     normalization and matching code.
 
-- [ ] **P5D.3 Implement the independent decomposition evaluator.** Report atom
+- [x] **P5D.3 Implement the independent decomposition evaluator.** Report atom
   precision/recall, operator-structure agreement, and source-span alignment.
   - Entry condition: matching and normalization rules are frozen before gold
     or predictions are scored.
@@ -884,6 +884,13 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   - Verify: synthetic tests cover exact matches, missing/extra atoms, wrong
     comparison/value/type, wrong `ALL/ANY/NOT` structure, shifted spans, invalid
     provenance, and empty/invalid predictions; report denominators explicitly.
+  - Completed: frozen NOT pushdown, associative flattening, commutative sorting,
+    exact multiset atom matching, separate normalized-tree/topology/span metrics,
+    validity floors, deterministic trial-cluster bootstrap intervals, and a
+    strict self-hashed JSON report are implemented. Synthetic tests cover every
+    predeclared error class; invalid and missing output remains in the fixed
+    40-criterion denominator. P5D.5 still owns the final model-prediction
+    artifact and inference CLI, so no model-output protocol was preempted here.
 
 - [ ] **P5D.4 Build and independently annotate the approved small public gold
   set.** Annotate source text first, then freeze and hash the resulting gold

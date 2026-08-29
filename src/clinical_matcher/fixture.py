@@ -242,6 +242,11 @@ def _expression(raw: Dict[str, Any]) -> ConditionExpression:
     )
 
 
+def parse_expression(raw: Dict[str, Any]) -> ConditionExpression:
+    """Load a schema-valid expression into the frozen typed model."""
+    return _expression(raw)
+
+
 def parse_patients(
     raw_patients: List[Dict[str, Any]],
 ) -> Tuple[Patient, ...]:
