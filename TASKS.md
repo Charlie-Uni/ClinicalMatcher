@@ -834,7 +834,7 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
 
 ## P5D — Public eligibility-criteria decomposition (active mainline)
 
-- [ ] **P5D.1 Freeze the public decomposition benchmark contract.** Define the
+- [x] **P5D.1 Freeze the public decomposition benchmark contract.** Define the
   prediction unit as one immutable ClinicalTrials.gov criterion text block to
   one frozen-schema `ATOM/ALL/ANY/NOT` expression tree.
   - Entry condition: use only a verified, immutable public trial snapshot; no
@@ -845,16 +845,17 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     inferred from model convenience.
   - Verify: every item binds NCT ID, study version/update date, eligibility and
     protocol hashes, criterion ID/type, exact source text, and source span.
-  - Candidate freeze draft: `docs/DECOMPOSITION_BENCHMARK_PROTOCOL.md` proposes
+  - Frozen contract: `docs/DECOMPOSITION_BENCHMARK_PROTOCOL.md` fixes
     80 criteria; equal 40-item dev/test splits; trial-level isolation; joint
     inclusion/exclusion and label-independent low/medium/high complexity
     quotas; at most eight criteria per trial; deterministic hash selection;
     two independent annotators plus adjudication; a predeclared single-owner
     downgrade; canonical NOT pushdown/associative flattening/commutative sort;
     exact full-field atom matching; separate structure/span metrics; and
-    pre-adjudication IAA. It remains a draft until the owner approves the exact
-    numbers and rules. No sampling or annotation is authorized yet, and the
-    current standard-mode staffing is one confirmed annotator.
+    pre-adjudication IAA and trial-cluster bootstrap intervals. The owner
+    approved version 1.0.0 on 2026-08-29. Implementation and synthetic testing
+    are authorized; standard-mode benchmark annotation remains blocked because
+    the current staffing is one confirmed annotator.
 
 - [ ] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
@@ -866,6 +867,11 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   - Verify: strict JSON Schema plus semantic validation enforce expression
     arity, unique condition IDs, exact source-span slicing, criterion-source
     identity, typed operator/value compatibility, and annotation provenance.
+  - Progress: the frozen deterministic selector, split-specific concept-catalog
+    contract, independent annotation contract, offline CLIs, and synthetic
+    schema/semantic tests are implemented. Keep this task open until the
+    adjudication/final-gold layer is implemented against the frozen P5D.3
+    normalization and matching code.
 
 - [ ] **P5D.3 Implement the independent decomposition evaluator.** Report atom
   precision/recall, operator-structure agreement, and source-span alignment.

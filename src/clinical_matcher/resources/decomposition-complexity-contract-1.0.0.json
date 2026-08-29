@@ -1,0 +1,20 @@
+{
+  "contract_version": "decomposition-complexity-contract/1.0.0",
+  "normalization": "Unicode NFKC, casefold, collapse whitespace",
+  "patterns": {
+    "numeric_or_comparator": "(?:[0-9]|>=|<=|>|<|≥|≤|\\b(?:greater than|less than|at least|at most|between)\\b)",
+    "connector": "\\b(?:and|or|either|both|any of|all of)\\b",
+    "negation": "\\b(?:no|not|without|absence of|negative for|free of)\\b",
+    "temporal": "(?:\\b(?:within|prior|previous|history of|currently)\\b|\\b[0-9]+\\s*(?:days?|weeks?|months?|years?)\\b)"
+  },
+  "length_points": [
+    {"maximum_codepoints": 80, "points": 0},
+    {"maximum_codepoints": 160, "points": 1},
+    {"maximum_codepoints": null, "points": 2}
+  ],
+  "tiers": {
+    "low": [0, 1],
+    "medium": [2, 3],
+    "high": [4, 6]
+  }
+}

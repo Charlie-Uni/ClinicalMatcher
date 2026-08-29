@@ -60,6 +60,8 @@ clinical-matcher-apixaban-sft-length = "clinical_matcher.apixaban_sft_length_cli
 clinical-matcher-apixaban-silver-audit = "clinical_matcher.apixaban_silver_audit_cli:main"
 clinical-matcher-p5-mlx-gate = "clinical_matcher.p5_mlx_gate_cli:main"
 clinical-matcher-p5-mlx-attention-diagnostic = "clinical_matcher.p5_mlx_attention_diagnostic_cli:main"
+clinical-matcher-decomposition-benchmark = "clinical_matcher.decomposition_benchmark_cli:main"
+clinical-matcher-decomposition-annotation = "clinical_matcher.decomposition_annotation_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

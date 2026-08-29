@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-concept-catalog-1.0.0.schema.json",
+  "title": "Split-specific public decomposition concept catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "concept_catalog_version", "protocol_version", "concept_catalog_id",
+    "concept_catalog_sha256", "selection_manifest_id",
+    "selection_manifest_sha256", "split", "construction_rules_version",
+    "construction_rules_sha256", "entries"
+  ],
+  "properties": {
+    "concept_catalog_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "concept_catalog_id": {"type": "string", "pattern": "^decomposition-catalog-(dev|test)-[0-9a-f]{16}$"},
+    "concept_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "split": {"enum": ["dev", "test"]},
+    "construction_rules_version": {"$ref": "#/$defs/nonEmptyString"},
+    "construction_rules_sha256": {"$ref": "#/$defs/sha256"},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field_id", "definition", "aliases"],
+        "properties": {
+          "field_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+          "definition": {"$ref": "#/$defs/nonEmptyString"},
+          "aliases": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/nonEmptyString"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-selection-manifest-1.0.0.schema.json",
+  "title": "Public criteria-decomposition benchmark selection manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selection_manifest_version",
+    "protocol_version",
+    "selection_manifest_id",
+    "selection_manifest_sha256",
+    "builder_code_commit",
+    "source_snapshot",
+    "selection_algorithm",
+    "records",
+    "counts"
+  ],
+  "properties": {
+    "selection_manifest_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "builder_code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest_path", "manifest_sha256", "snapshot_version", "snapshot_id", "snapshot_content_sha256"],
+      "properties": {
+        "manifest_path": {"const": "snapshot-manifest.json"},
+        "manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "snapshot_version": {"enum": ["1.0.0", "1.1.0"]},
+        "snapshot_id": {"type": "string", "pattern": "^ctg-[0-9a-f]{16}$"},
+        "snapshot_content_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "selection_algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "salt", "complexity_contract_version", "complexity_contract_sha256", "split_order", "stratum_order", "quota_per_split", "maximum_criteria_per_trial", "minimum_trials_per_split"],
+      "properties": {
+        "name": {"const": "sha256_trial_isolated_decomposition_sample/1.0.0"},
+        "salt": {"const": "clinicalmatcher-public-decomposition-benchmark-v1"},
+        "complexity_contract_version": {"const": "decomposition-complexity-contract/1.0.0"},
+        "complexity_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "split_order": {"const": ["dev", "test"]},
+        "stratum_order": {"const": ["inclusion-low", "inclusion-medium", "inclusion-high", "exclusion-low", "exclusion-medium", "exclusion-high"]},
+        "quota_per_split": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["inclusion-low", "inclusion-medium", "inclusion-high", "exclusion-low", "exclusion-medium", "exclusion-high"],
+          "properties": {
+            "inclusion-low": {"const": 5},
+            "inclusion-medium": {"const": 7},
+            "inclusion-high": {"const": 8},
+            "exclusion-low": {"const": 5},
+            "exclusion-medium": {"const": 7},
+            "exclusion-high": {"const": 8}
+          }
+        },
+        "maximum_criteria_per_trial": {"const": 8},
+        "minimum_trials_per_split": {"const": 5}
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 80,
+      "items": {"$ref": "#/$defs/record"}
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_criterion_count", "duplicate_excluded_count", "deduplicated_criterion_count", "selected_count", "selected_by_split", "selected_trials_by_split"],
+      "properties": {
+        "candidate_criterion_count": {"type": "integer", "minimum": 80},
+        "duplicate_excluded_count": {"type": "integer", "minimum": 0},
+        "deduplicated_criterion_count": {"type": "integer", "minimum": 80},
+        "selected_count": {"const": 80},
+        "selected_by_split": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dev", "test"],
+          "properties": {
+            "dev": {"$ref": "#/$defs/splitCounts"},
+            "test": {"$ref": "#/$defs/splitCounts"}
+          }
+        },
+        "selected_trials_by_split": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dev", "test"],
+          "properties": {
+            "dev": {"type": "integer", "minimum": 5},
+            "test": {"type": "integer", "minimum": 5}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "splitCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "inclusion-low", "inclusion-medium", "inclusion-high", "exclusion-low", "exclusion-medium", "exclusion-high"],
+      "properties": {
+        "total": {"const": 40},
+        "inclusion-low": {"const": 5},
+        "inclusion-medium": {"const": 7},
+        "inclusion-high": {"const": 8},
+        "exclusion-low": {"const": 5},
+        "exclusion-medium": {"const": 7},
+        "exclusion-high": {"const": 8}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nct_id", "source_record_version", "last_update_posted", "protocol_sha256",
+        "eligibility_sha256", "criterion_id", "criterion_type", "source_id",
+        "source_span", "source_text", "normalized_text", "normalized_text_sha256",
+        "complexity", "duplicate_group_sha256", "duplicate_resolution_digest",
+        "trial_digest", "assigned_split", "criterion_digest", "selected", "selection_reason"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "source_record_version": {"$ref": "#/$defs/nonEmptyString"},
+        "last_update_posted": {"type": "string", "format": "date"},
+        "protocol_sha256": {"$ref": "#/$defs/sha256"},
+        "eligibility_sha256": {"$ref": "#/$defs/sha256"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "criterion_type": {"enum": ["inclusion", "exclusion"]},
+        "source_id": {"$ref": "#/$defs/nonEmptyString"},
+        "source_span": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "properties": {
+            "start": {"type": "integer", "minimum": 0},
+            "end": {"type": "integer", "minimum": 1}
+          }
+        },
+        "source_text": {"$ref": "#/$defs/nonEmptyString"},
+        "normalized_text": {"$ref": "#/$defs/nonEmptyString"},
+        "normalized_text_sha256": {"$ref": "#/$defs/sha256"},
+        "complexity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["unicode_codepoints", "length_points", "numeric_or_comparator", "connector", "negation", "temporal", "score", "tier"],
+          "properties": {
+            "unicode_codepoints": {"type": "integer", "minimum": 1},
+            "length_points": {"type": "integer", "minimum": 0, "maximum": 2},
+            "numeric_or_comparator": {"type": "boolean"},
+            "connector": {"type": "boolean"},
+            "negation": {"type": "boolean"},
+            "temporal": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 6},
+            "tier": {"enum": ["low", "medium", "high"]}
+          }
+        },
+        "duplicate_group_sha256": {"$ref": "#/$defs/sha256"},
+        "duplicate_resolution_digest": {"$ref": "#/$defs/sha256"},
+        "trial_digest": {"$ref": "#/$defs/sha256"},
+        "assigned_split": {"enum": ["dev", "test", null]},
+        "criterion_digest": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "selected": {"type": "boolean"},
+        "selection_reason": {"enum": ["selected", "duplicate_normalized_text", "hash_rank_outside_quota", "trial_cap_reached"]}
+      }
+    }
+  }
+}

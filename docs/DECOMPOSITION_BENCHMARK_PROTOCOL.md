@@ -1,9 +1,10 @@
 # Public criteria-decomposition benchmark protocol
 
-Status: **candidate freeze draft; no sampling or annotation is authorized until
-the owner approves this exact version**
+Status: **frozen by owner approval on 2026-08-29; implementation and synthetic
+verification are authorized, but benchmark annotation remains subject to the
+staffing gate in this protocol**
 
-Candidate protocol version: `decomposition-benchmark-protocol/1.0.0`
+Protocol version: `decomposition-benchmark-protocol/1.0.0`
 
 This protocol defines the public P5D benchmark before any decomposition model
 output is generated or inspected. It covers ClinicalTrials.gov criterion text
@@ -22,6 +23,12 @@ bind:
 - criterion ID, inclusion/exclusion type, exact source text, and its global
   zero-based half-open span;
 - split-specific frozen decomposition concept-catalog version and SHA-256.
+
+The write-once selection manifest binds the source snapshot and both split
+memberships, but it does not bind a not-yet-authored concept catalog. The
+applicable catalog version and SHA-256 are instead required in each annotation
+and gold artifact for that split. This preserves the leakage-safe catalog
+timeline without rewriting selection history.
 
 The source is a verified immutable public snapshot. Live API responses are
 never annotation or evaluation inputs. Parser-skipped trials and criteria whose
@@ -156,7 +163,9 @@ Before benchmark annotation, every additional annotator must:
   key or any model output;
 - produce schema-valid trees for all eight;
 - achieve atom F1 of at least 0.80 and normalized-tree exact match on at least
-  six of eight against the pre-frozen adjudicated practice key.
+  six of eight against the pre-frozen lead-authored practice key. Atom F1 and
+  normalized-tree exact match are computed by the same frozen P5D.3
+  normalization and matching implementation used for IAA and model evaluation.
 
 Practice items are disjoint by trial from benchmark dev and test. The lead may
 explain errors only after the additional annotator's first attempt is locked.
@@ -213,7 +222,10 @@ This order permits the owner to be an annotator without allowing test gold to
 influence prompt or model selection. The owner must attest that test source
 items and the test catalog were not used for prompt examples or configuration
 decisions. Test gold is not committed before step 6; after the configuration is
-frozen it may be committed because the source and annotations are public.
+frozen it may be committed because the source and annotations are public. This
+prevents leakage into the pinned offline baseline, but a public test set may be
+present in training corpora for models trained after its 2026 release; results
+from such models require an explicit pretraining-contamination limitation.
 
 ## Deterministic tree normalization
 
@@ -280,6 +292,13 @@ The evaluator reports these dimensions separately:
 - character-span intersection-over-union among those same matched atoms,
   reported as mean plus exact-match count;
 - schema-valid rate and verifier-load rate as validity floors only.
+
+Primary metric estimates additionally receive trial-cluster bootstrap
+confidence intervals: an NCT ID is the resampling cluster and all criteria from
+the sampled trial move together. The report records the number of trials,
+resample count, seed, confidence level, and interval bounds. Intervals from this
+small benchmark are expected to be wide and are reported without treating
+criterion rows as independent observations.
 
 Span does not affect atom true-positive assignment. Invalid or missing model
 output stays in the benchmark denominator, contributes zero semantic credit,
