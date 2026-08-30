@@ -7,6 +7,12 @@ ClinicalMatcher P4.7 的 intended mentor-rule 版本。
 
 日期：2026-08-30
 
+状态：该清单保留为未来临床内容审核模板。项目 owner 已在查看 validation 一致率
+之前指定：`criteria.json` 定义指标身份、导师 DOCX 中显式箭头公式定义评分、缺失
+生成器无法提供，且导师 `screening_results.json` 作为规则派生的项目参考结果。该
+指定已用于构建 pre-validation 契约，但不等同于逐项临床确认，也不把参考结果升级
+为独立 clinical gold。
+
 ## 审核边界
 
 这不是患者标注任务，不需要查看任何病历、患者 ID 或模型输出。审核者只需确认

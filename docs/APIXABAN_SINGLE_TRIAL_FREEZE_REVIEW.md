@@ -1,7 +1,8 @@
 # Apixaban single-trial freeze review
 
-Status: intended mentor-rule route selected; qualified semantic review pending;
-no expression tree is frozen
+Status: intended mentor-rule scoring contract `1.0.0` implemented before
+validation; owner approval of the exact contract and unit adapter remains
+required before any validation run
 
 Review date: 2026-08-30
 
@@ -24,6 +25,8 @@ versioned clinical protocol is supplied and reviewed.
 | Frozen public fact catalog `1.0.0` | file `b23480b02df923d169c9d24487fb72c6c386e252d5c7c65cd11587a71ccbbf98`; canonical catalog content `c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f` | Defines the 23 fact fields and their extraction semantics; explicitly leaves eligibility mapping to a separate step. |
 | Mentor criteria document | `be872d1f2e6baa4883b3dbcdc53895a8ff3d0362e27a13193ecee1181e9a14ec` | Contains the decomposed questions and several alternative natural-language, symbolic, and code-like formulations of the five rules. |
 | Mentor `criteria.json` | `bd4e4ae54a2b59e5202c2eded4c1dd4e25c86d74361a331c188435230e6cec6e` | Contains one prose formulation for each rule section. |
+| Mentor `screening_results.json` | `f358d18feb47997d87d27b104b0c3490d08bba913e64b33b17b75ab2c65c59d3` | Defines the mentor-designated project reference result. It is rule-derived and is not independent patient-level clinical gold. |
+| Official release README | `88b77606cbcead4a263d3eb1d3e58ca16ed9098b082b498672f39ebd3ffdab30` | Preserves the full annotation intent behind the shortened released question strings. |
 | Legacy `apixaban_processing.py` | `23028ae0fd2d7ae3998ae06d47746ff8164735e5f5c8eff011633819b1d20576` | Contains one executable five-rule candidate. The repository copy is byte-identical to the mentor-folder copy. It is not the missing generator named by the screening README. |
 
 The mentor criteria document contains no patient rows or note text. Its hash is
@@ -43,7 +46,48 @@ The five rule groups collectively reference all 23 official fact fields:
 
 Complete field coverage does not resolve the rule semantics below.
 
-## Blocking semantic conflicts
+## Owner source and scoring resolution
+
+On 2026-08-30 the owner supplied and selected the following hierarchy before
+any validation agreement was inspected:
+
+1. `criteria.json` defines the intended five criteria identities;
+2. the explicit arrow scoring formulas in the mentor DOCX define executable
+   rule logic when the same document contains conflicting prose or code-like
+   examples;
+3. the official release README and mentor DOCX define the full annotation
+   intent, while the released CSV/catalog provide stable fact identifiers;
+4. `screening_results.json` is the mentor-designated project reference result;
+   and
+5. the missing named generator cannot be supplied, so the reference remains
+   explicitly rule-derived and non-independent.
+
+Formula omissions use the already frozen Kleene three-valued policy: missing or
+incompatible required facts become `UNKNOWN` and never pass automatically. This
+resolution identifies the intended project diagnostic. It is not a qualified
+clinical review and does not establish that the five rules reproduce a trial
+protocol or clinically correct eligibility.
+
+The frozen executable resolutions are:
+
+- Rule 1 uses `AFib AND (NOT ablation OR NOT valvular surgery)` and requires all
+  three scored bleeding-risk facts to be absent.
+- Rule 2 uses `CHADS2 <= 3`, `LVEF >= 50`, and requires recent stroke, prior
+  stroke/TIA, and heart failure all to be absent.
+- Rule 3 requires all five thresholds: platelet `>=100`, bilirubin `<=1.8`, AST
+  `<=80`, creatinine `<=2.5`, and hemoglobin `>=10`, with the units stated by
+  the DOCX.
+- Rule 4 requires all three mental-health exclusions and inability to make
+  medical decisions to be false. This intentionally corrects the opposite
+  polarity in the legacy code according to the selected scoring formula.
+- Rule 5 is `(no diabetes AND no treated hypertension) OR (diabetes AND glucose
+  <=180)`.
+- Rules 1--5 are hard. Rules 1--4 plus Rule 5 project to `ideal`; Rules 1--4
+  plus an explicit Rule 5 failure project to `semi-ideal`; an explicit failure
+  in Rules 1--4 projects to `non-ideal`; unresolved required distinctions
+  project to `unknown`.
+
+## Historical semantic conflicts resolved for this diagnostic
 
 | Area | Conflicting available formulations | Why owner review is required |
 |---|---|---|
@@ -65,10 +109,11 @@ index-date trace exists in the released labels.
 ## Owner route selection
 
 On 2026-08-30, the data owner selected option 2, the intended mentor-rule
-diagnostic. This selects the task identity only. It does not resolve any
-clinical/content conflict and does not authorize implementation or validation.
-The outstanding decisions are collected in
-`docs/APIXABAN_CRITERIA_REVIEW_CHECKLIST_ZH.md` for a qualified reviewer.
+diagnostic, then supplied the source hierarchy above. That hierarchy authorizes
+the pre-validation scoring-contract implementation, not a claim of clinical
+correctness and not a validation run. The original itemized questions remain in
+`docs/APIXABAN_CRITERIA_REVIEW_CHECKLIST_ZH.md` as an audit template for any
+future qualified clinical review.
 
 The considered routes were:
 
@@ -91,21 +136,27 @@ The considered routes were:
    clarification identifying the authoritative formulation, then repeat this
    freeze review.
 
-No option upgrades the three-class labels to independent human gold. If no
-qualified reviewer is available, option 3 is safer than adding a compatibility
-layer or asking the data owner to make unsupported clinical decisions.
+No option upgrades the three-class labels to independent human gold. The
+current contract records the mentor-intended project diagnostic without a
+qualified clinical review. Any future clinical-validity claim still requires
+qualified review or an independently versioned protocol; project-reference
+agreement cannot supply that evidence.
 
-## Gate after owner selection
+## Implemented contract and remaining gate
 
-The task identity is now recorded. Only after the qualified review is complete
-and hash-bound may implementation freeze:
+`src/clinical_matcher/resources/apixaban-intended-rule-contract-1.0.0.json`
+freezes the source hashes, exact 23-field mapping, 24 atom occurrences, five
+expression topologies, thresholds, polarity, hard-rule semantics, unknown
+policy, and class projection. Its canonical self-hash is
+`eca82d50f45727830b8a8443bfddf7e16e30cbd801b3403bee7f6ca2f970bde1`.
+`src/clinical_matcher/apixaban_single_trial.py` validates those invariants and
+constructs the typed expression tree. Synthetic tests cover all thresholds,
+the two disjunctions, unit mismatch, missing facts, polarity, tamper rejection,
+and both class projections.
 
-1. source artifact and rule version;
-2. exact 23-field atom mapping and polarity;
-3. `ALL`/`ANY`/`NOT`, numeric thresholds, and unknown propagation;
-4. hard/soft aggregation and semi-ideal/ideal/non-ideal projection;
-5. synthetic counterexamples for every branch; and
-6. a run contract that permits validation once and keeps locked test untouched.
-
-Until those items pass schema and semantic validation, P4.7 remains incomplete
-and no real agreement result may be generated.
+The official numeric fact labels store no units. Contract units are therefore
+documented DOCX-based mapping assumptions, not observed label metadata. No real
+validation may run until the owner reviews this exact contract and separately
+approves a versioned adapter that assigns or verifies those units without
+claiming clinical unit safety. Validation remains a single locked run on the
+validation split; the locked test remains untouched.

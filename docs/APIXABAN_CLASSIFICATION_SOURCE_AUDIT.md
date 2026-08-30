@@ -12,9 +12,13 @@ The official MIMIC-IV-Ext Apixaban `1.0.0` release is authoritative for the
 
 The three-class labels used by the legacy VRI experiments are a deterministic
 projection of two overlapping rule-screening flags supplied with the mentor
-materials. They are retained as a **legacy rule-derived reference**. They must
-not be described as official PhysioNet labels, independently annotated
-eligibility gold, or clinical ground truth.
+materials. The owner subsequently confirmed that the mentor designated the new
+criteria and supplied result as project ground truth. ClinicalMatcher therefore
+records the precise role as
+`mentor_designated_rule_derived_project_ground_truth`; the shorter public term
+remains **legacy rule-derived reference**. Neither name permits describing the
+artifact as an official PhysioNet label, independently annotated eligibility
+gold, or clinical ground truth.
 
 This distinction changes the interpretation of a future single-trial result:
 agreement with the legacy labels measures reproduction of a rule-based
@@ -55,7 +59,7 @@ be repeated without publishing their contents.
 | Artifact | SHA-256 | Audited role and finding |
 |---|---|---|
 | mentor `annotated_apixaban_combined.xlsx` | `5d67d13d8da0434fd13a0002f9d65372fd6e91fdb2c1db071f62f0b92c011e94` | 2,300 rows, 100 note/admission keys, 23 questions, and the same eight-column schema as the release; it contains no classification field. A nonzero subset of note text differs from the pinned CSV and numeric answers are stored with Excel numeric types, so it is not the authoritative source. |
-| `screening_results.json` | `f358d18feb47997d87d27b104b0c3490d08bba913e64b33b17b75ab2c65c59d3` | Five-rule screening output plus overlapping semi-ideal and ideal patient-number sets. The companion README says the result was produced automatically by a preprocessing notebook and screener module. |
+| `screening_results.json` | `f358d18feb47997d87d27b104b0c3490d08bba913e64b33b17b75ab2c65c59d3` | Mentor-designated project reference: five-rule screening output plus overlapping semi-ideal and ideal patient-number sets. The companion README says the result was produced automatically by a preprocessing notebook and screener module. |
 | `ideal_candidates.csv` | `ff3871060b9e0ec97952d4b5bff998cb9504e7d8e3fd461edc2c976d199d70ea` | 100 rows with `patient_id`, `note_id`, `hadm_id`, `semi_ideal_candidate`, and `ideal_candidate`. Its patient keys align exactly with the official 100-note cohort and its flags align exactly with the screening JSON. |
 | `apixaban_with_mteb_small.csv` | `93a09907ecc82f08903458d37177acbddfa4a1a3a76306beb0787b2c23ecfb38` | 100 rows; official note text and the two classification flags align exactly with `ideal_candidates.csv`. `embedding_index` is metadata, not an embedding. |
 

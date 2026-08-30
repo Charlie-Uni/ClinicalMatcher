@@ -599,11 +599,15 @@ novelty.
     aggregation rule, and class projection are frozen before validation
     agreement is inspected.
   - Current gate: the owner selected the intended mentor-rule diagnostic on
-    2026-08-30. `docs/APIXABAN_SINGLE_TRIAL_FREEZE_REVIEW.md` hash-binds the
-    conflicting sources, and `docs/APIXABAN_CRITERIA_REVIEW_CHECKLIST_ZH.md`
-    collects the unresolved decisions for a qualified reviewer. The route
-    selection alone does not authorize a tree or validation run; no validation
-    labels were inspected while preparing either review document.
+    2026-08-30 and then selected `criteria.json` for criteria identity, the
+    mentor DOCX arrow formulas for executable scoring, and the supplied result
+    JSON as the mentor-designated project reference. Contract `1.0.0` now
+    hash-binds those artifacts, all 23 fact fields/24 atom occurrences, five
+    exact expression topologies, unknown handling, units-as-mapping-assumptions,
+    and final class projection. A strict loader and synthetic counterexamples
+    are implemented without inspecting validation labels. Real validation is
+    still blocked until the owner approves the exact contract and a versioned
+    unit-assignment adapter; locked test remains untouched.
   - Constraints: official question-answer labels remain the only human gold.
     Legacy three-class comparison is reported as rule-reference agreement, not
     clinical accuracy. No locked-test label, patient text, or row-level output

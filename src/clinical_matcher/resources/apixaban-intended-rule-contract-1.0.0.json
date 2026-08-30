@@ -1,0 +1,341 @@
+{
+  "contract_version": "1.0.0",
+  "contract_status": "scoring_frozen_pre_validation",
+  "contract_sha256": "eca82d50f45727830b8a8443bfddf7e16e30cbd801b3403bee7f6ca2f970bde1",
+  "provenance": {
+    "criteria_json_sha256": "bd4e4ae54a2b59e5202c2eded4c1dd4e25c86d74361a331c188435230e6cec6e",
+    "scoring_docx_sha256": "be872d1f2e6baa4883b3dbcdc53895a8ff3d0362e27a13193ecee1181e9a14ec",
+    "mentor_results_sha256": "f358d18feb47997d87d27b104b0c3490d08bba913e64b33b17b75ab2c65c59d3",
+    "official_readme_sha256": "88b77606cbcead4a263d3eb1d3e58ca16ed9098b082b498672f39ebd3ffdab30",
+    "official_csv_sha256": "8e8083b0b5e3d038ad912a812be1bb8a53f8a59bc37a4c29d8a420cb4296e267",
+    "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+    "mentor_ground_truth_role": "mentor_designated_rule_derived_project_ground_truth",
+    "independent_clinical_gold": false,
+    "result_generator_available": false,
+    "validation_labels_used": false,
+    "locked_test_labels_used": false
+  },
+  "source_precedence": [
+    "criteria_json_defines_intended_criteria_identity",
+    "docx_arrow_formulas_define_executable_scoring",
+    "official_readme_and_docx_define_full_annotation_intent",
+    "official_csv_and_catalog_define_stable_fact_ids",
+    "frozen_kleene_three_value_policy_handles_scoring_omissions"
+  ],
+  "semantics": {
+    "unknown_policy": "kleene_unknown_never_automatically_passes",
+    "time_window_policy": "already_encoded_by_source_question_no_second_filter",
+    "unit_assignment_basis": "mentor_docx_scoring_standard",
+    "official_numeric_labels_store_units": false,
+    "unit_assignment_is_mapping_assumption": true,
+    "clinical_unit_safety_claim_allowed": false,
+    "input_fact_cardinality": "one_normalized_fact_per_patient_question",
+    "validation_run_authorized": false,
+    "semi_ideal_rule_ids": [
+      "apixaban-rule-1",
+      "apixaban-rule-2",
+      "apixaban-rule-3",
+      "apixaban-rule-4"
+    ],
+    "ideal_rule_ids": [
+      "apixaban-rule-1",
+      "apixaban-rule-2",
+      "apixaban-rule-3",
+      "apixaban-rule-4",
+      "apixaban-rule-5"
+    ],
+    "exclusive_class_precedence": [
+      "ideal",
+      "semi-ideal",
+      "non-ideal"
+    ]
+  },
+  "rules": [
+    {
+      "rule_id": "apixaban-rule-1",
+      "description": "Non-valvular AFib with the scored ablation/valvular branch and no scored bleeding risk",
+      "source_formula": "AFib == true AND (ablation == false OR valvular_surgery == false) AND hemorrhagic == false AND peptic_ulcer == false AND recent_serious_bleeding == false",
+      "hard": true,
+      "expression": {
+        "operator": "all",
+        "children": [
+          {
+            "atom": {
+              "condition_id": "r1-afib-present",
+              "source_criterion_label": "afib",
+              "fact_field": "atrial_fibrillation",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": true, "unit": null}
+            }
+          },
+          {
+            "operator": "any",
+            "children": [
+              {
+                "atom": {
+                  "condition_id": "r1-ablation-absent",
+                  "source_criterion_label": "afib_ablation",
+                  "fact_field": "afib_ablation",
+                  "operator": "==",
+                  "expected": {"value_type": "boolean", "value": false, "unit": null}
+                }
+              },
+              {
+                "atom": {
+                  "condition_id": "r1-valvular-absent",
+                  "source_criterion_label": "surgical_valvular_disease",
+                  "fact_field": "valvular_disease_requiring_surgery",
+                  "operator": "==",
+                  "expected": {"value_type": "boolean", "value": false, "unit": null}
+                }
+              }
+            ]
+          },
+          {
+            "atom": {
+              "condition_id": "r1-hemorrhagic-absent",
+              "source_criterion_label": "hemorrhagic",
+              "fact_field": "hemorrhagic_tendency_or_blood_dyscrasia",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r1-ulcer-absent",
+              "source_criterion_label": "peptic_ulcer_disease",
+              "fact_field": "peptic_ulcer_disease",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r1-bleeding-absent",
+              "source_criterion_label": "bleeding",
+              "fact_field": "serious_bleeding_within_6_months",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "apixaban-rule-2",
+      "description": "Scored stroke-risk and heart-function thresholds with no scored stroke or heart failure",
+      "source_formula": "CHADS2 <= 3 AND LVEF >= 50% AND recent_stroke == false AND prior_stroke_or_TIA == false AND heart_failure == false",
+      "hard": true,
+      "expression": {
+        "operator": "all",
+        "children": [
+          {
+            "atom": {
+              "condition_id": "r2-chads2-max",
+              "source_criterion_label": "chads2",
+              "fact_field": "chads2_score",
+              "operator": "<=",
+              "expected": {"value_type": "number", "value": 3, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r2-lvef-min",
+              "source_criterion_label": "lvef",
+              "fact_field": "left_ventricular_ejection_fraction",
+              "operator": ">=",
+              "expected": {"value_type": "number", "value": 50, "unit": "%"}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r2-recent-stroke-absent",
+              "source_criterion_label": "recent_stroke",
+              "fact_field": "stroke_during_admission_or_within_last_month",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r2-prior-stroke-absent",
+              "source_criterion_label": "prior_stroke",
+              "fact_field": "prior_stroke_or_tia",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r2-heart-failure-absent",
+              "source_criterion_label": "heart_failure",
+              "fact_field": "heart_failure",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "apixaban-rule-3",
+      "description": "All five scored hematologic, hepatic, and renal thresholds",
+      "source_formula": "PLT >= 100 x10^3/uL AND BILI <= 1.5 x ULN(1.2 mg/dL) AND AST <= 2 x ULN(40 U/L) AND CREAT <= 2.5 mg/dL AND HGB >= 10 g/dL",
+      "hard": true,
+      "expression": {
+        "operator": "all",
+        "children": [
+          {
+            "atom": {
+              "condition_id": "r3-platelet-min",
+              "source_criterion_label": "PLT",
+              "fact_field": "platelet_count",
+              "operator": ">=",
+              "expected": {"value_type": "number", "value": 100, "unit": "10^3/uL"}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r3-bilirubin-max",
+              "source_criterion_label": "BILI",
+              "fact_field": "total_bilirubin",
+              "operator": "<=",
+              "expected": {"value_type": "number", "value": 1.8, "unit": "mg/dL"}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r3-ast-max",
+              "source_criterion_label": "AST",
+              "fact_field": "aspartate_aminotransferase",
+              "operator": "<=",
+              "expected": {"value_type": "number", "value": 80, "unit": "U/L"}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r3-creatinine-max",
+              "source_criterion_label": "CREAT",
+              "fact_field": "serum_creatinine",
+              "operator": "<=",
+              "expected": {"value_type": "number", "value": 2.5, "unit": "mg/dL"}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r3-hemoglobin-min",
+              "source_criterion_label": "HGB",
+              "fact_field": "hemoglobin",
+              "operator": ">=",
+              "expected": {"value_type": "number", "value": 10, "unit": "g/dL"}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "apixaban-rule-4",
+      "description": "No scored mental-health exclusion and retained medical decision capacity",
+      "source_formula": "MDD == false AND schizophrenia == false AND bipolar == false AND unable_to_make_medical_decisions == false",
+      "hard": true,
+      "expression": {
+        "operator": "all",
+        "children": [
+          {
+            "atom": {
+              "condition_id": "r4-mdd-absent",
+              "source_criterion_label": "mdd",
+              "fact_field": "major_depressive_disorder",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r4-schizophrenia-absent",
+              "source_criterion_label": "schizophrenia",
+              "fact_field": "schizophrenia_or_schizoaffective_disorder",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r4-bipolar-absent",
+              "source_criterion_label": "bipolar",
+              "fact_field": "bipolar_disorder",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          },
+          {
+            "atom": {
+              "condition_id": "r4-decision-capacity-present",
+              "source_criterion_label": "med_decisions",
+              "fact_field": "unable_to_make_medical_decisions",
+              "operator": "==",
+              "expected": {"value_type": "boolean", "value": false, "unit": null}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "apixaban-rule-5",
+      "description": "Scored metabolic-control disjunction",
+      "source_formula": "(diabetes == false AND hypertension == false) OR (diabetes == true AND glucose <= 180 mg/dL)",
+      "hard": true,
+      "expression": {
+        "operator": "any",
+        "children": [
+          {
+            "operator": "all",
+            "children": [
+              {
+                "atom": {
+                  "condition_id": "r5-no-diabetes",
+                  "source_criterion_label": "t2d",
+                  "fact_field": "diabetes_mellitus",
+                  "operator": "==",
+                  "expected": {"value_type": "boolean", "value": false, "unit": null}
+                }
+              },
+              {
+                "atom": {
+                  "condition_id": "r5-no-hypertension",
+                  "source_criterion_label": "arterial_hypertension",
+                  "fact_field": "treated_arterial_hypertension",
+                  "operator": "==",
+                  "expected": {"value_type": "boolean", "value": false, "unit": null}
+                }
+              }
+            ]
+          },
+          {
+            "operator": "all",
+            "children": [
+              {
+                "atom": {
+                  "condition_id": "r5-diabetes",
+                  "source_criterion_label": "t2d",
+                  "fact_field": "diabetes_mellitus",
+                  "operator": "==",
+                  "expected": {"value_type": "boolean", "value": true, "unit": null}
+                }
+              },
+              {
+                "atom": {
+                  "condition_id": "r5-glucose-max",
+                  "source_criterion_label": "blood_glucose",
+                  "fact_field": "blood_glucose",
+                  "operator": "<=",
+                  "expected": {"value_type": "number", "value": 180, "unit": "mg/dL"}
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
