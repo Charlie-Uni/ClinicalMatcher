@@ -1,6 +1,7 @@
 # Apixaban single-trial freeze review
 
-Status: owner semantic decision required; no expression tree is frozen
+Status: intended mentor-rule route selected; qualified semantic review pending;
+no expression tree is frozen
 
 Review date: 2026-08-30
 
@@ -55,14 +56,21 @@ Complete field coverage does not resolve the rule semantics below.
 | Rule 3 units | The rule text names clinical units, but the official question contract does not define canonical units and the legacy code compares raw numbers. | A typed clinical comparison cannot honestly assert unit compatibility. |
 | Rule 4 polarity | The official fact asks whether the patient is **unable** to make medical decisions, so `true` is adverse. The legacy code excludes when the cleaned value equals `0`, which corresponds to the opposite polarity. | This is a likely implementation defect, but changing it would cease to reproduce that code. |
 | General unknown handling | The five legacy expressions do not apply one consistent missing-value policy across boolean and numeric fields. | Unknown propagation must be frozen before any agreement is observed. |
+| Fact-target adequacy | The mentor rule and official catalog differ in whether AFib reversibility, the breadth of hypertension history, and discharge-time decision capacity are represented. | Similar field names do not establish that the released fact is sufficient for the intended atom. |
 
 The recent-stroke and recent-bleeding windows are already part of the official
 fact-question targets. P4.7 must not add a second date filter when no reliable
 index-date trace exists in the released labels.
 
-## Owner decision required
+## Owner route selection
 
-Choose exactly one task identity before implementation:
+On 2026-08-30, the data owner selected option 2, the intended mentor-rule
+diagnostic. This selects the task identity only. It does not resolve any
+clinical/content conflict and does not authorize implementation or validation.
+The outstanding decisions are collected in
+`docs/APIXABAN_CRITERIA_REVIEW_CHECKLIST_ZH.md` for a qualified reviewer.
+
+The considered routes were:
 
 1. **Legacy-code reproduction diagnostic.**
    Freeze the byte-identical legacy Python semantics, including documented
@@ -89,7 +97,8 @@ layer or asking the data owner to make unsupported clinical decisions.
 
 ## Gate after owner selection
 
-Only after the task identity is recorded may implementation freeze:
+The task identity is now recorded. Only after the qualified review is complete
+and hash-bound may implementation freeze:
 
 1. source artifact and rule version;
 2. exact 23-field atom mapping and polarity;
