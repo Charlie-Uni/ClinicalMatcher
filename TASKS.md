@@ -598,6 +598,11 @@ novelty.
   - Entry condition: P4.6 is complete; the criterion source, tree, atom mapping,
     aggregation rule, and class projection are frozen before validation
     agreement is inspected.
+  - Current gate: `docs/APIXABAN_SINGLE_TRIAL_FREEZE_REVIEW.md` hash-binds the
+    available rule sources and records unresolved threshold, connective, unit,
+    polarity, and missing-value conflicts. The owner must select the task
+    identity before a tree is implemented; no validation labels were inspected
+    while preparing the review.
   - Constraints: official question-answer labels remain the only human gold.
     Legacy three-class comparison is reported as rule-reference agreement, not
     clinical accuracy. No locked-test label, patient text, or row-level output
