@@ -570,8 +570,47 @@ novelty.
     interpretation limits are recorded in `docs/ERROR_ATTRIBUTION.md`. Locked
     test remained untouched and representative-case review remains pending.
 
+- [x] **P4.6 Audit the legacy Apixaban three-class label source.** Determine
+  whether `ideal / semi-ideal / non-ideal` is official human gold, a mentor
+  annotation, or a programmatic derivative before using it for evaluation.
+  - Entry condition: the pinned official release and all available mentor-side
+    classification artifacts can be inspected in the authorized environment.
+  - Constraints: do not publish patient identifiers, note text, row-level
+    labels, or rare-class aggregates before the disclosure threshold is
+    approved. A file being called `ground truth` does not establish independent
+    human annotation.
+  - Verify: record release/artifact hashes, schemas, row counts, cohort/key
+    alignment, label precedence, reproducibility, and publication boundary.
+  - Completion: `docs/APIXABAN_CLASSIFICATION_SOURCE_AUDIT.md` establishes that
+    the official `1.0.0` release supplies 2,300 human-reviewed note-question
+    answers but no final patient classification. The mentor classification
+    flags align to all 100 official patients and propagate unchanged into the
+    legacy embedding metadata, but originate from an automatic five-rule
+    screening result; ideal is a subset of semi-ideal and legacy code applies
+    ideal-first precedence to produce three exclusive classes. The named
+    generator notebook/module is absent, and no independent patient-level
+    eligibility-review protocol is available. The labels are therefore frozen
+    as a legacy rule-derived reference, not human eligibility gold.
+
+- [ ] **P4.7 Build the frozen single-trial end-to-end diagnostic.** Encode an
+  owner-reviewed Apixaban expression tree, bind official fact questions to its
+  atoms, and evaluate the complete trace on the frozen validation split.
+  - Entry condition: P4.6 is complete; the criterion source, tree, atom mapping,
+    aggregation rule, and class projection are frozen before validation
+    agreement is inspected.
+  - Constraints: official question-answer labels remain the only human gold.
+    Legacy three-class comparison is reported as rule-reference agreement, not
+    clinical accuracy. No locked-test label, patient text, or row-level output
+    enters configuration selection or Git.
+  - Verify: strict schema and semantic validation cover every mapped/unmapped
+    fact, polarity, hard/soft rule, unknown propagation, and class projection;
+    synthetic counterexamples pass; owner-only validation outputs reconcile
+    patient, criterion, and final-label denominators; the public report contains
+    disclosure-safe aggregates and the provenance limitation above.
+
 Acceptance: verification and abstention reduce risk under a declared coverage
-trade-off and do not hide unresolved clinical information.
+trade-off, three-class source claims match their provenance, and an end-to-end
+single-trial result is not confused with independent clinical gold.
 
 ---
 
