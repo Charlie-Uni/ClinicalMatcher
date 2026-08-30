@@ -64,23 +64,28 @@ index-date trace exists in the released labels.
 
 Choose exactly one task identity before implementation:
 
-1. **Legacy-code reproduction diagnostic (recommended for the current P4.7).**
+1. **Legacy-code reproduction diagnostic.**
    Freeze the byte-identical legacy Python semantics, including documented
    oddities, and label every result as agreement with an executable legacy
    reference. This does not claim that the rules are clinically correct or
-   that they generated the supplied three-class flags.
+   that they generated the supplied three-class flags. Its position-dependent
+   missing-value defaults and reversed decision-capacity polarity cannot be
+   represented faithfully by the current three-valued expression tree without
+   a dedicated compatibility layer. That layer would be a separately approved
+   scope change, not the default P4.7 implementation.
 2. **Intended mentor-rule diagnostic.** Resolve every conflict above with an
-   explicit owner decision, issue a new rule version, and treat comparison with
-   the old flags as descriptive only. This requires clinical/content review;
-   the assistant must not select the resolutions.
+   explicit decision from a qualified content reviewer, issue a new rule
+   version, and treat comparison with the old flags as descriptive only. This
+   is the recommended P4.7 route when that reviewer is available; the assistant
+   must not select the resolutions.
 3. **Pause for provenance clarification.** Obtain the missing
    `notebooks/preprocess.ipynb`, `data_processing/screener.py`, or a mentor
    clarification identifying the authoritative formulation, then repeat this
    freeze review.
 
-No option upgrades the three-class labels to independent human gold. Option 1
-is the narrowest way to complete the already-approved rule-reference
-diagnostic without inventing clinical semantics.
+No option upgrades the three-class labels to independent human gold. If no
+qualified reviewer is available, option 3 is safer than adding a compatibility
+layer or asking the data owner to make unsupported clinical decisions.
 
 ## Gate after owner selection
 
