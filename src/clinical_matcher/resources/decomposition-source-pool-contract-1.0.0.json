@@ -1,0 +1,59 @@
+{
+  "approved_on": "2026-08-31",
+  "audit_requirements": {
+    "bind_api_version_and_timestamp": true,
+    "bind_query_time": true,
+    "complete_hit_list": true,
+    "record_source_hash": true,
+    "record_status_at_query": true
+  },
+  "contract_id": "decomposition-source-pool-9bca2d0925441a8c",
+  "contract_sha256": "9bca2d0925441a8c32231077ed65b6c401c4fb04f1e71662b0d0c7e74e079552",
+  "contract_version": "decomposition-source-pool-contract/1.0.0",
+  "failure_policy": {
+    "downstream_quota_failure": "fail_closed_owner_review_no_automatic_expansion",
+    "incomplete_fetch": "fail_closed",
+    "insufficient_filter_passed": "fail_closed",
+    "registry_total_mismatch": "fail_closed_owner_review"
+  },
+  "filters": {
+    "first_posted_from": "2000-01-01",
+    "first_posted_to": "2026-08-31",
+    "overall_statuses": [
+      "ENROLLING_BY_INVITATION",
+      "NOT_YET_RECRUITING",
+      "RECRUITING"
+    ],
+    "require_eligibility_text": true,
+    "study_types": [
+      "INTERVENTIONAL"
+    ]
+  },
+  "protocol_version": "decomposition-benchmark-protocol/1.0.0",
+  "query": {
+    "api_generation": "v2",
+    "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+    "expected_registry_total_count": 833,
+    "parameters": {
+      "countTotal": "true",
+      "filter.overallStatus": "ENROLLING_BY_INVITATION|NOT_YET_RECRUITING|RECRUITING",
+      "format": "json",
+      "markupFormat": "markdown",
+      "pageSize": "1000",
+      "query.cond": "Atrial Fibrillation"
+    }
+  },
+  "sampling": {
+    "method": "sha256_decomposition_source_nct_id/1.0.0",
+    "recency_used": false,
+    "registry_order_used": false,
+    "salt": "clinicalmatcher-af-decomposition-source-pool-v1",
+    "target_study_count": 40
+  },
+  "scope": {
+    "disease_domain": "atrial_fibrillation",
+    "generalization_claim": "single_disease_domain_only",
+    "study_domain": "interventional"
+  },
+  "status": "frozen_owner_approved"
+}

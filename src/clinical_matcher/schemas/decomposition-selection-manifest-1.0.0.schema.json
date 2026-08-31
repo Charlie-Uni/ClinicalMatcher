@@ -28,7 +28,7 @@
       "properties": {
         "manifest_path": {"const": "snapshot-manifest.json"},
         "manifest_sha256": {"$ref": "#/$defs/sha256"},
-        "snapshot_version": {"enum": ["1.0.0", "1.1.0"]},
+        "snapshot_version": {"enum": ["1.0.0", "1.1.0", "1.2.0"]},
         "snapshot_id": {"type": "string", "pattern": "^ctg-[0-9a-f]{16}$"},
         "snapshot_content_sha256": {"$ref": "#/$defs/sha256"}
       }

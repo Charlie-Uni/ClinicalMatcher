@@ -932,7 +932,12 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     pre-adjudication IAA and trial-cluster bootstrap intervals. The owner
     approved version 1.0.0 on 2026-08-29 and approved its predeclared
     single-annotator downgrade on 2026-08-31, before any real annotation was
-    created. All non-staffing safeguards remain unchanged.
+    created. The owner also froze the AF-only public source-pool policy on
+    2026-08-31: complete ClinicalTrials.gov v2 query audit, explicit filters,
+    40-trial NCT-hash sample, no response-order/recency use, and fail-closed
+    review if the observed 833-hit total or downstream quotas differ. Results
+    cannot be generalized beyond the single AF disease domain. All other
+    safeguards remain unchanged.
 
 - [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression

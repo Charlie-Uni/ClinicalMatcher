@@ -132,6 +132,30 @@ the capacity plan is provisional, or the plan has no reviewed design. A
 selected trial that the conservative parser cannot segment remains visible and
 prevents gold readiness rather than being silently replaced.
 
+### Public decomposition source pool
+
+P5D uses a separate public-text source-pool contract because its 80-criterion
+annotation workload is not a patient-by-trial gold-capacity decision. It does
+not weaken or reuse the patient-trial capacity gate. The owner-approved
+contract is packaged at
+`src/clinical_matcher/resources/decomposition-source-pool-contract-1.0.0.json`.
+
+```bash
+clinical-matcher-decomposition-source-pool build \
+  --output-dir benchmarks/decomposition/af_source_pool_2026-08-31
+
+clinical-matcher-decomposition-source-pool verify \
+  --snapshot-dir benchmarks/decomposition/af_source_pool_2026-08-31
+```
+
+The builder fully fetches the frozen ClinicalTrials.gov v2 query, requires the
+owner-observed total of 833 to remain unchanged, applies the frozen public
+filters, and selects 40 trials by a contract-bound NCT hash. Its snapshot
+version `1.2.0` stores the selected public sources and hash-binds a complete
+query audit containing all 833 NCT IDs and recruitment statuses. It never uses
+API response order or update recency. A changed total or insufficient source
+pool requires new owner review rather than an automatic fallback.
+
 If a release retains a frozen registry snapshot for reproducibility, its README
 must retain the attribution, processing date, modification notes, and warning
 that current registry records may differ.

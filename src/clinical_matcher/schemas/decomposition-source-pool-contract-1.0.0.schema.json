@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-source-pool-contract-1.0.0.schema.json",
+  "title": "Frozen AF decomposition source-pool contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version", "protocol_version", "contract_id", "contract_sha256",
+    "status", "approved_on", "scope", "query", "filters", "sampling",
+    "audit_requirements", "failure_policy"
+  ],
+  "properties": {
+    "contract_version": {"const": "decomposition-source-pool-contract/1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-source-pool-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "frozen_owner_approved"},
+    "approved_on": {"const": "2026-08-31"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disease_domain", "study_domain", "generalization_claim"],
+      "properties": {
+        "disease_domain": {"const": "atrial_fibrillation"},
+        "study_domain": {"const": "interventional"},
+        "generalization_claim": {"const": "single_disease_domain_only"}
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_generation", "endpoint", "parameters", "expected_registry_total_count"],
+      "properties": {
+        "api_generation": {"const": "v2"},
+        "endpoint": {"const": "https://clinicaltrials.gov/api/v2/studies"},
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["query.cond", "filter.overallStatus", "format", "markupFormat", "countTotal", "pageSize"],
+          "properties": {
+            "query.cond": {"const": "Atrial Fibrillation"},
+            "filter.overallStatus": {"const": "ENROLLING_BY_INVITATION|NOT_YET_RECRUITING|RECRUITING"},
+            "format": {"const": "json"},
+            "markupFormat": {"const": "markdown"},
+            "countTotal": {"const": "true"},
+            "pageSize": {"const": "1000"}
+          }
+        },
+        "expected_registry_total_count": {"const": 833}
+      }
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["study_types", "overall_statuses", "require_eligibility_text", "first_posted_from", "first_posted_to"],
+      "properties": {
+        "study_types": {"const": ["INTERVENTIONAL"]},
+        "overall_statuses": {"const": ["ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING", "RECRUITING"]},
+        "require_eligibility_text": {"const": true},
+        "first_posted_from": {"const": "2000-01-01"},
+        "first_posted_to": {"const": "2026-08-31"}
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "salt", "target_study_count", "registry_order_used", "recency_used"],
+      "properties": {
+        "method": {"const": "sha256_decomposition_source_nct_id/1.0.0"},
+        "salt": {"const": "clinicalmatcher-af-decomposition-source-pool-v1"},
+        "target_study_count": {"const": 40},
+        "registry_order_used": {"const": false},
+        "recency_used": {"const": false}
+      }
+    },
+    "audit_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["complete_hit_list", "record_status_at_query", "record_source_hash", "bind_api_version_and_timestamp", "bind_query_time"],
+      "properties": {
+        "complete_hit_list": {"const": true},
+        "record_status_at_query": {"const": true},
+        "record_source_hash": {"const": true},
+        "bind_api_version_and_timestamp": {"const": true},
+        "bind_query_time": {"const": true}
+      }
+    },
+    "failure_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry_total_mismatch", "incomplete_fetch", "insufficient_filter_passed", "downstream_quota_failure"],
+      "properties": {
+        "registry_total_mismatch": {"const": "fail_closed_owner_review"},
+        "incomplete_fetch": {"const": "fail_closed"},
+        "insufficient_filter_passed": {"const": "fail_closed"},
+        "downstream_quota_failure": {"const": "fail_closed_owner_review_no_automatic_expansion"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

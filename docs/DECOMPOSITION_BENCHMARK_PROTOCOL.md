@@ -36,6 +36,31 @@ source span does not reproduce the exact text are ineligible. The selection
 manifest is written once without overwrite and records every inclusion and
 exclusion reason.
 
+### Frozen single-domain source pool
+
+This benchmark is limited to **atrial-fibrillation interventional trials**. Its
+decomposition metrics measure performance in that single disease domain and
+must not be presented as disease-independent or general clinical-criteria
+decomposition performance. This scope limitation is cumulative with the
+limited external validity of the single-annotator reference set.
+
+Owner-approved source-pool contract
+`decomposition-source-pool-contract/1.0.0` freezes the ClinicalTrials.gov v2
+condition query, three recruiting statuses, `INTERVENTIONAL` study type,
+eligibility-text requirement, inclusive first-posted interval 2000-01-01
+through 2026-08-31, observed registry total of 833, and a 40-trial NCT-hash
+sample. The complete query is fetched before local filtering. Registry order,
+last-update recency, and criterion content do not affect trial sampling.
+
+The snapshot stores the 40 selected public source studies and binds a separate
+self-hashed query-audit file containing the complete 833-NCT hit list, status at
+query time, selection fields, source-study hash, filter outcome, and sampling
+digest. The top-level manifest also freezes the exact query parameters, query
+timestamp, API version, API data timestamp, page count, and audit hash. A
+registry-total change, incomplete fetch, fewer than 40 filter-passed studies,
+or downstream criterion-quota failure stops execution. No automatic query,
+trial-count, date, status, or quota expansion is permitted.
+
 ## Concept catalog prerequisite
 
 The frozen core schema permits a normalized `field` string but does not define a
@@ -335,24 +360,26 @@ pre-adjudication IAA.
 
 All public outputs are versioned, self-hashed, and refuse overwrite. At minimum
 they include the source/selection manifest, concept catalog, annotation files,
-adjudication record, gold manifest, model predictions, equivalence-review
-record, and JSON/Markdown evaluation report.
+gold manifest, model predictions, equivalence-review record, and JSON/Markdown
+evaluation report. An adjudication record is required only in the frozen dual
+mode and is prohibited in the approved single-annotator mode.
 
 Stop and return to owner review if any of the following occurs:
 
 - a quota, trial cap, trial-level isolation, source hash, or span check fails;
-- the standard mode lacks two qualified annotators;
+- the executed annotation mode differs from the pre-annotation owner decision;
 - an annotator sees model output before locking independent work;
 - test gold or metrics influence prompt/model/evaluator configuration;
 - a required concept is absent from the frozen catalog;
 - normalization or matching rules would need revision after annotations or
   predictions are visible;
-- an unresolved annotation disagreement remains;
+- an unresolved annotation disagreement remains in a future dual-mode version;
 - any selected file contains patient or restricted data.
 
 Passing this protocol establishes a small public decomposition benchmark. It
 does not establish clinical eligibility correctness, patient matching quality,
-or readiness for autonomous trial recruitment.
+readiness for autonomous trial recruitment, or decomposition performance
+outside the frozen atrial-fibrillation domain.
 
 ## Implemented adjudication and gold boundary
 

@@ -9,6 +9,9 @@ from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 from ..splits import current_git_commit
 from ..validation import DocumentValidationError, validate_document
+from .decomposition_source_pool import (
+    validate_decomposition_source_selection_audit,
+)
 from .trial_selection import (
     ReproducibleTrialSelection,
     select_trials,
@@ -25,10 +28,14 @@ from .trials import (
 
 SNAPSHOT_VERSION = "1.0.0"
 BENCHMARK_SNAPSHOT_VERSION = "1.1.0"
+DECOMPOSITION_SNAPSHOT_VERSION = "1.2.0"
 COVERAGE_VERSION = "1.0.0"
 SNAPSHOT_SCHEMA_RESOURCE = "schemas/trial-snapshot-1.0.0.schema.json"
 BENCHMARK_SNAPSHOT_SCHEMA_RESOURCE = (
     "schemas/trial-snapshot-1.1.0.schema.json"
+)
+DECOMPOSITION_SNAPSHOT_SCHEMA_RESOURCE = (
+    "schemas/trial-snapshot-1.2.0.schema.json"
 )
 COVERAGE_SCHEMA_RESOURCE = "schemas/trial-import-coverage-1.0.0.schema.json"
 
@@ -137,7 +144,10 @@ def _snapshot_fingerprint_payload(manifest: Dict[str, Any]) -> Dict[str, Any]:
         "candidate_keys": manifest["candidate_keys"],
         "records": manifest["records"],
     }
-    if manifest["snapshot_version"] == BENCHMARK_SNAPSHOT_VERSION:
+    if manifest["snapshot_version"] in {
+        BENCHMARK_SNAPSHOT_VERSION,
+        DECOMPOSITION_SNAPSHOT_VERSION,
+    }:
         payload["selection_audit_path"] = manifest["selection_audit_path"]
         payload["selection_audit_sha256"] = manifest[
             "selection_audit_sha256"
@@ -279,6 +289,47 @@ def build_benchmark_trial_snapshot(
     )
 
 
+def build_decomposition_trial_snapshot(
+    *,
+    studies: Sequence[Dict[str, Any]],
+    version_payload: Dict[str, Any],
+    registry_reported_total_count: int,
+    pages_fetched: int,
+    selection: Dict[str, Any],
+    selection_audit: Dict[str, Any],
+    output_dir: Path,
+    queried_at: str,
+    builder_code_commit: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Build the owner-approved public decomposition source snapshot."""
+    validate_decomposition_source_selection_audit(selection_audit)
+    if selection_audit["selection"] != selection:
+        raise SnapshotError("Decomposition selection differs from its audit")
+    if selection_audit["flow"]["registry_reported_total_count"] != (
+        registry_reported_total_count
+    ):
+        raise SnapshotError("Decomposition registry total differs from audit")
+    if selection_audit["flow"]["pages_fetched"] != pages_fetched:
+        raise SnapshotError("Decomposition page count differs from audit")
+    return _write_trial_snapshot(
+        studies=studies,
+        version_payload=version_payload,
+        normalized_selection=selection,
+        output_dir=output_dir,
+        search={
+            "registry_reported_total_count": registry_reported_total_count,
+            "fetched_candidate_count": registry_reported_total_count,
+            "pages_fetched": pages_fetched,
+            "registry_fetch_complete": True,
+        },
+        snapshot_version=DECOMPOSITION_SNAPSHOT_VERSION,
+        snapshot_schema_resource=DECOMPOSITION_SNAPSHOT_SCHEMA_RESOURCE,
+        selection_audit=selection_audit,
+        created_at=queried_at,
+        builder_code_commit=builder_code_commit,
+    )
+
+
 def _write_trial_snapshot(
     studies: Sequence[Dict[str, Any]],
     version_payload: Dict[str, Any],
@@ -404,7 +455,14 @@ def _write_trial_snapshot(
             "records": records,
         }
         if selection_audit is not None:
-            validate_selection_audit(selection_audit)
+            if snapshot_version == BENCHMARK_SNAPSHOT_VERSION:
+                validate_selection_audit(selection_audit)
+            elif snapshot_version == DECOMPOSITION_SNAPSHOT_VERSION:
+                validate_decomposition_source_selection_audit(selection_audit)
+            else:
+                raise SnapshotError(
+                    "Selection audit is unsupported for this snapshot version"
+                )
             _write_json(staging / "selection-audit.json", selection_audit)
             manifest["selection_audit_path"] = "selection-audit.json"
             manifest["selection_audit_sha256"] = selection_audit[
@@ -493,6 +551,7 @@ def validate_trial_snapshot(snapshot_dir: Path) -> Dict[str, Any]:
     schema_resource = {
         SNAPSHOT_VERSION: SNAPSHOT_SCHEMA_RESOURCE,
         BENCHMARK_SNAPSHOT_VERSION: BENCHMARK_SNAPSHOT_SCHEMA_RESOURCE,
+        DECOMPOSITION_SNAPSHOT_VERSION: DECOMPOSITION_SNAPSHOT_SCHEMA_RESOURCE,
     }.get(manifest.get("snapshot_version"))
     if schema_resource is None:
         raise SnapshotError("Unsupported trial snapshot version")
@@ -513,13 +572,19 @@ def validate_trial_snapshot(snapshot_dir: Path) -> Dict[str, Any]:
         raise SnapshotError("Snapshot content fingerprint does not match manifest")
     if manifest["snapshot_id"] != f"ctg-{expected_content_hash[:16]}":
         raise SnapshotError("Snapshot ID does not match its content fingerprint")
-    if manifest["snapshot_version"] == BENCHMARK_SNAPSHOT_VERSION:
+    if manifest["snapshot_version"] in {
+        BENCHMARK_SNAPSHOT_VERSION,
+        DECOMPOSITION_SNAPSHOT_VERSION,
+    }:
         audit_path = _contained_snapshot_path(
             snapshot_dir,
             manifest["selection_audit_path"],
         )
         selection_audit = json.loads(audit_path.read_text(encoding="utf-8"))
-        validate_selection_audit(selection_audit)
+        if manifest["snapshot_version"] == BENCHMARK_SNAPSHOT_VERSION:
+            validate_selection_audit(selection_audit)
+        else:
+            validate_decomposition_source_selection_audit(selection_audit)
         if (
             selection_audit["selection_audit_sha256"]
             != manifest["selection_audit_sha256"]

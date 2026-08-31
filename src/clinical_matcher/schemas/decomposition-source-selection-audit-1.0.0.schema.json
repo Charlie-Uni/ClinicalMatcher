@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-source-selection-audit-1.0.0.schema.json",
+  "title": "Complete ClinicalTrials.gov query and source-pool selection audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selection_audit_version", "selection_audit_id", "selection_audit_sha256",
+    "source_pool_contract_id", "source_pool_contract_sha256", "selection", "queried_at",
+    "api_version", "api_data_timestamp", "query_parameters", "flow",
+    "filter_exclusion_reason_counts", "records"
+  ],
+  "properties": {
+    "selection_audit_version": {"const": "decomposition-source-selection-audit/1.0.0"},
+    "selection_audit_id": {"type": "string", "pattern": "^decomposition-source-selection-[0-9a-f]{16}$"},
+    "selection_audit_sha256": {"$ref": "#/$defs/sha256"},
+    "source_pool_contract_id": {"type": "string", "pattern": "^decomposition-source-pool-[0-9a-f]{16}$"},
+    "source_pool_contract_sha256": {"$ref": "#/$defs/sha256"},
+    "selection": {"$ref": "#/$defs/selection"},
+    "queried_at": {"type": "string", "format": "date-time"},
+    "api_version": {"$ref": "#/$defs/nonEmptyString"},
+    "api_data_timestamp": {"$ref": "#/$defs/nonEmptyString"},
+    "query_parameters": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "minProperties": 6
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_reported_total_count", "fetched_candidate_count",
+        "filter_passed_count", "filter_excluded_count",
+        "eligible_not_sampled_count", "selected_count", "pages_fetched"
+      ],
+      "properties": {
+        "registry_reported_total_count": {"const": 833},
+        "fetched_candidate_count": {"const": 833},
+        "filter_passed_count": {"type": "integer", "minimum": 40},
+        "filter_excluded_count": {"type": "integer", "minimum": 0},
+        "eligible_not_sampled_count": {"type": "integer", "minimum": 0},
+        "selected_count": {"const": 40},
+        "pages_fetched": {"type": "integer", "minimum": 1}
+      }
+    },
+    "filter_exclusion_reason_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 1}
+    },
+    "records": {
+      "type": "array",
+      "minItems": 833,
+      "maxItems": 833,
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disease_domain", "rationale", "query_parameters", "filters",
+        "sampling", "source_pool_contract_binding", "scope_limitation"
+      ],
+      "properties": {
+        "disease_domain": {"const": "atrial_fibrillation"},
+        "rationale": {"$ref": "#/$defs/nonEmptyString"},
+        "query_parameters": {
+          "type": "object",
+          "additionalProperties": {"type": "string"},
+          "minProperties": 6
+        },
+        "filters": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["study_types", "overall_statuses", "require_eligibility_text", "first_posted_from", "first_posted_to"],
+          "properties": {
+            "study_types": {"const": ["INTERVENTIONAL"]},
+            "overall_statuses": {"const": ["ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING", "RECRUITING"]},
+            "require_eligibility_text": {"const": true},
+            "first_posted_from": {"const": "2000-01-01"},
+            "first_posted_to": {"const": "2026-08-31"}
+          }
+        },
+        "sampling": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "salt", "target_study_count", "registry_order_used", "recency_used"],
+          "properties": {
+            "method": {"const": "sha256_decomposition_source_nct_id/1.0.0"},
+            "salt": {"const": "clinicalmatcher-af-decomposition-source-pool-v1"},
+            "target_study_count": {"const": 40},
+            "registry_order_used": {"const": false},
+            "recency_used": {"const": false}
+          }
+        },
+        "source_pool_contract_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["contract_id", "contract_sha256"],
+          "properties": {
+            "contract_id": {"type": "string", "pattern": "^decomposition-source-pool-[0-9a-f]{16}$"},
+            "contract_sha256": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "scope_limitation": {"const": "single_disease_domain_only"}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nct_id", "study_type", "overall_status", "first_posted",
+        "has_eligibility_text", "source_study_sha256", "filter_passed",
+        "filter_exclusion_reasons", "sampling_hash", "selected",
+        "selection_reason"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "study_type": {"type": ["string", "null"]},
+        "overall_status": {"type": ["string", "null"]},
+        "first_posted": {"type": ["string", "null"]},
+        "has_eligibility_text": {"type": "boolean"},
+        "source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "filter_passed": {"type": "boolean"},
+        "filter_exclusion_reasons": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonEmptyString"}
+        },
+        "sampling_hash": {
+          "oneOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]
+        },
+        "selected": {"type": "boolean"},
+        "selection_reason": {
+          "enum": [
+            "excluded_by_explicit_filter",
+            "passed_filters_and_hash_rank_within_target",
+            "hash_rank_outside_target"
+          ]
+        }
+      }
+    }
+  }
+}
