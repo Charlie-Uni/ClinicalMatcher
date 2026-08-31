@@ -6,6 +6,7 @@ import os
 import re
 from collections import Counter
 from datetime import date, datetime, timezone
+from importlib.resources import files
 from pathlib import Path
 from typing import Any, Dict, Mapping, Optional, Sequence, Tuple
 
@@ -36,6 +37,9 @@ from .validation import validate_document
 REPORT_VERSION = "1.0.0"
 TRACE_VERSION = "1.0.0"
 REPORT_SCHEMA = "schemas/apixaban-single-trial-report-1.0.0.schema.json"
+RUN_CONTRACT_RESOURCE = (
+    "resources/apixaban-single-trial-run-contract-1.0.0.json"
+)
 BOOTSTRAP_SAMPLES = 1000
 BOOTSTRAP_SEED = 17
 OUTCOMES = ("ideal", "semi-ideal", "non-ideal", "unknown")
@@ -46,6 +50,12 @@ EXPECTED_MENTOR_RESULTS_SHA256 = (
 )
 EXPECTED_CANDIDATE_CSV_SHA256 = (
     "ff3871060b9e0ec97952d4b5bff998cb9504e7d8e3fd461edc2c976d199d70ea"
+)
+EXPECTED_SELECTED_PREDICTION_SHA256 = (
+    "ccdd1e417253ece9b9a78d0975dfd0a116716b8c09bd673772b3806295c36ef0"
+)
+EXPECTED_UNSELECTED_PREDICTION_SHA256 = (
+    "8fa9aa6ce9d379c71fc594981a8d20b1aec04b09e8ef8b0a955f28d7b518cc25"
 )
 PATIENT_ID_PATTERN = re.compile(r"^patient-[0-9a-f]{24}$")
 
@@ -75,6 +85,126 @@ def _interval(interval: BootstrapInterval) -> Dict[str, Any]:
         "resampling_unit": "patient",
         "seed": BOOTSTRAP_SEED,
     }
+
+
+def validate_single_trial_run_contract(document: Mapping[str, Any]) -> None:
+    required = {
+        "contract_version",
+        "contract_id",
+        "contract_status",
+        "contract_sha256",
+        "contract_hash_scope",
+        "decision",
+        "selected_artifact",
+        "unselected_artifact",
+        "selection_evidence",
+        "execution_scope",
+    }
+    if set(document) != required:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial run contract fields changed"
+        )
+    if document["contract_version"] != "1.0.0" or document[
+        "contract_id"
+    ] != "apixaban-single-trial-long-context-p4.3-validation-v1":
+        raise ApixabanSingleTrialEvaluationError(
+            "Unsupported single-trial run contract"
+        )
+    if document["contract_status"] != "owner_approved_frozen_pre_validation":
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial run contract is not owner approved"
+        )
+    if document["contract_hash_scope"] != (
+        "canonical_json_excluding_contract_sha256"
+    ) or _self_hash(document, "contract_sha256") != document["contract_sha256"]:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial run contract hash mismatch"
+        )
+
+    decision = document["decision"]
+    expected_decision = {
+        "selected_by": "project_owner",
+        "selected_at": "2026-08-31",
+        "selection_basis": "pre_existing_p2_3_fact_level_validation_results_only",
+        "selection_rationale": (
+            "Long-context had the stronger previously recorded fact-level "
+            "typed result and uses the complete-note input policy; no "
+            "single-trial three-class result had been viewed."
+        ),
+        "single_trial_three_class_results_seen_before_selection": False,
+        "locked_test_labels_used": False,
+    }
+    if decision != expected_decision:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial selection decision changed"
+        )
+
+    selected = document["selected_artifact"]
+    if selected != {
+        "configuration": "long_context_plus_p4_3_abstention",
+        "prediction_set_sha256": EXPECTED_SELECTED_PREDICTION_SHA256,
+        "prediction_set_version": "1.2.0",
+        "model_id": (
+            "ollama/llama3.1:8b-instruct-q4_k_m@sha256:"
+            "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e"
+            "+deterministic-abstention-1.0.0"
+        ),
+        "prompt_version": "apixaban-23-facts-structured-1.0.0",
+        "inference_config_sha256": (
+            "9a512404d817711110a9e0cdc524060e4d30459f6170ef64ba373393a8fc606c"
+        ),
+        "status": "authorized_for_one_validation_evaluation",
+    }:
+        raise ApixabanSingleTrialEvaluationError(
+            "Selected single-trial artifact changed"
+        )
+    if document["unselected_artifact"] != {
+        "configuration": "structured_plus_p4_3_abstention",
+        "prediction_set_sha256": EXPECTED_UNSELECTED_PREDICTION_SHA256,
+        "status": "available_not_evaluated",
+        "future_evaluation_requires_new_recorded_owner_decision": True,
+    }:
+        raise ApixabanSingleTrialEvaluationError(
+            "Unselected single-trial artifact state changed"
+        )
+    if document["selection_evidence"] != {
+        "metric": "fact_level_typed_exact_match_before_p4_3_projection",
+        "denominator": 345,
+        "structured": {
+            "correct_count": 187,
+            "typed_mismatch_count": 158,
+            "error_attribution_report_sha256": (
+                "b259098870081a7e3662eb8df9b404b9b5ff86bded5b0c2ae9da79378cfb50fb"
+            ),
+        },
+        "long_context": {
+            "correct_count": 211,
+            "typed_mismatch_count": 134,
+            "error_attribution_report_sha256": (
+                "3a818785b3161ee9ae39bc05e905283340777479a7c7eb9c864e1eed9ba8d932"
+            ),
+        },
+    }:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial selection evidence changed"
+        )
+    if document["execution_scope"] != {
+        "split": "validation",
+        "single_execution_authorized": True,
+        "locked_test_authorized": False,
+        "unselected_artifact_execution_authorized": False,
+        "public_disclosure_requires_post_run_review": True,
+    }:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial execution scope changed"
+        )
+
+
+def load_single_trial_run_contract() -> Dict[str, Any]:
+    resource = files("clinical_matcher").joinpath(RUN_CONTRACT_RESOURCE)
+    document: Dict[str, Any] = json.loads(resource.read_text(encoding="utf-8"))
+    validate_single_trial_run_contract(document)
+    return document
 
 
 def _parse_flag(value: str, field: str) -> bool:
@@ -665,9 +795,11 @@ def build_single_trial_evaluation(
     mentor_results_sha256: str,
     candidate_csv_sha256: str,
     id_map_sha256: str,
+    run_contract: Mapping[str, Any],
     generated_at: Optional[str] = None,
     code_commit: Optional[str] = None,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    validate_single_trial_run_contract(run_contract)
     validate_apixaban_benchmark(dict(benchmark))
     validate_prediction_set(dict(predictions))
     if split["status"] != "frozen" or split["freeze"]["test_locked"] is not True:
@@ -680,6 +812,22 @@ def build_single_trial_evaluation(
     if predictions["split_name"] != "validation":
         raise ApixabanSingleTrialEvaluationError(
             "Single-trial evaluation is validation-only"
+        )
+    selected = run_contract["selected_artifact"]
+    if prediction_set_sha256 != selected["prediction_set_sha256"]:
+        raise ApixabanSingleTrialEvaluationError(
+            "Prediction artifact is not the owner-selected long-context run"
+        )
+    if (
+        predictions["prediction_set_version"]
+        != selected["prediction_set_version"]
+        or predictions["model_id"] != selected["model_id"]
+        or predictions["prompt_version"] != selected["prompt_version"]
+        or predictions["inference_config_sha256"]
+        != selected["inference_config_sha256"]
+    ):
+        raise ApixabanSingleTrialEvaluationError(
+            "Prediction metadata differs from the selected run contract"
         )
     if predictions["benchmark_sha256"] != benchmark_sha256 or predictions[
         "split_manifest_sha256"
@@ -785,11 +933,24 @@ def build_single_trial_evaluation(
             "id_map_sha256": id_map_sha256,
             "intended_rule_contract_sha256": intended["contract_sha256"],
             "unit_adapter_contract_sha256": unit_contract["contract_sha256"],
+            "run_contract_sha256": run_contract["contract_sha256"],
             "evaluation_protocol_version": (
                 "apixaban-single-trial-evaluation-1.0.0"
             ),
             "trace_sha256": trace["trace_sha256"],
             "locked_test_labels_used": False,
+        },
+        "model_selection": {
+            "selected_configuration": selected["configuration"],
+            "selection_basis": run_contract["decision"]["selection_basis"],
+            "selection_rationale": run_contract["decision"][
+                "selection_rationale"
+            ],
+            "single_trial_three_class_results_seen_before_selection": False,
+            "unselected_configuration": run_contract["unselected_artifact"][
+                "configuration"
+            ],
+            "unselected_artifact_evaluated": False,
         },
         "population": {
             "patient_count": len(patient_ids),
@@ -887,6 +1048,14 @@ def evaluate_single_trial_from_paths(
             raise ApixabanSingleTrialEvaluationError(
                 f"Restricted evaluation input is not owner-only: {path}"
             )
+    run_contract = load_single_trial_run_contract()
+    prediction_set_sha256 = file_sha256(prediction_path)
+    if prediction_set_sha256 != run_contract["selected_artifact"][
+        "prediction_set_sha256"
+    ]:
+        raise ApixabanSingleTrialEvaluationError(
+            "Prediction artifact is not the owner-selected long-context run"
+        )
     benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
     validate_apixaban_benchmark(benchmark)
     split = load_apixaban_split_manifest(split_path)
@@ -913,10 +1082,11 @@ def evaluate_single_trial_from_paths(
         predictions,
         mentor_reference,
         benchmark_sha256=benchmark_sha256,
-        prediction_set_sha256=file_sha256(prediction_path),
+        prediction_set_sha256=prediction_set_sha256,
         mentor_results_sha256=file_sha256(mentor_results_path),
         candidate_csv_sha256=file_sha256(candidate_csv_path),
         id_map_sha256=id_map_sha256,
+        run_contract=run_contract,
         generated_at=generated_at,
         code_commit=code_commit,
     )
@@ -1018,6 +1188,13 @@ def _render_markdown(report: Mapping[str, Any]) -> str:
         f"Report hash: `{report['report_sha256']}`",
         "",
         f"Model: `{report['provenance']['model_id']}`",
+        "",
+        "Selected configuration: "
+        f"`{report['model_selection']['selected_configuration']}`",
+        "",
+        "Selection was frozen from pre-existing P2.3 fact-level validation "
+        "results before any single-trial three-class result was viewed. The "
+        "structured artifact was not evaluated in this run.",
         "",
         f"> {wording}",
         "",

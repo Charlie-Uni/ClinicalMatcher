@@ -1,8 +1,8 @@
 # Apixaban single-trial evaluation protocol
 
-Status: frozen metric design before validation; unit adapter approved and
-implemented; execution remains blocked until evaluator synthetic tests pass and
-the owner identifies the one model-prediction artifact to evaluate
+Status: frozen metric design before validation; unit adapter and evaluator
+implemented; the owner selected the one model-prediction artifact and real
+validation has not yet run
 
 Protocol version: `apixaban-single-trial-evaluation-1.0.0`
 
@@ -129,3 +129,18 @@ unit proof: for example, hemoglobin around `6.2 mmol/L` or some glucose values
 in `mmol/L` can fall inside the assumed-unit range and remain undetected. Every
 runtime report must show out-of-range counts and rates separately for all eight
 numeric questions.
+
+## Frozen model-artifact selection
+
+Before any P4.7 three-class result was viewed, the owner selected the
+long-context P4.3 abstention projection for the one validation execution. The
+selection used only the already recorded P2.3 fact-level results: structured
+had 187/345 typed matches and long-context had 211/345. The corresponding
+pre-projection error-attribution report hashes and the exact selected
+prediction artifact hash are frozen in
+`apixaban-single-trial-run-contract-1.0.0.json`.
+
+The structured P4.3 artifact remains available but is explicitly not evaluated
+in this run. Any later descriptive comparison requires a new recorded owner
+decision. The run contract authorizes validation only, records that locked-test
+labels were not used, and requires a separate post-run disclosure review.

@@ -17,7 +17,9 @@ from clinical_matcher.apixaban_single_trial_evaluation import (
     ApixabanSingleTrialEvaluationError,
     _validate_mentor_summary,
     build_single_trial_evaluation,
+    load_single_trial_run_contract,
     validate_single_trial_report,
+    validate_single_trial_run_contract,
     write_single_trial_evaluation,
 )
 from clinical_matcher.ingestion.apixaban import (
@@ -131,6 +133,8 @@ def synthetic_evaluation_inputs():
                 "fact_status": assessment["fact_status"],
                 "value": assessment["value"],
                 "unit": None,
+                "evidence_ids": [],
+                "trace_ids": ["synthetic-trace"],
                 "abstained": assessment["fact_status"] == "unknown",
                 "abstention_reason": (
                     "synthetic_unknown"
@@ -151,12 +155,19 @@ def synthetic_evaluation_inputs():
     )
     changed.update({"fact_status": "absent", "value": False})
     prediction_set = {
-        "prediction_set_version": "1.0.0",
+        "prediction_set_version": "1.2.0",
+        "inference_config_sha256": (
+            "9a512404d817711110a9e0cdc524060e4d30459f6170ef64ba373393a8fc606c"
+        ),
         "benchmark_sha256": benchmark_sha256,
         "split_manifest_sha256": split_sha256,
         "split_name": "validation",
-        "model_id": "synthetic-model",
-        "prompt_version": "synthetic-prompt",
+        "model_id": (
+            "ollama/llama3.1:8b-instruct-q4_k_m@sha256:"
+            "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e"
+            "+deterministic-abstention-1.0.0"
+        ),
+        "prompt_version": "apixaban-23-facts-structured-1.0.0",
         "generated_at": "2026-01-01T00:00:00Z",
         "code_commit": "5" * 40,
         "predictions": predictions,
@@ -172,13 +183,17 @@ class ApixabanSingleTrialEvaluationTest(unittest.TestCase):
     def setUpClass(cls):
         inputs = synthetic_evaluation_inputs()
         cls.inputs = inputs
+        cls.run_contract = load_single_trial_run_contract()
         cls.report, cls.trace = build_single_trial_evaluation(
             *inputs,
             benchmark_sha256="3" * 64,
-            prediction_set_sha256="6" * 64,
+            prediction_set_sha256=cls.run_contract["selected_artifact"][
+                "prediction_set_sha256"
+            ],
             mentor_results_sha256="7" * 64,
             candidate_csv_sha256="8" * 64,
             id_map_sha256="9" * 64,
+            run_contract=cls.run_contract,
             generated_at="2026-01-02T00:00:00Z",
             code_commit="a" * 40,
         )
@@ -194,6 +209,49 @@ class ApixabanSingleTrialEvaluationTest(unittest.TestCase):
         self.assertEqual(0.5, axis_b["complete_denominator_exact_agreement"])
         self.assertEqual(5, len(axis_b["per_rule"]))
         self.assertIsNone(axis_b["conditional_three_class"])
+
+    def test_owner_selection_is_hash_bound_and_pre_result(self):
+        validate_single_trial_run_contract(self.run_contract)
+        self.assertEqual(
+            self.run_contract["contract_sha256"],
+            self.report["provenance"]["run_contract_sha256"],
+        )
+        self.assertEqual(
+            "long_context_plus_p4_3_abstention",
+            self.report["model_selection"]["selected_configuration"],
+        )
+        self.assertFalse(
+            self.report["model_selection"][
+                "single_trial_three_class_results_seen_before_selection"
+            ]
+        )
+        self.assertFalse(
+            self.report["model_selection"]["unselected_artifact_evaluated"]
+        )
+
+    def test_unselected_prediction_hash_fails_closed(self):
+        benchmark, split, predictions, reference = copy.deepcopy(self.inputs)
+        with self.assertRaisesRegex(
+            ApixabanSingleTrialEvaluationError, "owner-selected long-context"
+        ):
+            build_single_trial_evaluation(
+                benchmark,
+                split,
+                predictions,
+                reference,
+                benchmark_sha256="3" * 64,
+                prediction_set_sha256=(
+                    self.run_contract["unselected_artifact"][
+                        "prediction_set_sha256"
+                    ]
+                ),
+                mentor_results_sha256="7" * 64,
+                candidate_csv_sha256="8" * 64,
+                id_map_sha256="9" * 64,
+                run_contract=self.run_contract,
+                generated_at="2026-01-02T00:00:00Z",
+                code_commit="a" * 40,
+            )
 
     def test_report_has_per_question_unit_diagnostics_without_patient_ids(self):
         self.assertNotIn("patient-", repr(self.report))
@@ -241,10 +299,13 @@ class ApixabanSingleTrialEvaluationTest(unittest.TestCase):
                 predictions,
                 reference,
                 benchmark_sha256="3" * 64,
-                prediction_set_sha256="6" * 64,
+                prediction_set_sha256=self.run_contract["selected_artifact"][
+                    "prediction_set_sha256"
+                ],
                 mentor_results_sha256="7" * 64,
                 candidate_csv_sha256="8" * 64,
                 id_map_sha256="9" * 64,
+                run_contract=self.run_contract,
                 generated_at="2026-01-02T00:00:00Z",
                 code_commit="a" * 40,
             )

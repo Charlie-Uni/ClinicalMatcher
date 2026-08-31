@@ -10,6 +10,7 @@
     "generated_at",
     "code_commit",
     "provenance",
+    "model_selection",
     "population",
     "runtime_semantics",
     "adapter_diagnostics",
@@ -23,6 +24,7 @@
     "generated_at": {"type": "string", "format": "date-time"},
     "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "provenance": {"$ref": "#/$defs/provenance"},
+    "model_selection": {"$ref": "#/$defs/modelSelection"},
     "population": {"$ref": "#/$defs/population"},
     "runtime_semantics": {"$ref": "#/$defs/runtimeSemantics"},
     "adapter_diagnostics": {
@@ -82,6 +84,7 @@
         "id_map_sha256",
         "intended_rule_contract_sha256",
         "unit_adapter_contract_sha256",
+        "run_contract_sha256",
         "evaluation_protocol_version",
         "trace_sha256",
         "locked_test_labels_used"
@@ -99,9 +102,30 @@
         "id_map_sha256": {"$ref": "#/$defs/sha256"},
         "intended_rule_contract_sha256": {"$ref": "#/$defs/sha256"},
         "unit_adapter_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "run_contract_sha256": {"$ref": "#/$defs/sha256"},
         "evaluation_protocol_version": {"const": "apixaban-single-trial-evaluation-1.0.0"},
         "trace_sha256": {"$ref": "#/$defs/sha256"},
         "locked_test_labels_used": {"const": false}
+      }
+    },
+    "modelSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selected_configuration",
+        "selection_basis",
+        "selection_rationale",
+        "single_trial_three_class_results_seen_before_selection",
+        "unselected_configuration",
+        "unselected_artifact_evaluated"
+      ],
+      "properties": {
+        "selected_configuration": {"const": "long_context_plus_p4_3_abstention"},
+        "selection_basis": {"const": "pre_existing_p2_3_fact_level_validation_results_only"},
+        "selection_rationale": {"type": "string", "minLength": 1},
+        "single_trial_three_class_results_seen_before_selection": {"const": false},
+        "unselected_configuration": {"const": "structured_plus_p4_3_abstention"},
+        "unselected_artifact_evaluated": {"const": false}
       }
     },
     "population": {

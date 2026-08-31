@@ -615,9 +615,11 @@ novelty.
     on 2026-08-31: all eight DOCX-based unit assumptions, extreme-error bounds,
     mathematical CHADS2 integer semantics, fail-closed UNKNOWN behavior, and
     per-question out-of-range counts/rates are implemented with synthetic
-    coverage. Real validation remains blocked until the three-axis evaluator
-    and report schema pass synthetic reconciliation tests and the owner names
-    the one frozen model-prediction artifact; locked test remains untouched.
+    coverage. The owner selected the long-context P4.3 projection before any
+    P4.7 three-class result was viewed, using only the prior P2.3 fact-level
+    comparison; its exact artifact hash, the unselected structured state, and
+    the one-validation-only scope are frozen in run contract `1.0.0`. Real
+    validation has not yet run; locked test remains untouched.
   - Constraints: official question-answer labels remain the only human gold.
     Legacy three-class comparison is reported as rule-reference agreement, not
     clinical accuracy. No locked-test label, patient text, or row-level output
