@@ -7,11 +7,16 @@ ClinicalMatcher P4.7 的 intended mentor-rule 版本。
 
 日期：2026-08-30
 
-状态：该清单保留为未来临床内容审核模板。项目 owner 已在查看 validation 一致率
-之前指定：`criteria.json` 定义指标身份、导师 DOCX 中显式箭头公式定义评分、缺失
-生成器无法提供，且导师 `screening_results.json` 作为规则派生的项目参考结果。该
-指定已用于构建 pre-validation 契约，但不等同于逐项临床确认，也不把参考结果升级
-为独立 clinical gold。
+状态：2026-08-31，项目 owner 决定不把该清单发送给导师；后续仍未解决的语义问题
+直接由 owner 回答。项目 owner 已在查看 validation 一致率之前指定：
+`criteria.json` 定义指标身份、导师 DOCX 中显式箭头公式定义评分、缺失生成器无法
+提供，且导师 `screening_results.json` 作为规则派生的项目参考结果。该指定已用于
+构建 pre-validation 契约，但不等同于逐项临床确认，也不把参考结果升级为独立
+clinical gold。所有报告必须沿用“owner 按来源层级指定，非逐项临床确认”的限制。
+
+若以后取得导师答复：validation 前的冲突答复必须触发新契约版本并重新冻结后再跑；
+validation 后的冲突答复只能追加 discrepancy note，任何重跑必须新版本、保留旧结果
+并由 owner 明确批准，禁止静默改动。locked test 在两种情况下都保持未暴露。
 
 ## 审核边界
 

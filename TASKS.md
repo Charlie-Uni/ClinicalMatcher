@@ -605,9 +605,19 @@ novelty.
     hash-binds those artifacts, all 23 fact fields/24 atom occurrences, five
     exact expression topologies, unknown handling, units-as-mapping-assumptions,
     and final class projection. A strict loader and synthetic counterexamples
-    are implemented without inspecting validation labels. Real validation is
-    still blocked until the owner approves the exact contract and a versioned
-    unit-assignment adapter; locked test remains untouched.
+    are implemented without inspecting validation labels. The owner decided not
+    to send the itemized checklist to the mentor; later conflicting responses
+    now have a frozen before/after-validation versioning rule. The evaluation
+    protocol requires the same-page three-axis report: intended(gold) versus
+    mentor reference, intended(model) versus intended(gold), and
+    intended(model) versus mentor reference. It prohibits causal attribution to
+    the unavailable generator. The owner approved unit-adapter contract `1.0.0`
+    on 2026-08-31: all eight DOCX-based unit assumptions, extreme-error bounds,
+    mathematical CHADS2 integer semantics, fail-closed UNKNOWN behavior, and
+    per-question out-of-range counts/rates are implemented with synthetic
+    coverage. Real validation remains blocked until the three-axis evaluator
+    and report schema pass synthetic reconciliation tests and the owner names
+    the one frozen model-prediction artifact; locked test remains untouched.
   - Constraints: official question-answer labels remain the only human gold.
     Legacy three-class comparison is reported as rule-reference agreement, not
     clinical accuracy. No locked-test label, patient text, or row-level output

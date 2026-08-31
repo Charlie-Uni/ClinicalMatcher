@@ -1,0 +1,222 @@
+{
+  "contract_version": "1.0.0",
+  "contract_status": "owner_approved_frozen_pre_validation",
+  "contract_sha256": "46ffee546dc1ea8622e3836e48ba74e6477b9e18621f1db202b631c78129f985",
+  "contract_hash_scope": "canonical_json_excluding_contract_sha256",
+  "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+  "intended_rule_contract_sha256": "eca82d50f45727830b8a8443bfddf7e16e30cbd801b3403bee7f6ca2f970bde1",
+  "mentor_docx_sha256": "be872d1f2e6baa4883b3dbcdc53895a8ff3d0362e27a13193ecee1181e9a14ec",
+  "source_numeric_labels_store_units": false,
+  "unit_assignment_role": "docx_based_project_mapping_assumption_not_observed_unit_metadata",
+  "clinical_unit_compatibility_claim_allowed": false,
+  "automatic_unit_conversion_allowed": false,
+  "alternative_unit_guessing_allowed": false,
+  "validation_authorization": {
+    "authorized": true,
+    "authorized_by": "project_owner",
+    "authorized_at": "2026-08-31",
+    "authorized_intended_rule_contract_sha256": "eca82d50f45727830b8a8443bfddf7e16e30cbd801b3403bee7f6ca2f970bde1",
+    "authorization_scope": "single_predeclared_validation_evaluation_after_implementation_and_synthetic_tests_pass",
+    "locked_test_authorized": false
+  },
+  "threshold_scale_coherence_check": {
+    "status": "passed_owner_review",
+    "role": "checks_that_each_docx_unit_assignment_makes_the_frozen_rule_threshold_magnitude_coherent_not_that_source_labels_contain_unit_metadata",
+    "thresholds": {
+      "chads2": "<=3 on a 0-6 score",
+      "lvef": ">=50 percent",
+      "PLT": ">=100 x 10^3/uL",
+      "HGB": ">=10 g/dL",
+      "CREAT": "<=2.5 mg/dL",
+      "AST": "<=80 U/L",
+      "BILI": "<=1.8 mg/dL",
+      "blood_glucose": "<=180 mg/dL"
+    }
+  },
+  "range_policy": {
+    "purpose": "fail_closed_extreme_value_diagnostic_before_assumed_unit_assignment",
+    "not_a_reference_interval": true,
+    "not_a_diagnostic_or_treatment_threshold": true,
+    "boundary_behavior": "inclusive_bounds_pass_values_outside_abstain",
+    "out_of_range_result": "unknown",
+    "out_of_range_reason": "extreme_value_suggestive_of_source_or_unit_error",
+    "unknown_source_value_behavior": "preserve_unknown_without_unit_assignment",
+    "aggregate_reporting": {
+      "grouping": "by_question_and_reason_no_row_identifiers",
+      "required_per_question_fields": [
+        "total_count",
+        "known_input_count",
+        "source_unknown_count",
+        "accepted_count",
+        "out_of_range_count",
+        "out_of_range_fraction_of_known_inputs",
+        "out_of_range_fraction_of_all_rows"
+      ],
+      "integer_violation_reported_separately": true
+    },
+    "fda_source": {
+      "title": "Standard Safety Tables and Figures: Integrated Guide",
+      "publisher": "United States Food and Drug Administration",
+      "url": "https://www.fda.gov/media/187065/download?attachment=",
+      "locator": "Section 5.2, Tables 58 and 59, pages 132-133",
+      "role": "extreme_values_suggestive_of_laboratory_error"
+    },
+    "ohdsi_caution": {
+      "title": "DataQualityDashboard changelog: removal of measurement plausibility checks",
+      "url": "https://ohdsi.github.io/DataQualityDashboard/news/index.html",
+      "role": "warns_that_generic_plausibility_ranges_can_reject_true_values"
+    }
+  },
+  "entries": [
+    {
+      "source_criterion_label": "chads2",
+      "question_id": "apixaban-q-e6783d58af7c09d2",
+      "fact_field": "chads2_score",
+      "assumed_unit": null,
+      "unit_source_locator": "DOCX Criteria 2 arrow formula: CHADS2_max <= 3",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 6,
+      "integer_required": true,
+      "integer_semantics": "mathematical_integer_storage_type_independent_3.0_passes_3.2_abstains",
+      "range_source": {
+        "type": "validated_score_definition",
+        "citation": "Gage et al., JAMA 2001, PMID 11401607, DOI 10.1001/jama.285.22.2864"
+      },
+      "review_flags": []
+    },
+    {
+      "source_criterion_label": "lvef",
+      "question_id": "apixaban-q-dc8ad785ff98b239",
+      "fact_field": "left_ventricular_ejection_fraction",
+      "assumed_unit": "%",
+      "unit_source_locator": "DOCX numeric question 22 and Criteria 2 arrow formula: LVEF_min >= 50%",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 100,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "percentage_representation_domain",
+        "citation": "mentor DOCX question and formula; not a clinical reference interval"
+      },
+      "review_flags": []
+    },
+    {
+      "source_criterion_label": "PLT",
+      "question_id": "apixaban-q-0254f569c4046777",
+      "fact_field": "platelet_count",
+      "assumed_unit": "10^3/uL",
+      "unit_source_locator": "DOCX Criteria 3 arrow formula: platelet_count_min >= 100 x 10^3/uL",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 5000,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold_with_nonnegative_representation_floor",
+        "citation": "FDA Table 59: platelets >5,000,000/uL suggest laboratory error; no FDA low threshold"
+      },
+      "review_flags": ["minimum_zero_is_representation_bound_not_fda_threshold"]
+    },
+    {
+      "source_criterion_label": "HGB",
+      "question_id": "apixaban-q-a69f4c14589e7f29",
+      "fact_field": "hemoglobin",
+      "assumed_unit": "g/dL",
+      "unit_source_locator": "DOCX Criteria 3 arrow formula: hemoglobin_min >= 10 g/dL",
+      "minimum_inclusive": 0.6,
+      "maximum_inclusive": 30,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold",
+        "citation": "FDA Table 59: hemoglobin <0.6 or >30 g/dL suggests laboratory error"
+      },
+      "review_flags": []
+    },
+    {
+      "source_criterion_label": "CREAT",
+      "question_id": "apixaban-q-b920477ded648b17",
+      "fact_field": "serum_creatinine",
+      "assumed_unit": "mg/dL",
+      "unit_source_locator": "DOCX Criteria 3 arrow formula: creatinine_max <= 2.5 mg/dL",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 80,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold_with_nonnegative_representation_floor",
+        "citation": "FDA Table 58: serum creatinine >80 mg/dL suggests laboratory error; no FDA low threshold"
+      },
+      "review_flags": ["minimum_zero_is_representation_bound_not_fda_threshold"]
+    },
+    {
+      "source_criterion_label": "AST",
+      "question_id": "apixaban-q-758bd991545de193",
+      "fact_field": "aspartate_aminotransferase",
+      "assumed_unit": "U/L",
+      "unit_source_locator": "DOCX Criteria 3 arrow formula: AST_max <= 2 x ULN with ULN 40 U/L",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 50000,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold_with_nonnegative_representation_floor",
+        "citation": "FDA Table 58: serum AST >50,000 U/L suggests laboratory error; no FDA low threshold"
+      },
+      "review_flags": ["minimum_zero_is_representation_bound_not_fda_threshold"]
+    },
+    {
+      "source_criterion_label": "BILI",
+      "question_id": "apixaban-q-e2c5d2226ca3a9f1",
+      "fact_field": "total_bilirubin",
+      "assumed_unit": "mg/dL",
+      "unit_source_locator": "DOCX Criteria 3 arrow formula: bilirubin_max <= 1.5 x ULN with ULN 1.2 mg/dL",
+      "minimum_inclusive": 0,
+      "maximum_inclusive": 200,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold_with_nonnegative_representation_floor",
+        "citation": "FDA Table 58: serum total bilirubin >200 mg/dL suggests laboratory error; no FDA low threshold"
+      },
+      "review_flags": ["minimum_zero_is_representation_bound_not_fda_threshold"]
+    },
+    {
+      "source_criterion_label": "blood_glucose",
+      "question_id": "apixaban-q-4547e40560979dc8",
+      "fact_field": "blood_glucose",
+      "assumed_unit": "mg/dL",
+      "unit_source_locator": "DOCX Criteria 5 arrow formula: glucose_max <= 180 mg/dL",
+      "minimum_inclusive": 10,
+      "maximum_inclusive": 2700,
+      "integer_required": false,
+      "integer_semantics": null,
+      "range_source": {
+        "type": "fda_extreme_error_threshold_proxy",
+        "citation": "FDA Table 58: plasma glucose <10 or >2700 mg/dL suggests laboratory error"
+      },
+      "review_flags": [
+        "fda_threshold_is_plasma_but_source_question_says_blood_glucose_without_specimen"
+      ]
+    }
+  ],
+  "limitations": [
+    "The released numeric labels do not store unit metadata; every unit is a DOCX-based project mapping assumption.",
+    "Extreme-value checks are not proof of unit compatibility and must not be described as clinical reference intervals.",
+    "Some unit mismatches remain inside the accepted range, for example hemoglobin around 6.2 mmol/L or some glucose values in mmol/L; the adapter cannot detect those mismatches.",
+    "FDA plasma-glucose error bounds are used only as an approved coarse proxy for the source question's unspecified blood-glucose specimen.",
+    "No automatic conversion or alternative-unit guessing is allowed."
+  ],
+  "owner_review": {
+    "approved": true,
+    "reviewed_at": "2026-08-31",
+    "reviewer_role": "project_owner",
+    "approved_decisions": [
+      "all_eight_docx_based_unit_assignments",
+      "all_eight_extreme_value_bounds",
+      "nonnegative_mathematical_floors_for_PLT_CREAT_AST_BILI",
+      "fda_plasma_glucose_bounds_as_coarse_proxy_for_unspecified_blood_glucose",
+      "out_of_range_becomes_unknown_without_conversion_or_guessing",
+      "chads2_integer_is_mathematical_not_storage_type"
+    ]
+  }
+}

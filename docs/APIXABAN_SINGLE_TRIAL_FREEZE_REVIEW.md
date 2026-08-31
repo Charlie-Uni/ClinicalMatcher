@@ -1,8 +1,8 @@
 # Apixaban single-trial freeze review
 
 Status: intended mentor-rule scoring contract `1.0.0` implemented before
-validation; owner approval of the exact contract and unit adapter remains
-required before any validation run
+validation; metric protocol and unit adapter `1.0.0` frozen; evaluator and its
+synthetic reconciliation tests remain required before any validation run
 
 Review date: 2026-08-30
 
@@ -160,3 +160,15 @@ validation may run until the owner reviews this exact contract and separately
 approves a versioned adapter that assigns or verifies those units without
 claiming clinical unit safety. Validation remains a single locked run on the
 validation split; the locked test remains untouched.
+
+The owner decided on 2026-08-31 not to send the itemized checklist to the
+mentor; unresolved questions will be answered directly by the owner. The
+pre/post-validation handling rule for any later mentor response and the
+mandatory three-axis interpretation are frozen in
+`docs/APIXABAN_SINGLE_TRIAL_EVALUATION_PROTOCOL.md`. The owner approved all
+eight unit mappings, extreme-value bounds, nonnegative mathematical floors,
+the plasma-glucose proxy, and fail-closed behavior on 2026-08-31. The formal
+contract is
+`src/clinical_matcher/resources/apixaban-unit-adapter-contract-1.0.0.json`.
+Its authorization applies only after implementation and synthetic tests pass;
+it never authorizes locked-test access.

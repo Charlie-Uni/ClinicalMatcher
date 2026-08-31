@@ -1,0 +1,366 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/apixaban-single-trial-report-1.0.0.schema.json",
+  "title": "Restricted Apixaban three-axis single-trial report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version",
+    "report_sha256",
+    "generated_at",
+    "code_commit",
+    "provenance",
+    "population",
+    "runtime_semantics",
+    "adapter_diagnostics",
+    "axes",
+    "interpretation",
+    "disclosure"
+  ],
+  "properties": {
+    "report_version": {"const": "1.0.0"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "population": {"$ref": "#/$defs/population"},
+    "runtime_semantics": {"$ref": "#/$defs/runtimeSemantics"},
+    "adapter_diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["released_gold", "model_predictions"],
+      "properties": {
+        "released_gold": {"$ref": "#/$defs/adapterDiagnostics"},
+        "model_predictions": {"$ref": "#/$defs/adapterDiagnostics"}
+      }
+    },
+    "axes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "axis_a_intended_gold_vs_mentor_reference",
+        "axis_b_intended_model_vs_intended_gold",
+        "axis_c_intended_model_vs_mentor_reference"
+      ],
+      "properties": {
+        "axis_a_intended_gold_vs_mentor_reference": {"$ref": "#/$defs/axis"},
+        "axis_b_intended_model_vs_intended_gold": {"$ref": "#/$defs/axisWithRules"},
+        "axis_c_intended_model_vs_mentor_reference": {"$ref": "#/$defs/axis"}
+      }
+    },
+    "interpretation": {"$ref": "#/$defs/interpretation"},
+    "disclosure": {"$ref": "#/$defs/disclosure"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nullableRate": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "nonnegativeIntegerMap": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "confusionMatrix": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/nonnegativeIntegerMap"}
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "benchmark_sha256",
+        "split_manifest_sha256",
+        "split_name",
+        "prediction_set_sha256",
+        "prediction_set_version",
+        "model_id",
+        "prompt_version",
+        "mentor_results_sha256",
+        "mentor_candidate_csv_sha256",
+        "id_map_sha256",
+        "intended_rule_contract_sha256",
+        "unit_adapter_contract_sha256",
+        "evaluation_protocol_version",
+        "trace_sha256",
+        "locked_test_labels_used"
+      ],
+      "properties": {
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_name": {"const": "validation"},
+        "prediction_set_sha256": {"$ref": "#/$defs/sha256"},
+        "prediction_set_version": {"type": "string", "minLength": 1},
+        "model_id": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "mentor_results_sha256": {"$ref": "#/$defs/sha256"},
+        "mentor_candidate_csv_sha256": {"$ref": "#/$defs/sha256"},
+        "id_map_sha256": {"$ref": "#/$defs/sha256"},
+        "intended_rule_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "unit_adapter_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "evaluation_protocol_version": {"const": "apixaban-single-trial-evaluation-1.0.0"},
+        "trace_sha256": {"$ref": "#/$defs/sha256"},
+        "locked_test_labels_used": {"const": false}
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_count",
+        "question_count",
+        "assessment_count",
+        "complete_validation_grid"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "question_count": {"const": 23},
+        "assessment_count": {"type": "integer", "minimum": 23},
+        "complete_validation_grid": {"const": true}
+      }
+    },
+    "runtimeSemantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "technical_fact_carrier_is_clinical_evidence",
+        "technical_index_date",
+        "technical_index_date_used_for_time_filtering",
+        "reason"
+      ],
+      "properties": {
+        "technical_fact_carrier_is_clinical_evidence": {"const": false},
+        "technical_index_date": {"const": "1970-01-01"},
+        "technical_index_date_used_for_time_filtering": {"const": false},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "adapterQuestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "source_criterion_label",
+        "total_count",
+        "known_input_count",
+        "source_unknown_count",
+        "accepted_count",
+        "out_of_range_count",
+        "out_of_range_fraction_of_known_inputs",
+        "out_of_range_fraction_of_all_rows",
+        "integer_violation_count",
+        "unexpected_source_unit_count"
+      ],
+      "properties": {
+        "question_id": {"type": "string", "pattern": "^apixaban-q-[0-9a-f]{16}$"},
+        "source_criterion_label": {"type": "string", "minLength": 1},
+        "total_count": {"type": "integer", "minimum": 1},
+        "known_input_count": {"type": "integer", "minimum": 0},
+        "source_unknown_count": {"type": "integer", "minimum": 0},
+        "accepted_count": {"type": "integer", "minimum": 0},
+        "out_of_range_count": {"type": "integer", "minimum": 0},
+        "out_of_range_fraction_of_known_inputs": {"$ref": "#/$defs/nullableRate"},
+        "out_of_range_fraction_of_all_rows": {"type": "number", "minimum": 0, "maximum": 1},
+        "integer_violation_count": {"type": "integer", "minimum": 0},
+        "unexpected_source_unit_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "adapterDiagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_adapter_contract_sha256",
+        "source_name",
+        "row_count",
+        "numeric_row_count",
+        "per_question",
+        "clinical_unit_compatibility_claim_allowed",
+        "automatic_unit_conversion_used",
+        "alternative_unit_guessing_used"
+      ],
+      "properties": {
+        "unit_adapter_contract_sha256": {"$ref": "#/$defs/sha256"},
+        "source_name": {"enum": ["released_gold", "model_predictions"]},
+        "row_count": {"type": "integer", "minimum": 23},
+        "numeric_row_count": {"type": "integer", "minimum": 8},
+        "per_question": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/adapterQuestion"}
+        },
+        "clinical_unit_compatibility_claim_allowed": {"const": false},
+        "automatic_unit_conversion_used": {"const": false},
+        "alternative_unit_guessing_used": {"const": false}
+      }
+    },
+    "bootstrapInterval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "estimate",
+        "lower",
+        "upper",
+        "confidence",
+        "samples",
+        "cluster_count",
+        "resampling_unit",
+        "seed"
+      ],
+      "properties": {
+        "estimate": {"type": "number", "minimum": 0, "maximum": 1},
+        "lower": {"type": "number", "minimum": 0, "maximum": 1},
+        "upper": {"type": "number", "minimum": 0, "maximum": 1},
+        "confidence": {"const": 0.95},
+        "samples": {"const": 1000},
+        "cluster_count": {"type": "integer", "minimum": 1},
+        "resampling_unit": {"const": "patient"},
+        "seed": {"const": 17}
+      }
+    },
+    "conditional": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["denominator", "exact_agreement_count", "exact_agreement", "label"],
+      "properties": {
+        "denominator": {"type": "integer", "minimum": 0},
+        "exact_agreement_count": {"type": "integer", "minimum": 0},
+        "exact_agreement": {"$ref": "#/$defs/nullableRate"},
+        "label": {"const": "conditional_on_intended_known"}
+      }
+    },
+    "axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_count",
+        "reference_outcome_counts",
+        "candidate_outcome_counts",
+        "candidate_known_count",
+        "candidate_unknown_count",
+        "candidate_coverage",
+        "exact_agreement_count",
+        "complete_denominator_exact_agreement",
+        "complete_denominator_exact_agreement_ci",
+        "confusion_matrix",
+        "conditional_three_class"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "reference_outcome_counts": {"$ref": "#/$defs/nonnegativeIntegerMap"},
+        "candidate_outcome_counts": {"$ref": "#/$defs/nonnegativeIntegerMap"},
+        "candidate_known_count": {"type": "integer", "minimum": 0},
+        "candidate_unknown_count": {"type": "integer", "minimum": 0},
+        "candidate_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "exact_agreement_count": {"type": "integer", "minimum": 0},
+        "complete_denominator_exact_agreement": {"type": "number", "minimum": 0, "maximum": 1},
+        "complete_denominator_exact_agreement_ci": {"$ref": "#/$defs/bootstrapInterval"},
+        "confusion_matrix": {"$ref": "#/$defs/confusionMatrix"},
+        "conditional_three_class": {"$ref": "#/$defs/conditional"}
+      }
+    },
+    "ruleMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_count", "exact_agreement_count", "exact_agreement", "confusion_matrix"],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "exact_agreement_count": {"type": "integer", "minimum": 0},
+        "exact_agreement": {"type": "number", "minimum": 0, "maximum": 1},
+        "confusion_matrix": {"$ref": "#/$defs/confusionMatrix"}
+      }
+    },
+    "axisWithRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient_count",
+        "reference_outcome_counts",
+        "candidate_outcome_counts",
+        "candidate_known_count",
+        "candidate_unknown_count",
+        "candidate_coverage",
+        "exact_agreement_count",
+        "complete_denominator_exact_agreement",
+        "complete_denominator_exact_agreement_ci",
+        "confusion_matrix",
+        "conditional_three_class",
+        "per_rule"
+      ],
+      "properties": {
+        "patient_count": {"type": "integer", "minimum": 1},
+        "reference_outcome_counts": {"$ref": "#/$defs/nonnegativeIntegerMap"},
+        "candidate_outcome_counts": {"$ref": "#/$defs/nonnegativeIntegerMap"},
+        "candidate_known_count": {"type": "integer", "minimum": 0},
+        "candidate_unknown_count": {"type": "integer", "minimum": 0},
+        "candidate_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "exact_agreement_count": {"type": "integer", "minimum": 0},
+        "complete_denominator_exact_agreement": {"type": "number", "minimum": 0, "maximum": 1},
+        "complete_denominator_exact_agreement_ci": {"$ref": "#/$defs/bootstrapInterval"},
+        "confusion_matrix": {"$ref": "#/$defs/confusionMatrix"},
+        "conditional_three_class": {"$ref": "#/$defs/conditional"},
+        "per_rule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "apixaban-rule-1",
+            "apixaban-rule-2",
+            "apixaban-rule-3",
+            "apixaban-rule-4",
+            "apixaban-rule-5"
+          ],
+          "properties": {
+            "apixaban-rule-1": {"$ref": "#/$defs/ruleMetrics"},
+            "apixaban-rule-2": {"$ref": "#/$defs/ruleMetrics"},
+            "apixaban-rule-3": {"$ref": "#/$defs/ruleMetrics"},
+            "apixaban-rule-4": {"$ref": "#/$defs/ruleMetrics"},
+            "apixaban-rule-5": {"$ref": "#/$defs/ruleMetrics"}
+          }
+        }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "axis_a_name",
+        "axis_a_is_pure_semantic_distance",
+        "axis_b_name",
+        "axis_b_is_causal_reasoning_attribution",
+        "axis_c_name",
+        "mentor_reference_is_independent_clinical_gold",
+        "clinical_eligibility_accuracy_claim_allowed",
+        "unit_compatibility_claim_allowed",
+        "required_report_wording"
+      ],
+      "properties": {
+        "axis_a_name": {"const": "observed_reference_discrepancy"},
+        "axis_a_is_pure_semantic_distance": {"const": false},
+        "axis_b_name": {"const": "observed_fact_error_propagation"},
+        "axis_b_is_causal_reasoning_attribution": {"const": false},
+        "axis_c_name": {"const": "combined_mentor_designated_project_reference_result"},
+        "mentor_reference_is_independent_clinical_gold": {"const": false},
+        "clinical_eligibility_accuracy_claim_allowed": {"const": false},
+        "unit_compatibility_claim_allowed": {"const": false},
+        "required_report_wording": {"type": "string", "minLength": 1}
+      }
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_only",
+        "patient_identifiers_in_report",
+        "row_level_trace_separate_and_owner_only",
+        "public_disclosure_requires_separate_review"
+      ],
+      "properties": {
+        "owner_only": {"const": true},
+        "patient_identifiers_in_report": {"const": false},
+        "row_level_trace_separate_and_owner_only": {"const": true},
+        "public_disclosure_requires_separate_review": {"const": true}
+      }
+    }
+  }
+}
