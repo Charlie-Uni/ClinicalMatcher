@@ -36,6 +36,7 @@ from .validation import validate_document
 
 REPORT_VERSION = "1.0.0"
 TRACE_VERSION = "1.0.0"
+SUMMARY_RENDERER_VERSION = "1.1.0"
 REPORT_SCHEMA = "schemas/apixaban-single-trial-report-1.0.0.schema.json"
 RUN_CONTRACT_RESOURCE = (
     "resources/apixaban-single-trial-run-contract-1.0.0.json"
@@ -1125,6 +1126,40 @@ def _percentage(value: Optional[float]) -> str:
     return "NA" if value is None else f"{100 * value:.1f}%"
 
 
+def _confusion_matrix_markdown(
+    label: str,
+    key: str,
+    axis: Mapping[str, Any],
+) -> Sequence[str]:
+    reference_labels = (
+        OUTCOMES
+        if key == "axis_b_intended_model_vs_intended_gold"
+        else REFERENCE_OUTCOMES
+    )
+    matrix = axis["confusion_matrix"]
+    header = "| Reference \\ Candidate | " + " | ".join(OUTCOMES) + " |"
+    separator = "|---|" + "---:|" * len(OUTCOMES)
+    rows = [
+        "| "
+        + reference
+        + " | "
+        + " | ".join(str(matrix[reference][candidate]) for candidate in OUTCOMES)
+        + " |"
+        for reference in reference_labels
+    ]
+    return (
+        f"### {label}",
+        "",
+        f"Candidate known: {axis['candidate_known_count']}; candidate UNKNOWN: "
+        f"{axis['candidate_unknown_count']}.",
+        "",
+        header,
+        separator,
+        *rows,
+        "",
+    )
+
+
 def _render_markdown(report: Mapping[str, Any]) -> str:
     axes = report["axes"]
     axis_rows = []
@@ -1154,9 +1189,31 @@ def _render_markdown(report: Mapping[str, Any]) -> str:
                     f"{axis['exact_agreement_count']}/{axis['patient_count']}",
                     _percentage(axis["complete_denominator_exact_agreement"]),
                     _percentage(axis["candidate_coverage"]),
+                    str(axis["candidate_known_count"]),
+                    str(axis["candidate_unknown_count"]),
                     _percentage(
                         conditional["exact_agreement"] if conditional else None
                     ),
+                )
+            )
+            + " |"
+        )
+    confusion_lines = []
+    for label, key in axis_definitions:
+        confusion_lines.extend(
+            _confusion_matrix_markdown(label, key, axes[key])
+        )
+    per_rule_rows = []
+    for rule_id, metrics in axes[
+        "axis_b_intended_model_vs_intended_gold"
+    ]["per_rule"].items():
+        per_rule_rows.append(
+            "| "
+            + " | ".join(
+                (
+                    rule_id,
+                    f"{metrics['exact_agreement_count']}/{metrics['patient_count']}",
+                    _percentage(metrics["exact_agreement"]),
                 )
             )
             + " |"
@@ -1187,6 +1244,8 @@ def _render_markdown(report: Mapping[str, Any]) -> str:
         "",
         f"Report hash: `{report['report_sha256']}`",
         "",
+        f"Summary renderer: `{SUMMARY_RENDERER_VERSION}`",
+        "",
         f"Model: `{report['provenance']['model_id']}`",
         "",
         "Selected configuration: "
@@ -1205,13 +1264,30 @@ def _render_markdown(report: Mapping[str, Any]) -> str:
         "## Three mandatory axes",
         "",
         "| Axis | Patients | Exact | Complete-denominator agreement | "
-        "Coverage | Conditional known-only agreement |",
-        "|---|---:|---:|---:|---:|---:|",
+        "Coverage | Candidate known | Candidate UNKNOWN | Conditional "
+        "known-only agreement |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
         *axis_rows,
         "",
         "Axis A is an observed reference discrepancy, not pure semantic "
         "distance. Axis B is observed fact-error propagation, not causal "
         "reasoning attribution. Axis C mixes both effects.",
+        "",
+        "## Confusion matrices",
+        "",
+        "Rows are reference outcomes and columns are candidate outcomes. "
+        "UNKNOWN remains an explicit outcome and is never removed from the "
+        "complete denominator.",
+        "",
+        *confusion_lines,
+        "## Criterion-level agreement",
+        "",
+        "Axis B final-class agreement can hide rule-level errors, so all five "
+        "frozen rule agreements are shown separately.",
+        "",
+        "| Rule | Exact | Agreement |",
+        "|---|---:|---:|",
+        *per_rule_rows,
         "",
         "## Unit-adapter diagnostics",
         "",

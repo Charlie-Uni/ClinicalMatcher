@@ -339,6 +339,12 @@ class ApixabanSingleTrialEvaluationTest(unittest.TestCase):
             self.assertEqual(0o600, os.stat(summary_path).st_mode & 0o777)
             summary = summary_path.read_text(encoding="utf-8")
             self.assertIn("Three mandatory axes", summary)
+            self.assertIn("Summary renderer: `1.1.0`", summary)
+            self.assertIn("Candidate UNKNOWN", summary)
+            self.assertIn("Confusion matrices", summary)
+            self.assertIn("Reference \\ Candidate", summary)
+            self.assertIn("Criterion-level agreement", summary)
+            self.assertIn("apixaban-rule-5", summary)
             self.assertIn("Unit-adapter diagnostics", summary)
             self.assertNotIn("patient-", summary)
             with self.assertRaises(FileExistsError):
