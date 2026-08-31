@@ -30,6 +30,9 @@ ADJUDICATION_VERSION = "1.0.0"
 GOLD_VERSION = "1.0.0"
 ADJUDICATION_SCHEMA = "schemas/decomposition-adjudication-1.0.0.schema.json"
 GOLD_SCHEMA = "schemas/decomposition-gold-1.0.0.schema.json"
+SINGLE_ANNOTATOR_DECISION_SCHEMA = (
+    "schemas/decomposition-single-annotator-decision-1.0.0.schema.json"
+)
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 DISAGREEMENT_TYPES = (
     "atom_identity",
@@ -72,6 +75,22 @@ def _annotation_reference(annotation: Mapping[str, Any]) -> Dict[str, str]:
         "annotation_sha256": annotation["annotation_sha256"],
         "annotator_id": annotation["annotator_id"],
     }
+
+
+def validate_single_annotator_decision(decision: Dict[str, Any]) -> None:
+    """Validate the frozen owner decision required before solo annotation."""
+    validate_document(decision, SINGLE_ANNOTATOR_DECISION_SCHEMA)
+    expected_hash = _self_hash(
+        decision,
+        "decision_id",
+        "decision_sha256",
+    )
+    if decision["decision_sha256"] != expected_hash:
+        raise DecompositionGoldError("Single-annotator decision hash mismatch")
+    if decision["decision_id"] != (
+        f"decomposition-single-annotator-decision-{expected_hash[:16]}"
+    ):
+        raise DecompositionGoldError("Single-annotator decision ID mismatch")
 
 
 def _ordered_annotations(
@@ -500,8 +519,7 @@ def build_single_annotator_gold(
     catalog: Dict[str, Any],
     annotation: Dict[str, Any],
     *,
-    downgrade_decision_version: str,
-    downgrade_decision_sha256: str,
+    downgrade_decision: Dict[str, Any],
 ) -> Dict[str, Any]:
     ordered = _ordered_annotations(
         selection,
@@ -510,12 +528,7 @@ def build_single_annotator_gold(
         expected_count=1,
         expected_mode="single_annotator",
     )
-    if not downgrade_decision_version.strip() or not SHA256_PATTERN.fullmatch(
-        downgrade_decision_sha256
-    ):
-        raise DecompositionGoldError(
-            "Single-annotator gold requires a pre-annotation downgrade decision"
-        )
+    validate_single_annotator_decision(downgrade_decision)
     document = {
         "decomposition_gold_version": GOLD_VERSION,
         "protocol_version": PROTOCOL_VERSION,
@@ -531,13 +544,19 @@ def build_single_annotator_gold(
         "source_annotations": [_annotation_reference(ordered[0])],
         "adjudication": None,
         "single_annotator_downgrade": {
-            "decision_version": downgrade_decision_version.strip(),
-            "decision_sha256": downgrade_decision_sha256,
+            "decision_version": downgrade_decision["decision_version"],
+            "decision_sha256": downgrade_decision["decision_sha256"],
             "approved_before_first_annotation": True,
         },
     }
     document = _rehash_gold(document)
-    validate_gold(selection, catalog, ordered, document)
+    validate_gold(
+        selection,
+        catalog,
+        ordered,
+        document,
+        downgrade_decision=downgrade_decision,
+    )
     return document
 
 
@@ -548,6 +567,7 @@ def validate_gold(
     gold: Dict[str, Any],
     *,
     adjudication: Optional[Dict[str, Any]] = None,
+    downgrade_decision: Optional[Dict[str, Any]] = None,
 ) -> None:
     validate_decomposition_selection_document(selection)
     validate_concept_catalog(selection, catalog)
@@ -589,6 +609,8 @@ def validate_gold(
             raise DecompositionGoldError("Dual gold must be labelled adjudicated_gold")
         if gold["single_annotator_downgrade"] is not None:
             raise DecompositionGoldError("Dual gold cannot carry a downgrade decision")
+        if downgrade_decision is not None:
+            raise DecompositionGoldError("Dual gold cannot take a downgrade decision")
         if adjudication is None:
             raise DecompositionGoldError("Dual gold requires its adjudication record")
         validate_adjudication(
@@ -613,3 +635,15 @@ def validate_gold(
             raise DecompositionGoldError(
                 "Single-annotator reference gold requires a downgrade decision"
             )
+        if downgrade_decision is None:
+            raise DecompositionGoldError(
+                "Single-annotator gold validation requires its decision artifact"
+            )
+        validate_single_annotator_decision(downgrade_decision)
+        expected_decision = {
+            "decision_version": downgrade_decision["decision_version"],
+            "decision_sha256": downgrade_decision["decision_sha256"],
+            "approved_before_first_annotation": True,
+        }
+        if gold["single_annotator_downgrade"] != expected_decision:
+            raise DecompositionGoldError("Gold downgrade decision reference mismatch")

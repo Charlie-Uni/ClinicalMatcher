@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-single-annotator-decision-1.0.0.schema.json",
+  "title": "Owner-approved single-annotator downgrade decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_version", "protocol_version", "decision_id", "decision_sha256",
+    "decision_status", "decided_on", "decided_by_role", "annotation_mode",
+    "scope", "staffing", "reporting_constraints", "timing_attestation",
+    "upgrade_requirements"
+  ],
+  "properties": {
+    "decision_version": {"const": "decomposition-single-annotator-downgrade/1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "decision_id": {"type": "string", "pattern": "^decomposition-single-annotator-decision-[0-9a-f]{16}$"},
+    "decision_sha256": {"$ref": "#/$defs/sha256"},
+    "decision_status": {"const": "frozen_owner_approved"},
+    "decided_on": {"type": "string", "format": "date"},
+    "decided_by_role": {"const": "owner_and_lead_annotator"},
+    "annotation_mode": {"const": "single_annotator"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["splits", "criterion_count"],
+      "properties": {
+        "splits": {"const": ["dev", "test"]},
+        "criterion_count": {"const": 80}
+      }
+    },
+    "staffing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confirmed_annotator_count", "second_qualified_annotator_confirmed"],
+      "properties": {
+        "confirmed_annotator_count": {"const": 1},
+        "second_qualified_annotator_confirmed": {"const": false}
+      }
+    },
+    "reporting_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gold_label", "may_claim_dual_independent_annotation",
+        "may_claim_adjudication", "may_report_inter_annotator_agreement",
+        "external_validity"
+      ],
+      "properties": {
+        "gold_label": {"const": "single_annotator_reference_gold"},
+        "may_claim_dual_independent_annotation": {"const": false},
+        "may_claim_adjudication": {"const": false},
+        "may_report_inter_annotator_agreement": {"const": false},
+        "external_validity": {"const": "limited"}
+      }
+    },
+    "timing_attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved_before_first_benchmark_annotation", "decomposition_model_outputs_not_viewed"],
+      "properties": {
+        "approved_before_first_benchmark_annotation": {"const": true},
+        "decomposition_model_outputs_not_viewed": {"const": true}
+      }
+    },
+    "upgrade_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["spot_check_is_sufficient", "full_independent_reannotation_required", "adjudication_required"],
+      "properties": {
+        "spot_check_is_sufficient": {"const": false},
+        "full_independent_reannotation_required": {"const": true},
+        "adjudication_required": {"const": true}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

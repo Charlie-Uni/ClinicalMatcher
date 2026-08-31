@@ -3,6 +3,7 @@ import hashlib
 import json
 import tempfile
 import unittest
+from importlib.resources import files
 from pathlib import Path
 from unittest import mock
 
@@ -38,6 +39,7 @@ from clinical_matcher.decomposition_gold import (
     finalize_adjudication,
     validate_adjudication,
     validate_gold,
+    validate_single_annotator_decision,
 )
 
 
@@ -706,29 +708,54 @@ class DecompositionGoldTest(unittest.TestCase):
             annotator_id="owner",
             annotation_mode="single_annotator",
         )
-        with self.assertRaisesRegex(DecompositionGoldError, "downgrade decision"):
-            build_single_annotator_gold(
-                self.selection,
-                self.catalog,
-                annotation,
-                downgrade_decision_version="",
-                downgrade_decision_sha256=GUIDE_HASH,
+        decision = json.loads(
+            files("clinical_matcher")
+            .joinpath(
+                "resources/decomposition-single-annotator-decision-1.0.0.json"
             )
+            .read_text(encoding="utf-8")
+        )
+        validate_single_annotator_decision(decision)
         gold = build_single_annotator_gold(
             self.selection,
             self.catalog,
             annotation,
-            downgrade_decision_version="owner-decision/1.0.0",
-            downgrade_decision_sha256=GUIDE_HASH,
+            downgrade_decision=decision,
         )
-        validate_gold(self.selection, self.catalog, (annotation,), gold)
+        validate_gold(
+            self.selection,
+            self.catalog,
+            (annotation,),
+            gold,
+            downgrade_decision=decision,
+        )
         self.assertEqual("single_annotator_reference_gold", gold["gold_label"])
         self.assertIsNone(gold["adjudication"])
+        self.assertEqual(
+            decision["decision_sha256"],
+            gold["single_annotator_downgrade"]["decision_sha256"],
+        )
 
         tampered = copy.deepcopy(gold)
         tampered["gold_label"] = "adjudicated_gold"
         with self.assertRaisesRegex(DecompositionGoldError, "hash mismatch"):
-            validate_gold(self.selection, self.catalog, (annotation,), tampered)
+            validate_gold(
+                self.selection,
+                self.catalog,
+                (annotation,),
+                tampered,
+                downgrade_decision=decision,
+            )
+
+        with self.assertRaisesRegex(
+            DecompositionGoldError, "requires its decision artifact"
+        ):
+            validate_gold(self.selection, self.catalog, (annotation,), gold)
+
+        tampered_decision = copy.deepcopy(decision)
+        tampered_decision["decided_on"] = "2026-08-30"
+        with self.assertRaisesRegex(DecompositionGoldError, "hash mismatch"):
+            validate_single_annotator_decision(tampered_decision)
 
 
 class DecompositionEvaluationTest(unittest.TestCase):

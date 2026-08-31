@@ -930,9 +930,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     downgrade; canonical NOT pushdown/associative flattening/commutative sort;
     exact full-field atom matching; separate structure/span metrics; and
     pre-adjudication IAA and trial-cluster bootstrap intervals. The owner
-    approved version 1.0.0 on 2026-08-29. Implementation and synthetic testing
-    are authorized; standard-mode benchmark annotation remains blocked because
-    the current staffing is one confirmed annotator.
+    approved version 1.0.0 on 2026-08-29 and approved its predeclared
+    single-annotator downgrade on 2026-08-31, before any real annotation was
+    created. All non-staffing safeguards remain unchanged.
 
 - [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
@@ -956,8 +956,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     `single_annotator_reference_gold`; the latter requires a hash-bound
     pre-annotation downgrade decision and cannot claim IAA or adjudication.
     Write-once CLI paths and synthetic tests cover both modes. No real catalog,
-    annotation, adjudication, or gold artifact has been created, so P5D.4 and
-    its staffing gate remain open.
+    annotation, adjudication, or gold artifact has been created. The staffing
+    gate is now resolved by the frozen single-annotator decision, while P5D.4
+    remains open until the real public reference set is built.
 
 - [x] **P5D.3 Implement the independent decomposition evaluator.** Report atom
   precision/recall, operator-structure agreement, and source-span alignment.
@@ -978,13 +979,16 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     40-criterion denominator. P5D.5 still owns the final model-prediction
     artifact and inference CLI, so no model-output protocol was preempted here.
 
-- [ ] **P5D.4 Build and independently annotate the approved small public gold
+- [ ] **P5D.4 Build and annotate the approved small public reference
   set.** Annotate source text first, then freeze and hash the resulting gold
   artifact before model inference.
   - Entry condition: P5D.1-P5D.3 pass and the owner has approved the workload.
-  - Current gate: only the owner is confirmed as an annotator. Standard dual
-    annotation remains blocked, and the owner has not approved the
-    predeclared single-annotator downgrade before annotation begins.
+  - Current status: the owner approved the predeclared single-annotator
+    downgrade on 2026-08-31 before any benchmark annotation was created. The
+    versioned decision manifest is schema-validated and self-hashed; outputs
+    must be labelled `single_annotator_reference_gold`, with no IAA or
+    adjudication claim. Real selection, catalog authoring, and annotation have
+    not started.
   - Constraints: annotation disagreements and reviewer limitations are
     reported honestly; model-generated trees cannot become gold through human
     acceptance after the fact.

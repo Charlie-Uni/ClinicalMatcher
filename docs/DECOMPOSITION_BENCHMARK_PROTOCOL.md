@@ -1,8 +1,8 @@
 # Public criteria-decomposition benchmark protocol
 
-Status: **frozen by owner approval on 2026-08-29; implementation and synthetic
-verification are authorized, but benchmark annotation remains subject to the
-staffing gate in this protocol**
+Status: **frozen by owner approval on 2026-08-29; the owner approved the
+predeclared single-annotator downgrade on 2026-08-31 before any benchmark
+annotation was created; real annotation has not started**
 
 Protocol version: `decomposition-benchmark-protocol/1.0.0`
 
@@ -142,11 +142,12 @@ split memberships before annotation begins.
 
 ## Annotation modes and current staffing
 
-The approved standard mode is `dual_independent_with_adjudication`. The current
-staffing state is one confirmed annotator (the owner) and no confirmed second
-annotator. Therefore standard-mode annotation is blocked until a second person
-qualifies; protocol, schema, selection, and evaluator implementation may proceed
-without annotation.
+The preferred standard mode is `dual_independent_with_adjudication`. The
+staffing state at the mode decision was one confirmed annotator (the owner) and
+no confirmed second qualified annotator. The owner therefore approved the
+predeclared `single_annotator` downgrade before any benchmark annotation was
+created. This changes the permitted reporting claims, not the source,
+selection, schema, split, test-lock, or evaluation requirements.
 
 ### Annotator qualification
 
@@ -195,6 +196,13 @@ annotation is created**. The artifact must be described as single-annotator
 reference gold with limited external validity. It reports no IAA and cannot be
 called dual-independent or adjudicated gold.
 
+The owner exercised this option on 2026-08-31. The frozen decision is
+`src/clinical_matcher/resources/decomposition-single-annotator-decision-1.0.0.json`,
+with decision SHA-256
+`57bc80ee4cee3aeff3ccd7b51711d51727efa2e6939ef76893d0aa922f4df93e`.
+The annotation-template and final-gold CLI paths validate the actual decision
+artifact and bind its hash; an unverified version/hash string is not sufficient.
+
 A later spot check does not upgrade that artifact. Upgrading requires a new
 version in which a second qualified annotator independently annotates every
 original source item without seeing the first annotation or model output,
@@ -208,12 +216,12 @@ The following order is mandatory:
    construction rules, normalization, matching, and metrics;
 2. author and freeze the dev concept catalog from dev source text only;
 3. implement and test the schema validator and evaluator using synthetic trees;
-4. independently annotate and adjudicate **dev only**, then freeze dev gold;
+4. annotate **dev only** under the frozen annotation mode, then freeze dev gold;
 5. develop the prompt and runtime configuration using dev only;
 6. freeze the exact model manifest, Ollama version, prompt, output schema,
    decoding settings, and code commit;
 7. author and freeze the test concept catalog from test source text, then
-   independently annotate and adjudicate test without viewing model output;
+   annotate test under the frozen mode without viewing model output;
 8. freeze test gold and run locked-test inference and scoring exactly once;
 9. publish the immutable prediction, gold, and report hashes. No prompt,
    evaluator, matching, threshold, or model change follows test exposure.
@@ -356,11 +364,11 @@ equivalence-review judgments. An agreed item cannot be changed during
 adjudication, and a completed record cannot contain an unresolved item.
 
 The resulting final-gold manifest is separately self-hashed and references the
-source annotation/adjudication artifacts without copying their trees. Standard mode is
-labelled `adjudicated_gold` and must bind its completed adjudication record. The
-single-person path is labelled `single_annotator_reference_gold`, requires a
-hash-bound owner downgrade decision attesting approval before the first
-annotation, reports no IAA, and cannot contain an adjudication reference. These
-mechanisms do not approve the downgrade or satisfy the current staffing gate;
-P5D.4 remains unstarted until the owner chooses a protocol-compliant staffing
-path.
+source annotation/adjudication artifacts without copying their trees. Standard
+mode is labelled `adjudicated_gold` and must bind its completed adjudication
+record. The approved single-person path is labelled
+`single_annotator_reference_gold`, requires the validated hash-bound owner
+downgrade decision attesting approval before the first annotation, reports no
+IAA, and cannot contain an adjudication reference. No real selection, catalog,
+annotation, adjudication, or gold artifact was created by the implementation or
+staffing-decision stages.

@@ -1,0 +1,37 @@
+{
+  "annotation_mode": "single_annotator",
+  "decided_by_role": "owner_and_lead_annotator",
+  "decided_on": "2026-08-31",
+  "decision_id": "decomposition-single-annotator-decision-57bc80ee4cee3aef",
+  "decision_sha256": "57bc80ee4cee3aeff3ccd7b51711d51727efa2e6939ef76893d0aa922f4df93e",
+  "decision_status": "frozen_owner_approved",
+  "decision_version": "decomposition-single-annotator-downgrade/1.0.0",
+  "protocol_version": "decomposition-benchmark-protocol/1.0.0",
+  "reporting_constraints": {
+    "external_validity": "limited",
+    "gold_label": "single_annotator_reference_gold",
+    "may_claim_adjudication": false,
+    "may_claim_dual_independent_annotation": false,
+    "may_report_inter_annotator_agreement": false
+  },
+  "scope": {
+    "criterion_count": 80,
+    "splits": [
+      "dev",
+      "test"
+    ]
+  },
+  "staffing": {
+    "confirmed_annotator_count": 1,
+    "second_qualified_annotator_confirmed": false
+  },
+  "timing_attestation": {
+    "approved_before_first_benchmark_annotation": true,
+    "decomposition_model_outputs_not_viewed": true
+  },
+  "upgrade_requirements": {
+    "adjudication_required": true,
+    "full_independent_reannotation_required": true,
+    "spot_check_is_sufficient": false
+  }
+}

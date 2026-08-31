@@ -21,6 +21,7 @@ from .decomposition_gold import (
     finalize_adjudication,
     validate_adjudication,
     validate_gold,
+    validate_single_annotator_decision,
 )
 
 
@@ -57,6 +58,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     template.add_argument("--guide-version", required=True)
     template.add_argument("--guide-sha256", required=True)
+    template.add_argument("--downgrade-decision", type=Path)
     template.add_argument("--output", type=Path, required=True)
 
     finalize = commands.add_parser("finalize-annotation")
@@ -108,14 +110,14 @@ def build_parser() -> argparse.ArgumentParser:
     gold_finalize = commands.add_parser("finalize-gold")
     require_catalog_and_annotations(gold_finalize)
     gold_finalize.add_argument("--adjudication", type=Path)
-    gold_finalize.add_argument("--downgrade-decision-version")
-    gold_finalize.add_argument("--downgrade-decision-sha256")
+    gold_finalize.add_argument("--downgrade-decision", type=Path)
     gold_finalize.add_argument("--output", type=Path, required=True)
 
     gold_validate = commands.add_parser("validate-gold")
     require_catalog_and_annotations(gold_validate)
     gold_validate.add_argument("--gold", type=Path, required=True)
     gold_validate.add_argument("--adjudication", type=Path)
+    gold_validate.add_argument("--downgrade-decision", type=Path)
     return parser
 
 
@@ -175,14 +177,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         adjudication = (
             _read(args.adjudication) if args.adjudication is not None else None
         )
+        downgrade_decision = (
+            _read(args.downgrade_decision)
+            if args.downgrade_decision is not None
+            else None
+        )
         if args.command == "finalize-gold":
             if adjudication is not None:
-                if (
-                    args.downgrade_decision_version is not None
-                    or args.downgrade_decision_sha256 is not None
-                ):
+                if downgrade_decision is not None:
                     raise ValueError(
-                        "Dual adjudicated gold cannot take downgrade-decision flags"
+                        "Dual adjudicated gold cannot take a downgrade decision"
                     )
                 document = build_adjudicated_gold(
                     selection, catalog, annotations, adjudication
@@ -192,16 +196,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     raise ValueError(
                         "Single-annotator gold requires exactly one annotation"
                     )
+                if downgrade_decision is None:
+                    raise ValueError(
+                        "Single-annotator gold requires a downgrade decision artifact"
+                    )
                 document = build_single_annotator_gold(
                     selection,
                     catalog,
                     annotations[0],
-                    downgrade_decision_version=(
-                        args.downgrade_decision_version or ""
-                    ),
-                    downgrade_decision_sha256=(
-                        args.downgrade_decision_sha256 or ""
-                    ),
+                    downgrade_decision=downgrade_decision,
                 )
             write_new_json(args.output, document)
             print(f"Finalized decomposition gold {document['gold_id']}.")
@@ -213,10 +216,27 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             annotations,
             document,
             adjudication=adjudication,
+            downgrade_decision=downgrade_decision,
         )
         print(f"Valid decomposition gold {document['gold_id']}.")
         return 0
     if args.command == "annotation-template":
+        downgrade_decision = (
+            _read(args.downgrade_decision)
+            if args.downgrade_decision is not None
+            else None
+        )
+        if args.annotation_mode == "single_annotator":
+            if downgrade_decision is None:
+                raise ValueError(
+                    "Single-annotator templates require the frozen downgrade "
+                    "decision artifact"
+                )
+            validate_single_annotator_decision(downgrade_decision)
+        elif downgrade_decision is not None:
+            raise ValueError(
+                "Dual-independent templates cannot take a downgrade decision"
+            )
         document = build_annotation_template(
             selection=selection,
             catalog=catalog,
