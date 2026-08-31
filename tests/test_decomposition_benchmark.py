@@ -41,6 +41,12 @@ from clinical_matcher.decomposition_gold import (
     validate_gold,
     validate_single_annotator_decision,
 )
+from clinical_matcher.decomposition_overlap import (
+    DecompositionOverlapError,
+    build_overlap_diagnostic,
+    lexical_tokens,
+    validate_overlap_diagnostic,
+)
 
 
 COMMIT = "a" * 40
@@ -353,6 +359,43 @@ class DecompositionSelectionTest(unittest.TestCase):
             write_new_json(path, selection())
             with self.assertRaises(FileExistsError):
                 write_new_json(path, selection())
+
+
+class DecompositionOverlapTest(unittest.TestCase):
+    def test_tokenization_is_unicode_normalized_casefolded_and_unique(self):
+        self.assertEqual(
+            frozenset({"café", "age", "18"}),
+            lexical_tokens("ＣＡＦÉ café AGE_18"),
+        )
+
+    def test_diagnostic_is_exhaustive_deterministic_and_report_only(self):
+        document = selection()
+        first = build_overlap_diagnostic(document, MANIFEST_HASH, COMMIT)
+        second = build_overlap_diagnostic(document, MANIFEST_HASH, COMMIT)
+        self.assertEqual(first, second)
+        self.assertEqual("disclosure_only_no_selection_gate", first["status"])
+        self.assertEqual(1600, first["counts"]["cross_split_pairs_evaluated"])
+        self.assertEqual(20, len(first["top_pairs"]))
+        self.assertEqual("none", first["method"]["selection_effect"])
+        scores = [pair["jaccard_similarity"] for pair in first["top_pairs"]]
+        self.assertEqual(scores, sorted(scores, reverse=True))
+
+    def test_diagnostic_verifier_rebuilds_and_rejects_tampering(self):
+        document = selection()
+        with tempfile.TemporaryDirectory() as directory:
+            selection_path = Path(directory) / "selection.json"
+            selection_path.write_text(
+                json.dumps(document, sort_keys=True) + "\n",
+                encoding="utf-8",
+            )
+            file_hash = hashlib.sha256(selection_path.read_bytes()).hexdigest()
+            report = build_overlap_diagnostic(document, file_hash, COMMIT)
+            validate_overlap_diagnostic(selection_path, report)
+            report["distribution"]["maximum"] = 0.0
+            with self.assertRaisesRegex(
+                DecompositionOverlapError, "hash mismatch"
+            ):
+                validate_overlap_diagnostic(selection_path, report)
 
 
 class DecompositionAnnotationTest(unittest.TestCase):

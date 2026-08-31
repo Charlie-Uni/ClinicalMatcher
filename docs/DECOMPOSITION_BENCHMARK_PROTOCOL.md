@@ -165,6 +165,24 @@ The selection implementation must recompute every digest, quota, duplicate
 group, cap, and split assignment during verification. The manifest freezes both
 split memberships before annotation begins.
 
+### Cross-split lexical-overlap disclosure
+
+After selection and before annotation, an exhaustive report-only diagnostic
+compares all 40 x 40 dev/test criterion pairs. Method
+`unicode_word_set_jaccard/1.0.0` applies Unicode NFKC normalization and
+case-folding, extracts the set of Unicode alphanumeric word tokens with
+underscores excluded, and computes set Jaccard similarity. The immutable report
+binds the selection file and manifest hashes, evaluates all 1,600 pairs, and
+records nearest-rank distribution summaries plus the 20 highest-overlap pairs
+with deterministic tie-breaking.
+
+This diagnostic has no threshold and no effect on source selection, split
+membership, annotation eligibility, or scoring. It is lexical, not semantic:
+high overlap does not establish equivalence, and paraphrases with different
+vocabulary may be missed. Its only purpose is to disclose possible shared AF
+trial template language across the trial-isolated splits without adding a
+post-selection gate.
+
 ## Annotation modes and current staffing
 
 The preferred standard mode is `dual_independent_with_adjudication`. The

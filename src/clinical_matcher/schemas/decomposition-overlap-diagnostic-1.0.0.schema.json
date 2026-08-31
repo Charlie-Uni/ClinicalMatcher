@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-overlap-diagnostic-1.0.0.schema.json",
+  "title": "Criteria-decomposition cross-split lexical overlap diagnostic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_version", "report_id", "report_sha256", "status", "builder_code_commit", "source_selection", "method", "counts", "distribution", "top_pairs"],
+  "properties": {
+    "report_version": {"const": "decomposition-overlap-diagnostic/1.0.0"},
+    "report_id": {"type": "string", "pattern": "^decomposition-overlap-[0-9a-f]{16}$"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "disclosure_only_no_selection_gate"},
+    "builder_code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "source_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selection_manifest_id", "selection_manifest_sha256", "selection_file_sha256"],
+      "properties": {
+        "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+        "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "selection_file_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "comparison_scope", "normalization", "tokenization", "similarity", "distribution_quantile", "top_k", "selection_effect", "limitations"],
+      "properties": {
+        "name": {"const": "unicode_word_set_jaccard/1.0.0"},
+        "comparison_scope": {"const": "all_dev_by_test_selected_pairs"},
+        "normalization": {"const": "Unicode NFKC then casefold"},
+        "tokenization": {"const": "unique Unicode alphanumeric word tokens; underscores excluded"},
+        "similarity": {"const": "set intersection size divided by set union size"},
+        "distribution_quantile": {"const": "nearest_rank"},
+        "top_k": {"const": 20},
+        "selection_effect": {"const": "none"},
+        "limitations": {
+          "const": [
+            "Lexical overlap is not semantic equivalence.",
+            "Paraphrases with different vocabulary may receive low overlap.",
+            "The diagnostic does not change split membership or benchmark eligibility."
+          ]
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dev_criteria", "test_criteria", "cross_split_pairs_evaluated", "reported_top_pairs"],
+      "properties": {
+        "dev_criteria": {"const": 40},
+        "test_criteria": {"const": 40},
+        "cross_split_pairs_evaluated": {"const": 1600},
+        "reported_top_pairs": {"const": 20}
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maximum", "p50", "p90", "p95", "p99"],
+      "properties": {
+        "maximum": {"$ref": "#/$defs/similarity"},
+        "p50": {"$ref": "#/$defs/similarity"},
+        "p90": {"$ref": "#/$defs/similarity"},
+        "p95": {"$ref": "#/$defs/similarity"},
+        "p99": {"$ref": "#/$defs/similarity"}
+      }
+    },
+    "top_pairs": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {"$ref": "#/$defs/pair"}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "similarity": {"type": "number", "minimum": 0, "maximum": 1},
+    "criterionReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nct_id", "criterion_id", "normalized_text_sha256"],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"type": "string", "minLength": 1},
+        "normalized_text_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dev", "test", "shared_token_count", "union_token_count", "jaccard_similarity"],
+      "properties": {
+        "dev": {"$ref": "#/$defs/criterionReference"},
+        "test": {"$ref": "#/$defs/criterionReference"},
+        "shared_token_count": {"type": "integer", "minimum": 0},
+        "union_token_count": {"type": "integer", "minimum": 1},
+        "jaccard_similarity": {"$ref": "#/$defs/similarity"}
+      }
+    }
+  }
+}
