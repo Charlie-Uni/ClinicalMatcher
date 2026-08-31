@@ -80,6 +80,14 @@ may be added after annotation or model output for that split is inspected. An
 unseen concept stops the affected split and requires an owner-reviewed catalog
 version plus fresh annotations and predictions for that split.
 
+The owner froze construction rules `concept-catalog-rules/1.0.0` on
+2026-09-01. The packaged self-authenticating resource is
+`src/clinical_matcher/resources/decomposition-concept-catalog-rules-1.0.0.json`
+with SHA-256
+`e68dfaa973391911b389149ba624b8a694c8f7ec6b9b1172fca23053816fffa9`.
+Catalog finalization and validation require this exact version/hash pair; an
+arbitrary well-formed hash is not accepted.
+
 ## Candidate sample size
 
 The proposed benchmark contains exactly **80 criteria**, within the approved
@@ -182,6 +190,35 @@ high overlap does not establish equivalence, and paraphrases with different
 vocabulary may be missed. Its only purpose is to disclose possible shared AF
 trial template language across the trial-isolated splits without adding a
 post-selection gate.
+
+## Frozen human annotation guide
+
+The owner froze `decomposition-guide/1.0.0` on 2026-09-01 before real
+annotation. The packaged self-authenticating resource is
+`src/clinical_matcher/resources/decomposition-annotation-guide-1.0.0.json`
+with SHA-256
+`c766ecace72d86c9527e8a2c87ccc41189ea4cc7a1dfa4abf837d23dffc8c958`.
+Every annotation template and completed annotation must bind that exact
+version/hash pair.
+
+The guide encodes the criterion's literal condition: inclusion trees are true
+when the inclusion condition is satisfied, while exclusion trees are true when
+the exclusion condition is present. Exclusion text is not inverted into an
+eligibility-safe tree. Negation uses `NOT` around a positive-fact atom rather
+than `expected=false`. Explicit `AND`/both, `OR`/either, and ranges map to
+`ALL`, `ANY`, and bound atoms respectively; unclear grouping is not guessed.
+Repeated-fact selection maps current/most-recent to `latest`, history/ever to
+`any`, and explicit universal requirements to `all`.
+
+Schema 1.0.0 stores time windows as integer days, so the guide freezes one day,
+week, month, and year as 1, 7, 30, and 365 days. The fixed-month/year
+approximation is a permanent benchmark 1.0.0 limitation. Atom spans use the
+smallest continuous text supporting the full condition. Condition IDs follow
+left-to-right source order as `<criterion_id>:a01`, `:a02`, and so on.
+Ambiguous or schema-unrepresentable items remain `expression=null` in a draft
+and enter a separate owner-review issue log; they cannot enter a completed
+annotation until resolved under the frozen schema or an approved schema/guide
+revision.
 
 ## Annotation modes and current staffing
 

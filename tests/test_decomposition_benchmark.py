@@ -12,8 +12,12 @@ from clinical_matcher.decomposition_annotation import (
     build_annotation_template,
     finalize_annotation,
     finalize_concept_catalog,
+    load_concept_catalog_rules,
+    load_decomposition_annotation_guide,
     validate_annotation,
     validate_concept_catalog,
+    validate_concept_catalog_rules,
+    validate_decomposition_annotation_guide,
 )
 from clinical_matcher.decomposition_benchmark import (
     DecompositionBenchmarkError,
@@ -52,8 +56,10 @@ from clinical_matcher.decomposition_overlap import (
 COMMIT = "a" * 40
 SNAPSHOT_HASH = "b" * 64
 MANIFEST_HASH = "c" * 64
-GUIDE_HASH = "d" * 64
-RULES_HASH = "e" * 64
+GUIDE = load_decomposition_annotation_guide()
+RULES = load_concept_catalog_rules()
+GUIDE_HASH = GUIDE["guide_sha256"]
+RULES_HASH = RULES["rules_sha256"]
 
 
 def canonical_hash(value):
@@ -194,11 +200,11 @@ def completed_annotation(
         "other_annotations_not_viewed": True,
         "model_outputs_not_viewed": True,
     }
-    for index, item in enumerate(draft["items"]):
+    for item in draft["items"]:
         item["expression"] = {
             "expression_type": "atom",
             "atom": {
-                "condition_id": f"condition-{index:03d}",
+                "condition_id": f"{item['criterion_id']}:a01",
                 "field": "age",
                 "operator": ">=",
                 "expected": {
@@ -440,6 +446,54 @@ class DecompositionAnnotationTest(unittest.TestCase):
         ):
             finalize_concept_catalog(self.selection, duplicate_alias)
 
+    def test_packaged_rules_and_guide_are_self_authenticating(self):
+        validate_concept_catalog_rules(RULES)
+        validate_decomposition_annotation_guide(GUIDE)
+
+        tampered_rules = copy.deepcopy(RULES)
+        tampered_rules["entry_contract"]["field_id"] = "tampered"
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "construction-rules hash mismatch"
+        ):
+            validate_concept_catalog_rules(tampered_rules)
+
+        tampered_guide = copy.deepcopy(GUIDE)
+        tampered_guide["time_rules"]["limitation"] = "tampered"
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "annotation-guide hash mismatch"
+        ):
+            validate_decomposition_annotation_guide(tampered_guide)
+
+    def test_catalog_and_annotation_reject_unfrozen_resource_bindings(self):
+        bad_catalog = {
+            "split": "dev",
+            "construction_rules_version": RULES["rules_version"],
+            "construction_rules_sha256": "e" * 64,
+            "entries": [
+                {
+                    "field_id": "age",
+                    "definition": "Age threshold.",
+                    "aliases": ["Age"],
+                }
+            ],
+        }
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "conflicts with the packaged"
+        ):
+            finalize_concept_catalog(self.selection, bad_catalog)
+
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "packaged frozen annotation guide"
+        ):
+            build_annotation_template(
+                self.selection,
+                self.catalog,
+                "owner",
+                "single_annotator",
+                GUIDE["guide_version"],
+                "d" * 64,
+            )
+
     def test_template_binds_catalog_after_selection_and_covers_split(self):
         template = build_annotation_template(
             self.selection,
@@ -477,6 +531,25 @@ class DecompositionAnnotationTest(unittest.TestCase):
         atom["expected"] = {"value_type": "boolean", "value": True}
         with self.assertRaisesRegex(
             DecompositionAnnotationError, "requires == or !="
+        ):
+            finalize_annotation(self.selection, self.catalog, annotation)
+
+    def test_boolean_false_requires_not_and_condition_ids_follow_source_order(self):
+        annotation = completed_annotation(self.selection, self.catalog)
+        atom = annotation["items"][0]["expression"]["atom"]
+        atom["expected"] = {"value_type": "boolean", "value": False}
+        atom["operator"] = "=="
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "represent negation with NOT"
+        ):
+            finalize_annotation(self.selection, self.catalog, annotation)
+
+        annotation = completed_annotation(self.selection, self.catalog)
+        annotation["items"][0]["expression"]["atom"][
+            "condition_id"
+        ] = "condition-001"
+        with self.assertRaisesRegex(
+            DecompositionAnnotationError, "left-to-right source order"
         ):
             finalize_annotation(self.selection, self.catalog, annotation)
 
@@ -825,7 +898,9 @@ class DecompositionEvaluationTest(unittest.TestCase):
         first = gold["items"][0]
         first_atom = copy.deepcopy(first["expression"])
         second_atom = copy.deepcopy(first_atom)
-        second_atom["atom"]["condition_id"] = "condition-extra"
+        second_atom["atom"]["condition_id"] = (
+            f"{first['criterion_id']}:a02"
+        )
         second_atom["atom"]["operator"] = "<="
         second_atom["atom"]["expected"]["value"] = 65
         first["expression"] = {

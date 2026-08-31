@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-annotation-guide-1.0.0.schema.json",
+  "title": "Frozen human decomposition annotation guide",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "guide_version", "protocol_version", "guide_id", "guide_sha256",
+    "status", "approved_on", "annotation_scope", "criterion_semantics",
+    "expression_rules", "atom_rules", "time_rules", "provenance_rules",
+    "condition_id_rules", "unrepresentable_policy", "independence_rules"
+  ],
+  "properties": {
+    "guide_version": {"const": "decomposition-guide/1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "guide_id": {"type": "string", "pattern": "^decomposition-guide-[0-9a-f]{16}$"},
+    "guide_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "frozen_owner_approved"},
+    "approved_on": {"const": "2026-09-01"},
+    "annotation_scope": {"$ref": "#/$defs/stringMap"},
+    "criterion_semantics": {"$ref": "#/$defs/stringMap"},
+    "expression_rules": {"$ref": "#/$defs/stringMap"},
+    "atom_rules": {"$ref": "#/$defs/stringMap"},
+    "time_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["day", "week", "month", "year", "limitation"],
+      "properties": {
+        "day": {"const": 1},
+        "week": {"const": 7},
+        "month": {"const": 30},
+        "year": {"const": 365},
+        "limitation": {"type": "string", "minLength": 1}
+      }
+    },
+    "provenance_rules": {"$ref": "#/$defs/stringMap"},
+    "condition_id_rules": {"$ref": "#/$defs/stringMap"},
+    "unrepresentable_policy": {"$ref": "#/$defs/stringMap"},
+    "independence_rules": {"$ref": "#/$defs/stringMap"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stringMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": ["string", "boolean"]}
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "annotation_scope": {
+    "input": "One immutable public ClinicalTrials.gov criterion plus the frozen split concept catalog.",
+    "output": "One literal ATOM, ALL, ANY, or NOT expression tree under the frozen annotation schema.",
+    "patient_or_restricted_data_allowed": false
+  },
+  "approved_on": "2026-09-01",
+  "atom_rules": {
+    "fact_selection_all": "Use all only when the source explicitly requires a universal condition across repeated facts.",
+    "fact_selection_any": "Use any for history, ever, or any-occurrence conditions.",
+    "fact_selection_latest": "Use latest for current or most-recent conditions.",
+    "negation": "Represent source negation as NOT around a positive-fact atom; do not encode negation as expected boolean false.",
+    "operator": "Use only the comparator stated by the source; do not strengthen or relax a boundary.",
+    "range": "Represent an explicit closed or open range as ALL of its stated lower and upper bound atoms."
+  },
+  "condition_id_rules": {
+    "format": "Use <criterion_id>:aNN with two-digit numbering starting at a01.",
+    "ordering": "Assign numbers by each atom's left-to-right source-span order; ties retain expression traversal order.",
+    "stability": "Do not renumber based on normalized tree order."
+  },
+  "criterion_semantics": {
+    "exclusion": "The expression is true when the exclusion condition described by the source is present; do not invert it into an eligibility-safe condition.",
+    "inclusion": "The expression is true when the inclusion condition described by the source is satisfied.",
+    "literal_tree": "Encode the literal condition stated by the criterion, not the final patient eligibility decision."
+  },
+  "expression_rules": {
+    "and": "Use ALL when the source explicitly requires all connected conditions, including explicit both.",
+    "or": "Use ANY when the source explicitly allows alternatives, including explicit either.",
+    "unclear_scope": "Do not infer grouping or operator scope that the source does not make clear; route it through the unrepresentable policy."
+  },
+  "guide_id": "decomposition-guide-c766ecace72d86c9",
+  "guide_sha256": "c766ecace72d86c9527e8a2c87ccc41189ea4cc7a1dfa4abf837d23dffc8c958",
+  "guide_version": "decomposition-guide/1.0.0",
+  "independence_rules": {
+    "model_outputs_may_be_viewed": false,
+    "other_annotations_may_be_viewed": false,
+    "single_annotator_mode": "The frozen owner-approved downgrade applies; the result is single-annotator reference gold and has no IAA or adjudication claim.",
+    "validator_role": "A validator may report schema or contract failures but may not suggest semantic repairs."
+  },
+  "protocol_version": "decomposition-benchmark-protocol/1.0.0",
+  "provenance_rules": {
+    "method": "Every atom uses human provenance and the current criterion source ID.",
+    "source_span": "Select the smallest continuous source substring that supports the complete atom, including comparator, value, unit, negation, and time language when present."
+  },
+  "status": "frozen_owner_approved",
+  "time_rules": {
+    "day": 1,
+    "limitation": "Calendar months and years are approximated as fixed day counts because schema 1.0.0 stores integer days; this limitation is permanent for benchmark version 1.0.0.",
+    "month": 30,
+    "week": 7,
+    "year": 365
+  },
+  "unrepresentable_policy": {
+    "annotation_draft": "Leave expression null while the item remains unresolved.",
+    "completion_gate": "A completed annotation cannot contain an unresolved item; the owner must resolve it under the frozen schema or approve a schema and guide revision before annotation resumes.",
+    "issue_record": "Record the criterion ID, exact ambiguity or unsupported construct, and resolution in a separate owner-review issue log; do not force a tree."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "approved_on": "2026-09-01",
+  "concept_granularity": {
+    "administrative_and_investigator_concepts_allowed": true,
+    "composite_scores_are_distinct_concepts": true,
+    "merge_rule": "Merge only explicit synonyms and abbreviations that name the same source concept.",
+    "separation_rule": "Keep clinically or administratively non-equivalent concepts separate even when related."
+  },
+  "entry_contract": {
+    "aliases": "Every alias must occur in the selected source text for the same split and be unique after normalization.",
+    "definition": "State the source concept in plain language without encoding a criterion decision.",
+    "field_id": "Use stable lower snake case naming that identifies only the concept.",
+    "prohibited_content": "Field IDs, definitions, and aliases must not encode criterion-specific thresholds, units, time windows, negation, value types, polarity, operators, or tree structure."
+  },
+  "failure_policy": {
+    "unseen_concept": "Stop the affected split; create an owner-reviewed catalog version and fresh annotations and predictions for that split.",
+    "unresolved_catalog_entry": "Do not freeze the catalog until the owner resolves the entry without model output."
+  },
+  "protocol_version": "decomposition-benchmark-protocol/1.0.0",
+  "rules_id": "decomposition-concept-rules-e68dfaa973391911",
+  "rules_sha256": "e68dfaa973391911b389149ba624b8a694c8f7ec6b9b1172fca23053816fffa9",
+  "rules_version": "concept-catalog-rules/1.0.0",
+  "source_boundary": {
+    "allowed_source": "Only selected criterion source text from the catalog's own split.",
+    "annotations_allowed": false,
+    "model_outputs_allowed": false,
+    "patient_or_restricted_data_allowed": false,
+    "predictions_allowed": false
+  },
+  "split_timeline": {
+    "dev": "Author and freeze from dev source text before dev annotation.",
+    "test": "Do not inspect or author the test catalog until the exact model, prompt, runtime, and decoding configuration are frozen; then freeze it before test annotation and inference."
+  },
+  "status": "frozen_owner_approved"
+}

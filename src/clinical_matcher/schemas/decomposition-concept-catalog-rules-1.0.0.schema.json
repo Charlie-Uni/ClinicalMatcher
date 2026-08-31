@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-concept-catalog-rules-1.0.0.schema.json",
+  "title": "Frozen decomposition concept-catalog construction rules",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rules_version", "protocol_version", "rules_id", "rules_sha256",
+    "status", "approved_on", "source_boundary", "entry_contract",
+    "concept_granularity", "split_timeline", "failure_policy"
+  ],
+  "properties": {
+    "rules_version": {"const": "concept-catalog-rules/1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "rules_id": {"type": "string", "pattern": "^decomposition-concept-rules-[0-9a-f]{16}$"},
+    "rules_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "frozen_owner_approved"},
+    "approved_on": {"const": "2026-09-01"},
+    "source_boundary": {"$ref": "#/$defs/stringMap"},
+    "entry_contract": {"$ref": "#/$defs/stringMap"},
+    "concept_granularity": {"$ref": "#/$defs/stringMap"},
+    "split_timeline": {"$ref": "#/$defs/stringMap"},
+    "failure_policy": {"$ref": "#/$defs/stringMap"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "stringMap": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": ["string", "boolean"]}
+    }
+  }
+}

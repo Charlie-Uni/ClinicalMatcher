@@ -937,7 +937,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     40-trial NCT-hash sample, no response-order/recency use, and fail-closed
     review if the observed 833-hit total or downstream quotas differ. Results
     cannot be generalized beyond the single AF disease domain. All other
-    safeguards remain unchanged.
+    safeguards remain unchanged. The owner additionally froze the
+    self-authenticating concept-catalog construction rules and human annotation
+    guide on 2026-09-01, before any real catalog or annotation was authored.
 
 - [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
@@ -997,7 +999,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     all dev/test, polarity, complexity, per-trial, and minimum-trial quotas
     passed. A disclosure-only exhaustive lexical-overlap report covers all
     1,600 cross-split pairs and does not alter membership. Real concept-catalog
-    authoring and annotation have not started.
+    authoring and annotation have not started. The packaged catalog-rules and
+    annotation-guide resources are now frozen and enforced by exact version and
+    SHA-256 binding; placeholder hashes are rejected.
   - Constraints: annotation disagreements and reviewer limitations are
     reported honestly; model-generated trees cannot become gold through human
     acceptance after the fact.

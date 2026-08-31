@@ -2,6 +2,7 @@ import hashlib
 import json
 import math
 import re
+from importlib.resources import files
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Set
 
@@ -19,6 +20,18 @@ CONCEPT_CATALOG_SCHEMA = (
     "schemas/decomposition-concept-catalog-1.0.0.schema.json"
 )
 ANNOTATION_SCHEMA = "schemas/decomposition-annotation-1.0.0.schema.json"
+CONCEPT_CATALOG_RULES_RESOURCE = (
+    "resources/decomposition-concept-catalog-rules-1.0.0.json"
+)
+CONCEPT_CATALOG_RULES_SCHEMA = (
+    "schemas/decomposition-concept-catalog-rules-1.0.0.schema.json"
+)
+ANNOTATION_GUIDE_RESOURCE = (
+    "resources/decomposition-annotation-guide-1.0.0.json"
+)
+ANNOTATION_GUIDE_SCHEMA = (
+    "schemas/decomposition-annotation-guide-1.0.0.schema.json"
+)
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -41,6 +54,75 @@ def _self_hash(document: Dict[str, Any], id_field: str, hash_field: str) -> str:
     payload.pop(id_field, None)
     payload.pop(hash_field, None)
     return _canonical_hash(payload)
+
+
+def _load_resource(resource: str) -> Dict[str, Any]:
+    document = json.loads(
+        files("clinical_matcher").joinpath(resource).read_text(encoding="utf-8")
+    )
+    if not isinstance(document, dict):
+        raise DecompositionAnnotationError(
+            f"Packaged decomposition resource must be an object: {resource}"
+        )
+    return document
+
+
+def validate_concept_catalog_rules(rules: Dict[str, Any]) -> None:
+    validate_document(rules, CONCEPT_CATALOG_RULES_SCHEMA)
+    expected_hash = _self_hash(rules, "rules_id", "rules_sha256")
+    if rules["rules_sha256"] != expected_hash:
+        raise DecompositionAnnotationError(
+            "Concept-catalog construction-rules hash mismatch"
+        )
+    if rules["rules_id"] != f"decomposition-concept-rules-{expected_hash[:16]}":
+        raise DecompositionAnnotationError(
+            "Concept-catalog construction-rules ID mismatch"
+        )
+
+
+def load_concept_catalog_rules() -> Dict[str, Any]:
+    rules = _load_resource(CONCEPT_CATALOG_RULES_RESOURCE)
+    validate_concept_catalog_rules(rules)
+    return rules
+
+
+def validate_decomposition_annotation_guide(guide: Dict[str, Any]) -> None:
+    validate_document(guide, ANNOTATION_GUIDE_SCHEMA)
+    expected_hash = _self_hash(guide, "guide_id", "guide_sha256")
+    if guide["guide_sha256"] != expected_hash:
+        raise DecompositionAnnotationError(
+            "Decomposition annotation-guide hash mismatch"
+        )
+    if guide["guide_id"] != f"decomposition-guide-{expected_hash[:16]}":
+        raise DecompositionAnnotationError("Decomposition annotation-guide ID mismatch")
+
+
+def load_decomposition_annotation_guide() -> Dict[str, Any]:
+    guide = _load_resource(ANNOTATION_GUIDE_RESOURCE)
+    validate_decomposition_annotation_guide(guide)
+    return guide
+
+
+def _require_catalog_rules_binding(document: Dict[str, Any]) -> None:
+    rules = load_concept_catalog_rules()
+    if (
+        document.get("construction_rules_version") != rules["rules_version"]
+        or document.get("construction_rules_sha256") != rules["rules_sha256"]
+    ):
+        raise DecompositionAnnotationError(
+            "Concept catalog must bind the packaged frozen construction rules"
+        )
+
+
+def _require_annotation_guide_binding(document: Dict[str, Any]) -> None:
+    guide = load_decomposition_annotation_guide()
+    if (
+        document.get("annotation_guide_version") != guide["guide_version"]
+        or document.get("annotation_guide_sha256") != guide["guide_sha256"]
+    ):
+        raise DecompositionAnnotationError(
+            "Annotation must bind the packaged frozen annotation guide"
+        )
 
 
 def _selected_records(
@@ -73,6 +155,22 @@ def finalize_concept_catalog(
     document["selection_manifest_sha256"] = selection[
         "selection_manifest_sha256"
     ]
+    rules = load_concept_catalog_rules()
+    supplied_binding = {
+        "construction_rules_version": document.get("construction_rules_version"),
+        "construction_rules_sha256": document.get("construction_rules_sha256"),
+    }
+    expected_binding = {
+        "construction_rules_version": rules["rules_version"],
+        "construction_rules_sha256": rules["rules_sha256"],
+    }
+    if any(value is not None for value in supplied_binding.values()) and (
+        supplied_binding != expected_binding
+    ):
+        raise DecompositionAnnotationError(
+            "Catalog draft conflicts with the packaged frozen construction rules"
+        )
+    document.update(expected_binding)
     split = document.get("split")
     if split not in {"dev", "test"}:
         raise DecompositionAnnotationError("Catalog split must be dev or test")
@@ -95,6 +193,7 @@ def validate_concept_catalog(
 ) -> None:
     validate_decomposition_selection_document(selection)
     validate_document(catalog, CONCEPT_CATALOG_SCHEMA)
+    _require_catalog_rules_binding(catalog)
     expected_hash = _self_hash(
         catalog,
         "concept_catalog_id",
@@ -193,6 +292,11 @@ def build_annotation_template(
         raise DecompositionAnnotationError(
             "Annotation guide requires a version and SHA-256"
         )
+    guide_binding = {
+        "annotation_guide_version": annotation_guide_version,
+        "annotation_guide_sha256": annotation_guide_sha256,
+    }
+    _require_annotation_guide_binding(guide_binding)
     document = {
         "decomposition_annotation_version": ANNOTATION_VERSION,
         "protocol_version": PROTOCOL_VERSION,
@@ -270,6 +374,36 @@ def _validate_expression(
             raise DecompositionAnnotationError(
                 f"{value_type} atom requires == or !=: {condition_id}"
             )
+        if value_type == "boolean" and value is not True:
+            raise DecompositionAnnotationError(
+                "Boolean atoms must state a positive fact with expected=true; "
+                f"represent negation with NOT: {condition_id}"
+            )
+
+
+def _validate_condition_id_order(
+    expression: Dict[str, Any], criterion_id: str
+) -> None:
+    atoms = list(_walk_atoms(expression))
+    ordered = sorted(
+        enumerate(atoms),
+        key=lambda item: (
+            item[1]["provenance"]["source_span"]["start"],
+            item[1]["provenance"]["source_span"]["end"],
+            item[0],
+        ),
+    )
+    expected = {
+        original_index: f"{criterion_id}:a{position:02d}"
+        for position, (original_index, _) in enumerate(ordered, start=1)
+    }
+    for original_index, atom in enumerate(atoms):
+        if atom["condition_id"] != expected[original_index]:
+            raise DecompositionAnnotationError(
+                "Condition IDs must follow left-to-right source order: "
+                f"expected {expected[original_index]!r}, got "
+                f"{atom['condition_id']!r}"
+            )
 
 
 def validate_annotation(
@@ -281,6 +415,7 @@ def validate_annotation(
     validate_decomposition_selection_document(selection)
     validate_concept_catalog(selection, catalog)
     validate_document(annotation, ANNOTATION_SCHEMA)
+    _require_annotation_guide_binding(annotation)
     expected_hash = _self_hash(
         annotation,
         "annotation_id",
@@ -366,6 +501,7 @@ def validate_annotation(
                 allowed_fields,
                 seen_condition_ids,
             )
+            _validate_condition_id_order(expression, item["criterion_id"])
 
 
 def finalize_annotation(
