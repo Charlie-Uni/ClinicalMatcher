@@ -1,0 +1,190 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05136131-inclusion-28bc73829f609b02",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients age ≥ 18 years",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 46,
+        "start": 23
+      },
+      "source_text": "Patients age ≥ 18 years"
+    },
+    {
+      "criterion_id": "nct05136131-inclusion-9c7b061458a300cd",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 79,
+        "start": 49
+      },
+      "source_text": "Persistent atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct05136131-inclusion-1f656a69beec074f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Unknown symptom burden related to AF",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 118,
+        "start": 82
+      },
+      "source_text": "Unknown symptom burden related to AF"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-174489388d3a04a8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known left-atrial appendage thrombus",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 179,
+        "start": 143
+      },
+      "source_text": "Known left-atrial appendage thrombus"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-dda8e70e74cff5b9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior catheter or surgical ablation for AF",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 224,
+        "start": 182
+      },
+      "source_text": "Prior catheter or surgical ablation for AF"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-d3709d3469083f2c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Intolerance or contraindication to Amiodarone",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 272,
+        "start": 227
+      },
+      "source_text": "Intolerance or contraindication to Amiodarone"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-916f42754719d80c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindication to appropriate anticoagulation",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 322,
+        "start": 275
+      },
+      "source_text": "Contraindication to appropriate anticoagulation"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-e6222ee1a66040c2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient is included in another randomized clinical trial",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 381,
+        "start": 325
+      },
+      "source_text": "Patient is included in another randomized clinical trial"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-d2efe3aa52698eb4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient is unable or unwilling to provide informed consent",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 442,
+        "start": 384
+      },
+      "source_text": "Patient is unable or unwilling to provide informed consent"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-0d71b5b1c24d04b2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient with a history of noncompliance with medical therapy",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 505,
+        "start": 445
+      },
+      "source_text": "Patient with a history of noncompliance with medical therapy"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-6bc19df299ce8335",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient does not meet all of the above listed inclusion criteria",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 572,
+        "start": 508
+      },
+      "source_text": "Patient does not meet all of the above listed inclusion criteria"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-36043668f1ce0b02",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy (all women of child bearing age and potential will have a negative BHCG test before enrolment)",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 679,
+        "start": 575
+      },
+      "source_text": "Pregnancy (all women of child bearing age and potential will have a negative BHCG test before enrolment)"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-bcb0031635ddc09a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Breastfeeding",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 695,
+        "start": 682
+      },
+      "source_text": "Breastfeeding"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-2f16526f17fb2859",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients for whom the investigator believes that the trial is not in the interest of the patient",
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 794,
+        "start": 698
+      },
+      "source_text": "Patients for whom the investigator believes that the trial is not in the interest of the patient"
+    }
+  ],
+  "eligibility_sha256": "42a8201cb6a7c38bd57fc5e82323b7e34c488f544ca55978ab5cb9c2bd74301a",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patients age ≥ 18 years\n* Persistent atrial fibrillation\n* Unknown symptom burden related to AF\n\nExclusion Criteria:\n\n* Known left-atrial appendage thrombus\n* Prior catheter or surgical ablation for AF\n* Intolerance or contraindication to Amiodarone\n* Contraindication to appropriate anticoagulation\n* Patient is included in another randomized clinical trial\n* Patient is unable or unwilling to provide informed consent\n* Patient with a history of noncompliance with medical therapy\n* Patient does not meet all of the above listed inclusion criteria\n* Pregnancy (all women of child bearing age and potential will have a negative BHCG test before enrolment)\n* Breastfeeding\n* Patients for whom the investigator believes that the trial is not in the interest of the patient",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-07-01",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05136131",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+  "source_record_version": "2026-07-01:42a8201cb6a7",
+  "source_url": "https://clinicaltrials.gov/study/NCT05136131",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "QOL Improvement After Cardioversion of Persistent AF (QOL-CAFRCT)"
+}

@@ -1,0 +1,348 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Patients with atrial fibrillation receiving catheter ablation of atrial fibrillation without additional intervention.",
+          "label": "Standard Medical Care Control Group",
+          "type": "NO_INTERVENTION"
+        },
+        {
+          "description": "Patients with atrial fibrillation receiving catheter ablation of atrial fibrillation and an additional verbal intervention to optimize the expectation of the patient towards the procedure.",
+          "interventionNames": [
+            "Other: Expectation optimization"
+          ],
+          "label": "Optimize Expectation Group",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Optimize Expectation Group"
+          ],
+          "description": "A short (2-5 min) verbal intervention will be createad individually based on the expectation of the patient towards the procedure.",
+          "name": "Expectation optimization",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "locations": [
+        {
+          "city": "Düsseldorf",
+          "contacts": [
+            {
+              "email": "christian.meyer@evk-duesseldorf.de",
+              "name": "Christian Meyer, MD",
+              "phone": "00492119191855",
+              "role": "CONTACT"
+            },
+            {
+              "email": "katharina.scherschel@evk-duesseldorf.de",
+              "name": "Katharina Scherschel, PhD",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Christian Meyer, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Ernan Zhu, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Fares A Alken, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Kristin Risse, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Bahram Wafaisade, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Ioana Reismann, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Lars Kutsch, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Ann-Kathrin Kahle, MD",
+              "role": "SUB_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Evangelic Hospital Düsseldorf",
+          "geoPoint": {
+            "lat": 51.22319,
+            "lon": 6.77927
+          },
+          "state": "North Rhine-Westfalia",
+          "status": "RECRUITING",
+          "zip": "40217"
+        },
+        {
+          "city": "Essen",
+          "contacts": [
+            {
+              "email": "Christiane.Jungen@uk-essen.de",
+              "name": "Jungen Christiane, MD",
+              "phone": "0049201280220",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Westdeutsches Herz- und Gefäßzentrum",
+          "geoPoint": {
+            "lat": 51.45657,
+            "lon": 7.01228
+          },
+          "status": "RECRUITING"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The aim is to investigate whether optimizing patients' expectations towards the interventional treatment of atrial fibrillation (catheter ablation) leads to a lower disease-related impairment of the patients compared to the control group in the first three months after ablation (the so-called blanking period)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "PARTICIPANT"
+          ]
+        },
+        "primaryPurpose": "SUPPORTIVE_CARE"
+      },
+      "enrollmentInfo": {
+        "count": 60,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* symptomatic atrial fibrillation\n* indication for pulmonary vein isolation\n* sufficient command of the German language\n\nExclusion Criteria:\n\n* age \\<18 years\n* permanent atrial fibrillation\n* presence of psychiatric disorders which impair the study participitatin\n* presence of another medical condiction which influences quality of life stronger than the cardiac condition\n* atrial fibrillation induced by intoxication, medicamentation or infection\n* inability to grap the course of the study",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Optimizing Quality of Life by Improved Patient Expectation Following Atrial Fibrillation Catheter Ablation",
+      "nctId": "NCT05557526",
+      "officialTitle": "Optimizing Quality of Life by Improved Patient Expectation Following Atrial Fibrillation Catheter Ablation",
+      "orgStudyIdInfo": {
+        "id": "IMPROVE AF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Evangelical Hospital Düsseldorf"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Quality of life of life will be compared between groups and between different time points (before versus 3 months after ablation) with \"the atrial fibrillation effect on quality-of-life (AFEQT) questionnaire\". An overall AFEQT score ranges from 0 to 100. A score of 0 corresponds to complete disability (or responding \"extremely\" limited, difficult or bothersome to all questions answered), while a score of 100 corresponds to no disability (or responding \"not at all\" limited, difficult or bothersome to all questions answered). Therefore, a positive change in score corresponds to improvement in AF symptoms.",
+          "measure": "Quality of life (questionaire)",
+          "timeFrame": "3 months"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Electrocardiographic documentation of any atrial arrhythmia with a duration \\>30 sec",
+          "measure": "Recurrence of atrial arrhythmias",
+          "timeFrame": "3 months"
+        },
+        {
+          "description": "Electrocardiographic documentation of any atrial arrhythmia with a duration \\>30 sec",
+          "measure": "Recurrence of atrial arrhythmias",
+          "timeFrame": "12 months"
+        },
+        {
+          "description": "Autonomic function will be assessed by heart rate variability measurement (low frequency and high frequency domain, root mean square of successive differences) to compare patients between groups and time points (before versus 3 months after ablation)",
+          "measure": "Autonomic function (heart rate variability measurement)",
+          "timeFrame": "3 months"
+        },
+        {
+          "description": "Atrial volume measured via echocardiography will be compared between groups and time points (before versus 3 months after ablation)",
+          "measure": "Atrial volume [ml/m2]",
+          "timeFrame": "3 months"
+        },
+        {
+          "description": "Left ventricular ejection fraction measured via echocardiography will be compared between groups and between time points (before versus 3 months after ablation)",
+          "measure": "Left ventricular ejection fraction [%]",
+          "timeFrame": "3 months"
+        },
+        {
+          "description": "Inflammatory markers (including IFN-gamma, TNF-alpha TGF-beta, IL-1beta, IL-4, IL-6, IL-8, IL-10, IL-1, CRP, MPO, NGF, S100B, ANP, FABP4) in blood samples measured via enzyme-linked immunosorbent assays will be compared between groups and between time points (before versus 3 months after ablation)",
+          "measure": "Inflammatory markers from blood samples",
+          "timeFrame": "3 months"
+        },
+        {
+          "description": "Treatment expectations will be measured using the GEEE (Generic rating scale for previous treatment experiences, treatment expectations, and treatment effects) questionaire by Rief et al. and compared between groups and between time points (before versus 3 months after ablation / before versus 12 months after ablation). The subscale Generic rating scale for treatment expectations consists of three items that assess expectations towards treatment on a numeric rating scale with eleven response options (0-10); total scores of all three subscales combined range from 0-30 with higher scores indicating higher treatment expectations.",
+          "measure": "Treatment expectations (questionaire)",
+          "timeFrame": "3 months, 12 months"
+        },
+        {
+          "description": "Physical activity will be measured will be compared between groups and time points (before versus 3 months after ablation) using the short version of the International Physical Activity Questionnaire (IPAQ - short). The short version of the IPAQ is a 7-item questionnaire that assesses the types of intensity of physical activity and sitting time that people do as part of their daily lives. Open-ended questions surrounding individuals' last 7-day recall of physical activity are considered to estimate total physical activity min/week and time spent sitting.\n\nInterpretation: Three levels (categories) of physical activity are proposed: low, moderate and high.",
+          "measure": "Physical Activity (questionaire)",
+          "timeFrame": "3 months, 12 months"
+        },
+        {
+          "description": "General quality of life of life will be compared between groups and between different time points (before versus 3 months after ablation) with \"F-36 questionaire. SF-36 is a multi-domain instrument with 36 items to evaluate the health status and quality of life. It included 8 subscales (physical functioning, physical role functioning, bodily pain, general health perception, vitality, social functioning, emotional role functioning, and mental health), which yielded a Physical Component Summary (PCS) with score range 0-100 (higher score-better quality of life) and a Mental Component Summary (MCS) with score range 0-100 (higher score-better quality of life) in addition to subscale scores. The PCS scores are normalized to a mean of 50 and standard deviations of 10, based upon general US population norms. A positive change indicates improvement while a negative change indicates worsening of health status and quality of life.",
+          "measure": "General quality of life (questionaire)",
+          "timeFrame": "3 months, 12 months"
+        },
+        {
+          "description": "Hospital anxiety and depression will becompared between groups and time points (before versus 3 months after ablation) using the Hospital Anxiety and Depression Scale (HADS). It consists of 14 items rated zero to three on Likert scales, allowing computation of sub-scores for depression and anxiety symptoms. Subscores as well as total sum score will be applied.",
+          "measure": "Hospital Anxiety and Depression Scale HADS (questionaire)",
+          "timeFrame": "3 months, 12 months"
+        },
+        {
+          "description": "Cardiac anxiety will becompared between groups and time points (before versus 3 months after ablation) using the established Cardiac Anxiety Questionnaire CAQ to determine cardiac anxiety, fear, avoidance and attention. The score ranges between 0 and 68 for the German version, with a greater score indicating elevated cardiac anxiety.",
+          "measure": "Cardiac Anxiety Questionnaire CAQ (questionaire)",
+          "timeFrame": "3 months, 12 months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Salzmann S, Euteneuer F, Laferton JAC, Auer CJ, Shedden-Mora MC, Schedlowski M, Moosdorf R, Rief W. Effects of Preoperative Psychological Interventions on Catecholamine and Cortisol Levels After Surgery in Coronary Artery Bypass Graft Patients: The Randomized Controlled PSY-HEART Trial. Psychosom Med. 2017 Sep;79(7):806-814. doi: 10.1097/PSY.0000000000000483.",
+          "pmid": "28846584",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Rief W, Shedden-Mora MC, Laferton JA, Auer C, Petrie KJ, Salzmann S, Schedlowski M, Moosdorf R. Preoperative optimization of patient expectations improves long-term outcome in heart surgery patients: results of the randomized controlled PSY-HEART trial. BMC Med. 2017 Jan 10;15(1):4. doi: 10.1186/s12916-016-0767-3.",
+          "pmid": "28069021",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Schedlowski M, Enck P, Rief W, Bingel U. Neuro-Bio-Behavioral Mechanisms of Placebo and Nocebo Responses: Implications for Clinical Trials and Clinical Practice. Pharmacol Rev. 2015 Jul;67(3):697-730. doi: 10.1124/pr.114.009423.",
+          "pmid": "26126649",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Laferton JA, Auer CJ, Shedden-Mora MC, Moosdorf R, Rief W. Optimizing preoperative expectations in cardiac surgery patients is moderated by level of disability: the successful development of a brief psychological intervention. Psychol Health Med. 2016;21(3):272-85. doi: 10.1080/13548506.2015.1051063. Epub 2015 Jun 4.",
+          "pmid": "26042657",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Kuniss M, Pavlovic N, Velagic V, Hermida JS, Healey S, Arena G, Badenco N, Meyer C, Chen J, Iacopino S, Anselme F, Packer DL, Pitschner HF, Asmundis C, Willems S, Di Piazza F, Becker D, Chierchia GB; Cryo-FIRST Investigators. Cryoballoon ablation vs. antiarrhythmic drugs: first-line therapy for patients with paroxysmal atrial fibrillation. Europace. 2021 Jul 18;23(7):1033-1041. doi: 10.1093/europace/euab029.",
+          "pmid": "33728429",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "University Hospital, Essen"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Evangelical Hospital Düsseldorf"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Evangelical Hospital Düsseldorf",
+        "investigatorFullName": "Christian Meyer",
+        "investigatorTitle": "Head of the Division of Cardiology, Angiology and Intensive Care",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-12",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-04-28",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-04-27",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-12",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2022-06-09",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-04",
+      "studyFirstPostDateStruct": {
+        "date": "2022-09-28",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2022-01-07",
+      "studyFirstSubmitQcDate": "2022-09-27"
+    }
+  }
+}

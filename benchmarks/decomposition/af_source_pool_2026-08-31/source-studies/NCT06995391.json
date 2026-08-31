@@ -1,0 +1,361 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D000438",
+          "term": "Alcohols"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000431",
+          "term": "Ethanol"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants randomized to Contemporary Guideline-Adherence will receive weekly app and text-based messaging encouraging them not to exceed guideline-directed amounts of alcohol, as well as messaging explaining that abstinence is acceptable and may be the best way to avoid AF and that, if a participant decides to consume alcohol, a Mediterranean drinking pattern may be the most healthy. Alcohol consumption (or abstinence) and AF episodes and severity will be assessed by serial surveys. Abstinence will also be objectively assessed via urine ethyl glucuronide (EtG) tests and a blood test for phosphatidylethanol (PEth) in randomly selected participants.",
+          "interventionNames": [
+            "Behavioral: Contemporary Guideline-Adherence"
+          ],
+          "label": "Contemporary Guideline-Adherence",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Participants randomized to Alcohol Abstinence will receive weekly app and text-based messaging encouraging avoidance of all alcohol consumption. Those assigned to this arm will also have the option to opt-in or decline to participate in additional messaging and surveys discouraging the purchase of alcohol triggered by visits to establishments that sell alcohol (bars and liquor stores) for the first month of the study. Alcohol consumption (or abstinence) and AF episodes and severity will be assessed by serial surveys. Abstinence will also be objectively assessed via urine ethyl glucuronide (EtG) tests and a blood test for phosphatidylethanol (PEth) in randomly selected participants.",
+          "interventionNames": [
+            "Behavioral: Alcohol Abstinence"
+          ],
+          "label": "Alcohol Abstinence",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Contemporary Guideline-Adherence"
+          ],
+          "description": "Participants randomized to Contemporary Guideline-Adherence will receive weekly app and text-based messaging encouraging them not to exceed guideline-directed amounts of alcohol, as well as messaging explaining that abstinence is acceptable and may be the best way to avoid AF and that, if a participant decides to consume alcohol, a Mediterranean drinking pattern may be the most healthy.",
+          "name": "Contemporary Guideline-Adherence",
+          "type": "BEHAVIORAL"
+        },
+        {
+          "armGroupLabels": [
+            "Alcohol Abstinence"
+          ],
+          "description": "Participants randomized to Alcohol Abstinence will receive weekly app and text-based messaging encouraging avoiding all alcohol consumption.",
+          "name": "Alcohol Abstinence",
+          "type": "BEHAVIORAL"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Atrial Fibrillation",
+        "AFib",
+        "Alcohol",
+        "Mediterranean Drinking Pattern",
+        "Red wine"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "greg.marcus@ucsf.edu",
+          "name": "Gregory M Marcus, MD, MAS",
+          "phone": "415-476-5706",
+          "role": "CONTACT"
+        },
+        {
+          "email": "gabby.montenegro2@ucsf.edu",
+          "name": "Gabrielle C Montenegro, BA",
+          "phone": "415-502-3053",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "San Francisco",
+          "contacts": [
+            {
+              "email": "greg.marcus@ucsf.edu",
+              "name": "Gregory M Marcus, MD, MAS",
+              "phone": "415-476-5706",
+              "role": "CONTACT"
+            },
+            {
+              "email": "bella.pena@ucsf.edu",
+              "name": "Isabella Peña, BA",
+              "phone": "415-502-3053",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Gregory M Marcus, MD, MAS",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "UCSF Medical Center at Parnassus",
+          "geoPoint": {
+            "lat": 37.77493,
+            "lon": -122.41942
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94143"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University of California, San Francisco",
+          "name": "Gregory M Marcus, MD, MAS",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Per the 2021 National Survey on Drug Use and Health administered by the U.S. Department of Health and Human Services, 85% of all American adults consume alcohol. Atrial fibrillation (AF) is the most common arrhythmia, affecting more than 10 million individuals in U.S., comprising 4.5% of the adult population. Although alcohol abstinence clearly reduces AF in heavy drinkers, observational data comparing the health effects of limited consumption versus abstention are conflicting.\n\nThe Mediterranean diet is one of the few that has demonstrated clear cardiovascular benefits in a randomized study-this diet allows for the consumption of red wine (or high polyphenol/ low alcohol alcohol), generally not more than one drink in 24 hours, with meals, avoiding spirits and binge drinking. The effect of the \"Mediterranean drinking pattern\" on AF risk compared to alcohol abstinence remains unknown.\n\nThis single center, randomized, controlled trial aims to compare the effects of a digital health intervention to encourage durable alcohol abstinence versus allowing guideline-adherent moderate alcohol consumption on AF severity. The knowledge gained from this study may be used to determine optimal thresholds for alcohol use among AF patients.",
+      "detailedDescription": "This single center, randomized, controlled trial aims to compare the effects of a digital health intervention to encourage durable alcohol abstinence versus allowing guideline-adherent moderate alcohol consumption on AF severity. Any English-speaking individual over the age of 21, with a diagnosis of paroxysmal or persistent AF, who consumes alcohol at least once per month and is willing to receive messaging encouraging alcohol abstinence, will be eligible to participate in this study.\n\nParticipants will be randomly assigned to one of two digital health interventions for one year. Those randomly assigned to the Contemporary Guideline-Adherence Arm will receive weekly app and text-based messaging encouraging them not to exceed guideline-directed amounts of alcohol, as well as messaging explaining that abstinence is acceptable and may be the best way to avoid AF and that, if a participant decides to consume alcohol, a Mediterranean drinking pattern may be the most healthy. Those randomly assigned to the Alcohol Abstinence Arm will receive weekly app- and text-based messaging encouraging avoidance of all alcohol consumption. Throughout the study, alcohol consumption (or abstinence) and atrial fibrillation episodes and severity will be assessed by serial surveys. Abstinence will also be objectively assessed via urine ethyl glucuronide (EtG) tests and a blood test for phosphatidylethanol (PEth) in randomly selected participants in each Arm. A minimum of 1,000 participants and up to 10,000 participants will be enrolled in the study."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "This is a single center, randomized, controlled, clinical trial, where subjects will be randomly assigned 1:1, stratified by recruitment blocks of 6 to one of two digital health interventions for one year.",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 1000,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Are age 21 years or older\n* Have a smartphone\n* Are able to use the Eureka mobile application\n* Have a history of paroxysmal or persistent atrial fibrillation (AF)\n* Have consumed alcohol at least once per month on average in the past year\n* Willing to receive messaging encouraging alcohol abstinence\n\nExclusion Criteria:\n\n* Non-english speaker\n* Currently pregnant or trying to get pregnant\n* A healthcare professional's instruction to avoid alcohol (for any reason)\n* Currently incarcerated\n* Permanent AF (meaning a medical determination has been made that sinus rhythm would definitely never be pursued in this patient)\n* Are unable to read or sign to provide informed consent",
+      "healthyVolunteers": false,
+      "minimumAge": "21 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "DRINK-LESS",
+      "briefTitle": "Digitally Rendered Interventions And Knowledge To Limit Ethanol-Associated Atrial Fibrillation Severity",
+      "nctId": "NCT06995391",
+      "officialTitle": "Digitally Rendered Interventions And Knowledge To Limit Ethanol-Associated Atrial Fibrillation Severity",
+      "orgStudyIdInfo": {
+        "id": "24-41876"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University of California, San Francisco"
+      },
+      "secondaryIdInfos": [
+        {
+          "id": "R01AA022222",
+          "link": "https://reporter.nih.gov/quickSearch/R01AA022222",
+          "type": "NIH"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary outcome will be change in atrial fibrillation severity at one year, defined by a change in the Atrial Fibrillation Effect on Quality-of-Life Questionnaire (AFEQT) score from baseline to one year associated with alcohol abstinence.\n\nBased on previously reported values of clinically relevant change in AFEQT score (PMID 31092022), the investigators estimate the change in mean AFEQT score from baseline to 1 year to be 5.4±17.03 in the Alcohol Abstinence group and 0.2±15.17 in the Contemporary Guideline-Adherence group, giving a 5.2 difference between the two groups. The investigators estimate that 1,000 patients would provide \\~99% power to detect this difference with as much as 30% overall attrition, and 30% crossover from abstinence to drinking regularly and 20% crossover from drinking regularly to abstinence.",
+          "measure": "Change in atrial fibrillation severity at one year",
+          "timeFrame": "From baseline to one year of study participation."
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Abstinence will be objectively assessed via urine ethyl glucuronide (EtG) tests in a random sample of 100 participants in each group. A secondary outcome will be the total number of negative EtG tests at approximately one year.",
+          "measure": "Total number of negative urine ethyl glucuronide tests at one year",
+          "timeFrame": "From baseline to one year of study participation."
+        },
+        {
+          "description": "At approximately one year, a blood test for phosphatidylethanol (PEth) will be obtained in a different random sample of participants in each group. A secondary outcome will be the results of the PEth test at one year.",
+          "measure": "Results of the phosphatidylethanol test at one year",
+          "timeFrame": "At one year of study participation."
+        },
+        {
+          "description": "Participants will have the option to connect an Apple Watch to the study mobile app to share data from their device. A secondary outcome will be atrial fibrillation burden, quantified by an Apple Watch.",
+          "measure": "Atrial fibrillation burden at one year, quantified by Apple Watch",
+          "timeFrame": "At one year of study participation."
+        },
+        {
+          "description": "Participants who are UCSF Health patients and have an atrial lead or implantable loop recorder will have the option to share heart rhythm data from their respective device with the study team. A secondary outcome will be atrial fibrillation burden, quantified by a cardiac device.",
+          "measure": "Atrial fibrillation burden at one year, quantified by a cardiac device",
+          "timeFrame": "At one year of study participation."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Substance Abuse and Mental Health Services Administration, Results from the 2021 National Survey on Drug Use and Health: Summary of National Findings. 2021",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Gardner CD, Vadiveloo MK, Petersen KS, Anderson CAM, Springfield S, Van Horn L, Khera A, Lamendola C, Mayo SM, Joseph JJ; American Heart Association Council on Lifestyle and Cardiometabolic Health. Popular Dietary Patterns: Alignment With American Heart Association 2021 Dietary Guidance: A Scientific Statement From the American Heart Association. Circulation. 2023 May 30;147(22):1715-1730. doi: 10.1161/CIR.0000000000001146. Epub 2023 Apr 27.",
+          "pmid": "37128940",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Gepner Y, Golan R, Harman-Boehm I, Henkin Y, Schwarzfuchs D, Shelef I, Durst R, Kovsan J, Bolotin A, Leitersdorf E, Shpitzen S, Balag S, Shemesh E, Witkow S, Tangi-Rosental O, Chassidim Y, Liberty IF, Sarusi B, Ben-Avraham S, Helander A, Ceglarek U, Stumvoll M, Bluher M, Thiery J, Rudich A, Stampfer MJ, Shai I. Effects of Initiating Moderate Alcohol Intake on Cardiometabolic Risk in Adults With Type 2 Diabetes: A 2-Year Randomized, Controlled Trial. Ann Intern Med. 2015 Oct 20;163(8):569-79. doi: 10.7326/M14-1650. Epub 2015 Oct 13.",
+          "pmid": "26458258",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Marfella R, Cacciapuoti F, Siniscalchi M, Sasso FC, Marchese F, Cinone F, Musacchio E, Marfella MA, Ruggiero L, Chiorazzo G, Liberti D, Chiorazzo G, Nicoletti GF, Sardu C, D'Andrea F, Ammendola C, Verza M, Coppola L. Effect of moderate red wine intake on cardiac prognosis after recent acute myocardial infarction of subjects with Type 2 diabetes mellitus. Diabet Med. 2006 Sep;23(9):974-81. doi: 10.1111/j.1464-5491.2006.01886.x.",
+          "pmid": "16922703",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Ronksley PE, Brien SE, Turner BJ, Mukamal KJ, Ghali WA. Association of alcohol consumption with selected cardiovascular disease outcomes: a systematic review and meta-analysis. BMJ. 2011 Feb 22;342:d671. doi: 10.1136/bmj.d671.",
+          "pmid": "21343207",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Voskoboinik A, Kalman JM, De Silva A, Nicholls T, Costello B, Nanayakkara S, Prabhu S, Stub D, Azzopardi S, Vizi D, Wong G, Nalliah C, Sugumar H, Wong M, Kotschet E, Kaye D, Taylor AJ, Kistler PM. Alcohol Abstinence in Drinkers with Atrial Fibrillation. N Engl J Med. 2020 Jan 2;382(1):20-28. doi: 10.1056/NEJMoa1817591.",
+          "pmid": "31893513",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Tu SJ, Gallagher C, Elliott AD, Linz D, Pitman BM, Hendriks JML, Lau DH, Sanders P, Wong CX. Risk Thresholds for Total and Beverage-Specific Alcohol Consumption and Incident Atrial Fibrillation. JACC Clin Electrophysiol. 2021 Dec;7(12):1561-1569. doi: 10.1016/j.jacep.2021.05.013. Epub 2021 Jul 27.",
+          "pmid": "34330672",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Marcus GM, Vittinghoff E, Whitman IR, Joyce S, Yang V, Nah G, Gerstenfeld EP, Moss JD, Lee RJ, Lee BK, Tseng ZH, Vedantham V, Olgin JE, Scheinman MM, Hsia H, Gladstone R, Fan S, Lee E, Fang C, Ogomori K, Fatch R, Hahn JA. Acute Consumption of Alcohol and Discrete Atrial Fibrillation Events. Ann Intern Med. 2021 Nov;174(11):1503-1509. doi: 10.7326/M21-0228. Epub 2021 Aug 31.",
+          "pmid": "34461028",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Miyasaka Y, Barnes ME, Gersh BJ, Cha SS, Bailey KR, Abhayaratna WP, Seward JB, Tsang TS. Secular trends in incidence of atrial fibrillation in Olmsted County, Minnesota, 1980 to 2000, and implications on the projections for future prevalence. Circulation. 2006 Jul 11;114(2):119-25. doi: 10.1161/CIRCULATIONAHA.105.595140. Epub 2006 Jul 3.",
+          "pmid": "16818816",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Lloyd-Jones DM, Wang TJ, Leip EP, Larson MG, Levy D, Vasan RS, D'Agostino RB, Massaro JM, Beiser A, Wolf PA, Benjamin EJ. Lifetime risk for development of atrial fibrillation: the Framingham Heart Study. Circulation. 2004 Aug 31;110(9):1042-6. doi: 10.1161/01.CIR.0000140263.20897.42. Epub 2004 Aug 16.",
+          "pmid": "15313941",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Roger VL, Go AS, Lloyd-Jones DM, Benjamin EJ, Berry JD, Borden WB, Bravata DM, Dai S, Ford ES, Fox CS, Fullerton HJ, Gillespie C, Hailpern SM, Heit JA, Howard VJ, Kissela BM, Kittner SJ, Lackland DT, Lichtman JH, Lisabeth LD, Makuc DM, Marcus GM, Marelli A, Matchar DB, Moy CS, Mozaffarian D, Mussolino ME, Nichol G, Paynter NP, Soliman EZ, Sorlie PD, Sotoodehnia N, Turan TN, Virani SS, Wong ND, Woo D, Turner MB; American Heart Association Statistics Committee and Stroke Statistics Subcommittee. Heart disease and stroke statistics--2012 update: a report from the American Heart Association. Circulation. 2012 Jan 3;125(1):e2-e220. doi: 10.1161/CIR.0b013e31823ac046. Epub 2011 Dec 15. No abstract available.",
+          "pmid": "22179539",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "NIH",
+          "name": "National Institute on Alcohol Abuse and Alcoholism (NIAAA)"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University of California, San Francisco"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2030-03-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-07-31",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-07-28",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2030-03-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-04-20",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-07",
+      "studyFirstPostDateStruct": {
+        "date": "2025-05-29",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-05-20",
+      "studyFirstSubmitQcDate": "2025-05-20"
+    }
+  }
+}

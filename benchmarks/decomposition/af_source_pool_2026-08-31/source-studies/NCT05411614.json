@@ -1,0 +1,433 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D006333",
+          "term": "Heart Failure"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D000078703",
+          "term": "Radiofrequency Ablation"
+        },
+        {
+          "id": "D000078702",
+          "term": "Radiofrequency Therapy"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        },
+        {
+          "id": "D055011",
+          "term": "Ablation Techniques"
+        },
+        {
+          "id": "D013514",
+          "term": "Surgical Procedures, Operative"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D017115",
+          "term": "Catheter Ablation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Staged Convergent Hybrid Ablation Procedure\n\nStage 1 - Minimally-Invasive Surgical Epicardial Ablation Procedure +/- concomitant LAA exclusion.\n\nStage 2 - Endocardial Catheter Ablation",
+          "interventionNames": [
+            "Device: AtriCure EPi-Sense-AF Guided Coagulation System +/- Atriclip",
+            "Device: Endocardial Catheter Ablation"
+          ],
+          "label": "Convergent Hybrid Ablation +/- Left Atrial Appendage Exclusion",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Standard endocardial catheter ablation",
+          "interventionNames": [
+            "Device: Endocardial Catheter Ablation"
+          ],
+          "label": "Standard Endocardial Catheter Ablation",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Convergent Hybrid Ablation +/- Left Atrial Appendage Exclusion"
+          ],
+          "description": "Minimally-invasive epicardial ablation +/- left atrial appendage exclusion using an epicardial clip, combined with endocardial radiofrequency catheter ablation",
+          "name": "AtriCure EPi-Sense-AF Guided Coagulation System +/- Atriclip",
+          "otherNames": [
+            "Convergent Hybrid Epicardial Endocardial Ablation plus/minus left atrial appendage exclusion"
+          ],
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Convergent Hybrid Ablation +/- Left Atrial Appendage Exclusion",
+            "Standard Endocardial Catheter Ablation"
+          ],
+          "description": "Standard percutaneous endocardial catheter ablation of atrial fibrillation",
+          "name": "Endocardial Catheter Ablation",
+          "otherNames": [
+            "Percutaneous Catheter Ablation"
+          ],
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Persistent Atrial Fibrillation",
+        "Atrial Fibrillation, Persistent",
+        "Atrial Arrhythmia",
+        "Atrial Fibrillation",
+        "Heart Failure",
+        "Left Ventricular (LV) Systolic Dysfunction"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "rkaba@sgul.ac.uk",
+          "name": "Riyaz A Kaba",
+          "phone": "020 8725 4571",
+          "role": "CONTACT"
+        },
+        {
+          "email": "m2109536@sgul.ac.uk",
+          "name": "Omar Ahmed",
+          "phone": "020 8725 4571",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Chertsey",
+          "contacts": [
+            {
+              "email": "omarahmed@nhs.net",
+              "name": "O Ahmed",
+              "phone": "01932723988",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United Kingdom",
+          "facility": "Ashford & St Peters Hospital NHS Trust",
+          "geoPoint": {
+            "lat": 51.38812,
+            "lon": -0.50782
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Epsom",
+          "contacts": [
+            {
+              "email": "yousef.darini@nhs.net",
+              "name": "Y Daryani",
+              "phone": "01372 735735",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United Kingdom",
+          "facility": "Epsom General Hospital",
+          "geoPoint": {
+            "lat": 51.3305,
+            "lon": -0.27011
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "London",
+          "country": "United Kingdom",
+          "facility": "Cromwell Hospital",
+          "geoPoint": {
+            "lat": 51.50853,
+            "lon": -0.12574
+          },
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "city": "London",
+          "contacts": [
+            {
+              "email": "rsch.cardiologyqueries@nhs.net",
+              "name": "Zia Zuberi",
+              "phone": "+441483571122",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United Kingdom",
+          "facility": "Royal Surrey County Hospital",
+          "geoPoint": {
+            "lat": 51.50853,
+            "lon": -0.12574
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "London",
+          "country": "United Kingdom",
+          "facility": "St Anthonys Hospital",
+          "geoPoint": {
+            "lat": 51.50853,
+            "lon": -0.12574
+          },
+          "status": "ACTIVE_NOT_RECRUITING"
+        },
+        {
+          "city": "London",
+          "contacts": [
+            {
+              "email": "m2109536@sgul.ac.uk",
+              "name": "Magdi Saba",
+              "phone": "020 8546 7711",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United Kingdom",
+          "facility": "St Georges at Kingston Hospital",
+          "geoPoint": {
+            "lat": 51.50853,
+            "lon": -0.12574
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "London",
+          "contacts": [
+            {
+              "email": "researchgovernance@sgul.ac.uk",
+              "name": "Rosie Jacobs",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United Kingdom",
+          "facility": "St Georges University of London",
+          "geoPoint": {
+            "lat": 51.50853,
+            "lon": -0.12574
+          },
+          "status": "RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "St Georges Hospital NHS Trust",
+          "name": "Riyaz A Kaba",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "St Georges Hospital NHS Trust",
+          "name": "Omar Ahmed",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "A randomised controlled trial to assess the efficacy of staged hybrid ablation when compared with standard catheter ablation in patients with non-paroxysmal atrial fibrillation (AF) and Heart Failure",
+      "detailedDescription": "The objective of this randomized study is to evaluate the safety and efficacy of Convergent hybrid ablation when compared to standard catheter ablation in patients with non-paroxysmal AF and heart failure.\n\nPatients will be randomised in a 1:1 ratio. The primary efficacy endpoint will be freedom from persistent atrial arrhythmia (measured from the end of a 3-month blanking period up to 24 months (12 and 24 months)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Clinical study. 1:1 randomised. Convergent Hybrid Ablation Procedure versus standalone endocardial catheter ablation).",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 120,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age ≥ 18 years\n* Persistent or Long-standing Persistent AF\n* Dilated left atrium (at least moderately dilated)\n* Suitable for either procedure\n* LVEF \\< 50%\n\nExclusion Criteria:\n\n* Not yet optimised from a medical or lifestyle perspective for AF or heart failure\n* Unable to provide written consent\n* Previous open-heart surgery\n* Active infection, oesophageal ulcer stricture or oesophageal varices\n* Prior catheter ablation of atrial fibrillation (prior ablation for atrial flutter / supraventricular tachycardia or ventricular arrhythmia acceptable)\n* Contraindication to anticoagulation, or active thrombus in the left atrium despite therapeutic anticoagulation\n* Severe valvular heart disease\n* Unstable coronary artery disease\n* Uncontrolled ventricular arrhythmia\n* Heart attack or stroke within the last 90 days\n* Pregnant, breastfeeding, or women of childbearing age who plan to get pregnant within six months\n* Severe concomitant condition or presence of an implanted device that would preclude the patient from undergoing trial procedures",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "HALT AF",
+      "briefTitle": "Hybrid Ablation of Atrial Fibrillation in Heart Failure",
+      "nctId": "NCT05411614",
+      "officialTitle": "A Randomised Controlled Trial Comparing Convergent Hybrid Ablation to Catheter Ablation in Patients With Persistent Atrial Fibrillation and Heart Failure",
+      "orgStudyIdInfo": {
+        "id": "2021.0137"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "St. George's Hospital, London"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Recurrence of persistent atrial arrhythmia during follow-up months).",
+          "measure": "Freedom from persistent atrial arrhythmia after a single procedure (either the completed hybrid ablation or catheter ablation) off Class I or III medications",
+          "timeFrame": "Measured from the end of a 3-month blanking period at 12 and 24 months"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Safety endpoint of severe and non-severe complications as defined in the protocol",
+          "measure": "Safety Endpoint",
+          "timeFrame": "Measured as early (within 30- days) and late (> 30 days) after each procedure or part of procedure"
+        },
+        {
+          "description": "Recurrence of any atrial arrhythmia \\> 30 seconds on or off class I / III medications, considering any repeat ablation procedures",
+          "measure": "Freedom from any atrial arrhythmia lasting > 30 seconds after a single completed procedure on class I/III medications",
+          "timeFrame": "Measured from the end of a 3- month blanking period at 12 and 24 months"
+        },
+        {
+          "description": "Recurrence of any atrial arrhythmia \\> 30 seconds on or off class I / III medications, considering any repeat ablation procedures",
+          "measure": "Freedom from atrial arrhythmias after any redo procedures (on or off class I or III medications)",
+          "timeFrame": "Measured from the end of a 3- month blanking period at 12 and 24 months"
+        },
+        {
+          "description": "Left ventricular ejection fraction as recorded on transthoracic echocardiography (TTE)",
+          "measure": "To assess left ventricular structural remodelling and change in ventricular function in response to either procedure",
+          "timeFrame": "Pre-procedure and at 12 and 24 months post-procedure"
+        },
+        {
+          "description": "Left atrial dimensions/function on Echocardiography",
+          "measure": "To assess left atrial remodelling in response to either technique.",
+          "timeFrame": "Pre-procedure and up to 12 and 24 months post-procedure"
+        },
+        {
+          "description": "Change in European Heart Rhythm Association (EHRA) AF Symptom score",
+          "measure": "To evaluate the effects of the interventions on the patient's symptoms and quality of life (EHRA Score)",
+          "timeFrame": "Pre-procedure and at 12 and 24 months post-procedure"
+        },
+        {
+          "description": "Change in New York Heart Association (NYHA) class",
+          "measure": "To evaluate the effects of the interventions on the patient's symptoms and quality of life (NYHA Class).",
+          "timeFrame": "Pre-procedure and at 12 and 24 months post-procedure"
+        },
+        {
+          "description": "Change in EuroQol Quality of life Score (EQ5D)",
+          "measure": "To evaluate the effects of the interventions on the patient's quality of life (EQ5D)",
+          "timeFrame": "Pre-procedure and at 12 and 24 months post-procedure"
+        },
+        {
+          "description": "Change in Atrial Fibrillation Effect on Quality of Life Score (AFEQT)",
+          "measure": "To evaluate the effects of the interventions on the patient's quality of life (AFEQT)",
+          "timeFrame": "Pre-procedure and at 12 and 24 months post-procedure"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Ahmed O, Behr ER, White S, Momin A, Kaba RA MBChB, FRCP. Convergent Hybrid Ablation Versus Catheter Ablation in Patients With Persistent Atrial Fibrillation and Heart Failure: HALT AF Study Protocol and Rationale for a Multicenter Randomized Controlled Trial. J Am Heart Assoc. 2026 Jun 2;15(11):e047774. doi: 10.1161/JAHA.125.047774. Epub 2026 May 29.",
+          "pmid": "42216292",
+          "type": "DERIVED"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "St. George's Hospital, London"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "St. George's Hospital, London",
+        "investigatorFullName": "Riyaz Kaba",
+        "investigatorTitle": "Consultant in Cardiology and Cardiac Electropysiology",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-10",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-11-28",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-11-23",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-05",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2022-06-25",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-11",
+      "studyFirstPostDateStruct": {
+        "date": "2022-06-09",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2022-05-20",
+      "studyFirstSubmitQcDate": "2022-06-06"
+    }
+  }
+}

@@ -417,3 +417,11 @@ downgrade decision attesting approval before the first annotation, reports no
 IAA, and cannot contain an adjudication reference. No real selection, catalog,
 annotation, adjudication, or gold artifact was created by the implementation or
 staffing-decision stages.
+
+The later owner-approved public-source execution froze snapshot
+`ctg-15b1e8aff71f895f`, selection
+`decomposition-selection-befdca243400ea10`, and lexical-overlap report
+`decomposition-overlap-e8520469215ee1f9`. The selection contains exactly 80
+criteria with every predeclared quota satisfied; the report exhaustively covers
+all 1,600 cross-split pairs and remains disclosure-only. No real concept
+catalog, annotation, adjudication, gold, or model prediction has been created.

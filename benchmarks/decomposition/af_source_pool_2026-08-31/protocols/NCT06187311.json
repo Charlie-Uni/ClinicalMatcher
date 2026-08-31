@@ -1,0 +1,234 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06187311-inclusion-093dc7efe1650939",
+      "criterion_type": "inclusion",
+      "normalized_text": "adult men and women over 19 years of age when screening",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 79,
+        "start": 24
+      },
+      "source_text": "adult men and women over 19 years of age when screening"
+    },
+    {
+      "criterion_id": "nct06187311-inclusion-931b79b5c042285a",
+      "criterion_type": "inclusion",
+      "normalized_text": "A person whose atrial fibrillation has been confirmed by electrocardiogram during screening and baseline.",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 188,
+        "start": 83
+      },
+      "source_text": "A person whose atrial fibrillation has been confirmed by electrocardiogram during screening and baseline."
+    },
+    {
+      "criterion_id": "nct06187311-inclusion-102bcb6de6b9c6b1",
+      "criterion_type": "inclusion",
+      "normalized_text": "Anticoagulants for the prevention of stroke or systemic embolism For cases where medication is required, a person with a CHA2DS2-VASC score of 1 male/female 2 or more points (In case of one or more risk factors)",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 403,
+        "start": 192
+      },
+      "source_text": "Anticoagulants for the prevention of stroke or systemic embolism For cases where medication is required, a person with a CHA2DS2-VASC score of 1 male/female 2 or more points (In case of one or more risk factors)"
+    },
+    {
+      "criterion_id": "nct06187311-inclusion-eb59fb4de200ff12",
+      "criterion_type": "inclusion",
+      "normalized_text": "4\\) CrCl (Creatinine Clearance) ≥50 ml/min",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 449,
+        "start": 407
+      },
+      "source_text": "4\\) CrCl (Creatinine Clearance) ≥50 ml/min"
+    },
+    {
+      "criterion_id": "nct06187311-inclusion-f4bb85557e4ffae9",
+      "criterion_type": "inclusion",
+      "normalized_text": "A person who voluntarily agrees in writing to this study",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 509,
+        "start": 453
+      },
+      "source_text": "A person who voluntarily agrees in writing to this study"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-6fe770ca208a4535",
+      "criterion_type": "exclusion",
+      "normalized_text": "Moderate mitral valve stenosis or mechanical artificial valve A person with a history of mechanical valve",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 640,
+        "start": 535
+      },
+      "source_text": "Moderate mitral valve stenosis or mechanical artificial valve A person with a history of mechanical valve"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-0d4b8488e144399a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Thyroid disease, terminal hypertrophy, brown cytoplasm, adrenal glands that affect the occurrence of atrial fibrillation A person accompanied by cortical disease, parathyroid disease, pancreatic disease, etc.",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 852,
+        "start": 644
+      },
+      "source_text": "Thyroid disease, terminal hypertrophy, brown cytoplasm, adrenal glands that affect the occurrence of atrial fibrillation A person accompanied by cortical disease, parathyroid disease, pancreatic disease, etc."
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-493bdf5e651656c0",
+      "criterion_type": "exclusion",
+      "normalized_text": "clinically significant bleeding (e.g., intracranial bleeding, gastrointestinal bleeding)",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 944,
+        "start": 856
+      },
+      "source_text": "clinically significant bleeding (e.g., intracranial bleeding, gastrointestinal bleeding)"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-fcf019ad98133a78",
+      "criterion_type": "exclusion",
+      "normalized_text": "Clinical significance of liver disease related to blood coagulation disorder and Child Pugh B and C liver disease associated with the risk of bleeding",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1098,
+        "start": 948
+      },
+      "source_text": "Clinical significance of liver disease related to blood coagulation disorder and Child Pugh B and C liver disease associated with the risk of bleeding"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-2f6b90fc2c8e1c72",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with increased risk of bleeding due to the following conditions:",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1175,
+        "start": 1102
+      },
+      "source_text": "Patients with increased risk of bleeding due to the following conditions:"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-66dba4b0b09cd831",
+      "criterion_type": "exclusion",
+      "normalized_text": "Gastrointestinal ulcer history within 6 months prior to random allocation",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1255,
+        "start": 1182
+      },
+      "source_text": "Gastrointestinal ulcer history within 6 months prior to random allocation"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-be350ef2d438ccdb",
+      "criterion_type": "exclusion",
+      "normalized_text": "Intracranial or intracranial hemorrhage history within 6 months prior to random assignment",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1354,
+        "start": 1264
+      },
+      "source_text": "Intracranial or intracranial hemorrhage history within 6 months prior to random assignment"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-ee70674c9b710d3f",
+      "criterion_type": "exclusion",
+      "normalized_text": "vascular abnormalities in the spinal cord or brain",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1415,
+        "start": 1365
+      },
+      "source_text": "vascular abnormalities in the spinal cord or brain"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-484d20c6fd16164f",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of brain, spinal cord or ophthalmic surgery within 30 days prior to random assignment ⑤ Brain or spinal cord injury within 6 months prior to random allocation ⑥ If you have esophageal varices or are suspected ⑦ Arteriovenous malformations ⑧ Vascular aneurysms ⑨ Patients with malignant tumors (Neoplasm) at high risk of bleeding",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1824,
+        "start": 1428
+      },
+      "source_text": "History of brain, spinal cord or ophthalmic surgery within 30 days prior to random assignment\n\n           ⑤ Brain or spinal cord injury within 6 months prior to random allocation\n\n           ⑥ If you have esophageal varices or are suspected\n\n           ⑦ Arteriovenous malformations\n\n           ⑧ Vascular aneurysms\n\n           ⑨ Patients with malignant tumors (Neoplasm) at high risk of bleeding"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-427da0dccec31cf1",
+      "criterion_type": "exclusion",
+      "normalized_text": "Stroke requiring combination of antiplatelet drugs when treating acute coronary syndrome or a patient with a history of transient ischemic attacks",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 1974,
+        "start": 1828
+      },
+      "source_text": "Stroke requiring combination of antiplatelet drugs when treating acute coronary syndrome or a patient with a history of transient ischemic attacks"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-bc6456d705ad94f8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who are overreacting to the main or components of Rivaroxaban",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 2048,
+        "start": 1978
+      },
+      "source_text": "Patients who are overreacting to the main or components of Rivaroxaban"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-0ece50acd89e7821",
+      "criterion_type": "exclusion",
+      "normalized_text": "Galactose intolerance, Lapp lactase deficiency, or glucose-galactose absorption a patient with genetic problems such as a disability",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 2184,
+        "start": 2052
+      },
+      "source_text": "Galactose intolerance, Lapp lactase deficiency, or glucose-galactose absorption a patient with genetic problems such as a disability"
+    },
+    {
+      "criterion_id": "nct06187311-exclusion-6f06f812c98bc962",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with uncontrolled hypertension (systolic BP > 180 mm Hg or diastolic BP > 100 mm Hg)",
+      "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+      "source_span": {
+        "end": 2283,
+        "start": 2188
+      },
+      "source_text": "Patients with uncontrolled hypertension (systolic BP \\> 180 mm Hg or diastolic BP \\> 100 mm Hg)"
+    }
+  ],
+  "eligibility_sha256": "129bd8ec7f01aa67c62afa381108eb03cdb2500439ab6ab55bd0a47521bf16e7",
+  "eligibility_text": "Inclusion Criteria:\n\n1. adult men and women over 19 years of age when screening\n2. A person whose atrial fibrillation has been confirmed by electrocardiogram during screening and baseline.\n3. Anticoagulants for the prevention of stroke or systemic embolism For cases where medication is required, a person with a CHA2DS2-VASC score of 1 male/female 2 or more points (In case of one or more risk factors)\n4. 4\\) CrCl (Creatinine Clearance) ≥50 ml/min\n5. A person who voluntarily agrees in writing to this study\n\nExclusion Criteria:\n\n1. Moderate mitral valve stenosis or mechanical artificial valve A person with a history of mechanical valve\n2. Thyroid disease, terminal hypertrophy, brown cytoplasm, adrenal glands that affect the occurrence of atrial fibrillation A person accompanied by cortical disease, parathyroid disease, pancreatic disease, etc.\n3. clinically significant bleeding (e.g., intracranial bleeding, gastrointestinal bleeding)\n4. Clinical significance of liver disease related to blood coagulation disorder and Child Pugh B and C liver disease associated with the risk of bleeding\n5. Patients with increased risk of bleeding due to the following conditions:\n\n   * Gastrointestinal ulcer history within 6 months prior to random allocation\n\n     * Intracranial or intracranial hemorrhage history within 6 months prior to random assignment\n\n       * vascular abnormalities in the spinal cord or brain\n\n         * History of brain, spinal cord or ophthalmic surgery within 30 days prior to random assignment\n\n           ⑤ Brain or spinal cord injury within 6 months prior to random allocation\n\n           ⑥ If you have esophageal varices or are suspected\n\n           ⑦ Arteriovenous malformations\n\n           ⑧ Vascular aneurysms\n\n           ⑨ Patients with malignant tumors (Neoplasm) at high risk of bleeding\n6. Stroke requiring combination of antiplatelet drugs when treating acute coronary syndrome or a patient with a history of transient ischemic attacks\n7. Patients who are overreacting to the main or components of Rivaroxaban\n8. Galactose intolerance, Lapp lactase deficiency, or glucose-galactose absorption a patient with genetic problems such as a disability\n9. Patients with uncontrolled hypertension (systolic BP \\> 180 mm Hg or diastolic BP \\> 100 mm Hg)",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2024-01-05",
+  "maximum_age": "99 Years",
+  "minimum_age": "19 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06187311",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06187311:eligibility:2024-01-05:129bd8ec7f01",
+  "source_record_version": "2024-01-05:129bd8ec7f01",
+  "source_url": "https://clinicaltrials.gov/study/NCT06187311",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Clinical Trial to Evaluate Efficacy and Safety of Rivaroxaban 15mg and 20mg in Patients With Non-valvular Atrial Fibrillation"
+}

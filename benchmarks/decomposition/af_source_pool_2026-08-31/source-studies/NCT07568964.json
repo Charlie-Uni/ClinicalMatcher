@@ -1,0 +1,274 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D019587",
+          "term": "Dietary Supplements"
+        },
+        {
+          "id": "D005502",
+          "term": "Food"
+        },
+        {
+          "id": "D000066888",
+          "term": "Diet, Food, and Nutrition"
+        },
+        {
+          "id": "D010829",
+          "term": "Physiological Phenomena"
+        },
+        {
+          "id": "D019602",
+          "term": "Food and Beverages"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D019936",
+          "term": "Probiotics"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "28 AF patients undergoing cardioversion who will receive standard of care",
+          "interventionNames": [
+            "Drug: Anticoagulant Therapy"
+          ],
+          "label": "Experimental: Control group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "28 AF patients undergoing cardioversion who will receive the standard of care in addition to Probiotics 25 billion daily orally, after cardioversion for 12 weeks",
+          "interventionNames": [
+            "Drug: Anticoagulant Therapy",
+            "Drug: Probiotics capsules"
+          ],
+          "label": "Experimental: Probiotic group",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Experimental: Control group",
+            "Experimental: Probiotic group"
+          ],
+          "description": "Drug: The standard of care for AF management directly following cardioversion Include anticoagulant therapy for at least 4 weeks, rate control therapy, rhythm control therapy, or both as per clinical and guideline decisions.",
+          "name": "Anticoagulant Therapy",
+          "otherNames": [
+            "Rate Control Therapy",
+            "Rhythm Control Therapy"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Experimental: Probiotic group"
+          ],
+          "description": "Probiotics at a of dose 25 billion / 1 capsule will be orally administered daily for 12 weeks",
+          "name": "Probiotics capsules",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "sara.mostafa18@pharma.asu.edu.eg",
+          "name": "Sarah M. Raesah",
+          "phone": "+201018585869",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Cairo",
+          "contacts": [
+            {
+              "email": "maymanmsaleh@yahoo.com",
+              "name": "Ayman Saleh Professor",
+              "phone": "+201222124031",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Egypt",
+          "facility": "Ain Shams University's Hospital",
+          "geoPoint": {
+            "lat": 30.06263,
+            "lon": 31.24967
+          }
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The aim of this clinical study is to evaluate the efficacy and tolerability of probiotics on atrial fibrillation recurrence.",
+      "detailedDescription": "Assessment of AF recurrence: Early AF recurrence is defined as relapse into AF within 1 week following successful cardioversion and AF recurrence through the study's 12-week follow-up.\n\nPatients and Methods Design: Prospective, randomized, open label, controlled clinical trial\n\nPatients: A total of 56 AF patients undergoing cardioversion will be randomly enrolled into one of 2 arms:\n\n1. Group 1 (Control group) (n=28): AF patients undergoing cardioversion who will receive the standard of care\n2. Group 2 (Probiotic group) (n = 28): AF patients undergoing cardioversion who will receive the standard of care in addition to probiotics DAILY orally administered (Probiotics 25 billion) after cardioversion for 12 weeks.\n\nGroups (1 \\& 2) will be subjected to cardioversion on admission according to standard protocols and criteria."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 56,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Female or male aged 40 years or above with BMI less than 40\n2. Persistent AF patients directly after cardioversion\n\nExclusion Criteria:\n\n1. History of probiotic supplementation in the previous 6 weeks\n2. Autoimmune diseases\n3. Ongoing treatment with immunosuppressive therapies\n4. Active Infection\n5. Pregnant or breast-feeding patients\n6. Active participation in another clinical study\n7. History of or known allergy or intolerability to the study medications",
+      "healthyVolunteers": false,
+      "minimumAge": "40 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Evaluation of Probiotics' Effect on Atrial Fibrillation Recurrence in Patients Undergoing Cardioversion",
+      "nctId": "NCT07568964",
+      "officialTitle": "Effect of Probiotics on Atrial Fibrillation Outcome in Patients Undergoing Cardioversion",
+      "orgStudyIdInfo": {
+        "id": "Probiotics in AF patients"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Ain Shams University"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "Atrial Fibrillation Recurrence",
+          "timeFrame": "7 days"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Atrial Fibrillation Recurrence",
+          "timeFrame": "12 weeks"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Brar AS, Vemula SL, Yanamaladoddi V, Sodhi S, Hatwal J, Sohal A, Batta A. Impact of gut microbiome on atrial fibrillation: Mechanistic insights and future directions in individualized medicine. World J Cardiol. 2025 Jun 26;17(6):107386. doi: 10.4330/wjc.v17.i6.107386.",
+          "pmid": "40575430",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Chen J, Wang Y, Wang K, Mei Z, Wang L. Exploring the Axis of Gut Microbiota-Inflammatory Cytokine-Atrial Fibrillation in the Pathogenesis of Atrial Fibrillation. J Cell Mol Med. 2025 Feb;29(3):e70379. doi: 10.1111/jcmm.70379.",
+          "pmid": "39930552",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Drapkina OM, Yafarova AA, Kaburova AN, Kiselev AR. Targeting Gut Microbiota as a Novel Strategy for Prevention and Treatment of Hypertension, Atrial Fibrillation and Heart Failure: Current Knowledge and Future Perspectives. Biomedicines. 2022 Aug 19;10(8):2019. doi: 10.3390/biomedicines10082019.",
+          "pmid": "36009566",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Ain Shams University"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Ain Shams University",
+        "investigatorFullName": "Sarah Mostafa Mostafa Abdelfatah Raesah",
+        "investigatorTitle": "Teaching Assistant and Researcher in Clinical Pharmacy Department, Faculty of Pharmacy, Ain Shams University.",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-09-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-05-06",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-05-01",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-05-10",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-05-10",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-05",
+      "studyFirstPostDateStruct": {
+        "date": "2026-05-06",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-04-10",
+      "studyFirstSubmitQcDate": "2026-05-01"
+    }
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D010627",
+          "term": "Phenethylamines"
+        },
+        {
+          "id": "D005021",
+          "term": "Ethylamines"
+        },
+        {
+          "id": "D000588",
+          "term": "Amines"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        },
+        {
+          "id": "D050198",
+          "term": "Phenoxypropanolamines"
+        },
+        {
+          "id": "D011412",
+          "term": "Propanolamines"
+        },
+        {
+          "id": "D000605",
+          "term": "Amino Alcohols"
+        },
+        {
+          "id": "D000438",
+          "term": "Alcohols"
+        },
+        {
+          "id": "D020005",
+          "term": "Propanols"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D014700",
+          "term": "Verapamil"
+        },
+        {
+          "id": "D008790",
+          "term": "Metoprolol"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "rate control with verapamil 240 mg od",
+          "interventionNames": [
+            "Drug: Verapamil 240 mg slow-release tablet"
+          ],
+          "label": "verapamil",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "rate control with metoprolol 100 mg od",
+          "interventionNames": [
+            "Drug: metoprolol 100 mg slow-release tablet"
+          ],
+          "label": "metoprolol",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "verapamil"
+          ],
+          "description": "rate control with verapamil 240 mg od",
+          "name": "Verapamil 240 mg slow-release tablet",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "metoprolol"
+          ],
+          "description": "Rate control with metoprolol 100 mg od",
+          "name": "metoprolol 100 mg slow-release tablet",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "atrial fibrillation",
+        "verapamil",
+        "metoprolol",
+        "rate control",
+        "rhythm control",
+        "paroxysmal"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "r.tieleman@gmail.com",
+          "name": "Robert G Tieleman, MD, PhD",
+          "phone": "+31505245245",
+          "role": "CONTACT"
+        },
+        {
+          "email": "wetenschap@mzh.nl",
+          "name": "Scientific Department Martini Hospital",
+          "phone": "+31505246311",
+          "role": "CONTACT"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Martini Hospital Groningen",
+          "name": "Robert G Tieleman, MD, PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The SMART-VERAPAF study investigates the effects of different heart rate-lowering medications in patients with paroxysmal atrial fibrillation (AF). This heart rhythm disorder is associated with a large number of emergency room visits and hospitalizations for cardioversions and ablations. In this study, patients with symptomatic paroxysmal AF are randomized to treatment with heart rate reduction using verapamil or metoprolol, both licensed for this indication. In addition, in a subset of patients, the effect of centrally guided self-care using smartwatch data will be evaluated.\n\nThe hypothesis is that both verapamil and guided self-care will lead to better heart rate control and fewer cardioversions and pulmonary vein ablations in patients with paroxysmal AF. This will also result in fewer hospital admissions, outpatient visits, and costs, as well as improved quality of life.",
+      "detailedDescription": "Rationale\n\nIn patients with paroxysmal atrial fibrillation (AF), heart rate-suppressing therapy is used to reduce symptoms and prevent heart failure. However, recent studies show that more than 30% of paroxysmal AF patients experience inappropriate high heart rates for over 50% of the time while in AF. Most patients are treated with beta-blockers for adequate rate control, while less than 5% are treated with verapamil.\n\nHypothesis and objectives\n\nThe investigators hypothesize that treatment with verapamil is superior for heart rate suppression in patients with paroxysmal AF, because dose titration is not hampered by sinus bradycardia outside AF episodes. This advantage is expected to lead to less clinical progression of AF and therefore fewer AF-related hospital admissions, fewer cardioversions, and fewer referrals for ablation. Additionally, the investigators hypothesize that guided self-management using smartwatch data improves the quality of heart rate suppression, resulting in fewer symptoms, fewer unplanned hospital admissions, fewer cardioversions, and fewer referrals for ablation.\n\nMain trial endpoints\n\nThe primary outcome measure is the time to hospitalization for AF, cardioversion, or referral for pulmonary vein ablation during at least 1 year follow-up after randomization.\n\nSecondary trial endpoints\n\nSecondary outcome measures include hospitalizations for heart failure, the number of AF-related hospital days, outpatient visits for AF, echocardiographic parameters, heart rate and blood pressure, quality of life, symptoms, activity level, and costs.\n\nTrial design\n\nThis is a multicenter, prospective, double-blind randomized study with blinded endpoint assessment. A sub-study will investigate feasibility and efficacy of guided self-management using smartwatches. Follow-up duration is at least 1 year after randomization.\n\nTrial population Symptomatic patients with paroxysmal AF, ≥18 years of age, who have an indication for rate-control therapy. Patients with contraindications for verapamil or metoprolol, a history of persistent AF, or prior pulmonary vein ablation will be excluded.\n\nInterventions\n\nA total of 436 participants will be randomized to receive oral verapamil 240 mg slow-release or metoprolol 100 mg retard. A subset of participants will monitor heart rate using a smartwatch and adjust the study medication dose using heart rate data and a flow chart supported by a central service center.\n\nSample size and data analysis\n\nA total of 436 patients with paroxysmal AF will be randomized. Endpoints will be analyzed according to the intention-to-treat (ITT) principle using standard statistical techniques."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Double blind randomised controlled trial comparing 2 medications",
+        "maskingInfo": {
+          "masking": "QUADRUPLE",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 436,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "7.2 Inclusion criteria\n\nIn order to be eligible to participate in this study, a subject must meet all of the following criteria:\n\n* Age ≥ 18 years old\n* ECG documented diagnosis of paroxysmal AF\n* Presence of symptomatic paroxysmal AF, defined as recurrent self-terminating AF (≥ 2 episodes in last 4 months) documented by typical symptoms, ECG or photoplethysmo-gram\n* Able and willing to sign informed consent.\n\nFor SMART sub study only:\n\n\\- Own a smartphone\n\n7.3 Exclusion criteria\n\nA potential subject who meets any of the following criteria will be excluded from participation in this study:\n\n* A history of electrical cardioversion for persistent AF\n* History of AF episode \\> 7 days\n* Previous or current chronic amiodaron use.\n* A history of pulmonary vein ablation\n* Taking part in another randomized trial\n* Reduced life-expectancy of \\< 1 year\n* Presence of contra-indication for verapamil or metoprolol\n* Pregnant or breastfeeding women. Or women who are planning to become pregnant during the study period.\n* For substudy patients: already participating in an eHealth program\n\nContraindications for verapamil or metoprolol:\n\n* Known hypersensitivity, intolerance or allergy to verapamil, metoprolol, or any excipi-ents.\n* Current use of verapamil, diltiazem, beta-blockers or digoxin, or \\< 5 half-lives ago at the time of randomization.\n* Concomitant use of medications with absolute contraindications for verapamil or metoprolol (e.g., strong CYP3A4 inhibitors).\\*\n* Resting heart rate \\< 50 beats per minute at baseline.\n* Symptomatic hypotension (or systolic blood pressure \\< 100 mmHg).\n* Second- or third-degree atrioventricular block.\n* Sick sinus syndrome or sinus node disease.\n* Wolff-Parkinson-White syndrome.\n* Severe heart failure (NYHA class III-IV or left ventricular ejection fraction \\< 45%).\n* Clinically significant constipation requiring medical intervention.\n* Severe bronchial asthma or COPD with bronchial hyperreactivity.\n* Untreated pheochromocytoma (unless patient is concomitantly treated with an α-blocker).\n* Type 1 diabetes mellitus with frequent symptomatic hypoglycaemia where β-blocker use would pose unacceptable risk due to masking of symptoms.\n* Severe symptomatic peripheral arterial disease or disabling Raynaud's phenomenon.\n* Pacemaker therapy in place. An implanted loop recorder is not a contraindication.\n* Severe hepatic impairment (Child-Pugh class C).\n* Severe renal impairment (eGFR \\< 30 ml/min/1.73m²). \\*Patients using statins can be switched to an equivalent dose of rosuvastatin prior to ran-domization. Patients using oral anticoagulation need to be switched to apixaban or rivaroxa-ban.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "SMART-VERAPAF",
+      "briefTitle": "SMART-VERAPAF: Self-MAnagement and Random Therapy With VERApamil or Metoprolol in Paroxysmal Atrial Fibrillation",
+      "nctId": "NCT07445789",
+      "officialTitle": "SMART-VERAPAF: Self-MAnagement and Random Therapy With VERApamil or Metoprolol in Paroxysmal Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "SMART-VERAPAF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Martini Hospital Groningen"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "ZonMw",
+          "id": "10141022410031",
+          "type": "OTHER_GRANT"
+        },
+        {
+          "id": "2025-524245-27-00",
+          "type": "CTIS"
+        },
+        {
+          "id": "2025",
+          "link": "https://reporter.nih.gov/quickSearch/2025",
+          "type": "NIH"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "accessCriteria": "Data will be made available to researchers who provide a methodologically sound proposal. Proposals should be directed to the PI (r.tieleman@gmail.com). To gain access, requestors will need to sign a data access agreement. Data will be shared for the purpose of achieving the aims outlined in the approved proposal.",
+      "description": "De-identified individual participant data (IPD) that underlie the results reported in publications (text, tables, figures, and appendices) will be shared. This includes baseline characteristics, outcome measures, and adverse event data.",
+      "infoTypes": [
+        "STUDY_PROTOCOL",
+        "SAP",
+        "ICF",
+        "CSR",
+        "ANALYTIC_CODE"
+      ],
+      "ipdSharing": "YES",
+      "timeFrame": "Data will be available beginning 12 months following publication of the primary results and ending 5 years after publication."
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "The time to hospitalization for AF, cardioversion, or referral for pulmonary vein ablation",
+          "timeFrame": "follow-up duration is at least 1 year after randomisation and can range from 1 to 3 years"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": true
+    },
+    "referencesModule": {
+      "seeAlsoLinks": [
+        {
+          "label": "Dutch description of the study on Funding Organisation of the Dutch Government",
+          "url": "https://projecten.zonmw.nl/nl/project/zelfmanagement-en-behandeling-met-verapamil-metoprolol-bij-paroxysmaal-atriumfibrilleren"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Martini Hospital Groningen"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-06",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-03-27",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-03-23",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2029-06",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-06",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2026-03-03",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-02-25",
+      "studyFirstSubmitQcDate": "2026-02-25"
+    }
+  }
+}

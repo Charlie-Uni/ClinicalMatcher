@@ -1,0 +1,388 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06358391-inclusion-1e94a0224892deac",
+      "criterion_type": "inclusion",
+      "normalized_text": "≥ 18 years of age",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 41,
+        "start": 24
+      },
+      "source_text": "≥ 18 years of age"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-9833a998e84cda52",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosed with one of the following cardiac disorders as shown in the medical record: \\[Symptomatic arrhythmia\\]",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 161,
+        "start": 45
+      },
+      "source_text": "Diagnosed with one of the following cardiac disorders as shown in the medical record:\n\n   \\[Symptomatic arrhythmia\\]"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-4ee68532fdf85c64",
+      "criterion_type": "inclusion",
+      "normalized_text": "\"Atrial fibrillation\" diagnostics (including paroxysmal, persistent, long-standing persistent and permanent atrial fibrillation)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 295,
+        "start": 167
+      },
+      "source_text": "\"Atrial fibrillation\" diagnostics (including paroxysmal, persistent, long-standing persistent and permanent atrial fibrillation)"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-c097a0ce2977fcbf",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnostic criteria: atrial fibrillation lasting ≥ 30 seconds as a result of standard 12-lead electrocardiogram (ECG) or single-lead ECG",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 440,
+        "start": 304
+      },
+      "source_text": "Diagnostic criteria: atrial fibrillation lasting ≥ 30 seconds as a result of standard 12-lead electrocardiogram (ECG) or single-lead ECG"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-64b6e9dfa4af1faa",
+      "criterion_type": "inclusion",
+      "normalized_text": "ECG feature: irregular R-R interval, lack of visible P waves, irregular atrial activation",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 537,
+        "start": 448
+      },
+      "source_text": "ECG feature: irregular R-R interval, lack of visible P waves, irregular atrial activation"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-f10c1746852eedfc",
+      "criterion_type": "inclusion",
+      "normalized_text": "Symptoms: fatigue, palpitation, dyspnea, chest discomfort, sleep disorders, mental stress",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 634,
+        "start": 545
+      },
+      "source_text": "Symptoms: fatigue, palpitation, dyspnea, chest discomfort, sleep disorders, mental stress"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-818d72131135e241",
+      "criterion_type": "inclusion",
+      "normalized_text": "Type:",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 647,
+        "start": 642
+      },
+      "source_text": "Type:"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-1b3d7f1c2491b34f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Paroxysmal atrial fibrillation (stopping within 48 hours without any treatment; restoring the sinus rhythm with cardioversion within 7 days)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 798,
+        "start": 658
+      },
+      "source_text": "Paroxysmal atrial fibrillation (stopping within 48 hours without any treatment; restoring the sinus rhythm with cardioversion within 7 days)"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-5e7cf0c3379aff16",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent atrial fibrillation (persisting for ≥ 7 days; including sinus rhythm restoration with direct-current cardioversion (DCC) or pharmacological cardioversion after the persistence)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 995,
+        "start": 808
+      },
+      "source_text": "Persistent atrial fibrillation (persisting for ≥ 7 days; including sinus rhythm restoration with direct-current cardioversion (DCC) or pharmacological cardioversion after the persistence)"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-d680ea8389ca7479",
+      "criterion_type": "inclusion",
+      "normalized_text": "Long-standing persistent atrial fibrillation (persisting for ≥ 1 year; including cases requiring cardioversion)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 1116,
+        "start": 1005
+      },
+      "source_text": "Long-standing persistent atrial fibrillation (persisting for ≥ 1 year; including cases requiring cardioversion)"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-7f89d56a7cf4151a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Permanent atrial fibrillation (The patient and healthcare provider accept atrial fibrillation and do not consider cardioversion; if cardioversion is considered, the atrial fibrillation is reclassified as long-standing persistent atrial fibrillation)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 1375,
+        "start": 1126
+      },
+      "source_text": "Permanent atrial fibrillation (The patient and healthcare provider accept atrial fibrillation and do not consider cardioversion; if cardioversion is considered, the atrial fibrillation is reclassified as long-standing persistent atrial fibrillation)"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-ca7c2a46976089c0",
+      "criterion_type": "inclusion",
+      "normalized_text": "\"Paroxysmal Supraventricular Tachycardia\" diagnostics = Clinical feature: The heart beats regularly 150 to 200 times per minute; the start and end of paroxysmal supraventricular tachycardia are clearly recognizable; these occur unexpectedly and stop abruptly.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 1646,
+        "start": 1381
+      },
+      "source_text": "\"Paroxysmal Supraventricular Tachycardia\" diagnostics\n\n     = Clinical feature: The heart beats regularly 150 to 200 times per minute; the start and end of paroxysmal supraventricular tachycardia are clearly recognizable; these occur unexpectedly and stop abruptly."
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-818b350abf00706e",
+      "criterion_type": "inclusion",
+      "normalized_text": "\"Ectopic Atrial Rhythm Tachycardia\" diagnostics = Clinical feature: Heart rhythm of less than 250 beats per minute; morphologic difference from P waves in the sinus rhythm; P waves that precede QRS waves are identifiable.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 1879,
+        "start": 1652
+      },
+      "source_text": "\"Ectopic Atrial Rhythm Tachycardia\" diagnostics\n\n     = Clinical feature: Heart rhythm of less than 250 beats per minute; morphologic difference from P waves in the sinus rhythm; P waves that precede QRS waves are identifiable."
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-125f08df37d67dc6",
+      "criterion_type": "inclusion",
+      "normalized_text": "\"Ventricular Tachycardia\" diagnostics = Clinical feature: Wide QRS waves appear in succession with a rapid ventricular rate of ≥ 100 beats per minute; the patients is diagnosed with persistent ventricular tachycardia if tachycardia persists for ≥ 30 seconds but with non-persistent ventricular tachycardia if not applicable.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 2209,
+        "start": 1885
+      },
+      "source_text": "\"Ventricular Tachycardia\" diagnostics = Clinical feature: Wide QRS waves appear in succession with a rapid ventricular rate of ≥ 100 beats per minute; the patients is diagnosed with persistent ventricular tachycardia if tachycardia persists for ≥ 30 seconds but with non-persistent ventricular tachycardia if not applicable."
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-ddf3acf640477d8e",
+      "criterion_type": "inclusion",
+      "normalized_text": "\"Arrhythmia requiring left atrial access, including left atrial appendage occlusion, in the left atrium\" diagnostics = Clinical feature: moderate or higher risk of stroke, risk of bleeding, or contraindication to anticoagulation therapy \\[Symptomatic mitral stenosis\\] -\"Mitral Stenosis requiring percutaneous mitral valvuloplasty through left atrial access\" diagnostics",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 2593,
+        "start": 2215
+      },
+      "source_text": "\"Arrhythmia requiring left atrial access, including left atrial appendage occlusion, in the left atrium\" diagnostics = Clinical feature: moderate or higher risk of stroke, risk of bleeding, or contraindication to anticoagulation therapy\n\n   \\[Symptomatic mitral stenosis\\]\n\n   -\"Mitral Stenosis requiring percutaneous mitral valvuloplasty through left atrial access\" diagnostics"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-0d947fb358228668",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnostic criteria: confirmation of mitral stenosis with echocardiography and assessment of severity",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 2700,
+        "start": 2599
+      },
+      "source_text": "Diagnostic criteria: confirmation of mitral stenosis with echocardiography and assessment of severity"
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-6d587c731bda9a02",
+      "criterion_type": "inclusion",
+      "normalized_text": "Symptoms: dyspnea; shortness of breath even at rest or inability to sleep in a supine position if dyspnea worsens; may accompanied by coughing, sputum, and chest pain.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 2873,
+        "start": 2706
+      },
+      "source_text": "Symptoms: dyspnea; shortness of breath even at rest or inability to sleep in a supine position if dyspnea worsens; may accompanied by coughing, sputum, and chest pain."
+    },
+    {
+      "criterion_id": "nct06358391-inclusion-af2b007b9ebfc395",
+      "criterion_type": "inclusion",
+      "normalized_text": "Understood this clinical study and voluntarily signed the informed consent form (ICF)1",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 2963,
+        "start": 2877
+      },
+      "source_text": "Understood this clinical study and voluntarily signed the informed consent form (ICF)1"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-18f2a4ac003f891c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with significant congenital heart defects, such as atrial septal defect or pulmonary vein (PV) abnormalities (excluding patent foramen ovale (PFO)).",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3291,
+        "start": 3134
+      },
+      "source_text": "Patients with significant congenital heart defects, such as atrial septal defect or pulmonary vein (PV) abnormalities (excluding patent foramen ovale (PFO))."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-c2532566fc62c4c6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Thrombus in the left atrium",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3322,
+        "start": 3295
+      },
+      "source_text": "Thrombus in the left atrium"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-7d946bec0e2ba1f2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Atrial fibrillation to reversible causes (e.g. hyperthyroidism, thoracic surgery)",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3407,
+        "start": 3326
+      },
+      "source_text": "Atrial fibrillation to reversible causes (e.g. hyperthyroidism, thoracic surgery)"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-c9a3ea5933c2cc53",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known or suspected left atrial myxoma.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3449,
+        "start": 3411
+      },
+      "source_text": "Known or suspected left atrial myxoma."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-7290eaf6dd98f8c1",
+      "criterion_type": "exclusion",
+      "normalized_text": "Unstable angina.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3469,
+        "start": 3453
+      },
+      "source_text": "Unstable angina."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-91453a58a150658d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pre-existing hemidiaphragmatic paralysis",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3513,
+        "start": 3473
+      },
+      "source_text": "Pre-existing hemidiaphragmatic paralysis"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-b899a7501e53c2ee",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindication to anticoagulation or radiocontrast materials",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3579,
+        "start": 3517
+      },
+      "source_text": "Contraindication to anticoagulation or radiocontrast materials"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-34c72e1c905246d7",
+      "criterion_type": "exclusion",
+      "normalized_text": "liver disease (including active hepatitis) and kidney disease.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3645,
+        "start": 3583
+      },
+      "source_text": "liver disease (including active hepatitis) and kidney disease."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-da34669213bf4210",
+      "criterion_type": "exclusion",
+      "normalized_text": "Cerebral ischemic event (strokes or TIAs) during the six-month interval preceding the consent date",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3747,
+        "start": 3649
+      },
+      "source_text": "Cerebral ischemic event (strokes or TIAs) during the six-month interval preceding the consent date"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-7e4b69717af147bf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Malignant tumors or hematological diseases or life expectancy of less than one (1) year.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 3840,
+        "start": 3752
+      },
+      "source_text": "Malignant tumors or hematological diseases or life expectancy of less than one (1) year."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-5bffabfc946e400a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Currently participating or anticipated to participate in any other clinical trial of a drug, device or biologic that has the potential to interfere with the results of this study",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 4023,
+        "start": 3845
+      },
+      "source_text": "Currently participating or anticipated to participate in any other clinical trial of a drug, device or biologic that has the potential to interfere with the results of this study"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-ddc8b7111431b9e1",
+      "criterion_type": "exclusion",
+      "normalized_text": "Unwilling or unable to comply fully with study procedures and follow-up",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 4099,
+        "start": 4028
+      },
+      "source_text": "Unwilling or unable to comply fully with study procedures and follow-up"
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-7771b2e86b1153c0",
+      "criterion_type": "exclusion",
+      "normalized_text": "A pregnant woman, a woman planning on becoming pregnant, or a lactating woman.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 4182,
+        "start": 4104
+      },
+      "source_text": "A pregnant woman, a woman planning on becoming pregnant, or a lactating woman."
+    },
+    {
+      "criterion_id": "nct06358391-exclusion-85950aac28afb300",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ineligible for study participation in the judgment of the investigator.",
+      "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+      "source_span": {
+        "end": 4258,
+        "start": 4187
+      },
+      "source_text": "Ineligible for study participation in the judgment of the investigator."
+    }
+  ],
+  "eligibility_sha256": "7eb42cfcda99694110dbc9f615b3583fdb825ab70a3780d9b8e37996e07a02d7",
+  "eligibility_text": "Inclusion Criteria:\n\n1. ≥ 18 years of age\n2. Diagnosed with one of the following cardiac disorders as shown in the medical record:\n\n   \\[Symptomatic arrhythmia\\]\n   * \"Atrial fibrillation\" diagnostics (including paroxysmal, persistent, long-standing persistent and permanent atrial fibrillation)\n\n     * Diagnostic criteria: atrial fibrillation lasting ≥ 30 seconds as a result of standard 12-lead electrocardiogram (ECG) or single-lead ECG\n     * ECG feature: irregular R-R interval, lack of visible P waves, irregular atrial activation\n     * Symptoms: fatigue, palpitation, dyspnea, chest discomfort, sleep disorders, mental stress\n     * Type:\n\n       * Paroxysmal atrial fibrillation (stopping within 48 hours without any treatment; restoring the sinus rhythm with cardioversion within 7 days)\n       * Persistent atrial fibrillation (persisting for ≥ 7 days; including sinus rhythm restoration with direct-current cardioversion (DCC) or pharmacological cardioversion after the persistence)\n       * Long-standing persistent atrial fibrillation (persisting for ≥ 1 year; including cases requiring cardioversion)\n       * Permanent atrial fibrillation (The patient and healthcare provider accept atrial fibrillation and do not consider cardioversion; if cardioversion is considered, the atrial fibrillation is reclassified as long-standing persistent atrial fibrillation)\n   * \"Paroxysmal Supraventricular Tachycardia\" diagnostics\n\n     = Clinical feature: The heart beats regularly 150 to 200 times per minute; the start and end of paroxysmal supraventricular tachycardia are clearly recognizable; these occur unexpectedly and stop abruptly.\n   * \"Ectopic Atrial Rhythm Tachycardia\" diagnostics\n\n     = Clinical feature: Heart rhythm of less than 250 beats per minute; morphologic difference from P waves in the sinus rhythm; P waves that precede QRS waves are identifiable.\n   * \"Ventricular Tachycardia\" diagnostics = Clinical feature: Wide QRS waves appear in succession with a rapid ventricular rate of ≥ 100 beats per minute; the patients is diagnosed with persistent ventricular tachycardia if tachycardia persists for ≥ 30 seconds but with non-persistent ventricular tachycardia if not applicable.\n   * \"Arrhythmia requiring left atrial access, including left atrial appendage occlusion, in the left atrium\" diagnostics = Clinical feature: moderate or higher risk of stroke, risk of bleeding, or contraindication to anticoagulation therapy\n\n   \\[Symptomatic mitral stenosis\\]\n\n   -\"Mitral Stenosis requiring percutaneous mitral valvuloplasty through left atrial access\" diagnostics\n   * Diagnostic criteria: confirmation of mitral stenosis with echocardiography and assessment of severity\n   * Symptoms: dyspnea; shortness of breath even at rest or inability to sleep in a supine position if dyspnea worsens; may accompanied by coughing, sputum, and chest pain.\n3. Understood this clinical study and voluntarily signed the informed consent form (ICF)1\n\nExclusion Criteria:\n\n\\[For symptomatic arrhythmia and mitral stenosis\\] If any of the following applies, you cannot participate in this clinical trial.1,26,37,45,46\n\n1. Patients with significant congenital heart defects, such as atrial septal defect or pulmonary vein (PV) abnormalities (excluding patent foramen ovale (PFO)).\n2. Thrombus in the left atrium\n3. Atrial fibrillation to reversible causes (e.g. hyperthyroidism, thoracic surgery)\n4. Known or suspected left atrial myxoma.\n5. Unstable angina.\n6. Pre-existing hemidiaphragmatic paralysis\n7. Contraindication to anticoagulation or radiocontrast materials\n8. liver disease (including active hepatitis) and kidney disease.\n9. Cerebral ischemic event (strokes or TIAs) during the six-month interval preceding the consent date\n10. Malignant tumors or hematological diseases or life expectancy of less than one (1) year.\n11. Currently participating or anticipated to participate in any other clinical trial of a drug, device or biologic that has the potential to interfere with the results of this study\n12. Unwilling or unable to comply fully with study procedures and follow-up\n13. A pregnant woman, a woman planning on becoming pregnant, or a lactating woman.\n14. Ineligible for study participation in the judgment of the investigator.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-04-24",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06358391",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06358391:eligibility:2026-04-24:7eb42cfcda99",
+  "source_record_version": "2026-04-24:7eb42cfcda99",
+  "source_url": "https://clinicaltrials.gov/study/NCT06358391",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "To Compare and Evaluate the Efficacy and Safety Between TS-RF System and BRK Transseptal Needles Used for Transseptal Puncture for Left Atrial Access."
+}

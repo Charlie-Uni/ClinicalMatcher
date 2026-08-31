@@ -1,0 +1,135 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05557526-inclusion-4f5bc34c4601c037",
+      "criterion_type": "inclusion",
+      "normalized_text": "symptomatic atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 54,
+        "start": 23
+      },
+      "source_text": "symptomatic atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct05557526-inclusion-3ff7a237e923e6f6",
+      "criterion_type": "inclusion",
+      "normalized_text": "indication for pulmonary vein isolation",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 96,
+        "start": 57
+      },
+      "source_text": "indication for pulmonary vein isolation"
+    },
+    {
+      "criterion_id": "nct05557526-inclusion-4dd5b8c5f91e849d",
+      "criterion_type": "inclusion",
+      "normalized_text": "sufficient command of the German language",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 140,
+        "start": 99
+      },
+      "source_text": "sufficient command of the German language"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-59943701d3b21249",
+      "criterion_type": "exclusion",
+      "normalized_text": "age <18 years",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 179,
+        "start": 165
+      },
+      "source_text": "age \\<18 years"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-b12e39b81e379324",
+      "criterion_type": "exclusion",
+      "normalized_text": "permanent atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 211,
+        "start": 182
+      },
+      "source_text": "permanent atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-95fbb54b8bf73d44",
+      "criterion_type": "exclusion",
+      "normalized_text": "presence of psychiatric disorders which impair the study participitatin",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 285,
+        "start": 214
+      },
+      "source_text": "presence of psychiatric disorders which impair the study participitatin"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-d00c407386cdb31c",
+      "criterion_type": "exclusion",
+      "normalized_text": "presence of another medical condiction which influences quality of life stronger than the cardiac condition",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 395,
+        "start": 288
+      },
+      "source_text": "presence of another medical condiction which influences quality of life stronger than the cardiac condition"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-bc6b213591c928f8",
+      "criterion_type": "exclusion",
+      "normalized_text": "atrial fibrillation induced by intoxication, medicamentation or infection",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 471,
+        "start": 398
+      },
+      "source_text": "atrial fibrillation induced by intoxication, medicamentation or infection"
+    },
+    {
+      "criterion_id": "nct05557526-exclusion-d93150f0e927349d",
+      "criterion_type": "exclusion",
+      "normalized_text": "inability to grap the course of the study",
+      "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+      "source_span": {
+        "end": 515,
+        "start": 474
+      },
+      "source_text": "inability to grap the course of the study"
+    }
+  ],
+  "eligibility_sha256": "fc724c52b59bf1d743144cc4b455868291bd801d6a767d65207e5990cb056507",
+  "eligibility_text": "Inclusion Criteria:\n\n* symptomatic atrial fibrillation\n* indication for pulmonary vein isolation\n* sufficient command of the German language\n\nExclusion Criteria:\n\n* age \\<18 years\n* permanent atrial fibrillation\n* presence of psychiatric disorders which impair the study participitatin\n* presence of another medical condiction which influences quality of life stronger than the cardiac condition\n* atrial fibrillation induced by intoxication, medicamentation or infection\n* inability to grap the course of the study",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-04-28",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05557526",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05557526:eligibility:2026-04-28:fc724c52b59b",
+  "source_record_version": "2026-04-28:fc724c52b59b",
+  "source_url": "https://clinicaltrials.gov/study/NCT05557526",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Optimizing Quality of Life by Improved Patient Expectation Following Atrial Fibrillation Catheter Ablation"
+}

@@ -1,0 +1,135 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07459387-inclusion-417f850aea14ae01",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥ 18 years",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 185,
+        "start": 171
+      },
+      "source_text": "Age ≥ 18 years"
+    },
+    {
+      "criterion_id": "nct07459387-inclusion-f0826b4629250164",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject is able and willing to give informed consent",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 240,
+        "start": 188
+      },
+      "source_text": "Subject is able and willing to give informed consent"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-f2bdbd0f61c7ef13",
+      "criterion_type": "exclusion",
+      "normalized_text": "LA-Diameter > 60mm",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 284,
+        "start": 265
+      },
+      "source_text": "LA-Diameter \\> 60mm"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-d162054b83da45c0",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe mitral stenosis or regurgitation, prior mitral valve reconstruction or replacement",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 376,
+        "start": 287
+      },
+      "source_text": "Severe mitral stenosis or regurgitation, prior mitral valve reconstruction or replacement"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-62ac487b42dc436c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any condition or disease, which is contraindication for AF ablation, up to the assessment of the investigator",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 488,
+        "start": 379
+      },
+      "source_text": "Any condition or disease, which is contraindication for AF ablation, up to the assessment of the investigator"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-704c8294513ff9b8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known intra-cardiac thrombus formation Any contraindication for oral anticoagulation",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 575,
+        "start": 491
+      },
+      "source_text": "Known intra-cardiac thrombus formation Any contraindication for oral anticoagulation"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-08a72d326b0f7467",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any untreated or uncontrolled hyperthyroidism or other reversible causes for AF like alcoholism",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 673,
+        "start": 578
+      },
+      "source_text": "Any untreated or uncontrolled hyperthyroidism or other reversible causes for AF like alcoholism"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-66e58e54e15e4e6c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant or breastfeeding woman or woman of childbearing potential not on adequate birth control",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 772,
+        "start": 676
+      },
+      "source_text": "Pregnant or breastfeeding woman or woman of childbearing potential not on adequate birth control"
+    },
+    {
+      "criterion_id": "nct07459387-exclusion-6a0a61628d4ddf45",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active systemic infection",
+      "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+      "source_span": {
+        "end": 800,
+        "start": 775
+      },
+      "source_text": "Active systemic infection"
+    }
+  ],
+  "eligibility_sha256": "9255586d5f2b1af61c20485bd985c48c7929e3c0a92efd9478f1c6e76eeda72a",
+  "eligibility_text": "Inclusion Criteria:\n\nAll patients who underwent an AF catheter ablation procedure using the novel balloon-in-basket VOLT PFA system will be included into the analysis.\n\n* Age ≥ 18 years\n* Subject is able and willing to give informed consent\n\nExclusion Criteria:\n\n* LA-Diameter \\> 60mm\n* Severe mitral stenosis or regurgitation, prior mitral valve reconstruction or replacement\n* Any condition or disease, which is contraindication for AF ablation, up to the assessment of the investigator\n* Known intra-cardiac thrombus formation Any contraindication for oral anticoagulation\n* Any untreated or uncontrolled hyperthyroidism or other reversible causes for AF like alcoholism\n* Pregnant or breastfeeding woman or woman of childbearing potential not on adequate birth control\n* Active systemic infection",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-03-09",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07459387",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07459387:eligibility:2026-03-09:9255586d5f2b",
+  "source_record_version": "2026-03-09:9255586d5f2b",
+  "source_url": "https://clinicaltrials.gov/study/NCT07459387",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "REal-world Valued Outcomes of a noveL Balloon-in-basket pUlsed Field ablaTION Catheter for Atrial Fibrillation RegistrY"
+}

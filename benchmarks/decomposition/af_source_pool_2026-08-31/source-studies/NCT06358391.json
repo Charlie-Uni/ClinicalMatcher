@@ -1,0 +1,285 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Radiofrequency energy needle(TS-RF Needle) for transseptal access",
+          "interventionNames": [
+            "Device: TS-RF Transseptal Needle"
+          ],
+          "label": "Radiofrequency energy needle",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Mechanical needle(BRK Transseptal Needle) for transseptal access",
+          "interventionNames": [
+            "Device: BRK Transseptal Needle"
+          ],
+          "label": "Mechanical needle",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Radiofrequency energy needle"
+          ],
+          "description": "Apply radiofrequency energy to the electrode tip via the TS-RF Generator and puncture the atrial septum",
+          "name": "TS-RF Transseptal Needle",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Mechanical needle"
+          ],
+          "description": "Cross and puncture the atrial septum with the BRK Transseptal Needle",
+          "name": "BRK Transseptal Needle",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Arrhythmias, Cardiac",
+        "Atrial Fibrillation",
+        "Heart Diseases"
+      ],
+      "keywords": [
+        "Transseptal puncture",
+        "Left atrial access",
+        "Transseptal catheterization",
+        "Radiofrequency"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "eunji.shin@starmed4u.com",
+          "name": "Eunji shin",
+          "phone": "+82-31-816-3546",
+          "phoneExt": "603",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Bucheon-si",
+          "country": "South Korea",
+          "facility": "Bucheon Sejong Hospital",
+          "geoPoint": {
+            "lat": 37.49889,
+            "lon": 126.78306
+          },
+          "status": "RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Sejong General Hospital",
+          "name": "Sang-Weon Park, MD, Ph.D",
+          "role": "STUDY_CHAIR"
+        },
+        {
+          "affiliation": "Korea University Anam Hospital",
+          "name": "Jong-Il Choi, MD, Ph.D",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Severance Hospital",
+          "name": "Jae-Sun Uhm, MD, Ph.D",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The purpose of this study is to compare and assess efficacy and safety between the study device \"TS-RF system consisting of a electrosurgical system, general-purpose (TS-RF Generator) and a electrosurgical system electrode, hand-controlled, general-purpose, single-use (TS-RF Needle)\" and the control device \"needle, puncture, single-use (BRK Transseptal needle)\", both of which are used for the transseptal puncture performed to enable left atrial access for the treatment of symptomatic arrhythmia and mitral stenosis and then to demonstrate that the study device is non-inferior to the control device.",
+      "detailedDescription": "The efficacy and safety of radiofrequency (RF) needles in transseptal puncture have been well established through several comparative clinical studies. In foreign countries, RF needles have already been used for transseptal puncture for more than 20 years since the FDA approval of the first RF Needle. However, in Korea, despite the fact that it has been approximately 30 years since the initiation of radiofrequency catheter ablation (RFCA) for the treatment of arrhythmia, only the conventional mechanical needles have still been available after authorization for transseptal puncture that is the key for the treatment of cardiac disorders such as mitral stenosis as well as a part of RFCA for the treatment of arrhythmia.\n\nTherefore, this study aims to compare and assess efficacy and safety between the study device \"TS-RF system consisting of a electrosurgical system, general-purpose (TS-RF Generator) and a electrosurgical system electrode, hand-controlled, general-purpose, single-use (TS-RF Needle)\" and the control device \"needle, puncture, single-use (BRK Transseptal needle)\", both of which are used for the transseptal puncture performed to enable left atrial access for the treatment of symptomatic arrhythmia and mitral stenosis, and then to demonstrate that the study device is non-inferior to the control device."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "PARTICIPANT"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 70,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. ≥ 18 years of age\n2. Diagnosed with one of the following cardiac disorders as shown in the medical record:\n\n   \\[Symptomatic arrhythmia\\]\n   * \"Atrial fibrillation\" diagnostics (including paroxysmal, persistent, long-standing persistent and permanent atrial fibrillation)\n\n     * Diagnostic criteria: atrial fibrillation lasting ≥ 30 seconds as a result of standard 12-lead electrocardiogram (ECG) or single-lead ECG\n     * ECG feature: irregular R-R interval, lack of visible P waves, irregular atrial activation\n     * Symptoms: fatigue, palpitation, dyspnea, chest discomfort, sleep disorders, mental stress\n     * Type:\n\n       * Paroxysmal atrial fibrillation (stopping within 48 hours without any treatment; restoring the sinus rhythm with cardioversion within 7 days)\n       * Persistent atrial fibrillation (persisting for ≥ 7 days; including sinus rhythm restoration with direct-current cardioversion (DCC) or pharmacological cardioversion after the persistence)\n       * Long-standing persistent atrial fibrillation (persisting for ≥ 1 year; including cases requiring cardioversion)\n       * Permanent atrial fibrillation (The patient and healthcare provider accept atrial fibrillation and do not consider cardioversion; if cardioversion is considered, the atrial fibrillation is reclassified as long-standing persistent atrial fibrillation)\n   * \"Paroxysmal Supraventricular Tachycardia\" diagnostics\n\n     = Clinical feature: The heart beats regularly 150 to 200 times per minute; the start and end of paroxysmal supraventricular tachycardia are clearly recognizable; these occur unexpectedly and stop abruptly.\n   * \"Ectopic Atrial Rhythm Tachycardia\" diagnostics\n\n     = Clinical feature: Heart rhythm of less than 250 beats per minute; morphologic difference from P waves in the sinus rhythm; P waves that precede QRS waves are identifiable.\n   * \"Ventricular Tachycardia\" diagnostics = Clinical feature: Wide QRS waves appear in succession with a rapid ventricular rate of ≥ 100 beats per minute; the patients is diagnosed with persistent ventricular tachycardia if tachycardia persists for ≥ 30 seconds but with non-persistent ventricular tachycardia if not applicable.\n   * \"Arrhythmia requiring left atrial access, including left atrial appendage occlusion, in the left atrium\" diagnostics = Clinical feature: moderate or higher risk of stroke, risk of bleeding, or contraindication to anticoagulation therapy\n\n   \\[Symptomatic mitral stenosis\\]\n\n   -\"Mitral Stenosis requiring percutaneous mitral valvuloplasty through left atrial access\" diagnostics\n   * Diagnostic criteria: confirmation of mitral stenosis with echocardiography and assessment of severity\n   * Symptoms: dyspnea; shortness of breath even at rest or inability to sleep in a supine position if dyspnea worsens; may accompanied by coughing, sputum, and chest pain.\n3. Understood this clinical study and voluntarily signed the informed consent form (ICF)1\n\nExclusion Criteria:\n\n\\[For symptomatic arrhythmia and mitral stenosis\\] If any of the following applies, you cannot participate in this clinical trial.1,26,37,45,46\n\n1. Patients with significant congenital heart defects, such as atrial septal defect or pulmonary vein (PV) abnormalities (excluding patent foramen ovale (PFO)).\n2. Thrombus in the left atrium\n3. Atrial fibrillation to reversible causes (e.g. hyperthyroidism, thoracic surgery)\n4. Known or suspected left atrial myxoma.\n5. Unstable angina.\n6. Pre-existing hemidiaphragmatic paralysis\n7. Contraindication to anticoagulation or radiocontrast materials\n8. liver disease (including active hepatitis) and kidney disease.\n9. Cerebral ischemic event (strokes or TIAs) during the six-month interval preceding the consent date\n10. Malignant tumors or hematological diseases or life expectancy of less than one (1) year.\n11. Currently participating or anticipated to participate in any other clinical trial of a drug, device or biologic that has the potential to interfere with the results of this study\n12. Unwilling or unable to comply fully with study procedures and follow-up\n13. A pregnant woman, a woman planning on becoming pregnant, or a lactating woman.\n14. Ineligible for study participation in the judgment of the investigator.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "To Compare and Evaluate the Efficacy and Safety Between TS-RF System and BRK Transseptal Needles Used for Transseptal Puncture for Left Atrial Access.",
+      "nctId": "NCT06358391",
+      "officialTitle": "A Prospective, Multi-center, Randomized, Single-blind, Non-inferiority Confirmatory Study Designed to Compare and Assess Efficacy and Safety Between \"TS-RF System Consisting of a Electrosurgical System, General-purpose (TS-RF Generator) and a Electrosurgical System Electrode, Hand-controlled, General-purpose, Single-use (TS-RF Needle)\" and \"Needle, Puncture, Single-use (BRK Transseptal Needle)\", Both of Which Are Used for the Transseptal Puncture Performed to Enable Left Atrial Access for the Treatment of Symptomatic Arrhythmia and Mitral Stenosis",
+      "orgStudyIdInfo": {
+        "id": "TS-RF system"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Starmed"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "description": "There is not a plan to make IPD available.",
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "description": "Types and numbers of adverse events, including all complications that occurred during TSP, such as perforations, damages and bleedings in tissues other than the atrial septum due to needles, sheaths, dilators, and other catheters, replacement with the same needle product, and deterioration of patient's vital signs.",
+          "measure": "Intra-TSP procedural Adverse Events",
+          "timeFrame": "During procedure"
+        },
+        {
+          "description": "Types and numbers of all adverse events including all complications occurring from the time of subject enrollment to the end of follow-up visit at 2 weeks after TSP, including the following three durations:\n\n* From the subject enrollment to the end of TSP\n* From the end of TSP to the end of hospitalization within 7 days thereafter\n* From the discharge to the follow-up visit at 2 weeks after TSP",
+          "measure": "Overall Adverse Events",
+          "timeFrame": "for 2 weeks after the procedure"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "description": "Probability that the needle crosses from the superior vena cava to the fossa ovalis and its left atrial access is identified at a time by fluoroscopy, transesophageal echocardiography (TEE), or intracardiac echocardiography (ICE).",
+          "measure": "First-pass TSP Success Rate (percent)",
+          "timeFrame": "Day of procedure"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Time from the point where the needle crosses from the superior vena cava to the fossa ovalis to the point where its left atrial access is identified by fluoroscopy, transesophageal echocardiography (TEE), or intracardiac echocardiography (ICE).",
+          "measure": "TSP Time (Second)",
+          "timeFrame": "Day of procedure"
+        },
+        {
+          "description": "Time from the point where invasive vascular monitoring is initiated with fluoroscopy following the femoral venous puncture and then the needle inserted into the femoral vein is visible on the fluoroscope's fluorescent screen to the point where the needle tip's left atrial access after TSP is identified.",
+          "measure": "Fluoroscopy Time (Second) for TSP",
+          "timeFrame": "Day of procedure"
+        },
+        {
+          "description": "Perform TSP by switching the needle from the BRK needle in the control group to the TS-RF needle in the study group, or from the TS-RF needle in the study group to the BRK needle in the control group. Collect the data based on the recorded videos and procedure record sheets. (Number of subjects who switched needles and percentage in each group)",
+          "measure": "Needle cross-over between the study and control groups",
+          "timeFrame": "Day of procedure"
+        },
+        {
+          "description": "Collect and total the numbers of intra-TSP procedural device-associated complications for each group based on the procedure record sheets and then calculate and compare the group-specific incidence rates (percent).",
+          "measure": "Intra-TSP procedural device-associated complications",
+          "timeFrame": "Day of procedure"
+        },
+        {
+          "description": "Check the improvement in patient's quality of life by measuring the degree of discomfort due to symptomatic arrhythmia or mitral stenosis before the procedure (baseline) and at 2 weeks after the procedure.\n\nCalculate and compare group-specific mean changes in EQ-5D-5L and EQ-VAS before the procedure (baseline) and at the follow-up visit 2 weeks after the procedure.\n\nIt consists of 5 multiple-choice questions asking about current health status and 1 question (visual analogue scale, VAS) that displays subjective health level (0 to 100 points) in the form of a thermometer.",
+          "measure": "Changes in patient's quality of life",
+          "timeFrame": "before the procedure (baseline) and at 2 weeks after the procedure."
+        },
+        {
+          "description": "Check the complications collected during the hospitalization period within 7 days immediately after the procedure and at the follow-up visit 2 weeks after the procedure, including the following two durations:.\n\n* From the end of TSP to the end of hospitalization within 7 days thereafter\n* From the discharge to the follow-up visit at 2 weeks after TSP",
+          "measure": "Complications",
+          "timeFrame": "for 2 weeks after the procedure"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "UNKNOWN",
+          "name": "Helptrial"
+        }
+      ],
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Starmed"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-10-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-04-24",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-04-21",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2025-08-21",
+        "type": "ACTUAL"
+      },
+      "startDateStruct": {
+        "date": "2024-08-21",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-04",
+      "studyFirstPostDateStruct": {
+        "date": "2024-04-10",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-04-01",
+      "studyFirstSubmitQcDate": "2024-04-07"
+    }
+  }
+}

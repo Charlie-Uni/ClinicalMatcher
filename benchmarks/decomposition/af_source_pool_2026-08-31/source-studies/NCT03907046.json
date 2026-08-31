@@ -1,0 +1,3425 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D020300",
+          "term": "Intracranial Hemorrhages"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D006470",
+          "term": "Hemorrhage"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D002543",
+          "term": "Cerebral Hemorrhage"
+        },
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D012459",
+          "term": "Salicylates"
+        },
+        {
+          "id": "D062385",
+          "term": "Hydroxybenzoates"
+        },
+        {
+          "id": "D010636",
+          "term": "Phenols"
+        },
+        {
+          "id": "D001555",
+          "term": "Benzene Derivatives"
+        },
+        {
+          "id": "D006841",
+          "term": "Hydrocarbons, Aromatic"
+        },
+        {
+          "id": "D006844",
+          "term": "Hydrocarbons, Cyclic"
+        },
+        {
+          "id": "D006838",
+          "term": "Hydrocarbons"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "C522181",
+          "term": "apixaban"
+        },
+        {
+          "id": "D001241",
+          "term": "Aspirin"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Apixaban dosing will be 5 mg tablet in morning and 5 mg tablet in evening. A reduced dose of 2.5 mg tablet in morning and 2.5 mg tablet in evening will be used if: (1) ≥2 of the following are present: age ≥80 years, body weight ≤60 kg, or serum creatinine 1.5-2.4 mg/dL, or (2) Patient is taking a strong CYP3A4/pGP inhibitor (e.g., ketoconazole, itraconazole, ritonavir, or clarithromycin).",
+          "interventionNames": [
+            "Drug: Apixaban"
+          ],
+          "label": "Apixaban",
+          "type": "ACTIVE_COMPARATOR"
+        },
+        {
+          "description": "Aspirin dose will be 81 mg tablet once daily.",
+          "interventionNames": [
+            "Drug: Aspirin"
+          ],
+          "label": "Aspirin",
+          "type": "PLACEBO_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Apixaban"
+          ],
+          "description": "Apixaban is an oral anticoagulant of the Factor Xa inhibitor class.",
+          "name": "Apixaban",
+          "otherNames": [
+            "Eliquis"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Aspirin"
+          ],
+          "description": "Aspirin is an oral antiplatelet drug.",
+          "name": "Aspirin",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Intracerebral Hemorrhage",
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "kevin.sheth@yale.edu",
+          "name": "Kevin N Sheth, MD",
+          "phone": "443-615-4729",
+          "role": "CONTACT"
+        },
+        {
+          "email": "hok9010@med.cornell.edu",
+          "name": "Hooman Kamel, MD",
+          "phone": "646-962-8284",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Birmingham",
+          "contacts": [
+            {
+              "name": "Angela Shapshak, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Alabama Hospital",
+          "geoPoint": {
+            "lat": 33.52066,
+            "lon": -86.80249
+          },
+          "state": "Alabama",
+          "status": "RECRUITING",
+          "zip": "35294"
+        },
+        {
+          "city": "Mobile",
+          "contacts": [
+            {
+              "name": "Taha Nisar, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of South Alabama University Hospital",
+          "geoPoint": {
+            "lat": 30.69436,
+            "lon": -88.04305
+          },
+          "state": "Alabama",
+          "status": "RECRUITING",
+          "zip": "36604"
+        },
+        {
+          "city": "Chandler",
+          "country": "United States",
+          "facility": "Chandler Regional Medical Center",
+          "geoPoint": {
+            "lat": 33.30616,
+            "lon": -111.84125
+          },
+          "state": "Arizona",
+          "status": "WITHDRAWN",
+          "zip": "85224"
+        },
+        {
+          "city": "Phoenix",
+          "country": "United States",
+          "facility": "St. Joseph's Hospital and Medical Center",
+          "geoPoint": {
+            "lat": 33.44838,
+            "lon": -112.07404
+          },
+          "state": "Arizona",
+          "status": "WITHDRAWN",
+          "zip": "85013"
+        },
+        {
+          "city": "Tucson",
+          "contacts": [
+            {
+              "name": "Firas Kaddouh, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Banner University Medical Center",
+          "geoPoint": {
+            "lat": 32.22174,
+            "lon": -110.92648
+          },
+          "state": "Arizona",
+          "status": "RECRUITING",
+          "zip": "85719"
+        },
+        {
+          "city": "Little Rock",
+          "country": "United States",
+          "facility": "UAMS Medical Center",
+          "geoPoint": {
+            "lat": 34.74648,
+            "lon": -92.28959
+          },
+          "state": "Arkansas",
+          "status": "WITHDRAWN",
+          "zip": "77205"
+        },
+        {
+          "city": "Carmichael",
+          "contacts": [
+            {
+              "name": "Lucian Maidan",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mercy San Juan Medical Center",
+          "geoPoint": {
+            "lat": 38.61713,
+            "lon": -121.32828
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "95608"
+        },
+        {
+          "city": "Castro Valley",
+          "country": "United States",
+          "facility": "Eden Medical Center, Castro Valley",
+          "geoPoint": {
+            "lat": 37.6941,
+            "lon": -122.08635
+          },
+          "state": "California",
+          "status": "WITHDRAWN",
+          "zip": "94546"
+        },
+        {
+          "city": "Colton",
+          "contacts": [
+            {
+              "name": "Dan Miulli, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Arrowhead Regional Medical Center",
+          "geoPoint": {
+            "lat": 34.0739,
+            "lon": -117.31365
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92324"
+        },
+        {
+          "city": "Downey",
+          "country": "United States",
+          "facility": "Rancho Los Amigos National Rehabilitation Center",
+          "geoPoint": {
+            "lat": 33.94001,
+            "lon": -118.13257
+          },
+          "state": "California",
+          "status": "SUSPENDED",
+          "zip": "90242"
+        },
+        {
+          "city": "Fontana",
+          "contacts": [
+            {
+              "name": "Vaninder Chhabra",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kaiser Permanente Fontana Medical Center",
+          "geoPoint": {
+            "lat": 34.09223,
+            "lon": -117.43505
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92335"
+        },
+        {
+          "city": "Fresno",
+          "contacts": [
+            {
+              "name": "Mellekate Vishwas, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Community Regional Medical Center of Fresno",
+          "geoPoint": {
+            "lat": 36.74773,
+            "lon": -119.77237
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "93720"
+        },
+        {
+          "city": "Fullerton",
+          "contacts": [
+            {
+              "name": "Ashish Nanda, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. Jude Medical Center",
+          "geoPoint": {
+            "lat": 33.87029,
+            "lon": -117.92534
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92835"
+        },
+        {
+          "city": "Long Beach",
+          "country": "United States",
+          "facility": "Long Beach Memorial Medical Center",
+          "geoPoint": {
+            "lat": 33.76696,
+            "lon": -118.18923
+          },
+          "state": "California",
+          "status": "WITHDRAWN",
+          "zip": "90806"
+        },
+        {
+          "city": "Los Alamitos",
+          "contacts": [
+            {
+              "name": "Nirav Patel, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Los Alamitos Medical Center",
+          "geoPoint": {
+            "lat": 33.80307,
+            "lon": -118.07256
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90720"
+        },
+        {
+          "city": "Los Angeles",
+          "contacts": [
+            {
+              "name": "Harsimran Brara, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kaiser Permanente Los Angeles Medical Center",
+          "geoPoint": {
+            "lat": 34.05223,
+            "lon": -118.24368
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90027"
+        },
+        {
+          "city": "Los Angeles",
+          "contacts": [
+            {
+              "name": "Konrad Schlick, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cedars-Sinai Medical Center",
+          "geoPoint": {
+            "lat": 34.05223,
+            "lon": -118.24368
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90048"
+        },
+        {
+          "city": "Los Angeles",
+          "contacts": [
+            {
+              "name": "Latisha Sharma, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ronald Reagan UCLA Medical Center",
+          "geoPoint": {
+            "lat": 34.05223,
+            "lon": -118.24368
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90095"
+        },
+        {
+          "city": "Modesto",
+          "contacts": [
+            {
+              "name": "James Jaffe, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Doctors Medical Center Modesto, Modesto, CA",
+          "geoPoint": {
+            "lat": 37.6391,
+            "lon": -120.99688
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "95350"
+        },
+        {
+          "city": "Newport Beach",
+          "country": "United States",
+          "facility": "Hoag Hospital Newport Beach",
+          "geoPoint": {
+            "lat": 33.61891,
+            "lon": -117.92895
+          },
+          "state": "California",
+          "status": "WITHDRAWN",
+          "zip": "92663"
+        },
+        {
+          "city": "Orange",
+          "contacts": [
+            {
+              "name": "Wengui Yu, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UC Irvine Medical Center",
+          "geoPoint": {
+            "lat": 33.78779,
+            "lon": -117.85311
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92868"
+        },
+        {
+          "city": "Palm Springs",
+          "contacts": [
+            {
+              "name": "Kevin Attenhofer, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Desert Regional Medical Center",
+          "geoPoint": {
+            "lat": 33.8303,
+            "lon": -116.54529
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92262"
+        },
+        {
+          "city": "Pasadena",
+          "country": "United States",
+          "facility": "Huntington Memorial Hospital",
+          "geoPoint": {
+            "lat": 34.14778,
+            "lon": -118.14452
+          },
+          "state": "California",
+          "status": "WITHDRAWN",
+          "zip": "91105"
+        },
+        {
+          "city": "Redwood City",
+          "contacts": [
+            {
+              "name": "Sheila Chan, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kaiser Permanente Redwood City Medical Center, Redwood City, CA",
+          "geoPoint": {
+            "lat": 37.48522,
+            "lon": -122.23635
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94063"
+        },
+        {
+          "city": "Sacramento",
+          "contacts": [
+            {
+              "name": "Kwan Ng, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UC Davis Medical Center",
+          "geoPoint": {
+            "lat": 38.58157,
+            "lon": -121.4944
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "95817"
+        },
+        {
+          "city": "Sacramento",
+          "contacts": [
+            {
+              "name": "Yekaterina Axelrod, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kaiser Permanente Sacramento Medical Center",
+          "geoPoint": {
+            "lat": 38.58157,
+            "lon": -121.4944
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "95825"
+        },
+        {
+          "city": "San Francisco",
+          "contacts": [
+            {
+              "name": "Claude Hemphill, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "San Francisco General Hospital",
+          "geoPoint": {
+            "lat": 37.77493,
+            "lon": -122.41942
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94110"
+        },
+        {
+          "city": "Santa Barbara",
+          "contacts": [
+            {
+              "name": "Brian Walcott, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Santa Barbara Cottage Hospital",
+          "geoPoint": {
+            "lat": 34.42083,
+            "lon": -119.69819
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "93105"
+        },
+        {
+          "city": "Stanford",
+          "contacts": [
+            {
+              "name": "Chitra Venkat, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Stanford University Medical Center",
+          "geoPoint": {
+            "lat": 37.42411,
+            "lon": -122.16608
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94304"
+        },
+        {
+          "city": "Whittier",
+          "contacts": [
+            {
+              "name": "Gautam Ganguly, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "PIH Health Hospital - Whittier",
+          "geoPoint": {
+            "lat": 33.97918,
+            "lon": -118.03284
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90602"
+        },
+        {
+          "city": "Aurora",
+          "contacts": [
+            {
+              "name": "Sharon Poisson, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Colorado Hospital",
+          "geoPoint": {
+            "lat": 39.72943,
+            "lon": -104.83192
+          },
+          "state": "Colorado",
+          "status": "RECRUITING",
+          "zip": "80045"
+        },
+        {
+          "city": "Grand Junction",
+          "country": "United States",
+          "facility": "St. Mary's Medical Center",
+          "geoPoint": {
+            "lat": 39.06387,
+            "lon": -108.55065
+          },
+          "state": "Colorado",
+          "status": "WITHDRAWN",
+          "zip": "81501"
+        },
+        {
+          "city": "Danbury",
+          "country": "United States",
+          "facility": "Danbury Hospital",
+          "geoPoint": {
+            "lat": 41.39482,
+            "lon": -73.45401
+          },
+          "state": "Connecticut",
+          "status": "SUSPENDED",
+          "zip": "06810"
+        },
+        {
+          "city": "Hartford",
+          "contacts": [
+            {
+              "name": "Mark Alberts, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Hartford Hospital",
+          "geoPoint": {
+            "lat": 41.76371,
+            "lon": -72.68509
+          },
+          "state": "Connecticut",
+          "status": "RECRUITING",
+          "zip": "06102"
+        },
+        {
+          "city": "New Haven",
+          "contacts": [
+            {
+              "name": "Guido Falcone, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Yale New Haven Hospital",
+          "geoPoint": {
+            "lat": 41.30815,
+            "lon": -72.92816
+          },
+          "state": "Connecticut",
+          "status": "RECRUITING",
+          "zip": "06511"
+        },
+        {
+          "city": "Wilmington",
+          "contacts": [
+            {
+              "name": "James McKinney, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "New Hanover Regional Medical Center",
+          "geoPoint": {
+            "lat": 39.74595,
+            "lon": -75.54659
+          },
+          "state": "Delaware",
+          "status": "RECRUITING",
+          "zip": "28403"
+        },
+        {
+          "city": "Washington D.C.",
+          "contacts": [
+            {
+              "name": "Douglas Mayson, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "MedStar Georgetown University Hospital",
+          "geoPoint": {
+            "lat": 38.89511,
+            "lon": -77.03637
+          },
+          "state": "District of Columbia",
+          "status": "RECRUITING",
+          "zip": "20007"
+        },
+        {
+          "city": "Washington D.C.",
+          "country": "United States",
+          "facility": "MedStar Washington Hospital Center",
+          "geoPoint": {
+            "lat": 38.89511,
+            "lon": -77.03637
+          },
+          "state": "District of Columbia",
+          "status": "WITHDRAWN",
+          "zip": "20010"
+        },
+        {
+          "city": "Washington D.C.",
+          "contacts": [
+            {
+              "name": "Fernando Mayor Basto, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "George Washington University Hospital",
+          "geoPoint": {
+            "lat": 38.89511,
+            "lon": -77.03637
+          },
+          "state": "District of Columbia",
+          "status": "RECRUITING",
+          "zip": "20037"
+        },
+        {
+          "city": "Clearwater",
+          "contacts": [
+            {
+              "name": "Ajay Arora, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Morton Plant Hospital",
+          "geoPoint": {
+            "lat": 27.96585,
+            "lon": -82.8001
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33756"
+        },
+        {
+          "city": "Fort Lauderdale",
+          "contacts": [
+            {
+              "name": "Mehdi Mehdi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Broward Health Medical Center",
+          "geoPoint": {
+            "lat": 26.12231,
+            "lon": -80.14338
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33316"
+        },
+        {
+          "city": "Jacksonville",
+          "contacts": [
+            {
+              "name": "Kimberly McPhearson, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UF Health Jacksonville",
+          "geoPoint": {
+            "lat": 30.33218,
+            "lon": -81.65565
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32209"
+        },
+        {
+          "city": "Jacksonville",
+          "country": "United States",
+          "facility": "Mayo Clinic",
+          "geoPoint": {
+            "lat": 30.33218,
+            "lon": -81.65565
+          },
+          "state": "Florida",
+          "status": "TERMINATED",
+          "zip": "32224"
+        },
+        {
+          "city": "Miami",
+          "contacts": [
+            {
+              "name": "Sebastian Koch",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Jackson Memorial Hospital",
+          "geoPoint": {
+            "lat": 25.77427,
+            "lon": -80.19366
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33136"
+        },
+        {
+          "city": "Pensacola",
+          "contacts": [
+            {
+              "name": "Terry Neill, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ascension Sacred Heart Pensacola",
+          "geoPoint": {
+            "lat": 30.42131,
+            "lon": -87.21691
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32504"
+        },
+        {
+          "city": "Port Saint Lucie",
+          "contacts": [
+            {
+              "name": "Marc Babi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cleveland Clinic Tradition Hospital",
+          "geoPoint": {
+            "lat": 27.29393,
+            "lon": -80.35033
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "34987"
+        },
+        {
+          "city": "Tampa",
+          "contacts": [
+            {
+              "name": "Swetha Renati, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Tampa General Hospital",
+          "geoPoint": {
+            "lat": 27.94752,
+            "lon": -82.45843
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33606"
+        },
+        {
+          "city": "Tampa",
+          "contacts": [
+            {
+              "name": "Abilash Haridas, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. Joseph's Hospital",
+          "geoPoint": {
+            "lat": 27.94752,
+            "lon": -82.45843
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33607"
+        },
+        {
+          "city": "Atlanta",
+          "contacts": [
+            {
+              "name": "Daniel Schachter, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Grady Memorial Hospital",
+          "geoPoint": {
+            "lat": 33.749,
+            "lon": -84.38798
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30303"
+        },
+        {
+          "city": "Atlanta",
+          "contacts": [
+            {
+              "name": "Fadi Nahab, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Emory University Hospital",
+          "geoPoint": {
+            "lat": 33.749,
+            "lon": -84.38798
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30322"
+        },
+        {
+          "city": "Augusta",
+          "contacts": [
+            {
+              "name": "Fenwick Nichols, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Augusta University Medical Center",
+          "geoPoint": {
+            "lat": 33.47097,
+            "lon": -81.97484
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30912"
+        },
+        {
+          "city": "Marietta",
+          "contacts": [
+            {
+              "name": "Christopher Horn, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "WellStar Kennestone Hospital",
+          "geoPoint": {
+            "lat": 33.9526,
+            "lon": -84.54993
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30060"
+        },
+        {
+          "city": "Honolulu",
+          "contacts": [
+            {
+              "name": "Kazuma Nakagawa, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "The Queen's Medical Center",
+          "geoPoint": {
+            "lat": 21.30694,
+            "lon": -157.85833
+          },
+          "state": "Hawaii",
+          "status": "RECRUITING",
+          "zip": "96813"
+        },
+        {
+          "city": "Boise",
+          "contacts": [
+            {
+              "name": "Lukas Clark, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Saint Alphonsus Regional Medical Center - Boise",
+          "geoPoint": {
+            "lat": 43.6135,
+            "lon": -116.20345
+          },
+          "state": "Idaho",
+          "status": "RECRUITING",
+          "zip": "83706"
+        },
+        {
+          "city": "Arlington Heights",
+          "contacts": [
+            {
+              "name": "Mohammad Anadani, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "NCH Hospital, Arlington Heights",
+          "geoPoint": {
+            "lat": 42.08836,
+            "lon": -87.98063
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60005"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "name": "Alejandro Vargas, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Rush University Medical Center",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60612"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "name": "Ali Alaraj, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Illinois Hospital",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60612"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "name": "Rachel Mehendale, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Chicago Medical Center",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60637"
+        },
+        {
+          "city": "Evanston",
+          "contacts": [
+            {
+              "name": "Mohammad Anadani, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Evanston Hospital",
+          "geoPoint": {
+            "lat": 42.04114,
+            "lon": -87.69006
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60201"
+        },
+        {
+          "city": "Maywood",
+          "contacts": [
+            {
+              "name": "Sarkis Morales-Vidal, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Loyola University Medical Center",
+          "geoPoint": {
+            "lat": 41.8792,
+            "lon": -87.84312
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60153"
+        },
+        {
+          "city": "Peoria",
+          "contacts": [
+            {
+              "name": "Arun Talkad",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "OSF St. Francis Medical Center",
+          "geoPoint": {
+            "lat": 40.69365,
+            "lon": -89.58899
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "61637"
+        },
+        {
+          "city": "Rockford",
+          "country": "United States",
+          "facility": "Javon Bea Hospital - Riverside",
+          "geoPoint": {
+            "lat": 42.27113,
+            "lon": -89.094
+          },
+          "state": "Illinois",
+          "status": "WITHDRAWN",
+          "zip": "61114"
+        },
+        {
+          "city": "Springfield",
+          "country": "United States",
+          "facility": "St. John's Hospital",
+          "geoPoint": {
+            "lat": 39.80172,
+            "lon": -89.64371
+          },
+          "state": "Illinois",
+          "status": "WITHDRAWN",
+          "zip": "62769"
+        },
+        {
+          "city": "Winfield",
+          "contacts": [
+            {
+              "name": "Dhruvil Pandya, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Central DuPage Hospital",
+          "geoPoint": {
+            "lat": 41.8617,
+            "lon": -88.1609
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60190"
+        },
+        {
+          "city": "Indianapolis",
+          "contacts": [
+            {
+              "name": "Lisa Nobel, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "IU Health Methodist Hospital",
+          "geoPoint": {
+            "lat": 39.76838,
+            "lon": -86.15804
+          },
+          "state": "Indiana",
+          "status": "RECRUITING",
+          "zip": "46202"
+        },
+        {
+          "city": "Iowa City",
+          "contacts": [
+            {
+              "name": "Amir Shaban, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Iowa Medical Center",
+          "geoPoint": {
+            "lat": 41.66113,
+            "lon": -91.53017
+          },
+          "state": "Iowa",
+          "status": "RECRUITING",
+          "zip": "52242"
+        },
+        {
+          "city": "Kansas City",
+          "contacts": [
+            {
+              "name": "Kyle Carpenter, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Kansas Hospital",
+          "geoPoint": {
+            "lat": 39.11417,
+            "lon": -94.62746
+          },
+          "state": "Kansas",
+          "status": "RECRUITING",
+          "zip": "66160"
+        },
+        {
+          "city": "Lexington",
+          "contacts": [
+            {
+              "name": "Murali Kolikonda, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Baptist Health Lexington",
+          "geoPoint": {
+            "lat": 37.98869,
+            "lon": -84.47772
+          },
+          "state": "Kentucky",
+          "status": "RECRUITING",
+          "zip": "40503"
+        },
+        {
+          "city": "Lexington",
+          "contacts": [
+            {
+              "name": "Suhas Gangadhara, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Kentucky Hospital",
+          "geoPoint": {
+            "lat": 37.98869,
+            "lon": -84.47772
+          },
+          "state": "Kentucky",
+          "status": "RECRUITING",
+          "zip": "40536"
+        },
+        {
+          "city": "Louisville",
+          "contacts": [
+            {
+              "name": "Isaac Abecassis, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Louisville Hospital",
+          "geoPoint": {
+            "lat": 38.25424,
+            "lon": -85.75941
+          },
+          "state": "Kentucky",
+          "status": "RECRUITING",
+          "zip": "40202"
+        },
+        {
+          "city": "New Orleans",
+          "contacts": [
+            {
+              "name": "Richard Zweifler",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ochsner Medical Center - Main Campus",
+          "geoPoint": {
+            "lat": 29.95465,
+            "lon": -90.07507
+          },
+          "state": "Louisiana",
+          "status": "RECRUITING",
+          "zip": "70121"
+        },
+        {
+          "city": "Bangor",
+          "country": "United States",
+          "facility": "Eastern Maine Medical Center",
+          "geoPoint": {
+            "lat": 44.79884,
+            "lon": -68.77265
+          },
+          "state": "Maine",
+          "status": "WITHDRAWN",
+          "zip": "04401"
+        },
+        {
+          "city": "Portland",
+          "contacts": [
+            {
+              "name": "Teresa May, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Maine Medical Center",
+          "geoPoint": {
+            "lat": 43.65737,
+            "lon": -70.2589
+          },
+          "state": "Maine",
+          "status": "RECRUITING",
+          "zip": "04102"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "name": "Emiliya Melkumova, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Tufts Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02111"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "name": "Mariel Kozberg, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Massachusetts General Hospital",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02114"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "name": "Steven Feske, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Boston Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02118"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "name": "Magdy Selim, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Beth Israel Deaconess Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02215"
+        },
+        {
+          "city": "Burlington",
+          "contacts": [
+            {
+              "name": "Colin James Culbertson, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Lahey Hospital & Medical Center",
+          "geoPoint": {
+            "lat": 42.50482,
+            "lon": -71.19561
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "01805"
+        },
+        {
+          "city": "Springfield",
+          "contacts": [
+            {
+              "name": "Gottfried Schlaug, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Baystate Medical Center",
+          "geoPoint": {
+            "lat": 42.10148,
+            "lon": -72.58981
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "01199"
+        },
+        {
+          "city": "Worcester",
+          "contacts": [
+            {
+              "name": "Majaz Moonis, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UMass Memorial Medical Center",
+          "geoPoint": {
+            "lat": 42.26259,
+            "lon": -71.80229
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "01655"
+        },
+        {
+          "city": "Ann Arbor",
+          "country": "United States",
+          "facility": "University of Michigan University Hospital",
+          "geoPoint": {
+            "lat": 42.27756,
+            "lon": -83.74088
+          },
+          "state": "Michigan",
+          "status": "WITHDRAWN",
+          "zip": "48109"
+        },
+        {
+          "city": "Detroit",
+          "country": "United States",
+          "facility": "Henry Ford Hospital",
+          "geoPoint": {
+            "lat": 42.33143,
+            "lon": -83.04575
+          },
+          "state": "Michigan",
+          "status": "WITHDRAWN",
+          "zip": "48202"
+        },
+        {
+          "city": "Flint",
+          "country": "United States",
+          "facility": "McLaren Flint",
+          "geoPoint": {
+            "lat": 43.01253,
+            "lon": -83.68746
+          },
+          "state": "Michigan",
+          "status": "WITHDRAWN",
+          "zip": "48532"
+        },
+        {
+          "city": "Grand Rapids",
+          "country": "United States",
+          "facility": "Trinity Health Saint Mary's",
+          "geoPoint": {
+            "lat": 42.96336,
+            "lon": -85.66809
+          },
+          "state": "Michigan",
+          "status": "WITHDRAWN",
+          "zip": "49503"
+        },
+        {
+          "city": "Grand Rapids",
+          "contacts": [
+            {
+              "name": "Muhammad Farooq, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Trinity Health Saint Mary's",
+          "geoPoint": {
+            "lat": 42.96336,
+            "lon": -85.66809
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "49503"
+        },
+        {
+          "city": "Mount Clemens",
+          "country": "United States",
+          "facility": "McLaren Macomb",
+          "geoPoint": {
+            "lat": 42.59726,
+            "lon": -82.87798
+          },
+          "state": "Michigan",
+          "status": "TERMINATED",
+          "zip": "48043"
+        },
+        {
+          "city": "Traverse City",
+          "contacts": [
+            {
+              "name": "Ramiro Castro-Apolo, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Munson Medical Center",
+          "geoPoint": {
+            "lat": 44.76306,
+            "lon": -85.62063
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "49684"
+        },
+        {
+          "city": "Wyoming",
+          "country": "United States",
+          "facility": "Metro Health Hospital",
+          "geoPoint": {
+            "lat": 42.91336,
+            "lon": -85.70531
+          },
+          "state": "Michigan",
+          "status": "WITHDRAWN",
+          "zip": "49519"
+        },
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "name": "Ganesh Asaithambi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Abbott Northwestern Hospital",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55407"
+        },
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "name": "Oladi Bentho, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "M Health Fairview University of Minnesota Medical Center",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55455"
+        },
+        {
+          "city": "Saint Cloud",
+          "contacts": [
+            {
+              "name": "Muhammad Fareed Suri, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. Cloud Hospital",
+          "geoPoint": {
+            "lat": 45.5608,
+            "lon": -94.16249
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "56303"
+        },
+        {
+          "city": "Saint Louis Park",
+          "country": "United States",
+          "facility": "HealthPartners Methodist Hospital",
+          "geoPoint": {
+            "lat": 44.9483,
+            "lon": -93.34801
+          },
+          "state": "Minnesota",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "zip": "55426"
+        },
+        {
+          "city": "Saint Paul",
+          "country": "United States",
+          "facility": "Regions Hospital",
+          "geoPoint": {
+            "lat": 44.94441,
+            "lon": -93.09327
+          },
+          "state": "Minnesota",
+          "status": "TERMINATED",
+          "zip": "55101"
+        },
+        {
+          "city": "Saint Paul",
+          "country": "United States",
+          "facility": "United Hospital, St. Paul",
+          "geoPoint": {
+            "lat": 44.94441,
+            "lon": -93.09327
+          },
+          "state": "Minnesota",
+          "status": "WITHDRAWN",
+          "zip": "55102"
+        },
+        {
+          "city": "Jackson",
+          "country": "United States",
+          "facility": "University of Mississippi Medical Center",
+          "geoPoint": {
+            "lat": 32.29876,
+            "lon": -90.18481
+          },
+          "state": "Mississippi",
+          "status": "WITHDRAWN",
+          "zip": "39216"
+        },
+        {
+          "city": "Columbia",
+          "contacts": [
+            {
+              "name": "Farhan Siddiq, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Missouri Health Care",
+          "geoPoint": {
+            "lat": 38.95171,
+            "lon": -92.33407
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "65212"
+        },
+        {
+          "city": "Springfield",
+          "contacts": [
+            {
+              "name": "Brenton Coger, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mercy Hospital Springfield",
+          "geoPoint": {
+            "lat": 37.21533,
+            "lon": -93.29824
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "65804"
+        },
+        {
+          "city": "Springfield",
+          "contacts": [
+            {
+              "name": "Benjamin Lisle, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cox Medical Center South",
+          "geoPoint": {
+            "lat": 37.21533,
+            "lon": -93.29824
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "65807"
+        },
+        {
+          "city": "St Louis",
+          "contacts": [
+            {
+              "name": "Yan Wang, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Barnes Jewish Hospital",
+          "geoPoint": {
+            "lat": 38.62727,
+            "lon": -90.19789
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "63110"
+        },
+        {
+          "city": "St Louis",
+          "contacts": [
+            {
+              "name": "Venkat Chintapally-Rao, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mercy Hospital South",
+          "geoPoint": {
+            "lat": 38.62727,
+            "lon": -90.19789
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "63128"
+        },
+        {
+          "city": "St Louis",
+          "contacts": [
+            {
+              "name": "Nida Jamal, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mercy Hospital St. Louis",
+          "geoPoint": {
+            "lat": 38.62727,
+            "lon": -90.19789
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "63141"
+        },
+        {
+          "city": "Omaha",
+          "contacts": [
+            {
+              "name": "Pierre Fayad, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Nebraska Medical Center",
+          "geoPoint": {
+            "lat": 41.25626,
+            "lon": -95.94043
+          },
+          "state": "Nebraska",
+          "status": "RECRUITING",
+          "zip": "68105"
+        },
+        {
+          "city": "Edison",
+          "contacts": [
+            {
+              "name": "Navid Tabibzadeh, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "JFK Medical Center",
+          "geoPoint": {
+            "lat": 40.51872,
+            "lon": -74.4121
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "08820"
+        },
+        {
+          "city": "Hackensack",
+          "contacts": [
+            {
+              "name": "Kaitlin Reilly-Kit, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Hackensack University Medical Center",
+          "geoPoint": {
+            "lat": 40.88593,
+            "lon": -74.04347
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07601"
+        },
+        {
+          "city": "Livingston",
+          "contacts": [
+            {
+              "name": "Steven Shapiro, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cooperman Barnabas Medical Center",
+          "geoPoint": {
+            "lat": 40.79593,
+            "lon": -74.31487
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07052"
+        },
+        {
+          "city": "Neptune City",
+          "contacts": [
+            {
+              "name": "Ephrem Teklemariam, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Jersey Shore University Medical Center",
+          "geoPoint": {
+            "lat": 40.20011,
+            "lon": -74.02792
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07753"
+        },
+        {
+          "city": "Summit",
+          "contacts": [
+            {
+              "name": "Marianna Atiya, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Overlook Medical Center",
+          "geoPoint": {
+            "lat": 40.71562,
+            "lon": -74.36468
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07901"
+        },
+        {
+          "city": "Trenton",
+          "country": "United States",
+          "facility": "Capital Health Regional Medical Center",
+          "geoPoint": {
+            "lat": 40.21705,
+            "lon": -74.74294
+          },
+          "state": "New Jersey",
+          "status": "WITHDRAWN",
+          "zip": "08638"
+        },
+        {
+          "city": "Albuquerque",
+          "country": "United States",
+          "facility": "University of New Mexico Hospital",
+          "geoPoint": {
+            "lat": 35.08449,
+            "lon": -106.65114
+          },
+          "state": "New Mexico",
+          "status": "SUSPENDED",
+          "zip": "87106"
+        },
+        {
+          "city": "Albany",
+          "contacts": [
+            {
+              "name": "Dylan Jones, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Albany Medical Center",
+          "geoPoint": {
+            "lat": 42.65258,
+            "lon": -73.75623
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "12208"
+        },
+        {
+          "city": "Brooklyn",
+          "contacts": [
+            {
+              "name": "Susan Law, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kings County Hospital Center",
+          "geoPoint": {
+            "lat": 40.6501,
+            "lon": -73.94958
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11203"
+        },
+        {
+          "city": "Brooklyn",
+          "country": "United States",
+          "facility": "NewYork-Presbyterian Brooklyn Methodist Hospital",
+          "geoPoint": {
+            "lat": 40.6501,
+            "lon": -73.94958
+          },
+          "state": "New York",
+          "status": "WITHDRAWN",
+          "zip": "11215"
+        },
+        {
+          "city": "Brooklyn",
+          "country": "United States",
+          "facility": "Maimonides Medical Center",
+          "geoPoint": {
+            "lat": 40.6501,
+            "lon": -73.94958
+          },
+          "state": "New York",
+          "status": "TERMINATED",
+          "zip": "11219"
+        },
+        {
+          "city": "Brooklyn",
+          "contacts": [
+            {
+              "name": "Jennifer Frontera",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "NYU Langone Hospital - Brooklyn",
+          "geoPoint": {
+            "lat": 40.6501,
+            "lon": -73.94958
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11220"
+        },
+        {
+          "city": "Buffalo",
+          "country": "United States",
+          "facility": "Buffalo General Medical Center",
+          "geoPoint": {
+            "lat": 42.88645,
+            "lon": -78.87837
+          },
+          "state": "New York",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "zip": "14202"
+        },
+        {
+          "city": "Elmhurst",
+          "contacts": [
+            {
+              "name": "Hazem Shoirah, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "NYC Health + Hospitals/Elmhurst",
+          "geoPoint": {
+            "lat": 40.73649,
+            "lon": -73.87791
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11373"
+        },
+        {
+          "city": "Manhasset",
+          "contacts": [
+            {
+              "name": "Rohan Arora, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "North Shore University Hospital",
+          "geoPoint": {
+            "lat": 40.79788,
+            "lon": -73.69957
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11030"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "name": "Neha Dangayach, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mount Sinai West",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10019"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "name": "Neha Dangayach, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "The Mount Sinai Hospital",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10029"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "name": "Imama Naqvi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "NYP Columbia University Medical Center",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10032"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "name": "Hooman Kamel, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "NYP Weill Cornell Medical Center",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10065"
+        },
+        {
+          "city": "Poughkeepsie",
+          "country": "United States",
+          "facility": "Vassar Brothers Medical Center",
+          "geoPoint": {
+            "lat": 41.70037,
+            "lon": -73.92097
+          },
+          "state": "New York",
+          "status": "TERMINATED",
+          "zip": "12601"
+        },
+        {
+          "city": "Rochester",
+          "contacts": [
+            {
+              "name": "Curtis Benesch, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Strong Memorial Hospital",
+          "geoPoint": {
+            "lat": 43.15478,
+            "lon": -77.61556
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "14642"
+        },
+        {
+          "city": "Staten Island",
+          "country": "United States",
+          "facility": "Staten Island University Hospital - North Campus",
+          "geoPoint": {
+            "lat": 40.56233,
+            "lon": -74.13986
+          },
+          "state": "New York",
+          "status": "WITHDRAWN",
+          "zip": "10305"
+        },
+        {
+          "city": "Stony Brook",
+          "contacts": [
+            {
+              "name": "Jason Mathew, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Stony Brook University Hospital",
+          "geoPoint": {
+            "lat": 40.92565,
+            "lon": -73.14094
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11794"
+        },
+        {
+          "city": "Syracuse",
+          "contacts": [
+            {
+              "name": "Julius-Gene Latorre, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "SUNY Upstate Medical University",
+          "geoPoint": {
+            "lat": 43.04812,
+            "lon": -76.14742
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "13210"
+        },
+        {
+          "city": "The Bronx",
+          "contacts": [
+            {
+              "name": "Kathryn Kirchoff-Torres, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Montefiore Medical Center",
+          "geoPoint": {
+            "lat": 40.84985,
+            "lon": -73.86641
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10467"
+        },
+        {
+          "city": "Valhalla",
+          "contacts": [
+            {
+              "name": "Stephan Mayer, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Westchester Medical Center",
+          "geoPoint": {
+            "lat": 41.07482,
+            "lon": -73.77513
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10595"
+        },
+        {
+          "city": "White Plains",
+          "contacts": [
+            {
+              "name": "Kathryn Kirchoff-Torres, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Burke Rehabilitation Center",
+          "geoPoint": {
+            "lat": 41.03399,
+            "lon": -73.76291
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10605"
+        },
+        {
+          "city": "Chapel Hill",
+          "contacts": [
+            {
+              "name": "Julia Carlson, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of North Carolina Medical Center",
+          "geoPoint": {
+            "lat": 35.9132,
+            "lon": -79.05584
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27514"
+        },
+        {
+          "city": "Charlotte",
+          "country": "United States",
+          "facility": "Carolinas Medical Center",
+          "geoPoint": {
+            "lat": 35.22709,
+            "lon": -80.84313
+          },
+          "state": "North Carolina",
+          "status": "WITHDRAWN",
+          "zip": "28204"
+        },
+        {
+          "city": "Charlotte",
+          "contacts": [
+            {
+              "name": "Melanie Greenway, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Presbyterian Medical Center",
+          "geoPoint": {
+            "lat": 35.22709,
+            "lon": -80.84313
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "28204"
+        },
+        {
+          "city": "Durham",
+          "contacts": [
+            {
+              "name": "Dylan Ryan, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Duke University Hospital",
+          "geoPoint": {
+            "lat": 35.99403,
+            "lon": -78.89862
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27710"
+        },
+        {
+          "city": "Greensboro",
+          "contacts": [
+            {
+              "name": "Pramod Sethi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Moses H. Cone Memorial Hospital",
+          "geoPoint": {
+            "lat": 36.07264,
+            "lon": -79.79198
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27401"
+        },
+        {
+          "city": "Greenville",
+          "contacts": [
+            {
+              "name": "Shailesh Male, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "ECU Health Medical Center",
+          "geoPoint": {
+            "lat": 35.61266,
+            "lon": -77.36635
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27834"
+        },
+        {
+          "city": "Wilmington",
+          "contacts": [
+            {
+              "name": "Amanda Pardon, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "New Hanover Regional Medical Center",
+          "geoPoint": {
+            "lat": 34.23556,
+            "lon": -77.94604
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "28403"
+        },
+        {
+          "city": "Winston-Salem",
+          "contacts": [
+            {
+              "name": "Mitchell Hargis, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Forsyth Medical Center",
+          "geoPoint": {
+            "lat": 36.09986,
+            "lon": -80.24422
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27103"
+        },
+        {
+          "city": "Winston-Salem",
+          "contacts": [
+            {
+              "name": "Stacey Wolfe, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Wake Forest Baptist Medical Center",
+          "geoPoint": {
+            "lat": 36.09986,
+            "lon": -80.24422
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27157"
+        },
+        {
+          "city": "Akron",
+          "contacts": [
+            {
+              "name": "Ahmed Itrat, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cleveland Clinic Akron General",
+          "geoPoint": {
+            "lat": 41.08144,
+            "lon": -81.51901
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44307"
+        },
+        {
+          "city": "Cincinnati",
+          "contacts": [
+            {
+              "name": "Rob Stanton, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Cincinnati Medical Center",
+          "geoPoint": {
+            "lat": 39.12711,
+            "lon": -84.51439
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "45219"
+        },
+        {
+          "city": "Cincinnati",
+          "contacts": [
+            {
+              "name": "Chengyuan Feng, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Good Samaritan Hospital",
+          "geoPoint": {
+            "lat": 39.12711,
+            "lon": -84.51439
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "45220"
+        },
+        {
+          "city": "Cleveland",
+          "contacts": [
+            {
+              "name": "Abhishek Ray, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UH Cleveland Medical Center",
+          "geoPoint": {
+            "lat": 41.4995,
+            "lon": -81.69541
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44106"
+        },
+        {
+          "city": "Cleveland",
+          "contacts": [
+            {
+              "name": "Agnieszka Ardelt, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "MetroHealth Medical Center",
+          "geoPoint": {
+            "lat": 41.4995,
+            "lon": -81.69541
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44109"
+        },
+        {
+          "city": "Cleveland",
+          "contacts": [
+            {
+              "name": "Blake Buletko",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cleveland Clinic",
+          "geoPoint": {
+            "lat": 41.4995,
+            "lon": -81.69541
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44195"
+        },
+        {
+          "city": "Columbus",
+          "contacts": [
+            {
+              "name": "Yousef Hannawi, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "OSU Wexner Medical Center",
+          "geoPoint": {
+            "lat": 39.96118,
+            "lon": -82.99879
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "43210"
+        },
+        {
+          "city": "Columbus",
+          "contacts": [
+            {
+              "name": "Vivek Rai, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Riverside Methodist Hospital",
+          "geoPoint": {
+            "lat": 39.96118,
+            "lon": -82.99879
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "43214"
+        },
+        {
+          "city": "Oklahoma City",
+          "contacts": [
+            {
+              "name": "Evgeny Sidorov",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "OU Medical Center",
+          "geoPoint": {
+            "lat": 35.46756,
+            "lon": -97.51643
+          },
+          "state": "Oklahoma",
+          "status": "RECRUITING",
+          "zip": "73104"
+        },
+        {
+          "city": "Oklahoma City",
+          "contacts": [
+            {
+              "name": "Jeffrey Craig, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mercy Hospital Oklahoma City",
+          "geoPoint": {
+            "lat": 35.46756,
+            "lon": -97.51643
+          },
+          "state": "Oklahoma",
+          "status": "RECRUITING",
+          "zip": "73120"
+        },
+        {
+          "city": "Tulsa",
+          "contacts": [
+            {
+              "name": "Rahul Rahangdale, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ascension St. John Medical Center",
+          "geoPoint": {
+            "lat": 36.15398,
+            "lon": -95.99277
+          },
+          "state": "Oklahoma",
+          "status": "RECRUITING",
+          "zip": "74104"
+        },
+        {
+          "city": "Tulsa",
+          "contacts": [
+            {
+              "name": "Rahul Rahangdale, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. John Medical Center",
+          "geoPoint": {
+            "lat": 36.15398,
+            "lon": -95.99277
+          },
+          "state": "Oklahoma",
+          "status": "RECRUITING",
+          "zip": "74104"
+        },
+        {
+          "city": "Portland",
+          "contacts": [
+            {
+              "name": "Wayne Clark",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Oregon Health & Science University Hospital",
+          "geoPoint": {
+            "lat": 45.52345,
+            "lon": -122.67621
+          },
+          "state": "Oregon",
+          "status": "RECRUITING",
+          "zip": "92739"
+        },
+        {
+          "city": "Portland",
+          "contacts": [
+            {
+              "name": "John Zurasky",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Providence St. Vincent Medical Center",
+          "geoPoint": {
+            "lat": 45.52345,
+            "lon": -122.67621
+          },
+          "state": "Oregon",
+          "status": "RECRUITING",
+          "zip": "97213"
+        },
+        {
+          "city": "Springfield",
+          "contacts": [
+            {
+              "name": "Mariam Tsikvadze, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "PeaceHealth Sacred Heart Medical Center - RiverBend",
+          "geoPoint": {
+            "lat": 44.04624,
+            "lon": -123.02203
+          },
+          "state": "Oregon",
+          "status": "RECRUITING",
+          "zip": "97477"
+        },
+        {
+          "city": "Abington",
+          "contacts": [
+            {
+              "name": "Larami MacKenzie, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Jefferson Abington Hospital",
+          "geoPoint": {
+            "lat": 40.12067,
+            "lon": -75.11795
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "19001"
+        },
+        {
+          "city": "Allentown",
+          "country": "United States",
+          "facility": "Lehigh Valley Hospital - Cedar Crest",
+          "geoPoint": {
+            "lat": 40.60843,
+            "lon": -75.49018
+          },
+          "state": "Pennsylvania",
+          "status": "WITHDRAWN",
+          "zip": "18103"
+        },
+        {
+          "city": "Danville",
+          "country": "United States",
+          "facility": "Geisinger Medical Center",
+          "geoPoint": {
+            "lat": 40.96342,
+            "lon": -76.61273
+          },
+          "state": "Pennsylvania",
+          "status": "WITHDRAWN",
+          "zip": "17822"
+        },
+        {
+          "city": "Hershey",
+          "contacts": [
+            {
+              "name": "Nandakumar Nagaraja, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Penn State Hershey Medical Center",
+          "geoPoint": {
+            "lat": 40.28592,
+            "lon": -76.65025
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "17033"
+        },
+        {
+          "city": "Philadelphia",
+          "contacts": [
+            {
+              "name": "Aaron Rothstein, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Hospital of the University of Pennsylvania",
+          "geoPoint": {
+            "lat": 39.95238,
+            "lon": -75.16362
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "19104"
+        },
+        {
+          "city": "Philadelphia",
+          "country": "United States",
+          "facility": "Thomas Jefferson University Hospital",
+          "geoPoint": {
+            "lat": 39.95238,
+            "lon": -75.16362
+          },
+          "state": "Pennsylvania",
+          "status": "WITHDRAWN",
+          "zip": "19107"
+        },
+        {
+          "city": "Philadelphia",
+          "contacts": [
+            {
+              "name": "Paul Katz, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Temple University Hospital",
+          "geoPoint": {
+            "lat": 39.95238,
+            "lon": -75.16362
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "19140"
+        },
+        {
+          "city": "Pittsburgh",
+          "contacts": [
+            {
+              "name": "Marcelo Rocha",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UPMC Presbyterian Hospital",
+          "geoPoint": {
+            "lat": 40.44062,
+            "lon": -79.99589
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "15213"
+        },
+        {
+          "city": "Providence",
+          "country": "United States",
+          "facility": "Rhode Island Hospital",
+          "geoPoint": {
+            "lat": 41.82399,
+            "lon": -71.41283
+          },
+          "state": "Rhode Island",
+          "status": "TERMINATED",
+          "zip": "02903"
+        },
+        {
+          "city": "Charleston",
+          "contacts": [
+            {
+              "name": "Christine Holmstedt, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Medical University of South Carolina University Hospital",
+          "geoPoint": {
+            "lat": 32.77632,
+            "lon": -79.93275
+          },
+          "state": "South Carolina",
+          "status": "RECRUITING",
+          "zip": "29425"
+        },
+        {
+          "city": "Greenville",
+          "contacts": [
+            {
+              "name": "Sanjeev Sivakumar, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Greenville Hospital System",
+          "geoPoint": {
+            "lat": 34.85262,
+            "lon": -82.39401
+          },
+          "state": "South Carolina",
+          "status": "RECRUITING",
+          "zip": "29605"
+        },
+        {
+          "city": "Sioux Falls",
+          "contacts": [
+            {
+              "name": "Jonathon Cooke, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Avera Research Institute",
+          "geoPoint": {
+            "lat": 43.54369,
+            "lon": -96.72796
+          },
+          "state": "South Dakota",
+          "status": "RECRUITING",
+          "zip": "57108"
+        },
+        {
+          "city": "Chattanooga",
+          "country": "United States",
+          "facility": "Erlanger Health System",
+          "geoPoint": {
+            "lat": 35.04563,
+            "lon": -85.30968
+          },
+          "state": "Tennessee",
+          "status": "WITHDRAWN",
+          "zip": "37403"
+        },
+        {
+          "city": "Knoxville",
+          "contacts": [
+            {
+              "name": "S. Arthur Moore, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Fort Sanders Regional Medical Center",
+          "geoPoint": {
+            "lat": 35.96064,
+            "lon": -83.92074
+          },
+          "state": "Tennessee",
+          "status": "RECRUITING",
+          "zip": "37916"
+        },
+        {
+          "city": "Memphis",
+          "contacts": [
+            {
+              "name": "Balaji Krishnaiah, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Methodist University Hospital",
+          "geoPoint": {
+            "lat": 35.14953,
+            "lon": -90.04898
+          },
+          "state": "Tennessee",
+          "status": "RECRUITING",
+          "zip": "38104"
+        },
+        {
+          "city": "Memphis",
+          "contacts": [
+            {
+              "name": "Neha Kumar, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Semmes Murphey Main Campus",
+          "geoPoint": {
+            "lat": 35.14953,
+            "lon": -90.04898
+          },
+          "state": "Tennessee",
+          "status": "RECRUITING",
+          "zip": "38120"
+        },
+        {
+          "city": "Nashville",
+          "contacts": [
+            {
+              "name": "Deborah Kerrigan, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Vanderbilt University Hospital",
+          "geoPoint": {
+            "lat": 36.16589,
+            "lon": -86.78444
+          },
+          "state": "Tennessee",
+          "status": "RECRUITING",
+          "zip": "37232"
+        },
+        {
+          "city": "Austin",
+          "country": "United States",
+          "facility": "St. David's Medical Center",
+          "geoPoint": {
+            "lat": 30.26715,
+            "lon": -97.74306
+          },
+          "state": "Texas",
+          "status": "WITHDRAWN",
+          "zip": "78705"
+        },
+        {
+          "city": "Dallas",
+          "country": "United States",
+          "facility": "UT Southwestern Medical Center",
+          "geoPoint": {
+            "lat": 32.78306,
+            "lon": -96.80667
+          },
+          "state": "Texas",
+          "status": "WITHDRAWN",
+          "zip": "75390"
+        },
+        {
+          "city": "Houston",
+          "country": "United States",
+          "facility": "Baylor College of Medicine Medical Center",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "WITHDRAWN",
+          "zip": "77030"
+        },
+        {
+          "city": "Houston",
+          "contacts": [
+            {
+              "name": "Britz Britz, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Houston Methodist Hospital",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "77030"
+        },
+        {
+          "city": "Houston",
+          "contacts": [
+            {
+              "name": "Andrew Barreto, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Memorial Hermann Texas Medical Center",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "77030"
+        },
+        {
+          "city": "San Antonio",
+          "contacts": [
+            {
+              "name": "Reza Behrouz, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Texas Health Science Center San Antonio",
+          "geoPoint": {
+            "lat": 29.42412,
+            "lon": -98.49363
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "78229"
+        },
+        {
+          "city": "Salt Lake City",
+          "contacts": [
+            {
+              "name": "Nabeel Chauhan, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Utah Healthcare",
+          "geoPoint": {
+            "lat": 40.76078,
+            "lon": -111.89105
+          },
+          "state": "Utah",
+          "status": "RECRUITING",
+          "zip": "84112"
+        },
+        {
+          "city": "Burlington",
+          "contacts": [
+            {
+              "name": "Chris Commichau",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "The University of Vermont Medical Center",
+          "geoPoint": {
+            "lat": 44.47588,
+            "lon": -73.21207
+          },
+          "state": "Vermont",
+          "status": "RECRUITING",
+          "zip": "05401"
+        },
+        {
+          "city": "Charlottesville",
+          "contacts": [
+            {
+              "name": "Brad Worral, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "UVA Medical Center",
+          "geoPoint": {
+            "lat": 38.02931,
+            "lon": -78.47668
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "22908"
+        },
+        {
+          "city": "Falls Church",
+          "contacts": [
+            {
+              "name": "Saqib Chaudhry, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Inova Fairfax Hospital",
+          "geoPoint": {
+            "lat": 38.88233,
+            "lon": -77.17109
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "22042"
+        },
+        {
+          "city": "Richmond",
+          "contacts": [
+            {
+              "name": "Amandeep Sangha, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Bon Secours St. Mary's Hospital",
+          "geoPoint": {
+            "lat": 37.55376,
+            "lon": -77.46026
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "23226"
+        },
+        {
+          "city": "Richmond",
+          "country": "United States",
+          "facility": "VCU Medical Center",
+          "geoPoint": {
+            "lat": 37.55376,
+            "lon": -77.46026
+          },
+          "state": "Virginia",
+          "status": "SUSPENDED",
+          "zip": "23298"
+        },
+        {
+          "city": "Seattle",
+          "country": "United States",
+          "facility": "Virginia Mason Medical Center",
+          "geoPoint": {
+            "lat": 47.60621,
+            "lon": -122.33207
+          },
+          "state": "Washington",
+          "status": "WITHDRAWN",
+          "zip": "98101"
+        },
+        {
+          "city": "Seattle",
+          "contacts": [
+            {
+              "name": "David Tirschwell, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Harborview Medical Center",
+          "geoPoint": {
+            "lat": 47.60621,
+            "lon": -122.33207
+          },
+          "state": "Washington",
+          "status": "RECRUITING",
+          "zip": "98104"
+        },
+        {
+          "city": "Seattle",
+          "country": "United States",
+          "facility": "Swedish Medical Center - Cherry Hill Campus",
+          "geoPoint": {
+            "lat": 47.60621,
+            "lon": -122.33207
+          },
+          "state": "Washington",
+          "status": "WITHDRAWN",
+          "zip": "98122"
+        },
+        {
+          "city": "Morgantown",
+          "contacts": [
+            {
+              "name": "Amelia Adcock, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "J.W. Ruby Memorial Hospital",
+          "geoPoint": {
+            "lat": 39.62953,
+            "lon": -79.9559
+          },
+          "state": "West Virginia",
+          "status": "RECRUITING",
+          "zip": "26506"
+        },
+        {
+          "city": "Milwaukee",
+          "country": "United States",
+          "facility": "Froedtert Hospital",
+          "geoPoint": {
+            "lat": 43.0389,
+            "lon": -87.90647
+          },
+          "state": "Wisconsin",
+          "status": "WITHDRAWN",
+          "zip": "53226"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Yale University",
+          "name": "Kevin N Sheth, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Weill Medical College of Cornell University",
+          "name": "Hooman Kamel, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Primary Aim: To determine if apixaban is superior to aspirin for prevention of the composite outcome of any stroke (hemorrhagic or ischemic) or death from any cause in patients with recent ICH and atrial fibrillation (AF).\n\nSecondary Aim: To determine if apixaban, compared with aspirin, results in better functional outcomes as measured by the modified Rankin Scale.",
+      "detailedDescription": "ASPIRE is a randomized, double-blinded, phase III clinical trial designed to test the efficacy and safety of anticoagulation, compared with aspirin, in patients with a recent ICH and non-valvular AF. Seven hundred patients will be enrolled over 3.5 years and followed for study outcomes for a minimum of 12 months and maximum of 36 months. The primary efficacy outcome is any stroke (hemorrhagic or ischemic) or death from any cause. The secondary efficacy outcome is the change in the modified Rankin Scale score. Recruitment will take place at sites coordinated through the NIH/NINDS StrokeNet."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "QUADRUPLE",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 700,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE3"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age at least 18 years\n* Intracerebral hemorrhage (ICH) (including primary intraventricular hemorrhage) confirmed by brain CT or MRI\n* Can be randomized within 14-180 days after ICH onset\n* Non-valvular AF (defined as atrial fibrillation or atrial flutter), documented by electrocardiography or a physician-confirmed history of prior AF\n* Provision of signed and dated informed consent form by patient or legally authorized representative\n* For females of reproductive potential: use of highly effective contraception\n\nExclusion Criteria:\n\n* Index event is hemorrhagic transformation of a brain infarction or hemorrhage into a tumor\n* History of earlier ICH within 12 months preceding index event\n* Active infective endocarditis\n* Clear indication for anticoagulant drugs (e.g., requires anticoagulation for deep vein thrombosis or pulmonary embolism) or antiplatelet drugs (e.g., requires aspirin or clopidogrel for recent coronary stent).\n* Previous or planned left atrial appendage closure\n* Clinically significant bleeding diathesis\n* Serum creatinine ≥2.5 mg/dL\n* Active hepatitis or hepatic insufficiency with Child-Pugh score B or C\n* Anemia (hemoglobin \\<8 g/dL) or thrombocytopenia (\\<100 x 10\\^9/L) that is chronic in the judgment of the investigator\n* Pregnant or breastfeeding\n* Known allergy to aspirin or apixaban\n* Concomitant participation in a competing trial\n* Considered by the investigator to have a condition that precludes safe or active participation in the trial\n* Persistent, uncontrolled systolic blood pressure (≥180 mm Hg)\n* ICH caused by an arteriovenous malformation (AVM) that has not yet been secured",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ASPIRE",
+      "briefTitle": "Anticoagulation in ICH Survivors for Stroke Prevention and Recovery",
+      "nctId": "NCT03907046",
+      "officialTitle": "Anticoagulation in Intracerebral Hemorrhage (ICH) Survivors for Stroke Prevention and Recovery",
+      "orgStudyIdInfo": {
+        "id": "2000026409"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Yale University"
+      },
+      "secondaryIdInfos": [
+        {
+          "id": "1U01NS106513-01A1",
+          "link": "https://reporter.nih.gov/quickSearch/1U01NS106513-01A1",
+          "type": "NIH"
+        }
+      ]
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Incidence of stroke of any type (ischemic or hemorrhagic) or death from any cause",
+          "measure": "Stroke or death",
+          "timeFrame": "Up to 3 years"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Measure of neurologic disability (0=no disability to 6=dead)",
+          "measure": "Modified Rankin Scale (mRS) score",
+          "timeFrame": "Change from baseline to 12 months; change over duration of follow-up"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": true,
+      "isUsExport": true,
+      "oversightHasDmc": true
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Cochrane A, Chen C, Stephen J, Ronning OM, Anderson CS, Hankey GJ, Al-Shahi Salman R. Antithrombotic treatment after stroke due to intracerebral haemorrhage. Cochrane Database Syst Rev. 2023 Jan 26;1(1):CD012144. doi: 10.1002/14651858.CD012144.pub3.",
+          "pmid": "36700520",
+          "type": "DERIVED"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "NIH",
+          "name": "National Institute of Neurological Disorders and Stroke (NINDS)"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Yale University"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-04",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-05-08",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-05-07",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-04",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2020-01-28",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-05",
+      "studyFirstPostDateStruct": {
+        "date": "2019-04-08",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2019-04-04",
+      "studyFirstSubmitQcDate": "2019-04-04"
+    }
+  }
+}

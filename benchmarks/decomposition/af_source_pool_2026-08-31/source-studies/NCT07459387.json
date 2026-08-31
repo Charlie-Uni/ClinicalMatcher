@@ -1,0 +1,256 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "documentSection": {
+    "largeDocumentModule": {
+      "largeDocs": [
+        {
+          "date": "2025-08-24",
+          "filename": "Prot_000.pdf",
+          "hasIcf": false,
+          "hasProtocol": true,
+          "hasSap": false,
+          "label": "Study Protocol",
+          "size": 77943,
+          "typeAbbrev": "Prot",
+          "uploadDate": "2025-10-12T12:13"
+        }
+      ]
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "single arm registry",
+          "interventionNames": [
+            "Procedure: PFA Ablation"
+          ],
+          "label": "single arm",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "single arm"
+          ],
+          "description": "All-comer data of patients with symptomatic atrial fibrillation (AF) who underwent catheter ablation using the novel balloon-in-basket PFA catheter will be collected from European high-volume centers who were involved in the early market release of the VOLT (Abbott) technology. Data includes patient demographics, procedural metrics on safety and efficacy as well as follow-up outcome data. Learning curve characteristics and comparison on different workflows will be assessed.",
+          "name": "PFA Ablation",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Treatment of Atrial Fibrilation",
+        "Symptomatic Atrial Fibrillation"
+      ],
+      "keywords": [
+        "ablation",
+        "pulsed field",
+        "atrial fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "b.schmidt@ccb.de",
+          "name": "Boris Schmidt, Prof.Dr.med.",
+          "phone": "004906909450280",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Frankfurt",
+          "contacts": [
+            {
+              "email": "b.schmidt@ccb.de",
+              "name": "Boris Schmidt, Prof.Dr.med",
+              "phone": "0049699450280",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Mvz Ccb Am Agaplesion Markus Krankenhaus",
+          "geoPoint": {
+            "lat": 49.68333,
+            "lon": 10.53333
+          },
+          "status": "RECRUITING",
+          "zip": "60431"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "describe real-world adaption, work-flow data as well as procedural and follow-up outcomes after balloon-in-basket guided PFA for AF in early European users.",
+      "detailedDescription": "A prospective, multi-center registry, REal-world Valued Outcomes of a noveL balloon-in-basket pUlsed field ablaTION catheter for Atrial fibrillation RegistrY - the REVOLUTIONARY Registry - was designed. All-comer data of patients with symptomatic atrial fibrillation (AF) who underwent catheter ablation using the novel balloon-in-basket PFA catheter will be collected from European high-volume centers who were involved in the early market release of the VOLT (Abbott) technology. Data includes patient demographics, procedural metrics on safety and efficacy as well as follow-up outcome data. Learning curve characteristics and comparison on different workflows will be assessed."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 1000,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\nAll patients who underwent an AF catheter ablation procedure using the novel balloon-in-basket VOLT PFA system will be included into the analysis.\n\n* Age ≥ 18 years\n* Subject is able and willing to give informed consent\n\nExclusion Criteria:\n\n* LA-Diameter \\> 60mm\n* Severe mitral stenosis or regurgitation, prior mitral valve reconstruction or replacement\n* Any condition or disease, which is contraindication for AF ablation, up to the assessment of the investigator\n* Known intra-cardiac thrombus formation Any contraindication for oral anticoagulation\n* Any untreated or uncontrolled hyperthyroidism or other reversible causes for AF like alcoholism\n* Pregnant or breastfeeding woman or woman of childbearing potential not on adequate birth control\n* Active systemic infection",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "REVOLUTIONARY",
+      "briefTitle": "REal-world Valued Outcomes of a noveL Balloon-in-basket pUlsed Field ablaTION Catheter for Atrial Fibrillation RegistrY",
+      "nctId": "NCT07459387",
+      "officialTitle": "REVOLUTIONARY Registry",
+      "orgStudyIdInfo": {
+        "id": "Protocol V1.1"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Cardioangiologisches Centrum Bethanien"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "EC Hessen",
+          "id": "V/1/sja/scf/akm 2025-4080-evBO",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "description": "Comparison of different workflows for the PFA ablation procedure and the effects on outcomes.",
+          "measure": "Subanalysis",
+          "timeFrame": "12 Months"
+        },
+        {
+          "description": "Analysis of repeat ablation procedures after an index PFA ablation with focus on lesion durability and type of a",
+          "measure": "Subanalysis - Performance",
+          "timeFrame": "12 Months"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "description": "Assessment of freedom from any atrial tachyarrhythmia (ATa) after the blanking period.",
+          "measure": "Efficacy - Freedom from Arrhythmia",
+          "timeFrame": "12 month"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "2\\) Description of the incidence of major adverse cardiovascular events (MACE) during or after the ablation.",
+          "measure": "Adverse Events",
+          "timeFrame": "12 Months"
+        },
+        {
+          "description": "Evolution of procedural metrics (procedure time, fluoroscopy time, safety) during the adoption of the technology across different centers and operators.\n\nAny contraindication for oral anticoagulation",
+          "measure": "Procedural efficacy",
+          "timeFrame": "12 Months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Cardioangiologisches Centrum Bethanien"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Cardioangiologisches Centrum Bethanien",
+        "investigatorFullName": "Boris Schmidt",
+        "investigatorTitle": "Prof. Dr. med.",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-10-07",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-03-09",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-03-05",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-10-07",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-10-07",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2026-03-09",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-01-29",
+      "studyFirstSubmitQcDate": "2026-03-05"
+    }
+  }
+}

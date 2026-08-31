@@ -1,0 +1,190 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07621003-inclusion-ecbda0e798bebe25",
+      "criterion_type": "inclusion",
+      "normalized_text": "Adults (≥18 years) with symptomatic or asymptomatic, paroxysmal or persistent atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 120,
+        "start": 23
+      },
+      "source_text": "Adults (≥18 years) with symptomatic or asymptomatic, paroxysmal or persistent atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct07621003-inclusion-b8f556911e7fb762",
+      "criterion_type": "inclusion",
+      "normalized_text": "First diagnosis of AF within the last 36 months",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 170,
+        "start": 123
+      },
+      "source_text": "First diagnosis of AF within the last 36 months"
+    },
+    {
+      "criterion_id": "nct07621003-inclusion-20d7cecd91cb65c4",
+      "criterion_type": "inclusion",
+      "normalized_text": "At least one documented episode of AF on ECG, Holter monitoring, or eligible Smart Watch Device",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 268,
+        "start": 173
+      },
+      "source_text": "At least one documented episode of AF on ECG, Holter monitoring, or eligible Smart Watch Device"
+    },
+    {
+      "criterion_id": "nct07621003-inclusion-2805a05258fcb310",
+      "criterion_type": "inclusion",
+      "normalized_text": "No prior catheter ablation for AF",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 304,
+        "start": 271
+      },
+      "source_text": "No prior catheter ablation for AF"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-33d8a29a7868b60d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Persistent AF >3 years or longstanding persistent AF",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 382,
+        "start": 329
+      },
+      "source_text": "Persistent AF \\>3 years or longstanding persistent AF"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-f936137a1175be19",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous AF-Ablation",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 405,
+        "start": 385
+      },
+      "source_text": "Previous AF-Ablation"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-dd28e3a2ea112912",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ongoing continuous AAD therapy with Amiodarone at baseline",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 466,
+        "start": 408
+      },
+      "source_text": "Ongoing continuous AAD therapy with Amiodarone at baseline"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-9d8537ac56783eb9",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of failed continuous AAD therapy with > 1 agent. Exceptions are Beta blocker, Verapamil or \"pill in the pocket\"-therapy",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 597,
+        "start": 469
+      },
+      "source_text": "History of failed continuous AAD therapy with \\> 1 agent. Exceptions are Beta blocker, Verapamil or \"pill in the pocket\"-therapy"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-096488ecaea95ed3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left Atrial Volume Index (LAVI) > 50mL/m2",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 642,
+        "start": 600
+      },
+      "source_text": "Left Atrial Volume Index (LAVI) \\> 50mL/m2"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-03ae1f2da9ca97ea",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe mitral regurgitation",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 672,
+        "start": 645
+      },
+      "source_text": "Severe mitral regurgitation"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-2cbb3b43d36243c4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindications to anticoagulation therapy",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 719,
+        "start": 675
+      },
+      "source_text": "Contraindications to anticoagulation therapy"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-6a96c49d51294588",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe pulmonary or renal disease",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 755,
+        "start": 722
+      },
+      "source_text": "Severe pulmonary or renal disease"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-65570e9143f0c486",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy, active cancer disease",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 790,
+        "start": 758
+      },
+      "source_text": "Pregnancy, active cancer disease"
+    },
+    {
+      "criterion_id": "nct07621003-exclusion-02d8543806a7de0b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any condition or disease which is contraindication for AF ablation within 21 days or Anti-Arrhythmic Drug (AAD)",
+      "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+      "source_span": {
+        "end": 904,
+        "start": 793
+      },
+      "source_text": "Any condition or disease which is contraindication for AF ablation within 21 days or Anti-Arrhythmic Drug (AAD)"
+    }
+  ],
+  "eligibility_sha256": "d51eaeaec1540cd95baebd71a8c3387ddc3e1530068ce7816144f1ab7a7b5dd4",
+  "eligibility_text": "Inclusion Criteria:\n\n* Adults (≥18 years) with symptomatic or asymptomatic, paroxysmal or persistent atrial fibrillation\n* First diagnosis of AF within the last 36 months\n* At least one documented episode of AF on ECG, Holter monitoring, or eligible Smart Watch Device\n* No prior catheter ablation for AF\n\nExclusion Criteria:\n\n* Persistent AF \\>3 years or longstanding persistent AF\n* Previous AF-Ablation\n* Ongoing continuous AAD therapy with Amiodarone at baseline\n* History of failed continuous AAD therapy with \\> 1 agent. Exceptions are Beta blocker, Verapamil or \"pill in the pocket\"-therapy\n* Left Atrial Volume Index (LAVI) \\> 50mL/m2\n* Severe mitral regurgitation\n* Contraindications to anticoagulation therapy\n* Severe pulmonary or renal disease\n* Pregnancy, active cancer disease\n* Any condition or disease which is contraindication for AF ablation within 21 days or Anti-Arrhythmic Drug (AAD)",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-08-24",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07621003",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07621003:eligibility:2026-08-24:d51eaeaec154",
+  "source_record_version": "2026-08-24:d51eaeaec154",
+  "source_url": "https://clinicaltrials.gov/study/NCT07621003",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "PULSed Field Ablation for Atrial Fibrillation Using a Balloon for Early Intervention - Study"
+}

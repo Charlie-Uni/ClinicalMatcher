@@ -1,0 +1,327 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Other: Ablation"
+          ],
+          "label": "Endurance athletes",
+          "type": "OTHER"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Endurance athletes"
+          ],
+          "description": "The ablation procedure will be limited to pulmonary vein isolation (PVI) alone, without additional extensive ablation such as posterior wall, isthmus, or linear lesions on the left or right atrium. If atrial flutter is documented in the patient's medical history, or if it is strongly suspected or inducible during the electrophysiology study, a cavotricuspid isthmus (CTI) ablation will be performed. The choice of energy modality (e.g., pulsed field ablation, cryoablation, or radiofrequency ablation) will be at the discretion of the electrophysiologist, according to procedural goals and institutional standards. When deemed appropriate by the treating physician, an assessment of the underlying arrhythmogenic substrate using electroanatomical mapping may be undertaken; however, this is not mandatory. Similarly, if available and preferred by the participating centre, intra-atrial pressures may be recorded, though this is also optional. Following the ablation, a one-month blanking period wil",
+          "name": "Ablation",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Athletes",
+        "Sports Cardiology",
+        "Atrial Fibrillation",
+        "Ablation",
+        "Endurance",
+        "Performance"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "boris.delpire@uhasselt.be",
+          "name": "Boris Delpire, MD",
+          "phone": "+32477399875",
+          "role": "CONTACT"
+        },
+        {
+          "email": "claessen.guido@gmail.com",
+          "name": "Guido Claessen, MD, PhD",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Melbourne",
+          "contacts": [
+            {
+              "email": "kristel.janssens@svi.edu.au",
+              "name": "Andre La Gerche, MD, PhD",
+              "phone": "+61 3 9231 2211",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Australia",
+          "facility": "St. Vincent's Hospital",
+          "geoPoint": {
+            "lat": -37.814,
+            "lon": 144.96332
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Antwerp",
+          "contacts": [
+            {
+              "email": "Anke.DeSchutter@uza.be",
+              "name": "Hein Heidbuchel, MD, PhD",
+              "phone": "+32 3 821 30 00",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Belgium",
+          "facility": "Universitair Ziekenhuis Antwerpen",
+          "geoPoint": {
+            "lat": 51.22047,
+            "lon": 4.40026
+          },
+          "state": "Antwerpen",
+          "status": "RECRUITING",
+          "zip": "2000"
+        },
+        {
+          "city": "Genk",
+          "contacts": [
+            {
+              "email": "michiel.dewever@zol.be",
+              "name": "Laurent Pison, MD, PhD",
+              "phone": "+32 89 32 50 50",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Belgium",
+          "facility": "ZOL Genk",
+          "geoPoint": {
+            "lat": 50.965,
+            "lon": 5.50082
+          },
+          "state": "Limburg",
+          "status": "RECRUITING",
+          "zip": "3600"
+        },
+        {
+          "city": "Hasselt",
+          "contacts": [
+            {
+              "email": "boris.delpire@uhasselt.be",
+              "name": "Boris Delpire, MD",
+              "phone": "+32477399875",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Belgium",
+          "facility": "Jessa Hospital, Department of Cardiology",
+          "geoPoint": {
+            "lat": 50.93106,
+            "lon": 5.33781
+          },
+          "state": "Limburg",
+          "status": "RECRUITING",
+          "zip": "3500"
+        },
+        {
+          "city": "Leuven",
+          "contacts": [
+            {
+              "email": "sofie.vansoest@uzleuven.be",
+              "name": "Rik Willems, MD, PhD",
+              "phone": "+32 16 33 22 11",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Belgium",
+          "facility": "UZ Leuven",
+          "geoPoint": {
+            "lat": 50.87959,
+            "lon": 4.70093
+          },
+          "state": "Vlaams-Brabant",
+          "status": "RECRUITING",
+          "zip": "3000"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University of Hasselt, LCRC",
+          "name": "Guido Claessen, MD, PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The relationship between exercise and atrial fibrillation (AF) seems to follow a J-shaped curve: while moderate activity reduces AF risk, both insufficient and excessive endurance exercise increase susceptibility. In athletes, standard treatments such as antiarrhythmic drugs often provide only partial symptom control and may impair performance through fatigue, chronotropic incompetence and side effects. Pulmonary vein isolation (PVI) may offer a more definitive therapeutic option but carries risks of atrial fibrosis, stiffening, and altered autonomic regulation, which may also influence exercise capacity. The investigators hypothesize that ablation will have a significant impact-either beneficial or detrimental-on the physical performance of athletes with AF. However, existing evidence is limited to small studies with inconsistent findings, underscoring the need for a dedicated study.\n\nThis prospective, multicentre interventional study will assess the effects of cardiac ablation in 100 endurance athletes with AF. Participants will undergo comprehensive pre- and post-ablation phenotyping, including electrocardiogram (ECG), cardiopulmonary exercise testing (CPET), echocardiography, Holter monitoring, and detailed training data collection (efficiency factor, acute and chronic training load). Clinical follow-up will extend to 12 months post-ablation.\n\nThe primary endpoint is the change in peak VO₂ (mL/kg/min) measured before ablation and after the procedure.\n\nSecondary analyses will explore:\n\n* Autonomic adaptations: including changes in maximum heart rate, heart rate recovery, heart rate reserve, and heart rate variability.\n* Cardiac function: alterations in diastolic and atrial function assessed by echocardiography.\n* Training and performance: objective measures such as efficiency factor, decoupling, functional threshold power, critical power, and acute and chronic training load.\n* Technique comparison: differences in outcomes between pulsed field and radiofrequency ablation (e.g. atrial function, troponin release, …).\n* Sex-specific effects: recognising the underrepresentation of women in sports cardiology research, the investigators will include female athletes according to incidence and evaluate potential differences in treatment response between sexes.\n* Predictors of AF recurrence in endurance athletes",
+      "detailedDescription": "activity appears protective, both insufficient and excessive exercise are linked to an elevated risk in developing AF. Standard treatments, such as medication or catheter ablation via pulmonary vein isolation (PVI), are widely used in the general population, but their application in athletes presents distinct challenges. Beyond managing the arrhythmia itself, athletes are often concerned about how treatment might impact their performance, return-to-play timelines, and long-term athletic performance. Antiarrhythmic medications are typically only partially effective in this population, rarely resulting in full symptom resolution and frequently causing side effects that undermine athletic performance. The most common issues (fatigue, decreased energy, and impaired physical performance) with antiarrhythmic medications are especially troubling for individuals whose identity and daily life revolve around maximising physical capability.\n\nCardiac ablation has therefore emerged as a more definitive treatment strategy, with fewer side effects. However, this procedure is not without risks. Understanding the physiological trade-offs of ablation is essential, especially for those whose pursuit of peak performance defines their lifestyle. Cardiac ablation may affect exercise capacity through several mechanisms. Ablation lines render sections of the atrium electrically and mechanically inert, potentially reducing its contractile contribution. Repeat procedures may further increase atrial stiffness. Additionally, targeting autonomic structures such as the ganglionated plexi or ligament of Marshall during ablation can disrupt normal heart rate regulation, potentially diminishing responsiveness during exercise. Conversely, effective symptom control through cardiac ablation may allow athletes to train more consistently and at higher intensities. Reducing AF burden may also slow the progression of atrial remodelling and associated tissue stiffening.\n\nFor athletes, whose primary goal is to optimise physical performance, the effects of AF treatment on their ability to train and compete are understandably a major concern. Conversely, eliminating AF symptoms could enhance training consistency and prevent or halt the development of structural remodelling that contributes to disease progression. This duality makes the relationship between ablation and athletic performance a compelling but underexplored topic, not only for athletes, but for all physically active individuals.\n\nAvailable evidence on the relationship between ablation and athletic performance remains limited. Several small-scale studies have shown that the effectiveness PVI in athletes is comparable to that observed in the general population. A small study by Mandsager et al. found no significant change in exercise capacity before and after PVI among athletes. However, the study's limitations (including a low follow-up rate, delayed post-procedure testing, and a small subset with paired assessments) temper confidence in these findings. While the results provide some reassurance, they highlight the need for larger, prospective studies with standardised protocols. More robust data have been observed on markers of the autonomous system, such as heart rate. Post-PVI, resting heart rate increased by approximately 10 beats per minute and remained elevated for at least 12 months. This was associated with reductions in both heart rate reserve and heart rate recovery, two indicators commonly linked to diminished cardiovascular fitness.\n\nOne proposed contributor to the increased incidence of AF in athletes is the chronic hemodynamic load associated with intense endurance training, which may lead to atrial enlargement, inflammation, and eventual fibrosis. Atrial dilation is a recognised component of the athlete's heart, yet findings across studies have been inconsistent. Surprisingly, the research by Mandsager et al. reported no significant differences in cardiac remodelling between athletes and nonathletes, with athletes even demonstrating slightly smaller left atrial volumes. This contrasts with other investigations, including a study by Trivedi et al., which showed that elite endurance athletes had atria more than twice the size of those in healthy controls and marginally larger than individuals with paroxysmal AF.\n\nEarlier intervention with PVI was shown to be linked to better procedural outcomes. This raises the possibility that ablation might be more effective when performed before substantial atrial remodelling occurs. However, many elite athletes already exhibit marked atrial dilation by the time AF presents, making it unclear whether PVI yields comparable success in this subgroup. Although current evidence does not suggest that PVI meaningfully impairs exercise capacity, it also makes clear that the procedure induces lasting changes in cardiac physiology. These changes warrant closer scrutiny, particularly in athletic populations.\n\nWith the growing number of athletes diagnosed with AF, it is increasingly important to understand how ablation affects athletic performance. This multicentre project aims to address that gap by systematically assessing the impact of cardiac ablation using objective performance metrics, advanced cardiac imaging, and athlete-reported outcomes. The primary goal of this project is to provide a scientific basis for the clinical decision-making in athletes with AF. Through a better understanding of the effects of cardiac ablation on AF, this project may lead to improved and more informed therapeutic strategies in athletes with AF.\n\nPrimary Hypothesis: Catheter ablation for AF in endurance athletes results in measurable changes in athletic performance, either beneficial or detrimental, due to shifts in cardiac physiology and autonomic function.\n\nPrimary objective:\n\nThe primary endpoint is the change in peak VO₂ (mL/kg/min) between baseline (before ablation) and follow-up.\n\nSecondary objectives:\n\n* Autonomic adaptations: including changes in maximum heart rate, heart rate recovery, heart rate reserve, and heart rate variability.\n* Cardiac function: alterations in diastolic and atrial function assessed by echocardiography.\n* Training and performance: objective measures such as efficiency factor, decoupling or cardiac drift, functional threshold power, critical power, and acute and chronic training load.\n* Technique comparison: differences in outcomes between pulsed field and radiofrequency ablation (e.g. atrial function, troponin release, …).\n* Sex-specific effects: recognising the underrepresentation of women in sports cardiology research, the investigators will include female athletes according to incidence and evaluate potential differences in treatment response between sexes.\n* Predictors of AF recurrence in endurance athletes"
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 100,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age 18-80 years\n* Participation in endurance sports (≥4 hours/week)\n* Diagnosis of atrial fibrillation\n* Capturing training data through commercially available platforms (e.g. Strava, TrainingPeaks, …) or willingness to start collecting training data and working with these commercially available platforms prospectively\n\nExclusion Criteria:\n\n* No training data available\n* History of cardiovascular disease (including ischemic heart disease, cardiomyopathy, valvular heart disease, primary electrical disorders, or congestive heart failure)\n* Active smoking",
+      "healthyVolunteers": false,
+      "maximumAge": "80 Years",
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PACE-AF",
+      "briefTitle": "Performance After Cardiac Ablation in Endurance Athletes for Atrial Fibrillation",
+      "nctId": "NCT07726056",
+      "officialTitle": "Performance After Cardiac Ablation in Endurance Athletes for Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "3113"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University Hospital of Leuven Leuven"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary endpoint is the change in peak VO₂ (mL/kg/min) between baseline (before ablation) and follow-up.",
+          "measure": "Change in peak VO2",
+          "timeFrame": "From enrollment to 8 weeks post-ablation."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "St Vincent's Hospital Melbourne"
+        },
+        {
+          "class": "OTHER",
+          "name": "Royal Adelaide Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Hospital, Antwerp"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Baerum Hospital, Vestre Viken Hospital Trust, Gjettum, Norway"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Ziekenhuis Oost Limburg (ZOL) Hospital Genk, Belgium"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Jessa Ziekenhuis Hasselt"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University Hospital of Leuven Leuven"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "University Hospital of Leuven Leuven",
+        "investigatorFullName": "Boris Delpire",
+        "investigatorTitle": "MD, PhD Candidate Sports Cardiology",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2032-12-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-27",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-07-24",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2030-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-03-01",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2026-07-24",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-07-21",
+      "studyFirstSubmitQcDate": "2026-07-21"
+    }
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D020521",
+          "term": "Stroke"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D000083242",
+          "term": "Ischemic Stroke"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants randomized to be systematically screened will receive at-home screening with a Zio XT Patch monitor.",
+          "interventionNames": [
+            "Device: Zio XT® Patch"
+          ],
+          "label": "Systematic Screening Arm",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Participants randomized to this arm will receive usual care.",
+          "label": "No Screening Arm",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Systematic Screening Arm"
+          ],
+          "description": "For participants randomized to be systematically screened, ambulatory ECG monitoring of up to 14 days will be performed using the Zio XT® Patch (iRhythm Inc, San Francisco, CA). The Zio XT® patch is a small, cutaneous ambulatory ECG recording device that provides cardiac rhythm monitoring for up to 14 consecutive days (significantly longer than the 48 hours of monitoring provided by a typical Holter Monitor). The device is approved by the Food and Drug Administration and is in routine clinical use, including in the VA system.",
+          "name": "Zio XT® Patch",
+          "otherNames": [
+            "Zio Patch"
+          ],
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Atrial Fibrillation",
+        "Ischemic Stroke"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "mustabeen.ashfaq@va.gov",
+          "name": "Mustabeen Ashfaq, MS",
+          "phone": "(857) 364-6026",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Palo Alto",
+          "contacts": [
+            {
+              "email": "mustabeen.ashfaq@va.gov",
+              "name": "Mustabeen Ashfaq, MS",
+              "phone": "857-364-6026",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Paul A. Heidenreich, MD MS",
+              "role": "STUDY_CHAIR"
+            }
+          ],
+          "country": "United States",
+          "facility": "VA Palo Alto Health Care System, Palo Alto, CA",
+          "geoPoint": {
+            "lat": 37.44188,
+            "lon": -122.14302
+          },
+          "state": "California",
+          "zip": "94304-1207"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "VA Palo Alto Health Care System, Palo Alto, CA",
+          "name": "Paul A. Heidenreich, MD MS",
+          "role": "STUDY_CHAIR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "* The goal of the screening trial is to determine whether early screening for atrial fibrillation improves outcomes, including lowering the chance of death, hospitalization for stroke, blood clots, heart failure, heart attack, and severe bleeding reduces the risk of stroke or heart failure.\n* Atrial fibrillation is a common heart condition in which one of the heart chambers doesn't follow a normal rhythm. Blood clots can form as a result, and they can travel to the brain and cause strokes, or to other organs.\n* Almost everyone with atrial fibrillation is treated with drugs called anticoagulants (\"blood thinners\") to reduce the risk of stroke. These drugs also increase the risk of bleeding.\n* Testing for atrial fibrillation is usually done for patients who have symptoms of an irregular or unusually fast or slow heartbeat, often called \"palpitations\" or a sensation of the heart pounding or stopping for a short period of time.\n* What is not known is whether screening people who do not have symptoms of atrial fibrillation, but who are at above-average risk of getting atrial fibrillation, will reduce death, hospitalization for stroke, blood clots, heart failure more than it increases hospitalization for severe bleeding.\n* People who participate in the trial who are selected by chance to receive screening will wear a small heart-rate monitor (Zio Patch) on their skin for 14 days and then return it to the manufacturer. Their doctors will be notified about the results and will make decisions about any treatment to recommend.\n* The screening trial is expected to enroll about 24,000 VA patients nationwide and to last 7 years, but each person's active participation in the trial is completed after sending in the Zio Patch. After that, the study team will just collect information from the participant's electronic medical records.",
+      "detailedDescription": "The study hypothesis is that screening for atrial fibrillation (AF) in participants at risk for AF will be associated with a reduction in adverse cardiovascular outcomes. This trial will enroll 24,060 participants with CHA2DS2-VASc score \\>=3, aged \\>=65 years without known AF to be randomized to either receive systematic screening at-home with a Zio Patch monitor or to no screening (usual care). If Zio Patch readings indicate AF or another significant arrhythmia, the provider(s) will be advised to consider a set of evidence-based guidelines, including but not limited to anticoagulation. The primary outcome is time to a composite of several events that are complications of AF or its treatment, all of them assessed remotely via electronic administrative records.\n\nThe Primary Objective is to assess the effect of a strategy for screening for pre-symptomatic AF on a composite outcome of complications of AF and its treatment, in a prospective, randomized trial. Secondary Objective is to assess the effectiveness of this strategy on the rate of clinical diagnosis of AF.\n\nPrimary Endpoint: composite of 1) hospitalization for stroke; 2) hospitalization for systemic embolism; 3) hospitalization for heart failure; 4) hospitalization for acute coronary syndrome; 5) hospitalization for bleeding; 6) death from any cause.\n\nSecondary Endpoints: diagnosis of AF (ICD-10 codes); individual components of the composite outcome.\n\n24,060 patients age \\>=65 years at approximately 100 VA Medical Centers throughout the US; representation of every VISN and likely every US state is anticipated. CHA2DS2-VASc score \\>=3 ensures that participants have cardiovascular risk factors (with age considered such a risk factor) but are not necessarily chronically ill. Those already diagnosed with AF, diagnosed with dementia, or anticoagulated long-term for reasons other than AF will be excluded. The VA population is \\~89% male with skewing that increases with age; inclusion of Veterans aged 55-64 years and the fact that female sex contributes 1 point to the CHA2DS2-VASc score should increase enrollment of women. Because of the pragmatic trial design and the fact that AF in Veterans \\<age 55 years is very uncommon, the study population will be restricted to only those \\>=55 years with AF. However, the primary outcome analysis will include only those Veterans age 65 years in order to assess outcomes from the EHR and other electronic data sources remotely.\n\nApproximately 100 VA Medical Centers with primary care and outpatient cardiology services will be used. The study will not include sites outside the US.\n\nThe trial is planned for 3 years of active enrollment and at least 3 years of remote follow-up of the last enrolled participant, thus 6 years of data collection (3-6 years per patient), with an additional year for the completion of data analysis, 7 years (84 months) total.\n\nParticipant duration is less than one month to enroll in the screening trial and complete the Zio Patch screening procedure. After that, clinical management is per the participant's providers, and all data are collected remotely using VA and CMS administrative data."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "For participants randomized to be systematically screened, ambulatory ECG monitoring of up to 14 days will be performed using the Zio XT® Patch. The company (iRhythm, Inc.) provides a detailed summary of findings, followed by review and summary by a trained Certified Cardiographic Technician. A VA cardiologist will review the data (as is standard in clinical use). The report will include, at a minimum: 1) the presence and total duration of any atrial fibrillation; 2) Additional findings relevant to clinical care. Evidence-based guidance for management will be included with the report. Any critical findings are reported immediately to the responsible local physician (site investigator) by iRhythm as is the standard practice.",
+        "maskingInfo": {
+          "masking": "NONE",
+          "maskingDescription": "The study is unblinded. Randomization will occur via an online tool developed for the study. Each participating site will have a separate block randomization scheme with random block size, programmed into the randomization tool before the start of the study."
+        },
+        "primaryPurpose": "SCREENING"
+      },
+      "enrollmentInfo": {
+        "count": 24060,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\nTo be eligible to participate in this study, an individual must meet all of the following criteria:\n\n1. Male or female, age \\>=65 years\n2. CHA2DS2-Vasc score \\>=3. The score is comprised of age (2 points for 75, 1 point for 65-74), sex (1 point for female), history of stroke, TIA, or systemic embolism (2 points), and history of heart failure, hypertension, vascular disease (including MI, peripheral artery disease, or aortic plaque), or diabetes (1 point each).\n\nExclusion Criteria:\n\nAn individual who meets any of the following criteria will be excluded from participation in this study:\n\n1. Current use of anticoagulation\n2. Diagnosis of AF (from administrative records or per patient during consent)\n3. Cardio-thoracic surgery in the prior 3 months\n4. Presence of pacemaker, implantable defibrillator, or implanted cardiac monitor\n5. Clinically significant allergy to adhesives, as reported by the patient during screening for trial enrollment\n6. Planned use of a brain or spinal-cord stimulator, TENS unit, or MRI scan during the period when the Zio Patch will be worn",
+      "healthyVolunteers": true,
+      "minimumAge": "65 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "VALIANT-AF-S",
+      "briefTitle": "The Effectiveness of Patch-Based Screening for Pre-Symptomatic Atrial Fibrillation to Improve Patient Outcome",
+      "nctId": "NCT06953778",
+      "officialTitle": "CSP #2037S - Veterans Affairs Learning Health System Initiative to Assess Novel Screening vs. Usual Care and Treatment With Apixaban vs. Rivaroxaban in Veterans With Atrial Fibrillation (VALIANT-AF-S) Trial",
+      "orgStudyIdInfo": {
+        "id": "2037S"
+      },
+      "organization": {
+        "class": "FED",
+        "fullName": "VA Office of Research and Development"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "Veterans Affairs Cooperative Studies Program",
+          "id": "2037",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Hospitalization for stroke, as determined by ICD-10 codes associated with hospitalization. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "Hospitalization for Stroke",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        },
+        {
+          "description": "Hospitalization for systemic embolism, as determined by ICD-10 codes associated with hospitalization. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "Hospitalization for Systemic Embolism",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        },
+        {
+          "description": "Hospitalization for heart failure, as determined by ICD-10 codes associated with hospitalization. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "Hospitalization for Heart Failure",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        },
+        {
+          "description": "Hospitalization for acute coronary syndrome, as determined by ICD-10 codes associated with hospitalization. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "Hospitalization for Acute Coronary Syndrome",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        },
+        {
+          "description": "Hospitalization for major bleeding, as determined by ICD-10 codes associated with hospitalization. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "Hospitalization for Major Bleeding",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        },
+        {
+          "description": "Death of any cause, as determined by VA data on vital status. The primary outcome is time to the first event of stroke, systemic embolism, heart failure, acute coronary syndrome, or major bleeding, or death from any cause (outcomes 1-6).",
+          "measure": "All-Cause Mortality",
+          "timeFrame": "3 years, assessed remotely via electronic administrative records"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Diagnosis of AF will be determined by use of its ICD code or detection of AF sustained for at least 30 seconds using a Zio Patch or other screening device.",
+          "measure": "Rate of New Diagnosis of AF",
+          "timeFrame": "3 years"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "FED",
+        "name": "VA Office of Research and Development"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2033-10-03",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-06-30",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-06-25",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2032-10-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2027-03-08",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-06",
+      "studyFirstPostDateStruct": {
+        "date": "2025-05-01",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-04-23",
+      "studyFirstSubmitQcDate": "2025-04-23"
+    }
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Following successful venipuncture, one or two PPS are deployed at the discretion of the operator prior to catheter insertion for catheter sheath sizes ≥ 9 French. Another PPS is deployed after catheter removal if the sheath size is \\< 9 French. All sheaths are removed at the end of the ablation procedure. Hemostasis should be achieved by delivery of the suture. Protamine may be administered according to institutional standards. A vertical mattress suture (Donati suture) is applied superficially to conform to the skin tissue. The suture is removed on the first day after PVI.",
+          "interventionNames": [
+            "Procedure: Atrial Fibrillation with femoral closure using closing system"
+          ],
+          "label": "SDD Group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Once the PVI block is confirmed, a figure-of-eight suture is placed at the femoral access site. The sheaths are removed and haemostasis should be achieved by manual compression at the discretion of the operator. Protamine may be administered according to institutional standards. A tourniquet is applied for a minimum of 30 minutes and the patient should remain supine.",
+          "interventionNames": [
+            "Procedure: Atrial Fibrillation with femoral closure using figure-of-eight stitch"
+          ],
+          "label": "ONS Group",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "SDD Group"
+          ],
+          "description": "The ablation procedure will be performed under deep sedation/general anaesthesia as standard of care. Vital signs will be monitored. For patients on oral anticoagulation, the procedure will be performed according to the latest guidelines. For catheter access, sheaths will be placed in the femoral veins after ultrasound-guided puncture according to institutional standard. If the patient is randomised to the SDD group prior to the procedure, the femoral access will be closed with a closure system. Ablation technique, number of access points and procedural details will be performed according to institutional standard. Patients may be enrolled regardless of the energy source used for ablation. The minimum procedural endpoint is PVI. Ablation strategies in addition to PVI are at the discretion of the operator. Antiarrhythmic therapy may be administered for a maximum of 2 months (blanking period).",
+          "name": "Atrial Fibrillation with femoral closure using closing system",
+          "type": "PROCEDURE"
+        },
+        {
+          "armGroupLabels": [
+            "ONS Group"
+          ],
+          "description": "The ablation procedure will be performed under deep sedation/general anaesthesia as standard of care. Vital signs will be monitored. For patients on oral anticoagulation, the procedure will be performed according to the latest guidelines. For catheter access, sheaths will be placed in the femoral veins after ultrasound-guided puncture according to institutional standard. If the patient is randomised to the ONS group prior to the procedure, the femoral access will be closed with a figure-of-eight suture. The ablation technique, number of access points and procedural details will be performed according to institutional standard. Patients may be enrolled regardless of the energy source used for ablation. The minimum procedural endpoint is PVI. Ablation strategies in addition to PVI are at the discretion of the operator. Antiarrhythmic therapy may be administered for a maximum of 2 months (blanking period).",
+          "name": "Atrial Fibrillation with femoral closure using figure-of-eight stitch",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "roland.tilz@uksh.de",
+          "name": "Roland R Tilz, Prof. Dr.",
+          "phone": "0049451500",
+          "phoneExt": "44511",
+          "role": "CONTACT"
+        },
+        {
+          "email": "sorinstefan.popescu@uksh.de",
+          "name": "Sorin S Popescu, MD",
+          "phone": "0049451500",
+          "phoneExt": "44511",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Lübeck",
+          "contacts": [
+            {
+              "email": "roland.tilz@uksh.de",
+              "name": "Roland R Tilz, Prof. Dr. med",
+              "phone": "0049451500",
+              "phoneExt": "44533",
+              "role": "CONTACT"
+            },
+            {
+              "email": "mirco.kuechler@uksh.de",
+              "name": "Mirco Kuechler",
+              "phone": "0049451500",
+              "phoneExt": "77075",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Sorin S Popescu, M.D.",
+              "role": "SUB_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Klinik für Rhythmologie",
+          "geoPoint": {
+            "lat": 53.86893,
+            "lon": 10.68729
+          },
+          "state": "Schleswig-Holstein",
+          "status": "RECRUITING",
+          "zip": "23538"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Universitätsklinikum Schleswig-Holstein, Universitäres Herzzentrum Lübeck, Klinik für Rhythmologie",
+          "name": "Roland R Tilz, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Universitätsklinikum Schleswig-Holstein, Universitäres Herzzentrum Lübeck, Klinik für Rhythmologie",
+          "name": "Sorin S Popescu, M.D.",
+          "role": "STUDY_CHAIR"
+        },
+        {
+          "affiliation": "Universitätsklinikum Schleswig-Holstein, Universitäres Herzzentrum Lübeck, Klinik für Rhythmologie, Studienzentrale",
+          "name": "Mirco Kuechler, M.Sc.",
+          "role": "STUDY_CHAIR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Prospective, randomized, controlled, multicentre study to compare the safety and efficacy of a Same Day Discharge (SDD) protocol in combination with a Perclose ProStyle (PPS) /ProGlide (PPG) suture mediated vascular closure device to the current gold standard: an overnight stay (ONS) protocol associated with manual compression ± figure-of-eight suture for the patients receiving interventional pulmonary vein isolation (PVI).",
+      "detailedDescription": "The aim of the study is to prove that the use of a SDD protocol does not lead to a higher rate of adverse events (minor and major), unplanned medical visits (emergency department or outpatients' clinic) and unplanned readmissions, while substantially reducing the costs associated with the medical care and increasing the comfort of the patients on a period of 30 days, when compared to ONS and manual compression ± figure-of-eight suture. Moreover, the safety, efficiency, and feasibility of the SDD protocol should be proven during a follow-up (FU) period of 12 months. The definition of endpoints will be trained in all participating study sites to preserve consistency."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 270,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients age \\>=18 years\n* Elective catheter ablation for atrial fibrillation using 6 to 14 Fr inner diameter introducer sheath with a minimum of 1 and maximum of 2 femoral venous access sites, independent of the energy source use\n\nExclusion Criteria:\n\n* Active systemic or cutaneous infection, or inflammation in vicinity of the groin\n* Platelet count \\< 50,000 cells/mm3\n* Body mass index (BMI) \\> 45 kg/m2 or \\< 18 kg/m2",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "SHAzAM-AF",
+      "briefTitle": "Same-Day Discharge Versus Overnight Stay Following Pulmonary Vein Isolation for Atrial Fibrillation",
+      "nctId": "NCT06598280",
+      "officialTitle": "Same-Day Discharge Versus Overnight Stay Following Pulmonary Vein Isolation for Atrial Fibrillation - the SHAzAM-AF Study",
+      "orgStudyIdInfo": {
+        "id": "SHAzAM-AF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University of Luebeck"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Primary Safety Endpoint",
+          "measure": "30 Day vascular access-related adverse events",
+          "timeFrame": "30 days post intervention"
+        },
+        {
+          "description": "Primary Efficacy Endpoint elapsed time between removal of the final closure device or removal of final sheath and the moment when the patient stood and walked 20 ft without evidence of venous re-bleeding from the femoral access site (time to ambulation; TTA)",
+          "measure": "Time to ambulation",
+          "timeFrame": "2 Days after intervention"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Secondary Efficacy Endpoint quality of life assessment (QoL) using the EQ-5D-5L questionnaire which contains 5 questions on current well-being and a scale from 0-100 on the personal assessment of the state of current health (from 0 (very poor) to 100 (very good)).",
+          "measure": "Quality of Life assessment - EQ-5D-5L",
+          "timeFrame": "12 Month after Intervention"
+        },
+        {
+          "description": "Secondary Efficacy Endpoint quality of life assessment (QoL) using the AFEQT questionnaire. which contains 20 questions on 7-point Likert scale on current well-being. Finally, a score between 0 corresponds to complete disability (or responding \"extremely\" limited, difficult or bothersome to all questions answered) of 100 corresponds to no disability (or responding \"not at all\" limited, difficult or bothersome to all questions answered)",
+          "measure": "Quality of Life assessment - AFEQT",
+          "timeFrame": "12 Month after Intervention"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University of Luebeck"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "University of Luebeck",
+        "investigatorFullName": "Roland Richard Tilz, MD",
+        "investigatorTitle": "Prof. Dr. univ. med.",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-03-15",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-04-08",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-04-04",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-02-20",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-04",
+      "studyFirstPostDateStruct": {
+        "date": "2024-09-19",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-07-12",
+      "studyFirstSubmitQcDate": "2024-09-16"
+    }
+  }
+}

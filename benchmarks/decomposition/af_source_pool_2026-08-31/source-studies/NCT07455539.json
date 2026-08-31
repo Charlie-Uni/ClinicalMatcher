@@ -1,0 +1,509 @@
+{
+  "derivedSection": {
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Device: LAmbre II Left Atrial Appendage Occluder"
+          ],
+          "label": "Intervention",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Intervention"
+          ],
+          "description": "The LAmbre™ II Left Atrial Appendage Occluder, designed to prevent thrombus embolization and reduce the risk of bleeding events in patients with non-valvular atrial fibrillation",
+          "name": "LAmbre II Left Atrial Appendage Occluder",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Non Valvular Atrial Fibrillation"
+      ],
+      "keywords": [
+        "non valvular atrial fibrillation",
+        "Left Atrial Appendage",
+        "Left Atrial Appendage Occluder",
+        "Left Atrial Appendage Occlusion",
+        "Stroke prevention"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "xjldaniel@gmail.com",
+          "name": "Daniel Xu",
+          "phone": "852 35051518",
+          "role": "CONTACT"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Worldwide, atrial fibrillation (AF) is the most common cardiac arrhythmia in adults. The prevalence of AF gradually increases with age; its prevalence is 0.5% \\~ 0.8% among 45 \\~ 59 year-olds, 1.8% \\~ 5.9% among 60 \\~ 69 year-olds, and 6.7% \\~17.9% among \\> 79 year-olds. Thromboembolic complications are the leading cause of death and disability in patients with AF, with ischemic stroke being the most common complication. AF significantly increases the risk of stroke by 3- to 5-fold due to thrombosis caused by abnormal atrial beat. The overall risk of ischemic stroke in patients with AF is 20% \\~ 30%, and strokes due to atrial fibrillation account for 20% of all strokes.\n\nIn the current 2023 ACC/AHA/ACCP/HRS Guideline, percutaneous LAAC has been classified as a Class 2a indication for stroke prevention in patients with AF, a moderate to high risk of stroke, and a contraindication to long-term oral anticoagulation due to a nonreversible cause. However, the implantation procedure does have adverse effects which include serious pericardial effusion, procedure-related ischemic stroke, and device embolization. Due to the anatomical diversity of the LAA, certain patients are not candidates for this device.\n\nThe LAmbre™ Left Atrial Appendage Closure System, manufactured by Lifetech Scientific (Shenzhen) Co.Ltd., is the first generation of LAmbre LAAO device which is CE-marked and is current approved in Hong Kong Hospital Authority for regular clinical use. It consists of a LAA Occluder and a Delivery System and is a percutaneous transcatheter device intended to prevent thrombus embolization from the left atrial appendage in patients who have nonvalvular atrial fibrillation.\n\nThis self-expanding LAA Occluder consists of an umbrella and a cover connected by a central waist. Although the first generation of LAmbre LAAO device is associated with high implantation success rate of 99.7% and a relatively low major procedure-related complication rate of 2.9%, to better match the challenging anatomy of the LAA and to further improve procedural safety, the first generation of LAmbre LAAO device has been upgraded.\n\nThe LAmbre™ II Left Atrial Appendage Occluder, designed to prevent thrombus embolization and reduce the risk of bleeding events in patients with non-valvular atrial fibrillation, is being evaluated in a prospective, single-center, single-arm First In Man (FIM) study. The study, conducted at the Prince of Wales Hospital, Chinese University of Hong Kong, aims to assess the preliminary safety and feasibility of the device and its Occluder Delivery System in 10 subjects who are at increased risk for stroke and systemic embolism, either due to their anticoagulation therapy eligibility or contraindications.\n\nThe enrollment period is expected to take approximately 6 months and subjects will have follow-up before discharge and at 30 days, 3M, 6M, 12M months post-operation. The total study duration is expected to be approximately 19 months."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 10,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* The patient age ≥18 years;\n* The patient has documented paroxysmal, persistent, or permanent non-valvular atrial fibrillation;\n* The patient has a CHA2DS2-VASc score of ≥ 2 in men and CHA2DS2-VASc score of ≥ 3 in women;\n* The patient is recommended for oral anticoagulation therapy, but there is an appropriate rationale for seeking a non-pharmacologic alternative to oral anticoagulation;\n* The patient is deemed suitable for LAA closure by the site investigator and a clinician not a part of the procedural team in the shared decision-making process, and this determination has been documented in the patient's medical record;\n* The patient is willing and able to comply with the required medication post-procedure and follow-up evaluations;\n* The patient (or his or her legally authorized representative) has been informed of the nature of the study, agrees to its provisions, and has been provided written informed consent approved by the appropriate Institutional Review Board (IRB) or Ethics Committee (EC).\n\nExclusion Criteria:\n\n* 1\\. Pregnant or nursing patients and those who plan pregnancy during the study period. Female patients of childbearing potential must have a negative pregnancy test (per site standard test) within 7 days prior to the index procedure;\n* Patients with atrial fibrillation that is defined by a single occurrence, or that is transient or reversible (e.g., secondary to CABG, an interventional procedure, pneumonia, or hyperthyroidism);\n* Patients who require long-term anticoagulation for a condition other than atrial fibrillation;\n* Bleeding diathesis or coagulopathy;\n* Patients with rheumatic mitral valve disease, known severe mitral stenosis requiring surgical or percutaneous valve replacement, or existing mechanical valve prosthesis;\n* Active infection with bacteremia;\n* Known hypersensitivity or contraindication to aspirin, clopidogrel, heparin, any device material or component (nickel titanium, PET, polypropylene), and/or contrast sensitivity;\n* Prior atrial septal defect (ASD) or patient foramen ovale (PFO) surgical repair or implantation of closure device;\n* Left atrial appendage is obliterated and surgical ligated;\n* Underwent any cardiac or non-cardiac interventional or surgical procedure within 30 days prior to the procedure or planned to have the interventional or surgical procedure within 60 days after implant procedure (e.g., cardioversion, ablation, percutaneous coronary intervention, cataract surgery, etc.);\n* Recent (within 90 days prior to procedure) stroke, transient ischemic attack, or myocardial infarction;\n* New York Heart Association Class IV;\n* Patients with severe renal failure (estimated glomerular filtration rate\\<30 ml/min/1.73m2);\n* Known asymptomatic carotid artery disease with\\>70% diameter stenosis OR symptomatic carotid disease (\\>50% diameter stenosis with ipsilateral stroke or TIA). Subjects with prior carotid endarterectomy or carotid stent placement may be enrolled, provided that known diameter stenosis is \\<50%;\n* Life expectancy is less than 1 year;\n* Current participation in another investigational drug or device study.\n\nEchocardiographic Exclusion Criteria:\n\n* Left atrial appendage anatomy cannot accommodate the LAmbre II LAA Occluder per manufacturer IFU;\n* LVEF \\<30%;\n* Intracardiac thrombus or dense spontaneous echo contrast, as visualized by TEE prior to implant;\n* Presence of a high-risk patent foramen ovale (PFO), defined as an atrial septal aneurysm (excursion \\>15 mm or length \\>15 mm) or large shunt (early, within 3 beats and/or substantial passage of 20 bubbles);\n* Existing circumferential pericardial effusion \\>5 mm;\n* Moderate or severe mitral valve stenosis (mitral valve area \\<1.5 cm2);\n* Complex atheroma with mobile plaque of the descending aorta and/or aortic arch;\n* Presence of a cardiac tumor",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "LAmbre2",
+      "briefTitle": "LAmbre™ II Left Atrial Appendage Occluder and Occluder Delivery System for Patients With Non-Valvular Atrial Fibrillation",
+      "nctId": "NCT07455539",
+      "officialTitle": "A First-in-Man (FIM) Study of the LAmbre™ II Left Atrial Appendage Occluder and Occluder Delivery System for Patients With Non-Valvular Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "2025.451"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Prince of Wales Hospital, Shatin, Hong Kong"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "complete LAA closure or peri-device residual leak ≤3 mm measured by TEE at 3 months post-procedure",
+          "measure": "LAA closure success rate",
+          "timeFrame": "3 months post-procedure"
+        },
+        {
+          "description": "Rate of complication rate peri-procedure",
+          "measure": "Procedural complication rate",
+          "timeFrame": "peri-procedure"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Rate of death at discharge",
+          "measure": "Rate of death",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of stroke at discharge",
+          "measure": "Rate of stroke",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of stroke at 30 days post-OP",
+          "measure": "Rate of stroke",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of stroke at 6 months post-OP",
+          "measure": "Rate of stroke",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of stroke at 12 months post-OP",
+          "measure": "Rate of stroke",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of systemic embolism at discharge",
+          "measure": "Rate of systemic embolism",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of systemic embolism at 30 days post-OP",
+          "measure": "Rate of systemic embolism",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of systemic embolism at 3 months post-OP",
+          "measure": "Rate of systemic embolism",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of systemic embolism at 6 months post-OP",
+          "measure": "Rate of systemic embolism",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of systemic embolism at 12 months post-OP",
+          "measure": "Rate of systemic embolism",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion with tamponade at discharge",
+          "measure": "Rate of pericardial effusion with tamponade",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of pericardial effusion with tamponade at 30 days post-OP",
+          "measure": "Rate of pericardial effusion with tamponade",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion with tamponade at 3 months post-OP",
+          "measure": "Rate of pericardial effusion with tamponade",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion with tamponade at 6 months post-OP",
+          "measure": "Rate of pericardial effusion with tamponade",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion with tamponade at 12 months post-OP",
+          "measure": "Rate of pericardial effusion with tamponade",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion requiring drainage at discharge",
+          "measure": "Rate of pericardial effusion requiring drainage",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of pericardial effusion requiring drainage at 30 days post-OP",
+          "measure": "Rate of pericardial effusion requiring drainage",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion requiring drainage at 3 months post-OP",
+          "measure": "Rate of pericardial effusion requiring drainage",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion requiring drainage at 6 months post-OP",
+          "measure": "Rate of pericardial effusion requiring drainage",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of pericardial effusion requiring drainage at 12 months post-OP",
+          "measure": "Rate of pericardial effusion requiring drainage",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of device embolization at discharge",
+          "measure": "Rate of device embolization",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of device embolization at discharge at 30 days post-OP",
+          "measure": "Rate of device embolization",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of device embolization at 3 months post-OP",
+          "measure": "Rate of device embolization",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of death at 30 days",
+          "measure": "Rate of death",
+          "timeFrame": "At 30 days"
+        },
+        {
+          "description": "Rate of death at 3 months post-OP",
+          "measure": "Rate of death",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of death at 6 months post-OP",
+          "measure": "Rate of death",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of death at 12 months post-OP",
+          "measure": "Rate of death",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of device embolization at 6 months post-OP",
+          "measure": "Rate of device embolization",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of device embolization at 12 months post-OP",
+          "measure": "Rate of device embolization",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Rate of major bleeding (BARC defined 3 to 5) at discharge",
+          "measure": "Rate of major bleeding (BARC defined 3 to 5)",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of major bleeding (BARC defined 3 to 5) at 30 days post-OP",
+          "measure": "Rate of major bleeding (BARC defined 3 to 5)",
+          "timeFrame": "At 30 days post-OP"
+        },
+        {
+          "description": "Rate of major bleeding (BARC defined 3 to 5) at 3 months post-OP",
+          "measure": "Rate of major bleeding (BARC defined 3 to 5)",
+          "timeFrame": "At 3 months post-OP"
+        },
+        {
+          "description": "Rate of major bleeding (BARC defined 3 to 5) at 6 months post-OP",
+          "measure": "Rate of major bleeding (BARC defined 3 to 5)",
+          "timeFrame": "At 6 months post-OP"
+        },
+        {
+          "description": "Rate of major bleeding (BARC defined 3 to 5) at 12 months post-OP",
+          "measure": "Rate of major bleeding (BARC defined 3 to 5)",
+          "timeFrame": "At 12 months post-OP"
+        },
+        {
+          "description": "Closure success assessed by TEE or cardiac computed tomography at 30 days post-procedure",
+          "measure": "Closure success assessed by TEE or cardiac computed tomography",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Closure success assessed by TEE or cardiac computed tomography at 6 months post-procedure",
+          "measure": "Closure success assessed by TEE or cardiac computed tomography",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Closure success assessed by TEE or cardiac computed tomography at 12 months post-procedure",
+          "measure": "Closure success assessed by TEE or cardiac computed tomography",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Rate of minor bleeding (BARC type 2) at discharge",
+          "measure": "Rate of minor bleeding (BARC type 2)",
+          "timeFrame": "At discharge, 30 days and 3, 6, 12 months post-procedure"
+        },
+        {
+          "description": "Rate of minor bleeding (BARC type 2) at 30 days post-procedure",
+          "measure": "Rate of minor bleeding (BARC type 2)",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of minor bleeding (BARC type 2) at 3 months post-procedure",
+          "measure": "Rate of minor bleeding (BARC type 2)",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of minor bleeding (BARC type 2) at 6 months post-procedure",
+          "measure": "Rate of minor bleeding (BARC type 2)",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of minor bleeding (BARC type 2) at 12 months post-procedure",
+          "measure": "Rate of minor bleeding (BARC type 2)",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Rate of cardiovascular death at discharge",
+          "measure": "Rate of cardiovascular death",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of cardiovascular death at 30 days post-procedure.",
+          "measure": "Rate of cardiovascular death",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of cardiovascular death at 3 months post-procedure.",
+          "measure": "Rate of cardiovascular death",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of cardiovascular death at 6 months post-procedure.",
+          "measure": "Rate of cardiovascular death",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of cardiovascular death at 12 months post-procedure.",
+          "measure": "Rate of cardiovascular death",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Rate of ischemic stroke at discharge",
+          "measure": "Rate of ischemic stroke",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of ischemic stroke at 30 days post-procedure",
+          "measure": "Rate of ischemic stroke",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of ischemic stroke at 3 months post-procedure",
+          "measure": "Rate of ischemic stroke",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of ischemic stroke at 6 months post-procedure",
+          "measure": "Rate of ischemic stroke",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of ischemic stroke at 12 months post-procedure",
+          "measure": "Rate of ischemic stroke",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Rate of hemorrhagic stroke at discharge",
+          "measure": "Rate of hemorrhagic stroke",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of hemorrhagic stroke at 30 days post-procedure",
+          "measure": "Rate of hemorrhagic stroke",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of hemorrhagic stroke at 3 months post-procedure",
+          "measure": "Rate of hemorrhagic stroke",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of hemorrhagic stroke at 6 months post-procedure",
+          "measure": "Rate of hemorrhagic stroke",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of hemorrhagic stroke at 12 months post-procedure",
+          "measure": "Rate of hemorrhagic stroke",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Rate of systemic embolization at discharge",
+          "measure": "Rate of systemic embolization",
+          "timeFrame": "Perioperative"
+        },
+        {
+          "description": "Rate of systemic embolization at 30 days post-procedure",
+          "measure": "Rate of systemic embolization",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of systemic embolization at 3 months post-procedure",
+          "measure": "Rate of systemic embolization",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of systemic embolization at 6 months post-procedure",
+          "measure": "Rate of systemic embolization",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of systemic embolization at 12 months post-procedure",
+          "measure": "Rate of systemic embolization",
+          "timeFrame": "At 12 months post-procedure"
+        },
+        {
+          "description": "Procedural Technical success rate, defined as successful delivery and release of study device with acceptable device position and stability, and closure success;",
+          "measure": "Procedural Technical success rate",
+          "timeFrame": "During procedure"
+        },
+        {
+          "description": "Procedural success rate, defined as technical success without major peri-procedural complications",
+          "measure": "Procedural success rate",
+          "timeFrame": "Peri-procedure"
+        },
+        {
+          "description": "Rate of Device-related thrombosis, defined as the detection of thrombus adherent to the left atrial side of the device by TEE or cardiac computed tomography at 30 days post-procedure",
+          "measure": "Rate of Device-related thrombosis",
+          "timeFrame": "At 30 days post-procedure"
+        },
+        {
+          "description": "Rate of Device-related thrombosis, defined as the detection of thrombus adherent to the left atrial side of the device by TEE or cardiac computed tomography at 3 months post-procedure",
+          "measure": "Rate of Device-related thrombosis",
+          "timeFrame": "At 3 months post-procedure"
+        },
+        {
+          "description": "Rate of Device-related thrombosis, defined as the detection of thrombus adherent to the left atrial side of the device by TEE or cardiac computed tomography at 6 months post-procedure",
+          "measure": "Rate of Device-related thrombosis",
+          "timeFrame": "At 6 months post-procedure"
+        },
+        {
+          "description": "Rate of Device-related thrombosis, defined as the detection of thrombus adherent to the left atrial side of the device by TEE or cardiac computed tomography at 12 months post-procedure",
+          "measure": "Rate of Device-related thrombosis",
+          "timeFrame": "At 12 months post-procedure"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "INDUSTRY",
+          "name": "Lifetech Scientific (Shenzhen) Co., Ltd."
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Prince of Wales Hospital, Shatin, Hong Kong"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Prince of Wales Hospital, Shatin, Hong Kong",
+        "investigatorFullName": "Dr So Chak Yu kent",
+        "investigatorTitle": "Clinical Assistant Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-05-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-03-06",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-03-02",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-11-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-04-01",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2026-03-06",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-02-25",
+      "studyFirstSubmitQcDate": "2026-03-02"
+    }
+  }
+}

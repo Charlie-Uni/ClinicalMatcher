@@ -1,0 +1,268 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Adult subjects who are eligible to participate will undergo a concomitant cardiac surgical procedure with nsPFA ablation (of left and right pulmonary veins as well as roof and floor lesions to form a box) and treatment of left atrial appendage.",
+          "interventionNames": [
+            "Device: CellFX® nsPFA™ Cardiac Surgery System"
+          ],
+          "label": "CellFX nsPFA Clamp",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "CellFX nsPFA Clamp"
+          ],
+          "description": "Participants will receive cardiac ablation with the CellFX® nsPFA™ Cardiac Clamp",
+          "name": "CellFX® nsPFA™ Cardiac Surgery System",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Maze Procedure",
+        "AF",
+        "Ablation"
+      ],
+      "keywords": [
+        "nsPFA"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "Shweta.Kalpa@pulsebiosciences.com",
+          "name": "Shweta Kalpa, MD",
+          "phone": "(800) 543-3695",
+          "role": "CONTACT"
+        },
+        {
+          "email": "bknape@pulsebiosciences.com",
+          "name": "William A. Knape",
+          "phone": "(919) 757-2033",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "St. Helena",
+          "contacts": [
+            {
+              "name": "Aaron M Kime, MD",
+              "phone": "707-963-7200",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Adventist Heart Institute: Adventist Health St. Helena",
+          "geoPoint": {
+            "lat": 38.50519,
+            "lon": -122.47026
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94574"
+        },
+        {
+          "city": "Ann Arbor",
+          "contacts": [
+            {
+              "name": "Matthew A Romano, MD",
+              "phone": "888-287-1082",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cardiac Surgery Clinic | Frankel Cardiovascular Center",
+          "geoPoint": {
+            "lat": 42.27756,
+            "lon": -83.74088
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48109"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University of Michigan, Cardiac Surgery Clinic | Frankel Cardiovascular Center",
+          "name": "Matthew A. Romano, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The primary objective of this Pivotal study is to demonstrate the safety and effectiveness of the Pulse Biosciences nsPFA™ Cardiac Surgery System in treating atrial fibrillation during concomitant cardiac surgical procedures.",
+      "detailedDescription": "The study design is a prospective, multicenter, non-randomized single arm study. Eligible adult subjects with paroxysmal or persistent/longstanding persistent AF who are eligible to participate will undergo a concomitant cardiac surgical procedure with CellFX nsPFA Cardiac Surgery System ablation and left atrial appendage exclusion or removal. The left atrial wall isolation will include left and right pulmonary vein isolation as well as isolation of the left atrial posterior wall through left atrial roof and floor lesions. The left atrial posterior wall isolation (PWI) can be formed by either allowing a closed LA epicardial only lesion encompassing the entire posterior wall of the left atrium or by a combined epicardial/endocardial approach when the left atrium is open.\n\nPrimary effectiveness endpoint is freedom from any AF/AFL/AT lasting \\> 30 seconds and freedom for use of new or increased dose of previously failed Class I or III antiarrhythmic drugs (AADs) prescribed to treat atrial arrhythmias following the 90-day blanking period through 6 months post the concomitant surgical and ablation procedure by a core lab.\n\nPrimary safety endpoint is the incidence of acute major adverse events (MAEs), which includes death, stroke, myocardial infarction (MI), transient ischemic attack (TIA), or excessive bleeding (Bleeding Academic Research Consortium (BARC) 3b, 4, or 5) within 30 days post-concomitant surgical procedure. These events may be related to either the cardiac surgical procedure or the ablation procedure. All MAE events will be reviewed and adjudicated by an independent Clinical Events Committee (CEC)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "interventionModelDescription": "Single-Arm Study.",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 135,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Subject must be between 18 and 85 years of age\n* Subject is willing and capable of providing Informed Consent to undergo study procedures which include the potential for surgical AF ablation, and completion of follow-up visits as specified in the clinical study protocol\n* Subject has history of documented paroxysmal atrial fibrillation (AF that is intermittent and terminates within ≤ 7 days of onset) or persistent/longstanding persistent atrial fibrillation (AF that is continuous and sustains for \\> 7 days and requires intervention) within one year prior to enrollment. Documentation may include ECG, transtelephonic monitor (TTM), Holter monitor or telemetry strip from the study hospital or an outside physician\n* Subject is scheduled to undergo non-emergent cardiac surgical procedure(s) to be performed on cardiopulmonary bypass including open-heart surgery via sternotomy for one or more of the following: Mitral valve repair or replacement, Aortic valve repair or replacement, Ascending aortic aneurysms, Atrial Septal Defect (ASD)/Patent Foramen Ovale (PFO) or Coronary artery bypass procedures\n* Left ventricular ejection fraction ≥ 30% (determined by echocardiography or cardiac catheterization performed within 60 days of enrollment as documented in patient medical history)\n* Subject has a life expectancy of at least 5 years\n* Subject currently lives within a reasonable commuting distance of the investigational site and plans to remain geographically stable through 12 month follow up\n\nExclusion Criteria:\n\n* Subject has an implantable electronic medical device. (i.e., pacemaker, implantable cardioverter-defibrillator (ICD), or Cardiac Resynchronization Therapy (CRT) or left atrial appendage (LAA) device\n* Subject has history or known to have LAA clot\n* Subject has a prosthetic heart valve\n* Stand- alone AF without indication(s) for concomitant Coronary Artery Bypass Graft (CABG) and/or valve surgery\n* Prior cardiac surgery including prior cardiac surgical ablation\n* Left Atrial diameter ≥ 6cm\n* Wolff-Parkinson-White syndrome or other Supra-Ventricular Arrhythmia, Atrioventricular (AV) nodal reentry\n* Documented history of persistent or long standing persistent atrial fibrillation longer than 10 years\n* Subjects requiring surgery other than CABG and/or cardiac valve surgery and/or atrial septal defect repair/PFO and ascending aorta\n* Prior history of medical procedure involving instrumentation of the left atrium (e.g., previous ablation)\n* Subjects that are on an AAD for ventricular arrhythmia.\n* STS Predicted Risk of Mortality (STS PROM) of 10 or higher\n* Class III or IV New York Heart Association (NYHA) heart failure symptoms\n* Prior history of stroke within 6 months\n* Documented ST-segment elevation Myocardial Infarction (MI) within the 6 weeks prior to study enrollment\n* Need for emergent cardiac surgery (per sit-to-stand (STS) test definition)\n* Known carotid artery stenosis greater than 80%\n* Current diagnosis of active systemic infection\n* Severe peripheral arterial occlusive disease defined as claudication with minimal exertion\n* Renal failure requiring dialysis or hepatic failure (significant liver dysfunction with markedly significant elevation of liver enzymes, such as cirrhosis with decompensation, portal hypertension, or a history of hepatic failure)\n* A known drug and/or alcohol addiction\n* Mental impairment or other conditions that may not allow the subject to understand the nature, significance, and scope of the study\n* Pregnancy or desire to get pregnant within 12 months of the study treatment\n* Preoperative need for an intra-aortic balloon pump or intravenous inotropes\n* Subjects who have been treated with thoracic radiation\n* Subjects in current chemotherapy\n* Subjects on long-term treatment with oral or injected steroids (not including intermittent use of inhaled steroids for respiratory diseases)\n* Subjects with known hypertrophic obstructive cardiomyopathy\n* Subjects with known cold agglutinin\n* Subject has a contraindication to anticoagulation (e.g., a bleeding or clotting disorder such as Idiopathic Thrombocytopenic Purpura (ITP))\n* Solid organ or hematologic transplant, or currently being evaluated for an organ transplant\n* Body mass index \\> 45 kg/m2\n* Any diagnosed connective tissue disorder\n* Severe Chronic Obstructive Pulmonary Disease (COPD) per sit-to-stand (STS) test definition\n* Use of any other investigational drug, therapy, or device within 30 days before enrollment or concurrent participation in another research study",
+      "healthyVolunteers": false,
+      "maximumAge": "85 Years",
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "NANOCLAMP-AF",
+      "briefTitle": "CellFX® Nanosecond Pulsed Field Ablation (nsPFA)™ Cardiac Surgery Clamp System to Treat Atrial Fibrillation",
+      "nctId": "NCT06959121",
+      "officialTitle": "Pulse Biosciences' CellFX nsPFA Cardiac Surgery Clamp System for the Treatment of Atrial Fibrillation During Concomitant Cardiac Surgery",
+      "orgStudyIdInfo": {
+        "id": "NP-PCP-041"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Pulse Biosciences, Inc."
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Freedom from AF/AFL/AT of 30 seconds or greater duration and freedom for use of new or increased dose of previously failed Class I or III antiarrhythmic drugs (AADs) prescribed to treat atrial arrhythmias.",
+          "measure": "Freedom from atrial fibrillation/atrial flutter/atrial tachycardia",
+          "timeFrame": "3-months through 6 months post-index procedure"
+        },
+        {
+          "description": "Rate of acute major adverse events (MAEs) which includes death, stroke, myocardial infarction (MI), and transient ischemic attack (TIA) or excessive bleeding (Bleeding Academic Research Consortium (BARC) 3b, 4 or 5).",
+          "measure": "Incidence of Treatment-Emergent Adverse Events",
+          "timeFrame": "Within 30 days post-concomitant surgical procedure"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Acute electrical isolation of the left and right pulmonary veins and left atrial posterior wall by means of either intraoperative entrance or exit block testing",
+          "measure": "Acute electrical isolation of the pulmonary veins",
+          "timeFrame": "Immediately post-ablation procedure"
+        },
+        {
+          "description": "Freedom from AF/AFL/AT of 30 seconds and freedom from use of new or increased dose of previously failed Class I or III AADs prescribed to treat atrial arrhythmias",
+          "measure": "Freedom from atrial fibrillation/atrial flutter/atrial tachycardia",
+          "timeFrame": "Within 12 months post-ablation procedure"
+        },
+        {
+          "description": "Quality of Life (QoL) as measured using AFEQT and SF-12 (Physical Component Summary (PCS), Mental Component Summary (MCS) and General Health (GH))",
+          "measure": "Patient-Reported Outcome Measures (PROMs) for quality of life assessing well-being across physical, mental, and social domains",
+          "timeFrame": "6 and 12 months post-ablation procedure"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUnapprovedDevice": true,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "INDUSTRY",
+          "name": "Avania"
+        }
+      ],
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Pulse Biosciences, Inc."
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-12",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-01-12",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-01-09",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-04",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-10-23",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-01",
+      "studyFirstPostDateStruct": {
+        "date": "2025-05-06",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-04-28",
+      "studyFirstSubmitQcDate": "2025-04-28"
+    }
+  }
+}

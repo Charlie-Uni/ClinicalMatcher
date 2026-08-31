@@ -1,0 +1,342 @@
+{
+  "builder_code_commit": "3f7b470426f364e477ac52d6839204331a50eaf1",
+  "counts": {
+    "cross_split_pairs_evaluated": 1600,
+    "dev_criteria": 40,
+    "reported_top_pairs": 20,
+    "test_criteria": 40
+  },
+  "distribution": {
+    "maximum": 1.0,
+    "p50": 0.03125,
+    "p90": 0.1,
+    "p95": 0.132352941176,
+    "p99": 0.269230769231
+  },
+  "method": {
+    "comparison_scope": "all_dev_by_test_selected_pairs",
+    "distribution_quantile": "nearest_rank",
+    "limitations": [
+      "Lexical overlap is not semantic equivalence.",
+      "Paraphrases with different vocabulary may receive low overlap.",
+      "The diagnostic does not change split membership or benchmark eligibility."
+    ],
+    "name": "unicode_word_set_jaccard/1.0.0",
+    "normalization": "Unicode NFKC then casefold",
+    "selection_effect": "none",
+    "similarity": "set intersection size divided by set union size",
+    "tokenization": "unique Unicode alphanumeric word tokens; underscores excluded",
+    "top_k": 20
+  },
+  "report_id": "decomposition-overlap-e8520469215ee1f9",
+  "report_sha256": "e8520469215ee1f996ee803eac8509bcbf5252d71b5b65f921029b1a97b91ffc",
+  "report_version": "decomposition-overlap-diagnostic/1.0.0",
+  "source_selection": {
+    "selection_file_sha256": "df9bd0fdb6ed1eaabfc132ddff12d8065ce66c273a43adec53887c7ce0624234",
+    "selection_manifest_id": "decomposition-selection-befdca243400ea10",
+    "selection_manifest_sha256": "befdca243400ea10e7acda1f8fae6351917e4e4aca067b8c839b01a02c1963c3"
+  },
+  "status": "disclosure_only_no_selection_gate",
+  "top_pairs": [
+    {
+      "dev": {
+        "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+        "nct_id": "NCT05860894",
+        "normalized_text_sha256": "1d1b73210b0cd6c70f8ed50f3ee6171e7ad1fd7f1148c5edaee23fa2677bcde7"
+      },
+      "jaccard_similarity": 1.0,
+      "shared_token_count": 3,
+      "test": {
+        "criterion_id": "nct05411614-inclusion-6de1151800f7358f",
+        "nct_id": "NCT05411614",
+        "normalized_text_sha256": "adf2ed3621dd314a1ffa16b589f1763846a79826febbe7ff0de0b787d73486fa"
+      },
+      "union_token_count": 3
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+        "nct_id": "NCT07687862",
+        "normalized_text_sha256": "c443587871f8eaf9e0ff5453b51d53b4a2bb2aa488d63686b5477993bd06f867"
+      },
+      "jaccard_similarity": 1.0,
+      "shared_token_count": 3,
+      "test": {
+        "criterion_id": "nct05411614-inclusion-6de1151800f7358f",
+        "nct_id": "NCT05411614",
+        "normalized_text_sha256": "adf2ed3621dd314a1ffa16b589f1763846a79826febbe7ff0de0b787d73486fa"
+      },
+      "union_token_count": 3
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "9911db7a7e29e4e6ccd810ef6f7281e7c5d6d5e2ac824a619087f0a5ea94580a"
+      },
+      "jaccard_similarity": 0.666666666667,
+      "shared_token_count": 6,
+      "test": {
+        "criterion_id": "nct05978388-inclusion-034b378530abf39d",
+        "nct_id": "NCT05978388",
+        "normalized_text_sha256": "d818f50ab42c074248a8ed3d342e473d115b2690804d6bbe6f4a8c60b2eded48"
+      },
+      "union_token_count": 9
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07455539-exclusion-23639d187688b443",
+        "nct_id": "NCT07455539",
+        "normalized_text_sha256": "bb928a8ab50c6bc5e46e43d0c576a809fe303bf3824062927b67e60cdf684049"
+      },
+      "jaccard_similarity": 0.416666666667,
+      "shared_token_count": 10,
+      "test": {
+        "criterion_id": "nct07349121-exclusion-b5d1bc94967d5de4",
+        "nct_id": "NCT07349121",
+        "normalized_text_sha256": "3fd6c5fc379037cdeb43258384222aa141f2e6939341784ff4da18a9f42afaa9"
+      },
+      "union_token_count": 24
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-exclusion-dd19e0140f02db24",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "a4d1085c996117564f5e6161465c37792b8e365e75fd2ba7cd30a83e09a67d37"
+      },
+      "jaccard_similarity": 0.363636363636,
+      "shared_token_count": 4,
+      "test": {
+        "criterion_id": "nct06358391-exclusion-b899a7501e53c2ee",
+        "nct_id": "NCT06358391",
+        "normalized_text_sha256": "f7a7b3d81704a21ec475a4855e9aef3e524de4b9e5fd28e3f90021bf9b8ef110"
+      },
+      "union_token_count": 11
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+        "nct_id": "NCT07430956",
+        "normalized_text_sha256": "d63cc49f11faeba9642e3e122c9ef8319ad59c0f07719207412a83bbc95b612b"
+      },
+      "jaccard_similarity": 0.346153846154,
+      "shared_token_count": 18,
+      "test": {
+        "criterion_id": "nct06953778-inclusion-7d18a1cc45b52323",
+        "nct_id": "NCT06953778",
+        "normalized_text_sha256": "ea21a013b3ac047b8633ac624a8035544c6d8f4a757975783234dab7199f31bd"
+      },
+      "union_token_count": 52
+    },
+    {
+      "dev": {
+        "criterion_id": "nct05860894-inclusion-83b4b84c3a0bc30e",
+        "nct_id": "NCT05860894",
+        "normalized_text_sha256": "d3be1da97636b4011dd9ba2d63f6220e2a0cbab2fcdc7f633c739b49e83654df"
+      },
+      "jaccard_similarity": 0.333333333333,
+      "shared_token_count": 3,
+      "test": {
+        "criterion_id": "nct05978388-inclusion-034b378530abf39d",
+        "nct_id": "NCT05978388",
+        "normalized_text_sha256": "d818f50ab42c074248a8ed3d342e473d115b2690804d6bbe6f4a8c60b2eded48"
+      },
+      "union_token_count": 9
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "9911db7a7e29e4e6ccd810ef6f7281e7c5d6d5e2ac824a619087f0a5ea94580a"
+      },
+      "jaccard_similarity": 0.333333333333,
+      "shared_token_count": 4,
+      "test": {
+        "criterion_id": "nct07349121-inclusion-96eed9d335c8854c",
+        "nct_id": "NCT07349121",
+        "normalized_text_sha256": "af8bcb00a40d99cffce940baf1c3ae02358808eac8fd01f83d06125c350651d4"
+      },
+      "union_token_count": 12
+    },
+    {
+      "dev": {
+        "criterion_id": "nct02932007-inclusion-3449060b23561f00",
+        "nct_id": "NCT02932007",
+        "normalized_text_sha256": "59e731a7fc3c30e644bcef8945559fa8aaffa1724a7768f7d57854fe038022af"
+      },
+      "jaccard_similarity": 0.3,
+      "shared_token_count": 15,
+      "test": {
+        "criterion_id": "nct06633523-inclusion-259f83f09ecb88a2",
+        "nct_id": "NCT06633523",
+        "normalized_text_sha256": "82d46b1de928ecad6d8a13636449623bca9ee77e8fded7ef8a2c55331ea701b4"
+      },
+      "union_token_count": 50
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07715929-inclusion-c6ddf661e250f976",
+        "nct_id": "NCT07715929",
+        "normalized_text_sha256": "0478834d421b1636b0a627d8fc2e42202f8c4af85bc8fbfdb87a17f8e8b51be3"
+      },
+      "jaccard_similarity": 0.3,
+      "shared_token_count": 3,
+      "test": {
+        "criterion_id": "nct05411614-inclusion-6de1151800f7358f",
+        "nct_id": "NCT05411614",
+        "normalized_text_sha256": "adf2ed3621dd314a1ffa16b589f1763846a79826febbe7ff0de0b787d73486fa"
+      },
+      "union_token_count": 10
+    },
+    {
+      "dev": {
+        "criterion_id": "nct06528262-inclusion-0426eaaa3ba61877",
+        "nct_id": "NCT06528262",
+        "normalized_text_sha256": "2fe560d6dcaebf1bc8a32a82eb3ba7c5732f355995260a57e920cb41d6edd161"
+      },
+      "jaccard_similarity": 0.291666666667,
+      "shared_token_count": 7,
+      "test": {
+        "criterion_id": "nct07295769-inclusion-4e84d646a9086487",
+        "nct_id": "NCT07295769",
+        "normalized_text_sha256": "d982ee1b4e03b62f19fc0806f8bfbb90c178b44a9dd978342a3d27093325e4cf"
+      },
+      "union_token_count": 24
+    },
+    {
+      "dev": {
+        "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+        "nct_id": "NCT05860894",
+        "normalized_text_sha256": "1d1b73210b0cd6c70f8ed50f3ee6171e7ad1fd7f1148c5edaee23fa2677bcde7"
+      },
+      "jaccard_similarity": 0.285714285714,
+      "shared_token_count": 2,
+      "test": {
+        "criterion_id": "nct06953778-inclusion-f60d0d811bdf4af0",
+        "nct_id": "NCT06953778",
+        "normalized_text_sha256": "15b9e156228ad0089b8399f8f9c232b2c62b261e33ac104dc78b6cf25d3647d8"
+      },
+      "union_token_count": 7
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "2d3fc1105dfab7cdb5911f18535e9aee020d2d20aead2db1c8e543ff2f828544"
+      },
+      "jaccard_similarity": 0.285714285714,
+      "shared_token_count": 4,
+      "test": {
+        "criterion_id": "nct07621003-inclusion-ecbda0e798bebe25",
+        "nct_id": "NCT07621003",
+        "normalized_text_sha256": "02fcc88138d9e6ea2304060d6dab2dc456fc67388e3499a68a0a9d1d6b544bcd"
+      },
+      "union_token_count": 14
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+        "nct_id": "NCT07687862",
+        "normalized_text_sha256": "c443587871f8eaf9e0ff5453b51d53b4a2bb2aa488d63686b5477993bd06f867"
+      },
+      "jaccard_similarity": 0.285714285714,
+      "shared_token_count": 2,
+      "test": {
+        "criterion_id": "nct06953778-inclusion-f60d0d811bdf4af0",
+        "nct_id": "NCT06953778",
+        "normalized_text_sha256": "15b9e156228ad0089b8399f8f9c232b2c62b261e33ac104dc78b6cf25d3647d8"
+      },
+      "union_token_count": 7
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+        "nct_id": "NCT07715929",
+        "normalized_text_sha256": "53e426d66099e1cf2d5a841cca407a6bd0f6bab4c427a4d7ed3ae072872ba744"
+      },
+      "jaccard_similarity": 0.28,
+      "shared_token_count": 7,
+      "test": {
+        "criterion_id": "nct05978388-inclusion-034b378530abf39d",
+        "nct_id": "NCT05978388",
+        "normalized_text_sha256": "d818f50ab42c074248a8ed3d342e473d115b2690804d6bbe6f4a8c60b2eded48"
+      },
+      "union_token_count": 25
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "9911db7a7e29e4e6ccd810ef6f7281e7c5d6d5e2ac824a619087f0a5ea94580a"
+      },
+      "jaccard_similarity": 0.277777777778,
+      "shared_token_count": 5,
+      "test": {
+        "criterion_id": "nct07295769-inclusion-4e84d646a9086487",
+        "nct_id": "NCT07295769",
+        "normalized_text_sha256": "d982ee1b4e03b62f19fc0806f8bfbb90c178b44a9dd978342a3d27093325e4cf"
+      },
+      "union_token_count": 18
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+        "nct_id": "NCT07715929",
+        "normalized_text_sha256": "53e426d66099e1cf2d5a841cca407a6bd0f6bab4c427a4d7ed3ae072872ba744"
+      },
+      "jaccard_similarity": 0.269230769231,
+      "shared_token_count": 7,
+      "test": {
+        "criterion_id": "nct07349121-inclusion-96eed9d335c8854c",
+        "nct_id": "NCT07349121",
+        "normalized_text_sha256": "af8bcb00a40d99cffce940baf1c3ae02358808eac8fd01f83d06125c350651d4"
+      },
+      "union_token_count": 26
+    },
+    {
+      "dev": {
+        "criterion_id": "nct06959121-exclusion-c268d8f245c9e46a",
+        "nct_id": "NCT06959121",
+        "normalized_text_sha256": "9fcbef5086a09cea5f4a0022dc7130666ae8b8d9923474d06d249e012ce8de37"
+      },
+      "jaccard_similarity": 0.263157894737,
+      "shared_token_count": 5,
+      "test": {
+        "criterion_id": "nct07621003-inclusion-ecbda0e798bebe25",
+        "nct_id": "NCT07621003",
+        "normalized_text_sha256": "02fcc88138d9e6ea2304060d6dab2dc456fc67388e3499a68a0a9d1d6b544bcd"
+      },
+      "union_token_count": 19
+    },
+    {
+      "dev": {
+        "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+        "nct_id": "NCT02932007",
+        "normalized_text_sha256": "714758ff4953069b163510b39e73c5cd13bde0da5596282392b3e28bf4c95938"
+      },
+      "jaccard_similarity": 0.25,
+      "shared_token_count": 7,
+      "test": {
+        "criterion_id": "nct07459387-exclusion-62ac487b42dc436c",
+        "nct_id": "NCT07459387",
+        "normalized_text_sha256": "c2f6fa48346712f0bb56f3257520fb87f1e5a82d5349606d1c8594894e36df44"
+      },
+      "union_token_count": 28
+    },
+    {
+      "dev": {
+        "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+        "nct_id": "NCT07563257",
+        "normalized_text_sha256": "2d3fc1105dfab7cdb5911f18535e9aee020d2d20aead2db1c8e543ff2f828544"
+      },
+      "jaccard_similarity": 0.235294117647,
+      "shared_token_count": 4,
+      "test": {
+        "criterion_id": "nct05411614-exclusion-d7469655f6be61b8",
+        "nct_id": "NCT05411614",
+        "normalized_text_sha256": "ff0895d4e9bc893021da27ac4e38ed734821785b9288a7840d0c75269bd19f58"
+      },
+      "union_token_count": 17
+    }
+  ]
+}

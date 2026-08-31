@@ -1,0 +1,357 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D017533",
+          "term": "Marital Status"
+        },
+        {
+          "id": "D005191",
+          "term": "Family Characteristics"
+        },
+        {
+          "id": "D003710",
+          "term": "Demography"
+        },
+        {
+          "id": "D011154",
+          "term": "Population Characteristics"
+        },
+        {
+          "id": "D012959",
+          "term": "Socioeconomic Factors"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D012847",
+          "term": "Single Person"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "The distance between the ablation lines on the posterior wall after circumferential pulmonary vein isolation should be at least 2 centimeters to limit the portion of the posterior wall within the PVI ablation zone. PVI will be confirmed by verifying entrance and exit block at the PV orifices",
+          "interventionNames": [
+            "Procedure: PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+            "Procedure: PVI + Posterior Wall Isolation (PWI)"
+          ],
+          "label": "Pulmonary Vein Isolation (PVI) alone",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "After performing PVI, the mapping catheter will be placed on the posterior wall to assess electrical activity and guide ablation. A bottom linear ablation (25-40W) will be performed, connecting the lowest points beneath the lower PVs. A top linear ablation (25-40W) will be conducted at the top of the left atrium, connecting the highest points above the upper PVs. If posterior wall isolation is not achieved after completing the bottom and top lines, mapping and localization of the earliest activation point within the box will be performed during pacing from the coronary sinus (CS). Posterior wall isolation will be completed by identifying and ablating local potentials at the entry and exit sites.",
+          "interventionNames": [
+            "Procedure: PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+            "Procedure: Pulmonary Vein Isolation (PVI) alone"
+          ],
+          "label": "Pulmonary Vein Isolation (PVI) + Posterior Wall Isolation (PWI)",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "After performing PVI, electrogram mapping of the posterior left atrial wall is conducted. Subsequently, PWI and EGM ablation are performed. In this group, multipolar mapping catheters are used for EGM mapping. Target EGMs include spatially discrete potentials (STPs), localized short cycle length potentials (SCLPs), and focal activities.",
+          "interventionNames": [
+            "Procedure: PVI + Posterior Wall Isolation (PWI)",
+            "Procedure: Pulmonary Vein Isolation (PVI) alone"
+          ],
+          "label": "PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Pulmonary Vein Isolation (PVI) + Posterior Wall Isolation (PWI)",
+            "Pulmonary Vein Isolation (PVI) alone"
+          ],
+          "description": "PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM) After performing PVI, electrogram mapping of the posterior left atrial wall is conducted. Subsequently, PWI and EGM ablation are performed. In this group, multipolar mapping catheters are used for EGM mapping. Target EGMs include spatially discrete potentials (STPs), localized short cycle length potentials (SCLPs), and focal activities.",
+          "name": "PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+          "type": "PROCEDURE"
+        },
+        {
+          "armGroupLabels": [
+            "PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+            "Pulmonary Vein Isolation (PVI) alone"
+          ],
+          "description": "After performing PVI, the mapping catheter will be placed on the posterior wall to assess electrical activity and guide ablation. A bottom linear ablation (25-40W) will be performed, connecting the lowest points beneath the lower PVs. A top linear ablation (25-40W) will be conducted at the top of the left atrium, connecting the highest points above the upper PVs. If posterior wall isolation is not achieved after completing the bottom and top lines, mapping and localization of the earliest activation point within the box will be performed during pacing from the coronary sinus (CS). Posterior wall isolation will be completed by identifying and ablating local potentials at the entry and exit sites.",
+          "name": "PVI + Posterior Wall Isolation (PWI)",
+          "type": "PROCEDURE"
+        },
+        {
+          "armGroupLabels": [
+            "PVI + Posterior Wall Isolation (PWI) + Electrogram Ablation (EGM)",
+            "Pulmonary Vein Isolation (PVI) + Posterior Wall Isolation (PWI)"
+          ],
+          "description": "The distance between the ablation lines on the posterior wall after circumferential pulmonary vein isolation should be at least 2 centimeters to limit the portion of the posterior wall within the PVI ablation zone. PVI will be confirmed by verifying entrance and exit block at the PV orifices.",
+          "name": "Pulmonary Vein Isolation (PVI) alone",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Persistent Atrial Fibrillation"
+      ],
+      "keywords": [
+        "pulmonary vein isolation",
+        "pulse field ablation",
+        "anatomical and potential-guided ablation",
+        "posterior left atrial wall ablation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "qinmuae@163.com",
+          "name": "Mu Qin, Doctor",
+          "phone": "+8613052320103",
+          "role": "CONTACT"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Shanghai Chest Hospital",
+          "name": "Xumin Hou, Doctor",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This is an open-label, multicenter, randomized parallel-controlled clinical trial. The study aims to investigate the optimal ablation method for the posterior left atrial wall in patients with persistent atrial fibrillation (PsAF).",
+      "detailedDescription": "This is an open-label, multicenter, randomized parallel-controlled clinical trial. The study aims to investigate the optimal ablation method for the posterior left atrial wall in patients with persistent atrial fibrillation (PsAF).\n\nThe main content of the research includes comparing three approaches through randomization: pulmonary vein isolation (PVI) alone, PVI plus pulse field ablation (PWI), and PVI plus anatomical and potential-guided ablation, to evaluate their effects on reducing the recurrence rate of atrial fibrillation. The study is designed with three groups: the PVI-alone group, the PVI + PWI group, and the PVI plus anatomical and potential-guided ablation group."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 384,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria\n\n* Patients aged ≥18 years.\n* Patients undergoing their first ablation procedure for PsAF.\n* Persistent atrial fibrillation (AF): Defined as episodes lasting ≥7 days and ≤3 years (including those requiring pharmacological or electrical cardioversion ≥7 days).\n* Atrial fibrillation symptoms that are intolerant to at least one antiarrhythmic drug (AAD).\n* At least one episode of PsAF must have been documented within the last 2 years by methods such as ECG, Holter monitoring, loop recorder, telemetry, remote telemonitoring (TTM), or implanted devices prior to enrollment in this study.\n* Patients must be capable and willing to provide written informed consent to participate in the study.\n* Patients must be willing and able to comply with all study follow-up requirements.\n\nExclusion Criteria:\n\n* Paroxysmal AF: Defined as episodes lasting \\&lt;7 days (or resolved with medication/electrical cardioversion within \\&lt;7 days).\n* Patients with long-standing persistent AF: Defined as persistent AF lasting \\&gt;3 years.\n* Patients who have never attempted/pursued cardiac rhythm restoration or sinus rhythm.\n* Contraindication to systemic anticoagulation.\n* Pregnancy.\n* Advanced renal or hepatic failure.\n* Severe valvular heart disease or cyanotic congenital heart disease.\n* Hypertrophic cardiomyopathy.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Optimized Posterior Left Atrial Wall Ablation Strategy for PeAF",
+      "nctId": "NCT06633523",
+      "officialTitle": "Optimized Posterior Left Atrial Wall Ablation Strategy for Persistent Atrial Fibrillation: A Multicenter Large-Sample Clinical Study",
+      "orgStudyIdInfo": {
+        "id": "OPLAWAS-AF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Shanghai Chest Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Following a single ablation procedure, after discontinuation of antiarrhythmic drugs, there should be at least 12 months of follow-up without any documented episodes of atrial arrhythmias (atrial fibrillation \\[AF\\], atrial tachycardia \\[AT\\], or atrial flutter \\[AFL\\]) lasting more than 30 seconds, outside the initial 3-month blanking period.",
+          "measure": "recurrence of atrial arrhythmias",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "After a single ablation procedure, following the discontinuation of antiarrhythmic drugs, there is no occurrence of any documented atrial fibrillation (AF) episode lasting more than 30 seconds during at least 12 months of follow-up, excluding an initial 3-month blanking period.",
+          "measure": "no occurrence of any documented atrial fibrillation (AF) episode lasting more than 30 seconds",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "After a single ablation procedure, with antiarrhythmic drugs either discontinued or not initiated, there is no occurrence of any documented atrial arrhythmia lasting more than 30 seconds during at least 12 months of follow-up, excluding an initial 3-month blanking period.",
+          "measure": "occurrence of any documented atrial arrhythmia lasting more than 30 seconds",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "After 1 to 2 ablation procedures, with antiarrhythmic drugs either discontinued or not initiated, excluding an initial 3-month blanking period, the burden of atrial fibrillation at 12 months of follow-up between different study groups.",
+          "measure": "the burden of atrial fibrillation at 12 months of follow-up between different study groups",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "After 1 to 2 ablation procedures, with antiarrhythmic drugs either discontinued or not initiated, there is no occurrence of any documented atrial arrhythmia lasting more than 30 seconds during 12 months of follow-up, excluding an initial 3-month blanking period.",
+          "measure": "no occurrence of any documented atrial arrhythmia lasting more than 30 seconds",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "After 1 to 2 ablation procedures, with antiarrhythmic drugs either discontinued or not initiated, there is no occurrence of any documented persistent atrial arrhythmia lasting more than 7 days during 12 months of follow-up, excluding an initial 3-month blanking period.",
+          "measure": "no occurrence of any documented persistent atrial arrhythmia lasting more than 7 days",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "Clinical success is defined as no occurrence of any documented symptomatic atrial fibrillation, flutter, or tachyarrhythmia lasting more than 30 seconds, excluding an initial 3-month blanking period, after the final follow-up and assessment of all ablation procedures.",
+          "measure": "no occurrence of any documented symptomatic atrial fibrillation, flutter, or tachyarrhythmia lasting more than 30 seconds",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "measure": "Procedure duration / Fluoroscopy time / Radiofrequency ablation time",
+          "timeFrame": "Record the duration of the surgery, fluoroscopy time, and radiofrequency ablation time immediately after the completion of the radiofrequency ablation procedure, measured in hours."
+        },
+        {
+          "measure": "Posterior wall isolation success rate (bidirectional block).",
+          "timeFrame": "Evaluate from the date of the procedure until the first documented recurrence of atrial arrhythmia, with a maximum assessment duration of 12 months."
+        },
+        {
+          "measure": "Number of repeat procedures within at least 12 months of follow-up",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "measure": "Number of direct current (DC) cardioversions performed due to atrial fibrillation recurrence within at least 12 months of follow-up.",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "measure": "Use of antiarrhythmic drugs at 3 months, at the time of atrial fibrillation recurrence, and at final follow-up.",
+          "timeFrame": "Evaluate from 3 months post-procedure until the first documented recurrence of atrial fibrillation, with a maximum assessment duration of 12 months"
+        },
+        {
+          "description": "Perioperative complications, including stroke, pulmonary vein stenosis, cardiac perforation, esophageal injury, and mortality.",
+          "measure": "Perioperative complications",
+          "timeFrame": "Perioperative period"
+        },
+        {
+          "description": "Quality of life assessments within at least 12 months of follow-up using measures such as AF6.",
+          "measure": "Quality of life assessments",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "Quality of life assessments were conducted using the AFEQT (Atrial Fibrillation Effect on Quality of Life) questionnaire.",
+          "measure": "Quality of life assessments",
+          "timeFrame": "At least 12 months of follow-up, beyond the initial 3-month blanking period."
+        },
+        {
+          "description": "Psychological distress was assessed using the HADS (Hospital Anxiety and Depression Scale)",
+          "measure": "Psychological distress",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "Functional status was assessed using the CCS-SAF (Canadian Cardiovascular Society - Self-Assessed Functioning scale).",
+          "measure": "Functional status",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        },
+        {
+          "description": "Cardiac functional capacity was assessed using the NYHA (New York Heart Association Functional Classification) within at least 12 months of follow-up, beyond the initial 3-month blanking period.",
+          "measure": "Cardiac functional capacity",
+          "timeFrame": "at least 12 months of follow-up, beyond the initial 3-month blanking period"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "Dongfang Hospital Affiliated to Tongji University"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Shanghai 10th People&#39;s Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "Shanghai Jiao Tong University Affiliated Sixth People's Hospital"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Shanghai Chest Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Shanghai Chest Hospital",
+        "investigatorFullName": "Xu Liu",
+        "investigatorTitle": "Dr",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-01-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-10-09",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-10-08",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2025-09-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-10-01",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2024-10",
+      "studyFirstPostDateStruct": {
+        "date": "2024-10-09",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-09-27",
+      "studyFirstSubmitQcDate": "2024-10-08"
+    }
+  }
+}

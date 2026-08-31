@@ -1,0 +1,124 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07295769-inclusion-4e84d646a9086487",
+      "criterion_type": "inclusion",
+      "normalized_text": "Adults aged 19 years or older who voluntarily provide written informed consent to participate in the study",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 230,
+        "start": 124
+      },
+      "source_text": "Adults aged 19 years or older who voluntarily provide written informed consent to participate in the study"
+    },
+    {
+      "criterion_id": "nct07295769-inclusion-a70e424bf9f69ac4",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients diagnosed with ESUS (Embolic Stroke of Undetermined Source)",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 302,
+        "start": 234
+      },
+      "source_text": "Patients diagnosed with ESUS (Embolic Stroke of Undetermined Source)"
+    },
+    {
+      "criterion_id": "nct07295769-inclusion-92b58299b2003eca",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients who require in-hospital or out-of-hospital electrocardiographic (ECG) monitoring",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 395,
+        "start": 306
+      },
+      "source_text": "Patients who require in-hospital or out-of-hospital electrocardiographic (ECG) monitoring"
+    },
+    {
+      "criterion_id": "nct07295769-exclusion-5b066617f574c9ec",
+      "criterion_type": "exclusion",
+      "normalized_text": "Individuals already diagnosed with atrial fibrillation or atrial flutter",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 589,
+        "start": 517
+      },
+      "source_text": "Individuals already diagnosed with atrial fibrillation or atrial flutter"
+    },
+    {
+      "criterion_id": "nct07295769-exclusion-5406dc50cb2c88b0",
+      "criterion_type": "exclusion",
+      "normalized_text": "Individuals with a clearly identified cause of stroke",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 646,
+        "start": 593
+      },
+      "source_text": "Individuals with a clearly identified cause of stroke"
+    },
+    {
+      "criterion_id": "nct07295769-exclusion-a200c041071a02dd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Individuals known to have allergic reactions to adhesives or hydrogels",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 720,
+        "start": 650
+      },
+      "source_text": "Individuals known to have allergic reactions to adhesives or hydrogels"
+    },
+    {
+      "criterion_id": "nct07295769-exclusion-7473c32cb208da34",
+      "criterion_type": "exclusion",
+      "normalized_text": "Individuals who, in the investigator's judgment, have cognitive vulnerability that makes it difficult to understand the study information and voluntarily decide on participation",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 901,
+        "start": 724
+      },
+      "source_text": "Individuals who, in the investigator's judgment, have cognitive vulnerability that makes it difficult to understand the study information and voluntarily decide on participation"
+    },
+    {
+      "criterion_id": "nct07295769-exclusion-f210dcff82144ee3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any other individuals whom the principal investigator considers to be at potential risk by participating in the study or otherwise unsuitable for participation",
+      "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+      "source_span": {
+        "end": 1064,
+        "start": 905
+      },
+      "source_text": "Any other individuals whom the principal investigator considers to be at potential risk by participating in the study or otherwise unsuitable for participation"
+    }
+  ],
+  "eligibility_sha256": "c996ec1b3bc0e748cfd6dbcb778af3409cef591cd7fe381936763898bb4d9e5f",
+  "eligibility_text": "Inclusion Criteria:\n\nParticipants may take part in this clinical study only if they meet all of the following criteria:\n\n1. Adults aged 19 years or older who voluntarily provide written informed consent to participate in the study\n2. Patients diagnosed with ESUS (Embolic Stroke of Undetermined Source)\n3. Patients who require in-hospital or out-of-hospital electrocardiographic (ECG) monitoring\n\nExclusion Criteria:\n\nParticipants who meet any of the following criteria cannot be enrolled in this clinical study:\n\n1. Individuals already diagnosed with atrial fibrillation or atrial flutter\n2. Individuals with a clearly identified cause of stroke\n3. Individuals known to have allergic reactions to adhesives or hydrogels\n4. Individuals who, in the investigator's judgment, have cognitive vulnerability that makes it difficult to understand the study information and voluntarily decide on participation\n5. Any other individuals whom the principal investigator considers to be at potential risk by participating in the study or otherwise unsuitable for participation",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-02-06",
+  "maximum_age": null,
+  "minimum_age": "19 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07295769",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07295769:eligibility:2026-02-06:c996ec1b3bc0",
+  "source_record_version": "2026-02-06:c996ec1b3bc0",
+  "source_url": "https://clinicaltrials.gov/study/NCT07295769",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Atrial Fibrillation Detection Using MEMO Patch in Patients With Stroke of Unknown Cause"
+}

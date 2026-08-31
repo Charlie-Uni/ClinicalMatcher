@@ -1,0 +1,245 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06324188-inclusion-2d8ede1666caf59a",
+      "criterion_type": "inclusion",
+      "normalized_text": "I1. AF first diagnosed within 5 years prior to enrolment and documented in body surface ECG",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 112,
+        "start": 21
+      },
+      "source_text": "I1. AF first diagnosed within 5 years prior to enrolment and documented in body surface ECG"
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-76f5163bcfa89453",
+      "criterion_type": "inclusion",
+      "normalized_text": "I2. High comorbidity estimated by CHA2DS2-VASc score of 4 or more",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 179,
+        "start": 114
+      },
+      "source_text": "I2. High comorbidity estimated by CHA2DS2-VASc score of 4 or more"
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-1009df7c24fef650",
+      "criterion_type": "inclusion",
+      "normalized_text": "I3. Patient suitable for ablation using cryoballoon ablation systems or other ablation systems with comparable efficacy and safety from Medtronic",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 326,
+        "start": 181
+      },
+      "source_text": "I3. Patient suitable for ablation using cryoballoon ablation systems or other ablation systems with comparable efficacy and safety from Medtronic"
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-e747cc5892cd2ef3",
+      "criterion_type": "inclusion",
+      "normalized_text": "I4. Age ≥ 18 years",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 346,
+        "start": 328
+      },
+      "source_text": "I4. Age ≥ 18 years"
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-c8611183438ceabb",
+      "criterion_type": "inclusion",
+      "normalized_text": "I5. Provision of signed informed consent",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 388,
+        "start": 348
+      },
+      "source_text": "I5. Provision of signed informed consent"
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-e326f5656e23e049",
+      "criterion_type": "exclusion",
+      "normalized_text": "General exclusion criteria",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 437,
+        "start": 411
+      },
+      "source_text": "General exclusion criteria"
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-2ad7453283cac4d8",
+      "criterion_type": "exclusion",
+      "normalized_text": "E1. Any disease that limits life expectancy to less than 1 year.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 503,
+        "start": 439
+      },
+      "source_text": "E1. Any disease that limits life expectancy to less than 1 year."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-cb02dc28e5f24a5b",
+      "criterion_type": "exclusion",
+      "normalized_text": "E2. Participation in another clinical trial, either within the 3 months prior to enrolment or still on-going (participation in potential sub-studies connected to this trial is permitted).",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 692,
+        "start": 505
+      },
+      "source_text": "E2. Participation in another clinical trial, either within the 3 months prior to enrolment or still on-going (participation in potential sub-studies connected to this trial is permitted)."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-efe0fddd495f051a",
+      "criterion_type": "exclusion",
+      "normalized_text": "E3. Previous participation in EASThigh-AFNET 11.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 742,
+        "start": 694
+      },
+      "source_text": "E3. Previous participation in EASThigh-AFNET 11."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-78c12d1226e6ab09",
+      "criterion_type": "exclusion",
+      "normalized_text": "E4. Pregnant women.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 763,
+        "start": 744
+      },
+      "source_text": "E4. Pregnant women."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-b89a61dad54e2c15",
+      "criterion_type": "exclusion",
+      "normalized_text": "E5. Breastfeeding women.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 789,
+        "start": 765
+      },
+      "source_text": "E5. Breastfeeding women."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-92c16bbf21467fdf",
+      "criterion_type": "exclusion",
+      "normalized_text": "E6. Drug abuse or clinically manifest alcohol abuse.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 843,
+        "start": 791
+      },
+      "source_text": "E6. Drug abuse or clinically manifest alcohol abuse."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-33c00fa32b135db3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Exclusion criteria related to a cardiac condition",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 894,
+        "start": 845
+      },
+      "source_text": "Exclusion criteria related to a cardiac condition"
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-934e7cd396a0e714",
+      "criterion_type": "exclusion",
+      "normalized_text": "E7. Prior AF ablation or surgical therapy of AF.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 944,
+        "start": 896
+      },
+      "source_text": "E7. Prior AF ablation or surgical therapy of AF."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-9e5b1b2296d85885",
+      "criterion_type": "exclusion",
+      "normalized_text": "E8. Patients not suitable for AF ablation.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 988,
+        "start": 946
+      },
+      "source_text": "E8. Patients not suitable for AF ablation."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-facc02b3a739f71d",
+      "criterion_type": "exclusion",
+      "normalized_text": "E9. Patients with a history of stroke which occurred within 3 months prior to enrolment.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 1078,
+        "start": 990
+      },
+      "source_text": "E9. Patients with a history of stroke which occurred within 3 months prior to enrolment."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-8b80b7c07f28b121",
+      "criterion_type": "exclusion",
+      "normalized_text": "E10. Valve disease requiring specific therapy.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 1126,
+        "start": 1080
+      },
+      "source_text": "E10. Valve disease requiring specific therapy."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-ccf48c63e88f58da",
+      "criterion_type": "exclusion",
+      "normalized_text": "Exclusion criteria based on laboratory abnormalities",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 1180,
+        "start": 1128
+      },
+      "source_text": "Exclusion criteria based on laboratory abnormalities"
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-f443f9102aeb5f30",
+      "criterion_type": "exclusion",
+      "normalized_text": "E11. Clinically manifested thyroid dysfunction requiring therapy.",
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 1247,
+        "start": 1182
+      },
+      "source_text": "E11. Clinically manifested thyroid dysfunction requiring therapy."
+    }
+  ],
+  "eligibility_sha256": "780d5af5b1990db947f80c85120d38e785a0868edde03fd9c0b7e1f0a9042112",
+  "eligibility_text": "Inclusion Criteria:\n\nI1. AF first diagnosed within 5 years prior to enrolment and documented in body surface ECG\n\nI2. High comorbidity estimated by CHA2DS2-VASc score of 4 or more\n\nI3. Patient suitable for ablation using cryoballoon ablation systems or other ablation systems with comparable efficacy and safety from Medtronic\n\nI4. Age ≥ 18 years\n\nI5. Provision of signed informed consent\n\nExclusion Criteria:\n\nGeneral exclusion criteria\n\nE1. Any disease that limits life expectancy to less than 1 year.\n\nE2. Participation in another clinical trial, either within the 3 months prior to enrolment or still on-going (participation in potential sub-studies connected to this trial is permitted).\n\nE3. Previous participation in EASThigh-AFNET 11.\n\nE4. Pregnant women.\n\nE5. Breastfeeding women.\n\nE6. Drug abuse or clinically manifest alcohol abuse.\n\nExclusion criteria related to a cardiac condition\n\nE7. Prior AF ablation or surgical therapy of AF.\n\nE8. Patients not suitable for AF ablation.\n\nE9. Patients with a history of stroke which occurred within 3 months prior to enrolment.\n\nE10. Valve disease requiring specific therapy.\n\nExclusion criteria based on laboratory abnormalities\n\nE11. Clinically manifested thyroid dysfunction requiring therapy.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-01-08",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06324188",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+  "source_record_version": "2026-01-08:780d5af5b199",
+  "source_url": "https://clinicaltrials.gov/study/NCT06324188",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Early Atrial Fibrillation Ablation for Stroke Prevention in Patients With High Comorbidity Burden (EASThigh-AFNET 11)"
+}

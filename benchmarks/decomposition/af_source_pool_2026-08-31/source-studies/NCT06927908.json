@@ -1,0 +1,175 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "label": "Control",
+          "type": "NO_INTERVENTION"
+        },
+        {
+          "interventionNames": [
+            "Procedure: Partial Cardiac Denervation"
+          ],
+          "label": "Partial Cardiac Denervation",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Partial Cardiac Denervation"
+          ],
+          "description": "Expose the ligament of Marshall (LOM) between the left atrial appendage and left pulmonary veins, and transect it using an electrocautery knife. Expose the fatty pad along the Waterston groove between the right pulmonary veins and the right atrium, and completely resect it down to the myocardial surface, extending the superior margin beyond the ostium of the right superior pulmonary vein and the inferior margin to the inferior vena cava.",
+          "name": "Partial Cardiac Denervation",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Aortic Arch Replacement"
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Atrial fibrillation (AF) is one of the most common clinical arrhythmias, particularly after cardiac surgery, where its incidence can reach as high as 10% to 40%, significantly impacting patients' prognosis. AF not only reduces patients' quality of life but also significantly increases the incidence of adverse cardiovascular events and postoperative mortality.\n\nThere is a risk of new-onset AF after aortic arch replacement surgery, with approximately 16% of patients experiencing new-onset AF postoperatively. AF affects the normal beating of the heart and normal blood flow, and it increases postoperative mortality for patients. The procedure to be conducted, cardiac denervation, is a strategy to prevent postoperative AF, with the expectation of reducing your risk of postoperative AF and improving your prognosis.\n\nCardiac denervation is a well-established surgical procedure that has been proven to be simple, feasible, safe, and effective in patients undergoing coronary artery bypass grafting (CABG) surgery, and it can reduce the incidence of AF in these patients. Researching the preventive effect of surgical cardiac denervation on AF after aortic surgery is of great significance for reducing complications after cardiac surgery and improving patients' prognosis.\n\nThe objective of this study is to verify the safety and effectiveness of cardiac denervation in patients undergoing aortic arch surgery through a randomized controlled trial.\n\nThe study subjects are patients with a definitive diagnosis of aortic dissection or aortic aneurysm who undergo total aortic arch artificial vessel replacement surgery under cardiopulmonary bypass.\n\nThe intervention involves randomly dividing patients into an intervention group and a control group. The intervention group undergoes cardiac denervation surgery simultaneously with the aortic arch surgery. The control group only receives the aortic arch surgery.\n\nThe study outcome is the incidence of new-onset atrial fibrillation from 1 hour postoperatively to 6 days postoperatively."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "PARTICIPANT"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 570,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Male or female, over 18 years old, of Han nationality;\n2. Diagnosed with aortic dissection or aortic aneurysm and having undergone total aortic arch artificial vessel replacement surgery under cardiopulmonary bypass;\n3. Capable of fully understanding the content of informed consent for this trial and willing to voluntarily sign a written informed consent form.\n\nExclusion Criteria:\n\n1. Patients with severe coagulation dysfunction;\n2. Pregnant women;\n3. History of previous heart surgery;\n4. Concurrent receipt of other heart surgeries (e.g., congenital heart disease repair, coronary artery bypass grafting, valve surgery, etc.);\n5. History of atrial fibrillation (defined as an arrhythmia characterized by rapid and irregular electrical activity in the atria);\n6. History of coronary heart disease: including hospitalization due to acute myocardial infarction or unstable angina within the last 6 months; revascularization surgery (PCI or CABG) performed within the last 12 months; planned revascularization surgery (PCI or CABG) within the next 6 months;\n7. Administration of antiarrhythmic drugs other than beta-blockers within 2 weeks before surgery;\n8. Patients with cognitive impairment or inability to care for themselves in daily life;\n9. Other populations deemed unsuitable for enrollment by the investigator.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Cardiac Denervation in Aortic Arch Replacement",
+      "nctId": "NCT06927908",
+      "officialTitle": "Randomized Controlled Trial of Cardiac Denervation for Reducing the Risk of Atrial Fibrillation After Aortic Arch Replacement",
+      "orgStudyIdInfo": {
+        "id": "2025ethic11"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Beijing Anzhen Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary endpoint was the occurrence of new-onset atrial fibrillation from 1 hour postoperatively to 6 days postoperatively. Continuous monitoring of patients' cardiac electrical activity was conducted through 24-hour electrocardiographic monitoring. Two independent researchers reviewed the electrocardiographic monitoring records to determine whether patients experienced new-onset atrial fibrillation.",
+          "measure": "New-onset atrial fibrillation",
+          "timeFrame": "From 1 hour postoperatively to 6 days postoperatively."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Beijing Anzhen Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Beijing Anzhen Hospital",
+        "investigatorFullName": "Wenjian Jiang",
+        "investigatorTitle": "Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-01-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-04-15",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-04-12",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-01-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-04-22",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2025-04",
+      "studyFirstPostDateStruct": {
+        "date": "2025-04-15",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-03-06",
+      "studyFirstSubmitQcDate": "2025-04-12"
+    }
+  }
+}

@@ -1,0 +1,597 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D016769",
+          "term": "Embolism and Thrombosis"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        },
+        {
+          "id": "D020521",
+          "term": "Stroke"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D008171",
+          "term": "Lung Diseases"
+        },
+        {
+          "id": "D012140",
+          "term": "Respiratory Tract Diseases"
+        },
+        {
+          "id": "D004617",
+          "term": "Embolism"
+        },
+        {
+          "id": "D013923",
+          "term": "Thromboembolism"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D013927",
+          "term": "Thrombosis"
+        },
+        {
+          "id": "D000083242",
+          "term": "Ischemic Stroke"
+        },
+        {
+          "id": "D011655",
+          "term": "Pulmonary Embolism"
+        },
+        {
+          "id": "D054556",
+          "term": "Venous Thromboembolism"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Drug: REGN7508"
+          ],
+          "label": "REGN7508",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "interventionNames": [
+            "Drug: REGN9933"
+          ],
+          "label": "REGN9933",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "interventionNames": [
+            "Drug: Placebo"
+          ],
+          "label": "Placebo",
+          "type": "PLACEBO_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "REGN7508"
+          ],
+          "description": "Administered per the protocol",
+          "name": "REGN7508",
+          "otherNames": [
+            "cenvacibart"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "REGN9933"
+          ],
+          "description": "Administered per the protocol",
+          "name": "REGN9933",
+          "otherNames": [
+            "amrecibart"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Placebo"
+          ],
+          "description": "Administered per the protocol",
+          "name": "Placebo",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Blood clots",
+        "Ischemic stroke",
+        "Systemic embolism",
+        "Pulmonary embolism",
+        "Venous Thromboembolism (VTE)"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "clinicaltrials@regeneron.com",
+          "name": "Clinical Trials Administrator",
+          "phone": "844-734-6643",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Dothan",
+          "country": "United States",
+          "facility": "SEC Clinical Research",
+          "geoPoint": {
+            "lat": 31.22323,
+            "lon": -85.39049
+          },
+          "state": "Alabama",
+          "status": "RECRUITING",
+          "zip": "36305"
+        },
+        {
+          "city": "Fremont",
+          "country": "United States",
+          "facility": "Mission Cardiovascular Research Institute",
+          "geoPoint": {
+            "lat": 37.54827,
+            "lon": -121.98857
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94538"
+        },
+        {
+          "city": "Huntington Beach",
+          "country": "United States",
+          "facility": "National Institute of California Heart and Vein Specialists",
+          "geoPoint": {
+            "lat": 33.6603,
+            "lon": -117.99923
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92648"
+        },
+        {
+          "city": "Pasadena",
+          "country": "United States",
+          "facility": "Profound Research LLC at Southern California Heart Specialists",
+          "geoPoint": {
+            "lat": 34.14778,
+            "lon": -118.14452
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "91105"
+        },
+        {
+          "city": "Ventura",
+          "country": "United States",
+          "facility": "Cardiology Associates Medical Group",
+          "geoPoint": {
+            "lat": 34.27834,
+            "lon": -119.29317
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "93003"
+        },
+        {
+          "city": "West Hills",
+          "country": "United States",
+          "facility": "Interventional Cardiology Medical Group",
+          "geoPoint": {
+            "lat": 34.19731,
+            "lon": -118.64398
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "91307"
+        },
+        {
+          "city": "Medley",
+          "country": "United States",
+          "facility": "South Florida Research Organization LLC",
+          "geoPoint": {
+            "lat": 25.84065,
+            "lon": -80.32644
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33166"
+        },
+        {
+          "city": "Pensacola",
+          "country": "United States",
+          "facility": "Sec Clinical Research",
+          "geoPoint": {
+            "lat": 30.42131,
+            "lon": -87.21691
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32503"
+        },
+        {
+          "city": "Winter Park",
+          "country": "United States",
+          "facility": "Clinical Site Partners, LLC DBA Flourish Research",
+          "geoPoint": {
+            "lat": 28.6,
+            "lon": -81.33924
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32789"
+        },
+        {
+          "city": "Johns Creek",
+          "country": "United States",
+          "facility": "NSC Research, Inc",
+          "geoPoint": {
+            "lat": 34.02893,
+            "lon": -84.19858
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30024"
+        },
+        {
+          "city": "West Monroe",
+          "country": "United States",
+          "facility": "Monroe Research, LLC",
+          "geoPoint": {
+            "lat": 32.51848,
+            "lon": -92.14764
+          },
+          "state": "Louisiana",
+          "status": "RECRUITING",
+          "zip": "71291"
+        },
+        {
+          "city": "Farmington Hills",
+          "country": "United States",
+          "facility": "Profound Research, Millennium Cardiology",
+          "geoPoint": {
+            "lat": 42.48531,
+            "lon": -83.37716
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48334"
+        },
+        {
+          "city": "Flint",
+          "country": "United States",
+          "facility": "AA Medical Research Center (MRC)",
+          "geoPoint": {
+            "lat": 43.01253,
+            "lon": -83.68746
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48504"
+        },
+        {
+          "city": "Marion",
+          "country": "United States",
+          "facility": "K&R Research LLC",
+          "geoPoint": {
+            "lat": 40.58867,
+            "lon": -83.12852
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "43302"
+        },
+        {
+          "city": "Anderson",
+          "country": "United States",
+          "facility": "AnMed Health",
+          "geoPoint": {
+            "lat": 34.50344,
+            "lon": -82.65013
+          },
+          "state": "South Carolina",
+          "status": "RECRUITING",
+          "zip": "29621"
+        },
+        {
+          "city": "Amarillo",
+          "country": "United States",
+          "facility": "PharmaTex Research",
+          "geoPoint": {
+            "lat": 35.222,
+            "lon": -101.8313
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "79106"
+        },
+        {
+          "city": "Dallas",
+          "country": "United States",
+          "facility": "Southwest Family Medicine Associates",
+          "geoPoint": {
+            "lat": 32.78306,
+            "lon": -96.80667
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "75235"
+        },
+        {
+          "city": "McKinney",
+          "country": "United States",
+          "facility": "Texas Institute of Cardiology PA",
+          "geoPoint": {
+            "lat": 33.19762,
+            "lon": -96.61527
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "75071"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Regeneron Pharmaceuticals",
+          "name": "Clinical Trial Management",
+          "role": "STUDY_DIRECTOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This study is researching 2 different experimental drugs called REGN7508 and REGN9933 (called \"study drugs\"). The study is focused on people who have atrial fibrillation, which means that the heart beats too fast and unevenly. When this happens, blood cannot move smoothly through the heart; it can slow down or pool in one spot, which can lead to the formation of blood clots.\n\nREGN7508 and REGN9933 are designed to help stop blood clots forming in patients with atrial fibrillation. The aim of the study is to see how effective and safe REGN7508 and REGN9933, individually, are in preventing ischemic stroke or systemic embolism in people with atrial fibrillation who cannot or may choose to not take blood thinners.\n\nThe study is looking at several other research questions, including:\n\n* What side effects may happen from taking REGN7508 or REGN9933\n* How well does REGN7508 or REGN9933 lower the risk of having an ischemic stroke and/or systemic embolism compared to the placebo\n* How well does REGN7508 or REGN9933 lower the risk of having a major health problem affecting heart and blood circulation compared to placebo\n* How well does REGN7508 or REGN9933 lower the risk of death compared to placebo\n* How much REGN7508 or REGN9933 is in the blood at different times\n* Whether the body makes antibodies against REGN7508 or REGN9933 (which could make the study drugs less effective or could lead to side effects)"
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "QUADRUPLE",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 2628,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE3"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Key Inclusion Criteria:\n\n1. Has AF or flutter (paroxysmal or persistent), not considered to be secondary to a reversible cause\n2. At moderate to high risk for stroke defined as:\n\n   1. CHA2DS2-VA \\[C: Congestive heart failure; H: Hypertension; A2: Age ≥75 years (double points); D: Diabetes mellitus; S2: Stroke or TIA or Systemic embolism (double points); V: Vascular disease; A: Age 65-74 years\\] score ≥4 OR\n   2. CHA2DS2-VA score of 3 AND at least 1 enrichment criteria as described in the protocol\n3. Shared decision making between the participant and provider determining that the bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits, making the participant unsuitable for OAC therapy as described in the protocol\n\nKey Exclusion Criteria:\n\n1. Has a mechanical heart valve prosthesis (Note: transcatheter aortic valve replacement is not an exclusion)\n2. Had an ischemic stroke within 2 days prior to randomization\n3. Has persistent, uncontrolled hypertension (per investigator's discretion)\n4. Has a history of Central Nervous System (CNS) bleeding within 30 days prior to randomization\n5. Has a life expectancy less than 12 months\n6. Has participated in a prior Factor XI (FXI) inhibitor study\n\nNote: Other protocol-defined Inclusion/ Exclusion criteria apply",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ROXI-INCLINE",
+      "briefTitle": "Stroke and Systemic Embolism Prevention in Adult Participants With Atrial Fibrillation for Whom Oral Anticoagulation is Unsuitable",
+      "nctId": "NCT07430956",
+      "officialTitle": "A Master Protocol for a Phase 3, Randomized, Multicenter, Double-blind Study to Assess Stroke and Systemic Embolism Prevention With REGN7508 and REGN9933, Monoclonal Antibodies Against Factor XI, Versus Placebo in Participants With Atrial Fibrillation for Whom Oral Anticoagulation is Unsuitable (ROXI-INCLINE)",
+      "orgStudyIdInfo": {
+        "id": "R9933-CVA-2495"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Regeneron Pharmaceuticals"
+      },
+      "secondaryIdInfos": [
+        {
+          "id": "2025-521618-25-00",
+          "type": "CTIS"
+        },
+        {
+          "id": "2025",
+          "link": "https://reporter.nih.gov/quickSearch/2025",
+          "type": "NIH"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "accessCriteria": "Qualified researchers can submit a proposal for access to individual patient or aggregate level data from a Regeneron-sponsored clinical trial through Vivli. Regeneron's Independent Research Request Evaluation Criteria can be found at: https://www.regeneron.com/sites/default/files/Regeneron-External-Data-Sharing-Policy-and-Independent-Research-Request-Evaluation-Criteria.pdf",
+      "description": "All Individual Patient Data (IPD) that underlie publicly available results will be considered for sharing.",
+      "infoTypes": [
+        "STUDY_PROTOCOL",
+        "SAP",
+        "ICF",
+        "CSR",
+        "ANALYTIC_CODE"
+      ],
+      "ipdSharing": "YES",
+      "timeFrame": "When Regeneron has:\n\n* received marketing authorization from major health authorities (e.g., FDA, European Medicines Agency (EMA), Pharmaceuticals and Medical Devices Agency (PMDA), etc.) for the product and indication or has globally discontinued development of the product for all indications on or after April 2020 and has no plans for future development\n* made the study results publicly available (e.g., scientific publication, scientific conference, clinical trial registry)\n* the legal authority to share the data, and\n* ensured the ability to protect participant privacy",
+      "url": "https://vivli.org/"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "Time to first occurrence of ischemic stroke or systemic embolism",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Time to first occurrence of International Society on Thrombosis and Haemostasis (ISTH) major bleeding",
+          "timeFrame": "Up to 36 months"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Time to first occurrence of Major Adverse Cardiovascular Event (MACE)",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Time to first occurrence of MACE, pulmonary embolism, or Venous Thromboembolism (VTE)",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Time to first occurrence of ischemic stroke",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Time to Cardiovascular (CV) death",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Time to all-cause death",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Occurrence of Treatment-Emergent Adverse Events (TEAEs)",
+          "timeFrame": "Up to 39 months"
+        },
+        {
+          "measure": "Severity of TEAEs",
+          "timeFrame": "Up to 39 months"
+        },
+        {
+          "measure": "Concentrations of REGN7508 over time",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Concentrations of REGN9933 over time",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Change from baseline in activated Partial Thromboplastin Time (aPTT) over time",
+          "timeFrame": "Up to approximately 9 weeks"
+        },
+        {
+          "measure": "Change from baseline in Prothrombin time (PT)/International Normalized Ratio (INR) over time",
+          "timeFrame": "Up to approximately 9 weeks"
+        },
+        {
+          "measure": "Occurrence of Anti-Drug Antibody (ADA) to REGN7508 over time",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Magnitude of ADA to REGN7508 over time",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Occurrence of ADA to REGN9933 over time",
+          "timeFrame": "Up to 36 months"
+        },
+        {
+          "measure": "Magnitude of ADA to REGN9933 over time",
+          "timeFrame": "Up to 36 months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": true,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Regeneron Pharmaceuticals"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-06-26",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-06-23",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-06-22",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2029-03-28",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-04-03",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-06",
+      "studyFirstPostDateStruct": {
+        "date": "2026-02-24",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-02-18",
+      "studyFirstSubmitQcDate": "2026-02-18"
+    }
+  }
+}

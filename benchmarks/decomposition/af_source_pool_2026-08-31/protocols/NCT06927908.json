@@ -1,0 +1,168 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06927908-inclusion-7420e760499a402b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Male or female, over 18 years old, of Han nationality;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 78,
+        "start": 24
+      },
+      "source_text": "Male or female, over 18 years old, of Han nationality;"
+    },
+    {
+      "criterion_id": "nct06927908-inclusion-767555bd48d1e76a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosed with aortic dissection or aortic aneurysm and having undergone total aortic arch artificial vessel replacement surgery under cardiopulmonary bypass;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 240,
+        "start": 82
+      },
+      "source_text": "Diagnosed with aortic dissection or aortic aneurysm and having undergone total aortic arch artificial vessel replacement surgery under cardiopulmonary bypass;"
+    },
+    {
+      "criterion_id": "nct06927908-inclusion-bad7ffb1bf9b4d99",
+      "criterion_type": "inclusion",
+      "normalized_text": "Capable of fully understanding the content of informed consent for this trial and willing to voluntarily sign a written informed consent form.",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 386,
+        "start": 244
+      },
+      "source_text": "Capable of fully understanding the content of informed consent for this trial and willing to voluntarily sign a written informed consent form."
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-7f6372c9fa034347",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with severe coagulation dysfunction;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 457,
+        "start": 412
+      },
+      "source_text": "Patients with severe coagulation dysfunction;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-f968e9559e6b5bec",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant women;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 476,
+        "start": 461
+      },
+      "source_text": "Pregnant women;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-e82c6ca5f0446dca",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of previous heart surgery;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 514,
+        "start": 480
+      },
+      "source_text": "History of previous heart surgery;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-3786e3d6fa6d7fb8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Concurrent receipt of other heart surgeries (e.g., congenital heart disease repair, coronary artery bypass grafting, valve surgery, etc.);",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 656,
+        "start": 518
+      },
+      "source_text": "Concurrent receipt of other heart surgeries (e.g., congenital heart disease repair, coronary artery bypass grafting, valve surgery, etc.);"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-85cf96151f95e8b2",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of atrial fibrillation (defined as an arrhythmia characterized by rapid and irregular electrical activity in the atria);",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 788,
+        "start": 660
+      },
+      "source_text": "History of atrial fibrillation (defined as an arrhythmia characterized by rapid and irregular electrical activity in the atria);"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-6ee4dbbd92382c5a",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of coronary heart disease: including hospitalization due to acute myocardial infarction or unstable angina within the last 6 months; revascularization surgery (PCI or CABG) performed within the last 12 months; planned revascularization surgery (PCI or CABG) within the next 6 months;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 1083,
+        "start": 792
+      },
+      "source_text": "History of coronary heart disease: including hospitalization due to acute myocardial infarction or unstable angina within the last 6 months; revascularization surgery (PCI or CABG) performed within the last 12 months; planned revascularization surgery (PCI or CABG) within the next 6 months;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-1e7874423d7b3ed2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Administration of antiarrhythmic drugs other than beta-blockers within 2 weeks before surgery;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 1181,
+        "start": 1087
+      },
+      "source_text": "Administration of antiarrhythmic drugs other than beta-blockers within 2 weeks before surgery;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-dd5fe456ffe71655",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with cognitive impairment or inability to care for themselves in daily life;",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 1270,
+        "start": 1185
+      },
+      "source_text": "Patients with cognitive impairment or inability to care for themselves in daily life;"
+    },
+    {
+      "criterion_id": "nct06927908-exclusion-b55f3a452de594d0",
+      "criterion_type": "exclusion",
+      "normalized_text": "Other populations deemed unsuitable for enrollment by the investigator.",
+      "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+      "source_span": {
+        "end": 1345,
+        "start": 1274
+      },
+      "source_text": "Other populations deemed unsuitable for enrollment by the investigator."
+    }
+  ],
+  "eligibility_sha256": "1171c3213cc739e11330a1943c75cd48dbeb99d555ec006873a9e5788f024d21",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Male or female, over 18 years old, of Han nationality;\n2. Diagnosed with aortic dissection or aortic aneurysm and having undergone total aortic arch artificial vessel replacement surgery under cardiopulmonary bypass;\n3. Capable of fully understanding the content of informed consent for this trial and willing to voluntarily sign a written informed consent form.\n\nExclusion Criteria:\n\n1. Patients with severe coagulation dysfunction;\n2. Pregnant women;\n3. History of previous heart surgery;\n4. Concurrent receipt of other heart surgeries (e.g., congenital heart disease repair, coronary artery bypass grafting, valve surgery, etc.);\n5. History of atrial fibrillation (defined as an arrhythmia characterized by rapid and irregular electrical activity in the atria);\n6. History of coronary heart disease: including hospitalization due to acute myocardial infarction or unstable angina within the last 6 months; revascularization surgery (PCI or CABG) performed within the last 12 months; planned revascularization surgery (PCI or CABG) within the next 6 months;\n7. Administration of antiarrhythmic drugs other than beta-blockers within 2 weeks before surgery;\n8. Patients with cognitive impairment or inability to care for themselves in daily life;\n9. Other populations deemed unsuitable for enrollment by the investigator.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-04-15",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06927908",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06927908:eligibility:2025-04-15:1171c3213cc7",
+  "source_record_version": "2025-04-15:1171c3213cc7",
+  "source_url": "https://clinicaltrials.gov/study/NCT06927908",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Cardiac Denervation in Aortic Arch Replacement"
+}

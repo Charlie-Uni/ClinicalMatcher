@@ -1,0 +1,232 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D006333",
+          "term": "Heart Failure"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D054143",
+          "term": "Heart Failure, Systolic"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Drug: wearable device based remote management (GDMT titration for HF, rhythm control and anticoagulation management for AF)"
+          ],
+          "label": "Wearable Device-Assisted Intervention Group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "label": "Usual Care",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Wearable Device-Assisted Intervention Group"
+          ],
+          "description": "Participants in the intervention group will be managed per current guidelines for heart failure (HF) and/or atrial fibrillation (AF). The intervention group uses real-time data for automatic triage, categorized into three subgroups: Normal subgroup: Upward titration of guideline-directed medical therapy (GDMT). Abnormal subgroup: Upward/downward GDMT titration, or volume/congestion management (dyspnea/edema) - diuretics titrated to 100% target dose or other diuretics added. Grade E alert subgroup: Emergency department (ED) or outpatient clinic visit. Efforts to maintain sinus rhythm are recommended; rate control strategies are at the discretion of physicians. Anticoagulation will be initiated, if not already started, and maintained throughout the study according to current guidelines.",
+          "name": "wearable device based remote management (GDMT titration for HF, rhythm control and anticoagulation management for AF)",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Heart Failure and Reduced Ejection Fraction"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "yihongsun72@163.com",
+          "name": "Yihong Sun",
+          "phone": "+86 15001251357",
+          "role": "CONTACT"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "With the advancement of wearable technology, continuous non-invasive monitoring of vital signs, arrhythmia burden, and physical status has become increasingly feasible. Devices such as smartwatches and electrocardiogram (ECG) straps can provide real-time physiological data, offering new opportunities for remote and proactive disease management. Despite the growing availability of such real-time data, the complex interaction between atrial fibrillation (AF) and heart failure (HF) necessitates highly personalized management. However, there remains a lack of high-quality clinical evidence on how to effectively integrate wearable device data into these personalized strategies for specific patient populations. Moreover, the prognostic impact of wearable device-assisted remote management has not been comprehensively evaluated. Therefore, robust clinical studies are needed to further evaluate whether wearable device-assisted remote monitoring can improve the long-term prognosis of this population after discharge from the cardiac care unit (CCU).\n\nIn this study (WARM-HF Stage 2), the investigators will conduct a prospective, multicenter, randomized controlled trial to determine whether wearable devices can reduce the composite endpoint of readmission or death in patients with HF."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 818,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Age ≥ 18 years;\n2. Subjects diagnosed with acute decompensated heart failure (ADHF) :\n\n1)Heart failure with reduced ejection fraction (HFrEF), defined as left ventricular ejection fraction (LVEF) ≤ 40%; 2)New York Heart Association (NYHA) functional class II-IV; 3)NT-proBNP \\> 2500 pg/mL or BNP \\> 600 pg/mL 3. Atrial fibrillation (AF) diagnosed during hospitalization (documented AF episode lasting \\> 30 seconds on electrocardiogram \\[ECG\\] within the past 12 months)\n\nExclusion Criteria:\n\n1. Intolerance to heart failure pharmacotherapy;\n2. Severe anemia or untreated thyroid disease;\n3. ST-segment elevation myocardial infarction within 3 months;\n4. Known complex congenital heart disease; infiltrative cardiomyopathy (such as cardiac amyloidosis, sarcoidosis, lymphoma, or endomyocardial fibrosis); myocarditis; constrictive pericarditis; cardiac tamponade; hypertrophic cardiomyopathy; stress cardiomyopathy; or uncorrected primary valvular heart disease requiring surgical interventions;\n5. Prior major cardiac surgery or mechanical circulatory support, or planned within 6 months, including coronary artery bypass grafting, cardiac valve repair or replacement, ventricular assist device or mechanical circulatory support device implantation, and heart transplantation;\n6. Existing pacemaker or planned pacemaker implantation;\n7. Contraindications to wearing a smartwatch (such as limb disability or known allergy to rubber/metal materials);\n8. Inability to access the Internet or lack of proficiency in operating smart devices.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Wearable Device-Assisted Remote Management to Improve Prognosis in Patients With Acute Heart Failure Complicated by Atrial Fibrillation: WARM-HF Trial (Stage 2)",
+      "nctId": "NCT07687862",
+      "officialTitle": "A Researcher-initiated, Prospective, Open-label, Randomized Controlled Trial With a Parallel Design to Investigate the Prognostic Impact of Wearable Device-assisted Remote Management in Patients With Acute Heart Failure Complicated by Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "KS2026104"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Beijing Anzhen Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "Composite outcome of death or HF hospitalization",
+          "timeFrame": "2 years after randomization"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "The GDMT(guideline-directed medical therapy) score is a scoring system according to the combination of GDMT drugs administration and their dosages. Renin-angiotensin system (RAS) inhibitors were scored 0 if not initiated, 1 if \\<50% of target dose, and 2 if 50-100% of target dose; ARNIs were scored 3 regardless of dose; BBs were scored 0 if not initiated, 1 if \\<50% of target dose, and 2 if 50-100% of target dose; and MRAs and SGLT2 inhibitors were scored 0 if not initiated and 2 if initiated regardless of dose. MRAs and SGLT2 inhibitors were scored 0 if not initiated and 2 if initiated regardless of dose, resulting in a total score of 0-9. The higher score indicated better implementation of GDMT therapy.",
+          "measure": "Change in GDMT score",
+          "timeFrame": "90 days after randomization"
+        },
+        {
+          "measure": "NT-proBNP measures",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "measure": "Cardiovascular death",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "measure": "Stroke",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "measure": "Time to first readmission for heart failure (HF)",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "measure": "AF burden monitored by ECG straps",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "description": "The Kansas City Cardiomyopathy Questionnaire (KCCQ) is a 23-item questionnaire that quantifies physical limitations, symptoms, self-efficacy, social interference and quality of life for patients with congestive heart failure. The KCCQ-OS scores range from 0 to 100, with lower scores denoting poorer quality of life.",
+          "measure": "Changes in quality of life (QoL) using Kansas City Cardiomyopathy Questionnaire-Overall Summary (KCCQ-OS)",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "description": "The Minnesota Failure Quality of Life Scale (MLHFO) was especially developed for patients with HF to measure their overall health-related quality of life. It contains 21 questions about the impact of HF on patient's daily life. A total score between 0 and 105 can be achieved, with a higher score indicating poorer quality of life.",
+          "measure": "Changes in Quality of life (QoL) using Minnesota Heart Failure Quality of Life Scale (MLHFO)",
+          "timeFrame": "2 years after randomization"
+        },
+        {
+          "description": "The descriptive system of the EuroQol five-dimensional questionnaire(EQ-5D) comprises five dimensions: mobility, self-care, usual activities, pain/discomfort, and anxiety/depression; each dimension is described at five levels, corresponding roughly to no, slight, moderate, severe, and extreme problems. A health profile and a single health state index value can be derived. This index value ranges between \\<0 (where 0 is a health state equivalent to death; negative values are valued as worse than dead) to 1 (perfect health). In addition, a visual analogue scale records the respondent's self-rated health status on a vertical graduated (0-100) scale.",
+          "measure": "Changes in quality of life (QoL) using a five-level EuroQol five-dimensional questionnaire (EQ-5D-5L)",
+          "timeFrame": "2 years after randomization"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Beijing Anzhen Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Beijing Anzhen Hospital",
+        "investigatorFullName": "Yihong Sun",
+        "investigatorTitle": "Chief Physician",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-12-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-09",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-07-07",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-09-01",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2026-07-07",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-06-25",
+      "studyFirstSubmitQcDate": "2026-06-30"
+    }
+  }
+}

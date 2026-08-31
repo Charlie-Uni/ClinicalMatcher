@@ -1,0 +1,58 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07705425-inclusion-794b2156d08a6816",
+      "criterion_type": "inclusion",
+      "normalized_text": "All patients 18 and older scheduled for LAAO or M-TEER at the study site and whose procedure will use Philips CVx TEE or 3D ICE.",
+      "source_id": "clinicaltrials.gov:NCT07705425:eligibility:2026-07-15:0fde96fb7786",
+      "source_span": {
+        "end": 151,
+        "start": 23
+      },
+      "source_text": "All patients 18 and older scheduled for LAAO or M-TEER at the study site and whose procedure will use Philips CVx TEE or 3D ICE."
+    },
+    {
+      "criterion_id": "nct07705425-exclusion-a67ef2f80824c4a4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients whose procedures would require a GE or Siemens ultrasound system.",
+      "source_id": "clinicaltrials.gov:NCT07705425:eligibility:2026-07-15:0fde96fb7786",
+      "source_span": {
+        "end": 250,
+        "start": 176
+      },
+      "source_text": "Patients whose procedures would require a GE or Siemens ultrasound system."
+    }
+  ],
+  "eligibility_sha256": "0fde96fb7786345c58e64d213121a59729c41e43f183720183cea8963d3cbf8d",
+  "eligibility_text": "Inclusion Criteria:\n\n* All patients 18 and older scheduled for LAAO or M-TEER at the study site and whose procedure will use Philips CVx TEE or 3D ICE.\n\nExclusion Criteria:\n\n* Patients whose procedures would require a GE or Siemens ultrasound system.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-07-15",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07705425",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07705425:eligibility:2026-07-15:0fde96fb7786",
+  "source_record_version": "2026-07-15:0fde96fb7786",
+  "source_url": "https://clinicaltrials.gov/study/NCT07705425",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "EPX-HTG for Structural Heart Procedures"
+}

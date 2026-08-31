@@ -1,0 +1,201 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06633523-inclusion-bd71ba4e6a9da855",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients aged ≥18 years.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 46,
+        "start": 22
+      },
+      "source_text": "Patients aged ≥18 years."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-5715784976bf93e8",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients undergoing their first ablation procedure for PsAF.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 109,
+        "start": 49
+      },
+      "source_text": "Patients undergoing their first ablation procedure for PsAF."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-1a7f494b7f49581b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent atrial fibrillation (AF): Defined as episodes lasting ≥7 days and ≤3 years (including those requiring pharmacological or electrical cardioversion ≥7 days).",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 278,
+        "start": 112
+      },
+      "source_text": "Persistent atrial fibrillation (AF): Defined as episodes lasting ≥7 days and ≤3 years (including those requiring pharmacological or electrical cardioversion ≥7 days)."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-8f2860d67a4c7dc8",
+      "criterion_type": "inclusion",
+      "normalized_text": "Atrial fibrillation symptoms that are intolerant to at least one antiarrhythmic drug (AAD).",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 372,
+        "start": 281
+      },
+      "source_text": "Atrial fibrillation symptoms that are intolerant to at least one antiarrhythmic drug (AAD)."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-259f83f09ecb88a2",
+      "criterion_type": "inclusion",
+      "normalized_text": "At least one episode of PsAF must have been documented within the last 2 years by methods such as ECG, Holter monitoring, loop recorder, telemetry, remote telemonitoring (TTM), or implanted devices prior to enrollment in this study.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 607,
+        "start": 375
+      },
+      "source_text": "At least one episode of PsAF must have been documented within the last 2 years by methods such as ECG, Holter monitoring, loop recorder, telemetry, remote telemonitoring (TTM), or implanted devices prior to enrollment in this study."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-a6e17c8af503c0c2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients must be capable and willing to provide written informed consent to participate in the study.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 711,
+        "start": 610
+      },
+      "source_text": "Patients must be capable and willing to provide written informed consent to participate in the study."
+    },
+    {
+      "criterion_id": "nct06633523-inclusion-1edb698a539519b5",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients must be willing and able to comply with all study follow-up requirements.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 796,
+        "start": 714
+      },
+      "source_text": "Patients must be willing and able to comply with all study follow-up requirements."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-4f8530758dd4844f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Paroxysmal AF: Defined as episodes lasting \\&lt;7 days (or resolved with medication/electrical cardioversion within \\&lt;7 days).",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 950,
+        "start": 821
+      },
+      "source_text": "Paroxysmal AF: Defined as episodes lasting \\&lt;7 days (or resolved with medication/electrical cardioversion within \\&lt;7 days)."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-d779f699fcfc0447",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with long-standing persistent AF: Defined as persistent AF lasting \\&gt;3 years.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1042,
+        "start": 953
+      },
+      "source_text": "Patients with long-standing persistent AF: Defined as persistent AF lasting \\&gt;3 years."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-97b50cc61eda0015",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who have never attempted/pursued cardiac rhythm restoration or sinus rhythm.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1130,
+        "start": 1045
+      },
+      "source_text": "Patients who have never attempted/pursued cardiac rhythm restoration or sinus rhythm."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-93bf6cabebb81eee",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindication to systemic anticoagulation.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1178,
+        "start": 1133
+      },
+      "source_text": "Contraindication to systemic anticoagulation."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-3d0f31b9454102d6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1191,
+        "start": 1181
+      },
+      "source_text": "Pregnancy."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-0a2b07e08482fbd8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Advanced renal or hepatic failure.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1228,
+        "start": 1194
+      },
+      "source_text": "Advanced renal or hepatic failure."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-760756f48ce04880",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe valvular heart disease or cyanotic congenital heart disease.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1298,
+        "start": 1231
+      },
+      "source_text": "Severe valvular heart disease or cyanotic congenital heart disease."
+    },
+    {
+      "criterion_id": "nct06633523-exclusion-f97cc279838ffddd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Hypertrophic cardiomyopathy.",
+      "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+      "source_span": {
+        "end": 1329,
+        "start": 1301
+      },
+      "source_text": "Hypertrophic cardiomyopathy."
+    }
+  ],
+  "eligibility_sha256": "e36af39ffa7f4d1fefdf816136bbd4924d89fa209f2eb0985f5e1754bbcb8bfb",
+  "eligibility_text": "Inclusion Criteria\n\n* Patients aged ≥18 years.\n* Patients undergoing their first ablation procedure for PsAF.\n* Persistent atrial fibrillation (AF): Defined as episodes lasting ≥7 days and ≤3 years (including those requiring pharmacological or electrical cardioversion ≥7 days).\n* Atrial fibrillation symptoms that are intolerant to at least one antiarrhythmic drug (AAD).\n* At least one episode of PsAF must have been documented within the last 2 years by methods such as ECG, Holter monitoring, loop recorder, telemetry, remote telemonitoring (TTM), or implanted devices prior to enrollment in this study.\n* Patients must be capable and willing to provide written informed consent to participate in the study.\n* Patients must be willing and able to comply with all study follow-up requirements.\n\nExclusion Criteria:\n\n* Paroxysmal AF: Defined as episodes lasting \\&lt;7 days (or resolved with medication/electrical cardioversion within \\&lt;7 days).\n* Patients with long-standing persistent AF: Defined as persistent AF lasting \\&gt;3 years.\n* Patients who have never attempted/pursued cardiac rhythm restoration or sinus rhythm.\n* Contraindication to systemic anticoagulation.\n* Pregnancy.\n* Advanced renal or hepatic failure.\n* Severe valvular heart disease or cyanotic congenital heart disease.\n* Hypertrophic cardiomyopathy.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2024-10-09",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06633523",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06633523:eligibility:2024-10-09:e36af39ffa7f",
+  "source_record_version": "2024-10-09:e36af39ffa7f",
+  "source_url": "https://clinicaltrials.gov/study/NCT06633523",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Optimized Posterior Left Atrial Wall Ablation Strategy for PeAF"
+}

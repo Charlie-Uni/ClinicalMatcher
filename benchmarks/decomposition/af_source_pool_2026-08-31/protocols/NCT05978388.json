@@ -1,0 +1,124 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05978388-inclusion-508657c4284d0b35",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age over 18 years.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 41,
+        "start": 23
+      },
+      "source_text": "Age over 18 years."
+    },
+    {
+      "criterion_id": "nct05978388-inclusion-485660d58f4a47f2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Referral for catheter ablation treatment (excluding AV-junction ablation) for atrial fibrillation (both paroxysmal and persistent atrial fibrillation) at the Department of Cardiology at Gentofte Hospital. Both first ablation and re-ablation treatments are included.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 309,
+        "start": 44
+      },
+      "source_text": "Referral for catheter ablation treatment (excluding AV-junction ablation) for atrial fibrillation (both paroxysmal and persistent atrial fibrillation) at the Department of Cardiology at Gentofte Hospital. Both first ablation and re-ablation treatments are included."
+    },
+    {
+      "criterion_id": "nct05978388-inclusion-034b378530abf39d",
+      "criterion_type": "inclusion",
+      "normalized_text": "The ability and willingness to provide written informed consent.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 376,
+        "start": 312
+      },
+      "source_text": "The ability and willingness to provide written informed consent."
+    },
+    {
+      "criterion_id": "nct05978388-exclusion-ef97ded238808f7a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known atherosclerotic cardiovascular disease (ASCVD).",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 454,
+        "start": 401
+      },
+      "source_text": "Known atherosclerotic cardiovascular disease (ASCVD)."
+    },
+    {
+      "criterion_id": "nct05978388-exclusion-2535e21fd7c00be0",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ongoing treatment with statins.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 488,
+        "start": 457
+      },
+      "source_text": "Ongoing treatment with statins."
+    },
+    {
+      "criterion_id": "nct05978388-exclusion-7458a90c047f2fdd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindications for coronary CT angiography, e.g. contrast allergy",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 559,
+        "start": 491
+      },
+      "source_text": "Contraindications for coronary CT angiography, e.g. contrast allergy"
+    },
+    {
+      "criterion_id": "nct05978388-exclusion-e4d39431033e2caa",
+      "criterion_type": "exclusion",
+      "normalized_text": "Recent coronary CT angiography including CAC-score without positive findings <3 years prior to screening.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 668,
+        "start": 562
+      },
+      "source_text": "Recent coronary CT angiography including CAC-score without positive findings \\<3 years prior to screening."
+    },
+    {
+      "criterion_id": "nct05978388-exclusion-4e6ac4dd235ffbff",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any surgical or medical condition, which in the opinion of the investigator, may place the patient at higher risk from his/her participation in the study, or is likely to prevent the patient from complying with the requirements of the study or completing the study.",
+      "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+      "source_span": {
+        "end": 936,
+        "start": 671
+      },
+      "source_text": "Any surgical or medical condition, which in the opinion of the investigator, may place the patient at higher risk from his/her participation in the study, or is likely to prevent the patient from complying with the requirements of the study or completing the study."
+    }
+  ],
+  "eligibility_sha256": "46cd0ec8b28f6f9b08e1e151ac8e2747015c6e549568733be96c6ae53be5dabe",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age over 18 years.\n* Referral for catheter ablation treatment (excluding AV-junction ablation) for atrial fibrillation (both paroxysmal and persistent atrial fibrillation) at the Department of Cardiology at Gentofte Hospital. Both first ablation and re-ablation treatments are included.\n* The ability and willingness to provide written informed consent.\n\nExclusion Criteria:\n\n* Known atherosclerotic cardiovascular disease (ASCVD).\n* Ongoing treatment with statins.\n* Contraindications for coronary CT angiography, e.g. contrast allergy\n* Recent coronary CT angiography including CAC-score without positive findings \\<3 years prior to screening.\n* Any surgical or medical condition, which in the opinion of the investigator, may place the patient at higher risk from his/her participation in the study, or is likely to prevent the patient from complying with the requirements of the study or completing the study.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2024-06-26",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05978388",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05978388:eligibility:2024-06-26:46cd0ec8b28f",
+  "source_record_version": "2024-06-26:46cd0ec8b28f",
+  "source_url": "https://clinicaltrials.gov/study/NCT05978388",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Coronary Computed Tomography AngioGraphy Prior to Catheter Ablation in Patients With Atrial FIBrillation"
+}

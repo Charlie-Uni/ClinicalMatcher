@@ -1,0 +1,332 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D006328",
+          "term": "Cardiac Catheterization"
+        },
+        {
+          "id": "D002404",
+          "term": "Catheterization"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        },
+        {
+          "id": "D008919",
+          "term": "Investigative Techniques"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000097546",
+          "term": "Left Atrial Appendage Closure"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Subjects who meet eligibility criteria will undergo AF ablation and left atrial appendage closure using the FARAPULSE PFA system and WATCHMAN FLX Pro or WATCHMAN FLX during one interventional case.",
+          "interventionNames": [
+            "Device: Concomitant pulsed field ablation (PFA) and left atrial appendage closure (LAAC) during one interventional case",
+            "Procedure: Concomitant Pulsed Field Ablation and Left Atrial Appendage Closure"
+          ],
+          "label": "Single arm study",
+          "type": "OTHER"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Single arm study"
+          ],
+          "description": "left atrial appendage closure",
+          "name": "Concomitant pulsed field ablation (PFA) and left atrial appendage closure (LAAC) during one interventional case",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Single arm study"
+          ],
+          "description": "FARAPULSE PFA and WATCHMAN FLX Pro or WATCHMAN FLX in one interventional case.",
+          "name": "Concomitant Pulsed Field Ablation and Left Atrial Appendage Closure",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Stroke Prevention in Patients With Atrial Fibrillation",
+        "Left Atrial Appendage Closure",
+        "Pulsed Field Ablation",
+        "Atrial Fibrillation Ablation Procedure",
+        "Concomitant Procedures"
+      ],
+      "keywords": [
+        "WATCHMAN",
+        "FARAPULSE",
+        "Concomitant",
+        "PFA",
+        "LAAC"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "Katherine.beattie@bsci.com",
+          "name": "Katherine A Beattie, Sr. Clinical Trial Manager, RN",
+          "phone": "+1 612 819 4540",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Aalst",
+          "contacts": [
+            {
+              "name": "Thomas De Potter, MD",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Thomas De Potter, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Belgium",
+          "facility": "AZORG - Hospital",
+          "geoPoint": {
+            "lat": 50.93604,
+            "lon": 4.0355
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Zagreb",
+          "contacts": [
+            {
+              "name": "Vedran Velagic, MD",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Vedran Velagic, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Croatia",
+          "facility": "Klinicki bolnicki centar Zagreb",
+          "geoPoint": {
+            "lat": 45.81444,
+            "lon": 15.97798
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Toulouse",
+          "contacts": [
+            {
+              "name": "Serge Boveda, MD",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Serge Boveda, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "France",
+          "facility": "Clinique Pasteur - Toulouse",
+          "geoPoint": {
+            "lat": 43.60426,
+            "lon": 1.44367
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "San Donato Milanese",
+          "contacts": [
+            {
+              "name": "Carlo Pappone, MD",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Carlo Pappone, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Italy",
+          "facility": "IRCCS Policlinico San Donato",
+          "geoPoint": {
+            "lat": 45.41047,
+            "lon": 9.26838
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Salamanca",
+          "contacts": [
+            {
+              "name": "Ignacio Cruz-Gonzalez",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Ignacio Cruz-Gonzalez, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Spain",
+          "facility": "University Hospital of Salamanca",
+          "geoPoint": {
+            "lat": 40.42972,
+            "lon": -3.67975
+          },
+          "status": "NOT_YET_RECRUITING"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The OPTION-EMEA post-market study is intended to gather real world clinical data for patients undergoing AF ablation with the FARAPULSE™ Pulsed Field Ablation (PFA) System and subsequent left atrial appendage closure (LAAC) with a WATCHMAN FLX™ Pro or WATCHMAN FLX device during one interventional case.\n\nThe study will include patients that are clinically indicated for atrial fibrillation (AF) ablation using the FARAPULSE PFA System and for left atrial appendage closure (LAAC) treatment using a WATCHMAN FLX Pro or WATCHMAN FLX device as part of the patient's standard of care determined by their doctor's medical judgement."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "OTHER"
+      },
+      "enrollmentInfo": {
+        "count": 500,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Clinically indicated for treatment with both the FARAPULSE™ PFA system and with WATCHMAN FLX™ Pro or WATCHMAN FLX™ for LAAC, per physician medical judgement and as per hospitals' standard of care.\n2. Subjects who are willing and able to provide informed consent.\n3. Subjects who are willing and able to participate in all testing associated with this clinical study at an approved investigational center.\n4. Subjects whose age is 18 years or above, or who are of legal age to give informed consent specific to state and national law.\n\nExclusion Criteria:\n\n1. Subjects who underwent prior AF ablation procedure.\n2. Subjects with atrial fibrillation that is secondary to electrolyte imbalance, thyroid disease, alcohol, or other reversible / non-cardiac causes.\n3. Already surgically closed or otherwise excluded LAA.\n4. The LAA anatomy does not accommodate a Closure Device.\n5. Known or suspected atrial myxoma.\n6. Presence of intracardiac thrombus\\*.\n7. Subjects with a current interatrial baffle or patch, history of atrial septal repair or has an atrial septal defect (ASD) / patent foramen ovale (PFO) device.\n8. Subjects with a presence of a mechanical valve prosthesis in any position.\n9. Subjects with a myocardial infarction within 90 days prior to enrollment.\n10. Subjects had a prior stroke (of any cause, whether ischemic or hemorrhagic) or transient ischemic attack (TIA) within 90 days prior to enrollment.\n11. Any planned electrical cardioversion within 30 days following LAAC device implant.\n12. Subjects with a known inability to obtain vascular access.\n13. Subjects with any contraindication to percutaneous catheterization procedure (e.g., patient size does not accommodate required catheters, ventriculotomy or atriotomy) or congenital abnormalities (severe rotational anomalies of the heart or great vessels) are present.\n14. Subjects with any active conditions (e.g. infection, bleeding disorder, unstable angina).\n15. Subjects with any contraindications to short term use of anticoagulation therapy for conditions different from atrial fibrillation.\n16. Subjects who are pregnant or planning to be pregnant.\n17. Subjects with a life expectancy of ≤ 1 year per investigator's opinion.\n18. Subjects who are currently enrolled in another investigational study or registry that would directly interfere with the current study, except when the subject is participating in a mandatory governmental registry, or a purely observational registry with no associated treatments. Each instance must be reviewed by the sponsor to determine eligibility.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "OPTION-EMEA",
+      "briefTitle": "OPTION-EMEA Clinical Trial",
+      "nctId": "NCT07349121",
+      "officialTitle": "Concomitant Left Atrial Appendage Closure and Pulsed Field Ablation - Europe, Middle East and Africa [OPTION-EMEA]",
+      "orgStudyIdInfo": {
+        "id": "S2605"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Boston Scientific Corporation"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The PSE is the proportion of subjects who experience one or more device- or procedure-related composite serious adverse events (CSAEs) assessed at 30 days following the index procedure.",
+          "measure": "Primary Safety Endpoint (PSE): Device or Procedure Related Serious Adverse Events",
+          "timeFrame": "30 days following the index procedure."
+        },
+        {
+          "description": "The PEE is the proportion of subjects with Acute Treatment Success assessed among those receiving ≥ 1 PFA application and who have WATCHMAN device deployment attempted or successfully implanted.",
+          "measure": "Primary Efficacy Endpoint (PEE): Acute Treatment Success",
+          "timeFrame": "Through 30 days"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": true,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Boston Scientific Corporation"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-12",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-08-05",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-08-04",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2028-12",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-06-18",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2026-01-16",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-01-09",
+      "studyFirstSubmitQcDate": "2026-01-09"
+    }
+  }
+}

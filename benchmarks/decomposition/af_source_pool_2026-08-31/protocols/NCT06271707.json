@@ -1,0 +1,80 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06271707-inclusion-1824ef4fe9331dbe",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients undergoing esophagectomy, pneumonectomy, or lobectomy aged 18-85.",
+      "source_id": "clinicaltrials.gov:NCT06271707:eligibility:2026-08-10:1d6369d3c352",
+      "source_span": {
+        "end": 97,
+        "start": 23
+      },
+      "source_text": "Patients undergoing esophagectomy, pneumonectomy, or lobectomy aged 18-85."
+    },
+    {
+      "criterion_id": "nct06271707-exclusion-b43dfdebd1d77c58",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who have an exclusion to regional anesthesia.",
+      "source_id": "clinicaltrials.gov:NCT06271707:eligibility:2026-08-10:1d6369d3c352",
+      "source_span": {
+        "end": 176,
+        "start": 122
+      },
+      "source_text": "Patients who have an exclusion to regional anesthesia."
+    },
+    {
+      "criterion_id": "nct06271707-exclusion-fe4cd6456837977b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who have exclusion to stellate blockade.",
+      "source_id": "clinicaltrials.gov:NCT06271707:eligibility:2026-08-10:1d6369d3c352",
+      "source_span": {
+        "end": 228,
+        "start": 179
+      },
+      "source_text": "Patients who have exclusion to stellate blockade."
+    },
+    {
+      "criterion_id": "nct06271707-exclusion-0071cc1db218af7c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who are pregnant assessed via self-report or pregnancy test if they have taken one",
+      "source_id": "clinicaltrials.gov:NCT06271707:eligibility:2026-08-10:1d6369d3c352",
+      "source_span": {
+        "end": 322,
+        "start": 231
+      },
+      "source_text": "Patients who are pregnant assessed via self-report or pregnancy test if they have taken one"
+    }
+  ],
+  "eligibility_sha256": "1d6369d3c3529ce421eeda64ed022d6717aaf9395d324e4ee669001ef8c4a4fd",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patients undergoing esophagectomy, pneumonectomy, or lobectomy aged 18-85.\n\nExclusion Criteria:\n\n* Patients who have an exclusion to regional anesthesia.\n* Patients who have exclusion to stellate blockade.\n* Patients who are pregnant assessed via self-report or pregnancy test if they have taken one",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-08-10",
+  "maximum_age": "85 Years",
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06271707",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06271707:eligibility:2026-08-10:1d6369d3c352",
+  "source_record_version": "2026-08-10:1d6369d3c352",
+  "source_url": "https://clinicaltrials.gov/study/NCT06271707",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Stellate Ganglion Block"
+}

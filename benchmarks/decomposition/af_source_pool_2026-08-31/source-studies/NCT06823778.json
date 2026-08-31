@@ -1,0 +1,277 @@
+{
+  "derivedSection": {
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D000078702",
+          "term": "Radiofrequency Therapy"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        },
+        {
+          "id": "D055011",
+          "term": "Ablation Techniques"
+        },
+        {
+          "id": "D013514",
+          "term": "Surgical Procedures, Operative"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000078703",
+          "term": "Radiofrequency Ablation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "No ablation will be performed in this group of patients.",
+          "label": "Control",
+          "type": "NO_INTERVENTION"
+        },
+        {
+          "description": "In this group of patients, radiofrequency left atrial posterior wall isolation will be performed.",
+          "interventionNames": [
+            "Device: Radiofrequency ablation"
+          ],
+          "label": "Intervention",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Intervention"
+          ],
+          "description": "In this group of patients, epicardial radiofrequency left atrial posterior wall isolation will be performed with AtriCure Isolator Synergy OLL2 bipolar radiofrequency clamp without opening the left atrium.",
+          "name": "Radiofrequency ablation",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Postoperative Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Postoperative Atrial Fibrillation",
+        "Radiofrequency Ablation",
+        "Box Lesion Ablation",
+        "Prophylactic Ablation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "vasily.kaleda@gmail.com",
+          "name": "Vasily I. Kaleda, M.D., Ph.D.",
+          "phone": "7 (985) 641 1769",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Moscow",
+          "contacts": [
+            {
+              "email": "vasily.kaleda@gmail.com",
+              "name": "Vasily I. Kaleda, M.D., Ph.D.",
+              "phone": "7 (985) 641 1769",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Russia",
+          "facility": "Department of Cardiac Surgery, Yudin Hospital",
+          "geoPoint": {
+            "lat": 55.75204,
+            "lon": 37.61781
+          },
+          "state": "Moscow",
+          "status": "RECRUITING",
+          "zip": "115446"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Yudin Hospital",
+          "name": "Alexandr Piskun, M.D., Ph.D.",
+          "role": "STUDY_CHAIR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The goal of this clinical trial is to learn if an epicardial radiofrequency left atrial posterior wall isolation (box lesion ablation) prevents atrial fibrillation after cardiac surgery. The main question it aims to answer is:\n\n\\- Does box lesion ablation lower the number of patients experiencing de-novo atrial fibrillation requiring any treatment after cardiac surgery? Researchers will compare box lesion ablation to no ablation to see if ablation prevents postoperative atrial fibrillation.\n\nParticipants will undergo ablation or no ablation at the time of other cardiac surgery.\n\nData will be collected while in hospital. Additional information will be collected on 30th day after surgery by telephone call or during a visit.",
+      "detailedDescription": "Postoperative atrial fibrillation (POAF) is a common complication after heart surgery that occurs in 10-60% of patients. It can cause hypotension, tachycardia, stroke, systemic embolism, or heart failure, and is associated with increased mortality rates, prolonged hospital stays and increased costs. Several studies have investigated the use of radiofrequency ablation (the standard of surgical care for atrial fibrillation during concomitant cardiac surgery when the diagnosis is known preoperatively) to prevent POAF. However, these studies were limited mainly to pulmonary vein isolation and had methodological limitations such as small sample sizes, inclusion/exclusion criteria, and randomization procedures, and have not translated into clinical practice changes. The current study aims to investigate the use of radiofrequency left atrial posterior wall isolation, also known as box lesion ablation, as a more effective treatment compared to pulmonary vein isolation, in a properly designed randomized controlled trial."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "A Prospective Parallel-Arm Single-Blind Randomized Trial",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "PARTICIPANT"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 216,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* All patients undergoing cardiac surgery by a single surgeon (V.K.)\n* Informed consent\n\nExclusion Criteria:\n\n* History of atrial fibrillation/flutter\n* Minimally invasive approach\n* Off-pump surgery\n* Emergent/salvage surgery\n* Severe pericardial adhesions",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PROBOX",
+      "briefTitle": "Prophylactic Radiofrequency Left Atrial Posterior Wall Isolation to Prevent Atrial Fibrillation After Cardiac Surgery",
+      "nctId": "NCT06823778",
+      "officialTitle": "Prophylactic Radiofrequency Left Atrial Posterior Wall Isolation (box Lesion Ablation) to Prevent Atrial Fibrillation After Cardiac Surgery (PROBOX): a Randomized Controlled Trial",
+      "orgStudyIdInfo": {
+        "id": "1.2025"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Yudin Hospital"
+      }
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "description": "Total operative time (min)",
+          "measure": "Operative time",
+          "timeFrame": "Up to 24 hours after the start of the operation"
+        },
+        {
+          "description": "Total cardiopulmonary bypass time (min)",
+          "measure": "Cardiopulmonary bypass time",
+          "timeFrame": "Up to 24 hours after the start of the operation"
+        },
+        {
+          "description": "Total cross-clamp time (min)",
+          "measure": "Cross-clamp time",
+          "timeFrame": "Up to 24 hours after the start of the operation"
+        },
+        {
+          "description": "Any arrhytmias other than POAF rate",
+          "measure": "Other arrhythmias rate",
+          "timeFrame": "Within 30-day of surgery or until discharge, whichever came last, assessed up to 6 months after surgery"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "description": "Incidence of clinically significant (requiring any type of intervention) postoperative atrial fibrillation",
+          "measure": "Postoperative Atrial Fibrillation",
+          "timeFrame": "Within 30-day of surgery or until discharge, whichever came last, assessed up to 6 months after surgery"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "All deaths occurring during the hospitalization in which the operation was performed, even if after 30 days; and all deaths occurring after discharge from the hospital, but before the end of the 30th postoperative day.",
+          "measure": "Postoperative Mortality",
+          "timeFrame": "Within 30-day of surgery or until discharge, whichever came last, assessed up to 6 months after surgery"
+        },
+        {
+          "description": "Number of patients who have a postoperative stroke (i.e., any confirmed neurological deficit of abrupt onset caused by a disturbance in blood supply to the brain) that did not resolve within 24 hours",
+          "measure": "Postoperative Stroke",
+          "timeFrame": "Within 30-day of surgery or until discharge, whichever came last, assessed up to 6 months after surgery"
+        },
+        {
+          "description": "Postoperative length of in-hospital stay",
+          "measure": "Length of Stay",
+          "timeFrame": "Up to 6 months after surgery"
+        },
+        {
+          "description": "Unplanned 30-day any cause readmission rate",
+          "measure": "Unplanned Readmission",
+          "timeFrame": "Within 30 days after surgery"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": true,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Visanji M, Belley-Cote EP, Pandey A, Amit Y, McClure GR, Young J, Um KJ, Oraii A, Healey JS, Whitlock RP, McIntyre WF. Prophylactic ablation during cardiac surgery in patients without atrial fibrillation: a systematic review and meta-analysis of randomized trials. Interdiscip Cardiovasc Thorac Surg. 2024 Dec 3;39(6):ivae195. doi: 10.1093/icvts/ivae195.",
+          "pmid": "39589863",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Kaleda VI, Snegirev MA, Efendiev VU, Piskun AV, Batukov IA, Nazaryan KE, Pidanov OY. Concomitant Box Lesion Ablation for Atrial Fibrillation with a Standard Non-Irrigated Bipolar Radiofrequency Clamp: Simplified Approach Without Left Atriotomy. Braz J Cardiovasc Surg. 2025 Feb 17;40(2):e20230432. doi: 10.21470/1678-9741-2023-0432.",
+          "pmid": "39960384",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Vasily I. Kaleda"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Yudin Hospital",
+        "investigatorFullName": "Vasily I. Kaleda",
+        "investigatorTitle": "Principal Investigator",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-09",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-02-21",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-02-19",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-09",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-02-17",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-02",
+      "studyFirstPostDateStruct": {
+        "date": "2025-02-12",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-02-02",
+      "studyFirstSubmitQcDate": "2025-02-06"
+    }
+  }
+}

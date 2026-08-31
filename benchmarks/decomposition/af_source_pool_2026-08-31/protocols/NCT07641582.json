@@ -1,0 +1,102 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07641582-inclusion-eded804c6386faf5",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients with symptoms suggestive of paroxysmal atrial fibrillation, such as intermittent palpitations or chest discomfort",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 145,
+        "start": 23
+      },
+      "source_text": "Patients with symptoms suggestive of paroxysmal atrial fibrillation, such as intermittent palpitations or chest discomfort"
+    },
+    {
+      "criterion_id": "nct07641582-inclusion-0bdc601460989e5f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Asymptomatic patients aged 60 or older with at least one of the following risk factors for atrial fibrillation: hypertension, diabetes, coronary artery disease, valvular heart disease, cardiomyopathy, sleep apnea, hyperthyroidism, obesity (BMI greater than 30), or chronic alcohol dependence (drinking more than 3 times per week)",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 477,
+        "start": 148
+      },
+      "source_text": "Asymptomatic patients aged 60 or older with at least one of the following risk factors for atrial fibrillation: hypertension, diabetes, coronary artery disease, valvular heart disease, cardiomyopathy, sleep apnea, hyperthyroidism, obesity (BMI greater than 30), or chronic alcohol dependence (drinking more than 3 times per week)"
+    },
+    {
+      "criterion_id": "nct07641582-exclusion-e0325b9b406e660a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Age under 20 years or over 80 years",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 537,
+        "start": 502
+      },
+      "source_text": "Age under 20 years or over 80 years"
+    },
+    {
+      "criterion_id": "nct07641582-exclusion-d65a7d463e2ad418",
+      "criterion_type": "exclusion",
+      "normalized_text": "Moderate or severe cognitive impairment",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 579,
+        "start": 540
+      },
+      "source_text": "Moderate or severe cognitive impairment"
+    },
+    {
+      "criterion_id": "nct07641582-exclusion-b19712c106c0adb3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previously diagnosed with atrial fibrillation prior to study enrollment",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 653,
+        "start": 582
+      },
+      "source_text": "Previously diagnosed with atrial fibrillation prior to study enrollment"
+    },
+    {
+      "criterion_id": "nct07641582-exclusion-8346fb53de64f113",
+      "criterion_type": "exclusion",
+      "normalized_text": "Does not consent to participate in the study",
+      "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+      "source_span": {
+        "end": 700,
+        "start": 656
+      },
+      "source_text": "Does not consent to participate in the study"
+    }
+  ],
+  "eligibility_sha256": "202d4e176d2cfaa93c717b1980676a2feea32a34585a96df20967dc14e2f9d3c",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patients with symptoms suggestive of paroxysmal atrial fibrillation, such as intermittent palpitations or chest discomfort\n* Asymptomatic patients aged 60 or older with at least one of the following risk factors for atrial fibrillation: hypertension, diabetes, coronary artery disease, valvular heart disease, cardiomyopathy, sleep apnea, hyperthyroidism, obesity (BMI greater than 30), or chronic alcohol dependence (drinking more than 3 times per week)\n\nExclusion Criteria:\n\n* Age under 20 years or over 80 years\n* Moderate or severe cognitive impairment\n* Previously diagnosed with atrial fibrillation prior to study enrollment\n* Does not consent to participate in the study",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-06-11",
+  "maximum_age": "79 Years",
+  "minimum_age": "20 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07641582",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07641582:eligibility:2026-06-11:202d4e176d2c",
+  "source_record_version": "2026-06-11:202d4e176d2c",
+  "source_url": "https://clinicaltrials.gov/study/NCT07641582",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Prediction of Atrial Fibrillation Using Polygenic Risk Score"
+}

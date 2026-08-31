@@ -1,0 +1,322 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07715929-inclusion-c6ddf661e250f976",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥18 years and ≤75 years at the time of screening",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 75,
+        "start": 23
+      },
+      "source_text": "Age ≥18 years and ≤75 years at the time of screening"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-77d6959ed5cb8011",
+      "criterion_type": "inclusion",
+      "normalized_text": "Documented symptomatic paroxysmal AF or persistent AF, confirmed by 12-lead ECG, Holter monitoring, or cardiac monitoring device, with documented AF episode duration ≥7 days (for persistent AF) and total AF history duration ≤5 years",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 310,
+        "start": 78
+      },
+      "source_text": "Documented symptomatic paroxysmal AF or persistent AF, confirmed by 12-lead ECG, Holter monitoring, or cardiac monitoring device, with documented AF episode duration ≥7 days (for persistent AF) and total AF history duration ≤5 years"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-c62ef21c5c87b412",
+      "criterion_type": "inclusion",
+      "normalized_text": "Body weight criteria (aligned with NMPA-approved tirzepatide indication) meeting at least one of the following: BMI ≥28.0 kg/m² (obesity threshold per Chinese criteria), OR BMI ≥24.0 kg/m² and <28.0 kg/m² (overweight per Chinese criteria) with at least one weight-related comorbidity: hypertension, dyslipidemia, type 2 diabetes mellitus (T2DM), obstructive sleep apnea syndrome (OSAS), or atherosclerotic cardiovascular disease (ASCVD)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 751,
+        "start": 313
+      },
+      "source_text": "Body weight criteria (aligned with NMPA-approved tirzepatide indication) meeting at least one of the following:\n\nBMI ≥28.0 kg/m² (obesity threshold per Chinese criteria), OR BMI ≥24.0 kg/m² and \\<28.0 kg/m² (overweight per Chinese criteria) with at least one weight-related comorbidity: hypertension, dyslipidemia, type 2 diabetes mellitus (T2DM), obstructive sleep apnea syndrome (OSAS), or atherosclerotic cardiovascular disease (ASCVD)"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-4118d85be60aed60",
+      "criterion_type": "inclusion",
+      "normalized_text": "Failed response to or intolerance of at least one antiarrhythmic drug (AAD), or explicit patient preference for a rhythm control strategy",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 892,
+        "start": 755
+      },
+      "source_text": "Failed response to or intolerance of at least one antiarrhythmic drug (AAD), or explicit patient preference for a rhythm control strategy"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-0eaa5a137c984e76",
+      "criterion_type": "inclusion",
+      "normalized_text": "Undergoing catheter ablation for AF at a participating center, with confirmed successful restoration of sinus rhythm at the end of the procedure (as determined by the operator)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1071,
+        "start": 895
+      },
+      "source_text": "Undergoing catheter ablation for AF at a participating center, with confirmed successful restoration of sinus rhythm at the end of the procedure (as determined by the operator)"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+      "criterion_type": "inclusion",
+      "normalized_text": "Willing and able to understand the study procedures, provide written informed consent, and comply with all protocol requirements including 12-month follow-up visits",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1238,
+        "start": 1074
+      },
+      "source_text": "Willing and able to understand the study procedures, provide written informed consent, and comply with all protocol requirements including 12-month follow-up visits"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-9176e23f670e8c3d",
+      "criterion_type": "inclusion",
+      "normalized_text": "Capable of performing basic physical activity (no absolute contraindication to moderate-intensity aerobic exercise)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1356,
+        "start": 1241
+      },
+      "source_text": "Capable of performing basic physical activity (no absolute contraindication to moderate-intensity aerobic exercise)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-dcd399651f6226e4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Long-standing persistent AF: continuous AF duration ≥5 years prior to enrollment",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1496,
+        "start": 1416
+      },
+      "source_text": "Long-standing persistent AF: continuous AF duration ≥5 years prior to enrollment"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-fcfbeb1a392d6d3e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior catheter ablation for AF or atrial flutter at any time",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1559,
+        "start": 1499
+      },
+      "source_text": "Prior catheter ablation for AF or atrial flutter at any time"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-16667e05b86934ae",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left atrial anteroposterior diameter >55 mm (by transthoracic echocardiography at screening)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1655,
+        "start": 1562
+      },
+      "source_text": "Left atrial anteroposterior diameter \\>55 mm (by transthoracic echocardiography at screening)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-a8696c4474f85bb3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left ventricular ejection fraction (LVEF) <35% at screening",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1718,
+        "start": 1658
+      },
+      "source_text": "Left ventricular ejection fraction (LVEF) \\<35% at screening"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-d8798508361c0efc",
+      "criterion_type": "exclusion",
+      "normalized_text": "NYHA functional class III or IV heart failure",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1766,
+        "start": 1721
+      },
+      "source_text": "NYHA functional class III or IV heart failure"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-738fb3cfa5eae95b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Significant structural heart disease: hypertrophic cardiomyopathy, valvular heart disease requiring intervention, congenital heart disease, myocarditis, or cardiac sarcoidosis",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1944,
+        "start": 1769
+      },
+      "source_text": "Significant structural heart disease: hypertrophic cardiomyopathy, valvular heart disease requiring intervention, congenital heart disease, myocarditis, or cardiac sarcoidosis"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-6fcd645b1ca00b43",
+      "criterion_type": "exclusion",
+      "normalized_text": "Acute coronary syndrome (ACS), ischemic stroke/TIA, or major cardiac surgery within 6 months prior to screening Tirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2134,
+        "start": 1947
+      },
+      "source_text": "Acute coronary syndrome (ACS), ischemic stroke/TIA, or major cardiac surgery within 6 months prior to screening\n\nTirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-e039e7103e6a3326",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior use of any GLP-1 receptor agonist (liraglutide, semaglutide, dulaglutide, exenatide, etc.) or GIP receptor agonist, or known hypersensitivity to tirzepatide or any excipient in the formulation",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2336,
+        "start": 2138
+      },
+      "source_text": "Prior use of any GLP-1 receptor agonist (liraglutide, semaglutide, dulaglutide, exenatide, etc.) or GIP receptor agonist, or known hypersensitivity to tirzepatide or any excipient in the formulation"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-3d9da7f0262cca19",
+      "criterion_type": "exclusion",
+      "normalized_text": "Personal or family (first-degree relative) history of multiple endocrine neoplasia type 2 (MEN2) or medullary thyroid carcinoma (MTC)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2472,
+        "start": 2339
+      },
+      "source_text": "Personal or family (first-degree relative) history of multiple endocrine neoplasia type 2 (MEN2) or medullary thyroid carcinoma (MTC)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-5bd47c36068aa9c2",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of acute pancreatitis or chronic pancreatitis, or current symptomatic cholelithiasis or cholecystitis",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2584,
+        "start": 2475
+      },
+      "source_text": "History of acute pancreatitis or chronic pancreatitis, or current symptomatic cholelithiasis or cholecystitis"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-926570bae44e9d15",
+      "criterion_type": "exclusion",
+      "normalized_text": "Type 1 DM",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2596,
+        "start": 2587
+      },
+      "source_text": "Type 1 DM"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-70c65168bb549b69",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe gastrointestinal disease including severe gastroparesis, inflammatory bowel disease, or any condition that would substantially impair gastrointestinal motility or absorption General Exclusion Criteria",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2807,
+        "start": 2599
+      },
+      "source_text": "Severe gastrointestinal disease including severe gastroparesis, inflammatory bowel disease, or any condition that would substantially impair gastrointestinal motility or absorption\n\nGeneral Exclusion Criteria"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-ced410ae33d39cd2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Use of any weight-loss medication (orlistat, phentermine, naltrexone/bupropion, or other anti-obesity agents) or participation in any weight-loss pharmacotherapy clinical trial within 3 months prior to screening",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3022,
+        "start": 2811
+      },
+      "source_text": "Use of any weight-loss medication (orlistat, phentermine, naltrexone/bupropion, or other anti-obesity agents) or participation in any weight-loss pharmacotherapy clinical trial within 3 months prior to screening"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-65aac797086a9df2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe hepatic insufficiency (Child-Pugh class C) or severe renal insufficiency (eGFR <15 mL/min/1.73 m²)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3131,
+        "start": 3025
+      },
+      "source_text": "Severe hepatic insufficiency (Child-Pugh class C) or severe renal insufficiency (eGFR \\<15 mL/min/1.73 m²)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-6904388ebf8d1670",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active malignancy (receiving systemic anti-cancer treatment or with life expectancy <2 years due to malignancy)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3246,
+        "start": 3134
+      },
+      "source_text": "Active malignancy (receiving systemic anti-cancer treatment or with life expectancy \\<2 years due to malignancy)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-e8461f0447ee8eb2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy, breastfeeding, or women of childbearing potential who are unwilling to use highly effective contraception throughout the study and for ≥1 month after the last dose of tirzepatide",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3438,
+        "start": 3249
+      },
+      "source_text": "Pregnancy, breastfeeding, or women of childbearing potential who are unwilling to use highly effective contraception throughout the study and for ≥1 month after the last dose of tirzepatide"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-e2094e1d6506ecaa",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe psychiatric disorder (schizophrenia, bipolar disorder, severe major depressive disorder) that would impair ability to comply with study procedures",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3594,
+        "start": 3441
+      },
+      "source_text": "Severe psychiatric disorder (schizophrenia, bipolar disorder, severe major depressive disorder) that would impair ability to comply with study procedures"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-1940b7412c9e0008",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known allergy or sensitivity to adhesive patch materials (relevant to ECG monitoring patch components)",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3699,
+        "start": 3597
+      },
+      "source_text": "Known allergy or sensitivity to adhesive patch materials (relevant to ECG monitoring patch components)"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-0b1bacf939a15f83",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any other condition that, in the opinion of the investigator, would make participation inadvisable or compromise the safety of the participant or the integrity of the study",
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 3874,
+        "start": 3702
+      },
+      "source_text": "Any other condition that, in the opinion of the investigator, would make participation inadvisable or compromise the safety of the participant or the integrity of the study"
+    }
+  ],
+  "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age ≥18 years and ≤75 years at the time of screening\n* Documented symptomatic paroxysmal AF or persistent AF, confirmed by 12-lead ECG, Holter monitoring, or cardiac monitoring device, with documented AF episode duration ≥7 days (for persistent AF) and total AF history duration ≤5 years\n* Body weight criteria (aligned with NMPA-approved tirzepatide indication) meeting at least one of the following:\n\nBMI ≥28.0 kg/m² (obesity threshold per Chinese criteria), OR BMI ≥24.0 kg/m² and \\<28.0 kg/m² (overweight per Chinese criteria) with at least one weight-related comorbidity: hypertension, dyslipidemia, type 2 diabetes mellitus (T2DM), obstructive sleep apnea syndrome (OSAS), or atherosclerotic cardiovascular disease (ASCVD)\n\n* Failed response to or intolerance of at least one antiarrhythmic drug (AAD), or explicit patient preference for a rhythm control strategy\n* Undergoing catheter ablation for AF at a participating center, with confirmed successful restoration of sinus rhythm at the end of the procedure (as determined by the operator)\n* Willing and able to understand the study procedures, provide written informed consent, and comply with all protocol requirements including 12-month follow-up visits\n* Capable of performing basic physical activity (no absolute contraindication to moderate-intensity aerobic exercise)\n\nExclusion Criteria:\n\nCardiovascular Exclusion Criteria\n\n* Long-standing persistent AF: continuous AF duration ≥5 years prior to enrollment\n* Prior catheter ablation for AF or atrial flutter at any time\n* Left atrial anteroposterior diameter \\>55 mm (by transthoracic echocardiography at screening)\n* Left ventricular ejection fraction (LVEF) \\<35% at screening\n* NYHA functional class III or IV heart failure\n* Significant structural heart disease: hypertrophic cardiomyopathy, valvular heart disease requiring intervention, congenital heart disease, myocarditis, or cardiac sarcoidosis\n* Acute coronary syndrome (ACS), ischemic stroke/TIA, or major cardiac surgery within 6 months prior to screening\n\nTirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)\n\n* Prior use of any GLP-1 receptor agonist (liraglutide, semaglutide, dulaglutide, exenatide, etc.) or GIP receptor agonist, or known hypersensitivity to tirzepatide or any excipient in the formulation\n* Personal or family (first-degree relative) history of multiple endocrine neoplasia type 2 (MEN2) or medullary thyroid carcinoma (MTC)\n* History of acute pancreatitis or chronic pancreatitis, or current symptomatic cholelithiasis or cholecystitis\n* Type 1 DM\n* Severe gastrointestinal disease including severe gastroparesis, inflammatory bowel disease, or any condition that would substantially impair gastrointestinal motility or absorption\n\nGeneral Exclusion Criteria\n\n* Use of any weight-loss medication (orlistat, phentermine, naltrexone/bupropion, or other anti-obesity agents) or participation in any weight-loss pharmacotherapy clinical trial within 3 months prior to screening\n* Severe hepatic insufficiency (Child-Pugh class C) or severe renal insufficiency (eGFR \\<15 mL/min/1.73 m²)\n* Active malignancy (receiving systemic anti-cancer treatment or with life expectancy \\<2 years due to malignancy)\n* Pregnancy, breastfeeding, or women of childbearing potential who are unwilling to use highly effective contraception throughout the study and for ≥1 month after the last dose of tirzepatide\n* Severe psychiatric disorder (schizophrenia, bipolar disorder, severe major depressive disorder) that would impair ability to comply with study procedures\n* Known allergy or sensitivity to adhesive patch materials (relevant to ECG monitoring patch components)\n* Any other condition that, in the opinion of the investigator, would make participation inadvisable or compromise the safety of the participant or the integrity of the study",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-07-21",
+  "maximum_age": "75 Years",
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07715929",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+  "source_record_version": "2026-07-21:a13918011fce",
+  "source_url": "https://clinicaltrials.gov/study/NCT07715929",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Effect of Tirzepatide on Recurrence of Atrial Fibrillation After Catheter Ablation in Obese Patients"
+}

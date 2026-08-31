@@ -1,0 +1,347 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D020022",
+          "term": "Genetic Predisposition to Disease"
+        },
+        {
+          "id": "D004198",
+          "term": "Disease Susceptibility"
+        },
+        {
+          "id": "D020969",
+          "term": "Disease Attributes"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D000096442",
+          "term": "Genetic Risk Score"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants at risk for atrial fibrillation undergo 7-day continuous ECG patch monitoring and SNP array genotyping at enrollment, followed by 1-year self-monitoring with a six-lead handheld ECG device (HATIV® P30, VUNO Inc.).",
+          "interventionNames": [
+            "Device: 7-day continuous ECG patch monitor",
+            "Device: Six-lead handheld electrocardiogram device",
+            "Genetic: SNP array genotyping"
+          ],
+          "label": "AF Risk Group",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "AF Risk Group"
+          ],
+          "description": "Continuous ECG patch worn for 7 days at enrollment to detect atrial fibrillation and other arrhythmias.",
+          "name": "7-day continuous ECG patch monitor",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "AF Risk Group"
+          ],
+          "description": "Six-lead ECG device used for self-monitoring at least once or twice weekly and upon symptoms for 1 year.",
+          "name": "Six-lead handheld electrocardiogram device",
+          "otherNames": [
+            "HATIV® P30"
+          ],
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "AF Risk Group"
+          ],
+          "description": "DNA extracted from a 5cc blood sample is used to perform SNP array genotyping. The resulting data are used to calculate a polygenic risk score (PRS) for atrial fibrillation based on previously published genome-wide association study results.",
+          "name": "SNP array genotyping",
+          "type": "GENETIC"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Polygenic Risk Score",
+        "Atrial Fibrillation Screening",
+        "Handheld ECG",
+        "SNP Array",
+        "Holter Monitoring",
+        "Genetic Risk"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "superstar@catholic.ac.kr",
+          "name": "Young Choi, MD, PhD",
+          "phone": "82-2-1588-1511",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Incheon",
+          "country": "South Korea",
+          "facility": "The Catholic University of Korea Incheon St. Mary's Hospital",
+          "geoPoint": {
+            "lat": 37.45646,
+            "lon": 126.70515
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "superstar@catholic.ac.kr",
+              "name": "Young Choi, MD, PhD",
+              "phone": "82-2-1588-1511",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Young Choi, MD, PhD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "The Catholic University of Korea Seoul St. Mary's Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "status": "RECRUITING",
+          "zip": "06591"
+        },
+        {
+          "city": "Seoul",
+          "country": "South Korea",
+          "facility": "The Catholic University of Korea Eunpyeong St. Mary's Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Suwon",
+          "country": "South Korea",
+          "facility": "The Catholic University of Korea St. Vincent's Hospital",
+          "geoPoint": {
+            "lat": 37.29111,
+            "lon": 127.00889
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Uijeongbu-si",
+          "country": "South Korea",
+          "facility": "The Catholic University of Korea Uijeongbu St. Mary's Hospital",
+          "geoPoint": {
+            "lat": 37.7415,
+            "lon": 127.0474
+          },
+          "status": "RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "The Catholic University of Korea",
+          "name": "Young Choi, MD, PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The goal of this clinical trial is to learn whether a genetic risk score can help identify undiagnosed atrial fibrillation (AF) in adults who may have it. AF is an irregular heartbeat that raises the risk of stroke if not treated early.\n\nThe main questions it aims to answer are:\n\nCan a polygenic risk score (PRS) - a score based on a person's genes - identify who is more likely to have AF? Does combining PRS with a person's medical history predict AF better than using medical history alone?\n\nParticipants will:\n\nWear a continuous ECG patch for 7 days to record heart rhythm Give a blood sample for genetic testing to calculate their PRS Use a six-lead handheld ECG device (HATIV® P30, VUNO Inc., Seoul, Republic of Korea) to check their own heart rhythm at home once or twice a week for 1 year Visit the clinic 5 times over 1 year\n\nResearchers will use the genetic and clinical information collected to build a scoring system that predicts who is at risk for AF.",
+      "detailedDescription": "Atrial fibrillation (AF) is the most common cardiac arrhythmia worldwide, affecting approximately 34 million individuals. While early diagnosis and treatment can significantly reduce the risk of stroke, paroxysmal AF often goes undetected due to its intermittent nature. Current screening guidelines lack clear recommendations on which populations benefit most from AF screening and what screening strategies are optimal.\n\nGenome-wide association studies have identified numerous genetic loci associated with AF susceptibility, and the SNP heritability of AF has been estimated at approximately 22%. A polygenic risk score (PRS) aggregates the effects of thousands of common genetic variants across the genome to estimate an individual's genetic predisposition to AF. Prior studies have demonstrated that PRS can stratify AF risk independently of conventional clinical risk factors, suggesting its potential utility in targeted screening strategies.\n\nGenetic Assessment At enrollment, a blood sample of 5cc is collected for DNA extraction via centrifugation. A SNP array is performed using a commercially available SNP chip kit. The resulting genotype data are used to calculate a weighted PRS for AF based on previously published genome-wide association study results.\n\nECG Monitoring In addition to standard 12-lead ECG and 7-day continuous ECG patch monitoring performed at enrollment, all participants are provided with a six-lead handheld ECG device (HATIV® P30, VUNO Inc., Seoul, Republic of Korea). Participants perform self-ECG recordings at least once or twice per week and additionally upon symptom onset for 1 year after enrollment.\n\nPrediction Model Development At the end of follow-up, participants are classified into AF-diagnosed and non-AF groups. A scoring system integrating clinical history and PRS will be developed to predict AF occurrence and its predictive performance will be evaluated."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "DIAGNOSTIC"
+      },
+      "enrollmentInfo": {
+        "count": 800,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients with symptoms suggestive of paroxysmal atrial fibrillation, such as intermittent palpitations or chest discomfort\n* Asymptomatic patients aged 60 or older with at least one of the following risk factors for atrial fibrillation: hypertension, diabetes, coronary artery disease, valvular heart disease, cardiomyopathy, sleep apnea, hyperthyroidism, obesity (BMI greater than 30), or chronic alcohol dependence (drinking more than 3 times per week)\n\nExclusion Criteria:\n\n* Age under 20 years or over 80 years\n* Moderate or severe cognitive impairment\n* Previously diagnosed with atrial fibrillation prior to study enrollment\n* Does not consent to participate in the study",
+      "healthyVolunteers": false,
+      "maximumAge": "79 Years",
+      "minimumAge": "20 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PREGENCE",
+      "briefTitle": "Prediction of Atrial Fibrillation Using Polygenic Risk Score",
+      "nctId": "NCT07641582",
+      "officialTitle": "Development of an Atrial Fibrillation Prediction Model Using Polygenic Risk Score: A Prospective Cohort Study",
+      "orgStudyIdInfo": {
+        "id": "KC24ENSI0366"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Seoul St. Mary's Hospital"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "National Research Foundation of Korea",
+          "id": "RS-2024-00357346",
+          "type": "OTHER_GRANT"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "New diagnosis of atrial fibrillation confirmed by 7-day continuous ECG patch monitor, six-lead handheld ECG device, or standard 12-lead ECG during the 1-year follow-up period.",
+          "measure": "Incidence of newly diagnosed atrial fibrillation",
+          "timeFrame": "1 year"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "New diagnosis of atrial flutter confirmed by ECG monitoring during the 1-year follow-up period.",
+          "measure": "Incidence of newly diagnosed atrial flutter",
+          "timeFrame": "1 year"
+        },
+        {
+          "description": "Discrimination and calibration of a scoring system integrating polygenic risk score and clinical risk factors for predicting atrial fibrillation, assessed by area under the receiver operating characteristic curve (AUC).",
+          "measure": "Predictive performance of the AF prediction model",
+          "timeFrame": "1 year"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Yang L, Feng H, Ai S, Liu Y, Lei B, Chen J, Tan X, Benedict C, Wang N, Wing YK, Qi L, Zhang J. Association of accelerometer-derived circadian abnormalities and genetic risk with incidence of atrial fibrillation. NPJ Digit Med. 2023 Mar 4;6(1):31. doi: 10.1038/s41746-023-00781-3.",
+          "pmid": "36869222",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Steinhubl SR, Waalen J, Edwards AM, Ariniello LM, Mehta RR, Ebner GS, Carter C, Baca-Motes K, Felicione E, Sarich T, Topol EJ. Effect of a Home-Based Wearable Continuous ECG Monitoring Patch on Detection of Undiagnosed Atrial Fibrillation: The mSToPS Randomized Clinical Trial. JAMA. 2018 Jul 10;320(2):146-155. doi: 10.1001/jama.2018.8102.",
+          "pmid": "29998336",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Roselli C, Chaffin MD, Weng LC, Aeschbacher S, Ahlberg G, Albert CM, Almgren P, Alonso A, Anderson CD, Aragam KG, Arking DE, Barnard J, Bartz TM, Benjamin EJ, Bihlmeyer NA, Bis JC, Bloom HL, Boerwinkle E, Bottinger EB, Brody JA, Calkins H, Campbell A, Cappola TP, Carlquist J, Chasman DI, Chen LY, Chen YI, Choi EK, Choi SH, Christophersen IE, Chung MK, Cole JW, Conen D, Cook J, Crijns HJ, Cutler MJ, Damrauer SM, Daniels BR, Darbar D, Delgado G, Denny JC, Dichgans M, Dorr M, Dudink EA, Dudley SC, Esa N, Esko T, Eskola M, Fatkin D, Felix SB, Ford I, Franco OH, Geelhoed B, Grewal RP, Gudnason V, Guo X, Gupta N, Gustafsson S, Gutmann R, Hamsten A, Harris TB, Hayward C, Heckbert SR, Hernesniemi J, Hocking LJ, Hofman A, Horimoto ARVR, Huang J, Huang PL, Huffman J, Ingelsson E, Ipek EG, Ito K, Jimenez-Conde J, Johnson R, Jukema JW, Kaab S, Kahonen M, Kamatani Y, Kane JP, Kastrati A, Kathiresan S, Katschnig-Winter P, Kavousi M, Kessler T, Kietselaer BL, Kirchhof P, Kleber ME, Knight S, Krieger JE, Kubo M, Launer LJ, Laurikka J, Lehtimaki T, Leineweber K, Lemaitre RN, Li M, Lim HE, Lin HJ, Lin H, Lind L, Lindgren CM, Lokki ML, London B, Loos RJF, Low SK, Lu Y, Lyytikainen LP, Macfarlane PW, Magnusson PK, Mahajan A, Malik R, Mansur AJ, Marcus GM, Margolin L, Margulies KB, Marz W, McManus DD, Melander O, Mohanty S, Montgomery JA, Morley MP, Morris AP, Muller-Nurasyid M, Natale A, Nazarian S, Neumann B, Newton-Cheh C, Niemeijer MN, Nikus K, Nilsson P, Noordam R, Oellers H, Olesen MS, Orho-Melander M, Padmanabhan S, Pak HN, Pare G, Pedersen NL, Pera J, Pereira A, Porteous D, Psaty BM, Pulit SL, Pullinger CR, Rader DJ, Refsgaard L, Ribases M, Ridker PM, Rienstra M, Risch L, Roden DM, Rosand J, Rosenberg MA, Rost N, Rotter JI, Saba S, Sandhu RK, Schnabel RB, Schramm K, Schunkert H, Schurman C, Scott SA, Seppala I, Shaffer C, Shah S, Shalaby AA, Shim J, Shoemaker MB, Siland JE, Sinisalo J, Sinner MF, Slowik A, Smith AV, Smith BH, Smith JG, Smith JD, Smith NL, Soliman EZ, Sotoodehnia N, Stricker BH, Sun A, Sun H, Svendsen JH, Tanaka T, Tanriverdi K, Taylor KD, Teder-Laving M, Teumer A, Theriault S, Trompet S, Tucker NR, Tveit A, Uitterlinden AG, Van Der Harst P, Van Gelder IC, Van Wagoner DR, Verweij N, Vlachopoulou E, Volker U, Wang B, Weeke PE, Weijs B, Weiss R, Weiss S, Wells QS, Wiggins KL, Wong JA, Woo D, Worrall BB, Yang PS, Yao J, Yoneda ZT, Zeller T, Zeng L, Lubitz SA, Lunetta KL, Ellinor PT. Multi-ethnic genome-wide association study for atrial fibrillation. Nat Genet. 2018 Jun 11;50(9):1225-1233. doi: 10.1038/s41588-018-0133-9.",
+          "pmid": "29892015",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Weng LC, Choi SH, Klarin D, Smith JG, Loh PR, Chaffin M, Roselli C, Hulme OL, Lunetta KL, Dupuis J, Benjamin EJ, Newton-Cheh C, Kathiresan S, Ellinor PT, Lubitz SA. Heritability of Atrial Fibrillation. Circ Cardiovasc Genet. 2017 Dec;10(6):e001838. doi: 10.1161/CIRCGENETICS.117.001838.",
+          "pmid": "29237688",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "US Preventive Services Task Force; Davidson KW, Barry MJ, Mangione CM, Cabana M, Caughey AB, Davis EM, Donahue KE, Doubeni CA, Epling JW Jr, Kubik M, Li L, Ogedegbe G, Pbert L, Silverstein M, Stevermer J, Tseng CW, Wong JB. Screening for Atrial Fibrillation: US Preventive Services Task Force Recommendation Statement. JAMA. 2022 Jan 25;327(4):360-367. doi: 10.1001/jama.2021.23732.",
+          "pmid": "35076659",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Seoul St. Mary's Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Seoul St. Mary's Hospital",
+        "investigatorFullName": "Young Choi",
+        "investigatorTitle": "Associate Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-06-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-06-11",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-06-06",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-12-30",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-11-19",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-06",
+      "studyFirstPostDateStruct": {
+        "date": "2026-06-11",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-06-06",
+      "studyFirstSubmitQcDate": "2026-06-06"
+    }
+  }
+}

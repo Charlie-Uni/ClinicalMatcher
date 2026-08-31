@@ -1,0 +1,91 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05997914-inclusion-4644a769a941e552",
+      "criterion_type": "inclusion",
+      "normalized_text": "African-American patients aged 18 or older with elevated stroke risk (CHA2DS2-VASc ≥2 for men and ≥3 for women) who are not currently on anticoagulation (AC) but for whom a cardiology provider or primary care provider at the two study sites recommended AC recently",
+      "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+      "source_span": {
+        "end": 287,
+        "start": 23
+      },
+      "source_text": "African-American patients aged 18 or older with elevated stroke risk (CHA2DS2-VASc ≥2 for men and ≥3 for women) who are not currently on anticoagulation (AC) but for whom a cardiology provider or primary care provider at the two study sites recommended AC recently"
+    },
+    {
+      "criterion_id": "nct05997914-exclusion-14402d022450c3f9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Non-African American and other non-Black patients under the age of 18 patients without an ICD-10 diagnostic code consistent with AF or atrial fibrillation or atrial flutter",
+      "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+      "source_span": {
+        "end": 484,
+        "start": 312
+      },
+      "source_text": "Non-African American and other non-Black patients under the age of 18 patients without an ICD-10 diagnostic code consistent with AF or atrial fibrillation or atrial flutter"
+    },
+    {
+      "criterion_id": "nct05997914-exclusion-38f272f38063f262",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient without a visit with a primary care provider, cardiovascular medicine specialist, or ambulatory care provider in the previous one year",
+      "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+      "source_span": {
+        "end": 629,
+        "start": 487
+      },
+      "source_text": "Patient without a visit with a primary care provider, cardiovascular medicine specialist, or ambulatory care provider in the previous one year"
+    },
+    {
+      "criterion_id": "nct05997914-exclusion-0b485da3813bcc2f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patient who is pregnant or a prisoner.",
+      "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+      "source_span": {
+        "end": 670,
+        "start": 632
+      },
+      "source_text": "Patient who is pregnant or a prisoner."
+    },
+    {
+      "criterion_id": "nct05997914-exclusion-0486a748bd3a91e4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with left atrial appendage surgery or device, hospice status, ongoing bleeding, and intracranial bleeding in intralobar territory",
+      "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+      "source_span": {
+        "end": 811,
+        "start": 673
+      },
+      "source_text": "Patients with left atrial appendage surgery or device, hospice status, ongoing bleeding, and intracranial bleeding in intralobar territory"
+    }
+  ],
+  "eligibility_sha256": "1bde22eaeb4952e2e57b8e57ee2f26148f9c5eece00a77685556417caf347adf",
+  "eligibility_text": "Inclusion Criteria:\n\n* African-American patients aged 18 or older with elevated stroke risk (CHA2DS2-VASc ≥2 for men and ≥3 for women) who are not currently on anticoagulation (AC) but for whom a cardiology provider or primary care provider at the two study sites recommended AC recently\n\nExclusion Criteria:\n\n* Non-African American and other non-Black patients under the age of 18 patients without an ICD-10 diagnostic code consistent with AF or atrial fibrillation or atrial flutter\n* Patient without a visit with a primary care provider, cardiovascular medicine specialist, or ambulatory care provider in the previous one year\n* Patient who is pregnant or a prisoner.\n* Patients with left atrial appendage surgery or device, hospice status, ongoing bleeding, and intracranial bleeding in intralobar territory",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-04-13",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05997914",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05997914:eligibility:2026-04-13:1bde22eaeb49",
+  "source_record_version": "2026-04-13:1bde22eaeb49",
+  "source_url": "https://clinicaltrials.gov/study/NCT05997914",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Storytelling for Reducing Gap in Anticoagulation Use in African Americans With Atrial Fibrillation"
+}

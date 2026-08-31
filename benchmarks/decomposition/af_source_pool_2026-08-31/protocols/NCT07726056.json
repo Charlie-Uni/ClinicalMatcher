@@ -1,0 +1,113 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07726056-inclusion-1a3bdbe7c8884f8b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age 18-80 years",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 38,
+        "start": 23
+      },
+      "source_text": "Age 18-80 years"
+    },
+    {
+      "criterion_id": "nct07726056-inclusion-03c5a3421faf5008",
+      "criterion_type": "inclusion",
+      "normalized_text": "Participation in endurance sports (≥4 hours/week)",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 90,
+        "start": 41
+      },
+      "source_text": "Participation in endurance sports (≥4 hours/week)"
+    },
+    {
+      "criterion_id": "nct07726056-inclusion-e0d904dc606ad0b7",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosis of atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 125,
+        "start": 93
+      },
+      "source_text": "Diagnosis of atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct07726056-inclusion-f36f72e2682f7f12",
+      "criterion_type": "inclusion",
+      "normalized_text": "Capturing training data through commercially available platforms (e.g. Strava, TrainingPeaks, …) or willingness to start collecting training data and working with these commercially available platforms prospectively",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 343,
+        "start": 128
+      },
+      "source_text": "Capturing training data through commercially available platforms (e.g. Strava, TrainingPeaks, …) or willingness to start collecting training data and working with these commercially available platforms prospectively"
+    },
+    {
+      "criterion_id": "nct07726056-exclusion-d38780deeef99446",
+      "criterion_type": "exclusion",
+      "normalized_text": "No training data available",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 394,
+        "start": 368
+      },
+      "source_text": "No training data available"
+    },
+    {
+      "criterion_id": "nct07726056-exclusion-d1393f6bb6ab88ce",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of cardiovascular disease (including ischemic heart disease, cardiomyopathy, valvular heart disease, primary electrical disorders, or congestive heart failure)",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 564,
+        "start": 397
+      },
+      "source_text": "History of cardiovascular disease (including ischemic heart disease, cardiomyopathy, valvular heart disease, primary electrical disorders, or congestive heart failure)"
+    },
+    {
+      "criterion_id": "nct07726056-exclusion-9ad617af2c0db231",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active smoking",
+      "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+      "source_span": {
+        "end": 581,
+        "start": 567
+      },
+      "source_text": "Active smoking"
+    }
+  ],
+  "eligibility_sha256": "cb636c9cc1240bef579599381408994cded46cb2bb2a6ced2726bb88e89115f2",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age 18-80 years\n* Participation in endurance sports (≥4 hours/week)\n* Diagnosis of atrial fibrillation\n* Capturing training data through commercially available platforms (e.g. Strava, TrainingPeaks, …) or willingness to start collecting training data and working with these commercially available platforms prospectively\n\nExclusion Criteria:\n\n* No training data available\n* History of cardiovascular disease (including ischemic heart disease, cardiomyopathy, valvular heart disease, primary electrical disorders, or congestive heart failure)\n* Active smoking",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-07-27",
+  "maximum_age": "80 Years",
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07726056",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07726056:eligibility:2026-07-27:cb636c9cc124",
+  "source_record_version": "2026-07-27:cb636c9cc124",
+  "source_url": "https://clinicaltrials.gov/study/NCT07726056",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Performance After Cardiac Ablation in Endurance Athletes for Atrial Fibrillation"
+}

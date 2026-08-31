@@ -1,0 +1,113 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06823778-inclusion-f5f19c8dde02bba2",
+      "criterion_type": "inclusion",
+      "normalized_text": "All patients undergoing cardiac surgery by a single surgeon (V.K.)",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 89,
+        "start": 23
+      },
+      "source_text": "All patients undergoing cardiac surgery by a single surgeon (V.K.)"
+    },
+    {
+      "criterion_id": "nct06823778-inclusion-4652c25c547280dd",
+      "criterion_type": "inclusion",
+      "normalized_text": "Informed consent",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 108,
+        "start": 92
+      },
+      "source_text": "Informed consent"
+    },
+    {
+      "criterion_id": "nct06823778-exclusion-4b9e8cdb20c2020f",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of atrial fibrillation/flutter",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 171,
+        "start": 133
+      },
+      "source_text": "History of atrial fibrillation/flutter"
+    },
+    {
+      "criterion_id": "nct06823778-exclusion-b27dd269cf8fbbe3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Minimally invasive approach",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 201,
+        "start": 174
+      },
+      "source_text": "Minimally invasive approach"
+    },
+    {
+      "criterion_id": "nct06823778-exclusion-d3b9cf95c95d91c3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Off-pump surgery",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 220,
+        "start": 204
+      },
+      "source_text": "Off-pump surgery"
+    },
+    {
+      "criterion_id": "nct06823778-exclusion-8595d0552c92fe8a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Emergent/salvage surgery",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 247,
+        "start": 223
+      },
+      "source_text": "Emergent/salvage surgery"
+    },
+    {
+      "criterion_id": "nct06823778-exclusion-bcf04fe11eacce1a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe pericardial adhesions",
+      "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+      "source_span": {
+        "end": 278,
+        "start": 250
+      },
+      "source_text": "Severe pericardial adhesions"
+    }
+  ],
+  "eligibility_sha256": "b0c1bd499989b86464bcd5dad96e76a0d68c7138f4056c635396a3e46796c483",
+  "eligibility_text": "Inclusion Criteria:\n\n* All patients undergoing cardiac surgery by a single surgeon (V.K.)\n* Informed consent\n\nExclusion Criteria:\n\n* History of atrial fibrillation/flutter\n* Minimally invasive approach\n* Off-pump surgery\n* Emergent/salvage surgery\n* Severe pericardial adhesions",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-02-21",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06823778",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06823778:eligibility:2025-02-21:b0c1bd499989",
+  "source_record_version": "2025-02-21:b0c1bd499989",
+  "source_url": "https://clinicaltrials.gov/study/NCT06823778",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Prophylactic Radiofrequency Left Atrial Posterior Wall Isolation to Prevent Atrial Fibrillation After Cardiac Surgery"
+}

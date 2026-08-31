@@ -1,0 +1,313 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D015154",
+          "term": "Esophageal Motility Disorders"
+        },
+        {
+          "id": "D003680",
+          "term": "Deglutition Disorders"
+        },
+        {
+          "id": "D004935",
+          "term": "Esophageal Diseases"
+        },
+        {
+          "id": "D005767",
+          "term": "Gastrointestinal Diseases"
+        },
+        {
+          "id": "D004066",
+          "term": "Digestive System Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D005764",
+          "term": "Gastroesophageal Reflux"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D006328",
+          "term": "Cardiac Catheterization"
+        },
+        {
+          "id": "D002404",
+          "term": "Catheterization"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        },
+        {
+          "id": "D008919",
+          "term": "Investigative Techniques"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000097546",
+          "term": "Left Atrial Appendage Closure"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Patients undergoing structural heart procedures (LAAO or M-TEER) including Holographic Therapy Guidance (HTG) as an additive visualization tool for procedure guidance.",
+          "interventionNames": [
+            "Device: Left Atrial Appendage Occlusion",
+            "Device: Mitral Valve Transcatheter Edge to Edge Repair"
+          ],
+          "label": "EPX-HTG",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "EPX-HTG"
+          ],
+          "description": "Left Atrial Appendage Occlusion with HTG as an additive visualization tool for procedure guidance.",
+          "name": "Left Atrial Appendage Occlusion",
+          "otherNames": [
+            "Watchman"
+          ],
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "EPX-HTG"
+          ],
+          "description": "Mitral Valve Transcatheter Edge to Edge Repair with HTG as an additive visualization tool for procedure guidance.",
+          "name": "Mitral Valve Transcatheter Edge to Edge Repair",
+          "otherNames": [
+            "MitraClip",
+            "M-TEER"
+          ],
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Mitral Valve (MV) Regurgitation"
+      ],
+      "keywords": [
+        "Structural Heart",
+        "Interventional Cardiology",
+        "Mitral Valve Transcatheter Edge to Edge Repair",
+        "M-TEER",
+        "LAAO",
+        "Left Atrial Appendage Occlusion"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "sergio@echopixeltech.com",
+          "name": "Sergio Aguirre, MSc",
+          "phone": "6503382559",
+          "phoneExt": "701",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Sacramento",
+          "country": "United States",
+          "facility": "University of California, Davis",
+          "geoPoint": {
+            "lat": 38.58157,
+            "lon": -121.4944
+          },
+          "state": "California",
+          "zip": "95187"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "UC Davis Health",
+          "name": "Gagan D Singh, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "To investigate and evaluate the benefits of adding EchoPixel Holographic Therapy Guidance to the current standard of care in Structural Heart (SH) procedures.\n\nCurrent structural heart (SH) procedures rely on standard image guidance (SIG) relies on 2D X-plane or multiplanar reformatted (MPR) views that can conceal critical anatomy elements at the time of implant or therapy delivery which are crucial to achieve an optimal long term durable outcome.\n\nThis limitation complicates an operator's task of optimally implanting a 3D device, delivered by tools that rotate and maneuver in 3D, within a dynamic 3D anatomy, the heart. Slight mismatches between the device and the target in the heart are indicative of a sub-optimal device position, a key risk-factor of peri-device leak (PDL) and other complications.\n\nThe primary objective of the study is to determine if including EchoPixel - HTG as an additive visualization procedural tool has a positive impact on optimal procedure outcomes for patients undergoing in Structural Heart (SH) procedures.",
+      "detailedDescription": "A prospective, single-center, clinical chart review.\n\nIn this trial, we will determine if the additional use of EchoPixel - HTG demonstrates a reduction in procedure time, decrease use of contrast and radiation, minimize the number of devices trialed during a procedure, determine ideal fluoroscopic viewing angles for device deployment, and optimize implant deployment and seal in in Structural Heart (SH) procedures.\n\nThe study team will compile the redacted pre- procedure CT, redacted procedural Trans-Esophageal Echo (TEE) or Intra-Cardiac Echo (ICE), procedural fluoroscopic imaging and the post device implant imaging created for each procedure case. Patient health information will be redacted and provided to physicians for review. Data will be collected on case report forms.\n\nA prospective review will occur of outcomes regarding the Structural Heart (SH) procedure cases and data will be recorded on case report forms to compare to normal historical outcomes.\n\nAll available consecutive patients treated with the Watchman FLX device for Left Atrial Appendage Occlusion (LAAO) or MitraClip for Mitral Valve transcatheter edge to edge repair (M-TEER) will be reviewed. The primary endpoint will be to determine if EchoPixel - HTG assists in better guiding the implanter during the procedure.\n\nAll patients 18 and older scheduled for LAAO or M-TEER at the study site and whose procedure will use Philips CVx TEE or 3D ICE.\n\nThe Primary objective of the study is to determine if adding EchoPixel - HTG has a positive impact on optimal procedure success for patients undergoing an implantation of a Watchman FLX / MitraClip device compared to patients with current SIG. Procedural metrics and any procedural related complications will be recorded as secondary outcomes.\n\nPatient demographics blinded procedural outcomes, pre-hospital discharge and complications will be monitored through and until the patient follow-up visit.\n\nStudy Execution.\n\nCollection of data:\n\n1. All patients will be identified using a prospective review.\n2. The patients imaging will be de-identified and numbered with randomly picked research subject numbers identified only by site enrollment log (retained at the site only).\n3. All deidentified data imaging will be downloaded on the two separate BOX (part 11 FDA compliant) drives.\n\n   1. CT data in one drive.\n   2. TEE data in one drive.\n   3. ICE data in one drive.\n4. All patient's demographics will be obtained (age, ethnicity, vitals, ejection fraction, EKG, hemoglobin, creatinine, medical history, concomitant medications, CHADS2-Vasc, HAS-BLED, primary reason for implant).\n\nAnalysis of procedural data:\n\n1. Procedure time in minutes.\n2. Fluoroscopic time in minutes.\n3. Radiation dose in mGy.\n4. Contrast used during the LAAO procedure in ml.\n5. Number of devices trialed during the LAAO / TEER procedure.\n6. Number of attempted device deployments / recaptures.\n7. Clinical outcomes and procedural related complications.\n8. Composite of procedure-related complications through follow-up visit.\n\nInformed Consent Process. This is a prospective trial, utilizing redacted personal health information (PHI). Therefore, consent will be obtained.\n\nPrivacy, Confidentiality and Data Handling. The investigator will retain all regulatory documents pertaining to this study in compliance with ICH/GCP guidelines. This includes essential study documents and source documentation that support the data collected on the study Subjects. Each subject's study data will be collected and will be securely stored in the coordinating site's office. Subjects will be identified using a subject identification number. Subject information will be anonymized for data analysis.\n\nRISKS to PARTICIPANTS. As a prospective study, all patients will be managed according to the practice's standard-of-care. As a result, there are no additional risks to the patients having their medical charts reviewed for this study. Staff and employees at the study site have extensive HIPAA training and all records will be retained at the institution. Data collection will involve the recording of protected health information; however, this PHI data will remain at the study site and only de-identified data will be shared with Echopixel. The Watchman FLX procedure / MitraClip is an FDA approved procedure.\n\nBENEFITS to PARTICIPANTS. As an FDA approved device and procedure, there is no direct benefit to the patient. However, information gained from the study will contribute to the body of knowledge regarding the treatment of patients needing the LAAO/MitraClip procedure. Additionally, future patients who may want to consider a LAAO/MitraClip procedure will benefit from the collective published literature base of studies, such as this proposed study."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "interventionModelDescription": "Prospective, single-center, clinical chart review.",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 20,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* All patients 18 and older scheduled for LAAO or M-TEER at the study site and whose procedure will use Philips CVx TEE or 3D ICE.\n\nExclusion Criteria:\n\n* Patients whose procedures would require a GE or Siemens ultrasound system.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "EPX-HTG-2026",
+      "briefTitle": "EPX-HTG for Structural Heart Procedures",
+      "nctId": "NCT07705425",
+      "officialTitle": "EchoPixel Holographic Therapy Guidance (HTG) for Structural Heart Procedures",
+      "orgStudyIdInfo": {
+        "id": "EPX-HTG-2026"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "EchoPixel, Inc."
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "For both LAAO and M-TEER procedures an optimal device position will be established in pre-procedure planning. The optimal device position will be evaluated at the time of the procedure and in post-procedure imaging.",
+          "measure": "Optimal Device Position.",
+          "timeFrame": "45 days post procedure."
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Duration of procedure to implant LAAO or TEER device, in minutes.",
+          "measure": "Procedure Time.",
+          "timeFrame": "Perioperative/Periprocedural measurement of procedure length/duration."
+        },
+        {
+          "description": "Duration/length of use of fluoroscopy to implant LAAO or TEER device, in minutes.",
+          "measure": "Fluoroscopic Time.",
+          "timeFrame": "Perioperative/Periprocedural measurement of length/duration of fluoroscopy use."
+        },
+        {
+          "description": "Amount of radiation used to implant LAAO or TEER device in mGy.",
+          "measure": "Radiation Dose.",
+          "timeFrame": "Perioperative/Periprocedural measurement of total radiation dose for completing procedure/surgery."
+        },
+        {
+          "description": "Amount of radio-opaque contrast used to implant LAAO or TEER device, in ml.",
+          "measure": "Contrast Used.",
+          "timeFrame": "Perioperative/Periprocedural measurement of total radio-opaque contrast used for completing procedure/surgery."
+        },
+        {
+          "description": "The total number of devices (LAAO or TEER) utilized/required to complete the procedure.",
+          "measure": "Number of devices trialed for procedure completion.",
+          "timeFrame": "Perioperative/Periprocedural count of the total number of devices (LAAO or TEER) utilized/required to complete the procedure/surgery."
+        },
+        {
+          "description": "The total number of times a device is positioned for final deployment in order to be released from the delivery catheter.",
+          "measure": "Number of Device Deployments.",
+          "timeFrame": "Perioperative/Periprocedural count of the total number of times a device is positioned for final deployment in order to be released from the delivery catheter in order to complete the procedure/surgery/"
+        },
+        {
+          "description": "Composite of any procedure-related complications for LAAO or M-TEER.",
+          "measure": "Procedure-related complications.",
+          "timeFrame": "Perioperative/Periprocedural and throughout 45-day follow-up visit."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "EchoPixel, Inc."
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-10-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-15",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-07-13",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-08-03",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2026-07-15",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-06-30",
+      "studyFirstSubmitQcDate": "2026-07-13"
+    }
+  }
+}

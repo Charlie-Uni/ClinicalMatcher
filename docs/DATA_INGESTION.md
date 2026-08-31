@@ -160,6 +160,13 @@ If a release retains a frozen registry snapshot for reproducibility, its README
 must retain the attribution, processing date, modification notes, and warning
 that current registry records may differ.
 
+The owner-approved 2026-08-31 execution is retained under
+`benchmarks/decomposition/`. It observed all 833 frozen-query hits, retained
+546 records after explicit local filters, selected 40 by NCT hash, imported 37,
+and reported three parser skips with `ambiguous_polarity`. Its README records
+attribution, processing timestamps, modifications, live-registry drift, the
+80-criterion selection, and the report-only lexical-overlap diagnostic.
+
 ### Patient-trial gold is a release gate
 
 A public trial snapshot supplies trials and protocol criteria only. It does not

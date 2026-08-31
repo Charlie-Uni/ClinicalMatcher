@@ -1,0 +1,270 @@
+{
+  "derivedSection": {
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants in this arm will undergo long-term ECG monitoring using MEMO Patch M during hospitalization and MEMO Patch2 after discharge. 24-hour Holter monitoring will also be performed, and ILR implantation will be assessed before discharge.",
+          "interventionNames": [
+            "Device: MEMO Patch M and MEMO Patch2"
+          ],
+          "label": "MEMO Patch Long-Term Monitoring(MEMO Patch M, MEMO Patch2)",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "MEMO Patch Long-Term Monitoring(MEMO Patch M, MEMO Patch2)"
+          ],
+          "description": "During hospitalization, participants will wear MEMO Patch M, a single-lead wearable ECG patch, for 12 hours to up to 8 days. A 24-hour Holter monitor will also be performed during hospitalization. Before discharge, investigators will review the MEMO Patch M and Holter results to assess the need for implantable loop recorder (ILR) implantation. At the time of discharge, participants will wear MEMO Patch2 for up to 14 days for the first ECG monitoring period. One month after discharge, participants will undergo the second ECG monitoring period with MEMO Patch2 for up to 14 days.",
+          "name": "MEMO Patch M and MEMO Patch2",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Embolic Stroke of Undetermined Source"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "medicj80@hanmail.net",
+          "name": "Bum Joon Kim",
+          "phone": "+82 02-3010-3981",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "medicj80@hanmail.net",
+              "name": "Bum Joon Kim, MD, PhD",
+              "phone": "+82-2-3010-3981",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Asan Medical Center",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "state": "Songpa-gu",
+          "status": "RECRUITING",
+          "zip": "05505"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Asan Medical Center",
+          "name": "Bum Joon Kim",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The purpose of this study is to evaluate the efficacy and safety of a wearable device in detecting previously undiagnosed atrial fibrillation through non-invasive long-term monitoring using a wearable single-lead ECG patch (MEMO Patch M, MEMO Patch2) in 100 patients with Embolic Stroke of Undetermined Source (ESUS) who require atrial fibrillation screening. Participants who meet all inclusion and exclusion criteria and provide written informed consent will wear the MEMO Patch M and undergo in-hospital telemetry monitoring using MEMO Cue for a minimum of 12 hours and up to 8 days. During hospitalization, 24-hour Holter monitoring will also be conducted. Before discharge, the investigator will review these results to determine whether implantable loop recorder (ILR) implantation is necessary. At the time of discharge, participants will wear MEMO Patch2 for up to 14 days for the first ECG monitoring period. One month after discharge, the investigator will review the results of the first monitoring and initiate the second ECG monitoring with MEMO Patch2. Three months after discharge, the results of the second ECG monitoring will be reviewed, and participation in the clinical trial will be completed.",
+      "detailedDescription": "This clinical study is designed as a prospective, single-center, investigator-initiated exploratory clinical trial.\n\n1. Screening Participants will be assigned a screening number in the order in which informed consent is obtained. Through interviews and review of previous medical records, demographic information, medical history, surgical/procedural history, prior medications, and other required assessment items will be collected. Eligibility for study participation will be determined by reviewing the inclusion and exclusion criteria.\n2. Visit 1 (In-Hospital Telemetry Monitoring) Eligible participants will be fitted with the investigational medical device, MEMO Patch M, and will undergo in-hospital telemetry monitoring using MEMO Cue for a minimum of 12 hours and up to 8 days. A 24-hour Holter monitor will also be applied after admission. Prior to discharge, participants will review the MEMO Patch M (in-hospital telemetry) results to determine whether ILR implantation is required.\n3. Discharge (First ECG Monitoring) At discharge, participants who were not detected with atrial fibrillation using the Holter ECG or MEMO Patch M will receive an Implantable Loop Recorder (ILR). Participants in whom atrial fibrillation is detected will not receive ILR implantation. Regardless of ILR implantation, all participants will wear MEMO Patch2 and undergo additional ECG monitoring for up to 14 days after discharge. After the scheduled monitoring period ends, MEMO Patch2 will be returned using the Huinno courier service.\n4. Visit 2 (Review of First ECG Monitoring Results - 1-Month Visit) At the 1-month outpatient visit, participants will review the results of the first ECG monitoring. They will then undergo a second monitoring period by wearing MEMO Patch2 for up to 14 days. After completing the scheduled monitoring period, MEMO Patch2 will be returned using the Huinno courier service.\n5. Visit 3 (Review of Second ECG Monitoring Results - 3-Month Visit) At the 3-month outpatient visit, participants will review the results of the second ECG monitoring. After this visit, participation in the clinical study will be completed."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "DIAGNOSTIC"
+      },
+      "enrollmentInfo": {
+        "count": 100,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\nParticipants may take part in this clinical study only if they meet all of the following criteria:\n\n1. Adults aged 19 years or older who voluntarily provide written informed consent to participate in the study\n2. Patients diagnosed with ESUS (Embolic Stroke of Undetermined Source)\n3. Patients who require in-hospital or out-of-hospital electrocardiographic (ECG) monitoring\n\nExclusion Criteria:\n\nParticipants who meet any of the following criteria cannot be enrolled in this clinical study:\n\n1. Individuals already diagnosed with atrial fibrillation or atrial flutter\n2. Individuals with a clearly identified cause of stroke\n3. Individuals known to have allergic reactions to adhesives or hydrogels\n4. Individuals who, in the investigator's judgment, have cognitive vulnerability that makes it difficult to understand the study information and voluntarily decide on participation\n5. Any other individuals whom the principal investigator considers to be at potential risk by participating in the study or otherwise unsuitable for participation",
+      "healthyVolunteers": false,
+      "minimumAge": "19 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Atrial Fibrillation Detection Using MEMO Patch in Patients With Stroke of Unknown Cause",
+      "nctId": "NCT07295769",
+      "officialTitle": "Atrial Fibrillation Detection Using MEMO Patch in Patients With Stroke of Unknown Cause: A Single-Center, Prospective, Exploratory Trial to Validate the Efficacy and Safety of Noninvasive Long-Term Electrocardiographic Monitoring",
+      "orgStudyIdInfo": {
+        "id": "MEMO-ESUS"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Asan Medical Center"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The detection rate of atrial fibrillation (AF) will be evaluated based on MEMO Patch M during telemetry monitoring and 24-hour Holter monitoring. The AF detection rate by MEMO Patch M will be calculated as the number and percentage of participants in whom AF is detected at least once either through alarms or analysis results. The AF detection rate by 24-hour Holter will be calculated as the number and percentage of participants in whom AF is detected at least once during Holter analysis. The final determination of atrial fibrillation will be made according to the investigator's interpretation.",
+          "measure": "Detection rate of Atrial Fibrillation (%)",
+          "timeFrame": "During V1 (Day 0 to Day 8)"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "The timing of AF detection will be evaluated based on the results from MEMO Patch2 and ILR. This evaluation will be conducted only for patients who did not have AF detected during in-hospital telemetry monitoring and subsequently received ILR implantation.",
+          "measure": "Time of Atrial Fibrillation (AF) detection",
+          "timeFrame": "30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "For participants who triggered an AF alarm during in-hospital monitoring, the alarm accuracy will be evaluated by comparison with the final analysis results, and performance metrics such as sensitivity will be calculated.\n\n* True Positive (TP): AF actually occurred and the alarm was triggered.\n* False Negative (FN): AF actually occurred, but no alarm was triggered.\n* False Positive (FP): AF did not occur, but an alarm was triggered.\n* True Negative (TN): AF did not occur and no alarm was triggered.",
+          "measure": "Accuracy of in-hospital monitoring alarms",
+          "timeFrame": "During V1 (Day 0 to Day 8)"
+        },
+        {
+          "description": "For patients discharged without ILR implantation, additional AF detection rate and burden will be evaluated using MEMO Patch2 at Visit 2 and Visit 3.",
+          "measure": "AF detection rate and burden during out-of-hospital MEMO Patch2 monitoring",
+          "timeFrame": "30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "The detection rate of arrhythmias other than AF will be analyzed in all participants regardless of AF detection. The following types of non-AF arrhythmias will be included:\n\n* Atrial Premature Contractions (APC)\n* Ventricular Premature Contractions (VPC)\n* Supraventricular Tachycardia (SVT): Defined as three or more consecutive APCs.\n* Ventricular Tachycardia (VT): Defined as three or more consecutive VPCs.\n* Atrioventricular Block (AV Block): Includes second-degree and third-degree AV block.\n* Pause: Defined as an R-R interval of more than 2 seconds.\n* Other: Arrhythmias not included in the above categories.",
+          "measure": "Detection rate of non-AF arrhythmias",
+          "timeFrame": "During V1 (Day 0-8), 30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "In participants in whom arrhythmias, including atrial fibrillation, were detected, the type of each arrhythmia will be evaluated. (including its duration and burden)",
+          "measure": "Analysis of arrhythmia types including AF",
+          "timeFrame": "During V1 (Day 0-8), 30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "In participants with detected AF, ethe type of each arrhythmia(duration, and burden), including AF, will be evaluated. 6) To analyze factors associated with AF occurrence in patients with Embolic Stroke of Undetermined Source (ESUS), the following parameters will be assessed:\n\n* Frequency of Atrial Premature Contractions (APC)\n* Age\n* CHA₂DS₂-VA Score\n* Left Atrial Size (LA diameter, LA volume index)\n* Lesion Pattern\n* Laboratory Test Results\n* Risk factors will be analyzed post hoc only for participants with available data.",
+          "measure": "Risk factor analysis for AF occurrence",
+          "timeFrame": "Screening (Day-28 to Day 0), 30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "In participants who were receiving standard treatment for ESUS, the proportion and timing of treatment changes will be analyzed if AF diagnosis via MEMO Patch monitoring led to:\n\n* Initiation or switching of anticoagulant therapy\n* Initiation or switching of antiarrhythmic drugs\n* Catheter ablation or other procedure-related changes",
+          "measure": "Rate and timing of treatment strategy changes (Including medication and procedures) after AF diagnosis",
+          "timeFrame": "During V1 (Day 0-8), 30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        },
+        {
+          "description": "The AF detection rate and timing will be compared between MEMO Patch M and MEMO Patch2 versus Holter and ILR during in-hospital and out-of-hospital monitoring.",
+          "measure": "Comparison of AF detection rates and timing between two monitoring strategies (MEMO Patch M + MEMO Patch2 vs. Holter + ILR)",
+          "timeFrame": "During V1 (Day 0-8), 30 days (+7 days) and 90 days (+7 days) post-discharge (discharge = up to Day 8)"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Lumikari TJ, Putaala J, Kerola A, Sibolt G, Pirinen J, Pakarinen S, Lehto M, Nieminen T. Continuous 4-week ECG monitoring with adhesive electrodes reveals AF in patients with recent embolic stroke of undetermined source. Ann Noninvasive Electrocardiol. 2019 Sep;24(5):e12649. doi: 10.1111/anec.12649. Epub 2019 May 2.",
+          "pmid": "31045315",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Gladstone DJ, Spring M, Dorian P, Panzov V, Thorpe KE, Hall J, Vaid H, O'Donnell M, Laupacis A, Cote R, Sharma M, Blakely JA, Shuaib A, Hachinski V, Coutts SB, Sahlas DJ, Teal P, Yip S, Spence JD, Buck B, Verreault S, Casaubon LK, Penn A, Selchen D, Jin A, Howse D, Mehdiratta M, Boyle K, Aviv R, Kapral MK, Mamdani M; EMBRACE Investigators and Coordinators. Atrial fibrillation in patients with cryptogenic stroke. N Engl J Med. 2014 Jun 26;370(26):2467-77. doi: 10.1056/NEJMoa1311376.",
+          "pmid": "24963566",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Sanna T, Diener HC, Passman RS, Di Lazzaro V, Bernstein RA, Morillo CA, Rymer MM, Thijs V, Rogers T, Beckers F, Lindborg K, Brachmann J; CRYSTAL AF Investigators. Cryptogenic stroke and underlying atrial fibrillation. N Engl J Med. 2014 Jun 26;370(26):2478-86. doi: 10.1056/NEJMoa1313600.",
+          "pmid": "24963567",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Kulach A, Dewerenda M, Majewski M, Lasek-Bal A, Gasior Z. 72 hour Holter monitoring, 7 day Holter monitoring, and 30 day intermittent patient-activated heart rhythm recording in detecting arrhythmias in cryptogenic stroke patients free from arrhythmia in a screening 24 h Holter. Open Med (Wars). 2020 Jul 18;15(1):697-701. doi: 10.1515/med-2020-0203. eCollection 2020.",
+          "pmid": "33336026",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Ramos-Maqueda J, Navarro-Valverde C, Esteve-Ruiz I, Cabrera-Ramos M, Rivera-Lopez R, Garcia-Medina D, Pavon-Jimenez R, Molano-Casimiro FJ. Atrial fibrillation predictors in patients with embolic stroke of undetermined source. Med Clin (Barc). 2021 Dec 24;157(12):555-560. doi: 10.1016/j.medcli.2020.09.024. Epub 2021 Jan 29. English, Spanish.",
+          "pmid": "33518373",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Miyazaki Y, Toyoda K, Iguchi Y, Hirano T, Metoki N, Tomoda M, Shiozawa M, Koge J, Okada Y, Terasawa Y, Kikuno M, Okano H, Hagii J, Nakajima M, Komatsu T, Yasaka M. Atrial Fibrillation After Ischemic Stroke Detected by Chest Strap-Style 7-Day Holter Monitoring and the Risk Predictors: EDUCATE-ESUS. J Atheroscler Thromb. 2021 May 1;28(5):544-554. doi: 10.5551/jat.58420. Epub 2020 Aug 15.",
+          "pmid": "32801289",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Hart RG, Catanese L, Perera KS, Ntaios G, Connolly SJ. Embolic Stroke of Undetermined Source: A Systematic Review and Clinical Update. Stroke. 2017 Apr;48(4):867-872. doi: 10.1161/STROKEAHA.116.016414. Epub 2017 Mar 6.",
+          "pmid": "28265016",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Kleindorfer DO, Towfighi A, Chaturvedi S, Cockroft KM, Gutierrez J, Lombardi-Hill D, Kamel H, Kernan WN, Kittner SJ, Leira EC, Lennon O, Meschia JF, Nguyen TN, Pollak PM, Santangeli P, Sharrief AZ, Smith SC Jr, Turan TN, Williams LS. 2021 Guideline for the Prevention of Stroke in Patients With Stroke and Transient Ischemic Attack: A Guideline From the American Heart Association/American Stroke Association. Stroke. 2021 Jul;52(7):e364-e467. doi: 10.1161/STR.0000000000000375. Epub 2021 May 24. No abstract available.",
+          "pmid": "34024117",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Diener HC, Sacco RL, Easton JD, Granger CB, Bernstein RA, Uchiyama S, Kreuzer J, Cronin L, Cotton D, Grauer C, Brueckmann M, Chernyatina M, Donnan G, Ferro JM, Grond M, Kallmunzer B, Krupinski J, Lee BC, Lemmens R, Masjuan J, Odinak M, Saver JL, Schellinger PD, Toni D, Toyoda K; RE-SPECT ESUS Steering Committee and Investigators. Dabigatran for Prevention of Stroke after Embolic Stroke of Undetermined Source. N Engl J Med. 2019 May 16;380(20):1906-1917. doi: 10.1056/NEJMoa1813959.",
+          "pmid": "31091372",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Asan Medical Center"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Asan Medical Center",
+        "investigatorFullName": "Bum Joon Kim",
+        "investigatorTitle": "Principal Investigator",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-02-15",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-02-06",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-02-04",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2028-05-15",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-01-28",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-02",
+      "studyFirstPostDateStruct": {
+        "date": "2025-12-22",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-11-26",
+      "studyFirstSubmitQcDate": "2025-12-08"
+    }
+  }
+}

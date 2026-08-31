@@ -1,0 +1,223 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05411614-inclusion-6de1151800f7358f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥ 18 years",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 37,
+        "start": 23
+      },
+      "source_text": "Age ≥ 18 years"
+    },
+    {
+      "criterion_id": "nct05411614-inclusion-75468338634ca203",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent or Long-standing Persistent AF",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 81,
+        "start": 40
+      },
+      "source_text": "Persistent or Long-standing Persistent AF"
+    },
+    {
+      "criterion_id": "nct05411614-inclusion-361f75ebca4b0669",
+      "criterion_type": "inclusion",
+      "normalized_text": "Dilated left atrium (at least moderately dilated)",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 133,
+        "start": 84
+      },
+      "source_text": "Dilated left atrium (at least moderately dilated)"
+    },
+    {
+      "criterion_id": "nct05411614-inclusion-d04ff7c7a5dddc93",
+      "criterion_type": "inclusion",
+      "normalized_text": "Suitable for either procedure",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 165,
+        "start": 136
+      },
+      "source_text": "Suitable for either procedure"
+    },
+    {
+      "criterion_id": "nct05411614-inclusion-3bc0f48810f050bd",
+      "criterion_type": "inclusion",
+      "normalized_text": "LVEF < 50%",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 179,
+        "start": 168
+      },
+      "source_text": "LVEF \\< 50%"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-ee0dddcd37cbbcd9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Not yet optimised from a medical or lifestyle perspective for AF or heart failure",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 285,
+        "start": 204
+      },
+      "source_text": "Not yet optimised from a medical or lifestyle perspective for AF or heart failure"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-498b4b18fc9d6a0b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Unable to provide written consent",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 321,
+        "start": 288
+      },
+      "source_text": "Unable to provide written consent"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-f787fa9d13e9c1f6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous open-heart surgery",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 351,
+        "start": 324
+      },
+      "source_text": "Previous open-heart surgery"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-ac8a3757870dc0dc",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active infection, oesophageal ulcer stricture or oesophageal varices",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 422,
+        "start": 354
+      },
+      "source_text": "Active infection, oesophageal ulcer stricture or oesophageal varices"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-d7469655f6be61b8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior catheter ablation of atrial fibrillation (prior ablation for atrial flutter / supraventricular tachycardia or ventricular arrhythmia acceptable)",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 575,
+        "start": 425
+      },
+      "source_text": "Prior catheter ablation of atrial fibrillation (prior ablation for atrial flutter / supraventricular tachycardia or ventricular arrhythmia acceptable)"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-97ae0c559b2857bf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindication to anticoagulation, or active thrombus in the left atrium despite therapeutic anticoagulation",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 688,
+        "start": 578
+      },
+      "source_text": "Contraindication to anticoagulation, or active thrombus in the left atrium despite therapeutic anticoagulation"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-ccb1c8f6da23ac53",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe valvular heart disease",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 720,
+        "start": 691
+      },
+      "source_text": "Severe valvular heart disease"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-7658ebf13fd1f916",
+      "criterion_type": "exclusion",
+      "normalized_text": "Unstable coronary artery disease",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 755,
+        "start": 723
+      },
+      "source_text": "Unstable coronary artery disease"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-c9b96f2f51861c13",
+      "criterion_type": "exclusion",
+      "normalized_text": "Uncontrolled ventricular arrhythmia",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 793,
+        "start": 758
+      },
+      "source_text": "Uncontrolled ventricular arrhythmia"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-67151d9e4a048991",
+      "criterion_type": "exclusion",
+      "normalized_text": "Heart attack or stroke within the last 90 days",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 842,
+        "start": 796
+      },
+      "source_text": "Heart attack or stroke within the last 90 days"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-5f684f3dde7e6fb4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant, breastfeeding, or women of childbearing age who plan to get pregnant within six months",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 941,
+        "start": 845
+      },
+      "source_text": "Pregnant, breastfeeding, or women of childbearing age who plan to get pregnant within six months"
+    },
+    {
+      "criterion_id": "nct05411614-exclusion-164401962636e43c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe concomitant condition or presence of an implanted device that would preclude the patient from undergoing trial procedures",
+      "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+      "source_span": {
+        "end": 1072,
+        "start": 944
+      },
+      "source_text": "Severe concomitant condition or presence of an implanted device that would preclude the patient from undergoing trial procedures"
+    }
+  ],
+  "eligibility_sha256": "cac7928666826e18256f3b38204c96026c548588127969a780f64c0c3bb07a51",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age ≥ 18 years\n* Persistent or Long-standing Persistent AF\n* Dilated left atrium (at least moderately dilated)\n* Suitable for either procedure\n* LVEF \\< 50%\n\nExclusion Criteria:\n\n* Not yet optimised from a medical or lifestyle perspective for AF or heart failure\n* Unable to provide written consent\n* Previous open-heart surgery\n* Active infection, oesophageal ulcer stricture or oesophageal varices\n* Prior catheter ablation of atrial fibrillation (prior ablation for atrial flutter / supraventricular tachycardia or ventricular arrhythmia acceptable)\n* Contraindication to anticoagulation, or active thrombus in the left atrium despite therapeutic anticoagulation\n* Severe valvular heart disease\n* Unstable coronary artery disease\n* Uncontrolled ventricular arrhythmia\n* Heart attack or stroke within the last 90 days\n* Pregnant, breastfeeding, or women of childbearing age who plan to get pregnant within six months\n* Severe concomitant condition or presence of an implanted device that would preclude the patient from undergoing trial procedures",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-11-28",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05411614",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05411614:eligibility:2025-11-28:cac792866682",
+  "source_record_version": "2025-11-28:cac792866682",
+  "source_url": "https://clinicaltrials.gov/study/NCT05411614",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Hybrid Ablation of Atrial Fibrillation in Heart Failure"
+}

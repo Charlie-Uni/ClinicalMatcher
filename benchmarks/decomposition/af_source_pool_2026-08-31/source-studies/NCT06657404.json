@@ -1,0 +1,343 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D050198",
+          "term": "Phenoxypropanolamines"
+        },
+        {
+          "id": "D011412",
+          "term": "Propanolamines"
+        },
+        {
+          "id": "D000605",
+          "term": "Amino Alcohols"
+        },
+        {
+          "id": "D000438",
+          "term": "Alcohols"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        },
+        {
+          "id": "D020005",
+          "term": "Propanols"
+        },
+        {
+          "id": "D000588",
+          "term": "Amines"
+        },
+        {
+          "id": "D004071",
+          "term": "Digitalis Glycosides"
+        },
+        {
+          "id": "D002298",
+          "term": "Cardenolides"
+        },
+        {
+          "id": "D002301",
+          "term": "Cardiac Glycosides"
+        },
+        {
+          "id": "D002297",
+          "term": "Cardanolides"
+        },
+        {
+          "id": "D013256",
+          "term": "Steroids"
+        },
+        {
+          "id": "D000072473",
+          "term": "Fused-Ring Compounds"
+        },
+        {
+          "id": "D011083",
+          "term": "Polycyclic Compounds"
+        },
+        {
+          "id": "D006027",
+          "term": "Glycosides"
+        },
+        {
+          "id": "D002241",
+          "term": "Carbohydrates"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D017298",
+          "term": "Bisoprolol"
+        },
+        {
+          "id": "D004077",
+          "term": "Digoxin"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "use Amiodarone, Bisoprolol and Digoxin",
+          "interventionNames": [
+            "Drug: use Amiodarone, Bisoprolol and Digoxin"
+          ],
+          "label": "experimental group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "use Bisoprolol and Digoxin",
+          "interventionNames": [
+            "Drug: use Amiodarone, Bisoprolol and Digoxin"
+          ],
+          "label": "control group",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "control group",
+            "experimental group"
+          ],
+          "description": "Amiodarone 200mg tid orally for 1 week, then reduced to 200mg bid orally for another week.\n\nThe dose of amiodarone will be reduced to 200mg bid orally for 1 week, and then 200mg qd maintenance treatment will be started in the 3rd week of dosing.\n\nBisoprolol 2.5-5mg qd oral treatment, the specific dose is decided by the investigator.\n\nDigoxin 0.125mg qd orally.",
+          "name": "use Amiodarone, Bisoprolol and Digoxin",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Atrial fibrillation",
+        "AF"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "xymgdci@163.com",
+          "name": "Yumei Xue, phD",
+          "phone": "13570082363",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Guangzhou",
+          "contacts": [
+            {
+              "email": "xymgdci@163.com",
+              "name": "Yumei Xue, phD",
+              "phone": "13570082363",
+              "role": "CONTACT"
+            },
+            {
+              "email": "13026740170@163.com",
+              "name": "Haowei Chen, master",
+              "phone": "13026740170",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "China",
+          "facility": "Guangdong Provincial People's Hospital",
+          "geoPoint": {
+            "lat": 23.11667,
+            "lon": 113.25
+          },
+          "state": "Guangdong",
+          "status": "RECRUITING"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This is a multicentre, prospective, randomised controlled study of 328 patients with non-paroxysmal AF (within 5 years of first diagnosis of AF) with recurrent atrial arrhythmias after first catheter ablation, randomly divided in a 1:1 ratio into a study group treated with triple AADs (amiodarone + bisoprolol + digoxin) and a control group treated with conventional AADs (amiodarone + bisoprolol + digoxin). The study group was treated with triple AADs (amiodarone + bisoprolol) and the control group was treated with conventional AADs (amiodarone + bisoprolol) with the aim of comparing the efficacy and safety of the two groups in terms of reversion of SR, which may provide an effective option of pocket drug reversion for patients with recurrence of SR after AF catheter ablation.\n\nTranslated with DeepL.com (free version)"
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 328,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:(1) Age ≥18 years; (2) Non-valvular, non-paroxysmal AF (within 5 years of the first diagnosis of AF) with recurrent atrial arrhythmia lasting for more than 24 hours after the first catheter ablation and not self-terminating; (3) Patients who are not taking AADs such as amiodarone, dronedarone, propafenone, etc. after the procedure, and who agree to receive AADs without contraindications to AADs; or patients who are taking AADs such as amiodarone, dronedarone, propafenone, etc. after the procedure, but have been off of them for more than 1 month.\n\n\\-\n\nExclusion Criteria:(1) Previous cardiac surgery, such as cardiac bypass grafting, mechanical valve or prosthetic valve replacement; (2) Combined cardiomyopathy (e.g. hypertrophic cardiomyopathy, dilated cardiomyopathy, ischaemic cardiomyopathy, etc.); (3) Cardiac ultrasound suggests that the diameter of the left atrium is ≥50mm or there are valvular changes in rheumatic heart disease; (4) Previous history of abnormal thyroid function; (5) Severe hepatic or renal insufficiency (eGFR \\<15, Child Class 3), or history of renal dialysis; (6) Heart rate \\<60 beats/minute, any degree of atrioventricular block, two-branch or three-branch block at the time of resumption of SR after catheter ablation; (7) Left ventricular ejection fraction \\<40% or New York Heart Association (NYHA) class III-IV after catheter ablation; (8) Participation in a clinical trial of another drug or device during the same period; (9) Abnormalities or diseases that, in the opinion of the investigator, should be excluded from enrolment in this study.\n\n\\-",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ABD-AF",
+      "briefTitle": "The Modified \"Pills-in-the-Pocket\" Strategy",
+      "nctId": "NCT06657404",
+      "officialTitle": "The Modified \"Pills-in-the-Pocket\" Strategy -The Combined Effect of Amiodarone, Bisoprolol and Digoxin in the Treatment of Recurrent Atrial Arrhythmia for Non-Paroxysmal Atrial Fibrillation After Catheter Ablation: A Multicenter, Prospective, Randomized, Open-Label, Blinded Endpoint Clinical Trial",
+      "orgStudyIdInfo": {
+        "id": "202332"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Guangdong Provincial People's Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Patients with recurrent atrial arrhythmia after catheter ablation for non-paroxysmal AF (within 5 years of history of first AF diagnosis) within 1 month converted to sinus rhythm using AADs",
+          "measure": "converted to sinus rhythm",
+          "timeFrame": "1 month"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Bradycardia: heart rate \\<60 beats/minute, any degree of atrioventricular block and/or more than two-branch block, and prolonged QTc interval (\\>500ms).\n\nCardiovascular hospitalisation: defined as hospitalisation or emergency admission due to recurrence of atrial arrhythmia, heart failure or serious adverse effects of AADs during the follow-up period after enrolment; all treatments during the period of admission or admission to an emergency clinic count as one hospitalisation.\n\nHeart failure: defined as an episode of left or right ventricular failure requiring hospitalisation.\n\nSerious adverse events of AADs: Torsade de pointes (Tdp), ventricular tachycardia or atrial fibrillation, atrial flutter (atrioventricular (AV) conduction ratio of 1:1), third-degree AV block, sick sinus node syndrome, digitalis toxicity, and drug-induced heart failure were classified as serious adverse events of AADs. All possible endpoints were adjudicated by experts not involved in the diagnosis and treatment.",
+          "measure": "Composite endpoint event of bradycardia, cardiovascular hospitalisation or death",
+          "timeFrame": "1 month"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "Beijing Anzhen Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "Sir Run Run Shaw Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "First Affiliated Hospital, Sun Yat-Sen University"
+        },
+        {
+          "class": "OTHER",
+          "name": "Nanfang Hospital, Southern Medical University"
+        },
+        {
+          "class": "OTHER",
+          "name": "Zhongshan People's Hospital, Guangdong, China"
+        },
+        {
+          "class": "OTHER",
+          "name": "The First Affiliated Hospital of Zhengzhou University"
+        },
+        {
+          "class": "OTHER",
+          "name": "Jiangmen Central Hospital"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Xiamen Cardiovascular Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "Yan'an Affiliated Hospital of Kunming Medical University"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Yumei Xue"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Guangdong Provincial People's Hospital",
+        "investigatorFullName": "Yumei Xue",
+        "investigatorTitle": "Chief physician of the first area of the heart",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2024-12-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-10-24",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-10-23",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2024-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-10-23",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2024-10",
+      "studyFirstPostDateStruct": {
+        "date": "2024-10-24",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-10-23",
+      "studyFirstSubmitQcDate": "2024-10-23"
+    }
+  }
+}

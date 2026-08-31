@@ -1,0 +1,371 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D010349",
+          "term": "Patient Compliance"
+        },
+        {
+          "id": "D010342",
+          "term": "Patient Acceptance of Health Care"
+        },
+        {
+          "id": "D000074822",
+          "term": "Treatment Adherence and Compliance"
+        },
+        {
+          "id": "D015438",
+          "term": "Health Behavior"
+        },
+        {
+          "id": "D001519",
+          "term": "Behavior"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        },
+        {
+          "id": "D006474",
+          "term": "Hemorrhagic Disorders"
+        },
+        {
+          "id": "D006402",
+          "term": "Hematologic Diseases"
+        },
+        {
+          "id": "D006425",
+          "term": "Hemic and Lymphatic Diseases"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D003142",
+          "term": "Communication"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D001282",
+          "term": "Atrial Flutter"
+        },
+        {
+          "id": "D055118",
+          "term": "Medication Adherence"
+        },
+        {
+          "id": "D020141",
+          "term": "Hemostatic Disorders"
+        },
+        {
+          "id": "D020521",
+          "term": "Stroke"
+        },
+        {
+          "id": "D006470",
+          "term": "Hemorrhage"
+        },
+        {
+          "id": "D033262",
+          "term": "Narration"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Videos of African Americans currently taking anticoagulation talking about their experiences with using anticoagulation or blood thinners and successfully navigating setbacks occurring with use including bleeding, falls, strokes, and affording the medications.",
+          "interventionNames": [
+            "Behavioral: Storytelling Intervention"
+          ],
+          "label": "Intervention - Patient Videos",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Informational videos about anticoagulation and blood thinners presented by experts or actors.",
+          "label": "Control - Informational Videos (not patients)",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Intervention - Patient Videos"
+          ],
+          "description": "Participants assigned to the intervention group will watch videos presenting stories of African American patients about their experiences with using anticoagulation or blood thinners throughout a 90-day period.",
+          "name": "Storytelling Intervention",
+          "type": "BEHAVIORAL"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Atrial Flutter",
+        "Adherence, Medication",
+        "Anticoagulants and Bleeding Disorders",
+        "Stroke",
+        "Bleeding",
+        "Narration"
+      ]
+    },
+    "contactsLocationsModule": {
+      "locations": [
+        {
+          "city": "Jacksonville",
+          "country": "United States",
+          "facility": "Luis Ortega Paz",
+          "geoPoint": {
+            "lat": 30.33218,
+            "lon": -81.65565
+          },
+          "state": "Florida",
+          "zip": "32209"
+        },
+        {
+          "city": "Worcester",
+          "country": "United States",
+          "facility": "Decentralized",
+          "geoPoint": {
+            "lat": 42.26259,
+            "lon": -71.80229
+          },
+          "state": "Massachusetts",
+          "zip": "01655"
+        },
+        {
+          "city": "Worcester",
+          "country": "United States",
+          "facility": "UMass Chan Medical School",
+          "geoPoint": {
+            "lat": 42.26259,
+            "lon": -71.80229
+          },
+          "state": "Massachusetts",
+          "zip": "01655"
+        },
+        {
+          "city": "Ann Arbor",
+          "country": "United States",
+          "facility": "University of Michigan Medical School",
+          "geoPoint": {
+            "lat": 42.27756,
+            "lon": -83.74088
+          },
+          "state": "Michigan",
+          "zip": "48109"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "UMass Chan Medical School",
+          "name": "Alok Kapoor, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The overall goal of this study is to evaluate the effectiveness of a previously developed storytelling intervention on anticoagulation (AC) initiation/persistence in African American and Black patients with atrial fibrillation/flutter. The investigators hope to gain knowledge that may help treat atrial fibrillation or flutter and lower stroke and adverse cardiovascular event risks for African American and Black patients by increasing the use of blood thinning medications known as anticoagulants.",
+      "detailedDescription": "This is a multi-site research study including sites of both the University of Massachusetts Chan Medical School (UMass Memorial Healthcare System) and the University of Michigan Medical Center (Michigan).\n\nBaseline call: During the baseline call, the investigators will obtain verbal informed consent. During the call, the investigators will also collect demographic information and measure health literacy, the latter using two validated single-item instruments the investigators have used before.\n\nRandomization: The investigators will randomize patients to watch videos the investigators developed (intervention) versus informational videos (controls). More specifically, the investigators will randomize patients separately by study site (UMass/Michigan), using randomly permuted blocks of sizes 4 and 6 embedded into a prespecified table.\n\nExit interview: The exit interview will be conducted approximately 90 days from the date of enrollment with study participants. Interview questions will relate to whether the patient has already started AC, the likelihood of starting anticoagulation (AC), barriers to starting AC, and burdensomeness and acceptability of the interview.\n\nChart review: The investigators will also perform chart review to capture information that will inform whether the investigators achieved balance in treatment allocation groups on important factors related to study outcomes. Chart review will also provide covariate information which the investigators will use in outcome analysis. Through HIPAA authorization, the investigators will extract information related to age, gender, insurance status, prior AC use, CHA2DS2VASc stroke risk score, comorbidities associated with bleeding, and adherence to preventive health screening.\n\nData Security: Analyses will be performed using only limited datasets, and only aggregate data will be reported. All data will be used for research purposes only; published data will not contain any individual identifiers and will be reported in the aggregate.\n\nThe proposed study involves no more than minimal risk to participants.\n\nThe potential benefits to subjects from study participation include increased knowledge of atrial fibrillation and AC and improved rates of adherence to AC guidelines. This may in turn prevent strokes or limit bleeding that would otherwise have occurred without the benefit of this intervention."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 80,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* African-American patients aged 18 or older with elevated stroke risk (CHA2DS2-VASc ≥2 for men and ≥3 for women) who are not currently on anticoagulation (AC) but for whom a cardiology provider or primary care provider at the two study sites recommended AC recently\n\nExclusion Criteria:\n\n* Non-African American and other non-Black patients under the age of 18 patients without an ICD-10 diagnostic code consistent with AF or atrial fibrillation or atrial flutter\n* Patient without a visit with a primary care provider, cardiovascular medicine specialist, or ambulatory care provider in the previous one year\n* Patient who is pregnant or a prisoner.\n* Patients with left atrial appendage surgery or device, hospice status, ongoing bleeding, and intracranial bleeding in intralobar territory",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Storytelling for Reducing Gap in Anticoagulation Use in African Americans With Atrial Fibrillation",
+      "nctId": "NCT05997914",
+      "officialTitle": "Storytelling for Reducing Gap in Anticoagulation Use in African Americans With Atrial Fibrillation Randomized Trial (STORY-AF Trial)",
+      "orgStudyIdInfo": {
+        "id": "STUDY00001248"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University of Massachusetts, Worcester"
+      },
+      "secondaryIdInfos": [
+        {
+          "id": "R21MD017646",
+          "link": "https://reporter.nih.gov/quickSearch/R21MD017646",
+          "type": "NIH"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "description": "Videos will be shared, but data from individuals watching videos will not be routinely made available. Interested parties can contact the study team.",
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Time spent viewing videos",
+          "measure": "Fidelity via viewing time",
+          "timeFrame": "90 days from randomization"
+        },
+        {
+          "description": "In intervention patients, measure transportation (absorption into a story) using a transportation scale short form where the minimum and maximum values are 1 (Not at all) and 7 (Very much), respectively. Higher scores mean a better outcome (high transportation).",
+          "measure": "Fidelity via transportation",
+          "timeFrame": "90 days from randomization"
+        },
+        {
+          "description": "The investigators will calculate the proportion of patients recruited as well as the recruitment rate. The recruitment proportion will be the number of patients randomized over the total of patients approached. The recruitment rate will be the total time (in days) required to recruit the randomized sample.",
+          "measure": "Feasibility in terms of recruitment rates",
+          "timeFrame": "90 days from randomization"
+        },
+        {
+          "description": "The investigators will calculate the per-group retention proportion as the number of individuals from each group remaining in the study after its completion over the total randomized to that group.",
+          "measure": "Feasibility in terms of retention rates",
+          "timeFrame": "90 days from randomization"
+        },
+        {
+          "description": "Participants will be asked to use an acceptability scale (which the investigators will develop later during the study) to rate their agreement with statements about the acceptability of using the video website, completing the transportation scale short survey (intervention participants only), and participating in the study in general.",
+          "measure": "Acceptability of participating in the study",
+          "timeFrame": "90 days from randomization"
+        },
+        {
+          "description": "The investigators will review charts (electronic medical records) of study participants for frequency of anticoagulation (AC) initiation (switch from being off AC to being on AC) in intervention vs. controls over the six months from randomization in patients who start AC.",
+          "measure": "Video testing on anticoagulation initiation behavior",
+          "timeFrame": "6 months from randomization"
+        },
+        {
+          "description": "The investigators will review charts (electronic medical records) of study participants for anticoagulation (AC) persistence (duration of AC use measured in days from baseline) in intervention vs. controls over the six months from randomization in patients who start AC.",
+          "measure": "Video testing on anticoagulation persistence behavior",
+          "timeFrame": "6 months from randomization"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "University of Michigan"
+        },
+        {
+          "class": "NIH",
+          "name": "National Institute on Minority Health and Health Disparities (NIMHD)"
+        },
+        {
+          "class": "OTHER",
+          "name": "University of Florida"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University of Massachusetts, Worcester"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "University of Massachusetts, Worcester",
+        "investigatorFullName": "Alok Kapoor",
+        "investigatorTitle": "Professor of Medicine",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-11",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-04-13",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-04-06",
+      "overallStatus": "ENROLLING_BY_INVITATION",
+      "primaryCompletionDateStruct": {
+        "date": "2026-11",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-06-24",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2023-08-18",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-07-25",
+      "studyFirstSubmitQcDate": "2023-08-11"
+    }
+  }
+}

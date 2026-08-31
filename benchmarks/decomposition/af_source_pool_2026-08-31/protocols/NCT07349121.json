@@ -1,0 +1,278 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07349121-inclusion-1e75e655a42401d6",
+      "criterion_type": "inclusion",
+      "normalized_text": "Clinically indicated for treatment with both the FARAPULSE™ PFA system and with WATCHMAN FLX™ Pro or WATCHMAN FLX™ for LAAC, per physician medical judgement and as per hospitals' standard of care.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 220,
+        "start": 24
+      },
+      "source_text": "Clinically indicated for treatment with both the FARAPULSE™ PFA system and with WATCHMAN FLX™ Pro or WATCHMAN FLX™ for LAAC, per physician medical judgement and as per hospitals' standard of care."
+    },
+    {
+      "criterion_id": "nct07349121-inclusion-96eed9d335c8854c",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subjects who are willing and able to provide informed consent.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 286,
+        "start": 224
+      },
+      "source_text": "Subjects who are willing and able to provide informed consent."
+    },
+    {
+      "criterion_id": "nct07349121-inclusion-cf3532b19f58ae91",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subjects who are willing and able to participate in all testing associated with this clinical study at an approved investigational center.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 428,
+        "start": 290
+      },
+      "source_text": "Subjects who are willing and able to participate in all testing associated with this clinical study at an approved investigational center."
+    },
+    {
+      "criterion_id": "nct07349121-inclusion-df5ede4eff095fd3",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subjects whose age is 18 years or above, or who are of legal age to give informed consent specific to state and national law.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 557,
+        "start": 432
+      },
+      "source_text": "Subjects whose age is 18 years or above, or who are of legal age to give informed consent specific to state and national law."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-54ff450eda039e6d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects who underwent prior AF ablation procedure.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 634,
+        "start": 583
+      },
+      "source_text": "Subjects who underwent prior AF ablation procedure."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-8ff7327abad994e4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with atrial fibrillation that is secondary to electrolyte imbalance, thyroid disease, alcohol, or other reversible / non-cardiac causes.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 783,
+        "start": 638
+      },
+      "source_text": "Subjects with atrial fibrillation that is secondary to electrolyte imbalance, thyroid disease, alcohol, or other reversible / non-cardiac causes."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-e02a5fe66a6df75e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Already surgically closed or otherwise excluded LAA.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 839,
+        "start": 787
+      },
+      "source_text": "Already surgically closed or otherwise excluded LAA."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-f2bda89ba6655603",
+      "criterion_type": "exclusion",
+      "normalized_text": "The LAA anatomy does not accommodate a Closure Device.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 897,
+        "start": 843
+      },
+      "source_text": "The LAA anatomy does not accommodate a Closure Device."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-04bd02cab6bb5859",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known or suspected atrial myxoma.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 934,
+        "start": 901
+      },
+      "source_text": "Known or suspected atrial myxoma."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-0162219db74de623",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of intracardiac thrombus\\*.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 974,
+        "start": 938
+      },
+      "source_text": "Presence of intracardiac thrombus\\*."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-f39e814108863d3a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with a current interatrial baffle or patch, history of atrial septal repair or has an atrial septal defect (ASD) / patent foramen ovale (PFO) device.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1136,
+        "start": 978
+      },
+      "source_text": "Subjects with a current interatrial baffle or patch, history of atrial septal repair or has an atrial septal defect (ASD) / patent foramen ovale (PFO) device."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-2bdc85ee2c58bab5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with a presence of a mechanical valve prosthesis in any position.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1214,
+        "start": 1140
+      },
+      "source_text": "Subjects with a presence of a mechanical valve prosthesis in any position."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-668cf0a5fbda96c9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with a myocardial infarction within 90 days prior to enrollment.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1291,
+        "start": 1218
+      },
+      "source_text": "Subjects with a myocardial infarction within 90 days prior to enrollment."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-b5d1bc94967d5de4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects had a prior stroke (of any cause, whether ischemic or hemorrhagic) or transient ischemic attack (TIA) within 90 days prior to enrollment.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1442,
+        "start": 1296
+      },
+      "source_text": "Subjects had a prior stroke (of any cause, whether ischemic or hemorrhagic) or transient ischemic attack (TIA) within 90 days prior to enrollment."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-4950034238bf9362",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any planned electrical cardioversion within 30 days following LAAC device implant.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1529,
+        "start": 1447
+      },
+      "source_text": "Any planned electrical cardioversion within 30 days following LAAC device implant."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-3732bbc491b35872",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with a known inability to obtain vascular access.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1592,
+        "start": 1534
+      },
+      "source_text": "Subjects with a known inability to obtain vascular access."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-43fbbfb986a17dfd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with any contraindication to percutaneous catheterization procedure (e.g., patient size does not accommodate required catheters, ventriculotomy or atriotomy) or congenital abnormalities (severe rotational anomalies of the heart or great vessels) are present.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1864,
+        "start": 1597
+      },
+      "source_text": "Subjects with any contraindication to percutaneous catheterization procedure (e.g., patient size does not accommodate required catheters, ventriculotomy or atriotomy) or congenital abnormalities (severe rotational anomalies of the heart or great vessels) are present."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-54c67543ea62df06",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with any active conditions (e.g. infection, bleeding disorder, unstable angina).",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 1958,
+        "start": 1869
+      },
+      "source_text": "Subjects with any active conditions (e.g. infection, bleeding disorder, unstable angina)."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-00427198cc8b3840",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with any contraindications to short term use of anticoagulation therapy for conditions different from atrial fibrillation.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 2094,
+        "start": 1963
+      },
+      "source_text": "Subjects with any contraindications to short term use of anticoagulation therapy for conditions different from atrial fibrillation."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-043d7e0cefce79fd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects who are pregnant or planning to be pregnant.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 2152,
+        "start": 2099
+      },
+      "source_text": "Subjects who are pregnant or planning to be pregnant."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-33c33c82a6596e6a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with a life expectancy of ≤ 1 year per investigator's opinion.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 2228,
+        "start": 2157
+      },
+      "source_text": "Subjects with a life expectancy of ≤ 1 year per investigator's opinion."
+    },
+    {
+      "criterion_id": "nct07349121-exclusion-a797335de3f46a59",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects who are currently enrolled in another investigational study or registry that would directly interfere with the current study, except when the subject is participating in a mandatory governmental registry, or a purely observational registry with no associated treatments. Each instance must be reviewed by the sponsor to determine eligibility.",
+      "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+      "source_span": {
+        "end": 2584,
+        "start": 2233
+      },
+      "source_text": "Subjects who are currently enrolled in another investigational study or registry that would directly interfere with the current study, except when the subject is participating in a mandatory governmental registry, or a purely observational registry with no associated treatments. Each instance must be reviewed by the sponsor to determine eligibility."
+    }
+  ],
+  "eligibility_sha256": "d20104b55cd85e5d98d271f231fd7fba39a74bcfc846182b394a10a2a874e985",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Clinically indicated for treatment with both the FARAPULSE™ PFA system and with WATCHMAN FLX™ Pro or WATCHMAN FLX™ for LAAC, per physician medical judgement and as per hospitals' standard of care.\n2. Subjects who are willing and able to provide informed consent.\n3. Subjects who are willing and able to participate in all testing associated with this clinical study at an approved investigational center.\n4. Subjects whose age is 18 years or above, or who are of legal age to give informed consent specific to state and national law.\n\nExclusion Criteria:\n\n1. Subjects who underwent prior AF ablation procedure.\n2. Subjects with atrial fibrillation that is secondary to electrolyte imbalance, thyroid disease, alcohol, or other reversible / non-cardiac causes.\n3. Already surgically closed or otherwise excluded LAA.\n4. The LAA anatomy does not accommodate a Closure Device.\n5. Known or suspected atrial myxoma.\n6. Presence of intracardiac thrombus\\*.\n7. Subjects with a current interatrial baffle or patch, history of atrial septal repair or has an atrial septal defect (ASD) / patent foramen ovale (PFO) device.\n8. Subjects with a presence of a mechanical valve prosthesis in any position.\n9. Subjects with a myocardial infarction within 90 days prior to enrollment.\n10. Subjects had a prior stroke (of any cause, whether ischemic or hemorrhagic) or transient ischemic attack (TIA) within 90 days prior to enrollment.\n11. Any planned electrical cardioversion within 30 days following LAAC device implant.\n12. Subjects with a known inability to obtain vascular access.\n13. Subjects with any contraindication to percutaneous catheterization procedure (e.g., patient size does not accommodate required catheters, ventriculotomy or atriotomy) or congenital abnormalities (severe rotational anomalies of the heart or great vessels) are present.\n14. Subjects with any active conditions (e.g. infection, bleeding disorder, unstable angina).\n15. Subjects with any contraindications to short term use of anticoagulation therapy for conditions different from atrial fibrillation.\n16. Subjects who are pregnant or planning to be pregnant.\n17. Subjects with a life expectancy of ≤ 1 year per investigator's opinion.\n18. Subjects who are currently enrolled in another investigational study or registry that would directly interfere with the current study, except when the subject is participating in a mandatory governmental registry, or a purely observational registry with no associated treatments. Each instance must be reviewed by the sponsor to determine eligibility.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-08-05",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07349121",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07349121:eligibility:2026-08-05:d20104b55cd8",
+  "source_record_version": "2026-08-05:d20104b55cd8",
+  "source_url": "https://clinicaltrials.gov/study/NCT07349121",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "OPTION-EMEA Clinical Trial"
+}

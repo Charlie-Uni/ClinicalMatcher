@@ -1,0 +1,157 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07430956-inclusion-f5c28e12f3184270",
+      "criterion_type": "inclusion",
+      "normalized_text": "Has AF or flutter (paroxysmal or persistent), not considered to be secondary to a reversible cause",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 126,
+        "start": 28
+      },
+      "source_text": "Has AF or flutter (paroxysmal or persistent), not considered to be secondary to a reversible cause"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-b83f33ce65a3f315",
+      "criterion_type": "inclusion",
+      "normalized_text": "At moderate to high risk for stroke defined as:",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 177,
+        "start": 130
+      },
+      "source_text": "At moderate to high risk for stroke defined as:"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+      "criterion_type": "inclusion",
+      "normalized_text": "CHA2DS2-VA \\[C: Congestive heart failure; H: Hypertension; A2: Age ≥75 years (double points); D: Diabetes mellitus; S2: Stroke or TIA or Systemic embolism (double points); V: Vascular disease; A: Age 65-74 years\\] score ≥4 OR",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 410,
+        "start": 185
+      },
+      "source_text": "CHA2DS2-VA \\[C: Congestive heart failure; H: Hypertension; A2: Age ≥75 years (double points); D: Diabetes mellitus; S2: Stroke or TIA or Systemic embolism (double points); V: Vascular disease; A: Age 65-74 years\\] score ≥4 OR"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-3e9241e5a98ff16d",
+      "criterion_type": "inclusion",
+      "normalized_text": "CHA2DS2-VA score of 3 AND at least 1 enrichment criteria as described in the protocol",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 502,
+        "start": 417
+      },
+      "source_text": "CHA2DS2-VA score of 3 AND at least 1 enrichment criteria as described in the protocol"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-f63daeda8270071a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Shared decision making between the participant and provider determining that the bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits, making the participant unsuitable for OAC therapy as described in the protocol",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 739,
+        "start": 506
+      },
+      "source_text": "Shared decision making between the participant and provider determining that the bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits, making the participant unsuitable for OAC therapy as described in the protocol"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-a951dc8405c080fa",
+      "criterion_type": "exclusion",
+      "normalized_text": "Has a mechanical heart valve prosthesis (Note: transcatheter aortic valve replacement is not an exclusion)",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 875,
+        "start": 769
+      },
+      "source_text": "Has a mechanical heart valve prosthesis (Note: transcatheter aortic valve replacement is not an exclusion)"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-511c989f02720b3d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Had an ischemic stroke within 2 days prior to randomization",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 938,
+        "start": 879
+      },
+      "source_text": "Had an ischemic stroke within 2 days prior to randomization"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-33203929e94de99c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Has persistent, uncontrolled hypertension (per investigator's discretion)",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 1015,
+        "start": 942
+      },
+      "source_text": "Has persistent, uncontrolled hypertension (per investigator's discretion)"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-1fb1431482704491",
+      "criterion_type": "exclusion",
+      "normalized_text": "Has a history of Central Nervous System (CNS) bleeding within 30 days prior to randomization",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 1111,
+        "start": 1019
+      },
+      "source_text": "Has a history of Central Nervous System (CNS) bleeding within 30 days prior to randomization"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-63bc1f4295df7606",
+      "criterion_type": "exclusion",
+      "normalized_text": "Has a life expectancy less than 12 months",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 1156,
+        "start": 1115
+      },
+      "source_text": "Has a life expectancy less than 12 months"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-889b6f4778ba7399",
+      "criterion_type": "exclusion",
+      "normalized_text": "Has participated in a prior Factor XI (FXI) inhibitor study Note: Other protocol-defined Inclusion/ Exclusion criteria apply",
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 1285,
+        "start": 1160
+      },
+      "source_text": "Has participated in a prior Factor XI (FXI) inhibitor study\n\nNote: Other protocol-defined Inclusion/ Exclusion criteria apply"
+    }
+  ],
+  "eligibility_sha256": "90895ed103568c221f941bfaa64805cc9938597c9cd996055d456beb50a94260",
+  "eligibility_text": "Key Inclusion Criteria:\n\n1. Has AF or flutter (paroxysmal or persistent), not considered to be secondary to a reversible cause\n2. At moderate to high risk for stroke defined as:\n\n   1. CHA2DS2-VA \\[C: Congestive heart failure; H: Hypertension; A2: Age ≥75 years (double points); D: Diabetes mellitus; S2: Stroke or TIA or Systemic embolism (double points); V: Vascular disease; A: Age 65-74 years\\] score ≥4 OR\n   2. CHA2DS2-VA score of 3 AND at least 1 enrichment criteria as described in the protocol\n3. Shared decision making between the participant and provider determining that the bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits, making the participant unsuitable for OAC therapy as described in the protocol\n\nKey Exclusion Criteria:\n\n1. Has a mechanical heart valve prosthesis (Note: transcatheter aortic valve replacement is not an exclusion)\n2. Had an ischemic stroke within 2 days prior to randomization\n3. Has persistent, uncontrolled hypertension (per investigator's discretion)\n4. Has a history of Central Nervous System (CNS) bleeding within 30 days prior to randomization\n5. Has a life expectancy less than 12 months\n6. Has participated in a prior Factor XI (FXI) inhibitor study\n\nNote: Other protocol-defined Inclusion/ Exclusion criteria apply",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-06-23",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07430956",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+  "source_record_version": "2026-06-23:90895ed10356",
+  "source_url": "https://clinicaltrials.gov/study/NCT07430956",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Stroke and Systemic Embolism Prevention in Adult Participants With Atrial Fibrillation for Whom Oral Anticoagulation is Unsuitable"
+}

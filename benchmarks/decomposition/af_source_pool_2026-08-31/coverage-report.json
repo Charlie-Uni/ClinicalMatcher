@@ -1,0 +1,227 @@
+{
+  "coverage_version": "1.0.0",
+  "criteria_count": {
+    "maximum": 42,
+    "minimum": 2,
+    "total": 501
+  },
+  "failed_count": 0,
+  "failed_rate": 0.0,
+  "imported_count": 37,
+  "outcomes": [
+    {
+      "candidate_key": "NCT07568964",
+      "nct_id": "NCT07568964",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07349121",
+      "nct_id": "NCT07349121",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06187311",
+      "nct_id": "NCT06187311",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06657404",
+      "nct_id": "NCT06657404",
+      "reason": "Eligibility headings are absent; criterion polarity would be ambiguous",
+      "reason_code": "ambiguous_polarity",
+      "status": "skipped"
+    },
+    {
+      "candidate_key": "NCT07705425",
+      "nct_id": "NCT07705425",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05136131",
+      "nct_id": "NCT05136131",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07563257",
+      "nct_id": "NCT07563257",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06358391",
+      "nct_id": "NCT06358391",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07715929",
+      "nct_id": "NCT07715929",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07445789",
+      "nct_id": "NCT07445789",
+      "reason": "Eligibility headings are absent; criterion polarity would be ambiguous",
+      "reason_code": "ambiguous_polarity",
+      "status": "skipped"
+    },
+    {
+      "candidate_key": "NCT06598280",
+      "nct_id": "NCT06598280",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05860894",
+      "nct_id": "NCT05860894",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05411614",
+      "nct_id": "NCT05411614",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07726056",
+      "nct_id": "NCT07726056",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07295769",
+      "nct_id": "NCT07295769",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07430956",
+      "nct_id": "NCT07430956",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06823778",
+      "nct_id": "NCT06823778",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06959121",
+      "nct_id": "NCT06959121",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07459387",
+      "nct_id": "NCT07459387",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06324188",
+      "nct_id": "NCT06324188",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06271707",
+      "nct_id": "NCT06271707",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT02932007",
+      "nct_id": "NCT02932007",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05978388",
+      "nct_id": "NCT05978388",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06953778",
+      "nct_id": "NCT06953778",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06847932",
+      "nct_id": "NCT06847932",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06633523",
+      "nct_id": "NCT06633523",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05341986",
+      "nct_id": "NCT05341986",
+      "reason": "Eligibility headings are absent; criterion polarity would be ambiguous",
+      "reason_code": "ambiguous_polarity",
+      "status": "skipped"
+    },
+    {
+      "candidate_key": "NCT06995391",
+      "nct_id": "NCT06995391",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07687862",
+      "nct_id": "NCT07687862",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07455539",
+      "nct_id": "NCT07455539",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT03907046",
+      "nct_id": "NCT03907046",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05557526",
+      "nct_id": "NCT05557526",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07621003",
+      "nct_id": "NCT07621003",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT05997914",
+      "nct_id": "NCT05997914",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06007872",
+      "nct_id": "NCT06007872",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06927908",
+      "nct_id": "NCT06927908",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06751459",
+      "nct_id": "NCT06751459",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07058987",
+      "nct_id": "NCT07058987",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT07641582",
+      "nct_id": "NCT07641582",
+      "status": "imported"
+    },
+    {
+      "candidate_key": "NCT06528262",
+      "nct_id": "NCT06528262",
+      "status": "imported"
+    }
+  ],
+  "parse_success_rate": 0.925,
+  "reason_counts": {
+    "ambiguous_polarity": 3
+  },
+  "skipped_count": 3,
+  "skipped_rate": 0.075,
+  "snapshot_id": "ctg-15b1e8aff71f895f",
+  "total_candidates": 40
+}

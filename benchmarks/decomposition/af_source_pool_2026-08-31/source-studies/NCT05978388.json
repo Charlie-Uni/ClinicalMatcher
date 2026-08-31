@@ -1,0 +1,338 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D003327",
+          "term": "Coronary Disease"
+        },
+        {
+          "id": "D001161",
+          "term": "Arteriosclerosis"
+        },
+        {
+          "id": "D001157",
+          "term": "Arterial Occlusive Diseases"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D003324",
+          "term": "Coronary Artery Disease"
+        },
+        {
+          "id": "D017202",
+          "term": "Myocardial Ischemia"
+        },
+        {
+          "id": "D050197",
+          "term": "Atherosclerosis"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Based on the results of the coronary CT angiography and CAC scoring in the intervention group, relevant anti-ischemic and multimodality treatment will be initiated according to clinical guidelines.",
+          "interventionNames": [
+            "Diagnostic Test: Analysis of coronary CT Angiography and CAC scoring at the time of catheter ablation"
+          ],
+          "label": "Analysis of coronary CT angiography and CAC scoring at the time of catheter ablation",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Patients in the control group will follow the current standard of care prior to ablation.",
+          "label": "No analysis of coronary CT angiography and CAC scoring at the time of catheter ablation",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Analysis of coronary CT angiography and CAC scoring at the time of catheter ablation"
+          ],
+          "description": "Analysis of coronary CT angiography and CAC scoring and initiation of relevant derived treatment at the time of catheter ablation.",
+          "name": "Analysis of coronary CT Angiography and CAC scoring at the time of catheter ablation",
+          "type": "DIAGNOSTIC_TEST"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Coronary Artery Disease",
+        "Coronary Computed Tomography Angiography",
+        "Atrial Fibrillation",
+        "Ischemic heart disease",
+        "Catheter Ablation",
+        "Atherosclerosis",
+        "Cardiovascular Diseases",
+        "Randomized Controlled Trial",
+        "Statins"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "caroline.espersen@regionh.dk",
+          "name": "Caroline Espersen, MD",
+          "phone": "+4551180082",
+          "role": "CONTACT"
+        },
+        {
+          "email": "tor.biering-soerensen@regionh.dk",
+          "name": "Tor Biering-Sørensen, MD, PhD, MPH, MSc",
+          "phone": "+4528933590",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Hellerup",
+          "contacts": [
+            {
+              "email": "caroline.espersen@regionh.dk",
+              "name": "Caroline Espersen, MD",
+              "phone": "+4551180082",
+              "role": "CONTACT"
+            },
+            {
+              "email": "tor.biering-soerensen@regionh.dk",
+              "name": "Tor Biering-Sørensen, MD, PhD, MPH, MSc",
+              "phone": "+4528933590",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Caroline Espersen, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Denmark",
+          "facility": "Center for Translational Cardiology and Pragmatic Randomized Trials, Department of Cardiology, Copenhagen University Hospital - Herlev and Gentofte",
+          "geoPoint": {
+            "lat": 55.73204,
+            "lon": 12.57093
+          },
+          "state": "Capital Region",
+          "status": "RECRUITING",
+          "zip": "2900"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Center for Translational Cardiology and Pragmatic Randomized Trials, Department of Cardiology, Copenhagen University Hospital - Herlev and Gentofte",
+          "name": "Tor Biering-Sørensen, MD, PhD, MPH, MSc",
+          "role": "STUDY_CHAIR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The purpose of this randomized, controlled trial is to investigate whether coronary computed tomography (CT) angiography prior to catheter ablation and derived treatment (medical anti-ischemic and multimodality treatment and/or mechanical revascularization) can improve clinical outcomes in patients with atrial fibrillation undergoing catheter ablation.\n\nA sub-study will investigate the effect of different ablation strategies on clinical outcomes in patients with atrial fibrillation undergoing catheter ablation.",
+      "detailedDescription": "The study is an investigator-initiated, prospective, randomized, unblinded, controlled trial to investigate whether coronary CT angiography prior to catheter ablation and derived treatment can improve clinical outcomes in patients with atrial fibrillation undergoing catheter ablation. The study population will consist of approximately 852 patients aged 18 years and above referred for a catheter ablation treatment for atrial fibrillation at Gentofte Hospital in Denmark. All participants included in the study will have a coronary CT angiography and coronary artery calcium (CAC) scoring performed as an amendment to the standard CT scan of the heart for mapping of the atria prior to catheter ablation. The participants are randomized 1:1 to either have the coronary CT angiography analyzed or not at the time of catheter ablation. According to the results of the coronary CT angiography in the intervention group, subsequent actions may include intensified multimodality medical treatment or referral to further functional imaging or invasive coronary angiography and possibly mechanical revascularization according to clinical guidelines. The study will be completed when each patient has been followed for at least 1 year. After ablation, an insertable cardiac monitor will be implanted in participants to monitor the heart rhythm continuously throughout the study period.The primary endpoint is time to first documented recurrence of atrial tachyarrhythmia lasting \\>30 seconds between 91 days after ablation and end of follow-up.\n\nAll participants meeting the eligibility criteria and enrolled in the FIBCAG main study are eligible to participate in a sub-study with the purpose of investigating different catheter ablation strategies by sub-randomizing participants to different ablation protocols depending on whether they have paroxysmal or persistent atrial fibrillation or they are undergoing first or redo ablation:\n\n1. If they have paroxysmal atrial fibrillation, the participants will be randomized 1:1 to either pulmonary vein isolation (PVI) or PVI plus posterior wall isolation (FIBCAG-PAF).\n2. If they have persistent atrial fibrillation, the participants will be randomized 1:1 to either PVI or PVI plus posterior wall isolation, mitral isthmus block, cavotricuspid isthmus block and intercaval linear ablation (FIBCAG-PeAF).\n3. If they are undergoing reablation, the participants will be randomized 1:1 to either PVI or PVI plus posterior wall isolation, mitral isthmus block, cavotricuspid isthmus block and intercaval linear ablation (FIBCAG-Redo).\n\nAll ablation procedures and strategies are currently standard interventions in clinical care. Procedures are performed under general anesthesia or deep sedation based on availability, and patients are blinded to the method of ablation. PVI will be performed according to best current clinical practice using pulsed field ablation with a single shot device or by point-by-point ablation."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 852,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age over 18 years.\n* Referral for catheter ablation treatment (excluding AV-junction ablation) for atrial fibrillation (both paroxysmal and persistent atrial fibrillation) at the Department of Cardiology at Gentofte Hospital. Both first ablation and re-ablation treatments are included.\n* The ability and willingness to provide written informed consent.\n\nExclusion Criteria:\n\n* Known atherosclerotic cardiovascular disease (ASCVD).\n* Ongoing treatment with statins.\n* Contraindications for coronary CT angiography, e.g. contrast allergy\n* Recent coronary CT angiography including CAC-score without positive findings \\<3 years prior to screening.\n* Any surgical or medical condition, which in the opinion of the investigator, may place the patient at higher risk from his/her participation in the study, or is likely to prevent the patient from complying with the requirements of the study or completing the study.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "FIBCAG",
+      "briefTitle": "Coronary Computed Tomography AngioGraphy Prior to Catheter Ablation in Patients With Atrial FIBrillation",
+      "nctId": "NCT05978388",
+      "officialTitle": "Coronary Computed Tomography AngioGraphy Prior to Catheter Ablation in Patients With Atrial FIBrillation",
+      "orgStudyIdInfo": {
+        "id": "FIBCAG"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Herlev and Gentofte Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "description": "Please contact the sponsor-investigator in case of any inquiries.",
+      "infoTypes": [
+        "STUDY_PROTOCOL",
+        "SAP"
+      ],
+      "ipdSharing": "YES"
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "measure": "Between-group difference in the prevalence of coronary artery disease in patients with atrial fibrillation at baseline",
+          "timeFrame": "0"
+        },
+        {
+          "measure": "Between group difference in the quality of life of participants as quantified by a validated self-administered questionnaire",
+          "timeFrame": "1 year"
+        },
+        {
+          "measure": "The proportion of participants in the active arm that are started or intensified on the following medication following the coronary CT angiography: statins, antithrombotic or antidiabetic medication",
+          "timeFrame": "1 month"
+        },
+        {
+          "measure": "Between-group differences in the proportion of patients that are started or intensified on the following medication within 1 year after the coronary CT angiography: statins, antithrombotic, antidiabetic, or antihypertensive medication.",
+          "timeFrame": "1 year"
+        },
+        {
+          "measure": "Between-group difference in the number of patients compliant with their prescribed medication 1 and 2 years after the coronary CT angiography as assessed based on a self-administered questionnaire",
+          "timeFrame": "Up to 2 years"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "measure": "Between-group difference in time to first recurrence of atrial tachyarrhythmia lasting >30 seconds between 91 days after ablation and end of follow-up.",
+          "timeFrame": "Up to 4 years"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Between-group difference in time to first documented occurrence of other arrhythmias after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in AF burden as registered by the implantable cardiac monitor after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in the number of participants hospitalized for angina pectoris or acute coronary syndrome after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in the incidence of acute myocardial infarction after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in the number of patients undergoing revascularization procedures after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in the number of deaths due to cardiovascular disease after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in incidence of stroke after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in incidence of heart failure or heart failure hospitalization after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Between-group difference in number of participants hospitalized for atrial fibrillation or other atrial tachyarrythmias after a 3-month blanking period after ablation",
+          "timeFrame": "Up to 4 years"
+        },
+        {
+          "measure": "Number of cardioversions, repeat ablations, and new-onset antiarrythmic drug treatment after a 3-month blanking period after catheter ablation.",
+          "timeFrame": "Up to 4 years"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Tor Biering-Sørensen"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Herlev and Gentofte Hospital",
+        "investigatorFullName": "Tor Biering-Sørensen",
+        "investigatorTitle": "Professor, Head of Center for Translational Cardiology and Pragmatic Randomized Trials",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-04-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-06-26",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-06-25",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2028-04-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-03-26",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2024-06",
+      "studyFirstPostDateStruct": {
+        "date": "2023-08-07",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-07-21",
+      "studyFirstSubmitQcDate": "2023-08-03"
+    }
+  }
+}

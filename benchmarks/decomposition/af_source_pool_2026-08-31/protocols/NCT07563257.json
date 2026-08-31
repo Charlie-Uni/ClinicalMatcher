@@ -1,0 +1,135 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07563257-inclusion-d8b53f6d1bd89cc1",
+      "criterion_type": "inclusion",
+      "normalized_text": "• Age ≥18 years.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 39,
+        "start": 23
+      },
+      "source_text": "• Age ≥18 years."
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+      "criterion_type": "inclusion",
+      "normalized_text": "• Documented persistent atrial fibrillation and/or atrial flutter.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 108,
+        "start": 42
+      },
+      "source_text": "• Documented persistent atrial fibrillation and/or atrial flutter."
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-b1ef0c0f35960844",
+      "criterion_type": "inclusion",
+      "normalized_text": "• Undergoing a clinically indicated first-time (de novo) or redo catheter ablation where linear ablation lesion sets (e.g., posterior wall, roof line, lateral mitral line, CTI) are planned or anticipated.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 315,
+        "start": 111
+      },
+      "source_text": "• Undergoing a clinically indicated first-time (de novo) or redo catheter ablation where linear ablation lesion sets (e.g., posterior wall, roof line, lateral mitral line, CTI) are planned or anticipated."
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+      "criterion_type": "inclusion",
+      "normalized_text": "• Ability to provide written informed consent.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 364,
+        "start": 318
+      },
+      "source_text": "• Ability to provide written informed consent."
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-8f95b7c69b6998ac",
+      "criterion_type": "exclusion",
+      "normalized_text": "• Paroxysmal or persistent AF where only standard PVI is planned.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 454,
+        "start": 389
+      },
+      "source_text": "• Paroxysmal or persistent AF where only standard PVI is planned."
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-c2e4ecc62e838553",
+      "criterion_type": "exclusion",
+      "normalized_text": "• Mechanical mitral valve.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 483,
+        "start": 457
+      },
+      "source_text": "• Mechanical mitral valve."
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-dd19e0140f02db24",
+      "criterion_type": "exclusion",
+      "normalized_text": "• Presence of intracardiac thrombus or contraindication to systemic anticoagulation.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 570,
+        "start": 486
+      },
+      "source_text": "• Presence of intracardiac thrombus or contraindication to systemic anticoagulation."
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-4d8b16ca0991c5e1",
+      "criterion_type": "exclusion",
+      "normalized_text": "• Any medical condition or anatomical contraindication that, in the investigator's judgment, precludes safe participation.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 695,
+        "start": 573
+      },
+      "source_text": "• Any medical condition or anatomical contraindication that, in the investigator's judgment, precludes safe participation."
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-d184202dc8489cf0",
+      "criterion_type": "exclusion",
+      "normalized_text": "• Pregnant women.",
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 715,
+        "start": 698
+      },
+      "source_text": "• Pregnant women."
+    }
+  ],
+  "eligibility_sha256": "6ed0e0c03bc257bf38e6d7d7e2d0b4d6abab68fa15384ae1fbabea5606d0d0a7",
+  "eligibility_text": "Inclusion Criteria:\n\n* • Age ≥18 years.\n* • Documented persistent atrial fibrillation and/or atrial flutter.\n* • Undergoing a clinically indicated first-time (de novo) or redo catheter ablation where linear ablation lesion sets (e.g., posterior wall, roof line, lateral mitral line, CTI) are planned or anticipated.\n* • Ability to provide written informed consent.\n\nExclusion Criteria:\n\n* • Paroxysmal or persistent AF where only standard PVI is planned.\n* • Mechanical mitral valve.\n* • Presence of intracardiac thrombus or contraindication to systemic anticoagulation.\n* • Any medical condition or anatomical contraindication that, in the investigator's judgment, precludes safe participation.\n* • Pregnant women.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-06-03",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07563257",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+  "source_record_version": "2026-06-03:6ed0e0c03bc2",
+  "source_url": "https://clinicaltrials.gov/study/NCT07563257",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Comparative Evaluation of Optrell and Octaray Mapping Catheters for Conduction Block Confirmation and Voltage Assessment During Atrial Ablation"
+}

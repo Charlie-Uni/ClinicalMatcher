@@ -1,0 +1,251 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "documentSection": {
+    "largeDocumentModule": {
+      "largeDocs": [
+        {
+          "date": "2026-04-08",
+          "filename": "Prot_000.pdf",
+          "hasIcf": false,
+          "hasProtocol": true,
+          "hasSap": false,
+          "label": "Study Protocol",
+          "size": 1821081,
+          "typeAbbrev": "Prot",
+          "uploadDate": "2026-04-20T02:26"
+        }
+      ]
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Device: Atrial Fibrillation Radiofrequency Ablation Only"
+          ],
+          "label": "Comparison between two mapping catheters, Optrell vs Octaray, in the same patient",
+          "type": "OTHER"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Comparison between two mapping catheters, Optrell vs Octaray, in the same patient"
+          ],
+          "description": "Comparison between two mapping catheters, Optrell vs Octaray, in the same patient",
+          "name": "Atrial Fibrillation Radiofrequency Ablation Only",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "maximz@shamir.gov.il",
+          "name": "Maxime Zabern, MD",
+          "phone": "+972-54-5644963",
+          "role": "CONTACT"
+        },
+        {
+          "email": "ofirm@shamir.gov.il",
+          "name": "Ofir Mitz",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Be’er Ya‘aqov",
+          "contacts": [
+            {
+              "email": "maximz@shamir.gov.il",
+              "name": "Maxime Zabern, MD",
+              "phone": "+972-54-5644963",
+              "role": "CONTACT"
+            },
+            {
+              "email": "ofirm@shamir.gov.il",
+              "name": "Ofir Mitz",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Israel",
+          "facility": "Shamir Medical Center",
+          "geoPoint": {
+            "lat": 31.93864,
+            "lon": 34.83749
+          },
+          "status": "RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Assaf-Harofeh Medical Center",
+          "name": "Maxime Zabern, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This prospective, single-center observational study aims to compare the clinical performance, workflow efficiency, and electrophysiological metrics of two commercially available, high-density multielectrode mapping catheters (Octaray and Optrell) in patients undergoing catheter ablation for complex atrial arrhythmias.\n\nThe primary focus is to determine if the real-time vector propagation capabilities of the Optrell catheter combined with V8 software can accurately confirm conduction block across linear ablation lesions without the need for full-chamber activation remapping, which is the current standard of care. A secondary focus will pair-compare the bipolar voltage amplitude distributions recorded by both catheters, given their differing electrode sizes and spacing."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "OTHER"
+      },
+      "enrollmentInfo": {
+        "count": 30,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* • Age ≥18 years.\n* • Documented persistent atrial fibrillation and/or atrial flutter.\n* • Undergoing a clinically indicated first-time (de novo) or redo catheter ablation where linear ablation lesion sets (e.g., posterior wall, roof line, lateral mitral line, CTI) are planned or anticipated.\n* • Ability to provide written informed consent.\n\nExclusion Criteria:\n\n* • Paroxysmal or persistent AF where only standard PVI is planned.\n* • Mechanical mitral valve.\n* • Presence of intracardiac thrombus or contraindication to systemic anticoagulation.\n* • Any medical condition or anatomical contraindication that, in the investigator's judgment, precludes safe participation.\n* • Pregnant women.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Comparative Evaluation of Optrell and Octaray Mapping Catheters for Conduction Block Confirmation and Voltage Assessment During Atrial Ablation",
+      "nctId": "NCT07563257",
+      "officialTitle": "Comparative Evaluation of Optrell and Octaray Mapping Catheters for Conduction Block Confirmation and Voltage Assessment During Atrial Ablation",
+      "orgStudyIdInfo": {
+        "id": "Optrell vs Octaray"
+      },
+      "organization": {
+        "class": "OTHER_GOV",
+        "fullName": "Assaf-Harofeh Medical Center"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Percentage of agreement (presence vs. absence of bidirectional block) between the Optrell real-time vector assessment and standard activation remapping on a per-line basis.",
+          "measure": "Concordance",
+          "timeFrame": "During ablation procedure"
+        },
+        {
+          "description": "Difference in time (in minutes) required to confirm conduction block status using the Optrell vector method versus full activation mapping.",
+          "measure": "Workflow Efficiency",
+          "timeFrame": "During ablation procedure"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Statistical correlation and evaluation of systematic bias (limits of agreement) between the bipolar voltage amplitudes recorded by the two catheters in matched anatomical regions.",
+          "measure": "Bipolar Voltage Correlation",
+          "timeFrame": "During ablation procedure"
+        },
+        {
+          "description": "Statistical correlation and evaluation of systematic bias (limits of agreement) between the multipolar voltage amplitudes recorded by the Optrell catheter and the bipolar voltage amplitudes recorded by the Octaray catheter in matched anatomical regions.",
+          "measure": "Multipolar Voltage Correlation",
+          "timeFrame": "During ablation procedure"
+        },
+        {
+          "description": "Freedom from any documented atrial tachyarrhythmia lasting ≥30 seconds at 1, 3, 6, 9, and 12 months",
+          "measure": "Clinical Efficacy",
+          "timeFrame": "12 month follow up period"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER_GOV",
+        "name": "Maxime Zabern"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Assaf-Harofeh Medical Center",
+        "investigatorFullName": "Maxime Zabern",
+        "investigatorTitle": "Cardiologist in Electrophysiology Unit",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-05-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-06-03",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-05-31",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-05-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-05-12",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-05",
+      "studyFirstPostDateStruct": {
+        "date": "2026-05-01",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-04-26",
+      "studyFirstSubmitQcDate": "2026-04-26"
+    }
+  }
+}

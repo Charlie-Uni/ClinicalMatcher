@@ -992,8 +992,12 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     downgrade on 2026-08-31 before any benchmark annotation was created. The
     versioned decision manifest is schema-validated and self-hashed; outputs
     must be labelled `single_annotator_reference_gold`, with no IAA or
-    adjudication claim. Real selection, catalog authoring, and annotation have
-    not started.
+    adjudication claim. The verified 833-hit public query audit, 40-trial
+    source snapshot, and deterministic 80-criterion selection are now frozen;
+    all dev/test, polarity, complexity, per-trial, and minimum-trial quotas
+    passed. A disclosure-only exhaustive lexical-overlap report covers all
+    1,600 cross-split pairs and does not alter membership. Real concept-catalog
+    authoring and annotation have not started.
   - Constraints: annotation disagreements and reviewer limitations are
     reported honestly; model-generated trees cannot become gold through human
     acceptance after the fact.

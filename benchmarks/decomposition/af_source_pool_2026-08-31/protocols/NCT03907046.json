@@ -1,0 +1,267 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct03907046-inclusion-ac4d5f33b556602c",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age at least 18 years",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 44,
+        "start": 23
+      },
+      "source_text": "Age at least 18 years"
+    },
+    {
+      "criterion_id": "nct03907046-inclusion-6cf12de44bad1306",
+      "criterion_type": "inclusion",
+      "normalized_text": "Intracerebral hemorrhage (ICH) (including primary intraventricular hemorrhage) confirmed by brain CT or MRI",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 154,
+        "start": 47
+      },
+      "source_text": "Intracerebral hemorrhage (ICH) (including primary intraventricular hemorrhage) confirmed by brain CT or MRI"
+    },
+    {
+      "criterion_id": "nct03907046-inclusion-e196d2e27a4875a2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Can be randomized within 14-180 days after ICH onset",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 209,
+        "start": 157
+      },
+      "source_text": "Can be randomized within 14-180 days after ICH onset"
+    },
+    {
+      "criterion_id": "nct03907046-inclusion-5b3f6ab44c262888",
+      "criterion_type": "inclusion",
+      "normalized_text": "Non-valvular AF (defined as atrial fibrillation or atrial flutter), documented by electrocardiography or a physician-confirmed history of prior AF",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 358,
+        "start": 212
+      },
+      "source_text": "Non-valvular AF (defined as atrial fibrillation or atrial flutter), documented by electrocardiography or a physician-confirmed history of prior AF"
+    },
+    {
+      "criterion_id": "nct03907046-inclusion-0dcd7b127f20d1de",
+      "criterion_type": "inclusion",
+      "normalized_text": "Provision of signed and dated informed consent form by patient or legally authorized representative",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 460,
+        "start": 361
+      },
+      "source_text": "Provision of signed and dated informed consent form by patient or legally authorized representative"
+    },
+    {
+      "criterion_id": "nct03907046-inclusion-7ffedb9f4a1937ae",
+      "criterion_type": "inclusion",
+      "normalized_text": "For females of reproductive potential: use of highly effective contraception",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 539,
+        "start": 463
+      },
+      "source_text": "For females of reproductive potential: use of highly effective contraception"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-e923b1185558b2b8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Index event is hemorrhagic transformation of a brain infarction or hemorrhage into a tumor",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 654,
+        "start": 564
+      },
+      "source_text": "Index event is hemorrhagic transformation of a brain infarction or hemorrhage into a tumor"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-ab874fe5aa0c3b6a",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of earlier ICH within 12 months preceding index event",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 718,
+        "start": 657
+      },
+      "source_text": "History of earlier ICH within 12 months preceding index event"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-355bbb44cc86fa6c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active infective endocarditis",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 750,
+        "start": 721
+      },
+      "source_text": "Active infective endocarditis"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-49d357b1ca3509c6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Clear indication for anticoagulant drugs (e.g., requires anticoagulation for deep vein thrombosis or pulmonary embolism) or antiplatelet drugs (e.g., requires aspirin or clopidogrel for recent coronary stent).",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 962,
+        "start": 753
+      },
+      "source_text": "Clear indication for anticoagulant drugs (e.g., requires anticoagulation for deep vein thrombosis or pulmonary embolism) or antiplatelet drugs (e.g., requires aspirin or clopidogrel for recent coronary stent)."
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-b063fe28c3252e57",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous or planned left atrial appendage closure",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1014,
+        "start": 965
+      },
+      "source_text": "Previous or planned left atrial appendage closure"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-e16e6f215a44c188",
+      "criterion_type": "exclusion",
+      "normalized_text": "Clinically significant bleeding diathesis",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1058,
+        "start": 1017
+      },
+      "source_text": "Clinically significant bleeding diathesis"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-361003226dd789f7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Serum creatinine ≥2.5 mg/dL",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1088,
+        "start": 1061
+      },
+      "source_text": "Serum creatinine ≥2.5 mg/dL"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-f2dbe91b5c26d0d3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active hepatitis or hepatic insufficiency with Child-Pugh score B or C",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1161,
+        "start": 1091
+      },
+      "source_text": "Active hepatitis or hepatic insufficiency with Child-Pugh score B or C"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-bb15b5453cb2bedd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Anemia (hemoglobin <8 g/dL) or thrombocytopenia (<100 x 10\\^9/L) that is chronic in the judgment of the investigator",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1282,
+        "start": 1164
+      },
+      "source_text": "Anemia (hemoglobin \\<8 g/dL) or thrombocytopenia (\\<100 x 10\\^9/L) that is chronic in the judgment of the investigator"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-7f6950b880e713bf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant or breastfeeding",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1310,
+        "start": 1285
+      },
+      "source_text": "Pregnant or breastfeeding"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-00b7384c0f40899f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known allergy to aspirin or apixaban",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1349,
+        "start": 1313
+      },
+      "source_text": "Known allergy to aspirin or apixaban"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-4fe5b9f729e061bf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Concomitant participation in a competing trial",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1398,
+        "start": 1352
+      },
+      "source_text": "Concomitant participation in a competing trial"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-dcc881a87e2febe7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Considered by the investigator to have a condition that precludes safe or active participation in the trial",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1508,
+        "start": 1401
+      },
+      "source_text": "Considered by the investigator to have a condition that precludes safe or active participation in the trial"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-83c256022f4592ab",
+      "criterion_type": "exclusion",
+      "normalized_text": "Persistent, uncontrolled systolic blood pressure (≥180 mm Hg)",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1572,
+        "start": 1511
+      },
+      "source_text": "Persistent, uncontrolled systolic blood pressure (≥180 mm Hg)"
+    },
+    {
+      "criterion_id": "nct03907046-exclusion-0e2076e37963e6d7",
+      "criterion_type": "exclusion",
+      "normalized_text": "ICH caused by an arteriovenous malformation (AVM) that has not yet been secured",
+      "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+      "source_span": {
+        "end": 1654,
+        "start": 1575
+      },
+      "source_text": "ICH caused by an arteriovenous malformation (AVM) that has not yet been secured"
+    }
+  ],
+  "eligibility_sha256": "f0dedc44a805fb3707cf4966c6ea326ce2e7ed3164140dd351425618b9fb6b62",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age at least 18 years\n* Intracerebral hemorrhage (ICH) (including primary intraventricular hemorrhage) confirmed by brain CT or MRI\n* Can be randomized within 14-180 days after ICH onset\n* Non-valvular AF (defined as atrial fibrillation or atrial flutter), documented by electrocardiography or a physician-confirmed history of prior AF\n* Provision of signed and dated informed consent form by patient or legally authorized representative\n* For females of reproductive potential: use of highly effective contraception\n\nExclusion Criteria:\n\n* Index event is hemorrhagic transformation of a brain infarction or hemorrhage into a tumor\n* History of earlier ICH within 12 months preceding index event\n* Active infective endocarditis\n* Clear indication for anticoagulant drugs (e.g., requires anticoagulation for deep vein thrombosis or pulmonary embolism) or antiplatelet drugs (e.g., requires aspirin or clopidogrel for recent coronary stent).\n* Previous or planned left atrial appendage closure\n* Clinically significant bleeding diathesis\n* Serum creatinine ≥2.5 mg/dL\n* Active hepatitis or hepatic insufficiency with Child-Pugh score B or C\n* Anemia (hemoglobin \\<8 g/dL) or thrombocytopenia (\\<100 x 10\\^9/L) that is chronic in the judgment of the investigator\n* Pregnant or breastfeeding\n* Known allergy to aspirin or apixaban\n* Concomitant participation in a competing trial\n* Considered by the investigator to have a condition that precludes safe or active participation in the trial\n* Persistent, uncontrolled systolic blood pressure (≥180 mm Hg)\n* ICH caused by an arteriovenous malformation (AVM) that has not yet been secured",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-05-08",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT03907046",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT03907046:eligibility:2026-05-08:f0dedc44a805",
+  "source_record_version": "2026-05-08:f0dedc44a805",
+  "source_url": "https://clinicaltrials.gov/study/NCT03907046",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Anticoagulation in ICH Survivors for Stroke Prevention and Recovery"
+}

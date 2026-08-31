@@ -1,0 +1,91 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06598280-inclusion-3439a52f7d514b76",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients age >=18 years",
+      "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+      "source_span": {
+        "end": 47,
+        "start": 23
+      },
+      "source_text": "Patients age \\>=18 years"
+    },
+    {
+      "criterion_id": "nct06598280-inclusion-2fa86be5b3222ed7",
+      "criterion_type": "inclusion",
+      "normalized_text": "Elective catheter ablation for atrial fibrillation using 6 to 14 Fr inner diameter introducer sheath with a minimum of 1 and maximum of 2 femoral venous access sites, independent of the energy source use",
+      "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+      "source_span": {
+        "end": 253,
+        "start": 50
+      },
+      "source_text": "Elective catheter ablation for atrial fibrillation using 6 to 14 Fr inner diameter introducer sheath with a minimum of 1 and maximum of 2 femoral venous access sites, independent of the energy source use"
+    },
+    {
+      "criterion_id": "nct06598280-exclusion-7e78c1408701a90d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active systemic or cutaneous infection, or inflammation in vicinity of the groin",
+      "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+      "source_span": {
+        "end": 358,
+        "start": 278
+      },
+      "source_text": "Active systemic or cutaneous infection, or inflammation in vicinity of the groin"
+    },
+    {
+      "criterion_id": "nct06598280-exclusion-2ca1eb9dbf23f6ef",
+      "criterion_type": "exclusion",
+      "normalized_text": "Platelet count < 50,000 cells/mm3",
+      "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+      "source_span": {
+        "end": 395,
+        "start": 361
+      },
+      "source_text": "Platelet count \\< 50,000 cells/mm3"
+    },
+    {
+      "criterion_id": "nct06598280-exclusion-2d9391fc1623123c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Body mass index (BMI) > 45 kg/m2 or < 18 kg/m2",
+      "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+      "source_span": {
+        "end": 446,
+        "start": 398
+      },
+      "source_text": "Body mass index (BMI) \\> 45 kg/m2 or \\< 18 kg/m2"
+    }
+  ],
+  "eligibility_sha256": "b1e41b96af83b2d1744afab403b033e2117e58ab27dfe1b6309f5fc1e7fbe899",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patients age \\>=18 years\n* Elective catheter ablation for atrial fibrillation using 6 to 14 Fr inner diameter introducer sheath with a minimum of 1 and maximum of 2 femoral venous access sites, independent of the energy source use\n\nExclusion Criteria:\n\n* Active systemic or cutaneous infection, or inflammation in vicinity of the groin\n* Platelet count \\< 50,000 cells/mm3\n* Body mass index (BMI) \\> 45 kg/m2 or \\< 18 kg/m2",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-04-08",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06598280",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06598280:eligibility:2025-04-08:b1e41b96af83",
+  "source_record_version": "2025-04-08:b1e41b96af83",
+  "source_url": "https://clinicaltrials.gov/study/NCT06598280",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Same-Day Discharge Versus Overnight Stay Following Pulmonary Vein Isolation for Atrial Fibrillation"
+}

@@ -1,0 +1,525 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Patients randomized in the intervention group should receive the PFA ablation within 21 days.",
+          "interventionNames": [
+            "Procedure: Ablation of atrial fibrillation (AF)"
+          ],
+          "label": "Group1: Pulsed Field-Ablation",
+          "type": "ACTIVE_COMPARATOR"
+        },
+        {
+          "description": "Patients randomized in the control group / usual care group will undergo optimal medical treatment (OMT), defined as antiarrhythmic drug therapy (AAD). Within 21 days patients in the control group should start or maintain on AAD therapy based on decision of the investigator and according to current ESC Guidelines.",
+          "label": "Group 2: Usual care",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Group1: Pulsed Field-Ablation"
+          ],
+          "description": "PFA (Pulse Field Ablation) - Pulmonary vein isolation ablation for atrial fibrillation",
+          "name": "Ablation of atrial fibrillation (AF)",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Ablation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "ka.heitmann@asklepios.com",
+          "name": "Kathrin Heitmann",
+          "phone": "+49 40 181885",
+          "phoneExt": "5406",
+          "role": "CONTACT"
+        },
+        {
+          "email": "n.gessler@asklepios.com",
+          "name": "Nele Gessler, MD",
+          "phone": "+49 40 181885",
+          "phoneExt": "5406",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Bad Oeynhausen",
+          "contacts": [
+            {
+              "name": "Philipp Sommer, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "HZD Bad Oeynhausen",
+          "geoPoint": {
+            "lat": 52.20699,
+            "lon": 8.80365
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Cologne",
+          "contacts": [
+            {
+              "name": "Daniel Steven, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Uniklinik Köln",
+          "geoPoint": {
+            "lat": 50.93333,
+            "lon": 6.95
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Düsseldorf",
+          "contacts": [
+            {
+              "name": "Obaida Rana, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Uniklinik Düsseldorf",
+          "geoPoint": {
+            "lat": 51.22319,
+            "lon": 6.77927
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Frankfurt",
+          "contacts": [
+            {
+              "name": "Melanie Gunawardene, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "CCB Frankfurt",
+          "geoPoint": {
+            "lat": 49.68333,
+            "lon": 10.53333
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Giessen",
+          "contacts": [
+            {
+              "name": "Borislav Dinov, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Uniklinik Gießen",
+          "geoPoint": {
+            "lat": 50.58727,
+            "lon": 8.67554
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Hamburg",
+          "contacts": [
+            {
+              "email": "ka.heitmann@asklepios.com",
+              "name": "Kathrin Heitmann",
+              "phone": "+49 40181885",
+              "phoneExt": "5406",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Arian Sultan",
+          "geoPoint": {
+            "lat": 53.55073,
+            "lon": 9.99302
+          },
+          "status": "RECRUITING",
+          "zip": "20099"
+        },
+        {
+          "city": "Herne",
+          "contacts": [
+            {
+              "name": "Christian Ukena, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Marien Hospital Herne",
+          "geoPoint": {
+            "lat": 51.5388,
+            "lon": 7.22572
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Leipzig",
+          "contacts": [
+            {
+              "name": "Kerstin Bode, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Leipzig Herzzentrum HZL",
+          "geoPoint": {
+            "lat": 51.33962,
+            "lon": 12.37129
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Neuss",
+          "contacts": [
+            {
+              "name": "Torsten Becker, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Lukas Krankenhaus Neuss",
+          "geoPoint": {
+            "lat": 51.19807,
+            "lon": 6.68504
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Nuremberg",
+          "contacts": [
+            {
+              "name": "Thomas Deneke, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Klinikum Nürnberg",
+          "geoPoint": {
+            "lat": 49.45421,
+            "lon": 11.07752
+          },
+          "status": "NOT_YET_RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Asklepios Klinik St. Georg",
+          "name": "Arian Sultan, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Asklepios Klinik St. Georg",
+          "name": "Stephan Willems, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This study is a prospective, multicenter, randomized, open-label, blinded end-point, controlled clinical trial to investigate the impact of first line pulsed field ablation during 12 months follow-up in patients with early-stage paroxysmal or persistent atrial fibrillation (\\<3 years) compared to usual care, defined as OMT.",
+      "detailedDescription": "Atrial fibrillation (AF) is a progressive arrhythmia associated with significant morbidity and mortality and burden for our health care system. Early rhythm-control therapy was beneficial regarding cardiovascular outcomes in patients with symptomatic and asymptomatic AF. Recent studies introducing first line Cryo Balloon based catheter ablation EARLY-AF and STOP -AF provided strong evidence supporting early catheter ablation over pharmacologic rhythm control in the paroxysmal setting of AF. Ongoing studies are challenging the current concept investigating the expansion of early rhythm control also to all types of clinically diagnosed AF using cryo ablation. With the advent of pulsed field ablation (PFA), a third energy source-alongside cryothermal and radiofrequency (RF) ablation-has been established for the effective treatment of atrial fibrillation (AF). PFA induces so-called irreversible electroporation, thereby enabling successful ablation of myocardial tissue. Different cell types exhibit varying susceptibility and threshold levels for irreversible electroporation when exposed to PFA. Carefully tailored PFA pulse trains deliver sufficient energy to induce irreversible electroporation while avoiding excessive thermal effects on the surrounding tissue. Consequently, PFA enables selective targeting of myocardial tissue while minimizing collateral injury. This characteristic may translate into improved safety and efficacy in the treatment of AF. In contrast, thermal ablation techniques such as cryoablation and RF ablation inherently rely on substantial temperature changes, either cooling or heating, which may adversely affect adjacent anatomical structures including nerves (e.g., resulting in phrenic nerve palsy), vascular structures, and extracardiac tissues such as the esophagus. The occurrence of these potentially life-threatening complications may be reduced or possibly avoided using PFA. Over recent years, various PFA catheter designs as well as different PFA energy delivery settings have been introduced to enable effective and safe pulmonary vein isolation (PVI). A broad spectrum of catheter configurations-including focal single-tip catheters, pentaspline multielectrode systems, and balloon-based technologies-has been incorporated into clinical practice. Substantial comparative data evaluating PFA against conventional thermal ablation modalities (cryoablation and RF ablation) are now available. To date, no significant differences in acute procedural success rates, procedural parameters, or clinical outcome measures have been consistently observed, although one randomized trial demonstrated a trend toward improved outcomes with PFA. Across these studies, procedure duration was significantly shorter with PFA compared with conventional thermal ablation, representing an additional potential advantage of this treatment modality. More recent studies suggest that catheter ablation-particularly PFA-based ablation-for AF patients without documented recurrence during follow-up may be associated with a reduction in overall ischemic stroke events. These findings indicate that catheter ablation of AF may confer additional benefits in preventing adverse cardiovascular outcomes compared with medical therapy alone. Even in cases of AF recurrence, catheter ablation has been shown not only to significantly reduce AF burden but also to slow the progression from paroxysmal to persistent AF, the latter generally being associated with less favorable clinical outcomes compared with ablation performed during earlier disease stages. Despite the availability of effective antiarrhythmic drug therapy for AF, long-term pharmacological treatment is frequently limited by intolerance, side effects, or insufficient efficacy in a substantial proportion of patients. Nevertheless, large, randomized trials directly comparing PFA-based AF ablation with optimized medical therapy remain scarce.\n\nTherefore, the PULSE study aims to evaluate the impact of PFA using a balloon-based catheter system for the treatment of AF on the maintenance of sinus rhythm compared with optimized medical therapy. In addition, the study will assess AF disease progression in patients with early-stage atrial fibrillation, including both symptomatic and asymptomatic individuals with paroxysmal or early persistent AF."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "prospective, multicenter, randomized, open-label, blinded end-point",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "maskingDescription": "The ILR data will be reviewed by blinded core lab investigators. All observed primary endpoints and outcome parameters will be presented to ERC.",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 264,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Adults (≥18 years) with symptomatic or asymptomatic, paroxysmal or persistent atrial fibrillation\n* First diagnosis of AF within the last 36 months\n* At least one documented episode of AF on ECG, Holter monitoring, or eligible Smart Watch Device\n* No prior catheter ablation for AF\n\nExclusion Criteria:\n\n* Persistent AF \\>3 years or longstanding persistent AF\n* Previous AF-Ablation\n* Ongoing continuous AAD therapy with Amiodarone at baseline\n* History of failed continuous AAD therapy with \\> 1 agent. Exceptions are Beta blocker, Verapamil or \"pill in the pocket\"-therapy\n* Left Atrial Volume Index (LAVI) \\> 50mL/m2\n* Severe mitral regurgitation\n* Contraindications to anticoagulation therapy\n* Severe pulmonary or renal disease\n* Pregnancy, active cancer disease\n* Any condition or disease which is contraindication for AF ablation within 21 days or Anti-Arrhythmic Drug (AAD)",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PULSE",
+      "briefTitle": "PULSed Field Ablation for Atrial Fibrillation Using a Balloon for Early Intervention - Study",
+      "nctId": "NCT07621003",
+      "officialTitle": "PULSed Field Ablation for Atrial Fibrillation Using a Balloon for Early Intervention - Study - The \"PULSE - Study\"",
+      "orgStudyIdInfo": {
+        "id": "#4523 - PULSE Study"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Asklepios proresearch"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Arrhythmia-free survival, defined as freedom from atrial fibrillation, atrial flutter, or atrial tachycardia lasting \\>30 seconds through 9 weeks to 12 months follow-up on ILR monitoring via blinded core lab or any 12 lead ECG on visits, ECG Holter monitoring, or on symptom driven event monitoring after a 8 week Blanking period (reviewed by a blinded endpoint review committee).",
+          "measure": "Freedom from any Atrial Tachyarrhythmia",
+          "timeFrame": "through 9 weeks to 12 months follow-up"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Freedom from atrial fibrillation (AF) (\\>30 s) through 9 weeks to 12 months follow-up",
+          "measure": "AF Burden",
+          "timeFrame": "through 9 weeks to 12 months follow-up"
+        },
+        {
+          "description": "Freedom from atrial tachycardia and atrial flutter (AFL) (\\>30 s) through 9 weeks to 12 months follow-up",
+          "measure": "Burden of Atrial Tachycardia and Atrial Flutter",
+          "timeFrame": "through 9 weeks to 12 months follow-up"
+        },
+        {
+          "description": "Re-hospitalization rate due to cardiovascular disease (e.g. AF, worsening of heart failure)",
+          "measure": "Re-hospitalization rate",
+          "timeFrame": "up to 12 months follow-up"
+        },
+        {
+          "description": "Progression from paroxysmal to persistent AF trough 9 weeks to 12 months follow-up.",
+          "measure": "AF Progression Timeline",
+          "timeFrame": "through 9 weeks to 12 months follow-up"
+        },
+        {
+          "description": "Symptom Burden, detected by Patient Questionnaires: Atrial Fibrillation Effect on QualiTy-of-Life (AFEQT) and MOCA.\n\nThe Montreal Cognitive Assessment (MoCA) is used as screening instrument for cognitive dysfunction.\n\nThe AFEQT questionnaire is used because it is specific to AF and validated in that subject population. From each AFEQT questionnaire, a single score will be calculated in line with AFEQT scoring guidelines and post-procedure values will be compared between the randomized arms.",
+          "measure": "Symptom Burden assessed by quality of life",
+          "timeFrame": "QoL will be measured at baseline and at 12 months of follow up evaluating the improvement of QoL within one year."
+        },
+        {
+          "description": "Procedure-related complications, including phrenic nerve injury, pulmonary vein stenosis, esophageal injury and stroke.",
+          "measure": "Procedure-related complications",
+          "timeFrame": "up to 12 months follow-up"
+        },
+        {
+          "description": "Progression of heart failure defined as trend in LV-EF and trend in BNP",
+          "measure": "HF Progression Markers",
+          "timeFrame": "up to 12 months follow-up"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Ito T, Noda T, Nochioka K, Shiroto T, Yamamoto N, Sato H, Chiba T, Hasebe Y, Nakano M, Takahama H, Takahashi J, Miyata S, Shimokawa H, Yasuda S. Clinical impact of atrial fibrillation progression in patients with heart failure with preserved ejection fraction: A report from the CHART-2 Study. Europace. 2024 Aug 30;26(9):euae218. doi: 10.1093/europace/euae218.",
+          "pmid": "39150084",
+          "type": "RESULT"
+        },
+        {
+          "citation": "van Deutekom C, van de Lande ME, Rama R, Nguyen BO, Tieleman RG, Weberndorfer V, Hemels MEW, de Melis M, Schotten U, Linz D, Crijns HJGM, van Gelder IC, Rienstra M; RACE V Investigators. Multimorbidity Is Associated With Symptom Severity and Disease Progression in Patients with Paroxysmal Atrial Fibrillation-Data From the RACE V Study. J Am Heart Assoc. 2025 Mar 4;14(5):e034514. doi: 10.1161/JAHA.123.034514. Epub 2025 Feb 26.",
+          "pmid": "40008502",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Willems S, Borof K, Brandes A, Breithardt G, Camm AJ, Crijns HJGM, Eckardt L, Gessler N, Goette A, Haegeli LM, Heidbuchel H, Kautzner J, Ng GA, Schnabel RB, Suling A, Szumowski L, Themistoclakis S, Vardas P, van Gelder IC, Wegscheider K, Kirchhof P. Systematic, early rhythm control strategy for atrial fibrillation in patients with or without symptoms: the EAST-AFNET 4 trial. Eur Heart J. 2022 Mar 21;43(12):1219-1230. doi: 10.1093/eurheartj/ehab593.",
+          "pmid": "34447995",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Andrade JG, Wells GA, Deyell MW, Bennett M, Essebag V, Champagne J, Roux JF, Yung D, Skanes A, Khaykin Y, Morillo C, Jolly U, Novak P, Lockwood E, Amit G, Angaran P, Sapp J, Wardell S, Lauck S, Macle L, Verma A; EARLY-AF Investigators. Cryoablation or Drug Therapy for Initial Treatment of Atrial Fibrillation. N Engl J Med. 2021 Jan 28;384(4):305-315. doi: 10.1056/NEJMoa2029980. Epub 2020 Nov 16.",
+          "pmid": "33197159",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Wazni OM, Dandamudi G, Sood N, Hoyt R, Tyler J, Durrani S, Niebauer M, Makati K, Halperin B, Gauri A, Morales G, Shao M, Cerkvenik J, Kaplon RE, Nissen SE; STOP AF First Trial Investigators. Cryoballoon Ablation as Initial Therapy for Atrial Fibrillation. N Engl J Med. 2021 Jan 28;384(4):316-324. doi: 10.1056/NEJMoa2029554. Epub 2020 Nov 16.",
+          "pmid": "33197158",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Gunawardene MA, Gessler N, Wohlmuth P, Steven D, Eckardt L, Hoffmann BA, Metzner A, Heeger CH, Kuniss M, Ehrlich JR, Parwani AS, Bengel P, Kalkowski C, Willems S. From the Emergency Department, Directly to Ablation of Atrial Fibrillation: Rationale and Design of the EMERGE Cryo Study. CJC Open. 2025 Dec 4;8(2):197-205. doi: 10.1016/j.cjco.2025.10.019. eCollection 2026 Feb.",
+          "pmid": "41766700",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Ekanem E, Neuzil P, Reichlin T, Kautzner J, van der Voort P, Jais P, Chierchia GB, Bulava A, Blaauw Y, Skala T, Fiala M, Duytschaever M, Szeplaki G, Schmidt B, Massoullie G, Neven K, Thomas O, Vijgen J, Gandjbakhch E, Scherr D, Johannessen A, Keane D, Boveda S, Maury P, Garcia-Bolao I, Anic A, Hansen PS, Raczka F, Lepillier A, Guyomar Y, Gupta D, Van Opstal J, Defaye P, Sticherling C, Sommer P, Kucera P, Osca J, Tabrizi F, Roux A, Gramlich M, Bianchi S, Adragao P, Solimene F, Tondo C, Russo AD, Schreieck J, Luik A, Rana O, Frommeyer G, Anselme F, Kreis I, Rosso R, Metzner A, Geller L, Baldinger SH, Ferrero A, Willems S, Goette A, Mellor G, Mathew S, Szumowski L, Tilz R, Iacopino S, Jacobsen PK, George A, Osmancik P, Spitzer S, Balasubramaniam R, Parwani AS, Deneke T, Glowniak A, Rossillo A, Purerfellner H, Duncker D, Reil P, Arentz T, Steven D, Olalla JJ, de Jong JSSG, Wakili R, Abbey S, Timo G, Asso A, Wong T, Pierre B, Ewertsen NC, Bergau L, Lozano-Granero C, Rivero M, Breitenstein A, Inkovaara J, Fareh S, Latcu DG, Linz D, Muller P, Ramos-Maqueda J, Beiert T, Themistoclakis S, Meininghaus DG, Stix G, Tzeis S, Baran J, Almroth H, Munoz DR, de Sousa J, Efremidis M, Balsam P, Petru J, Kuffer T, Peichl P, Dekker L, Della Rocca DG, Moravec O, Funasako M, Knecht S, Jauvert G, Chun J, Eschalier R, Futing A, Zhao A, Koopman P, Laredo M, Manninger M, Hansen J, O'Hare D, Rollin A, Jurisic Z, Fink T, Chaumont C, Rillig A, Gunawerdene M, Martin C, Kirstein B, Nentwich K, Lehrmann H, Sultan A, Bohnen J, Turagam MK, Reddy VY. Safety of pulsed field ablation in more than 17,000 patients with atrial fibrillation in the MANIFEST-17K study. Nat Med. 2024 Jul;30(7):2020-2029. doi: 10.1038/s41591-024-03114-3. Epub 2024 Jul 8.",
+          "pmid": "38977913",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Camm AJ, Naccarelli GV, Mittal S, Crijns HJGM, Hohnloser SH, Ma CS, Natale A, Turakhia MP, Kirchhof P. The Increasing Role of Rhythm Control in Patients With Atrial Fibrillation: JACC State-of-the-Art Review. J Am Coll Cardiol. 2022 May 17;79(19):1932-1948. doi: 10.1016/j.jacc.2022.03.337.",
+          "pmid": "35550691",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Sanders P, Healy S, Emami M, Kotschet E, Miller A, Kalman JM. Initial clinical experience with the balloon-in-basket pulsed field ablation system: acute results of the VOLT CE mark feasibility study. Europace. 2024 May 2;26(5):euae118. doi: 10.1093/europace/euae118.",
+          "pmid": "38701222",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Tilz RR, Chierchia GB, Gunawardene M, Sanders P, Haqqani H, Kalman J, Healy S, Purerfellner H, Neuzil P, Asensi JO, Loh P, Reddy VY, Knecht S, Jesser E, Dirckx N, Miller A, Walker D, Lakkireddy D. Safety and effectiveness of the first balloon-in-basket pulsed field ablation system for the treatment of atrial fibrillation: VOLT CE Mark Study 6-month results. Europace. 2025 Mar 28;27(4):euaf072. doi: 10.1093/europace/euaf072.",
+          "pmid": "40163671",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Lo M, Gambhir A, Sundaram S, Sanders P, DeLurgio D, Trivedi A, Mountantonakis S, Woods C, Neuzil P, Verma A, Osca J, Loh P, Calkins H, Strouse D, Chierchia GB, Atwater B, Wenzel E, Lin W, Miller A, Lakkireddy D. Safety and effectiveness of a novel balloon-in-basket pulsed-field ablation catheter for the treatment of paroxysmal and persistent AF: Volt-AF IDE trial acute results. Heart Rhythm. 2025 Oct;22(10):2524-2533. doi: 10.1016/j.hrthm.2025.04.037. Epub 2025 Apr 26.",
+          "pmid": "40294733",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Tzeis S, Gerstenfeld EP, Kalman J, Saad EB, Shamloo AS, Andrade JG, Barbhaiya CR, Baykaner T, Boveda S, Calkins H, Chan NY, Chen M, Chen SA, Dagres N, Damiano RJ, De Potter T, Deisenhofer I, Derval N, Di Biase L, Duytschaever M, Dyrda K, Hindricks G, Hocini M, Kim YH, la Meir M, Merino JL, Michaud GF, Natale A, Nault I, Nava S, Nitta T, O'Neill M, Pak HN, Piccini JP, Purerfellner H, Reichlin T, Saenz LC, Sanders P, Schilling R, Schmidt B, Supple GE, Thomas KL, Tondo C, Verma A, Wan EY. 2024 European Heart Rhythm Association/Heart Rhythm Society/Asia Pacific Heart Rhythm Society/Latin American Heart Rhythm Society expert consensus statement on catheter and surgical ablation of atrial fibrillation. Heart Rhythm. 2024 Sep;21(9):e31-e149. doi: 10.1016/j.hrthm.2024.03.017. Epub 2024 Apr 8.",
+          "pmid": "38597857",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Willems S, Khairy P, Andrade JG, Hoffmann BA, Levesque S, Verma A, Weerasooriya R, Novak P, Arentz T, Deisenhofer I, Rostock T, Steven D, Rivard L, Guerra PG, Dyrda K, Mondesert B, Dubuc M, Thibault B, Talajic M, Roy D, Nattel S, Macle L; ADVICE Trial Investigators*. Redefining the Blanking Period After Catheter Ablation for Paroxysmal Atrial Fibrillation: Insights From the ADVICE (Adenosine Following Pulmonary Vein Isolation to Target Dormant Conduction Elimination) Trial. Circ Arrhythm Electrophysiol. 2016 Aug;9(8):e003909. doi: 10.1161/CIRCEP.115.003909.",
+          "pmid": "27516462",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Gunawardene MA, Schaeffer BN, Jularic M, Eickholt C, Maurer T, Akbulak RO, Flindt M, Anwar O, Pape UF, Maasberg S, Gessler N, Hartmann J, Willems S. Pulsed-field ablation combined with ultrahigh-density mapping in patients undergoing catheter ablation for atrial fibrillation: Practical and electrophysiological considerations. J Cardiovasc Electrophysiol. 2022 Mar;33(3):345-356. doi: 10.1111/jce.15349. Epub 2022 Jan 9.",
+          "pmid": "34978360",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Gunawardene MA, Hartmann J, Dickow J, Wahedi R, Harloff T, Jezuit J, Tigges EP, Jularic M, Dinov B, Gessler N, Willems S. Pulsed field ablation using a circular electrode array catheter in patients with atrial fibrillation: A workflow optimization study evaluating the role of mapping. Int J Cardiol Heart Vasc. 2025 Mar 31;58:101674. doi: 10.1016/j.ijcha.2025.101674. eCollection 2025 Jun.",
+          "pmid": "40235943",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Reddy VY, Gerstenfeld EP, Natale A, Whang W, Cuoco FA, Patel C, Mountantonakis SE, Gibson DN, Harding JD, Ellis CR, Ellenbogen KA, DeLurgio DB, Osorio J, Achyutha AB, Schneider CW, Mugglin AS, Albrecht EM, Stein KM, Lehmann JW, Mansour M; ADVENT Investigators. Pulsed Field or Conventional Thermal Ablation for Paroxysmal Atrial Fibrillation. N Engl J Med. 2023 Nov 2;389(18):1660-1671. doi: 10.1056/NEJMoa2307291. Epub 2023 Aug 27.",
+          "pmid": "37634148",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Reichlin T, Kueffer T, Badertscher P, Juni P, Knecht S, Thalmann G, Kozhuharov N, Krisai P, Jufer C, Maurhofer J, Heg D, Pereira TV, Mahfoud F, Servatius H, Tanner H, Kuhne M, Roten L, Sticherling C; SINGLE SHOT CHAMPION Investigators. Pulsed Field or Cryoballoon Ablation for Paroxysmal Atrial Fibrillation. N Engl J Med. 2025 Apr 17;392(15):1497-1507. doi: 10.1056/NEJMoa2502280. Epub 2025 Mar 31.",
+          "pmid": "40162734",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Jais P, Neuzil P, Scherr D, Frison E, Knecht S, Boveda S, Deisenhofer I, Maury P, Deneke T, Cochet H, Rousset M, Renaudeau V, Sauer E, Sermesant M, Kautzner J, Erhard N, Wichterle D. Pulsed field vs radiofrequency ablation for paroxysmal atrial fibrillation: the BEAT PAROX-AF trial. Eur Heart J. 2026 Apr 1;47(13):1527-1537. doi: 10.1093/eurheartj/ehaf1115.",
+          "pmid": "41568658",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Wazni OM, Saliba WI, Nair DG, Marijon E, Schmidt B, Hounshell T, Ebelt H, Skurk C, Oza S, Patel C, Kanagasundram A, Sadhu A, Sundaram S, Osorio J, Mark G, Gupta M, DeLurgio DB, Olson J, Nielsen-Kudsk JE, Boersma LVA, Healey JS, Phillips KP, Asch FM, Wolski K, Roy K, Christen T, Sutton BS, Stein KM, Reddy VY; OPTION Trial Investigators. Left Atrial Appendage Closure after Ablation for Atrial Fibrillation. N Engl J Med. 2025 Apr 3;392(13):1277-1287. doi: 10.1056/NEJMoa2408308. Epub 2024 Nov 16.",
+          "pmid": "39555822",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Verma A, Birnie DH, Jiang C, Heidbuchel H, Hindricks G, Kirchhof P, Healey JS, Wang Y, Dagres N, Deyell MW, Sanders P, Pathak RK, Koopman P, Nuyens D, Novak P, Amit G, Dussault C, Makanjee B, Quinn FR, Jolly U, Iden L, Kuniss M, Sharma M, Ha A, Essebag V, Champagne J, Hill MD, Smith EE, Wells GA; OCEAN Investigators. Antithrombotic Therapy after Successful Catheter Ablation for Atrial Fibrillation. N Engl J Med. 2026 Jan 22;394(4):323-332. doi: 10.1056/NEJMoa2509688. Epub 2025 Nov 8.",
+          "pmid": "41211931",
+          "type": "RESULT"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "Atrial Fibrillation Network"
+        },
+        {
+          "class": "INDUSTRY",
+          "name": "Abbott"
+        }
+      ],
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Asklepios proresearch"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2031-03-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-08-24",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-08-21",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2030-03-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-08-19",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-08",
+      "studyFirstPostDateStruct": {
+        "date": "2026-06-02",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-05-20",
+      "studyFirstSubmitQcDate": "2026-05-27"
+    }
+  }
+}

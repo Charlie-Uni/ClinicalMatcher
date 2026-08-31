@@ -1,0 +1,135 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07568964-inclusion-ed511bbd4b60333a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Female or male aged 40 years or above with BMI less than 40",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 83,
+        "start": 24
+      },
+      "source_text": "Female or male aged 40 years or above with BMI less than 40"
+    },
+    {
+      "criterion_id": "nct07568964-inclusion-d3fad16f0ba677ac",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent AF patients directly after cardioversion",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 138,
+        "start": 87
+      },
+      "source_text": "Persistent AF patients directly after cardioversion"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-34b61ed40581b434",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of probiotic supplementation in the previous 6 weeks",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 224,
+        "start": 164
+      },
+      "source_text": "History of probiotic supplementation in the previous 6 weeks"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-484737d09342784f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Autoimmune diseases",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 247,
+        "start": 228
+      },
+      "source_text": "Autoimmune diseases"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-b9c808b8cde2f119",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ongoing treatment with immunosuppressive therapies",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 301,
+        "start": 251
+      },
+      "source_text": "Ongoing treatment with immunosuppressive therapies"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-15a89e55244d2538",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active Infection",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 321,
+        "start": 305
+      },
+      "source_text": "Active Infection"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-d437600e87fcbbea",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant or breast-feeding patients",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 360,
+        "start": 325
+      },
+      "source_text": "Pregnant or breast-feeding patients"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-ab0d4d61cfb53242",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active participation in another clinical study",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 410,
+        "start": 364
+      },
+      "source_text": "Active participation in another clinical study"
+    },
+    {
+      "criterion_id": "nct07568964-exclusion-7b934af73059f063",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of or known allergy or intolerability to the study medications",
+      "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+      "source_span": {
+        "end": 484,
+        "start": 414
+      },
+      "source_text": "History of or known allergy or intolerability to the study medications"
+    }
+  ],
+  "eligibility_sha256": "ced3f9a796ffe4645071203cd8f558990497230addf723afc7f835ee0ee3b3b5",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Female or male aged 40 years or above with BMI less than 40\n2. Persistent AF patients directly after cardioversion\n\nExclusion Criteria:\n\n1. History of probiotic supplementation in the previous 6 weeks\n2. Autoimmune diseases\n3. Ongoing treatment with immunosuppressive therapies\n4. Active Infection\n5. Pregnant or breast-feeding patients\n6. Active participation in another clinical study\n7. History of or known allergy or intolerability to the study medications",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-05-06",
+  "maximum_age": null,
+  "minimum_age": "40 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07568964",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07568964:eligibility:2026-05-06:ced3f9a796ff",
+  "source_record_version": "2026-05-06:ced3f9a796ff",
+  "source_url": "https://clinicaltrials.gov/study/NCT07568964",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Evaluation of Probiotics' Effect on Atrial Fibrillation Recurrence in Patients Undergoing Cardioversion"
+}

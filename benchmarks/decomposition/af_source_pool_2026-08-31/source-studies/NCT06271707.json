@@ -1,0 +1,262 @@
+{
+  "derivedSection": {
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D000813",
+          "term": "Anilides"
+        },
+        {
+          "id": "D000577",
+          "term": "Amides"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        },
+        {
+          "id": "D000814",
+          "term": "Aniline Compounds"
+        },
+        {
+          "id": "D000588",
+          "term": "Amines"
+        },
+        {
+          "id": "D002712",
+          "term": "Chlorides"
+        },
+        {
+          "id": "D006851",
+          "term": "Hydrochloric Acid"
+        },
+        {
+          "id": "D017606",
+          "term": "Chlorine Compounds"
+        },
+        {
+          "id": "D007287",
+          "term": "Inorganic Chemicals"
+        },
+        {
+          "id": "D017670",
+          "term": "Sodium Compounds"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D002045",
+          "term": "Bupivacaine"
+        },
+        {
+          "id": "D012965",
+          "term": "Sodium Chloride"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "ultrasound with bupivacaine",
+          "interventionNames": [
+            "Drug: 0.5% bupivacaine"
+          ],
+          "label": "Group 1",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Ultrasound with saline",
+          "interventionNames": [
+            "Other: Saline"
+          ],
+          "label": "Group 2",
+          "type": "SHAM_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Group 1"
+          ],
+          "description": "an ultrasound guided left stellate ganglion block with 5 mL of 0.5% bupivacaine",
+          "name": "0.5% bupivacaine",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Group 2"
+          ],
+          "description": "an ultrasound guided left stellate ganglion block with 5 mL of saline",
+          "name": "Saline",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Esophagectomy",
+        "Pneumonectomy",
+        "Lobectomy"
+      ],
+      "keywords": [
+        "Esophagectomy",
+        "Pneumonectomy",
+        "Lobectomy",
+        "Stellate Ganglion Block"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "nelso377@umn.edu",
+          "name": "Candace Nelson",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "email": "nelso377@umn.edu",
+              "name": "Candace Nelson",
+              "phone": "612-626-2465",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Minnesota",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55455"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University of Minnesota",
+          "name": "Jacob Hutchins",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The purpose of this study is to determine if the addition of an ultrasound guided left sided stellate ganglion block with bupivacaine in patients undergoing esophagectomy, pneumonectomy, or lobectomy will result in lower rates of postoperative atrial fibrillation as compared to standard of care."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "TRIPLE",
+          "maskingDescription": "This is a double blind randomized prospective controlled trial. Randomization will be 1:1.",
+          "whoMasked": [
+            "PARTICIPANT",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 48,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients undergoing esophagectomy, pneumonectomy, or lobectomy aged 18-85.\n\nExclusion Criteria:\n\n* Patients who have an exclusion to regional anesthesia.\n* Patients who have exclusion to stellate blockade.\n* Patients who are pregnant assessed via self-report or pregnancy test if they have taken one",
+      "healthyVolunteers": false,
+      "maximumAge": "85 Years",
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Stellate Ganglion Block",
+      "nctId": "NCT06271707",
+      "officialTitle": "Left Sided Stellate Ganglion Blocks Impact on the Rate of Post-operative Atrial Fibrillation in Patients Undergoing Thoracic Surgery: A Pilot Study",
+      "orgStudyIdInfo": {
+        "id": "ANES-2024-32720"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University of Minnesota"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Incidence of Atrial fibrillation in the first 168 hours after surgery.",
+          "measure": "an ultrasound guided left stellate ganglion block with 5 mL of saline.",
+          "timeFrame": "168 hours after surgery"
+        },
+        {
+          "description": "Atrial fibrillation in first 24, 48, 72, 96, 120, and 144 hours; Other arrhythmias in first 24, 48, 72, 96, 120, 144 and 168 hours; Adverse events.",
+          "measure": "Atrial fibrillation; Other arrhythmias; Adverse events.",
+          "timeFrame": "168 hours after surgery"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": true,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University of Minnesota"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-12-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-08-10",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-08-05",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2028-12-30",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-05-19",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-08",
+      "studyFirstPostDateStruct": {
+        "date": "2024-02-22",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-02-14",
+      "studyFirstSubmitQcDate": "2024-02-14"
+    }
+  }
+}

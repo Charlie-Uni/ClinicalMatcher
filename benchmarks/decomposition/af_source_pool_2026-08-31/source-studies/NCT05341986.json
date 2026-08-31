@@ -1,0 +1,262 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D014742",
+          "term": "Videodisc Recording"
+        },
+        {
+          "id": "D016249",
+          "term": "Optical Storage Devices"
+        },
+        {
+          "id": "D001296",
+          "term": "Audiovisual Aids"
+        },
+        {
+          "id": "D018961",
+          "term": "Educational Technology"
+        },
+        {
+          "id": "D013672",
+          "term": "Technology"
+        },
+        {
+          "id": "D013676",
+          "term": "Technology, Industry, and Agriculture"
+        },
+        {
+          "id": "D013690",
+          "term": "Television"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D016250",
+          "term": "Compact Disks"
+        },
+        {
+          "id": "D004864",
+          "term": "Equipment and Supplies"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Clinicians will be trained on the web-based portal of the CDS tool and shown where the Link to the tool will be available in the EHR.",
+          "interventionNames": [
+            "Other: Clinical Decision Support (CDS) tool"
+          ],
+          "label": "Link-Out",
+          "type": "OTHER"
+        },
+        {
+          "description": "Clinicians will be trained on how a BPA is triggered when a patient is diagnosed with AF. The alert will pop up within the EHR with the Link-out to the web portal.",
+          "interventionNames": [
+            "Other: Clinical Decision Support (CDS) tool"
+          ],
+          "label": "BPA + Link-out",
+          "type": "OTHER"
+        },
+        {
+          "description": "Instead of a link to the web-based portal, the BPA will contain a link to the FHIR-integrated CDS tool portal. FHIR will automatically pull EHR data about the patient into the CDS tool portal. Data include demographic information, comorbidities in the active problem list, past medical and surgical history, and social history. Clinicians will also receive training before the implementation of this step.",
+          "interventionNames": [
+            "Other: Clinical Decision Support (CDS) tool"
+          ],
+          "label": "BPA + FHIR",
+          "type": "OTHER"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "BPA + FHIR",
+            "BPA + Link-out",
+            "Link-Out"
+          ],
+          "description": "Implementation of an EHR-based CDS tool for providers to use.",
+          "name": "Clinical Decision Support (CDS) tool",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "locations": [
+        {
+          "city": "Portland",
+          "country": "United States",
+          "facility": "Oregon Health & Science University (OHSU)",
+          "geoPoint": {
+            "lat": 45.52345,
+            "lon": -122.67621
+          },
+          "state": "Oregon",
+          "zip": "97239"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Oregon Health and Science University",
+          "name": "Bory Kea, MD, MCR",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Atrial fibrillation (AF) is the most common arrhythmia in the world, with significant morbidity and mortality. With appropriate oral anticoagulation, the risk of stroke due to atrial fibrillation decreases by 64%. Although atrial fibrillation is commonly diagnosed and treated in the Emergency Department (ED), oral anticoagulation is significantly underprescribed. Underprescribing has been attributed to a lack of empowerment and deferral of prescribing to longitudinal care clinicians.\n\nUsing a convergent parallel quantitative-qualitative design (mixed-methods), we propose a stepped-wedge cluster randomized trial design with the implementation of a clinical decision support (CDS) tool in adults with new-onset AF that are OAC-naïve and at significant risk for stroke. In parallel, we will use qualitative approaches to evaluate clinician facilitators and barriers to tool utilization as well as patient satisfaction and engagement with the tool.",
+      "detailedDescription": "OBJECTIVES:\n\nAIM 1: Compare the magnitude of change of appropriate OAC prescribing over time at each ED with EHR-Based CDS tool implementation.\n\nH1a. A CDS tool will increase the prescribing of OACs at ED discharge in patients with new AF.\n\nH1b. The highly-integrated EHR-based CDS tool with a trigger will have a greater impact on the volume of prescribing compared to a less integrated web-based portal.\n\nAIM 2: Evaluate clinician experiences with factors that influence the CDS tool implementation through a qualitative approach.\n\nH2a. Clinicians will have high acceptability of the tool and be open to additional CDS tools.\n\nH2b. Health system resources, such as the ability to refer patients to an anticoagulation clinic or primary care, will facilitate ED tool utilization.\n\nAIM 3 (Exploratory): Determine patient satisfaction and engagement with ED visits across the three steps of CDS tool implementation and explore patient-clinician stories as mini-case studies (dyads) related to the recall of their experiences.\n\nAIM 1 addresses whether a CDS tool can increase clinician prescribing-thereby improving long-term outcomes for patients. AIM 2 will address clinician facilitators and barriers to the CDS tool. AIM 3 (exploratory) will allow the exploration of a patient-centered approach for the future development of a scalable and generalizable strategy for large-scale dissemination. Through a convergent parallel quantitative-qualitative study, we will capitalize on a missed opportunity to change the trajectory of care and outcomes of newly ED-diagnosed AF patients."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Using a convergent parallel quantitative-qualitative design (mixed-methods), we propose a stepped-wedge cluster randomized trial design with the implementation of an electronic health record (EHR) clinical decision support (CDS) tool in adults with new-onset AF that are OAC-naïve and at significant risk for stroke, in three ED settings with different practice patterns and culture, patient populations, and organizational readiness. In parallel, we will use qualitative approaches to evaluate clinician facilitators and barriers to tool utilization as well as patient satisfaction and engagement with the tool.",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "OTHER"
+      },
+      "enrollmentInfo": {
+        "count": 36,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria (Patients):\n\n* A diagnosis of atrial fibrillation or paroxysmal atrial fibrillation (ICD-10 I48.0, I48.1, I48.9) during an ED visit with start dates between 1/11/2022 and 12/31/2025 within the patient's age \\>18 years.\n\nExclusion Criteria (Patients):\n\n* Valvular disease, pregnancy, large esophageal varices, thrombocytopenia, severe or uncontrolled bleeding, severe liver or kidney disease, major surgery within 72 hours; OR\n* Recent brain, eye or spinal cord injury or surgery; OR\n* ED stroke, death or hospitalization at index visit; OR\n* Patient transferred from another hospital (to ensure availability of index ED visit data); OR\n* Left against medical advice; OR\n* Evidence of non-OAC naïve patient:\n\n  * OAC prescribed in the prior 3mo to index ED visit; OR\n  * Being managed by an anticoagulation clinic (ACC);\n\nInclusion/Exclusion Criteria (Clinicians): All ED clinicians (board certified or eligible) interfacing with patients.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "AF SWCRT-CDS",
+      "briefTitle": "Optimizing Stroke Prophylaxis of Acute Atrial Fibrillation With an Electronic Clinical Decision Support Tool",
+      "nctId": "NCT05341986",
+      "officialTitle": "Optimizing Stroke Prophylaxis of Acute Atrial Fibrillation With an Electronic Clinical Decision Support Tool: A Stepped-Wedge Cluster Randomized Trial Design",
+      "orgStudyIdInfo": {
+        "id": "STUDY00022471"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Oregon Health and Science University"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary outcome is the number of patients appropriately prescribed OACs after CDS tool implementation.",
+          "measure": "Number of patients appropriately prescribed OACs after CDS tool implementation.",
+          "timeFrame": "through study completion, up to 4 years"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Secondary outcomes include the clinician and patient feedback on acceptability and identification of barriers and facilitators to use of the tool.",
+          "measure": "Clinician and patient feedback on acceptability and identification of barriers and facilitators to use of the tool.",
+          "timeFrame": "through study completion, up to 4 years"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Oregon Health and Science University"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Oregon Health and Science University",
+        "investigatorFullName": "Bory Kea",
+        "investigatorTitle": "Principal Investigator",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-05-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-03-20",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-03-17",
+      "overallStatus": "ENROLLING_BY_INVITATION",
+      "primaryCompletionDateStruct": {
+        "date": "2026-03-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2022-01-11",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-03",
+      "studyFirstPostDateStruct": {
+        "date": "2022-04-22",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2022-04-13",
+      "studyFirstSubmitQcDate": "2022-04-18"
+    }
+  }
+}

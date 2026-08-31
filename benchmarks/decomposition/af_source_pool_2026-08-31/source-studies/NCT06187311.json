@@ -1,0 +1,347 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D013876",
+          "term": "Thiophenes"
+        },
+        {
+          "id": "D013457",
+          "term": "Sulfur Compounds"
+        },
+        {
+          "id": "D009930",
+          "term": "Organic Chemicals"
+        },
+        {
+          "id": "D009025",
+          "term": "Morpholines"
+        },
+        {
+          "id": "D010078",
+          "term": "Oxazines"
+        },
+        {
+          "id": "D006573",
+          "term": "Heterocyclic Compounds, 1-Ring"
+        },
+        {
+          "id": "D006571",
+          "term": "Heterocyclic Compounds"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000069552",
+          "term": "Rivaroxaban"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Subjects eligible for this clinical trial will be randomly assigned to Group 1 (15 mg of rivaroxaban) or Group 2 (20 mg of rivaroxaban) at baseline visits in a 1:1 ratio.",
+          "interventionNames": [
+            "Drug: Rivaroxaban 15 MG"
+          ],
+          "label": "Rivaroxaban 15mg",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Subjects eligible for this clinical trial will be randomly assigned to Group 1 (15 mg of rivaroxaban) or Group 2 (20 mg of rivaroxaban) at baseline visits in a 1:1 ratio.",
+          "interventionNames": [
+            "Drug: Rivaroxaban 20 MG"
+          ],
+          "label": "Rivaroxaban 20mg",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Rivaroxaban 20mg"
+          ],
+          "description": "Subjects should take clinical trial drugs (20 mg of rivaroxaban) for each group of administration once a day for 12 months, according to random assignments.",
+          "name": "Rivaroxaban 20 MG",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Rivaroxaban 15mg"
+          ],
+          "description": "Subjects should take clinical trial drugs (15 mg of rivaroxaban) for each group of administration once a day for 12 months, according to random assignments.",
+          "name": "Rivaroxaban 15 MG",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Anticoagulant Adverse Reaction"
+      ],
+      "keywords": [
+        "Non-vitamin K antagonist oral anticoagulant",
+        "rivaroxaban"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "jongilchoi@korea.ac.kr",
+          "name": "Jong-il Choi, MD, PHD",
+          "phone": "02-920-6710",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "jongilchoi@korea.ac.kr",
+              "name": "Jong-il Choi, PhD",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jessica0115@naver.com",
+              "name": "Joo Hee Jeong, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Korea University Anam Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "status": "RECRUITING",
+          "zip": "02841"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Korea University",
+          "name": "Jong-il Choi, MD, PHD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "In this clinical trial, Rivaroxaban of standard dose (20mg) and reduced dose (15mg) will be administeted in non-valvular atrial fibrillation patients without severe renal dysfunction.\n\nIt is a randomized, open-label, and phase 4 clinical trial to compare and evaluate efficacy and safety of Rivaroxaban.\n\nAfter obtaining informed consent to participate in this trial, screening is performed (Screening visit).\n\nScreening includes baseline 12-lead electrocardiography and laboratory tests to exclude severe end-organ dysfunction (such as renal dysfunction, liver dysfunction, or anemia).\n\nBaseline visits are available on the same day. After screening, subjects eligible for the trial will be randomly assigned (1:1 ratio) to Group 1 (15 mg of Rivaroxaban) or Group 2 (20 mg of Rivaroxaban) (Baseline visit).\n\nThe study drug (Rivaroxaban 15mg or 20mg daily) will be administered for 12 months.\n\nDuring study period, a total of six visits (3,6,9,12 months) will be made, and follow-up test and outcome measurement will be done in each visit."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 940,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. adult men and women over 19 years of age when screening\n2. A person whose atrial fibrillation has been confirmed by electrocardiogram during screening and baseline.\n3. Anticoagulants for the prevention of stroke or systemic embolism For cases where medication is required, a person with a CHA2DS2-VASC score of 1 male/female 2 or more points (In case of one or more risk factors)\n4. 4\\) CrCl (Creatinine Clearance) ≥50 ml/min\n5. A person who voluntarily agrees in writing to this study\n\nExclusion Criteria:\n\n1. Moderate mitral valve stenosis or mechanical artificial valve A person with a history of mechanical valve\n2. Thyroid disease, terminal hypertrophy, brown cytoplasm, adrenal glands that affect the occurrence of atrial fibrillation A person accompanied by cortical disease, parathyroid disease, pancreatic disease, etc.\n3. clinically significant bleeding (e.g., intracranial bleeding, gastrointestinal bleeding)\n4. Clinical significance of liver disease related to blood coagulation disorder and Child Pugh B and C liver disease associated with the risk of bleeding\n5. Patients with increased risk of bleeding due to the following conditions:\n\n   * Gastrointestinal ulcer history within 6 months prior to random allocation\n\n     * Intracranial or intracranial hemorrhage history within 6 months prior to random assignment\n\n       * vascular abnormalities in the spinal cord or brain\n\n         * History of brain, spinal cord or ophthalmic surgery within 30 days prior to random assignment\n\n           ⑤ Brain or spinal cord injury within 6 months prior to random allocation\n\n           ⑥ If you have esophageal varices or are suspected\n\n           ⑦ Arteriovenous malformations\n\n           ⑧ Vascular aneurysms\n\n           ⑨ Patients with malignant tumors (Neoplasm) at high risk of bleeding\n6. Stroke requiring combination of antiplatelet drugs when treating acute coronary syndrome or a patient with a history of transient ischemic attacks\n7. Patients who are overreacting to the main or components of Rivaroxaban\n8. Galactose intolerance, Lapp lactase deficiency, or glucose-galactose absorption a patient with genetic problems such as a disability\n9. Patients with uncontrolled hypertension (systolic BP \\> 180 mm Hg or diastolic BP \\> 100 mm Hg)",
+      "healthyVolunteers": false,
+      "maximumAge": "99 Years",
+      "minimumAge": "19 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "REVISE-AF",
+      "briefTitle": "Clinical Trial to Evaluate Efficacy and Safety of Rivaroxaban 15mg and 20mg in Patients With Non-valvular Atrial Fibrillation",
+      "nctId": "NCT06187311",
+      "officialTitle": "A Randomized, Open-labelled, Investigator-initiated Clinical Trial to Evaluate Efficacy and Safety of Rivaroxaban 15mg and 20mg in Patients With Non-valvular Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "2023AN0034"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Korea University Anam Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Incidence of 'major bleeding' defined by International Society on Thrombosis and Haemostasis (ISTH) : (i) hb decrease 2 g/dL or more, or (ii) bleeding requiring RBC transfusion 2 or more unites, (iii) bleeding at major organ (intracranial, intraocular, pericardial, intra-articular, retroperitoneal or intramuscular bleeding), (iv) bleeding that result lethal outcome",
+          "measure": "Incident rate of major bleeding events",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Composite of stroke, Non-CNS systemic embolism, and vascular death death",
+          "measure": "Occurrence of Stroke, Non-CNS systemic embolism, and vascular death death",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        },
+        {
+          "description": "Composite of stroke, Non-CNS systemic embolism, and myocardial infarction",
+          "measure": "Occurrence of Stroke, Non-CNS systematic embolism, and myocardial infarction infaration, cardiovascular death",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        },
+        {
+          "description": "Individual incidence of stroke, Non-CNS systemic embolism, and myocardial infarction",
+          "measure": "Occurrence Stroke, Non-CNS systemic embolism, myocardial infarction (Myocardial infarction), (Cardio vascular death)",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy"
+        },
+        {
+          "description": "Severe stroke that results Modified Rankin Scale between 3 \\~ 5",
+          "measure": "Occurrence of Severe Disabling Stroke",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        },
+        {
+          "description": "Death of any cuase",
+          "measure": "All-cause motality",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        },
+        {
+          "description": "Any bleeding that do not fulfill 'major bleeding', but requring clinical intervention or unexpected medical visit, cease of study",
+          "measure": "Incidence of non-major clinically significant bleeding*",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy"
+        },
+        {
+          "measure": "Abnormal reaction and drug abnormal reaction expression, vital sign, laboratory inspection, physical examination, 12-lead ECG",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy"
+        },
+        {
+          "description": "Any visit of medical service except routine visits",
+          "measure": "Number of unexpected medical service visit (Healthcare Utilization)",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        },
+        {
+          "description": "Maintenance of treatment to drug administration and treatment adherence",
+          "measure": "Proportion of the drug taken during study period (Treatment persistence)",
+          "timeFrame": "At baseline(Visit 2) and at 3 month, 6 month, 9 month, 12 month after the baseline visit, or at 1~3 month interval with regard to the subject's therapy."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Patel MR, Mahaffey KW, Garg J, Pan G, Singer DE, Hacke W, Breithardt G, Halperin JL, Hankey GJ, Piccini JP, Becker RC, Nessel CC, Paolini JF, Berkowitz SD, Fox KA, Califf RM; ROCKET AF Investigators. Rivaroxaban versus warfarin in nonvalvular atrial fibrillation. N Engl J Med. 2011 Sep 8;365(10):883-91. doi: 10.1056/NEJMoa1009638. Epub 2011 Aug 10.",
+          "pmid": "21830957",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Hori M, Matsumoto M, Tanahashi N, Momomura S, Uchiyama S, Goto S, Izumi T, Koretsune Y, Kajikawa M, Kato M, Ueda H, Iwamoto K, Tajiri M; J-ROCKET AF study investigators. Rivaroxaban vs. warfarin in Japanese patients with atrial fibrillation - the J-ROCKET AF study -. Circ J. 2012;76(9):2104-11. doi: 10.1253/circj.cj-12-0454. Epub 2012 Jun 5.",
+          "pmid": "22664783",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Cho MS, Yun JE, Park JJ, Kim YJ, Lee J, Kim H, Park DW, Nam GB. Outcomes After Use of Standard- and Low-Dose Non-Vitamin K Oral Anticoagulants in Asian Patients With Atrial Fibrillation. Stroke. 2019 Jan;50(1):110-118. doi: 10.1161/STROKEAHA.118.023093. Epub 2018 Dec 3.",
+          "pmid": "30580716",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Lin YC, Chien SC, Hsieh YC, Shih CM, Lin FY, Tsao NW, Chen CW, Kao YT, Chiang KH, Chen WT, Chien LN, Huang CY. Effectiveness and Safety of Standard- and Low-Dose Rivaroxaban in Asians With Atrial Fibrillation. J Am Coll Cardiol. 2018 Jul 31;72(5):477-485. doi: 10.1016/j.jacc.2018.04.084.",
+          "pmid": "30049307",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Chan YH, Lee HF, Wang CL, Chang SH, Yeh CH, Chao TF, Yeh YH, Chen SA, Kuo CT. Comparisons of Rivaroxaban Following Different Dosage Criteria (ROCKET AF or J-ROCKET AF Trials) in Asian Patients With Atrial Fibrillation. J Am Heart Assoc. 2019 Nov 5;8(21):e013053. doi: 10.1161/JAHA.119.013053. Epub 2019 Oct 18.",
+          "pmid": "31623498",
+          "type": "RESULT"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Korea University Anam Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Korea University Anam Hospital",
+        "investigatorFullName": "Jong-Il Choi",
+        "investigatorTitle": "Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-06-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-01-05",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2023-12-31",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-06-30",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-01-12",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2023-12",
+      "studyFirstPostDateStruct": {
+        "date": "2024-01-02",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-12-16",
+      "studyFirstSubmitQcDate": "2023-12-16"
+    }
+  }
+}

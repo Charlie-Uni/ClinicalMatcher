@@ -1,0 +1,123 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06953778-inclusion-f60d0d811bdf4af0",
+      "criterion_type": "inclusion",
+      "normalized_text": "Male or female, age >=65 years",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 156,
+        "start": 125
+      },
+      "source_text": "Male or female, age \\>=65 years"
+    },
+    {
+      "criterion_id": "nct06953778-inclusion-7d18a1cc45b52323",
+      "criterion_type": "inclusion",
+      "normalized_text": "CHA2DS2-Vasc score >=3. The score is comprised of age (2 points for 75, 1 point for 65-74), sex (1 point for female), history of stroke, TIA, or systemic embolism (2 points), and history of heart failure, hypertension, vascular disease (including MI, peripheral artery disease, or aortic plaque), or diabetes (1 point each).",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 485,
+        "start": 160
+      },
+      "source_text": "CHA2DS2-Vasc score \\>=3. The score is comprised of age (2 points for 75, 1 point for 65-74), sex (1 point for female), history of stroke, TIA, or systemic embolism (2 points), and history of heart failure, hypertension, vascular disease (including MI, peripheral artery disease, or aortic plaque), or diabetes (1 point each)."
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-f9b99096bf40c919",
+      "criterion_type": "exclusion",
+      "normalized_text": "Current use of anticoagulation",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 647,
+        "start": 617
+      },
+      "source_text": "Current use of anticoagulation"
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-f551874824470d4a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Diagnosis of AF (from administrative records or per patient during consent)",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 726,
+        "start": 651
+      },
+      "source_text": "Diagnosis of AF (from administrative records or per patient during consent)"
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-245e41bb034c98ac",
+      "criterion_type": "exclusion",
+      "normalized_text": "Cardio-thoracic surgery in the prior 3 months",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 775,
+        "start": 730
+      },
+      "source_text": "Cardio-thoracic surgery in the prior 3 months"
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-cf151f72a687294f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of pacemaker, implantable defibrillator, or implanted cardiac monitor",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 857,
+        "start": 779
+      },
+      "source_text": "Presence of pacemaker, implantable defibrillator, or implanted cardiac monitor"
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-c1f17d69ca5fd1d9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Clinically significant allergy to adhesives, as reported by the patient during screening for trial enrollment",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 970,
+        "start": 861
+      },
+      "source_text": "Clinically significant allergy to adhesives, as reported by the patient during screening for trial enrollment"
+    },
+    {
+      "criterion_id": "nct06953778-exclusion-d238ba33b17c2cbd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Planned use of a brain or spinal-cord stimulator, TENS unit, or MRI scan during the period when the Zio Patch will be worn",
+      "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+      "source_span": {
+        "end": 1096,
+        "start": 974
+      },
+      "source_text": "Planned use of a brain or spinal-cord stimulator, TENS unit, or MRI scan during the period when the Zio Patch will be worn"
+    }
+  ],
+  "eligibility_sha256": "14e2ac83630cc4be802da602c1d111875507bfd91360c20616a0c6dd6f523075",
+  "eligibility_text": "Inclusion Criteria:\n\nTo be eligible to participate in this study, an individual must meet all of the following criteria:\n\n1. Male or female, age \\>=65 years\n2. CHA2DS2-Vasc score \\>=3. The score is comprised of age (2 points for 75, 1 point for 65-74), sex (1 point for female), history of stroke, TIA, or systemic embolism (2 points), and history of heart failure, hypertension, vascular disease (including MI, peripheral artery disease, or aortic plaque), or diabetes (1 point each).\n\nExclusion Criteria:\n\nAn individual who meets any of the following criteria will be excluded from participation in this study:\n\n1. Current use of anticoagulation\n2. Diagnosis of AF (from administrative records or per patient during consent)\n3. Cardio-thoracic surgery in the prior 3 months\n4. Presence of pacemaker, implantable defibrillator, or implanted cardiac monitor\n5. Clinically significant allergy to adhesives, as reported by the patient during screening for trial enrollment\n6. Planned use of a brain or spinal-cord stimulator, TENS unit, or MRI scan during the period when the Zio Patch will be worn",
+  "healthy_volunteers": true,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-06-30",
+  "maximum_age": null,
+  "minimum_age": "65 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06953778",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06953778:eligibility:2026-06-30:14e2ac83630c",
+  "source_record_version": "2026-06-30:14e2ac83630c",
+  "source_url": "https://clinicaltrials.gov/study/NCT06953778",
+  "standard_ages": [
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "The Effectiveness of Patch-Based Screening for Pre-Symptomatic Atrial Fibrillation to Improve Patient Outcome"
+}
