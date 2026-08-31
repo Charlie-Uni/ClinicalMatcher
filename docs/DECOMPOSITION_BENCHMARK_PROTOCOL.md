@@ -345,3 +345,22 @@ Stop and return to owner review if any of the following occurs:
 Passing this protocol establishes a small public decomposition benchmark. It
 does not establish clinical eligibility correctness, patient matching quality,
 or readiness for autonomous trial recruitment.
+
+## Implemented adjudication and gold boundary
+
+The P5D.2 offline workflow is implemented without creating benchmark gold.
+Version `1.0.0` adjudication records bind both completed independent annotation
+hashes, the frozen catalog and guide, the P5D.3 normalization and matching
+versions, per-item disagreement routing, pre-adjudication IAA, and auxiliary
+equivalence-review judgments. An agreed item cannot be changed during
+adjudication, and a completed record cannot contain an unresolved item.
+
+The resulting final-gold manifest is separately self-hashed and references the
+source annotation/adjudication artifacts without copying their trees. Standard mode is
+labelled `adjudicated_gold` and must bind its completed adjudication record. The
+single-person path is labelled `single_annotator_reference_gold`, requires a
+hash-bound owner downgrade decision attesting approval before the first
+annotation, reports no IAA, and cannot contain an adjudication reference. These
+mechanisms do not approve the downgrade or satisfy the current staffing gate;
+P5D.4 remains unstarted until the owner chooses a protocol-compliant staffing
+path.

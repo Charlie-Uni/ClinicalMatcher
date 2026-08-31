@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-gold-1.0.0.schema.json",
+  "title": "Frozen public criteria-decomposition gold manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decomposition_gold_version", "protocol_version", "gold_id", "gold_sha256",
+    "selection_manifest_id", "selection_manifest_sha256", "concept_catalog_id",
+    "concept_catalog_sha256", "annotation_guide_version",
+    "annotation_guide_sha256", "split", "annotation_mode", "gold_label",
+    "source_annotations", "adjudication", "single_annotator_downgrade"
+  ],
+  "properties": {
+    "decomposition_gold_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "gold_id": {"type": "string", "pattern": "^decomposition-gold-(dev|test)-[0-9a-f]{16}$"},
+    "gold_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "concept_catalog_id": {"type": "string", "pattern": "^decomposition-catalog-(dev|test)-[0-9a-f]{16}$"},
+    "concept_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "annotation_guide_version": {"$ref": "#/$defs/nonEmptyString"},
+    "annotation_guide_sha256": {"$ref": "#/$defs/sha256"},
+    "split": {"enum": ["dev", "test"]},
+    "annotation_mode": {"enum": ["dual_independent_with_adjudication", "single_annotator"]},
+    "gold_label": {"enum": ["adjudicated_gold", "single_annotator_reference_gold"]},
+    "source_annotations": {
+      "type": "array", "minItems": 1, "maxItems": 2,
+      "items": {"$ref": "#/$defs/annotationReference"}
+    },
+    "adjudication": {
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/adjudicationReference"}]
+    },
+    "single_annotator_downgrade": {
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/downgradeDecision"}]
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "annotationReference": {
+      "type": "object", "additionalProperties": false,
+      "required": ["annotation_id", "annotation_sha256", "annotator_id"],
+      "properties": {
+        "annotation_id": {"type": "string", "pattern": "^decomposition-annotation-(dev|test)-[0-9a-f]{16}$"},
+        "annotation_sha256": {"$ref": "#/$defs/sha256"},
+        "annotator_id": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "adjudicationReference": {
+      "type": "object", "additionalProperties": false,
+      "required": ["adjudication_id", "adjudication_sha256"],
+      "properties": {
+        "adjudication_id": {"type": "string", "pattern": "^decomposition-adjudication-(dev|test)-[0-9a-f]{16}$"},
+        "adjudication_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "downgradeDecision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["decision_version", "decision_sha256", "approved_before_first_annotation"],
+      "properties": {
+        "decision_version": {"$ref": "#/$defs/nonEmptyString"},
+        "decision_sha256": {"$ref": "#/$defs/sha256"},
+        "approved_before_first_annotation": {"const": true}
+      }
+    }
+  }
+}

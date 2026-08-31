@@ -934,7 +934,7 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     are authorized; standard-mode benchmark annotation remains blocked because
     the current staffing is one confirmed annotator.
 
-- [ ] **P5D.2 Implement a versioned decomposition-gold contract and offline
+- [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
   trees with atom source spans and typed condition fields.
   - Entry condition: P5D.1 is frozen.
@@ -944,11 +944,20 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   - Verify: strict JSON Schema plus semantic validation enforce expression
     arity, unique condition IDs, exact source-span slicing, criterion-source
     identity, typed operator/value compatibility, and annotation provenance.
-  - Progress: the frozen deterministic selector, split-specific concept-catalog
+  - Completed: the frozen deterministic selector, split-specific concept-catalog
     contract, independent annotation contract, offline CLIs, and synthetic
-    schema/semantic tests are implemented. Keep this task open until the
-    adjudication/final-gold layer is implemented against the frozen P5D.3
-    normalization and matching code.
+    schema/semantic tests are implemented. The adjudication layer now derives
+    immutable per-item disagreement routing and pre-adjudication IAA from the
+    frozen P5D.3 normalization/matching code, prevents agreed items from being
+    rewritten, requires every disputed item to be resolved with a rationale,
+    and records equivalence review without changing primary agreement. The
+    self-hashed final-gold manifest avoids duplicate tree copies and distinguishes
+    `adjudicated_gold` from
+    `single_annotator_reference_gold`; the latter requires a hash-bound
+    pre-annotation downgrade decision and cannot claim IAA or adjudication.
+    Write-once CLI paths and synthetic tests cover both modes. No real catalog,
+    annotation, adjudication, or gold artifact has been created, so P5D.4 and
+    its staffing gate remain open.
 
 - [x] **P5D.3 Implement the independent decomposition evaluator.** Report atom
   precision/recall, operator-structure agreement, and source-span alignment.
@@ -973,6 +982,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   set.** Annotate source text first, then freeze and hash the resulting gold
   artifact before model inference.
   - Entry condition: P5D.1-P5D.3 pass and the owner has approved the workload.
+  - Current gate: only the owner is confirmed as an annotator. Standard dual
+    annotation remains blocked, and the owner has not approved the
+    predeclared single-annotator downgrade before annotation begins.
   - Constraints: annotation disagreements and reviewer limitations are
     reported honestly; model-generated trees cannot become gold through human
     acceptance after the fact.

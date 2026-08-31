@@ -395,6 +395,90 @@ def _f1(precision: float, recall: float) -> float:
     return _safe_ratio(2.0 * precision * recall, precision + recall)
 
 
+def _atom_component_counter(
+    atoms: Sequence[AtomOccurrence],
+    component: str,
+) -> Counter[str]:
+    values: Counter[str] = Counter()
+    for occurrence in atoms:
+        identity = json.loads(occurrence.identity)
+        if component == "value_type":
+            value: Any = identity["expected"]["value_type"]
+        elif component == "value":
+            value = identity["expected"]["value"]
+        else:
+            value = identity[component]
+        values[_canonical_json(value)] += 1
+    return values
+
+
+def compare_decomposition_expressions(
+    left: Mapping[str, Any],
+    right: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """Compare two valid human trees with the frozen P5D.3 semantics.
+
+    The comparison is symmetric and is intended for pre-adjudication IAA and
+    disagreement routing. It never rewrites either input or assigns partial
+    primary-metric credit.
+    """
+    left_errors = _schema_errors(left)
+    right_errors = _schema_errors(right)
+    if left_errors or right_errors:
+        raise DecompositionEvaluationError(
+            "Human-expression comparison requires two schema-valid trees"
+        )
+    left_tree, left_atoms = _normalize_expression(left)
+    right_tree, right_atoms = _normalize_expression(right)
+    left_counter = Counter(atom.identity for atom in left_atoms)
+    right_counter = Counter(atom.identity for atom in right_atoms)
+    matched_atoms = sum((left_counter & right_counter).values())
+    left_precision = _safe_ratio(matched_atoms, len(left_atoms))
+    right_recall = _safe_ratio(matched_atoms, len(right_atoms))
+    span_exact, span_iou_sum = _span_score(left_atoms, right_atoms)
+    topology_exact = _topology(left_tree) == _topology(right_tree)
+
+    disagreement_types: List[str] = []
+    if left_counter != right_counter:
+        disagreement_types.append("atom_identity")
+    if len(left_atoms) != len(right_atoms):
+        disagreement_types.append("atom_omission_or_addition")
+    component_names = (
+        "field",
+        "operator",
+        "value_type",
+        "value",
+        "unit",
+        "time_window",
+        "fact_selection",
+        "polarity",
+    )
+    for component in component_names:
+        if _atom_component_counter(left_atoms, component) != _atom_component_counter(
+            right_atoms, component
+        ):
+            disagreement_types.append(component)
+    if not topology_exact:
+        disagreement_types.append("structure")
+    if span_exact != matched_atoms:
+        disagreement_types.append("source_span")
+
+    return {
+        "normalized_tree_exact": left_tree == right_tree,
+        "operator_topology_exact": topology_exact,
+        "left_atoms": len(left_atoms),
+        "right_atoms": len(right_atoms),
+        "matched_atoms": matched_atoms,
+        "atom_f1": _f1(left_precision, right_recall),
+        "span_exact": span_exact,
+        "span_iou_sum": span_iou_sum,
+        "equivalence_review_queued": (
+            left_tree != right_tree and left_counter == right_counter
+        ),
+        "disagreement_types": sorted(disagreement_types),
+    }
+
+
 def _aggregate(records: Sequence[_ScoredItem]) -> Dict[str, Any]:
     criterion_count = len(records)
     gold_atoms = sum(record.gold_atoms for record in records)

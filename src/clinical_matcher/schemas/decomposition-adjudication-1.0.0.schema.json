@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-adjudication-1.0.0.schema.json",
+  "title": "Public criteria-decomposition adjudication record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decomposition_adjudication_version", "protocol_version",
+    "normalization_version", "matching_version", "adjudication_id",
+    "adjudication_sha256", "selection_manifest_id",
+    "selection_manifest_sha256", "concept_catalog_id",
+    "concept_catalog_sha256", "annotation_guide_version",
+    "annotation_guide_sha256", "split", "annotation_mode",
+    "source_annotations", "adjudicator_ids", "adjudication_status",
+    "pre_adjudication_agreement", "items"
+  ],
+  "properties": {
+    "decomposition_adjudication_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.0.0"},
+    "normalization_version": {"const": "decomposition-normalization/1.0.0"},
+    "matching_version": {"const": "decomposition-atom-matching/1.0.0"},
+    "adjudication_id": {"type": "string", "pattern": "^decomposition-adjudication-(dev|test)-[0-9a-f]{16}$"},
+    "adjudication_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "concept_catalog_id": {"type": "string", "pattern": "^decomposition-catalog-(dev|test)-[0-9a-f]{16}$"},
+    "concept_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "annotation_guide_version": {"$ref": "#/$defs/nonEmptyString"},
+    "annotation_guide_sha256": {"$ref": "#/$defs/sha256"},
+    "split": {"enum": ["dev", "test"]},
+    "annotation_mode": {"const": "dual_independent_with_adjudication"},
+    "source_annotations": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"$ref": "#/$defs/annotationReference"}
+    },
+    "adjudicator_ids": {
+      "type": "array", "minItems": 2, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "adjudication_status": {"enum": ["draft", "completed"]},
+    "pre_adjudication_agreement": {"$ref": "#/$defs/agreement"},
+    "items": {
+      "type": "array", "minItems": 40, "maxItems": 40,
+      "items": {"$ref": "#/$defs/adjudicationItem"}
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nullableString": {"type": ["string", "null"]},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceSpan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 0},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "annotationReference": {
+      "type": "object", "additionalProperties": false,
+      "required": ["annotation_id", "annotation_sha256", "annotator_id"],
+      "properties": {
+        "annotation_id": {"type": "string", "pattern": "^decomposition-annotation-(dev|test)-[0-9a-f]{16}$"},
+        "annotation_sha256": {"$ref": "#/$defs/sha256"},
+        "annotator_id": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "agreement": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "criteria", "normalized_tree_exact_count",
+        "normalized_tree_exact_rate", "operator_topology_exact_count",
+        "operator_topology_exact_rate", "left_atoms", "right_atoms",
+        "matched_atoms", "atom_micro_f1", "atom_macro_f1",
+        "span_exact_count", "span_exact_rate", "span_mean_iou",
+        "equivalence_review_queued_count", "disagreement_counts"
+      ],
+      "properties": {
+        "criteria": {"const": 40},
+        "normalized_tree_exact_count": {"type": "integer", "minimum": 0, "maximum": 40},
+        "normalized_tree_exact_rate": {"$ref": "#/$defs/rate"},
+        "operator_topology_exact_count": {"type": "integer", "minimum": 0, "maximum": 40},
+        "operator_topology_exact_rate": {"$ref": "#/$defs/rate"},
+        "left_atoms": {"type": "integer", "minimum": 40},
+        "right_atoms": {"type": "integer", "minimum": 40},
+        "matched_atoms": {"type": "integer", "minimum": 0},
+        "atom_micro_f1": {"$ref": "#/$defs/rate"},
+        "atom_macro_f1": {"$ref": "#/$defs/rate"},
+        "span_exact_count": {"type": "integer", "minimum": 0},
+        "span_exact_rate": {"$ref": "#/$defs/rate"},
+        "span_mean_iou": {"$ref": "#/$defs/rate"},
+        "equivalence_review_queued_count": {"type": "integer", "minimum": 0, "maximum": 40},
+        "disagreement_counts": {
+          "type": "object", "additionalProperties": false,
+          "required": [
+            "atom_identity", "atom_omission_or_addition", "field", "operator", "value_type",
+            "value", "unit", "time_window", "fact_selection", "polarity",
+            "structure", "source_span"
+          ],
+          "properties": {
+            "atom_identity": {"type": "integer", "minimum": 0, "maximum": 40},
+            "atom_omission_or_addition": {"type": "integer", "minimum": 0, "maximum": 40},
+            "field": {"type": "integer", "minimum": 0, "maximum": 40},
+            "operator": {"type": "integer", "minimum": 0, "maximum": 40},
+            "value_type": {"type": "integer", "minimum": 0, "maximum": 40},
+            "value": {"type": "integer", "minimum": 0, "maximum": 40},
+            "unit": {"type": "integer", "minimum": 0, "maximum": 40},
+            "time_window": {"type": "integer", "minimum": 0, "maximum": 40},
+            "fact_selection": {"type": "integer", "minimum": 0, "maximum": 40},
+            "polarity": {"type": "integer", "minimum": 0, "maximum": 40},
+            "structure": {"type": "integer", "minimum": 0, "maximum": 40},
+            "source_span": {"type": "integer", "minimum": 0, "maximum": 40}
+          }
+        }
+      }
+    },
+    "typedValue": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["value_type", "value"],
+          "properties": {
+            "value_type": {"const": "number"}, "value": {"type": "number"},
+            "unit": {"$ref": "#/$defs/nonEmptyString"}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["value_type", "value"],
+          "properties": {"value_type": {"const": "boolean"}, "value": {"type": "boolean"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["value_type", "value"],
+          "properties": {"value_type": {"const": "string"}, "value": {"type": "string"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["value_type", "value"],
+          "properties": {"value_type": {"const": "date"}, "value": {"type": "string", "format": "date"}}
+        }
+      ]
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_id", "source_span", "method"],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/nonEmptyString"},
+        "source_span": {"$ref": "#/$defs/sourceSpan"},
+        "method": {"const": "human"}
+      }
+    },
+    "timeWindow": {
+      "type": "object", "additionalProperties": false,
+      "required": ["days", "direction", "relative_to"],
+      "properties": {
+        "days": {"type": "integer", "minimum": 1},
+        "direction": {"enum": ["past", "future"]},
+        "relative_to": {"const": "index_date"}
+      }
+    },
+    "atom": {
+      "type": "object", "additionalProperties": false,
+      "required": ["condition_id", "field", "operator", "expected", "fact_selection", "provenance"],
+      "properties": {
+        "condition_id": {"$ref": "#/$defs/nonEmptyString"},
+        "field": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "operator": {"enum": ["==", "!=", ">", ">=", "<", "<="]},
+        "expected": {"$ref": "#/$defs/typedValue"},
+        "fact_selection": {"enum": ["any", "all", "latest"]},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "time_window": {"$ref": "#/$defs/timeWindow"}
+      }
+    },
+    "expression": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["expression_type", "atom"],
+          "properties": {"expression_type": {"const": "atom"}, "atom": {"$ref": "#/$defs/atom"}}
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["expression_type", "children"],
+          "properties": {
+            "expression_type": {"enum": ["all", "any"]},
+            "children": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/expression"}}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["expression_type", "children"],
+          "properties": {
+            "expression_type": {"const": "not"},
+            "children": {"type": "array", "minItems": 1, "maxItems": 1, "items": {"$ref": "#/$defs/expression"}}
+          }
+        }
+      ]
+    },
+    "adjudicationItem": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "nct_id", "criterion_id", "resolution_status", "disagreement_types",
+        "equivalence_review_queued", "equivalence_review_judgment",
+        "expression", "rationale"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "resolution_status": {"enum": ["agreed_without_dispute", "unresolved", "resolved"]},
+        "disagreement_types": {
+          "type": "array", "uniqueItems": true,
+          "items": {
+            "enum": [
+              "atom_identity", "atom_omission_or_addition", "field", "operator", "value_type",
+              "value", "unit", "time_window", "fact_selection", "polarity",
+              "structure", "source_span"
+            ]
+          }
+        },
+        "equivalence_review_queued": {"type": "boolean"},
+        "equivalence_review_judgment": {
+          "enum": ["equivalent", "not_equivalent", "uncertain", null]
+        },
+        "expression": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/expression"}]},
+        "rationale": {"$ref": "#/$defs/nullableString"}
+      }
+    }
+  }
+}

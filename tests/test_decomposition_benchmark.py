@@ -24,10 +24,20 @@ from clinical_matcher.decomposition_benchmark import (
 )
 from clinical_matcher.decomposition_evaluation import (
     DecompositionEvaluationError,
+    compare_decomposition_expressions,
     evaluate_decomposition,
     normalize_decomposition_expression,
     render_decomposition_evaluation_markdown,
     validate_decomposition_evaluation_report,
+)
+from clinical_matcher.decomposition_gold import (
+    DecompositionGoldError,
+    build_adjudicated_gold,
+    build_adjudication_template,
+    build_single_annotator_gold,
+    finalize_adjudication,
+    validate_adjudication,
+    validate_gold,
 )
 
 
@@ -158,12 +168,17 @@ def catalog_for(document, split="dev"):
     )
 
 
-def completed_annotation(document, catalog):
+def completed_annotation(
+    document,
+    catalog,
+    annotator_id="owner",
+    annotation_mode="dual_independent_with_adjudication",
+):
     draft = build_annotation_template(
         document,
         catalog,
-        annotator_id="owner",
-        annotation_mode="dual_independent_with_adjudication",
+        annotator_id=annotator_id,
+        annotation_mode=annotation_mode,
         annotation_guide_version="decomposition-guide/1.0.0",
         annotation_guide_sha256=GUIDE_HASH,
     )
@@ -220,6 +235,12 @@ def predictions_from_annotation(annotation):
         }
         for item in annotation["items"]
     ]
+
+
+def _annotation_item(annotation, criterion_id):
+    return next(
+        item for item in annotation["items"] if item["criterion_id"] == criterion_id
+    )
 
 
 class DecompositionSelectionTest(unittest.TestCase):
@@ -464,6 +485,250 @@ class DecompositionAnnotationTest(unittest.TestCase):
             DecompositionAnnotationError, "attestations"
         ):
             finalize_annotation(self.selection, self.catalog, template)
+
+
+class DecompositionGoldTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.selection = selection()
+        cls.catalog = catalog_for(cls.selection)
+
+    def annotations(self):
+        return (
+            completed_annotation(
+                self.selection, self.catalog, annotator_id="annotator-a"
+            ),
+            completed_annotation(
+                self.selection, self.catalog, annotator_id="annotator-b"
+            ),
+        )
+
+    def test_identical_annotations_freeze_adjudicated_gold(self):
+        annotations = self.annotations()
+        draft = build_adjudication_template(
+            self.selection,
+            self.catalog,
+            annotations,
+            ["annotator-a", "annotator-b"],
+        )
+        self.assertTrue(
+            all(
+                item["resolution_status"] == "agreed_without_dispute"
+                for item in draft["items"]
+            )
+        )
+        agreement = draft["pre_adjudication_agreement"]
+        self.assertEqual(40, agreement["normalized_tree_exact_count"])
+        self.assertEqual(1.0, agreement["atom_micro_f1"])
+        self.assertEqual(
+            {name: 0 for name in agreement["disagreement_counts"]},
+            agreement["disagreement_counts"],
+        )
+
+        adjudication = finalize_adjudication(
+            self.selection, self.catalog, annotations, draft
+        )
+        validate_adjudication(
+            self.selection, self.catalog, annotations, adjudication
+        )
+        gold = build_adjudicated_gold(
+            self.selection, self.catalog, annotations, adjudication
+        )
+        validate_gold(
+            self.selection,
+            self.catalog,
+            annotations,
+            gold,
+            adjudication=adjudication,
+        )
+        self.assertEqual("adjudicated_gold", gold["gold_label"])
+        self.assertEqual(
+            adjudication["adjudication_sha256"],
+            gold["adjudication"]["adjudication_sha256"],
+        )
+        self.assertNotIn("items", gold)
+
+    def test_disagreement_must_be_resolved_before_gold(self):
+        left, right = self.annotations()
+        right = copy.deepcopy(right)
+        right["items"][0]["expression"]["atom"]["operator"] = ">"
+        right = finalize_annotation(self.selection, self.catalog, right)
+        annotations = (left, right)
+        draft = build_adjudication_template(
+            self.selection,
+            self.catalog,
+            annotations,
+            ["annotator-a", "annotator-b"],
+        )
+        disputed = [
+            item for item in draft["items"] if item["resolution_status"] == "unresolved"
+        ]
+        self.assertEqual(1, len(disputed))
+        self.assertEqual(
+            ["atom_identity", "operator"],
+            disputed[0]["disagreement_types"],
+        )
+        with self.assertRaisesRegex(DecompositionGoldError, "unresolved"):
+            finalize_adjudication(
+                self.selection, self.catalog, annotations, draft
+            )
+
+        left_item = _annotation_item(left, disputed[0]["criterion_id"])
+        disputed[0]["resolution_status"] = "resolved"
+        disputed[0]["expression"] = copy.deepcopy(left_item["expression"])
+        disputed[0]["rationale"] = "Consensus retained the inclusive threshold."
+        adjudication = finalize_adjudication(
+            self.selection, self.catalog, annotations, draft
+        )
+        gold = build_adjudicated_gold(
+            self.selection, self.catalog, annotations, adjudication
+        )
+        resolved = next(
+            item
+            for item in adjudication["items"]
+            if item["criterion_id"] == disputed[0]["criterion_id"]
+        )
+        self.assertEqual(left_item["expression"], resolved["expression"])
+        self.assertEqual(
+            adjudication["adjudication_id"],
+            gold["adjudication"]["adjudication_id"],
+        )
+
+    def test_agreed_item_cannot_be_changed_during_adjudication(self):
+        annotations = self.annotations()
+        draft = build_adjudication_template(
+            self.selection,
+            self.catalog,
+            annotations,
+            ["annotator-a", "annotator-b"],
+        )
+        draft["items"][0]["expression"]["atom"]["expected"]["value"] = 21
+        with self.assertRaisesRegex(DecompositionGoldError, "cannot be changed"):
+            finalize_adjudication(
+                self.selection, self.catalog, annotations, draft
+            )
+
+    def test_iaa_comparison_uses_frozen_normalization(self):
+        left, right = self.annotations()
+        left_expression = left["items"][0]["expression"]
+        right_expression = copy.deepcopy(right["items"][0]["expression"])
+        right_expression["atom"]["provenance"]["source_span"] = {
+            "start": 1,
+            "end": 3,
+        }
+        result = compare_decomposition_expressions(
+            left_expression, right_expression
+        )
+        self.assertTrue(result["normalized_tree_exact"])
+        self.assertEqual(1.0, result["atom_f1"])
+        self.assertEqual(["source_span"], result["disagreement_types"])
+
+        age = copy.deepcopy(left_expression)
+        bmi = copy.deepcopy(left_expression)
+        bmi["atom"]["condition_id"] = "bmi-condition"
+        bmi["atom"]["field"] = "bmi"
+        bmi["atom"]["operator"] = "<="
+        bmi["atom"]["expected"]["value"] = 30
+        swapped_age = copy.deepcopy(age)
+        swapped_age["atom"]["operator"] = "<="
+        swapped_age["atom"]["expected"]["value"] = 30
+        swapped_bmi = copy.deepcopy(bmi)
+        swapped_bmi["atom"]["operator"] = ">="
+        swapped_bmi["atom"]["expected"]["value"] = 18
+        reassigned = compare_decomposition_expressions(
+            {"expression_type": "all", "children": [age, bmi]},
+            {
+                "expression_type": "all",
+                "children": [swapped_age, swapped_bmi],
+            },
+        )
+        self.assertEqual(["atom_identity"], reassigned["disagreement_types"])
+
+    def test_adjudicator_ids_are_unique_and_include_both_annotators(self):
+        annotations = self.annotations()
+        with self.assertRaisesRegex(DecompositionGoldError, "non-empty and unique"):
+            build_adjudication_template(
+                self.selection,
+                self.catalog,
+                annotations,
+                ["annotator-a", "annotator-a", "annotator-b"],
+            )
+        with self.assertRaisesRegex(DecompositionGoldError, "Both source annotators"):
+            build_adjudication_template(
+                self.selection,
+                self.catalog,
+                annotations,
+                ["annotator-a", "third-reviewer"],
+            )
+
+    def test_equivalence_review_is_recorded_but_does_not_resolve_gold(self):
+        left, right = self.annotations()
+        right = copy.deepcopy(right)
+        right["items"][0]["expression"] = {
+            "expression_type": "all",
+            "children": [right["items"][0]["expression"]],
+        }
+        right = finalize_annotation(self.selection, self.catalog, right)
+        annotations = (left, right)
+        draft = build_adjudication_template(
+            self.selection,
+            self.catalog,
+            annotations,
+            ["annotator-a", "annotator-b"],
+        )
+        queued = [item for item in draft["items"] if item["equivalence_review_queued"]]
+        self.assertEqual(1, len(queued))
+        self.assertEqual(["structure"], queued[0]["disagreement_types"])
+        queued[0]["resolution_status"] = "resolved"
+        queued[0]["expression"] = copy.deepcopy(
+            _annotation_item(left, queued[0]["criterion_id"])["expression"]
+        )
+        queued[0]["rationale"] = "Consensus retained the direct atom."
+        with self.assertRaisesRegex(
+            DecompositionGoldError, "requires queued equivalence review"
+        ):
+            finalize_adjudication(
+                self.selection, self.catalog, annotations, draft
+            )
+        queued[0]["equivalence_review_judgment"] = "equivalent"
+        adjudication = finalize_adjudication(
+            self.selection, self.catalog, annotations, draft
+        )
+        self.assertEqual(
+            "equivalent",
+            adjudication["items"][0]["equivalence_review_judgment"],
+        )
+
+    def test_single_annotator_gold_cannot_claim_adjudication(self):
+        annotation = completed_annotation(
+            self.selection,
+            self.catalog,
+            annotator_id="owner",
+            annotation_mode="single_annotator",
+        )
+        with self.assertRaisesRegex(DecompositionGoldError, "downgrade decision"):
+            build_single_annotator_gold(
+                self.selection,
+                self.catalog,
+                annotation,
+                downgrade_decision_version="",
+                downgrade_decision_sha256=GUIDE_HASH,
+            )
+        gold = build_single_annotator_gold(
+            self.selection,
+            self.catalog,
+            annotation,
+            downgrade_decision_version="owner-decision/1.0.0",
+            downgrade_decision_sha256=GUIDE_HASH,
+        )
+        validate_gold(self.selection, self.catalog, (annotation,), gold)
+        self.assertEqual("single_annotator_reference_gold", gold["gold_label"])
+        self.assertIsNone(gold["adjudication"])
+
+        tampered = copy.deepcopy(gold)
+        tampered["gold_label"] = "adjudicated_gold"
+        with self.assertRaisesRegex(DecompositionGoldError, "hash mismatch"):
+            validate_gold(self.selection, self.catalog, (annotation,), tampered)
 
 
 class DecompositionEvaluationTest(unittest.TestCase):
