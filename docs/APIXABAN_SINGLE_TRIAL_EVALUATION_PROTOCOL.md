@@ -144,3 +144,24 @@ The structured P4.3 artifact remains available but is explicitly not evaluated
 in this run. Any later descriptive comparison requires a new recorded owner
 decision. The run contract authorizes validation only, records that locked-test
 labels were not used, and requires a separate post-run disclosure review.
+
+## Frozen validation outcome and semantic lock
+
+The single authorized validation execution completed under contract `1.0.0`.
+The disclosure-reviewed qualitative result is recorded in
+`docs/APIXABAN_SINGLE_TRIAL_VALIDATION_RESULT.md`. Exact class cells, rates,
+confusion matrices, confidence intervals, per-rule values, and per-question
+unit diagnostics remain owner-only because P1.3 has no governance-approved
+small-cell threshold or non-sensitive approval reference.
+
+The result showed final-class concentration. Its mechanism is not described as
+UNKNOWN alone: an explicit hard failure in Rules 1--4 is an absorbing
+`non-ideal` projection, while Kleene semantics preserves UNKNOWN only when no
+hard failure is known and a required distinction remains unresolved. The
+predeclared fact-target-adequacy limitation remains relevant but is not assigned
+causal responsibility by this diagnostic.
+
+Because validation has now been observed, contract `1.0.0` and its result are
+immutable. Any later change intended to reduce concentration is a separately
+versioned, hash-bound, `post-observation exploratory` contract. It must not
+replace, relabel, or dilute this result, and it must not use locked-test labels.

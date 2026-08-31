@@ -592,7 +592,7 @@ novelty.
     eligibility-review protocol is available. The labels are therefore frozen
     as a legacy rule-derived reference, not human eligibility gold.
 
-- [ ] **P4.7 Build the frozen single-trial end-to-end diagnostic.** Encode an
+- [x] **P4.7 Build the frozen single-trial end-to-end diagnostic.** Encode an
   owner-reviewed Apixaban expression tree, bind official fact questions to its
   atoms, and evaluate the complete trace on the frozen validation split.
   - Entry condition: P4.6 is complete; the criterion source, tree, atom mapping,
@@ -618,8 +618,24 @@ novelty.
     coverage. The owner selected the long-context P4.3 projection before any
     P4.7 three-class result was viewed, using only the prior P2.3 fact-level
     comparison; its exact artifact hash, the unselected structured state, and
-    the one-validation-only scope are frozen in run contract `1.0.0`. Real
-    validation has not yet run; locked test remains untouched.
+    the one-validation-only scope are frozen in run contract `1.0.0`.
+  - Completion: the one authorized validation execution completed without
+    accessing locked test or evaluating the structured alternative. The
+    owner-only JSON, row trace, and review summary reconcile the complete
+    validation grid, all three axes, explicit UNKNOWN outcomes, all confusion
+    matrices, five per-rule diagnostics, and eight numeric-question unit checks
+    for each fact source. The disclosure-reviewed public result suppresses all
+    small-cell counts and rates because P1.3 still lacks a governance-approved
+    threshold and approval reference. Qualitatively, the frozen hard-rule
+    projection concentrated final outcomes rather than providing a useful
+    three-class performance signal: an explicit failure in Rules 1--4 absorbs
+    to `non-ideal`, while Kleene UNKNOWN remains only when no hard failure is
+    known and required facts are unresolved. The predeclared fact-target
+    adequacy limitation is retained without causal attribution. This validates
+    the three-axis design and exposes a task/label limitation; it is not a
+    clinical-accuracy result. Contract `1.0.0` is now post-observation locked.
+    Any concentration-reducing semantic alternative must be a new hash-bound
+    `post-observation exploratory` version and can never replace this result.
   - Constraints: official question-answer labels remain the only human gold.
     Legacy three-class comparison is reported as rule-reference agreement, not
     clinical accuracy. No locked-test label, patient text, or row-level output
