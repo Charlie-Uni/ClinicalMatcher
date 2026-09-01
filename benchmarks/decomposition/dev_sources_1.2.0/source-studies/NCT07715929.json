@@ -1,0 +1,341 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D044343",
+          "term": "Overnutrition"
+        },
+        {
+          "id": "D009748",
+          "term": "Nutrition Disorders"
+        },
+        {
+          "id": "D009750",
+          "term": "Nutritional and Metabolic Diseases"
+        },
+        {
+          "id": "D001835",
+          "term": "Body Weight"
+        },
+        {
+          "id": "D012816",
+          "term": "Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D009765",
+          "term": "Obesity"
+        },
+        {
+          "id": "D050177",
+          "term": "Overweight"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D000067757",
+          "term": "Glucagon-Like Peptide-1 Receptor"
+        },
+        {
+          "id": "D000067756",
+          "term": "Glucagon-Like Peptide Receptors"
+        },
+        {
+          "id": "D043562",
+          "term": "Receptors, G-Protein-Coupled"
+        },
+        {
+          "id": "D011956",
+          "term": "Receptors, Cell Surface"
+        },
+        {
+          "id": "D008565",
+          "term": "Membrane Proteins"
+        },
+        {
+          "id": "D011506",
+          "term": "Proteins"
+        },
+        {
+          "id": "D000602",
+          "term": "Amino Acids, Peptides, and Proteins"
+        },
+        {
+          "id": "D011964",
+          "term": "Receptors, Gastrointestinal Hormone"
+        },
+        {
+          "id": "D018000",
+          "term": "Receptors, Peptide"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000098860",
+          "term": "Tirzepatide"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Standardized lifestyle intervention and standard AF management plus once-weekly subcutaneous tirzepatide, initiated after randomization and continued through Week 52.\n\nTirzepatide titration (per NMPA label):\n\n* Weeks 1-4: 2.5 mg once weekly (initiation)\n* Weeks 5-16: escalate by 2.5 mg every 4 weeks (5 mg → 7.5 mg → 10 mg)\n* Weeks 17-52: maintenance 10 mg once weekly, up-titratable to 15 mg (maximum dose 15 mg)",
+          "interventionNames": [
+            "Drug: Tirzepatide",
+            "Behavioral: Structured Lifestyle Intervention"
+          ],
+          "label": "Tirzepatide + Lifestyle Intervention",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "AF Management and Post-Ablation Care\n\n* Ablation technique: circumferential pulmonary vein isolation (CPVI) ± adjunctive linear ablation at operator discretion, using established mapping and energy delivery protocols\n* Peri-procedural anticoagulation: guideline-directed anticoagulation\n* Antiarrhythmic drug (AAD) use: standardized per protocol SOP;\n\nExercise Intervention • Target: moderate-intensity aerobic exercise ≥150 minutes per week, OR vigorous-intensity aerobic exercise ≥75 minutes per week\n\nDietary Intervention\n\n• Caloric target: estimated total energy expenditure (TEE) minus 500 kcal/day\n\nOther Risk Factor Management\n\n* Smoking cessation\n* Alcohol restriction\n* Comorbidity management\n* OSA management",
+          "interventionNames": [
+            "Behavioral: Structured Lifestyle Intervention"
+          ],
+          "label": "Lifestyle Intervention",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Tirzepatide + Lifestyle Intervention"
+          ],
+          "description": "Dual GIP and GLP-1 receptor agonist administered as a weekly subcutaneous injection.\n\nTitrated from 2.5 mg/week to a target of 10 mg/week over 12 weeks, then maintained at the maximum tolerated dose for the remainder of the 52-week treatment period.",
+          "name": "Tirzepatide",
+          "otherNames": [
+            "Mounjaro"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Lifestyle Intervention",
+            "Tirzepatide + Lifestyle Intervention"
+          ],
+          "description": "Guideline-directed AF management (rate/rhythm control, anticoagulation by CHA2DS2-VASc).\n\nStructured lifestyle intervention: 500 kcal/day caloric deficit; exercise prescription of ≥150 min/week moderate aerobic; smoking cessation and alcohol moderation counseling.",
+          "name": "Structured Lifestyle Intervention",
+          "type": "BEHAVIORAL"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Obesity & Overweight",
+        "Catheter Ablation"
+      ],
+      "keywords": [
+        "Atrial Fibrillation",
+        "Tirzepatide",
+        "GIP/GLP-1 receptor agonist"
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Obese patients with atrial fibrillation (AF) have a high recurrence rate after catheter ablation, even at experienced centers. Weight reduction improves post-ablation outcomes, but lifestyle measures alone are difficult to sustain. Tirzepatide, a once-weekly GIP/GLP-1 dual receptor agonist, produces greater weight loss than GLP-1 monotherapy and may confer additional cardiometabolic benefits. This multicenter, randomized, open-label, parallel-group, superiority trial evaluates whether adding standardized tirzepatide treatment to a structured lifestyle intervention - compared with the lifestyle intervention alone - reduces AF recurrence within 1 year after ablation in obese patients.",
+      "detailedDescription": "Eligible obese patients (or overweight patients with a weight-related comorbidity) with symptomatic paroxysmal or persistent AF undergoing catheter ablation will be screened within 28 days before the procedure. After ablation with restoration of sinus rhythm, participants will be randomized 1:1 to (a) tirzepatide plus standardized lifestyle intervention and standard AF management, or (b) standardized lifestyle intervention and standard AF management alone. Randomization is stratified by study center, AF type (paroxysmal/persistent), baseline BMI, and diabetes status.\n\nA 90-day post-ablation blanking period (Day 0-90) is excluded from the primary efficacy assessment. The primary efficacy assessment window runs from Day 91 to Day 365. Tirzepatide is administered subcutaneously once weekly and titrated per the China NMPA label using an individualized dose-adjustment SOP, continuing through Week 52. Both groups receive guideline-directed periprocedural anticoagulation, standardized antiarrhythmic drug (AAD) use, an individualized exercise prescription, a modified Mediterranean diet (target intake = total energy expenditure - 500 kcal), and management of smoking, alcohol, comorbidities, sleep, and obstructive sleep apnea (OSA).\n\nApproximately 8-12 tertiary (Class 3A) hospitals in China with mature AF ablation teams will participate. Planned enrollment is 710 participants."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "maskingDescription": "Participants and treating physicians are unmasked. All rhythm events are adjudicated by an independent blinded Clinical Endpoint Committee (CEC).\n\nImaging and biomarker core laboratories operate in blinded fashion. Statistician is blinded until the primary analysis is locked.",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 710,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age ≥18 years and ≤75 years at the time of screening\n* Documented symptomatic paroxysmal AF or persistent AF, confirmed by 12-lead ECG, Holter monitoring, or cardiac monitoring device, with documented AF episode duration ≥7 days (for persistent AF) and total AF history duration ≤5 years\n* Body weight criteria (aligned with NMPA-approved tirzepatide indication) meeting at least one of the following:\n\nBMI ≥28.0 kg/m² (obesity threshold per Chinese criteria), OR BMI ≥24.0 kg/m² and \\<28.0 kg/m² (overweight per Chinese criteria) with at least one weight-related comorbidity: hypertension, dyslipidemia, type 2 diabetes mellitus (T2DM), obstructive sleep apnea syndrome (OSAS), or atherosclerotic cardiovascular disease (ASCVD)\n\n* Failed response to or intolerance of at least one antiarrhythmic drug (AAD), or explicit patient preference for a rhythm control strategy\n* Undergoing catheter ablation for AF at a participating center, with confirmed successful restoration of sinus rhythm at the end of the procedure (as determined by the operator)\n* Willing and able to understand the study procedures, provide written informed consent, and comply with all protocol requirements including 12-month follow-up visits\n* Capable of performing basic physical activity (no absolute contraindication to moderate-intensity aerobic exercise)\n\nExclusion Criteria:\n\nCardiovascular Exclusion Criteria\n\n* Long-standing persistent AF: continuous AF duration ≥5 years prior to enrollment\n* Prior catheter ablation for AF or atrial flutter at any time\n* Left atrial anteroposterior diameter \\>55 mm (by transthoracic echocardiography at screening)\n* Left ventricular ejection fraction (LVEF) \\<35% at screening\n* NYHA functional class III or IV heart failure\n* Significant structural heart disease: hypertrophic cardiomyopathy, valvular heart disease requiring intervention, congenital heart disease, myocarditis, or cardiac sarcoidosis\n* Acute coronary syndrome (ACS), ischemic stroke/TIA, or major cardiac surgery within 6 months prior to screening\n\nTirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)\n\n* Prior use of any GLP-1 receptor agonist (liraglutide, semaglutide, dulaglutide, exenatide, etc.) or GIP receptor agonist, or known hypersensitivity to tirzepatide or any excipient in the formulation\n* Personal or family (first-degree relative) history of multiple endocrine neoplasia type 2 (MEN2) or medullary thyroid carcinoma (MTC)\n* History of acute pancreatitis or chronic pancreatitis, or current symptomatic cholelithiasis or cholecystitis\n* Type 1 DM\n* Severe gastrointestinal disease including severe gastroparesis, inflammatory bowel disease, or any condition that would substantially impair gastrointestinal motility or absorption\n\nGeneral Exclusion Criteria\n\n* Use of any weight-loss medication (orlistat, phentermine, naltrexone/bupropion, or other anti-obesity agents) or participation in any weight-loss pharmacotherapy clinical trial within 3 months prior to screening\n* Severe hepatic insufficiency (Child-Pugh class C) or severe renal insufficiency (eGFR \\<15 mL/min/1.73 m²)\n* Active malignancy (receiving systemic anti-cancer treatment or with life expectancy \\<2 years due to malignancy)\n* Pregnancy, breastfeeding, or women of childbearing potential who are unwilling to use highly effective contraception throughout the study and for ≥1 month after the last dose of tirzepatide\n* Severe psychiatric disorder (schizophrenia, bipolar disorder, severe major depressive disorder) that would impair ability to comply with study procedures\n* Known allergy or sensitivity to adhesive patch materials (relevant to ECG monitoring patch components)\n* Any other condition that, in the opinion of the investigator, would make participation inadvisable or compromise the safety of the participant or the integrity of the study",
+      "healthyVolunteers": false,
+      "maximumAge": "75 Years",
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "TEAR-AF",
+      "briefTitle": "Effect of Tirzepatide on Recurrence of Atrial Fibrillation After Catheter Ablation in Obese Patients",
+      "nctId": "NCT07715929",
+      "officialTitle": "Effect of Tirzepatide on Recurrence of Atrial Fibrillation After Catheter Ablation in Obese Patients: A Multicenter, Randomized, Open-Label Trial",
+      "orgStudyIdInfo": {
+        "id": "TEAR-AF-01"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Beijing Anzhen Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "accessCriteria": "Requests reviewed by the trial steering committee. Investigators must submit a methodologically sound proposal, have approval from an independent review committee, and sign a data use agreement.",
+      "description": "Individual de-identified participant data underlying the published results, together with the study protocol, statistical analysis plan, and data dictionary, will be made available upon reasonable request after publication of the primary results.",
+      "infoTypes": [
+        "STUDY_PROTOCOL",
+        "SAP",
+        "ICF",
+        "CSR"
+      ],
+      "ipdSharing": "YES",
+      "timeFrame": "Beginning 12 months after publication of the primary results, ending 5 years thereafter."
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "description": "Change in epicardial adipose tissue volume measured by cardiac CT from baseline to 12 months.",
+          "measure": "Change in epicardial adipose tissue volume",
+          "timeFrame": "Baseline to Week 52"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "description": "Any documented atrial arrhythmia - defined as AF, atrial flutter (AFL), or atrial tachycardia (AT) - lasting ≥30 seconds, in the absence of antiarrhythmic drug (AAD) use.",
+          "measure": "Number of Participants With Recurrence of Atrial Fibrillation, Atrial Flutter, or Atrial Tachycardia",
+          "timeFrame": "Day 91 through Week 52 after catheter ablation"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Percentage of total monitoring time spent in AF, measured by 7-day ambulatory ECG patch.",
+          "measure": "Percentage of Monitoring Time Spent in Atrial Fibrillation (AF Burden)",
+          "timeFrame": "At Week 12, Week 26, and Week 52"
+        },
+        {
+          "description": "Absolute and percentage change in body weight from baseline to baseline to 52 weeks.",
+          "measure": "Change in body weight",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Change from baseline to 52 weeks in body mass index (kg/m²)",
+          "measure": "Change in BMI",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Change from baseline to 52 weeks waist circumference (cm).",
+          "measure": "Change in waist circumference",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Change in echocardiographic LAVI (mL/m²) from baseline to 52 weeks measured by core laboratory.",
+          "measure": "Change in left atrial volume index (LAVI)",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Change in serum NT-proBNP concentration from baseline to 52 weeks, measured by central laboratory.",
+          "measure": "Change in N-terminal pro-B-type natriuretic peptide (NT-proBNP)",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Change in serum high-sensitivity C-reactive protein (hs-CRP) concentration from baseline to 52 weeks, measured by central laboratory.",
+          "measure": "Change in Serum High-Sensitivity C-Reactive Protein (hs-CRP) Concentration",
+          "timeFrame": "Baseline to Week 52"
+        },
+        {
+          "description": "Time to cardiovascular death.",
+          "measure": "Time to Cardiovascular Death",
+          "timeFrame": "Day 1 through Week 52"
+        },
+        {
+          "description": "Time to death from any cause.",
+          "measure": "Time to Death From Any Cause",
+          "timeFrame": "Day 1 through Week 52"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Yunlong Wang"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Beijing Anzhen Hospital",
+        "investigatorFullName": "Yunlong Wang",
+        "investigatorTitle": "Chief Physician, Professor,",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-12-30",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-21",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-07-15",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2029-09-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-09-01",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2026-07-21",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-07-15",
+      "studyFirstSubmitQcDate": "2026-07-15"
+    }
+  }
+}

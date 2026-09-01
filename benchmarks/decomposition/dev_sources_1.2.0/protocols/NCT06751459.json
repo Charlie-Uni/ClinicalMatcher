@@ -1,0 +1,58 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06751459-inclusion-7e2377354b7d5831",
+      "criterion_type": "inclusion",
+      "normalized_text": "1\\. Adults aged 19 years or older who have voluntarily provided written informed consent to participate in this clinical trial. 2\\. Individuals who have been diagnosed with atrial fibrillation prior to the date of informed consent acquisition. 3\\. Individuals who are scheduled to undergo catheter ablation for atrial fibrillation within three months from the date of informed consent acquisition.",
+      "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+      "source_span": {
+        "end": 426,
+        "start": 23
+      },
+      "source_text": "1\\. Adults aged 19 years or older who have voluntarily provided written informed consent to participate in this clinical trial.\n\n  2\\. Individuals who have been diagnosed with atrial fibrillation prior to the date of informed consent acquisition.\n\n  3\\. Individuals who are scheduled to undergo catheter ablation for atrial fibrillation within three months from the date of informed consent acquisition."
+    },
+    {
+      "criterion_id": "nct06751459-exclusion-6e586bcff5ca30ea",
+      "criterion_type": "exclusion",
+      "normalized_text": "1\\. Individuals with a history of catheter ablation prior to obtaining informed consent. 2\\. Individuals with sensitive skin, allergic skin conditions, skin cancer, rashes, or other dermatological disorders. 3\\. Individuals with implanted cardiac devices, such as pacemakers, implantable defibrillators, or other implantable electronic devices. 4\\. Individuals deemed by the investigator to be at an increased risk or otherwise unsuitable for participation in the clinical trial. 5\\. Individuals with cognitive impairments that make it difficult to understand trial information or voluntarily make an informed decision. 6\\. Pregnant or breastfeeding women.",
+      "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+      "source_span": {
+        "end": 1122,
+        "start": 451
+      },
+      "source_text": "1\\. Individuals with a history of catheter ablation prior to obtaining informed consent.\n\n  2\\. Individuals with sensitive skin, allergic skin conditions, skin cancer, rashes, or other dermatological disorders.\n\n  3\\. Individuals with implanted cardiac devices, such as pacemakers, implantable defibrillators, or other implantable electronic devices.\n\n  4\\. Individuals deemed by the investigator to be at an increased risk or otherwise unsuitable for participation in the clinical trial.\n\n  5\\. Individuals with cognitive impairments that make it difficult to understand trial information or voluntarily make an informed decision.\n\n  6\\. Pregnant or breastfeeding women."
+    }
+  ],
+  "eligibility_sha256": "d2df0456c728c5211d76dad777e399638698259b43d20f2692ea493e38ce643d",
+  "eligibility_text": "Inclusion Criteria:\n\n* 1\\. Adults aged 19 years or older who have voluntarily provided written informed consent to participate in this clinical trial.\n\n  2\\. Individuals who have been diagnosed with atrial fibrillation prior to the date of informed consent acquisition.\n\n  3\\. Individuals who are scheduled to undergo catheter ablation for atrial fibrillation within three months from the date of informed consent acquisition.\n\nExclusion Criteria:\n\n* 1\\. Individuals with a history of catheter ablation prior to obtaining informed consent.\n\n  2\\. Individuals with sensitive skin, allergic skin conditions, skin cancer, rashes, or other dermatological disorders.\n\n  3\\. Individuals with implanted cardiac devices, such as pacemakers, implantable defibrillators, or other implantable electronic devices.\n\n  4\\. Individuals deemed by the investigator to be at an increased risk or otherwise unsuitable for participation in the clinical trial.\n\n  5\\. Individuals with cognitive impairments that make it difficult to understand trial information or voluntarily make an informed decision.\n\n  6\\. Pregnant or breastfeeding women.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2024-12-31",
+  "maximum_age": null,
+  "minimum_age": "19 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06751459",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+  "source_record_version": "2024-12-31:d2df0456c728",
+  "source_url": "https://clinicaltrials.gov/study/NCT06751459",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Evaluation of the Effectiveness and Safety of Remote Electrocardiographic Monitoring in Patients with Atrial Fibrillation Following Ablation Therapy"
+}

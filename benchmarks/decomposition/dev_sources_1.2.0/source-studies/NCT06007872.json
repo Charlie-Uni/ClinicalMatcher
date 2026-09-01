@@ -1,0 +1,239 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Intracardiac Echocardiography (ICE)",
+          "interventionNames": [
+            "Device: Intracardiac Echocardiography (ICE)"
+          ],
+          "label": "Intervention",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Intervention"
+          ],
+          "description": "ICE will be used to guide trans-septal puncture and to guide device implant.",
+          "name": "Intracardiac Echocardiography (ICE)",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Left Atrial Appendage Thrombosis"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "waznio@ccf.org",
+          "name": "Oussama Wazni, MD",
+          "phone": "216-444-2131",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Cleveland",
+          "contacts": [
+            {
+              "email": "waznio@ccf.org",
+              "name": "Oussama Wazni, MD",
+              "phone": "216-444-2131",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Oussama Wazni, MD, MBA",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Walid Saliba, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Mohamed Kanj, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Tyler Taigen, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Serge Harb, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Rhonda Miyasaka, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Samir Kapadia, MD",
+              "role": "SUB_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cleveland Clinic",
+          "geoPoint": {
+            "lat": 41.4995,
+            "lon": -81.69541
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44195"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "The Cleveland Clinic",
+          "name": "Oussama Wazni, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This study is to look at the success of Intracardiac Echocardiography (ICE) in the Watchman procedure. Currently the process is to use a Transesophageal Echocardiography (TEE) to place the Watchman in patients. This study is aiming to show how the ICE is just as effective in placing the device correctly and effectively.",
+      "detailedDescription": "Left atrial appendage occlusion is approved as an indicated therapy for patients with non valvular atrial fibrillation, high risk of stroke and an appropriate rationale for avoidance of long term use of oral anticoagulants.\n\nConcurrent procedural TEE is an integral part of the procedure. It is used to guide trans-septal puncture, device sizing and assessment of final adequacy of device implant.\n\nTEE requires the participation and guidance of a cardiac imager and because the TEE probe is in place for a relatively long duration the procedure, the procedure is most commonly performed under general anesthesia. Furthermore TEE can be associated with risk of injury to the oropharynx and esophagus. Our ongoing clinical experience and known literature suggest that TEE may not be necessary for the overall success of the procedure. The objective of the study is to investigate a new work flow that may ultimately demonstrate that intra-procedural TEE may not be necessary, obviating the need for additional personnel, general anesthesia and decreasing overall risk. ICE has been widely used to aid trans-septal puncture and visualize left atrial anatomy. Smaller studies and case series have reported the use of ICE as an alternative to TEE in guiding Watchman device implant. This has not been compared systematically with TEE in a large patient sample."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "DIAGNOSTIC"
+      },
+      "enrollmentInfo": {
+        "count": 100,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* All patients who meet guideline established criteria for commercially available Watchman device implant and not enrolled in an active clinical trial\n\nExclusion Criteria:\n\n* Patients in whom a procedural TEE cannot be performed and an ICE only implant is needed.\n* Patients receiving a concomitant ablation procedure\n* Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures\n* Patients in whom the delivery of trans-septal equipment is anticipated to be difficult (e.g. patent foramen ovale (PFO) or atrial septal defect (ASD) closure devices in place).",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Intracardiac Echocardiography Guided Watchman Device Implant",
+      "nctId": "NCT06007872",
+      "officialTitle": "Feasibility: Intracardiac Echocardiography Guided Watchman Device Implant",
+      "orgStudyIdInfo": {
+        "id": "22-1084"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "The Cleveland Clinic"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Intracardiac echocardiography (ICE) guided Watchman placement confirmed by transesophageal echocardiography (TEE)",
+          "measure": "Successful Watchman implantation using intracardiac echocardiography (ICE) guidance",
+          "timeFrame": "During the procedure"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "The Cleveland Clinic"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "The Cleveland Clinic",
+        "investigatorFullName": "Oussama Wazni",
+        "investigatorTitle": "Principal Investigator",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-12-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-10-21",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-10-17",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2022-12-02",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-09",
+      "studyFirstPostDateStruct": {
+        "date": "2023-08-23",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-08-17",
+      "studyFirstSubmitQcDate": "2023-08-17"
+    }
+  }
+}

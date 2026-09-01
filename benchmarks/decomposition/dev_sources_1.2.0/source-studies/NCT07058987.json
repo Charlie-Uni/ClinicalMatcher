@@ -1,0 +1,365 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D006333",
+          "term": "Heart Failure"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D012046",
+          "term": "Rehabilitation"
+        },
+        {
+          "id": "D000359",
+          "term": "Aftercare"
+        },
+        {
+          "id": "D003266",
+          "term": "Continuity of Patient Care"
+        },
+        {
+          "id": "D005791",
+          "term": "Patient Care"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        },
+        {
+          "id": "D006296",
+          "term": "Health Services"
+        },
+        {
+          "id": "D005159",
+          "term": "Health Care Facilities Workforce and Services"
+        },
+        {
+          "id": "D009043",
+          "term": "Motor Activity"
+        },
+        {
+          "id": "D009068",
+          "term": "Movement"
+        },
+        {
+          "id": "D009142",
+          "term": "Musculoskeletal Physiological Phenomena"
+        },
+        {
+          "id": "D055687",
+          "term": "Musculoskeletal and Neural Physiological Phenomena"
+        },
+        {
+          "id": "D019984",
+          "term": "Quality Indicators, Health Care"
+        },
+        {
+          "id": "D011787",
+          "term": "Quality of Health Care"
+        },
+        {
+          "id": "D006298",
+          "term": "Health Services Administration"
+        },
+        {
+          "id": "D017530",
+          "term": "Health Care Quality, Access, and Evaluation"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000072038",
+          "term": "Cardiac Rehabilitation"
+        },
+        {
+          "id": "D015444",
+          "term": "Exercise"
+        },
+        {
+          "id": "D059039",
+          "term": "Standard of Care"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants will receive enhanced external counterpulsation (EECP) plus a structured cardiac rehabilitation program that includes individualized aerobic exercise training, health education, psychological support and lifestyle counselling.",
+          "interventionNames": [
+            "Behavioral: Cardiac Rehabilitation Combined With EECP"
+          ],
+          "label": "EECP + Cardiac Rehabilitation",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Participants will continue to receive standard pharmacologic management and routine clinical follow-up for atrial fibrillation without EECP or formal cardiac rehabilitation.",
+          "interventionNames": [
+            "Other: Routine Medical Care"
+          ],
+          "label": "Routine Medical Care",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "EECP + Cardiac Rehabilitation"
+          ],
+          "description": "This intervention consists of a comprehensive cardiac rehabilitation program that includes individualized aerobic exercise training, health education, psychological support, and lifestyle counseling, combined with enhanced external counterpulsation (EECP) therapy administered according to standard cardiovascular protocols. The combined intervention is designed to improve cardiac function, exercise tolerance, and quality of life in patients with atrial fibrillation.",
+          "name": "Cardiac Rehabilitation Combined With EECP",
+          "otherNames": [
+            "Enhanced External Counterpulsation",
+            "EECP",
+            "Cardiac Rehabilitation",
+            "CR",
+            "Lifestyle Modification",
+            "Exercise Training"
+          ],
+          "type": "BEHAVIORAL"
+        },
+        {
+          "armGroupLabels": [
+            "Routine Medical Care"
+          ],
+          "description": "Participants in the control group will receive standard medical treatment for atrial fibrillation as prescribed by their attending physicians, without enhanced external counterpulsation or structured cardiac rehabilitation. This may include pharmacological therapy, routine clinical monitoring, and general lifestyle advice.",
+          "name": "Routine Medical Care",
+          "otherNames": [
+            "Standard Care",
+            "Usual Care",
+            "Pharmacological Management"
+          ],
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Heart Failure (HF)",
+        "Cardiac Rehabilitation"
+      ],
+      "keywords": [
+        "Atrial Fibrillation",
+        "Cardiac Rehabilitation",
+        "Enhanced External Counterpulsation",
+        "Exercise Capacity"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "yanxiwenny@foxmail.com",
+          "name": "Xiaowei Zhang PhD",
+          "phone": "17701272944",
+          "role": "CONTACT"
+        },
+        {
+          "email": "xieyixintaoyao@outlook.com",
+          "name": "Yixin Xie",
+          "phone": "+86 18624069446",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Lanzhou",
+          "contacts": [
+            {
+              "email": "yanxiwenny@foxmail.com",
+              "name": "Xiaowei Zhang",
+              "phone": "17701272944",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "China",
+          "facility": "Lanzhou University Second Hospital",
+          "geoPoint": {
+            "lat": 36.05701,
+            "lon": 103.83987
+          },
+          "state": "Gansu",
+          "zip": "730030"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Lanzhou University Second Hospital",
+          "name": "Xiaowei Zhang PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This is a prospective randomized controlled trial designed to evaluate the effectiveness of enhanced external counterpulsation (EECP) combined with cardiac rehabilitation in patients with atrial fibrillation. The study aims to assess whether this combined intervention can improve cardiac function and exercise capacity compared to standard care alone. Eligible participants will be randomly assigned to receive either the EECP plus cardiac rehabilitation program or routine treatment. Primary outcomes include changes in left ventricular ejection fraction (LVEF) and six-minute walking distance (6MWD). The study will be conducted at Lanzhou University Second Hospital.",
+      "detailedDescription": "Atrial fibrillation (AF) is a common cardiac arrhythmia associated with impaired ventricular function, reduced exercise tolerance, and increased risk of cardiovascular events. While pharmacological treatments and catheter ablation are widely used, non-pharmacological interventions such as enhanced external counterpulsation (EECP) and cardiac rehabilitation (CR) may offer additional benefits for improving cardiac performance and quality of life. This prospective, single-center, randomized controlled trial aims to evaluate the effects of EECP combined with a structured cardiac rehabilitation program in patients with persistent or paroxysmal atrial fibrillation. A total of approximately 200 eligible participants will be randomized in a 1:1 ratio to receive either EECP plus cardiac rehabilitation (intervention group) or routine medical care (control group) for a defined treatment period. The cardiac rehabilitation program will include individualized exercise training, health education, risk factor management, and follow-up support. EECP will be performed according to standard protocols for cardiovascular patients. Primary outcome measures will include changes in left ventricular ejection fraction (LVEF) and six-minute walking distance (6MWD) from baseline to the end of the intervention. Secondary outcomes may include assessments of quality of life, symptoms, and biomarkers. Safety and feasibility will also be recorded. This study is expected to provide clinical evidence supporting the integration of EECP and cardiac rehabilitation as a non-invasive, multidimensional treatment approach in patients with atrial fibrillation."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Participants will be randomly assigned in a 1:1 ratio to either the intervention group (receiving EECP combined with cardiac rehabilitation) or the control group (receiving routine medical care). Each participant will remain in their assigned group throughout the study.",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 200,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age between 40 and 80 years\n* Diagnosed with persistent or paroxysmal atrial fibrillation, confirmed by ECG or Holter\n* Stable medical condition and able to participate in cardiac rehabilitation and EECP therapy\n* Provided written informed consent\n\nExclusion Criteria:\n\n* Recent acute myocardial infarction, unstable angina, or decompensated heart failure within the past 4 weeks\n* Severe valvular heart disease or left ventricular ejection fraction \\<30%\n* Severe peripheral vascular disease or deep vein thrombosis\n* Severe pulmonary disease or active infection\n* History of bleeding disorders or contraindications to EECP\n* Cognitive impairment or psychiatric condition affecting study participation\n* Participation in another clinical trial within the past 3 months",
+      "healthyVolunteers": false,
+      "maximumAge": "80 Years",
+      "minimumAge": "40 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "EECP AF CR",
+      "briefTitle": "Effects of Enhanced External Counterpulsation Combined With Cardiac Rehabilitation in Patients With Atrial Fibrillation",
+      "nctId": "NCT07058987",
+      "officialTitle": "A Prospective Randomized Controlled Study on the Effects of Enhanced External Counterpulsation Combined With Cardiac Rehabilitation on Cardiac Function and Exercise Capacity in Patients With Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "LZUSH-AFCR-2025-001"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Lanzhou University Second Hospital"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "lanzhou university second hospital",
+          "id": "lanzhou university",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "LVEF will be assessed using transthoracic echocardiography to evaluate improvement in systolic cardiac function.",
+          "measure": "Change in Left Ventricular Ejection Fraction (LVEF) from Baseline to Week 12",
+          "timeFrame": "Baseline and 12 weeks after intervention"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "6MWD will be measured to assess changes in functional exercise capacity.",
+          "measure": "Change in 6-Minute Walk Distance (6MWD)",
+          "timeFrame": "Baseline and 12 weeks"
+        },
+        {
+          "description": "All adverse events related to EECP or cardiac rehabilitation will be recorded to assess safety and tolerability.",
+          "measure": "Incidence of Adverse Events",
+          "timeFrame": "Throughout the 12-week intervention period"
+        },
+        {
+          "description": "Blood samples will be collected to assess changes in NT-proBNP, a biomarker of cardiac stress and heart failure severity.",
+          "measure": "Change in NT-proBNP Level",
+          "timeFrame": "Baseline and 12 weeks"
+        },
+        {
+          "description": "The validated Chinese version of the Short-Form 36 Health Survey (SF-36; total score range 0 - 100, with higher scores indicating better health status) will be administered face-to-face by trained study nurses at baseline and Week 12. The primary metric will be the change in total SF-36 score computed using the standard scoring algorithm.",
+          "measure": "Change in Health-Related Quality of Life (HRQoL) Measured by SF-36 Total Score",
+          "timeFrame": "Baseline and 12 weeks"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Lanzhou University Second Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Lanzhou University Second Hospital",
+        "investigatorFullName": "Xiaowei Zhang",
+        "investigatorTitle": "lanzhou university second hospital",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-03",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-07-14",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-07-09",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-07-15",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2025-07",
+      "studyFirstPostDateStruct": {
+        "date": "2025-07-10",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-07-01",
+      "studyFirstSubmitQcDate": "2025-07-01"
+    }
+  }
+}

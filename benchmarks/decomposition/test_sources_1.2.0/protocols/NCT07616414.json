@@ -1,0 +1,146 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07616414-inclusion-c20e499b330a7538",
+      "criterion_type": "inclusion",
+      "normalized_text": "Aged 18 years or older at the time of screening, and able to provide written informed consent;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 118,
+        "start": 24
+      },
+      "source_text": "Aged 18 years or older at the time of screening, and able to provide written informed consent;"
+    },
+    {
+      "criterion_id": "nct07616414-inclusion-b9966e6c9751f1c7",
+      "criterion_type": "inclusion",
+      "normalized_text": "Scheduled for any CIED procedure (implantation or generator replacement), including pacemakers, implantable cardioverter-defibrillators (ICDs), and cardiac resynchronization therapy (CRT) devices;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 318,
+        "start": 122
+      },
+      "source_text": "Scheduled for any CIED procedure (implantation or generator replacement), including pacemakers, implantable cardioverter-defibrillators (ICDs), and cardiac resynchronization therapy (CRT) devices;"
+    },
+    {
+      "criterion_id": "nct07616414-inclusion-82fa175818a2edd9",
+      "criterion_type": "inclusion",
+      "normalized_text": "Receiving NOAC therapy for at least 5 consecutive days prior to enrollment;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 397,
+        "start": 322
+      },
+      "source_text": "Receiving NOAC therapy for at least 5 consecutive days prior to enrollment;"
+    },
+    {
+      "criterion_id": "nct07616414-inclusion-1c78ffa96ded87b1",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosed with non-valvular atrial fibrillation (and/or atrial flutter) with a CHA₂DS₂-VASc score ≥2, or scheduled for cardioversion or defibrillation threshold testing during the CIED procedure.",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 596,
+        "start": 401
+      },
+      "source_text": "Diagnosed with non-valvular atrial fibrillation (and/or atrial flutter) with a CHA₂DS₂-VASc score ≥2, or scheduled for cardioversion or defibrillation threshold testing during the CIED procedure."
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-72fd8d190e41e993",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of active systemic or local infection at the time of screening;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 694,
+        "start": 622
+      },
+      "source_text": "Presence of active systemic or local infection at the time of screening;"
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-59e7a93f9f7a8718",
+      "criterion_type": "exclusion",
+      "normalized_text": "Estimated glomerular filtration rate (eGFR) <30 mL/min, or any other contraindication to NOAC use;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 797,
+        "start": 698
+      },
+      "source_text": "Estimated glomerular filtration rate (eGFR) \\<30 mL/min, or any other contraindication to NOAC use;"
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-3a0c058f5f7ffaa8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active bleeding (e.g., gastrointestinal bleeding);",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 851,
+        "start": 801
+      },
+      "source_text": "Active bleeding (e.g., gastrointestinal bleeding);"
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-a23b523af086c730",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe thrombocytopenia, defined as platelet count < 50 × 10⁹/L at screening;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 933,
+        "start": 855
+      },
+      "source_text": "Severe thrombocytopenia, defined as platelet count \\< 50 × 10⁹/L at screening;"
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-8920c2d9b871441d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Life expectancy <1 year;",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 962,
+        "start": 937
+      },
+      "source_text": "Life expectancy \\<1 year;"
+    },
+    {
+      "criterion_id": "nct07616414-exclusion-3a519f24f9d30452",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy.",
+      "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+      "source_span": {
+        "end": 976,
+        "start": 966
+      },
+      "source_text": "Pregnancy."
+    }
+  ],
+  "eligibility_sha256": "c4c23270d9061fd5702bd929d07822b352c302ef3f8ef52c0d05b8d3dc46339d",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Aged 18 years or older at the time of screening, and able to provide written informed consent;\n2. Scheduled for any CIED procedure (implantation or generator replacement), including pacemakers, implantable cardioverter-defibrillators (ICDs), and cardiac resynchronization therapy (CRT) devices;\n3. Receiving NOAC therapy for at least 5 consecutive days prior to enrollment;\n4. Diagnosed with non-valvular atrial fibrillation (and/or atrial flutter) with a CHA₂DS₂-VASc score ≥2, or scheduled for cardioversion or defibrillation threshold testing during the CIED procedure.\n\nExclusion Criteria:\n\n1. Presence of active systemic or local infection at the time of screening;\n2. Estimated glomerular filtration rate (eGFR) \\<30 mL/min, or any other contraindication to NOAC use;\n3. Active bleeding (e.g., gastrointestinal bleeding);\n4. Severe thrombocytopenia, defined as platelet count \\< 50 × 10⁹/L at screening;\n5. Life expectancy \\<1 year;\n6. Pregnancy.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-06-01",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07616414",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:40.317384Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07616414:eligibility:2026-06-01:c4c23270d906",
+  "source_record_version": "2026-06-01:c4c23270d906",
+  "source_url": "https://clinicaltrials.gov/study/NCT07616414",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Stepwise vs Standard Anticoagulation for AF Patients Undergoing CIED Implantation (STEP-AF)"
+}

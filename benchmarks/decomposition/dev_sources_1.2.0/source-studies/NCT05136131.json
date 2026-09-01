@@ -1,0 +1,313 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D004599",
+          "term": "Electric Stimulation Therapy"
+        },
+        {
+          "id": "D013812",
+          "term": "Therapeutics"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D004554",
+          "term": "Electric Countershock"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Following anaesthesia administration, the unblinded team (non-MRP cardiologist / anesthesiologist will open the envelope indicating which arm the patient has been randomized to. Other members of the team will step out of the room. The unblinded non-MRP cardiologist will call out as per usual \"All clear\", following which a shock is delivered as per the Ottawa Cardioversion Protocol in the 'shock' arm.",
+          "interventionNames": [
+            "Procedure: Electrical cardioversion"
+          ],
+          "label": "True cardioversion",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Following anaesthesia administration, the unblinded team (non-MRP cardiologist / anesthesiologist will open the envelope indicating which arm the patient has been randomized to. Other members of the team will step out of the room. No shock is delivered in the \"sham\" shock arm.",
+          "interventionNames": [
+            "Other: Sham electrical cardioversion"
+          ],
+          "label": "Sham cardioversion",
+          "type": "SHAM_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "True cardioversion"
+          ],
+          "description": "Shocks are delivered as per the Ottawa Cardioversion Protocol in the \"shock\" arm. 1) 200J shock delivered using self-adhesive electrodes in an anteroposterior configuration. 2) 200J shock delivered using self-adhesive electrodes in an anterolateral configuration while applying pressure over the electrodes with disconnected standard handheld paddles. 3) 360J shock delivered using the same technique as in (2). 4) As per the treating physician's discretion.",
+          "name": "Electrical cardioversion",
+          "type": "PROCEDURE"
+        },
+        {
+          "armGroupLabels": [
+            "Sham cardioversion"
+          ],
+          "description": "No shock is delivered in the sham procedure arm.",
+          "name": "Sham electrical cardioversion",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Quality of life improvement",
+        "Electrical cardioversion",
+        "Sham cardioversion",
+        "Rhythm control",
+        "Placebo"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "tknight@ottawaheart.ca",
+          "name": "Tammy Knight",
+          "phone": "613-696-7000",
+          "phoneExt": "19080",
+          "role": "CONTACT"
+        },
+        {
+          "email": "msadek@ottawaheart.ca",
+          "name": "Mouhannad Sadek, MD",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Newmarket",
+          "contacts": [
+            {
+              "email": "MSadek@southlake.ca",
+              "name": "Mouhannad Sadek, MD",
+              "phone": "(905) 895-4521",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Mouhannad Sadek, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Canada",
+          "facility": "Southlake Health",
+          "geoPoint": {
+            "lat": 44.05011,
+            "lon": -79.46631
+          },
+          "state": "Ontario",
+          "status": "RECRUITING",
+          "zip": "L3Y 2P9"
+        },
+        {
+          "city": "Ottawa",
+          "contacts": [
+            {
+              "email": "tknight@ottawaheart.ca",
+              "name": "Tammy Knight",
+              "phone": "613-696-7000",
+              "phoneExt": "19080",
+              "role": "CONTACT"
+            },
+            {
+              "email": "msadek@ottawaheart.ca",
+              "name": "Mouhannad Sadek, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Canada",
+          "facility": "University of Ottawa Heart Institute",
+          "geoPoint": {
+            "lat": 45.41117,
+            "lon": -75.69812
+          },
+          "state": "Ontario",
+          "status": "RECRUITING",
+          "zip": "K1Y 4W7"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Ottawa Heart Institute Research Corporation",
+          "name": "David Birnie, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Atrial fibrillation (AF) is a type of irregular heart rhythm due to electrical signal disturbances of the heart. It is a very common arrhythmia and the risk of developing AF increases with age and with other risk factors such as diabetes, high blood pressure, and underlying heart disease. The main complications of AF are heart failure and stroke. However, studies have shown that restoration of normal rhythm does not reduce these complications. Rather, these complications are mitigated by controlling the heart rate and using blood thinners to prevent stroke. Symptoms secondary to AF can occur due to the irregular heart rate and poor contraction in the atria, the top chambers of the heart. These symptoms include shortness of breath, fatigue, reduced exercise tolerance, and palpitations. Restoring sinus rhythm can sometimes alleviate these symptoms. Given that studies to date have not shown a difference in hard clinical endpoints between rate and rhythm control strategies, the decision to proceed with rhythm control depends on the patient symptom burden.\n\nRhythm control strategies in patients with persistent AF include cardioversion back to sinus rhythm with long-term recurrence prevention via anti-arrhythmic drugs (AADs) or catheter ablation. However, many studies of these procedures omit a sham placebo control arm. No atrial fibrillation procedural intervention has been compared to a sham procedure. The cardioversion procedure can easily be compared to a \"sham\" alternative, as it is non-invasive with an expected response within days-to-weeks. Thus, a cardioversion versus \"sham\" cardioversion trial will allow us to truly assess the impact of a rhythm-control strategy on QOL. It is hypothesized that cardioversion of atrial fibrillation leads to significant improvement in quality of life (QOL) compared to sham cardioversion.\n\nUnderstanding the true QOL impact of sinus rhythm restoration in patients with persistent AF is of significant importance in guiding strategies for the management of AF. Hence, by evaluating what the true effect of cardioversion on QOL in this blinded study, we can better understand the role of medical management and AF ablation in our patients and assess resource allocation to these procedures.",
+      "detailedDescription": "The study is a prospective, randomized, single-blinded, sham-controlled trial. All recruited patients will undergo a 4-week pre-cardioversion phase of medical optimization (including anticoagulation assessment/initiation, initiation of Amiodarone at 200mg daily, and rate-control medications targeting a resting heart rate of \\<100 bpm). An activity monitor is provided to patients to be worn during waking hours for nine days. A baseline echocardiogram is also performed (if not available within previous 6 months) during this pre-cardioversion phase.\n\nOne day prior to the day of cardioversion, the patient will have a 12-lead ECG. If the patient is in sinus rhythm (chemical cardioversion due to Amiodarone) they will be exited from the study and referred back to their MRP cardiologist. If the patient is in AF, they will be randomized electronically using web-based software (Dacima, Montreal, Canada) to \"shock\" or \"sham shock\". This will not be revealed to investigators and will be put in a closed envelope and questionnaires will be administered.\n\nDuring the day of the cardioversion procedure, following anaesthesia administration, the unblinded team (non-MRP cardiologist / anesthesiologist will open the envelope indicating which arm the patient has been randomized to. Other members of the team will step out of the room. The unblinded non-MRP cardiologist will call out as per usual \"All clear\", following which a shock is delivered as per the Ottawa Cardioversion Protocol in the \"shock\" arm. Otherwise, no shock is delivered in the \"sham shock\" arm. Following the intervention, telemetry is discontinued by the unblinded team prior to patient restoration of consciousness. The unblinded team in the day unit will refrain from providing the patient with information regarding which arm they were randomized to. For the purpose of the patient chart and related documentation, a standardized template will be provided to document the process but not the actual intervention, as to maintain patient blinding. A patch Holter monitor is to be applied and worn for rest of study (4 weeks).\n\nAfter 4 weeks post-cardioversion, a blinded healthcare professional will re-administer a series of questionnaires. At the end of the trial (4 weeks), an ECG will be performed and the patients will be unblinded and told their results. A follow-up (telephone or in-person) will be undertaken at 6 weeks with the patients' MRP cardiologist for discussion of further treatment."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "All recruited patients will undergo a 4-week pre-cardioversion phase of medical optimization before randomization. One day prior to day of cardioversion, the patient will be randomized electronically using web-based software to \"shock\" or \"sham shock\". The patient will remain blinded during the study period and will be unblended at the end of the study period.",
+        "maskingInfo": {
+          "masking": "TRIPLE",
+          "maskingDescription": "The trial is a double blind (patient and physician blinded) at the time of cardioversion and during the four weeks of post intervention follow-up. The Informed Consent will clearly outline the importance of maintaining the blind to the patient. The \"blinded\" team will have no knowledge of treatment allocation. The \"blinded\" team will review the patient at all FUs and during any unscheduled hospital visits/admissions and will be point of contact for the patient's primary physician. This will include the MRP cardiologist and the study nurse / coordinator.",
+          "whoMasked": [
+            "PARTICIPANT",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 100,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients age ≥ 18 years\n* Persistent atrial fibrillation\n* Unknown symptom burden related to AF\n\nExclusion Criteria:\n\n* Known left-atrial appendage thrombus\n* Prior catheter or surgical ablation for AF\n* Intolerance or contraindication to Amiodarone\n* Contraindication to appropriate anticoagulation\n* Patient is included in another randomized clinical trial\n* Patient is unable or unwilling to provide informed consent\n* Patient with a history of noncompliance with medical therapy\n* Patient does not meet all of the above listed inclusion criteria\n* Pregnancy (all women of child bearing age and potential will have a negative BHCG test before enrolment)\n* Breastfeeding\n* Patients for whom the investigator believes that the trial is not in the interest of the patient",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "QOL-CAFRCT",
+      "briefTitle": "QOL Improvement After Cardioversion of Persistent AF (QOL-CAFRCT)",
+      "nctId": "NCT05136131",
+      "officialTitle": "Quality of Life Improvement After Cardioversion of Persistent AF - A Randomized Sham-Controlled Clinical Trial",
+      "orgStudyIdInfo": {
+        "id": "20210782-01H"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Ottawa Heart Institute Research Corporation"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Atrial fibrillation Quality of Life Survey\n\nPatients will be asked: \"To help people say how good or bad their state of health has been on average in previous 4 weeks/since intervention we have drawn a scale (rather like a thermometer) on which the best state you can imagine is marked 100 and the worst state you can imagine is marked 0. We would like you to indicate on this scale how good or bad your health has been on average on average in previous 4 weeks/since intervention in your opinion. Please do this by drawing a line on the scale.\"",
+          "measure": "Difference between AFEQT Scores pre and post cardioversion",
+          "timeFrame": "4 weeks"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Atrial fibrillation Quality of Life Survey\n\nPatients will be asked: \"To help people say how good or bad their state of health has been on average in previous 4 weeks/since intervention we have drawn a scale (rather like a thermometer) on which the best state you can imagine is marked 100 and the worst state you can imagine is marked 0. We would like you to indicate on this scale how good or bad your health has been on average on average in previous 4 weeks/since intervention in your opinion. Please do this by drawing a line on the scale.\"",
+          "measure": "Absolute AFEQT score post-cardioversion",
+          "timeFrame": "4 weeks"
+        },
+        {
+          "description": "Measured using the 36-Item Short Form Survey (SF-36)",
+          "measure": "Change in generic quality of life",
+          "timeFrame": "4 weeks"
+        },
+        {
+          "description": "An activity monitor is provided to participants for the duration of the study. Participants will wear an ActiGraph GTX3 accelerometer (ActiGraph, Pensacola, Florida) over their right hip during waking hours for nine days, excluding periods when they engaged in water-related activities (i.e. bathing, swimming). The ActiGraph GT3X accelerometer will capture movement across three axes (y-, x- and z-axis). Participants' sedentary time, and time spent in low, moderate and vigorous intensity physical activity, expressed as proportion of wear time (minutes/day or minutes/week) of activity. The activity monitor is blinded and does not show the participants any values.",
+          "measure": "Change in daily activity",
+          "timeFrame": "4 weeks"
+        },
+        {
+          "description": "Patients will be asked two questions at the end of the study:\n\n1. \"Do you feel better after the intervention?\" with the answer choices \"Yes/No\"\n2. \"What rhythm do you think you are today\" with answer choices \"NSR/AF\"",
+          "measure": "Study exit questionnaire on patient's perceived well-being",
+          "timeFrame": "4 weeks"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Ottawa Heart Institute Research Corporation"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-05",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-01",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-06-30",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-05",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-02-10",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-06",
+      "studyFirstPostDateStruct": {
+        "date": "2021-11-29",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2021-11-12",
+      "studyFirstSubmitQcDate": "2021-11-25"
+    }
+  }
+}

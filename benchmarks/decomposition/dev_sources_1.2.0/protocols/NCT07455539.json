@@ -1,0 +1,377 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07455539-inclusion-ee90131dc0f9e021",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient age ≥18 years;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 49,
+        "start": 23
+      },
+      "source_text": "The patient age ≥18 years;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-b4ed133484fe1ea0",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient has documented paroxysmal, persistent, or permanent non-valvular atrial fibrillation;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 149,
+        "start": 52
+      },
+      "source_text": "The patient has documented paroxysmal, persistent, or permanent non-valvular atrial fibrillation;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-e9debe53e0a45cb1",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient has a CHA2DS2-VASc score of ≥ 2 in men and CHA2DS2-VASc score of ≥ 3 in women;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 242,
+        "start": 152
+      },
+      "source_text": "The patient has a CHA2DS2-VASc score of ≥ 2 in men and CHA2DS2-VASc score of ≥ 3 in women;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-1faee20484907828",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient is recommended for oral anticoagulation therapy, but there is an appropriate rationale for seeking a non-pharmacologic alternative to oral anticoagulation;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 412,
+        "start": 245
+      },
+      "source_text": "The patient is recommended for oral anticoagulation therapy, but there is an appropriate rationale for seeking a non-pharmacologic alternative to oral anticoagulation;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-83002ea75db4e52b",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient is deemed suitable for LAA closure by the site investigator and a clinician not a part of the procedural team in the shared decision-making process, and this determination has been documented in the patient's medical record;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 651,
+        "start": 415
+      },
+      "source_text": "The patient is deemed suitable for LAA closure by the site investigator and a clinician not a part of the procedural team in the shared decision-making process, and this determination has been documented in the patient's medical record;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-631df743f7b0ce43",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient is willing and able to comply with the required medication post-procedure and follow-up evaluations;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 766,
+        "start": 654
+      },
+      "source_text": "The patient is willing and able to comply with the required medication post-procedure and follow-up evaluations;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-a0a7a371c0b15730",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient (or his or her legally authorized representative) has been informed of the nature of the study, agrees to its provisions, and has been provided written informed consent approved by the appropriate Institutional Review Board (IRB) or Ethics Committee (EC).",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1036,
+        "start": 769
+      },
+      "source_text": "The patient (or his or her legally authorized representative) has been informed of the nature of the study, agrees to its provisions, and has been provided written informed consent approved by the appropriate Institutional Review Board (IRB) or Ethics Committee (EC)."
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-fcdb76b7ad7b0ed7",
+      "criterion_type": "exclusion",
+      "normalized_text": "1\\. Pregnant or nursing patients and those who plan pregnancy during the study period. Female patients of childbearing potential must have a negative pregnancy test (per site standard test) within 7 days prior to the index procedure;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1294,
+        "start": 1061
+      },
+      "source_text": "1\\. Pregnant or nursing patients and those who plan pregnancy during the study period. Female patients of childbearing potential must have a negative pregnancy test (per site standard test) within 7 days prior to the index procedure;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-9aca403eec91013e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with atrial fibrillation that is defined by a single occurrence, or that is transient or reversible (e.g., secondary to CABG, an interventional procedure, pneumonia, or hyperthyroidism);",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1492,
+        "start": 1297
+      },
+      "source_text": "Patients with atrial fibrillation that is defined by a single occurrence, or that is transient or reversible (e.g., secondary to CABG, an interventional procedure, pneumonia, or hyperthyroidism);"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-0c4026f41a982558",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who require long-term anticoagulation for a condition other than atrial fibrillation;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1589,
+        "start": 1495
+      },
+      "source_text": "Patients who require long-term anticoagulation for a condition other than atrial fibrillation;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-5db800633cca2d9e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Bleeding diathesis or coagulopathy;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1627,
+        "start": 1592
+      },
+      "source_text": "Bleeding diathesis or coagulopathy;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-98af1aaf38e1337b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with rheumatic mitral valve disease, known severe mitral stenosis requiring surgical or percutaneous valve replacement, or existing mechanical valve prosthesis;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1799,
+        "start": 1630
+      },
+      "source_text": "Patients with rheumatic mitral valve disease, known severe mitral stenosis requiring surgical or percutaneous valve replacement, or existing mechanical valve prosthesis;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-ee5e6fef89fe4129",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active infection with bacteremia;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 1835,
+        "start": 1802
+      },
+      "source_text": "Active infection with bacteremia;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-455225a883217ebb",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known hypersensitivity or contraindication to aspirin, clopidogrel, heparin, any device material or component (nickel titanium, PET, polypropylene), and/or contrast sensitivity;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2015,
+        "start": 1838
+      },
+      "source_text": "Known hypersensitivity or contraindication to aspirin, clopidogrel, heparin, any device material or component (nickel titanium, PET, polypropylene), and/or contrast sensitivity;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-46ea96200cea1afc",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior atrial septal defect (ASD) or patient foramen ovale (PFO) surgical repair or implantation of closure device;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2132,
+        "start": 2018
+      },
+      "source_text": "Prior atrial septal defect (ASD) or patient foramen ovale (PFO) surgical repair or implantation of closure device;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-0e4141f2407aa232",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left atrial appendage is obliterated and surgical ligated;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2193,
+        "start": 2135
+      },
+      "source_text": "Left atrial appendage is obliterated and surgical ligated;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-558fc1343513d0b2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Underwent any cardiac or non-cardiac interventional or surgical procedure within 30 days prior to the procedure or planned to have the interventional or surgical procedure within 60 days after implant procedure (e.g., cardioversion, ablation, percutaneous coronary intervention, cataract surgery, etc.);",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2499,
+        "start": 2196
+      },
+      "source_text": "Underwent any cardiac or non-cardiac interventional or surgical procedure within 30 days prior to the procedure or planned to have the interventional or surgical procedure within 60 days after implant procedure (e.g., cardioversion, ablation, percutaneous coronary intervention, cataract surgery, etc.);"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-23639d187688b443",
+      "criterion_type": "exclusion",
+      "normalized_text": "Recent (within 90 days prior to procedure) stroke, transient ischemic attack, or myocardial infarction;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2605,
+        "start": 2502
+      },
+      "source_text": "Recent (within 90 days prior to procedure) stroke, transient ischemic attack, or myocardial infarction;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-33115d6ce532fda5",
+      "criterion_type": "exclusion",
+      "normalized_text": "New York Heart Association Class IV;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2644,
+        "start": 2608
+      },
+      "source_text": "New York Heart Association Class IV;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-3d013206b1f84702",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with severe renal failure (estimated glomerular filtration rate<30 ml/min/1.73m2);",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2739,
+        "start": 2647
+      },
+      "source_text": "Patients with severe renal failure (estimated glomerular filtration rate\\<30 ml/min/1.73m2);"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-355191e288574983",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known asymptomatic carotid artery disease with>70% diameter stenosis OR symptomatic carotid disease (>50% diameter stenosis with ipsilateral stroke or TIA). Subjects with prior carotid endarterectomy or carotid stent placement may be enrolled, provided that known diameter stenosis is <50%;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3035,
+        "start": 2742
+      },
+      "source_text": "Known asymptomatic carotid artery disease with\\>70% diameter stenosis OR symptomatic carotid disease (\\>50% diameter stenosis with ipsilateral stroke or TIA). Subjects with prior carotid endarterectomy or carotid stent placement may be enrolled, provided that known diameter stenosis is \\<50%;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-d364755847b3bb49",
+      "criterion_type": "exclusion",
+      "normalized_text": "Life expectancy is less than 1 year;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3074,
+        "start": 3038
+      },
+      "source_text": "Life expectancy is less than 1 year;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-7c6c6ade86e9cba3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Current participation in another investigational drug or device study. Echocardiographic Exclusion Criteria:",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3186,
+        "start": 3077
+      },
+      "source_text": "Current participation in another investigational drug or device study.\n\nEchocardiographic Exclusion Criteria:"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-8fc9bee5152609cd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left atrial appendage anatomy cannot accommodate the LAmbre II LAA Occluder per manufacturer IFU;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3287,
+        "start": 3190
+      },
+      "source_text": "Left atrial appendage anatomy cannot accommodate the LAmbre II LAA Occluder per manufacturer IFU;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-dc83eaf8dcc4f42f",
+      "criterion_type": "exclusion",
+      "normalized_text": "LVEF <30%;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3301,
+        "start": 3290
+      },
+      "source_text": "LVEF \\<30%;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-fa480090a2eef39c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Intracardiac thrombus or dense spontaneous echo contrast, as visualized by TEE prior to implant;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3400,
+        "start": 3304
+      },
+      "source_text": "Intracardiac thrombus or dense spontaneous echo contrast, as visualized by TEE prior to implant;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-2e552f99d7849441",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of a high-risk patent foramen ovale (PFO), defined as an atrial septal aneurysm (excursion >15 mm or length >15 mm) or large shunt (early, within 3 beats and/or substantial passage of 20 bubbles);",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3610,
+        "start": 3403
+      },
+      "source_text": "Presence of a high-risk patent foramen ovale (PFO), defined as an atrial septal aneurysm (excursion \\>15 mm or length \\>15 mm) or large shunt (early, within 3 beats and/or substantial passage of 20 bubbles);"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-b2f0a589eaa2f873",
+      "criterion_type": "exclusion",
+      "normalized_text": "Existing circumferential pericardial effusion >5 mm;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3666,
+        "start": 3613
+      },
+      "source_text": "Existing circumferential pericardial effusion \\>5 mm;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-87e6f51bed858d0a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Moderate or severe mitral valve stenosis (mitral valve area <1.5 cm2);",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3740,
+        "start": 3669
+      },
+      "source_text": "Moderate or severe mitral valve stenosis (mitral valve area \\<1.5 cm2);"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-c1a944111fc90714",
+      "criterion_type": "exclusion",
+      "normalized_text": "Complex atheroma with mobile plaque of the descending aorta and/or aortic arch;",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3822,
+        "start": 3743
+      },
+      "source_text": "Complex atheroma with mobile plaque of the descending aorta and/or aortic arch;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-bad12a813d32289b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of a cardiac tumor",
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3852,
+        "start": 3825
+      },
+      "source_text": "Presence of a cardiac tumor"
+    }
+  ],
+  "eligibility_sha256": "377edee9637c58d181007ac0e2fbe5c9324270d161b1f39e0fb05fa98a3017ff",
+  "eligibility_text": "Inclusion Criteria:\n\n* The patient age ≥18 years;\n* The patient has documented paroxysmal, persistent, or permanent non-valvular atrial fibrillation;\n* The patient has a CHA2DS2-VASc score of ≥ 2 in men and CHA2DS2-VASc score of ≥ 3 in women;\n* The patient is recommended for oral anticoagulation therapy, but there is an appropriate rationale for seeking a non-pharmacologic alternative to oral anticoagulation;\n* The patient is deemed suitable for LAA closure by the site investigator and a clinician not a part of the procedural team in the shared decision-making process, and this determination has been documented in the patient's medical record;\n* The patient is willing and able to comply with the required medication post-procedure and follow-up evaluations;\n* The patient (or his or her legally authorized representative) has been informed of the nature of the study, agrees to its provisions, and has been provided written informed consent approved by the appropriate Institutional Review Board (IRB) or Ethics Committee (EC).\n\nExclusion Criteria:\n\n* 1\\. Pregnant or nursing patients and those who plan pregnancy during the study period. Female patients of childbearing potential must have a negative pregnancy test (per site standard test) within 7 days prior to the index procedure;\n* Patients with atrial fibrillation that is defined by a single occurrence, or that is transient or reversible (e.g., secondary to CABG, an interventional procedure, pneumonia, or hyperthyroidism);\n* Patients who require long-term anticoagulation for a condition other than atrial fibrillation;\n* Bleeding diathesis or coagulopathy;\n* Patients with rheumatic mitral valve disease, known severe mitral stenosis requiring surgical or percutaneous valve replacement, or existing mechanical valve prosthesis;\n* Active infection with bacteremia;\n* Known hypersensitivity or contraindication to aspirin, clopidogrel, heparin, any device material or component (nickel titanium, PET, polypropylene), and/or contrast sensitivity;\n* Prior atrial septal defect (ASD) or patient foramen ovale (PFO) surgical repair or implantation of closure device;\n* Left atrial appendage is obliterated and surgical ligated;\n* Underwent any cardiac or non-cardiac interventional or surgical procedure within 30 days prior to the procedure or planned to have the interventional or surgical procedure within 60 days after implant procedure (e.g., cardioversion, ablation, percutaneous coronary intervention, cataract surgery, etc.);\n* Recent (within 90 days prior to procedure) stroke, transient ischemic attack, or myocardial infarction;\n* New York Heart Association Class IV;\n* Patients with severe renal failure (estimated glomerular filtration rate\\<30 ml/min/1.73m2);\n* Known asymptomatic carotid artery disease with\\>70% diameter stenosis OR symptomatic carotid disease (\\>50% diameter stenosis with ipsilateral stroke or TIA). Subjects with prior carotid endarterectomy or carotid stent placement may be enrolled, provided that known diameter stenosis is \\<50%;\n* Life expectancy is less than 1 year;\n* Current participation in another investigational drug or device study.\n\nEchocardiographic Exclusion Criteria:\n\n* Left atrial appendage anatomy cannot accommodate the LAmbre II LAA Occluder per manufacturer IFU;\n* LVEF \\<30%;\n* Intracardiac thrombus or dense spontaneous echo contrast, as visualized by TEE prior to implant;\n* Presence of a high-risk patent foramen ovale (PFO), defined as an atrial septal aneurysm (excursion \\>15 mm or length \\>15 mm) or large shunt (early, within 3 beats and/or substantial passage of 20 bubbles);\n* Existing circumferential pericardial effusion \\>5 mm;\n* Moderate or severe mitral valve stenosis (mitral valve area \\<1.5 cm2);\n* Complex atheroma with mobile plaque of the descending aorta and/or aortic arch;\n* Presence of a cardiac tumor",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-03-06",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07455539",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+  "source_record_version": "2026-03-06:377edee9637c",
+  "source_url": "https://clinicaltrials.gov/study/NCT07455539",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "LAmbre™ II Left Atrial Appendage Occluder and Occluder Delivery System for Patients With Non-Valvular Atrial Fibrillation"
+}

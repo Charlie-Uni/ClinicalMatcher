@@ -1,0 +1,2626 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D020521",
+          "term": "Stroke"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D000083242",
+          "term": "Ischemic Stroke"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "All participants randomized to the experimental arm will be provided with an AFSW that will be linked to the participants Apple watch and the secure REACT-AF app within the Eureka cloud. The AFSW will intermittently and passively assess for rhythm irregularities consistent with AF and notify the wearer and coordinating center if a threshold AF event has occurred.",
+          "interventionNames": [
+            "Device: AFSW Guided DOAC"
+          ],
+          "label": "AFSW Guided DOAC",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "All participants randomized to the control arm will remain on previously prescribed FDA-approved DOAC regimen as indicated by current practice standards. These participants will continuously take DOAC through the course of the study as prescribed by the participants primary physician unless otherwise contraindicated. Participants in the control arm will also use the REACT-AF mobile app within the Eureka platform via Apple watch for study follow-up activities, but the participants will not receive an AFSW and any personally owned Apple Watch will not be loaded with the customized REACT-AF detection algorithm nor participant notification apps.",
+          "interventionNames": [
+            "Drug: Continuous DOAC therapy"
+          ],
+          "label": "Continuous DOAC therapy",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "AFSW Guided DOAC"
+          ],
+          "description": "The AFSW will intermittently and passively assess for rhythm irregularities consistent with AF and notify the wearer and coordinating center if a threshold AF event has occurred.",
+          "name": "AFSW Guided DOAC",
+          "otherNames": [
+            "Apple Watch"
+          ],
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Continuous DOAC therapy"
+          ],
+          "description": "DOACs will be prescribed to patients according to the treating healthcare provider(s) according to labeling instructions.",
+          "name": "Continuous DOAC therapy",
+          "otherNames": [
+            "Oral Anticoagulation therapy"
+          ],
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Atrial Fibrillation",
+        "Anticoagulation",
+        "AF-sensing Smart Watch",
+        "Ischemic Stroke",
+        "Systemic Embolism"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "sgluhm@stanford.edu",
+          "name": "Shea Smith",
+          "phone": "650-724-6211",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Phoenix",
+          "contacts": [
+            {
+              "email": "herisse.sabulao@bannerhealth.com",
+              "name": "Herisse Sabulao",
+              "role": "CONTACT"
+            },
+            {
+              "email": "raeven.maxwell@bannerhealth.com",
+              "name": "Raeven Maxwell",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Roderick Tung, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Banner University",
+          "geoPoint": {
+            "lat": 33.44838,
+            "lon": -112.07404
+          },
+          "state": "Arizona",
+          "status": "RECRUITING",
+          "zip": "85006"
+        },
+        {
+          "city": "Los Angeles",
+          "contacts": [
+            {
+              "email": "RohitVarma.Penmetsa@med.usc.edu",
+              "name": "Rohit Varma",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Stephanie.Chao@med.usc.edu",
+              "name": "Stephanie Chao",
+              "phone": "(323) 442-0750",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Junaid Zaman, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Southern California - Keck School of Medicine",
+          "geoPoint": {
+            "lat": 34.05223,
+            "lon": -118.24368
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90033"
+        },
+        {
+          "city": "Los Angeles",
+          "contacts": [
+            {
+              "email": "monserrathcampos@mednet.ucla.edu",
+              "name": "Monserrath Campos",
+              "role": "CONTACT"
+            },
+            {
+              "name": "David Cho, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of California Los Angeles (UCLA Health)",
+          "geoPoint": {
+            "lat": 34.05223,
+            "lon": -118.24368
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "90095"
+        },
+        {
+          "city": "Sacramento",
+          "contacts": [
+            {
+              "email": "lingayo@health.ucdavis.edu",
+              "name": "Edward Lingayo",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Uma Srivatsa",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "UC Davis Health",
+          "geoPoint": {
+            "lat": 38.58157,
+            "lon": -121.4944
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "95817"
+        },
+        {
+          "city": "San Diego",
+          "contacts": [
+            {
+              "email": "Lawrence.Janet@scrippshealth.org",
+              "name": "Janet Lawrence",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Evan Muse",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Scripps Health",
+          "geoPoint": {
+            "lat": 32.71571,
+            "lon": -117.16472
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "92103"
+        },
+        {
+          "city": "San Francisco",
+          "contacts": [
+            {
+              "email": "Annie.X.Lei@kp.org",
+              "name": "Annie Lei",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Quyen.X.Chau@kp.org",
+              "name": "Quyen Chau",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Robert Hayward, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Kaiser Permanente",
+          "geoPoint": {
+            "lat": 37.77493,
+            "lon": -122.41942
+          },
+          "state": "California",
+          "status": "NOT_YET_RECRUITING",
+          "zip": "94115"
+        },
+        {
+          "city": "Stanford",
+          "contacts": [
+            {
+              "email": "gjermeni@stanford.edu",
+              "name": "Diona Gjermeni, MD",
+              "phone": "650-333-9228",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Alexander Perino",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Stanford University",
+          "geoPoint": {
+            "lat": 37.42411,
+            "lon": -122.16608
+          },
+          "state": "California",
+          "status": "RECRUITING",
+          "zip": "94305"
+        },
+        {
+          "city": "Aurora",
+          "contacts": [
+            {
+              "email": "megan.collett@uchealth.org",
+              "name": "Megan Collett",
+              "phone": "970-624-1581",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Amar Trivedi",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Colorado",
+          "geoPoint": {
+            "lat": 39.72943,
+            "lon": -104.83192
+          },
+          "state": "Colorado",
+          "status": "RECRUITING",
+          "zip": "80045"
+        },
+        {
+          "city": "Littleton",
+          "contacts": [
+            {
+              "email": "ksiegel@southdenver.com",
+              "name": "Kathrin Siegel",
+              "phone": "303-703-2162",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Srikanth Sundaram",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "South Denver Cardiology Associates, P.C.",
+          "geoPoint": {
+            "lat": 39.61332,
+            "lon": -105.01665
+          },
+          "state": "Colorado",
+          "status": "RECRUITING",
+          "zip": "80120"
+        },
+        {
+          "city": "Washington D.C.",
+          "contacts": [
+            {
+              "email": "rina.vaquerano@steward.org",
+              "name": "Rina Vaquerano",
+              "phone": "617-789-2023",
+              "role": "CONTACT"
+            },
+            {
+              "name": "John Wylie",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. Elizabeth's Medical Center",
+          "geoPoint": {
+            "lat": 38.89511,
+            "lon": -77.03637
+          },
+          "state": "District of Columbia",
+          "status": "RECRUITING",
+          "zip": "20032"
+        },
+        {
+          "city": "Washington D.C.",
+          "country": "United States",
+          "facility": "Medical Faculty Associates George Washington University",
+          "geoPoint": {
+            "lat": 38.89511,
+            "lon": -77.03637
+          },
+          "state": "District of Columbia",
+          "status": "WITHDRAWN",
+          "zip": "20037"
+        },
+        {
+          "city": "Clearwater",
+          "contacts": [
+            {
+              "email": "karen.herring@baycare.org",
+              "name": "Karen Herring",
+              "phone": "813-875-9000",
+              "phoneExt": "280209",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Shalin Shah",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "BayCare Health Systems",
+          "geoPoint": {
+            "lat": 27.96585,
+            "lon": -82.8001
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33759"
+        },
+        {
+          "city": "Gainesville",
+          "contacts": [
+            {
+              "email": "erikson.walter@medicine.ufl.edu",
+              "name": "Walter Erikson",
+              "role": "CONTACT"
+            },
+            {
+              "email": "vanessa.scheuble@medicine.ufl.edu",
+              "name": "Vanessa Scheuble",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Mohammed Ruzieh, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Florida",
+          "geoPoint": {
+            "lat": 29.65163,
+            "lon": -82.32483
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32611"
+        },
+        {
+          "city": "Jacksonville",
+          "contacts": [
+            {
+              "email": "WongLucio.Pamela@mayo.edu",
+              "name": "Pamela Wong",
+              "phone": "904-953-8551",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Andrew Tseng, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mayo Clinic",
+          "geoPoint": {
+            "lat": 30.33218,
+            "lon": -81.65565
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "32224"
+        },
+        {
+          "city": "Miami",
+          "contacts": [
+            {
+              "email": "cbaezgarcia@med.miami.edu",
+              "name": "Carmen Maria Baez-Garcia",
+              "phone": "305-243-3845",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Alex Velasquez, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Miami - Leonard S. Miller SOM",
+          "geoPoint": {
+            "lat": 25.77427,
+            "lon": -80.19366
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33136"
+        },
+        {
+          "city": "Sarasota",
+          "contacts": [
+            {
+              "email": "Jennifer-Jordan@smh.com",
+              "name": "Jennifer Jordan",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Colleen-Lindner@smh.com",
+              "name": "Colleen Lindner",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Dilip Mathew, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Sarasota Memorial Health Care System",
+          "geoPoint": {
+            "lat": 27.33643,
+            "lon": -82.53065
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "34236"
+        },
+        {
+          "city": "Stuart",
+          "country": "United States",
+          "facility": "Cleveland Clinic Florida",
+          "geoPoint": {
+            "lat": 27.19755,
+            "lon": -80.25283
+          },
+          "state": "Florida",
+          "status": "WITHDRAWN",
+          "zip": "34994"
+        },
+        {
+          "city": "Winter Haven",
+          "contacts": [
+            {
+              "email": "Amanda.Steadham@baycare.org",
+              "name": "Amanda Steadham",
+              "phone": "863-293-1121",
+              "phoneExt": "201409",
+              "role": "CONTACT"
+            },
+            {
+              "email": "lynda.argenzio@baycare.org",
+              "name": "Lynda Argenzio",
+              "phone": "863-293-1121",
+              "phoneExt": "201410",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Rodrigo Bolanos, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Baycare Health Systems Clearwater",
+          "geoPoint": {
+            "lat": 28.02224,
+            "lon": -81.73286
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33881"
+        },
+        {
+          "city": "Atlanta",
+          "contacts": [
+            {
+              "email": "tpreise@emory.edu",
+              "name": "Thomas Preiser",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jovita Brevard",
+              "phone": "jovita.johnson@emory.edu",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Michael Lloyd",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Emory University",
+          "geoPoint": {
+            "lat": 33.749,
+            "lon": -84.38798
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "30332"
+        },
+        {
+          "city": "Warner Robins",
+          "contacts": [
+            {
+              "email": "hmaschenik@gacri.com",
+              "name": "Heather Maschenik",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Feliz Sogade, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Georgia Arrhythmia Consultants and Research Institute",
+          "geoPoint": {
+            "lat": 32.61574,
+            "lon": -83.62664
+          },
+          "state": "Georgia",
+          "status": "RECRUITING",
+          "zip": "31093"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "email": "yining@uic.edu",
+              "name": "Muriel Chen",
+              "role": "CONTACT"
+            },
+            {
+              "name": "David Sanders",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Illinois Chicago",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60607"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "email": "cturegulatoryteam@nm.org",
+              "name": "CTU Regulatory Team",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Bradley Knight",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Northwestern University",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60611"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "email": "nusrat_jahan@rush.edu",
+              "name": "Nusrat Jahan",
+              "phone": "312-942-1630",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Christine_Radochonski@rush.edu",
+              "name": "Christine Radochonski",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Annabelle Volgman, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Rush University Medical Center",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60612"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "email": "ssarrafi1@uchicagomedicine.org",
+              "name": "Shahram Sarrafi",
+              "role": "CONTACT"
+            },
+            {
+              "email": "kie@bsd.uchicago.edu",
+              "name": "Kie Ng",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Cevher Ozcan, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Chicago",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60637"
+        },
+        {
+          "city": "Chicago",
+          "contacts": [
+            {
+              "email": "nschoenecker@luc.edu",
+              "name": "Nancy Schoenecker",
+              "phone": "708-216-2646",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jdelpri@luc.edu",
+              "name": "Jean Del Priore",
+              "phone": "(708) 216-2644",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Peter Santucci, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Loyola University Chicago",
+          "geoPoint": {
+            "lat": 41.85003,
+            "lon": -87.65005
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60660"
+        },
+        {
+          "city": "Elk Grove Village",
+          "contacts": [
+            {
+              "email": "michelle.garcia5@ascension.org",
+              "name": "Michelle Garcia",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jeanine.pilat@ascension.org",
+              "name": "Jeanine Pilat",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Taral Patel, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Alexian Brothers Health System",
+          "geoPoint": {
+            "lat": 42.00392,
+            "lon": -87.97035
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60007"
+        },
+        {
+          "city": "Evanston",
+          "contacts": [
+            {
+              "email": "mdurante@northshore.org",
+              "name": "Marisa Durante",
+              "phone": "847-570-2125",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jeremiah Wasserlauf, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "NorthShore University HealthSystem",
+          "geoPoint": {
+            "lat": 42.04114,
+            "lon": -87.69006
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60201"
+        },
+        {
+          "city": "Naperville",
+          "contacts": [
+            {
+              "email": "Josilyn.Klimek@cardio.com",
+              "name": "Josilyn Klimek",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Moeen Saleem",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Midwest Cardiovascular Institute",
+          "geoPoint": {
+            "lat": 41.78586,
+            "lon": -88.14729
+          },
+          "state": "Illinois",
+          "status": "RECRUITING",
+          "zip": "60540"
+        },
+        {
+          "city": "Indianapolis",
+          "contacts": [
+            {
+              "email": "regina.margiotti@ascension.org",
+              "name": "Regina Margiotti",
+              "phone": "317-583-6151",
+              "role": "CONTACT"
+            },
+            {
+              "email": "anne.renick@ascension.org",
+              "name": "Ann Renick",
+              "phone": "(317) 338-6152",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Eric Prystowsky",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ascension St. Vincent",
+          "geoPoint": {
+            "lat": 39.76838,
+            "lon": -86.15804
+          },
+          "state": "Indiana",
+          "status": "RECRUITING",
+          "zip": "46260"
+        },
+        {
+          "city": "Iowa City",
+          "contacts": [
+            {
+              "email": "trisha-elliott@uiowa.edu",
+              "name": "Trisha Elliott",
+              "phone": "319-384-1628",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Peter Farjo",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Iowa Hospitals and Clinics",
+          "geoPoint": {
+            "lat": 41.66113,
+            "lon": -91.53017
+          },
+          "state": "Iowa",
+          "status": "RECRUITING",
+          "zip": "52242"
+        },
+        {
+          "city": "Scarborough",
+          "contacts": [
+            {
+              "email": "hilary.curtis@mainehealth.org",
+              "name": "Hilary Curtis",
+              "phone": "207-303-1571",
+              "role": "CONTACT"
+            },
+            {
+              "email": "brenda.glasgow@mainehealth.org",
+              "name": "Brenda Galsgow",
+              "phone": "(207) 303-1304",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jordan Leyton-Mange, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Maine Medical Partners MaineHealth Cardiology",
+          "geoPoint": {
+            "lat": 43.57814,
+            "lon": -70.32172
+          },
+          "state": "Maine",
+          "status": "RECRUITING",
+          "zip": "04074"
+        },
+        {
+          "city": "Baltimore",
+          "contacts": [
+            {
+              "email": "mmill148@jhmi.edu",
+              "name": "Michele Martucci",
+              "phone": "410-502-0517",
+              "role": "CONTACT"
+            },
+            {
+              "email": "nhorstm3@jhu.edu",
+              "name": "Natalie Horstman",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Hugh Calkins",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Johns Hopkins Univeristy",
+          "geoPoint": {
+            "lat": 39.29038,
+            "lon": -76.61219
+          },
+          "state": "Maryland",
+          "status": "RECRUITING",
+          "zip": "21218"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "Juan.Carlos.Collado.Falcon@tuftsmedicine.org",
+              "name": "Juan Carlos Collado Falcon",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Abena.Adwetewa-Badu@tuftsmedicine.org",
+              "name": "Abena Adwetewa-Badu",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Christopher Madias, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Tufts Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02111"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "ksteinmetz@mgh.harvard.edu",
+              "name": "Kristen Steinmetz",
+              "phone": "781-424-7184",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Eugene Chung",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Mass General Hospital",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02114"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "dhincapietabares@bwh.harvard.edu",
+              "name": "Daniela Hincapie Tabres",
+              "role": "CONTACT"
+            },
+            {
+              "email": "OALOUM@BWH.HARVARD.EDU",
+              "name": "Obadah Aloum",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Paul Zei, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Brigham and Women's Hospital",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02115"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "laura.gavrilles@bmc.org",
+              "name": "Laura Gavrilles",
+              "phone": "617-638-8718",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Robert Helm",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Boston Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02118"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "rina.vaquerano@steward.org",
+              "name": "Rina Vaquerano",
+              "phone": "617-789-2023",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Alena Goldman, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "BMC - Brighton",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02135"
+        },
+        {
+          "city": "Boston",
+          "contacts": [
+            {
+              "email": "jmkaufma@bidmc.harvard.edu",
+              "name": "Jenifer M Kaufman",
+              "phone": "617-632-8956",
+              "role": "CONTACT"
+            },
+            {
+              "email": "ptyler@bidmc.harvard.edu",
+              "name": "Patricia Tyler",
+              "phone": "(617) 632-7727",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Peter Zimetbaum, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Beth Israel Deaconess Medical Center",
+          "geoPoint": {
+            "lat": 42.35843,
+            "lon": -71.05977
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "02215"
+        },
+        {
+          "city": "Burlington",
+          "contacts": [
+            {
+              "email": "jean.byrne@lahey.org",
+              "name": "Jean Byrne",
+              "phone": "781-744-1901",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Matthew Reynolds",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Lahey Hospital & Medical Center",
+          "geoPoint": {
+            "lat": 42.50482,
+            "lon": -71.19561
+          },
+          "state": "Massachusetts",
+          "status": "RECRUITING",
+          "zip": "01805"
+        },
+        {
+          "city": "Worcester",
+          "country": "United States",
+          "facility": "UMass Chan Medical School",
+          "geoPoint": {
+            "lat": 42.26259,
+            "lon": -71.80229
+          },
+          "state": "Massachusetts",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "zip": "01655"
+        },
+        {
+          "city": "Detroit",
+          "contacts": [
+            {
+              "email": "bwanhal1@hfhs.org",
+              "name": "Briita Wanhala",
+              "phone": "313-916-9575",
+              "role": "CONTACT"
+            },
+            {
+              "email": "ddelmot2@hfhs.org",
+              "name": "Danielle Delmotte",
+              "phone": "(313) 916-9575",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Marc Lahiri",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Henry Ford Health",
+          "geoPoint": {
+            "lat": 42.33143,
+            "lon": -83.04575
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48202"
+        },
+        {
+          "city": "Grand Rapids",
+          "contacts": [
+            {
+              "email": "lisa.vanloo@spectrumhealth.org",
+              "name": "Lisa Van Loo",
+              "phone": "616-391-3327",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jose.gavina@corewellhealth.org",
+              "name": "Jose Gavina",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Sanjay Dandamudi",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Corewell Health (Former Spectrum Health)",
+          "geoPoint": {
+            "lat": 42.96336,
+            "lon": -85.66809
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "49503"
+        },
+        {
+          "city": "Grand Rapids",
+          "contacts": [
+            {
+              "email": "melissa.brown-culbertson@trinity-health.org",
+              "name": "Melissa Brown-Culbertson",
+              "phone": "616-685-6326",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Nicolina.evola@trinity-health.org",
+              "name": "Nicolina Evola",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Muhammad Farooq, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Trinity Health Grand Rapids/Mercy Health",
+          "geoPoint": {
+            "lat": 42.96336,
+            "lon": -85.66809
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "49503"
+        },
+        {
+          "city": "Royal Oak",
+          "contacts": [
+            {
+              "email": "lisa.carney2@corewellhealth.org",
+              "name": "Lisa Carney",
+              "phone": "248-898-5589",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Nishaki Mehta",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "William Beaumont Hospital",
+          "geoPoint": {
+            "lat": 42.48948,
+            "lon": -83.14465
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48073"
+        },
+        {
+          "city": "Ypsilanti",
+          "contacts": [
+            {
+              "email": "ahowe@michiganheart.com",
+              "name": "Autumn Howe",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Mohammad-Ali Jazayeri",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Trinity Health Michigan Heart - Ann Arbor",
+          "geoPoint": {
+            "lat": 42.24115,
+            "lon": -83.61299
+          },
+          "state": "Michigan",
+          "status": "RECRUITING",
+          "zip": "48197"
+        },
+        {
+          "city": "Duluth",
+          "country": "United States",
+          "facility": "Essentia Health The Duluth Clinic",
+          "geoPoint": {
+            "lat": 46.78327,
+            "lon": -92.10658
+          },
+          "state": "Minnesota",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "zip": "55812"
+        },
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "email": "andrew.garner@allina.com",
+              "name": "Andrew Garner",
+              "phone": "612-863-3818",
+              "role": "CONTACT"
+            },
+            {
+              "email": "julianne.feola@allina.com",
+              "name": "Julianne Feola",
+              "phone": "612-683-6066",
+              "role": "CONTACT"
+            },
+            {
+              "name": "John Zakaib",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Minneapolis Heart Institute Foundation",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55407"
+        },
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "email": "sthummar@bermancenter.org",
+              "name": "Sahil Thummar",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Gautam Shroff, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Hennepin Healthcare Research Institute",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55415"
+        },
+        {
+          "city": "Minneapolis",
+          "contacts": [
+            {
+              "email": "dicke022@umn.edu",
+              "name": "Julie Dicken",
+              "phone": "612-408-4316",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Chopp015@umn.edu",
+              "name": "Maddy Chopp",
+              "phone": "(612) 626-7041",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Lin Yee Chen, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Minnesota",
+          "geoPoint": {
+            "lat": 44.97997,
+            "lon": -93.26384
+          },
+          "state": "Minnesota",
+          "status": "RECRUITING",
+          "zip": "55455"
+        },
+        {
+          "city": "Kansas City",
+          "country": "United States",
+          "facility": "University Health Truman Medical Center",
+          "geoPoint": {
+            "lat": 39.09973,
+            "lon": -94.57857
+          },
+          "state": "Missouri",
+          "status": "WITHDRAWN",
+          "zip": "64108"
+        },
+        {
+          "city": "St Louis",
+          "contacts": [
+            {
+              "email": "kyle.smith1@wustl.edu",
+              "name": "Kyle Smith",
+              "role": "CONTACT"
+            },
+            {
+              "email": "sheuerman@wustl.edu",
+              "name": "Sharon Heuerman",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Thomas Maddox, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Washington University School of Medicine",
+          "geoPoint": {
+            "lat": 38.62727,
+            "lon": -90.19789
+          },
+          "state": "Missouri",
+          "status": "RECRUITING",
+          "zip": "63110"
+        },
+        {
+          "city": "Flemington",
+          "contacts": [
+            {
+              "email": "abellafiore@ahvi-nj.com",
+              "name": "Alexis Bellafiore",
+              "phone": "908-291-3405",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jsenatore@ahvi-nj.com",
+              "name": "Jessica Senatore",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Andrey Espinoza, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Advanced Heart and Vascular Institute of Hunterdon",
+          "geoPoint": {
+            "lat": 40.51233,
+            "lon": -74.85933
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "08822"
+        },
+        {
+          "city": "Hackensack",
+          "contacts": [
+            {
+              "email": "Patricia.Arakelian@hmhn.org",
+              "name": "Patricia Arakelian",
+              "phone": "551-996-5722",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jennifer Baxter",
+              "phone": "(551)996-3775",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Tanya Glotzer",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Hackensack Meridian Health",
+          "geoPoint": {
+            "lat": 40.88593,
+            "lon": -74.04347
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07601"
+        },
+        {
+          "city": "Piscataway",
+          "contacts": [
+            {
+              "email": "gd301@rwjms.rutgers.edu",
+              "name": "Glaucia Dos Santos-Vaccaro",
+              "phone": "732-235-6117",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Partho Sengupta",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Rutgers, the State University of New Jersey",
+          "geoPoint": {
+            "lat": 40.49927,
+            "lon": -74.39904
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "08854"
+        },
+        {
+          "city": "Ridgewood",
+          "contacts": [
+            {
+              "email": "rhronci@valleyhealth.com",
+              "name": "RoseMarie Hroncich",
+              "phone": "201-447-8453",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Suneet Mittal",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "The Valley Hospital, Inc.",
+          "geoPoint": {
+            "lat": 40.97926,
+            "lon": -74.11653
+          },
+          "state": "New Jersey",
+          "status": "RECRUITING",
+          "zip": "07450"
+        },
+        {
+          "city": "Albuquerque",
+          "contacts": [
+            {
+              "email": "EPadillaMendez@salud.unm.edu",
+              "name": "Elvia Padilla",
+              "role": "CONTACT"
+            },
+            {
+              "email": "NGarciaSoberanez@salud.unm.edu",
+              "name": "Noela Garcia-Soberanez",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Abinash Achrekar, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of New Mexico Health Sciences Center",
+          "geoPoint": {
+            "lat": 35.08449,
+            "lon": -106.65114
+          },
+          "state": "New Mexico",
+          "status": "RECRUITING",
+          "zip": "87102"
+        },
+        {
+          "city": "Albuquerque",
+          "country": "United States",
+          "facility": "Presbyterian Healthcare Services",
+          "geoPoint": {
+            "lat": 35.08449,
+            "lon": -106.65114
+          },
+          "state": "New Mexico",
+          "status": "ACTIVE_NOT_RECRUITING",
+          "zip": "87106"
+        },
+        {
+          "city": "Buffalo",
+          "contacts": [
+            {
+              "email": "cabishop@buffalo.edu",
+              "name": "Courtney Bishop",
+              "phone": "716-888-4859",
+              "role": "CONTACT"
+            },
+            {
+              "email": "cadavern@buffalo.edu",
+              "name": "Cassandra Davern",
+              "phone": "(716)881-8299",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Anne Curtis, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University at Buffalo",
+          "geoPoint": {
+            "lat": 42.88645,
+            "lon": -78.87837
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "14214"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "email": "mollie.machado@nyulangone.org",
+              "name": "Mollie Machado",
+              "phone": "516-663-8638",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Joseph Germano, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "NYU Langone Health",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10016"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "email": "ria2120@cumc.columbia.edu",
+              "name": "Raghd Ahmed",
+              "phone": "347-400-9812",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Angelo Biviano",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Columbia University Medical Center",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10032"
+        },
+        {
+          "city": "New York",
+          "contacts": [
+            {
+              "email": "dtr2001@med.cornell.edu",
+              "name": "Dolores Reynolds",
+              "phone": "212-746-4617",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Penn Collins",
+              "phone": "gpc4001@med.cornell.edu",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jim Cheung, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Weill Medical College of Cornell University",
+          "geoPoint": {
+            "lat": 40.71427,
+            "lon": -74.00597
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10065"
+        },
+        {
+          "city": "Queens",
+          "contacts": [
+            {
+              "email": "jan9044@nyp.org",
+              "name": "Jackson Ng",
+              "phone": "718-607-2944",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Joon Hyuk Kim",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "NewYork Presbyterian - Queens",
+          "geoPoint": {
+            "lat": 40.68149,
+            "lon": -73.83652
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11355"
+        },
+        {
+          "city": "Staten Island",
+          "contacts": [
+            {
+              "email": "apantea@northwell.edu",
+              "name": "Alexandra Pantea",
+              "phone": "718-226-6438",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Rina Shah, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Staten Island University Hospital-Northwell Health",
+          "geoPoint": {
+            "lat": 40.56233,
+            "lon": -74.13986
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10305"
+        },
+        {
+          "city": "Stony Brook",
+          "contacts": [
+            {
+              "email": "melanie.rooney@stonybrookmedicine.edu",
+              "name": "Melanie Rooney",
+              "phone": "631-444-6967",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Michele.xikis@stonybrookmedicine.edu",
+              "name": "Michelle Xikis",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Eric Rashba, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Stony Brook University",
+          "geoPoint": {
+            "lat": 40.92565,
+            "lon": -73.14094
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "11794"
+        },
+        {
+          "city": "Valhalla",
+          "contacts": [
+            {
+              "email": "allyson.pulsoni@wmchealth.org",
+              "name": "Allyson Pulsoni",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Erida.Castro@wmchealth.org",
+              "name": "Erida Castro-Rivas",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jason Jacobson",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Westchester Medical Center",
+          "geoPoint": {
+            "lat": 41.07482,
+            "lon": -73.77513
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10595"
+        },
+        {
+          "city": "White Plains",
+          "contacts": [
+            {
+              "email": "aferrick@wphospital.org",
+              "name": "Aileen Ferrick",
+              "phone": "914-849-2690",
+              "role": "CONTACT"
+            },
+            {
+              "email": "uijomah@wphospital.org",
+              "name": "Uloma Ijomah",
+              "phone": "(914) 849-2690",
+              "role": "CONTACT"
+            },
+            {
+              "name": "James Peacock",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "White Plains Hospital",
+          "geoPoint": {
+            "lat": 41.03399,
+            "lon": -73.76291
+          },
+          "state": "New York",
+          "status": "RECRUITING",
+          "zip": "10601"
+        },
+        {
+          "city": "Chapel Hill",
+          "contacts": [
+            {
+              "email": "meghme@med.unc.edu",
+              "name": "Meghan Allen",
+              "role": "CONTACT"
+            },
+            {
+              "email": "elias_wen@med.unc.edu",
+              "name": "Elias Wen",
+              "phone": "(919)843-8644",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Anil Gehi, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of North Carolina",
+          "geoPoint": {
+            "lat": 35.9132,
+            "lon": -79.05584
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27599"
+        },
+        {
+          "city": "Winston-Salem",
+          "contacts": [
+            {
+              "email": "kyrodrig@wakehealth.edu",
+              "name": "Keishia Rodriguez",
+              "role": "CONTACT"
+            },
+            {
+              "email": "mmostafa@wakehealth.edu",
+              "name": "Mohammed Mostafa",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Prashant Bhave",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Wake Forest Baptist Health",
+          "geoPoint": {
+            "lat": 36.09986,
+            "lon": -80.24422
+          },
+          "state": "North Carolina",
+          "status": "RECRUITING",
+          "zip": "27157"
+        },
+        {
+          "city": "Cincinnati",
+          "contacts": [
+            {
+              "email": "anne.voorhorst@thechristhospital.com",
+              "name": "Anne Voorhorst",
+              "phone": "513-585-1777",
+              "role": "CONTACT"
+            },
+            {
+              "email": "RebeccaM.Harper@thechristhospital.com",
+              "name": "Rebecca Harper",
+              "phone": "(513) 585-1777",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Daniel Pelchovitz, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "The Lindner Center for Research and Education at The Christ Hospital",
+          "geoPoint": {
+            "lat": 39.12711,
+            "lon": -84.51439
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "45219"
+        },
+        {
+          "city": "Cincinnati",
+          "contacts": [
+            {
+              "email": "shamiees@ucmail.uc.edu",
+              "name": "Elias Shamieh",
+              "phone": "513-558-4721",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Richard Becker",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Cincinnati College of Medicine",
+          "geoPoint": {
+            "lat": 39.12711,
+            "lon": -84.51439
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "45267"
+        },
+        {
+          "city": "Columbus",
+          "contacts": [
+            {
+              "email": "adrianne.miller3@osumc.edu",
+              "name": "Adrianne Miller",
+              "phone": "614-688-8252",
+              "role": "CONTACT"
+            },
+            {
+              "email": "kalyn.ferguson@osumc.edu",
+              "name": "Kalyn Ferguson",
+              "phone": "(614)292-5462",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Salvatore Savona, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Ohio State University Medical Center",
+          "geoPoint": {
+            "lat": 39.96118,
+            "lon": -82.99879
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "43210"
+        },
+        {
+          "city": "Columbus",
+          "contacts": [
+            {
+              "email": "reem.bekheet@ohiohealth.com",
+              "name": "Reem Bekheet",
+              "phone": "937-218-3542",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Eugene Fu, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "OhioHealth Research Institute",
+          "geoPoint": {
+            "lat": 39.96118,
+            "lon": -82.99879
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "43214"
+        },
+        {
+          "city": "Wooster",
+          "contacts": [
+            {
+              "email": "estahl@wchosp.org",
+              "name": "Erica Stahl",
+              "phone": "330-263-8359",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Cyril Ofori, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Wooster Community Hospital",
+          "geoPoint": {
+            "lat": 40.80517,
+            "lon": -81.93646
+          },
+          "state": "Ohio",
+          "status": "RECRUITING",
+          "zip": "44691"
+        },
+        {
+          "city": "Oklahoma City",
+          "contacts": [
+            {
+              "email": "kylie-ricci@ouhsc.edu",
+              "name": "Kylie Ricci",
+              "role": "CONTACT"
+            },
+            {
+              "email": "aurora-vera@ouhsc.edu",
+              "name": "Aurora Vera",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Stavros Stavrakis, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Oklahoma Health Sciences Center",
+          "geoPoint": {
+            "lat": 35.46756,
+            "lon": -97.51643
+          },
+          "state": "Oklahoma",
+          "status": "RECRUITING",
+          "zip": "73104"
+        },
+        {
+          "city": "Paoli",
+          "contacts": [
+            {
+              "email": "hopeb@ccpdocs.com",
+              "name": "Hope Bernhardy",
+              "phone": "267-479-5325",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Colin Movsowitz, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Cardiology Consultants of Philadelphia",
+          "geoPoint": {
+            "lat": 40.04205,
+            "lon": -75.47631
+          },
+          "state": "Pennsylvania",
+          "status": "NOT_YET_RECRUITING",
+          "zip": "19301"
+        },
+        {
+          "city": "Philadelphia",
+          "contacts": [
+            {
+              "email": "ashley.borgella@jefferson.edu",
+              "name": "Ashley Borgella",
+              "phone": "267-226-8085",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Daniel Frisch, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Thomas Jefferson University",
+          "geoPoint": {
+            "lat": 39.95238,
+            "lon": -75.16362
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "19144"
+        },
+        {
+          "city": "Pittsburgh",
+          "contacts": [
+            {
+              "email": "caitlin.phalunas@ahn.org",
+              "name": "Caitlin Phalunas",
+              "phone": "412-359-3747",
+              "role": "CONTACT"
+            },
+            {
+              "email": "elizabeth.belden@ahn.org",
+              "name": "Elizabeth Belden",
+              "phone": "(412)359-3512",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Amit Thosani",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Allegheny Singer Research Institute",
+          "geoPoint": {
+            "lat": 40.44062,
+            "lon": -79.99589
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "15212"
+        },
+        {
+          "city": "Wyomissing",
+          "contacts": [
+            {
+              "email": "efutchko@pennstatehealth.psu.edu",
+              "name": "Emese Futchko",
+              "phone": "610-685-8500",
+              "role": "CONTACT"
+            },
+            {
+              "email": "mfeltenberger@pennstatehealth.psu.edu",
+              "name": "Michelle Feltenberger",
+              "phone": "(610) 685-8500",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Ronald Polinsky, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Penn State Health Medical Group Berks Cardiology",
+          "geoPoint": {
+            "lat": 40.32954,
+            "lon": -75.96521
+          },
+          "state": "Pennsylvania",
+          "status": "RECRUITING",
+          "zip": "19610"
+        },
+        {
+          "city": "Providence",
+          "contacts": [
+            {
+              "email": "kfranchetti@brownhealth.org",
+              "name": "Kelly Franchetti",
+              "phone": "401-444-9828",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Estelle Torbey, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Rhode Island Hospital",
+          "geoPoint": {
+            "lat": 41.82399,
+            "lon": -71.41283
+          },
+          "state": "Rhode Island",
+          "status": "RECRUITING",
+          "zip": "02903"
+        },
+        {
+          "city": "Charleston",
+          "contacts": [
+            {
+              "email": "szymankr@musc.edu",
+              "name": "Krista Szymanski",
+              "phone": "843-876-6846",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Rachel Kaplan",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Medical University of South Carolina",
+          "geoPoint": {
+            "lat": 32.77632,
+            "lon": -79.93275
+          },
+          "state": "South Carolina",
+          "status": "RECRUITING",
+          "zip": "29425"
+        },
+        {
+          "city": "Columbia",
+          "contacts": [
+            {
+              "email": "sheriods@musc.edu",
+              "name": "Jacqueline Sheriod-Scott",
+              "phone": "803-254-3278",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Venkateshwar Gottipaty, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "MUSC Health Heart and Vascular",
+          "geoPoint": {
+            "lat": 34.00071,
+            "lon": -81.03481
+          },
+          "state": "South Carolina",
+          "status": "RECRUITING",
+          "zip": "29204"
+        },
+        {
+          "city": "Austin",
+          "contacts": [
+            {
+              "email": "dscardinal@austinheartbeat.com",
+              "name": "Deb Cardinal",
+              "phone": "512-431-4868",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Amin Al Ahmad",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Texas Cardiac Arrhythmia Research Foundation",
+          "geoPoint": {
+            "lat": 30.26715,
+            "lon": -97.74306
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "78705"
+        },
+        {
+          "city": "Dallas",
+          "contacts": [
+            {
+              "email": "vukile.mlambo@utsouthwestern.edu",
+              "name": "Vukile Mlambo",
+              "phone": "214-648-3112",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Mark Link, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Texas Southwestern Medical Center",
+          "geoPoint": {
+            "lat": 32.78306,
+            "lon": -96.80667
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "75390"
+        },
+        {
+          "city": "Houston",
+          "contacts": [
+            {
+              "email": "harold@bcm.edu",
+              "name": "Stephen Harold",
+              "phone": "713-798-7227",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Mihail Chelu, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Baylor College of Medicine",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "77030"
+        },
+        {
+          "city": "Houston",
+          "contacts": [
+            {
+              "email": "ccngumezi@houstonmethodist.org",
+              "name": "Chinwe Ngumezi",
+              "phone": "346-238-0290",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Miguel Valderrabano, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Houston Methodist Hospital",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "77030"
+        },
+        {
+          "city": "Houston",
+          "contacts": [
+            {
+              "email": "mary.h.pierce@uth.tmc.edu",
+              "name": "Mary Pierce",
+              "role": "CONTACT"
+            },
+            {
+              "email": "vickie.m.ramirez@uth.tmc.edu",
+              "name": "Vickie Ramirez",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Siddharth Mukerji, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Texas Health Science Center at Houston",
+          "geoPoint": {
+            "lat": 29.76328,
+            "lon": -95.36327
+          },
+          "state": "Texas",
+          "status": "RECRUITING",
+          "zip": "77030"
+        },
+        {
+          "city": "Salt Lake City",
+          "contacts": [
+            {
+              "email": "andy.rivera@hsc.utah.edu",
+              "name": "Andy Rivera",
+              "phone": "801-213-4099",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Marc Engels, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Utah",
+          "geoPoint": {
+            "lat": 40.76078,
+            "lon": -111.89105
+          },
+          "state": "Utah",
+          "status": "RECRUITING",
+          "zip": "84112"
+        },
+        {
+          "city": "Charlottesville",
+          "contacts": [
+            {
+              "email": "cjp6t@virginia.edu",
+              "name": "Cathy Roy",
+              "phone": "434-825-5677",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Rohit Malhotra",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Virginia",
+          "geoPoint": {
+            "lat": 38.02931,
+            "lon": -78.47668
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "22903"
+        },
+        {
+          "city": "Richmond",
+          "contacts": [
+            {
+              "email": "Janet.Barrett@alignedcardio.com",
+              "name": "Janet Barrett",
+              "phone": "305-705-4111",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Shaival Kapadia, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "James River Cardiology",
+          "geoPoint": {
+            "lat": 37.55376,
+            "lon": -77.46026
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "23229"
+        },
+        {
+          "city": "Richmond",
+          "contacts": [
+            {
+              "email": "Anna.Baranova2@vcuhealth.org",
+              "name": "Anya Baranova",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Kenneth Ellenbogen",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Virginia Commonwealth University",
+          "geoPoint": {
+            "lat": 37.55376,
+            "lon": -77.46026
+          },
+          "state": "Virginia",
+          "status": "RECRUITING",
+          "zip": "23284"
+        },
+        {
+          "city": "Tacoma",
+          "contacts": [
+            {
+              "email": "boyoung.moore@vmfh.org",
+              "name": "Boyoung Moore",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Nasir Shariff",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "St. Joseph Medical Center Tacoma",
+          "geoPoint": {
+            "lat": 47.25288,
+            "lon": -122.44429
+          },
+          "state": "Washington",
+          "status": "RECRUITING",
+          "zip": "98405"
+        },
+        {
+          "city": "Madison",
+          "contacts": [
+            {
+              "email": "kjolson@medicine.wisc.edu",
+              "name": "Karen Olson",
+              "role": "CONTACT"
+            },
+            {
+              "email": "erolf@medicine.wisc.edu",
+              "name": "Emma Rolf",
+              "phone": "(608)262-6950",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jennifer Wright, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of Wisconsin",
+          "geoPoint": {
+            "lat": 43.07305,
+            "lon": -89.40123
+          },
+          "state": "Wisconsin",
+          "status": "RECRUITING",
+          "zip": "53706"
+        },
+        {
+          "city": "Milwaukee",
+          "contacts": [
+            {
+              "email": "dhoff@mcw.edu",
+              "name": "Debbi Hoff",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jason Rubenstein",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "Medical College of Wisconsin Froedtert Hospital",
+          "geoPoint": {
+            "lat": 43.0389,
+            "lon": -87.90647
+          },
+          "state": "Wisconsin",
+          "status": "RECRUITING",
+          "zip": "53226"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Northwestern University",
+          "name": "Rod Passman",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Johns Hopkins University",
+          "name": "Dan Hanley",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "REACT-AF is a multicenter prospective, randomized, open-label, blinded endpoint (PROBE design), controlled trial comparing the current Standard Of Care (SOC) of continuous Direct Oral Anticoagulation (DOAC) use versus time-delimited (1 month) DOAC guided by an AF-sensing Smart Watch (AFSW) in participants with a history of paroxysmal or persistent Atrial Fibrillation (AF) and low-to-moderate stroke risk.",
+      "detailedDescription": "REACT-AF is a prospective, unblinded, randomized (1:1 allocation), multi-center, investigational clinical trial of men and women aged 22-85 with a documented history of symptomatic or asymptomatic paroxysmal or persistent (AF) and a moderate risk of stroke measured by CHA2DS2-VASc score 1-4 for men, 2-4 for women (which stands for Congestive heart failure, Hypertension, Age ≥75 (doubled), Diabetes, Stroke (doubled), Vascular disease, age 65 to 74 and sex category (female)). Participants randomized to the experimental arm (on demand DOAC) will take the participants DOAC for 30 consecutive days following a qualifying AF episode (i.e., greater than1 hour) detected by the AFSW. Participants randomized to the standard of care (control) arm will remain on previously prescribed continuous DOAC throughout the study.\n\nA total of 5350 participants will be enrolled across up to 100 study sites targeting two-thirds academic and one-third private practices, with academic practices also enrolling from affiliated community sites. The investigators anticipate evaluating 7643 consented individuals with external monitoring to ensure that a low AF burden population will be randomized. Up to 200 participants may be enrolled at any one site, and participation will last up to 60 months."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Participants randomized (1:1) to the experimental arm (AFSW-guided DOAC) will only take DOAC for 30 consecutive days following a qualifying AF episode (i.e., greater than 1 hour) detected by the participants AFSW if no further AF is detected. Participants randomized to the standard of care arm will remain on continuous DOAC throughout the study.",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "maskingDescription": "Adjudication of safety events will be performed by a Clinical Endpoint Committee made up of blinded assessors. The Data Coordinating Center (DCC) blinded statistician(s) will also be blinded.",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 5350,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE3"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. 22-85 years of age.\n2. English speaking participants. Spanish-only speakers may be included in the future at select sites appropriately translated.\n3. History of non-permanent atrial fibrillation.\n4. CHA2DS2-VASC score of 1-4 for men and 2-4 for women without prior stroke or Transient Ischemic Attack (TIA), The CHA2DS2-VASc score is a point-based system used to stratify the risk of stroke in Atrial Fibrillation (AF) patients. The acronym CHA2DS2-VASc stands for congestive heart failure, hypertension, age ≥75 (doubled), diabetes, stroke (doubled), vascular disease, age 65 to 74 and sex category (female). Congestive heart failure defined as: The presence of signs and symptoms of either right (elevated central venous pressure, hepatomegaly, dependent edema) or left ventricular failure (exertional dyspnea, cough, fatigue, orthopnea, paroxysmal nocturnal dyspnea, cardiac enlargement, rales, gallop rhythm, pulmonary venous congestion) or both, confirmed by non-invasive or invasive measurements demonstrating objective evidence of cardiac dysfunction and/or ejection fraction \\< 40%.\n5. The participant is on a DOAC at the time of screening and willing to stay on DOAC for duration of study.\n6. Willing and able to comply with the protocol, including:\n\n   * Possession of a smart watch-compatible smart phone (iPhone that supports the latest shipping iOS) with a cellular service plan\n   * Be willing to wear the smart watch for the suggested minimum of 14 hours a day\n   * Expected to be within cellular service range at least 80% of the time\n7. Willing and able to discontinue DOAC\n8. The participant is willing and able to provide informed consent.\n\nExclusion Criteria:\n\n1. Valvular or permanent atrial fibrillation.\n2. Current treatment with warfarin and unwilling or unable to take a DOAC.\n3. The participant is a woman who is pregnant or nursing.\n4. The participant is being treated with chronic aspirin, another anti-platelet agent, or chronic NSAIDS outside of current medical guidelines (e.g., primary stroke prevention in patients with atrial fibrillation, primary prevention of cardiovascular events, pain relief, fever, gout) and is unwilling or unable to discontinue use for the study duration.\n5. Existing cardiac rhythm device or indication for a permanent pacemaker, Implantable Cardioverter-Defibrillator (ICD) or Cardiac Resynchronization Therapy (CRT) device or planned insertable cardiac monitor. Insertable cardiac monitors are permitted unless they are being used to guide anticoagulation treatment.\n6. Known or suspected symptomatic or asymptomatic atrial fibrillation lasting ≥ 1 hour/month over the last 3 months.\n7. Any documented single AF episode lasting ≥ 1 hour on standard of care or study-provided external cardiac monitor of \\> 6 days duration performed within 45 days prior to randomization. Shorter monitoring durations may be acceptable for inclusion at the discretion of the site PI based on the totality of monitoring data and approval of the study PI.\n8. Ablation for AF within the last 2 months.\n9. Prior or anticipated left atrial appendage occlusion or ligation.\n10. Mechanical prosthetic valve(s) or severe valve disease.\n11. Hypertrophic cardiomyopathy.\n12. Participant needs DOAC for reasons other than preventing stroke or arterial embolism resulting from AF (i.e., preventing Deep Vein Thrombosis (DVT) or PE) or needs permanent OAC (i.e., congenital heart defects, prosthetic heart valve).\n13. Participants deemed high risk for non-cardioembolic stroke (i.e., significant carotid artery disease defined as stenosis \\> 75%) based on the investigator's discretion.\n14. The participant is enrolled, has participated within the last 30 days, or is planning to participate in a concurrent drug and/or device study during the course of this clinical trial. Co-enrollment in concurrent trials is only allowed with documented pre-approval from the study manager; there is no concern that co-enrollment could confound the results of this trial.\n15. The participant has a tattoo, birthmark, or surgical scar over the dorsal wrist area on the ipsilateral side that the AFSW may be worn.\n16. The participant has a tremor on their ipsilateral side that the AFSW may be worn.\n17. Any concomitant condition that, in the investigator's opinion, would not allow safe participation in the study (e.g., drug addiction, alcohol abuse).\n18. Known hypersensitivity or contraindication to direct oral anticoagulants.\n19. Documented prior stroke (ischemic or hemorrhagic) or transient ischemic attack.\n20. Reversible causes of AF (e.g., cardiac surgery, pulmonary embolism, untreated hyperthyroidism). AF ablation does not constitute reversible AF.\n21. \\> 5% burden of premature atrial or ventricular depolarizations on pre-enrollment cardiac monitoring.\n22. History of atrial flutter that has not been treated with ablation (participants in atrial flutter and have been ablated are eligible for enrollment).\n23. Stage 4 or 5 chronic kidney disease.\n24. Conditions associated with an increased risk of bleeding:\n\n    * Major surgery in the previous month\n    * Planned surgery or intervention in the next three months that would require cessation of anticoagulation \\> 2 weeks.\n    * History of intracranial, intraocular, spinal, retroperitoneal, or atraumatic intra- articular bleeding\n    * Gastrointestinal hemorrhage within the past year unless the cause has been permanently eliminated (e.g., by surgery)\n    * Symptomatic or endoscopically documented gastroduodenal ulcer disease in the previous 30 days\n    * Hemorrhagic disorder or bleeding diathesis\n    * Need for anticoagulant treatment for disorders other than AF\n    * Uncontrolled hypertension (Systolic Blood Pressure \\>180 mmHg and/or Diastolic Blood Pressure \\>100 mmHg)",
+      "healthyVolunteers": false,
+      "maximumAge": "85 Years",
+      "minimumAge": "22 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "REACT-AF",
+      "briefTitle": "The Rhythm Evaluation for AntiCoagulaTion With Continuous Monitoring of Atrial Fibrillation",
+      "nctId": "NCT05836987",
+      "officialTitle": "REACT-AF: Rhythm Evaluation for AntiCoagulaTion With Continuous Monitoring of Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "IRB00354588"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Johns Hopkins University"
+      },
+      "secondaryIdInfos": [
+        {
+          "id": "1U24HL165066-01",
+          "link": "https://reporter.nih.gov/quickSearch/1U24HL165066-01",
+          "type": "NIH"
+        }
+      ]
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary objective (efficacy objective) of the REACT-AF trial is to assess whether AFSW-guided, time-delimited DOAC therapy is non-inferior to continuous DOAC therapy for a composite endpoint that includes: (1) Ischemic stroke; (2) Systemic embolism; and (3) All-cause mortality.\n\nStroke is defined as an acute episode of focal or global neurological dysfunction caused by brain, spinal cord, or retinal vascular injury as a result of hemorrhage or infarction; and classified as ischemic, hemorrhagic, or cause unknown based on CT or Magnetic Resonance (MR) scanning or autopsy.\n\nSystemic embolism is defined as an acute vascular occlusion of the extremities or any organ and must be documented by angiography, surgery, scintigraphy, or autopsy and require hospitalization.\n\nAll-cause mortality will be defined as the underlying disease or injury that initiates the train of events resulting in death.",
+          "measure": "To assess whether AFSW-guided, time-delimited DOAC therapy is non-inferior to continuous DOAC therapy for a composite endpoint that includes: (1) Ischemic stroke; (2) Systemic embolism; (3) All-cause mortality.",
+          "timeFrame": "At 60 months"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Oral anticoagulation carries a risk of major bleeding, including life-threatening hemorrhage, the intervention is expected to reduce the safety endpoint, major bleeding, by \\> 35%, and the study is powered for the superiority of the safety endpoint.\n\nMajor bleeding will be defined as requiring hospitalization and by ≥1 of the following International Society on Thrombosis and Haemostasis (ISTH) criteria: (1) Bleeding associated with a reduction in hemoglobin level of at least 2.0 g/dL; (2) Bleeding leading to transfusion of at least two units of blood or packed cells; or (3) Symptomatic bleeding in a critical area or organ such as intraocular, intracranial, intraspinal or intramuscular with compartment syndrome, retroperitoneal bleeding, intra-articular bleeding, or pericardial bleeding.",
+          "measure": "To assess whether AFSW-guided, time-delimited DOAC therapy significantly reduces major bleeding events compared to continuous DOAC therapy.",
+          "timeFrame": "At 60 months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "NIH",
+          "name": "National Heart, Lung, and Blood Institute (NHLBI)"
+        },
+        {
+          "class": "OTHER",
+          "name": "Northwestern University"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Johns Hopkins University"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2029-07-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-08-25",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-08-24",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2029-07-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-07-13",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-08",
+      "studyFirstPostDateStruct": {
+        "date": "2023-05-01",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-04-19",
+      "studyFirstSubmitQcDate": "2023-04-19"
+    }
+  }
+}

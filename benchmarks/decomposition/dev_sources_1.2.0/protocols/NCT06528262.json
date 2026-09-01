@@ -1,0 +1,278 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06528262-inclusion-cad1eabbcec70570",
+      "criterion_type": "inclusion",
+      "normalized_text": "Adults aged 19 to under 85",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 50,
+        "start": 24
+      },
+      "source_text": "Adults aged 19 to under 85"
+    },
+    {
+      "criterion_id": "nct06528262-inclusion-0426eaaa3ba61877",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients who consent to participate in the study and can be followed up during the study",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 142,
+        "start": 54
+      },
+      "source_text": "Patients who consent to participate in the study and can be followed up during the study"
+    },
+    {
+      "criterion_id": "nct06528262-inclusion-377b90f380c38358",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients with AF and heart failure who have undergone atrial fibrillation catheter ablation within the last three months or are scheduled to undergo the procedure",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 308,
+        "start": 146
+      },
+      "source_text": "Patients with AF and heart failure who have undergone atrial fibrillation catheter ablation within the last three months or are scheduled to undergo the procedure"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-7fa832243da60bdf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Under 19 or over 85 years old",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 363,
+        "start": 334
+      },
+      "source_text": "Under 19 or over 85 years old"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-8eebda519a6dbea6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients who have participated in another clinical trial within the last three months",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 452,
+        "start": 367
+      },
+      "source_text": "Patients who have participated in another clinical trial within the last three months"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-32c07202671539ec",
+      "criterion_type": "exclusion",
+      "normalized_text": "Life expectancy of less than one year",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 493,
+        "start": 456
+      },
+      "source_text": "Life expectancy of less than one year"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-db821b11fdb1310d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant or breastfeeding women",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 528,
+        "start": 497
+      },
+      "source_text": "Pregnant or breastfeeding women"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-a9c9d932cbd919cc",
+      "criterion_type": "exclusion",
+      "normalized_text": "Currently being treated with an SGLT-2 inhibitor",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 580,
+        "start": 532
+      },
+      "source_text": "Currently being treated with an SGLT-2 inhibitor"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-48d081b100add854",
+      "criterion_type": "exclusion",
+      "normalized_text": "Three or more urinary or genital infections within the last year",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 648,
+        "start": 584
+      },
+      "source_text": "Three or more urinary or genital infections within the last year"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-49ec43014d710b28",
+      "criterion_type": "exclusion",
+      "normalized_text": "Uncontrolled hypertension: systolic blood pressure ≥ 180mmHg or diastolic blood pressure ≥ 110mmHg",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 750,
+        "start": 652
+      },
+      "source_text": "Uncontrolled hypertension: systolic blood pressure ≥ 180mmHg or diastolic blood pressure ≥ 110mmHg"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-771d4c2c96d5d63a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Systolic blood pressure < 90mmHg",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 787,
+        "start": 754
+      },
+      "source_text": "Systolic blood pressure \\< 90mmHg"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-94b0ec3cd2ba5ba3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Acute cardiovascular event within the last 12 weeks",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 842,
+        "start": 791
+      },
+      "source_text": "Acute cardiovascular event within the last 12 weeks"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-79bcb8c4e6fd5ca4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe valvular disease or presence of artificial valves",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 903,
+        "start": 847
+      },
+      "source_text": "Severe valvular disease or presence of artificial valves"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-f27e2b83c8f37329",
+      "criterion_type": "exclusion",
+      "normalized_text": "Renal impairment (eGFR CKD-EPI < 60 ml/min/1.73m²)",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 959,
+        "start": 908
+      },
+      "source_text": "Renal impairment (eGFR CKD-EPI \\< 60 ml/min/1.73m²)"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-0c8630177892c980",
+      "criterion_type": "exclusion",
+      "normalized_text": "Clinically confirmed liver dysfunction",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1002,
+        "start": 964
+      },
+      "source_text": "Clinically confirmed liver dysfunction"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-858c9f64f7ef0e89",
+      "criterion_type": "exclusion",
+      "normalized_text": "Uncontrolled thyroid dysfunction",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1039,
+        "start": 1007
+      },
+      "source_text": "Uncontrolled thyroid dysfunction"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-08dc731ff1a6ea43",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with active cancer (including those undergoing treatment) or history of cancer within the last five years at the time of screening; however, borderline cancers are not excluded if successfully treated and recurrence-free for 2-3 years.",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1288,
+        "start": 1044
+      },
+      "source_text": "Patients with active cancer (including those undergoing treatment) or history of cancer within the last five years at the time of screening; however, borderline cancers are not excluded if successfully treated and recurrence-free for 2-3 years."
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-bd5cfd93e6b4aedb",
+      "criterion_type": "exclusion",
+      "normalized_text": "Continuous use of oral prednisolone at 10mg/day or equivalent, or higher doses of steroids, within the last month",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1406,
+        "start": 1293
+      },
+      "source_text": "Continuous use of oral prednisolone at 10mg/day or equivalent, or higher doses of steroids, within the last month"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-e2739737a78f07b8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with hypersensitivity or history of hypersensitivity to the active or inactive ingredients of this drug",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1523,
+        "start": 1411
+      },
+      "source_text": "Patients with hypersensitivity or history of hypersensitivity to the active or inactive ingredients of this drug"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-e9c2deea2dddfe84",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with type 1 diabetes or diabetic ketoacidosis",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1582,
+        "start": 1528
+      },
+      "source_text": "Patients with type 1 diabetes or diabetic ketoacidosis"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-d9715c0082d33237",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of alcohol or substance abuse",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1624,
+        "start": 1587
+      },
+      "source_text": "History of alcohol or substance abuse"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-ba76b5ea45f430f6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Women of childbearing potential who do not agree to use adequate contraception during the clinical trial period",
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1740,
+        "start": 1629
+      },
+      "source_text": "Women of childbearing potential who do not agree to use adequate contraception during the clinical trial period"
+    }
+  ],
+  "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Adults aged 19 to under 85\n2. Patients who consent to participate in the study and can be followed up during the study\n3. Patients with AF and heart failure who have undergone atrial fibrillation catheter ablation within the last three months or are scheduled to undergo the procedure\n\nExclusion Criteria:\n\n1. Under 19 or over 85 years old\n2. Patients who have participated in another clinical trial within the last three months\n3. Life expectancy of less than one year\n4. Pregnant or breastfeeding women\n5. Currently being treated with an SGLT-2 inhibitor\n6. Three or more urinary or genital infections within the last year\n7. Uncontrolled hypertension: systolic blood pressure ≥ 180mmHg or diastolic blood pressure ≥ 110mmHg\n8. Systolic blood pressure \\< 90mmHg\n9. Acute cardiovascular event within the last 12 weeks\n10. Severe valvular disease or presence of artificial valves\n11. Renal impairment (eGFR CKD-EPI \\< 60 ml/min/1.73m²)\n12. Clinically confirmed liver dysfunction\n13. Uncontrolled thyroid dysfunction\n14. Patients with active cancer (including those undergoing treatment) or history of cancer within the last five years at the time of screening; however, borderline cancers are not excluded if successfully treated and recurrence-free for 2-3 years.\n15. Continuous use of oral prednisolone at 10mg/day or equivalent, or higher doses of steroids, within the last month\n16. Patients with hypersensitivity or history of hypersensitivity to the active or inactive ingredients of this drug\n17. Patients with type 1 diabetes or diabetic ketoacidosis\n18. History of alcohol or substance abuse\n19. Women of childbearing potential who do not agree to use adequate contraception during the clinical trial period",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-05-12",
+  "maximum_age": "84 Years",
+  "minimum_age": "19 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06528262",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+  "source_record_version": "2026-05-12:276ac77d4a8b",
+  "source_url": "https://clinicaltrials.gov/study/NCT06528262",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Effect of Enavogliflozin on Recurrence of Atrial Fibrillation After Catheter Ablation"
+}

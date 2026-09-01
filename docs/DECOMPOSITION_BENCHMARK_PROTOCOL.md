@@ -156,6 +156,29 @@ human to view test candidate text is still prohibited. Quota shortage still
 fails closed without automatic query, filter, date, quota, or source-pool
 expansion.
 
+Execution completed under builder commit
+`7d5f731bc7411a368293c09158fa80205ca93955`. Selection
+`decomposition-selection-b83592f4e26d0874`, SHA-256
+`b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e`,
+preserves 40 dev criteria from 15 trials, retires all 40 original test
+criteria, and selects 40 replacement test criteria from 10 trials. The first
+10 frozen remainder trials all re-passed the current filters and parsed; no
+candidate was skipped. Every 5/7/8 stratum quota, the eight-per-trial cap, and
+the five-trial minimum passed without relaxation.
+
+The replacement test snapshot is
+`decomposition-test-source-a814e1019ffd0186`, SHA-256
+`a814e1019ffd0186999ff448f641dff6969fe15b2f986da9895004121246a941`,
+under ClinicalTrials.gov API version `2.0.5` and data timestamp
+`2026-08-31T09:00:04`. Zero of the 10 current individual-response hashes equal
+their historical complete-search object hashes; this is recorded only as an
+observed identity difference and is not given a causal interpretation. The
+separated dev snapshot is `decomposition-dev-source-9d8d925255a65acd`,
+SHA-256
+`9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9`.
+Both snapshots and the selection passed independent hash-bound verification
+without displaying locked-test text.
+
 ## Concept catalog prerequisite
 
 The frozen core schema permits a normalized `field` string but does not define a

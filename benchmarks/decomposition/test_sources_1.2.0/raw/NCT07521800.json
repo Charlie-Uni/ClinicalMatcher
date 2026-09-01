@@ -1,0 +1,312 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D006327",
+          "term": "Heart Block"
+        },
+        {
+          "id": "D000075224",
+          "term": "Cardiac Conduction System Disease"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D054537",
+          "term": "Atrioventricular Block"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Device: continuous 30-day ECG monitoring with visits triggered by ECG findings",
+          "interventionNames": [
+            "Device: Remote ECG monitoring"
+          ],
+          "label": "Remote ECG monitoring",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Control group, which will receive the standard post op 24-48h ECG monitoring and a regular follow-up visit with standard ECG within 30 days",
+          "interventionNames": [
+            "Device: Standard Care (in control arm)"
+          ],
+          "label": "Standard care",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Remote ECG monitoring"
+          ],
+          "description": "Patients will be randomized to the study group (continuous 30-day ECG monitoring with visits triggered by ECG findings) and the control group (which will receive the standard post op 24-48h ECG monitoring and a regular follow-up visit with standard ECG within 30 days).",
+          "name": "Remote ECG monitoring",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Standard care"
+          ],
+          "description": "Description: Patients will be randomized to the study group (continuous 30-day ECG monitoring with visits triggered by ECG findings) and the control group (which will receive the standard post op 24-48h ECG monitoring and a regular follow-up visit with standard ECG within 30 days).",
+          "name": "Standard Care (in control arm)",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "TAVI(Transcatheter Aortic Valve Implantation)",
+        "Remote Monitoring",
+        "Arrythmia",
+        "Atrial Fibrillation (AF)",
+        "Atrioventricular Block"
+      ],
+      "keywords": [
+        "TAVI",
+        "ECG",
+        "Monitoring"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "wojciech.wanha@gmail.com",
+          "name": "Wojciech Wańha, MD, PhD",
+          "phone": "504827636",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Turin",
+          "contacts": [
+            {
+              "name": "Fabrizio D'Ascenzo, Professor of Medicine",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Italy",
+          "facility": "Division of Cardiology, Departement of Medical Science University of Turin, Città della Salute e Della Scienza",
+          "geoPoint": {
+            "lat": 45.07049,
+            "lon": 7.68682
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Bialystok",
+          "contacts": [
+            {
+              "email": "kuzma.lukasz@gmail.com",
+              "name": "Łukasz Kuźma",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Poland",
+          "facility": "Department of Invasive Cardiology, Medical University of Białystok, Bialystok, Poland",
+          "geoPoint": {
+            "lat": 53.13333,
+            "lon": 23.16433
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Katowice",
+          "contacts": [
+            {
+              "email": "wojciech.wanha@gmail.com",
+              "name": "Wojciech Wańha, MD, PhD",
+              "phone": "504827636",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Poland",
+          "facility": "Medical University of Silesia",
+          "geoPoint": {
+            "lat": 50.2597,
+            "lon": 19.02173
+          },
+          "status": "RECRUITING",
+          "zip": "40-055"
+        },
+        {
+          "city": "Katowice",
+          "contacts": [
+            {
+              "email": "wojciech.wanha@gmail.com",
+              "name": "Wojciech Wańha, MD, PhD",
+              "phone": "0048504827636",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Wojciech Wańha, PhD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Wojciech Wojakowski, Prof.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Grzegorz Smolka, Prof.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Krystian Wita, Prof.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Poland",
+          "facility": "Department of Cardiology and Structural Heart Diseases, Medical University of Silesia, Katowice, Poland",
+          "geoPoint": {
+            "lat": 50.2597,
+            "lon": 19.02173
+          },
+          "status": "NOT_YET_RECRUITING",
+          "zip": "40-635"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The DRAGON TAVI study is a multicenter, prospective, open, randomised trial, which will enrol 250 patients, randomized 1:1 to the study group (continuous 30-day ECG monitoring with visits triggered by ECG findings) and standard care (ie. control group, which will receive the standard post op 24-48h ECG monitoring and a regular follow-up visit with standard ECG within 30 days). The duration of the study is 12 months ± 1 month."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "CROSSOVER",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 250,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patient age over 18 years old\n* Severe aortic stenosis\n* Moderate or high cardiovascular risk based on current ESC Guidelines \"Heart Team\" qualification for TAVI\n* Written informed consent of the patient for participation in the study\n\nExclusion Criteria:\n\n* History of atrial fibrillation or atrial flutter\n* Previously known conduction disturbances\\*\\*\n* Presence of: pacemaker, CRT-P, ICD, CRT-D before or after TAVI\n* Ischaemic stroke, TIA, MI or heart surgery within 1 month before TAVI qualification\n* Haemorrhagic stroke within 1 year before TAVI qualification\n* Chronic immunosuppressive therapy\n* Comorbidities (e.g. drug addiction, alcohol abuse, emotional/mental disorders) which do not allow safe participation in the study",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "DRAGON-TAVI",
+      "briefTitle": "Remote ECG Monitoring Post TAVI",
+      "nctId": "NCT07521800",
+      "officialTitle": "Remote ECG Monitoring as a Diagnostic Tool for Therapeutic Strategies After Transcatheter Aortic Valve Replacement: Rationale and Design of the DRAGON-TAVI Trial.",
+      "orgStudyIdInfo": {
+        "id": "08"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Medical University of Silesia"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "The first primary endpoint will be the assessment of the total incidence of clinically significant atrio-ventricular block.",
+          "timeFrame": "30 days"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Secondary endpoints will include: All-cause mortality; Major composite adverse cardiovascular events (MACEs, ie, cardiovascular death, stroke, myocardial infarction, hospitalisation for heart failure); Episodes of syncope; cardiac arrhythmias",
+          "timeFrame": "24 months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Medical University of Silesia"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Medical University of Silesia",
+        "investigatorFullName": "Wojciech Wańha",
+        "investigatorTitle": "MD, PhD, Prof.",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-02-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-04-13",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-04-07",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-02-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-12-01",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2026-04-13",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-11-24",
+      "studyFirstSubmitQcDate": "2026-04-07"
+    }
+  }
+}

@@ -1,0 +1,366 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D020969",
+          "term": "Disease Attributes"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D016638",
+          "term": "Critical Illness"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D017616",
+          "term": "Magnesium Compounds"
+        },
+        {
+          "id": "D007287",
+          "term": "Inorganic Chemicals"
+        },
+        {
+          "id": "D013431",
+          "term": "Sulfates"
+        },
+        {
+          "id": "D013464",
+          "term": "Sulfuric Acids"
+        },
+        {
+          "id": "D013456",
+          "term": "Sulfur Acids"
+        },
+        {
+          "id": "D013457",
+          "term": "Sulfur Compounds"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D008278",
+          "term": "Magnesium Sulfate"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "4g Magnesium sulfate (100mL) BID, given intravenously over 2 hours, for a total of 10 doses",
+          "interventionNames": [
+            "Drug: Magnesium sulfate"
+          ],
+          "label": "Magnesium Sulfate",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "100mL 0.9% NaCl BID, given intravenously over 2 hours, for a total of 10 doses",
+          "interventionNames": [
+            "Drug: Placebo"
+          ],
+          "label": "0.9% NaCl",
+          "type": "PLACEBO_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Magnesium Sulfate"
+          ],
+          "description": "Intravenous Magnesium sulfate",
+          "name": "Magnesium sulfate",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "0.9% NaCl"
+          ],
+          "description": "0.9% NaCl",
+          "name": "Placebo",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Critical Illness",
+        "New Onset Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Prophylaxis",
+        "Prevention"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "miranda.hunt@kingstonhsc.ca",
+          "name": "Miranda Hunt",
+          "phone": "613 549 6666",
+          "phoneExt": "3190",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Hamilton",
+          "contacts": [
+            {
+              "name": "Dr. Deborah Cook, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Canada",
+          "facility": "St Joseph's Healthcare Hamilton",
+          "geoPoint": {
+            "lat": 43.25011,
+            "lon": -79.84963
+          },
+          "state": "Ontario",
+          "status": "NOT_YET_RECRUITING",
+          "zip": "L8N 1Y3"
+        },
+        {
+          "city": "Kingston",
+          "contacts": [
+            {
+              "email": "miranda.hunt@kingstonhsc.ca",
+              "name": "Miranda Hunt",
+              "phone": "613 549 9999",
+              "phoneExt": "3190",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Stephanie Sibley, MD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Canada",
+          "facility": "Kingston Health Sciences Centre",
+          "geoPoint": {
+            "lat": 44.22976,
+            "lon": -76.48098
+          },
+          "state": "Ontario",
+          "status": "RECRUITING",
+          "zip": "K7L2V7"
+        },
+        {
+          "city": "Ottawa",
+          "contacts": [
+            {
+              "name": "Dr. Andrew Seely, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Canada",
+          "facility": "The Ottawa Hospital - General Campus",
+          "geoPoint": {
+            "lat": 45.41117,
+            "lon": -75.69812
+          },
+          "state": "Ontario",
+          "status": "NOT_YET_RECRUITING",
+          "zip": "K1H 8L6"
+        },
+        {
+          "city": "Ottawa",
+          "contacts": [
+            {
+              "name": "Andrew Seely, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Canada",
+          "facility": "The Ottawa Hospital - Civic Campus",
+          "geoPoint": {
+            "lat": 45.41117,
+            "lon": -75.69812
+          },
+          "state": "Ontario",
+          "status": "NOT_YET_RECRUITING",
+          "zip": "K1Y 4E9"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Queen's University",
+          "name": "Stephanie Sibley, MD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "A double-blind, multi-centre, randomized, placebo-controlled, feasibility pilot trial in the prevention of new onset atrial fibrillation of critically ill patients admitted to an ICU.",
+      "detailedDescription": "Most studies of new onset atrial fibrillation (NOAF) in critical illness focus on treatment of this arrhythmia but this innovative study will focus on prevention. Parenteral Mg is a low cost and readily available treatment that may be beneficial for reducing the incidence of NOAF in critically ill patients, with the potential to improve patient centred outcomes and provide a cost effective prophylaxis. The main outcome of this study is to determine if it is feasible to conduct a randomized controlled trial comparing parenteral magnesium sulfate with placebo for the prophylaxis of new onset atrial fibrillation in critically ill patients."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "QUADRUPLE",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 200,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria\n\n1. Age ≥18 years;\n2. Admitted to an ICU with one or more of the following:\n\n   1. Non-invasive ventilation (including CPAP, Bipap and high flow oxygen (\\>10L/min) or invasive mechanical ventilation with an expected duration \\>24 hours for respiratory failure (hypercarbic or hypoxic)\n   2. Vasopressor or inotropic support with an expected duration of \\>24 hours\n   3. Cardiac arrest\n3. Continuous cardiac monitoring.\n\nExclusion Criteria\n\n1. Receiving ICU intervention (Non-invasive ventilation (including high flow nasal canula), invasive mechanical ventilation or inotropic support) for \\>18 hours\n2. Receiving IMV for airway protection only (for example, isolated head trauma)\n3. Active atrial fibrillation at the time of enrolment\n4. On oral or continuous infusion of Amiodarone\n5. Unlikely to survive \\>24 hours or palliative patients\n6. Cardiac surgery patients\n7. Patients requiring parenteral magnesium therapy (e.g. pre-eclampsia, asthma)\n8. Patients receiving dialysis\n9. Positive pregnancy test (females \\<50 years old)\n10. Previously enrolled in this trial\n11. Treating physician refuses enrollment",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ATOMIC",
+      "briefTitle": "Magnesium Prophylaxis for the Prevention of New-Onset Atrial Fibrillation in Critically Ill Patients",
+      "nctId": "NCT05829317",
+      "officialTitle": "Parenteral Magnesium Prophylaxis for the Prevention of New-Onset Atrial Fibrillation in Critically Ill Patients - a Pilot Feasibility Study",
+      "orgStudyIdInfo": {
+        "id": "ATOMIC"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Queen's University"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "UNDECIDED"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "To assess feasibility of patient recruitment, randomization procedures, intervention and data collection and measure protocol adherence. Protocol adherence ≥ 90% (We define protocol adherence as administration of first dose of study drug within 18 hours (+1hr window) of 1st ICU intervention (life sustaining therapy) delivery of all additional",
+          "measure": "RCT Feasibility",
+          "timeFrame": "90 days"
+        },
+        {
+          "description": "Recruitment rate of ≥ 2 patients/month/ICU",
+          "measure": "RCT Feasibility",
+          "timeFrame": "90 days"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Physician willingness to recruit patients in the setting of existing electrolyte replacement protocols; effectiveness of blinding; proportion of patients who meet eligibility criteria of those admitted to ICU; proportion of eligible patients for whom consent is obtained; proportion of patients who re-consent when they regain capacity for those randomized under the deferred consent model; proportion of patients lost to follow-up; time for research personnel to complete study related tasks.",
+          "measure": "Equipoise and Feasibility",
+          "timeFrame": "365 days"
+        },
+        {
+          "description": "Total number of patients developing AF within 28 days of enrolment (AF will be defined as at least 30 seconds of NOAF detected by cardiac monitoring or ECG); Use of rate and rhythm controlling agents, vasoactive agents, diuretics, steroids, anticoagulants, bleeding events, thromboembolic events (as defined in the 2018 Canadian Stroke Best Practices Guideline1; these will be adjudicated by a neurologist blinded to study groups), persistent organ dysfunction, mortality",
+          "measure": "Acute Care Outcomes",
+          "timeFrame": "28 days"
+        },
+        {
+          "description": "Days alive and ventilator free, ICU length of stay, and hospital length of stay.",
+          "measure": "Hospital Outcomes",
+          "timeFrame": "28 days"
+        },
+        {
+          "description": "Adverse drug reactions including bradycardia (HR \\<60 bpm); severe bradycardia (HR \\<50 bpm); clinically significant bradycardia (bradycardia requiring inotropes, vasopressors, external pacing, temporary pacemaker, or discontinuation of the trial medication); hypotension (MAP\\< 65mmHg, or systolic blood pressure \\[SBP\\]\\>20mmHg below admission baseline); clinically significant hypotension (hypotension requiring vasopressors, fluid administration, or discontinuation of the trial medication) while the study drug is being infused.",
+          "measure": "Adverse Events",
+          "timeFrame": "28 days"
+        },
+        {
+          "description": "EQ-5D score, death after discharge.",
+          "measure": "Functional Outcomes",
+          "timeFrame": "365 days"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "UNKNOWN",
+          "name": "Southeastern Ontario Academic Medical Organization (SEAMO)"
+        },
+        {
+          "class": "OTHER_GOV",
+          "name": "Canadian Institutes of Health Research (CIHR)"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Dr. Stephanie Sibley"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Queen's University",
+        "investigatorFullName": "Dr. Stephanie Sibley",
+        "investigatorTitle": "Assistant Professor",
+        "type": "SPONSOR_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-07-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-09-22",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-09-17",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2028-03-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-08-20",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-09",
+      "studyFirstPostDateStruct": {
+        "date": "2023-04-25",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-03-15",
+      "studyFirstSubmitQcDate": "2023-04-12"
+    }
+  }
+}

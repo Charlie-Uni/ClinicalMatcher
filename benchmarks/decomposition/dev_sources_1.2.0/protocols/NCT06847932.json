@@ -1,0 +1,123 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06847932-inclusion-ca070c2648a408c4",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients in the inpatient department or the outpatient department",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 88,
+        "start": 23
+      },
+      "source_text": "Patients in the inpatient department or the outpatient department"
+    },
+    {
+      "criterion_id": "nct06847932-inclusion-8a0f1024c7b2a53e",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients need to have at least one electrocardiogram within one year",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 159,
+        "start": 91
+      },
+      "source_text": "Patients need to have at least one electrocardiogram within one year"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-c35196f3d7c33bd1",
+      "criterion_type": "exclusion",
+      "normalized_text": "Diagnosis of atrial fibrillation/atrial flutter",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 231,
+        "start": 184
+      },
+      "source_text": "Diagnosis of atrial fibrillation/atrial flutter"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-03dedc99348a4543",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of atrial fibrillation/atrial flutter catheter ablation",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 297,
+        "start": 234
+      },
+      "source_text": "History of atrial fibrillation/atrial flutter catheter ablation"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-6c98425e92472a1d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with cardiac implantable electronic devices",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 352,
+        "start": 300
+      },
+      "source_text": "Patients with cardiac implantable electronic devices"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-bf5951810876b3fd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any documented electrocardiogram showed atrial fibrillation/atrial flutter and pacing rhythm",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 447,
+        "start": 355
+      },
+      "source_text": "Any documented electrocardiogram showed atrial fibrillation/atrial flutter and pacing rhythm"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-97440138336b7545",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of received rhythm control medications for atrial arrhythmia, including Class I and Class III antiarrhythmic drugs",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 572,
+        "start": 450
+      },
+      "source_text": "History of received rhythm control medications for atrial arrhythmia, including Class I and Class III antiarrhythmic drugs"
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-d10387c2536672a0",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any reasons indicate for anti-coagulant agents, including vitamin K antagonist and non-vitamin K antagonist oral anticoagulant",
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 701,
+        "start": 575
+      },
+      "source_text": "Any reasons indicate for anti-coagulant agents, including vitamin K antagonist and non-vitamin K antagonist oral anticoagulant"
+    }
+  ],
+  "eligibility_sha256": "2130031866cd21dd5401698466d637f24968f26179b2c0f93a7d98dc3d7b3d42",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patients in the inpatient department or the outpatient department\n* Patients need to have at least one electrocardiogram within one year\n\nExclusion Criteria:\n\n* Diagnosis of atrial fibrillation/atrial flutter\n* History of atrial fibrillation/atrial flutter catheter ablation\n* Patients with cardiac implantable electronic devices\n* Any documented electrocardiogram showed atrial fibrillation/atrial flutter and pacing rhythm\n* History of received rhythm control medications for atrial arrhythmia, including Class I and Class III antiarrhythmic drugs\n* Any reasons indicate for anti-coagulant agents, including vitamin K antagonist and non-vitamin K antagonist oral anticoagulant",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-11-19",
+  "maximum_age": "85 Days",
+  "minimum_age": "40 Days",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06847932",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+  "source_record_version": "2025-11-19:2130031866cd",
+  "source_url": "https://clinicaltrials.gov/study/NCT06847932",
+  "standard_ages": [
+    "CHILD"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Leveraging AI-ECG Technology for Early Notification and Tracking of AF Development"
+}

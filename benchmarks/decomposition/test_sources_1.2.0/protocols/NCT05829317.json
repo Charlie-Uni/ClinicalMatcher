@@ -1,0 +1,223 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05829317-inclusion-25525fbc3778811b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥18 years;",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 37,
+        "start": 23
+      },
+      "source_text": "Age ≥18 years;"
+    },
+    {
+      "criterion_id": "nct05829317-inclusion-d87a5b90f697cfdc",
+      "criterion_type": "inclusion",
+      "normalized_text": "Admitted to an ICU with one or more of the following:",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 94,
+        "start": 41
+      },
+      "source_text": "Admitted to an ICU with one or more of the following:"
+    },
+    {
+      "criterion_id": "nct05829317-inclusion-ae26f2565921afef",
+      "criterion_type": "inclusion",
+      "normalized_text": "Non-invasive ventilation (including CPAP, Bipap and high flow oxygen (>10L/min) or invasive mechanical ventilation with an expected duration >24 hours for respiratory failure (hypercarbic or hypoxic)",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 303,
+        "start": 102
+      },
+      "source_text": "Non-invasive ventilation (including CPAP, Bipap and high flow oxygen (\\>10L/min) or invasive mechanical ventilation with an expected duration \\>24 hours for respiratory failure (hypercarbic or hypoxic)"
+    },
+    {
+      "criterion_id": "nct05829317-inclusion-ac3d5b452c45a4a5",
+      "criterion_type": "inclusion",
+      "normalized_text": "Vasopressor or inotropic support with an expected duration of >24 hours",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 382,
+        "start": 310
+      },
+      "source_text": "Vasopressor or inotropic support with an expected duration of \\>24 hours"
+    },
+    {
+      "criterion_id": "nct05829317-inclusion-a60d4348b23024a8",
+      "criterion_type": "inclusion",
+      "normalized_text": "Cardiac arrest",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 403,
+        "start": 389
+      },
+      "source_text": "Cardiac arrest"
+    },
+    {
+      "criterion_id": "nct05829317-inclusion-827b0737007d31f8",
+      "criterion_type": "inclusion",
+      "normalized_text": "Continuous cardiac monitoring.",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 437,
+        "start": 407
+      },
+      "source_text": "Continuous cardiac monitoring."
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-a9b8b3c41483a9f5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Receiving ICU intervention (Non-invasive ventilation (including high flow nasal canula), invasive mechanical ventilation or inotropic support) for >18 hours",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 619,
+        "start": 462
+      },
+      "source_text": "Receiving ICU intervention (Non-invasive ventilation (including high flow nasal canula), invasive mechanical ventilation or inotropic support) for \\>18 hours"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-9abeb1d2a9b07c46",
+      "criterion_type": "exclusion",
+      "normalized_text": "Receiving IMV for airway protection only (for example, isolated head trauma)",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 699,
+        "start": 623
+      },
+      "source_text": "Receiving IMV for airway protection only (for example, isolated head trauma)"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-c991e34d7653d8ae",
+      "criterion_type": "exclusion",
+      "normalized_text": "Active atrial fibrillation at the time of enrolment",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 754,
+        "start": 703
+      },
+      "source_text": "Active atrial fibrillation at the time of enrolment"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-fa4e2ba6c34d7204",
+      "criterion_type": "exclusion",
+      "normalized_text": "On oral or continuous infusion of Amiodarone",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 802,
+        "start": 758
+      },
+      "source_text": "On oral or continuous infusion of Amiodarone"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-b2064d8de26a4b91",
+      "criterion_type": "exclusion",
+      "normalized_text": "Unlikely to survive >24 hours or palliative patients",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 859,
+        "start": 806
+      },
+      "source_text": "Unlikely to survive \\>24 hours or palliative patients"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-56767675233be319",
+      "criterion_type": "exclusion",
+      "normalized_text": "Cardiac surgery patients",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 887,
+        "start": 863
+      },
+      "source_text": "Cardiac surgery patients"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-c5e0660e6e8170cf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients requiring parenteral magnesium therapy (e.g. pre-eclampsia, asthma)",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 967,
+        "start": 891
+      },
+      "source_text": "Patients requiring parenteral magnesium therapy (e.g. pre-eclampsia, asthma)"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-5c05a8f0dfc4a628",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients receiving dialysis",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 998,
+        "start": 971
+      },
+      "source_text": "Patients receiving dialysis"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-b8a0f4ccb1be5044",
+      "criterion_type": "exclusion",
+      "normalized_text": "Positive pregnancy test (females <50 years old)",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 1050,
+        "start": 1002
+      },
+      "source_text": "Positive pregnancy test (females \\<50 years old)"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-059c76a33f88697d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previously enrolled in this trial",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 1088,
+        "start": 1055
+      },
+      "source_text": "Previously enrolled in this trial"
+    },
+    {
+      "criterion_id": "nct05829317-exclusion-108857f3083e616c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Treating physician refuses enrollment",
+      "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+      "source_span": {
+        "end": 1130,
+        "start": 1093
+      },
+      "source_text": "Treating physician refuses enrollment"
+    }
+  ],
+  "eligibility_sha256": "e5c029614c0daa79b1b08114c5f8c73fc2429a397c8f8e1c1efa128eabd522a5",
+  "eligibility_text": "Inclusion Criteria\n\n1. Age ≥18 years;\n2. Admitted to an ICU with one or more of the following:\n\n   1. Non-invasive ventilation (including CPAP, Bipap and high flow oxygen (\\>10L/min) or invasive mechanical ventilation with an expected duration \\>24 hours for respiratory failure (hypercarbic or hypoxic)\n   2. Vasopressor or inotropic support with an expected duration of \\>24 hours\n   3. Cardiac arrest\n3. Continuous cardiac monitoring.\n\nExclusion Criteria\n\n1. Receiving ICU intervention (Non-invasive ventilation (including high flow nasal canula), invasive mechanical ventilation or inotropic support) for \\>18 hours\n2. Receiving IMV for airway protection only (for example, isolated head trauma)\n3. Active atrial fibrillation at the time of enrolment\n4. On oral or continuous infusion of Amiodarone\n5. Unlikely to survive \\>24 hours or palliative patients\n6. Cardiac surgery patients\n7. Patients requiring parenteral magnesium therapy (e.g. pre-eclampsia, asthma)\n8. Patients receiving dialysis\n9. Positive pregnancy test (females \\<50 years old)\n10. Previously enrolled in this trial\n11. Treating physician refuses enrollment",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2025-09-22",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05829317",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:36.440185Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05829317:eligibility:2025-09-22:e5c029614c0d",
+  "source_record_version": "2025-09-22:e5c029614c0d",
+  "source_url": "https://clinicaltrials.gov/study/NCT05829317",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Magnesium Prophylaxis for the Prevention of New-Onset Atrial Fibrillation in Critically Ill Patients"
+}

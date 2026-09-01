@@ -1,0 +1,157 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07521800-inclusion-fbdf4805f65e096d",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patient age over 18 years old",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 52,
+        "start": 23
+      },
+      "source_text": "Patient age over 18 years old"
+    },
+    {
+      "criterion_id": "nct07521800-inclusion-7de15ba6ce06adca",
+      "criterion_type": "inclusion",
+      "normalized_text": "Severe aortic stenosis",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 77,
+        "start": 55
+      },
+      "source_text": "Severe aortic stenosis"
+    },
+    {
+      "criterion_id": "nct07521800-inclusion-0f3eaf6a916f7202",
+      "criterion_type": "inclusion",
+      "normalized_text": "Moderate or high cardiovascular risk based on current ESC Guidelines \"Heart Team\" qualification for TAVI",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 184,
+        "start": 80
+      },
+      "source_text": "Moderate or high cardiovascular risk based on current ESC Guidelines \"Heart Team\" qualification for TAVI"
+    },
+    {
+      "criterion_id": "nct07521800-inclusion-6428e43703cd35cd",
+      "criterion_type": "inclusion",
+      "normalized_text": "Written informed consent of the patient for participation in the study",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 257,
+        "start": 187
+      },
+      "source_text": "Written informed consent of the patient for participation in the study"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-2432303eb02df466",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of atrial fibrillation or atrial flutter",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 330,
+        "start": 282
+      },
+      "source_text": "History of atrial fibrillation or atrial flutter"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-dc35b9a96f89cc5c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previously known conduction disturbances\\*\\*",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 377,
+        "start": 333
+      },
+      "source_text": "Previously known conduction disturbances\\*\\*"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-3bd1fc7db15d1526",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of: pacemaker, CRT-P, ICD, CRT-D before or after TAVI",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 442,
+        "start": 380
+      },
+      "source_text": "Presence of: pacemaker, CRT-P, ICD, CRT-D before or after TAVI"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-11e7b7bce4ea90d7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ischaemic stroke, TIA, MI or heart surgery within 1 month before TAVI qualification",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 528,
+        "start": 445
+      },
+      "source_text": "Ischaemic stroke, TIA, MI or heart surgery within 1 month before TAVI qualification"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-517dc8440a7a0806",
+      "criterion_type": "exclusion",
+      "normalized_text": "Haemorrhagic stroke within 1 year before TAVI qualification",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 590,
+        "start": 531
+      },
+      "source_text": "Haemorrhagic stroke within 1 year before TAVI qualification"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-b66672189c46564f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Chronic immunosuppressive therapy",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 626,
+        "start": 593
+      },
+      "source_text": "Chronic immunosuppressive therapy"
+    },
+    {
+      "criterion_id": "nct07521800-exclusion-a105d7f9c2ac1557",
+      "criterion_type": "exclusion",
+      "normalized_text": "Comorbidities (e.g. drug addiction, alcohol abuse, emotional/mental disorders) which do not allow safe participation in the study",
+      "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+      "source_span": {
+        "end": 758,
+        "start": 629
+      },
+      "source_text": "Comorbidities (e.g. drug addiction, alcohol abuse, emotional/mental disorders) which do not allow safe participation in the study"
+    }
+  ],
+  "eligibility_sha256": "1e7af82871bf9f35272124a312343fa90159e96bcb2acbff26b7abf7ab6d9294",
+  "eligibility_text": "Inclusion Criteria:\n\n* Patient age over 18 years old\n* Severe aortic stenosis\n* Moderate or high cardiovascular risk based on current ESC Guidelines \"Heart Team\" qualification for TAVI\n* Written informed consent of the patient for participation in the study\n\nExclusion Criteria:\n\n* History of atrial fibrillation or atrial flutter\n* Previously known conduction disturbances\\*\\*\n* Presence of: pacemaker, CRT-P, ICD, CRT-D before or after TAVI\n* Ischaemic stroke, TIA, MI or heart surgery within 1 month before TAVI qualification\n* Haemorrhagic stroke within 1 year before TAVI qualification\n* Chronic immunosuppressive therapy\n* Comorbidities (e.g. drug addiction, alcohol abuse, emotional/mental disorders) which do not allow safe participation in the study",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-04-13",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07521800",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:39.367327Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07521800:eligibility:2026-04-13:1e7af82871bf",
+  "source_record_version": "2026-04-13:1e7af82871bf",
+  "source_url": "https://clinicaltrials.gov/study/NCT07521800",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Remote ECG Monitoring Post TAVI"
+}

@@ -1,0 +1,91 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06007872-inclusion-e280adfc0698a565",
+      "criterion_type": "inclusion",
+      "normalized_text": "All patients who meet guideline established criteria for commercially available Watchman device implant and not enrolled in an active clinical trial",
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 171,
+        "start": 23
+      },
+      "source_text": "All patients who meet guideline established criteria for commercially available Watchman device implant and not enrolled in an active clinical trial"
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-eb3acff60f1bd9ae",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients in whom a procedural TEE cannot be performed and an ICE only implant is needed.",
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 284,
+        "start": 196
+      },
+      "source_text": "Patients in whom a procedural TEE cannot be performed and an ICE only implant is needed."
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-ad38cddc2b9ed27c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients receiving a concomitant ablation procedure",
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 338,
+        "start": 287
+      },
+      "source_text": "Patients receiving a concomitant ablation procedure"
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-8a27abac4e0b299a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures",
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 448,
+        "start": 341
+      },
+      "source_text": "Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures"
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-66e37cc7a25e9914",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients in whom the delivery of trans-septal equipment is anticipated to be difficult (e.g. patent foramen ovale (PFO) or atrial septal defect (ASD) closure devices in place).",
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 627,
+        "start": 451
+      },
+      "source_text": "Patients in whom the delivery of trans-septal equipment is anticipated to be difficult (e.g. patent foramen ovale (PFO) or atrial septal defect (ASD) closure devices in place)."
+    }
+  ],
+  "eligibility_sha256": "1e861dba3047f5bfaf43b237aab9bd304e6b49c6949c8b531edb63bf29e34c09",
+  "eligibility_text": "Inclusion Criteria:\n\n* All patients who meet guideline established criteria for commercially available Watchman device implant and not enrolled in an active clinical trial\n\nExclusion Criteria:\n\n* Patients in whom a procedural TEE cannot be performed and an ICE only implant is needed.\n* Patients receiving a concomitant ablation procedure\n* Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures\n* Patients in whom the delivery of trans-septal equipment is anticipated to be difficult (e.g. patent foramen ovale (PFO) or atrial septal defect (ASD) closure devices in place).",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-10-21",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06007872",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+  "source_record_version": "2025-10-21:1e861dba3047",
+  "source_url": "https://clinicaltrials.gov/study/NCT06007872",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Intracardiac Echocardiography Guided Watchman Device Implant"
+}

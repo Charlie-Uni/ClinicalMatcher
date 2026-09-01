@@ -1,0 +1,429 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D002561",
+          "term": "Cerebrovascular Disorders"
+        },
+        {
+          "id": "D001927",
+          "term": "Brain Diseases"
+        },
+        {
+          "id": "D002493",
+          "term": "Central Nervous System Diseases"
+        },
+        {
+          "id": "D009422",
+          "term": "Nervous System Diseases"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D020521",
+          "term": "Stroke"
+        },
+        {
+          "id": "D006333",
+          "term": "Heart Failure"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "interventionNames": [
+            "Other: Early atrial fibrillation ablation"
+          ],
+          "label": "Early atrial fibrillation ablation",
+          "type": "OTHER"
+        },
+        {
+          "interventionNames": [
+            "Other: Usual Care"
+          ],
+          "label": "Usual Care",
+          "type": "OTHER"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Early atrial fibrillation ablation"
+          ],
+          "description": "Patients randomised to early atrial fibrillation ablation will undergo pulmonary vein isolation within 2 months after randomisation.",
+          "name": "Early atrial fibrillation ablation",
+          "type": "OTHER"
+        },
+        {
+          "armGroupLabels": [
+            "Usual Care"
+          ],
+          "description": "Usual care will consist of optimal AF therapy based on guideline recommendations and local protocols and usage.The choice of therapies and medications follows routine care in line with medical guidelines and local policies at the discretion of the treating physician and should be based on the individual medical status of each study patient.",
+          "name": "Usual Care",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "Early atrial fibrillation ablation",
+        "High comorbidity burden",
+        "CHA2DS2-VASc score",
+        "Early rhythm control",
+        "Stroke",
+        "Heart failure",
+        "Cardiovascular death",
+        "Cryoballoon"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "easthigh@af-net.eu",
+          "name": "Antje Albring, Dr.",
+          "phone": "+49 251 980 1330",
+          "role": "CONTACT"
+        },
+        {
+          "email": "easthigh@af-net.eu",
+          "name": "Anna-Katharina Quade",
+          "phone": "+49 251 980 1330",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Multiple Locations",
+          "country": "Australia",
+          "facility": "Several sites",
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "Canada",
+          "facility": "Several sites",
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "Germany",
+          "facility": "Several sites",
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "Netherlands",
+          "facility": "Several sites",
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "Poland",
+          "facility": "Several sites",
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "Spain",
+          "facility": "Several sites",
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Multiple Locations",
+          "country": "United Kingdom",
+          "facility": "Several sites",
+          "status": "NOT_YET_RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University Heart and Vascular Center Hamburg, University Hospital Hamburg Eppendorf",
+          "name": "Paulus Kirchhof, Prof. Dr.",
+          "role": "STUDY_DIRECTOR"
+        },
+        {
+          "affiliation": "University Heart and Vascular Center Hamburg, University Hospital Hamburg Eppendorf",
+          "name": "Andreas Rillig, PD Dr.",
+          "role": "STUDY_DIRECTOR"
+        },
+        {
+          "affiliation": "University of British Columbia, Vancouver General Hospital, Department of Electrophysiology",
+          "name": "Jason Andrade, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Department of Cardiovascular Sciences, University of Leicester",
+          "name": "André Ng, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Centre for Heart Rhythm Disorders, University of Adelaide, Royal Adelaide Hospital",
+          "name": "Prash Sanders, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Patient representative",
+          "name": "Volker Straub",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Department of Cardiology, Cardiovascular Research Institute Maastricht (CARIM), Maastricht University Medical Center (MUMC)",
+          "name": "Kevin Vernooy, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        },
+        {
+          "affiliation": "Universitätsklinikum Hamburg-Eppendorf",
+          "name": "Antonia Zapf, Prof. Dr.",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "EASThigh-AFNET 11 is an international, prospective, randomized, open, blinded endpoint assessment, multicenter trial (Treatment Strategy trial).\n\nThe objective of EASThigh-AFNET 11 is to investigate whether early atrial fibrillation ablation in patients with atrial fibrillation (AF) and a high comorbidity burden (CHA2DS2-VASc ≥4) reduces cardiovascular events (stroke, cardiovascular death, or heart failure events) compared to usual care.",
+      "detailedDescription": "Atrial Fibrillation (AF) is associated with high morbidity and mortality. Even on optimal anticoagulation and therapy of concomitant conditions, many patients with AF suffer cardiovascular events, especially heart failure events, stroke, and cardiovascular death. Most of these events occur in elderly patients with comorbidities. Early rhythm control, mainly delivered using antiarrhythmic drugs, reduces AF-related complications when added to anticoagulation, rate control, and treatment of comorbidities when compared to current practice that offers rhythm control mainly to reduce symptoms. The outcome-reducing effect of early rhythm control is most pronounced in patients with multiple comorbidities, quantified by a CHA2DS2-VASc score ≥ 4. Attaining sinus rhythm is the key mediator for the outcome-reducing effect of early rhythm control. Atrial fibrillation ablation controls the rhythm better than drug-based rhythm control, avoids long-term antiarrhythmic drug treatment, thus reducing polypharmacy, and may therefore be the ideal rhythm control treatment in patients with AF and a high comorbidity burden. This hypothesis needs testing. The investigator-initiated EASThigh-AFNET 11 trial evaluates the effectiveness and safety of early atrial fibrillation ablation in patients with recently diagnosed AF and a high comorbidity burden.\n\nEASThigh-AFNET 11 is a Treatment Strategy trial randomizing 2312 patients with AF and a high comorbidity burden to early atrial fibrillation ablation or usual care to achieve a fixed number of primary endpoint events of n=527. All therapies are clinically approved. The primary outcome is a composite of cardiovascular death, stroke, and hospitalization for worsening of heart failure. The primary safety outcome is a composite of all-cause death and serious complications of AF therapy. Secondary outcome parameters address safety, patient reported outcomes and cognitive function.\n\nEASThigh-AFNET 11 was recommended for funding by the Expert Advisory Panel of the Global Cardiovascular Research Funders Forum (GCRFF)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "maskingDescription": "blinded endpoint assessment",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 2312,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\nI1. AF first diagnosed within 5 years prior to enrolment and documented in body surface ECG\n\nI2. High comorbidity estimated by CHA2DS2-VASc score of 4 or more\n\nI3. Patient suitable for ablation using cryoballoon ablation systems or other ablation systems with comparable efficacy and safety from Medtronic\n\nI4. Age ≥ 18 years\n\nI5. Provision of signed informed consent\n\nExclusion Criteria:\n\nGeneral exclusion criteria\n\nE1. Any disease that limits life expectancy to less than 1 year.\n\nE2. Participation in another clinical trial, either within the 3 months prior to enrolment or still on-going (participation in potential sub-studies connected to this trial is permitted).\n\nE3. Previous participation in EASThigh-AFNET 11.\n\nE4. Pregnant women.\n\nE5. Breastfeeding women.\n\nE6. Drug abuse or clinically manifest alcohol abuse.\n\nExclusion criteria related to a cardiac condition\n\nE7. Prior AF ablation or surgical therapy of AF.\n\nE8. Patients not suitable for AF ablation.\n\nE9. Patients with a history of stroke which occurred within 3 months prior to enrolment.\n\nE10. Valve disease requiring specific therapy.\n\nExclusion criteria based on laboratory abnormalities\n\nE11. Clinically manifested thyroid dysfunction requiring therapy.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Early Atrial Fibrillation Ablation for Stroke Prevention in Patients With High Comorbidity Burden (EASThigh-AFNET 11)",
+      "nctId": "NCT06324188",
+      "officialTitle": "Early Atrial Fibrillation Ablation for Stroke Prevention in Patients With High Comorbidity Burden (EASThigh-AFNET 11)",
+      "orgStudyIdInfo": {
+        "id": "EASThigh-AFNET 11"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Atrial Fibrillation Network"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "It is defined as time from randomisation to the first occurrence of a composite of cardiovascular death, stroke (either ischemic or hemorrhagic), or hospitalisation for worsening of heart failure.",
+          "measure": "Composite of cardiovascular complications related to AF",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "description": "Serious Adverse Events (SAEs), including primary and secondary outcome parameters if based on clinical events, will be adjudicated by the independent Clinical Event Committee (CEC) according to standardised definitions given in the CEC charter.",
+          "measure": "The primary safety outcome is a composite of all-cause death and serious complications of AF therapy.",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Number of nights spent in hospital",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "Time from randomisation to first occurrence of each of the individual components of the primary outcome",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "All-cause death",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "Serious adverse events related to AF therapy",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "Time from randomisation to first cardiovascular hospitalisation",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "Number of cardiovascular hospitalisations (over-night stay)",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "measure": "Changes in left ventricular ejection fraction",
+          "timeFrame": "comparing baseline with 24 months follow up (FU)"
+        },
+        {
+          "description": "assessed by EQ-5D-5L",
+          "measure": "Changes in quality of life",
+          "timeFrame": "comparing baseline with 12 and 24 months FU"
+        },
+        {
+          "description": "assessed by AFEQT",
+          "measure": "Changes in quality of life",
+          "timeFrame": "comparing baseline with 12 and 24 months FU"
+        },
+        {
+          "description": "assessed by Montreal-Cognitive-Assessment-Test",
+          "measure": "Changes in cognitive function",
+          "timeFrame": "comparing baseline with 24 months FU"
+        },
+        {
+          "description": "sinus rhythm compared to AF",
+          "measure": "Cardiac rhythm status",
+          "timeFrame": "at 12 and 24 months FU"
+        },
+        {
+          "measure": "AF pattern",
+          "timeFrame": "at 12 and 24 months FU"
+        },
+        {
+          "measure": "Time from randomisation to first clinical recurrence of AF",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        },
+        {
+          "description": "i. e. from paroxysmal to persistent or longstanding persistent or permanent and each of these components",
+          "measure": "Time from randomisation to first progression of AF",
+          "timeFrame": "Throughout study completion, estimated at a mean of 4 years"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": true
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Kirchhof P, Camm AJ, Goette A, Brandes A, Eckardt L, Elvan A, Fetsch T, van Gelder IC, Haase D, Haegeli LM, Hamann F, Heidbuchel H, Hindricks G, Kautzner J, Kuck KH, Mont L, Ng GA, Rekosz J, Schoen N, Schotten U, Suling A, Taggeselle J, Themistoclakis S, Vettorazzi E, Vardas P, Wegscheider K, Willems S, Crijns HJGM, Breithardt G; EAST-AFNET 4 Trial Investigators. Early Rhythm-Control Therapy in Patients with Atrial Fibrillation. N Engl J Med. 2020 Oct 1;383(14):1305-1316. doi: 10.1056/NEJMoa2019422. Epub 2020 Aug 29.",
+          "pmid": "32865375",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Rillig A, Borof K, Breithardt G, Camm AJ, Crijns HJGM, Goette A, Kuck KH, Metzner A, Vardas P, Vettorazzi E, Wegscheider K, Zapf A, Kirchhof P. Early Rhythm Control in Patients With Atrial Fibrillation and High Comorbidity Burden. Circulation. 2022 Sep 13;146(11):836-847. doi: 10.1161/CIRCULATIONAHA.122.060274. Epub 2022 Aug 15.",
+          "pmid": "35968706",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Eckardt L, Sehner S, Suling A, Borof K, Breithardt G, Crijns H, Goette A, Wegscheider K, Zapf A, Camm J, Metzner A, Kirchhof P. Attaining sinus rhythm mediates improved outcome with early rhythm control therapy of atrial fibrillation: the EAST-AFNET 4 trial. Eur Heart J. 2022 Oct 21;43(40):4127-4144. doi: 10.1093/eurheartj/ehac471.",
+          "pmid": "36036648",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Andrade JG, Wells GA, Deyell MW, Bennett M, Essebag V, Champagne J, Roux JF, Yung D, Skanes A, Khaykin Y, Morillo C, Jolly U, Novak P, Lockwood E, Amit G, Angaran P, Sapp J, Wardell S, Lauck S, Macle L, Verma A; EARLY-AF Investigators. Cryoablation or Drug Therapy for Initial Treatment of Atrial Fibrillation. N Engl J Med. 2021 Jan 28;384(4):305-315. doi: 10.1056/NEJMoa2029980. Epub 2020 Nov 16.",
+          "pmid": "33197159",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Andrade JG, Deyell MW, Macle L, Wells GA, Bennett M, Essebag V, Champagne J, Roux JF, Yung D, Skanes A, Khaykin Y, Morillo C, Jolly U, Novak P, Lockwood E, Amit G, Angaran P, Sapp J, Wardell S, Lauck S, Cadrin-Tourigny J, Kochhauser S, Verma A; EARLY-AF Investigators. Progression of Atrial Fibrillation after Cryoablation or Drug Therapy. N Engl J Med. 2023 Jan 12;388(2):105-116. doi: 10.1056/NEJMoa2212540. Epub 2022 Nov 7.",
+          "pmid": "36342178",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Dickow J, Kirchhof P, Van Houten HK, Sangaralingham LR, Dinshaw LHW, Friedman PA, Packer DL, Noseworthy PA, Yao X. Generalizability of the EAST-AFNET 4 Trial: Assessing Outcomes of Early Rhythm-Control Therapy in Patients With Atrial Fibrillation. J Am Heart Assoc. 2022 Jun 7;11(11):e024214. doi: 10.1161/JAHA.121.024214. Epub 2022 May 27.",
+          "pmid": "35621202",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Dickow J, Kany S, Roth Cardoso V, Ellinor PT, Gkoutos GV, Van Houten HK, Kirchhof P, Metzner A, Noseworthy PA, Yao X, Rillig A. Outcomes of Early Rhythm Control Therapy in Patients With Atrial Fibrillation and a High Comorbidity Burden in Large Real-World Cohorts. Circ Arrhythm Electrophysiol. 2023 May;16(5):e011585. doi: 10.1161/CIRCEP.122.011585. Epub 2023 Mar 21.",
+          "pmid": "36942567",
+          "type": "BACKGROUND"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Atrial Fibrillation Network"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2030-05",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-01-08",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-01-06",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2030-02",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-10-14",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-11",
+      "studyFirstPostDateStruct": {
+        "date": "2024-03-21",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-03-04",
+      "studyFirstSubmitQcDate": "2024-03-19"
+    }
+  }
+}

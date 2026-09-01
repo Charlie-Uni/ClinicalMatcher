@@ -1,0 +1,248 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D006327",
+          "term": "Heart Block"
+        },
+        {
+          "id": "D000075224",
+          "term": "Cardiac Conduction System Disease"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001919",
+          "term": "Bradycardia"
+        },
+        {
+          "id": "D054537",
+          "term": "Atrioventricular Block"
+        },
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "It is a single arm study where participants will undergo the implantation of ALPS in the heart right ventricle.",
+          "interventionNames": [
+            "Device: Leadless ventricular pacemaker implantation"
+          ],
+          "label": "ALPS group",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "ALPS group"
+          ],
+          "description": "Participants will undergo leadless ventricular pacemaker implantation providing pacing therapy by the implant and monitoring using the home monitor.",
+          "name": "Leadless ventricular pacemaker implantation",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Bradycardia",
+        "Brady-tachy Syndrome",
+        "AV Block",
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "leadless pacemaker",
+        "ventricular leadless pacemaker",
+        "Bradycardia",
+        "Brady-tachy syndrome",
+        "AV block",
+        "Atrial Fibrillation",
+        "pacemaker",
+        "leadless cardiac pacemaker",
+        "leadless pacing system",
+        "delivering leadless system",
+        "permanent leadless pacemaker",
+        "single chamber leadless pacemaker",
+        "single chamber leadless pacing therapy",
+        "VVI",
+        "autonomous leadless pacing system",
+        "piezoelectric energy harvester",
+        "VOO",
+        "home monitor",
+        "home monitoring",
+        "remote monitoring"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "clinical@cairdac.com",
+          "name": "Dalit Shav",
+          "phone": "+33 147 468 515",
+          "role": "CONTACT"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Prospective, non-randomized, multi-center, international study designed to evaluate the initial safety and performance of the ALPS leadless pacemaker when used in patients with bradycardia.",
+      "detailedDescription": "The objective of this clinical trial is to assess the initial safety and performance of the autonomous leadless pacing system (ALPS) when used in patients with bradycardia. The ALPS™ is a system consisting of a leadless pacemaker, a catheter, a programmer and a home monitor. The ALPS leadless pacemaker is intended to sense the electrical activity of the heart and to provide cardiac pacing therapy in patients requiring VVI therapy. The ALPS has an energy harvester that provides the energy for the pacing therapy and communication with a home monitor, instead of a battery limited in its life time.\n\nThe study will include up to 10 participants who will be enrolled and implanted in up to 4 medical centers in the US. The duration of participation for each participant will be 24 months. Participants will be evaluated 1 month, 3, 6, 12, 18 and 24 months following the implantation. The study includes safety assessment which consists of checking for device or procedure-related major complications. The performance assessment consists of collecting and analyzing the leadless pacemaker's battery voltage and pacing parameters. In addition, the study will collect data to analyze the performance of the energy harvester."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "interventionModelDescription": "A single arm study where participants will undergo implantation of the ALPS in the right ventricle for a VVI pacing therapy",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 10,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Male or female, ≥ 18 years of age at enrolment\n2. Subject who has a Class I or II indication for implantation of a single chamber ventricular pacemaker according to ACC/AHA/HRS/EHRA guidelines:\n\n   * Paroxysmal or permanent high-grade AV block in the presence of Atrial Fibrillation (AF)\n   * Paroxysmal or permanent high-grade AV block in the absence of AF, as an alternative to dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.\n   * Symptomatic bradycardia-tachycardia syndrome or Sinus Node Dysfunction (sinus bradycardia or sinus pauses), as an alternative to atrial or dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.\n3. Subject able and willing to undergo the study requirements and is expected to be geographically stable for the duration of the follow-up.\n4. Subject with a life expectancy of more than 24 months.\n5. Subject is able and willing to use the Home Monitor.\n6. Written informed consent to participate in the study obtained from the subject, according to local regulations, prior to initiation of any study mandated procedure.\n\nExclusion Criteria:\n\n1. Subject who is entirely pacemaker dependent (escape rhythm \\<30 bpm).\n2. Subject has an existing or prior pacemaker, ICD, or CRT device implant.\n3. Subject has unstable angina pectoris or has had an acute myocardial infarction (AMI) in the 30 days prior to eligibility assessment.\n4. Subject had recent cardiovascular or peripheral vascular surgery within 30 days prior to enrollment\n5. Subject with current implantation of a neurostimulator or any other chronically implanted device which uses current in the body. Note that a temporary pacing wire is allowed.\n6. Subject with a prior intervention of the tricuspid valve, implanted vena cava filter that cannot be crossed, or left ventricular assist device (LVAD).\n7. Subject who is morbidly obese (BMI \\> 40).\n8. Subject who has a below normal BMI (BMI\\<18).\n9. Subject whose femoral venous anatomy is unable to accommodate a 24 French introducer sheath or an implant on the right side of the heart (for example, due to obstructions or severe tortuosity) in the opinion of the implanter.\n10. Subject with ventricular dysfunction and LVEF ≤ 50\n11. Subject who is considered as unable to tolerate an urgent sternotomy.\n12. Subject with a known intolerance to Titanium, titanium nitride, parylene C, PEEK, platinum-iridium alloy, heparin, or sensitivity to contrast media.\n13. Subject for whom a single dose of 1.0 mg dexamethasone acetate may be contraindicated.\n14. Subject with a life expectancy of less than 24 months.\n15. Subject with significant co-morbid conditions or other conditions which, at the discretion of the PI, are deemed to prohibit study entry\n16. Subject who is currently enrolled or planning to participate in a potentially confounding drug or device trial during the course of this study. Co-enrollment in concurrent trials is only allowed when documented preapproval is obtained from the Cairdac study manager.\n17. Pregnant woman, or woman of childbearing potential and who is not on a reliable form of birth control.\n18. Subject with exclusion criteria required by local law (e.g. age, breast feeding, etc.).",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ASCEND",
+      "briefTitle": "ALPs Single ChambEr New Device",
+      "nctId": "NCT07461935",
+      "officialTitle": "Early Feasibility Study of the Single Chamber ALPS Leadless Pacemaker System in Patients With Bradycardia",
+      "orgStudyIdInfo": {
+        "id": "ALPS-CLNS01-001"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Cairdac SA"
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "Rate of device-related serious adverse events",
+          "timeFrame": "3 months"
+        },
+        {
+          "measure": "Rate of participants with pacing thresholds (PCT) ≤ 2V at 0.4 ms pulse width, and and an increase in PCT from implantation is less than 1.5V, and R-wave amplitudes ≥ 5.0 mV, or a value ≥ the value at implantation",
+          "timeFrame": "3 months"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "measure": "Rate of patients with battery voltage above 3930mV",
+          "timeFrame": "3 months"
+        },
+        {
+          "measure": "The rate of ALPS system and/or procedure-related major complications",
+          "timeFrame": "24 months"
+        },
+        {
+          "measure": "The rate of subjects in whom the battery voltage is above 3930mV",
+          "timeFrame": "24 months"
+        },
+        {
+          "measure": "The rate of subjects with pacing thresholds that are within therapeutic range",
+          "timeFrame": "24 months"
+        },
+        {
+          "measure": "The rate of subjects with therapeutically acceptable sensing amplitude",
+          "timeFrame": "24 months"
+        },
+        {
+          "measure": "Rate of patients with pacing impedance is within the acceptable range of 400 - 2000 Ohm",
+          "timeFrame": "24 months"
+        },
+        {
+          "measure": "The average voltage of the implant's battery",
+          "timeFrame": "24 months"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": true,
+      "isFdaRegulatedDrug": false,
+      "isUnapprovedDevice": true,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Cairdac SA"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2028-12",
+        "type": "ESTIMATED"
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-03-10",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-03-09",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-03",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-06",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-03",
+      "studyFirstPostDateStruct": {
+        "date": "2026-03-10",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-03-02",
+      "studyFirstSubmitQcDate": "2026-03-09"
+    }
+  }
+}

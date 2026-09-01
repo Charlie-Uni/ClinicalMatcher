@@ -1,0 +1,254 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Endomatic SEPIOLA System",
+          "interventionNames": [
+            "Device: SEPIOLA System"
+          ],
+          "label": "Implantable device",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Implantable device"
+          ],
+          "description": "Implantation of the SEPIOLA device into the left atrial appendage.",
+          "name": "SEPIOLA System",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "boaz@endomaticmed.com",
+          "name": "Boaz Schwarz",
+          "phone": "+972 (0)544595839",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Tbilisi",
+          "country": "Georgia",
+          "facility": "Israeli-Georgian Medical Research Clinic Helsicore",
+          "geoPoint": {
+            "lat": 41.69143,
+            "lon": 44.83412
+          },
+          "status": "COMPLETED",
+          "zip": "0112"
+        },
+        {
+          "city": "Tbilisi",
+          "country": "Georgia",
+          "facility": "Tbilisi Heart and Vascular Clinic",
+          "geoPoint": {
+            "lat": 41.69143,
+            "lon": 44.83412
+          },
+          "status": "COMPLETED",
+          "zip": "0159"
+        },
+        {
+          "city": "Vilnius",
+          "contacts": [
+            {
+              "email": "Gediminas.Rackauskas@santa.lt",
+              "name": "Gediminas Račkauskas, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Lithuania",
+          "facility": "Vilnius university hospital Santaros Klinikos",
+          "geoPoint": {
+            "lat": 54.68916,
+            "lon": 25.2798
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Poznan",
+          "contacts": [
+            {
+              "email": "marek.grygier@usk.poznan.pl",
+              "name": "Marek Grygier, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Poland",
+          "facility": "Uniwersytecki Szpital Kliniczny w Poznaniu",
+          "geoPoint": {
+            "lat": 52.40692,
+            "lon": 16.92993
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Tashkent",
+          "contacts": [
+            {
+              "name": "Askar Sabirov, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "Uzbekistan",
+          "facility": "Ezgu Niyat",
+          "geoPoint": {
+            "lat": 41.26465,
+            "lon": 69.21627
+          },
+          "status": "RECRUITING"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The study is designed to evaluate the safety and performance of the ENDOMATIC SEPIOLA Left Atrial Appendage (LAA) Closure Device in Patients with non-valvular Atrial Fibrillation, who are at increased risk for stroke, and that cannot take, or have a reason to seek an alternative, to long-term anticoagulation therapy.\n\nPotential patients who are candidates for LAA closure will be screened to confirm that all inclusion/exclusion criteria are met, with final eligibility confirmation on day of procedure.\n\nAll enrolled subjects who went through the procedure will be followed during the procedure to hospital discharge.\n\nAdditional follow up time points are scheduled at 45 days, 6 months and 12 months post procedure."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 15,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* calculated CHA2DS2-VASc score of 2 or greater.\n* The subject is non-eligible or have an appropriate rationale to seek a non-pharmacologic alternative to chronic oral anticoagulants.\n* documented non-valvular atrial fibrillation\n* Subject suitable for vascular/cardiac intervention procedure\n* suitable LAA anatomical measurements for study device\n\nExclusion Criteria:\n\n* Subject who requires anticoagulation for a condition other than AF.\n* NYHA classification IV.\n* Complex congenital heart disease.\n* Presence of circumflex coronary artery stent.\n* The subject has a prosthetic valve in any position.\n* atrial septal defect closure or has an ASD/PFO device.\n* presence of intracardiac thrombus.\n* Any cardiac surgery in the past\n* LVEF \\< 35%.\n* intracardiac thrombus\n* moderate or severe mitral valve stenosis",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Safety and Performance of ENDOMATIC SEPIOLA Left Atrial Appendage (LAA) Closure Device",
+      "nctId": "NCT06099106",
+      "officialTitle": "Evaluation of the Safety and Performance of ENDOMATIC SEPIOLA Left Atrial Appendage (LAA) Closure Device in Patients With Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "DMS-6283"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "Endomatic Ltd."
+      }
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Device and Investigational Procedure Related Serious Adverse Events (SAE)",
+          "measure": "SEPIOLA System Safety",
+          "timeFrame": "7 days, 45 days and 6 months post procedure"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Confirmation of functional LAA closure",
+          "measure": "Device success",
+          "timeFrame": "45 days"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "Endomatic Ltd."
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-05",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-08-17",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-08-13",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-06",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-05-01",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-08",
+      "studyFirstPostDateStruct": {
+        "date": "2023-10-25",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-10-19",
+      "studyFirstSubmitQcDate": "2023-10-19"
+    }
+  }
+}

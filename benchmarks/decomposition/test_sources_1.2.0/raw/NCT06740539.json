@@ -1,0 +1,255 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Ablation Group: Received heart failure treatment combined with ablation",
+          "interventionNames": [
+            "Procedure: Catheter ablation of atrial fibrillation"
+          ],
+          "label": "Ablation Group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Received heart failure treatment combined with heart rate control.",
+          "label": "Drug Control Group",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Ablation Group"
+          ],
+          "description": "Catheter ablation of atrial fibrillation",
+          "name": "Catheter ablation of atrial fibrillation",
+          "type": "PROCEDURE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "HFpEF - Heart Failure with Preserved Ejection Fraction",
+        "Atrial Fibrillation (AF)"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "qinmuae@163.com",
+          "name": "Mu Qin, Dr",
+          "phone": "+8613052320103",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Shanghai",
+          "contacts": [
+            {
+              "email": "qinmuae@163.com",
+              "name": "Mu Qin",
+              "phone": "13052320103",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "China",
+          "facility": "Shanghai Chest Hospital",
+          "geoPoint": {
+            "lat": 31.22222,
+            "lon": 121.45806
+          }
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "A comparison of whether catheter ablation improves the prognosis (all-cause mortality and/or the composite endpoint of MACE) and reduces the recurrence rate of atrial fibrillation (AF) in patients with AF and heart failure with preserved ejection fraction (HFpEF), compared to anti-atrial arrhythmia drugs (AAD). This trial was randomly divided into two groups: the anti-AAD drug group and the catheter ablation group."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 304,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age ≥18 years.\n* The patient is willing and able to comply with the protocol and has provided written informed consent.\n* Paroxysmal or persistent atrial fibrillation (AF).（Persistent AF was defined as AF which is sustained beyond 7 days, or lasting less than seven days but necessitating pharmacologic or electric cardioversion. Included within the category of persistent AF is 'long-standing persistent AF', defined as continuous AF of \\>1-year duration. AF episodes had to be documented in the last 3 months prior to enrollment by ECG, Holter ECG, Loop Recorder, memory of the implanted device (ICD/CRT-D), or any other suitable device.）\n* Failure or intolerance of antiarrhythmic drug therapy or unwillingness to take antiarrhythmic drugs.\n* Diagnosed with Heart Failure with Preserved Ejection Fraction (HFpEF).（(1) a history of hospitalization for HF with symptoms classified as New York Heart Association (NYHA) class II, III, or IV; (2) LVEF ≥ 50%; (3) at least one of the following cardiac structural abnormalities identified by echocardiography: left ventricular hypertrophy, left atrial enlargement, or diastolic dysfunction; and (4) elevated levels of N-terminal pro-brain natriuretic peptide (NT-proBNP), with a threshold of ≥400 pg/mL for pa-tients with SR at admission and ≥600 pg/mL for patients with AF at admis-sion.)\n* New York Heart Association class II, III, or IV.\n\nExclusion Criteria:\n\n* Previous left heart ablation procedure for AF.\n* Contraindication to chronic anticoagulation therapy or heparin.\n* Documented left atrial diameter \\>6 cm, optimally from the parasternal long-axis view.\n* Acute coronary syndrome, cardiac surgery, angioplasty, or cerebrovascular accident within 2 months prior to enrollment.\n* Planned cardiovascular intervention.\n* Listed for heart transplant.\n* Cardiac assist device implanted.\n* Life expectancy ≤ 12 months.\n* Mental or physical inability to participate in the study.\n* Requirement for dialysis due to terminal renal failure.\n* Woman currently pregnant or breastfeeding or not using reliable contraceptive measures during fertility age.\n* Enrollment in another investigational drug or device study, or participation in another telemonitoring concept.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Atrial Fibrillation with Heart Failure with Preserved Ejection Fraction: Treatment Strategies-Catheter Ablation Vs. Anti-Atrial Arrhythmia Drugs",
+      "nctId": "NCT06740539",
+      "officialTitle": "Atrial Fibrillation with Heart Failure with Preserved Ejection Fraction: Treatment Strategies-Catheter Ablation Vs. Anti-Atrial Arrhythmia Drugs",
+      "orgStudyIdInfo": {
+        "id": "CAPHF-AF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Shanghai Chest Hospital"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary endpoint was a composite of all-cause death or rehospitalization for worsening HF.",
+          "measure": "The primary endpoint was a composite of all-cause death or rehospitalization for worsening HF.",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "All deaths and all heart transplants because of terminal heart failure (HF) will be included.",
+          "measure": "All-Cause Mortality",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        },
+        {
+          "description": "Patients requiring intravenous medication for HF (including diuretics, vasodilators or inotropic agents) or a substantial increase in oral diuretic therapy for HF (i.e., an increase of furosemide ≥40 mg or equivalent, or the addition of a thiazide to a loop diuretic) will be deemed to have worsening of HF. Further, rales and/or S3 sound, chest x-ray, worsening of dyspnea, worsening of peripheral edema and increase of New York Heart Association class will be assessed for determination of worsening of HF.Unplanned hospitalization is defined as any in-hospital stay over one date change, and not planned by the Investigator.",
+          "measure": "Worsening of Heart Failure Requiring Unplanned Hospitalization",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        },
+        {
+          "description": "All deaths due to cardiovascular reasons and all heart transplants because of terminal HF. Deaths due to worsening of HF, acute coronary syndrome, cerebrovascular accidents, or other cardiovascular events will qualify for this secondary end point.",
+          "measure": "Cardiovascular Mortality",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        },
+        {
+          "description": "Any in-hospital stay over one date change due to cardiovascular reason, which includes worsening of HF, acute coronary syndrome, cerebrovascular accidents, or other cardiovascular events, and not planned by the Investigator. In case the hospitalization is classified as planned by the Investigator, and the time interval between the decision to hospitalize and the hospitalization is less than 24 hours, the End Point and Adverse Event Committee will give final classification concerning planned or unplanned.",
+          "measure": "Unplanned Hospitalization due to Cardiovascular Reason",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        },
+        {
+          "description": "Any in-hospital stay over one date change.",
+          "measure": "All-Cause Hospitalization",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        },
+        {
+          "description": "Cerebrovascular accident, ischemic or hemorrhagic, describes a clinical and neurological syndrome, based on an acute damage of the brain. The common denominator is the sudden onset of a neurological deficit.",
+          "measure": "Cerebrovascular Accident",
+          "timeFrame": "During regular follow-up visits at 3, 6, 12, 24months."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": true
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "UNKNOWN",
+          "name": "The Third Affiliated Hospital of Anhui Medical University"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Hefei Second People's Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "The Second People's Hospital of Anhui Province"
+        },
+        {
+          "class": "OTHER",
+          "name": "Hefei Binhu Hospital"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Shanghai Chest Hospital"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Shanghai Chest Hospital",
+        "investigatorFullName": "Xu Liu",
+        "investigatorTitle": "Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-01-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-12-18",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-12-15",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-01-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-12-16",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2024-12",
+      "studyFirstPostDateStruct": {
+        "date": "2024-12-18",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-12-15",
+      "studyFirstSubmitQcDate": "2024-12-15"
+    }
+  }
+}

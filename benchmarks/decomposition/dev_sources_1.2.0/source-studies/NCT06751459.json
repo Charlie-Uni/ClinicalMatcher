@@ -1,0 +1,390 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants in this clinical trial will undergo a total of three remote electrocardiographic (ECG) monitoring sessions during the study period following catheter ablation:\n\n1. st Monitoring: At the time of discharge after catheter ablation, remote ECG monitoring will be performed for 14 days using both the MEMO Patch 2 and MEMO Link.\n2. nd Monitoring: Approximately three months after catheter ablation, remote ECG monitoring will be performed for 14 days using only the MEMO Patch 2.\n3. rd Monitoring: Approximately one year after catheter ablation, remote ECG monitoring will again be performed for 14 days using only the MEMO Patch 2.",
+          "interventionNames": [
+            "Device: MEMO Patch 2 - 1-day Monitoring",
+            "Device: MEMO Link"
+          ],
+          "label": "Experimental Group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Participants in this clinical trial will undergo a total of three remote electrocardiographic (ECG) monitoring sessions during the study period following catheter ablation:\n\n1. st Monitoring: At the time of discharge after catheter ablation, remote ECG monitoring will be conducted for 14 days using both the MEMO Patch 2 and MEMO Link.\n2. nd Monitoring: Approximately three months after catheter ablation, remote ECG monitoring will be conducted for 1 day using only the MEMO Patch 2.\n3. rd Monitoring: Approximately one year after catheter ablation, remote ECG monitoring will be conducted for 14 days using only the MEMO Patch 2.",
+          "interventionNames": [
+            "Device: MEMO Patch 2 - 14-day Monitoring",
+            "Device: MEMO Link"
+          ],
+          "label": "Active Comparator Group",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Active Comparator Group"
+          ],
+          "description": "A wearable ECG monitoring device used for continuous 14-day monitoring to detect atrial arrhythmias during the second monitoring phase (at 3 months post-ablation). MEMO Patch 2 collects ECG data for remote analysis to assess early recurrence of atrial arrhythmias.",
+          "name": "MEMO Patch 2 - 14-day Monitoring",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Experimental Group"
+          ],
+          "description": "A wearable ECG monitoring device used for 1-day monitoring during the second monitoring phase (at 3 months post-ablation). MEMO Patch 2 collects ECG data for remote analysis to detect early recurrence of atrial arrhythmias.",
+          "name": "MEMO Patch 2 - 1-day Monitoring",
+          "type": "DEVICE"
+        },
+        {
+          "armGroupLabels": [
+            "Active Comparator Group",
+            "Experimental Group"
+          ],
+          "description": "A supplementary ECG monitoring device used alongside MEMO Patch 2 during the 1st monitoring session.",
+          "name": "MEMO Link",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)"
+      ],
+      "keywords": [
+        "Atrial fibrillation",
+        "circulatory system",
+        "EKG",
+        "remote monitoring",
+        "gateway",
+        "MEMO-Patch"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "stabler92@gmail.com",
+          "name": "Jong-il Choi",
+          "phone": "+821021225476",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Busan",
+          "contacts": [
+            {
+              "email": "thinkmed@naver.com",
+              "name": "Jongseong Park",
+              "phone": "+82-51-240-5040",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Dong-A University Hospital",
+          "geoPoint": {
+            "lat": 35.10168,
+            "lon": 129.03004
+          },
+          "zip": "49201"
+        },
+        {
+          "city": "Busan",
+          "contacts": [
+            {
+              "email": "reinee81@naver.com",
+              "name": "Jinhee An",
+              "phone": "+82-51-240-7794",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Busan National University Hospital",
+          "geoPoint": {
+            "lat": 35.10168,
+            "lon": 129.03004
+          },
+          "zip": "49241"
+        },
+        {
+          "city": "Seongnam",
+          "contacts": [
+            {
+              "email": "spy510@snu.ac.kr",
+              "name": "Ilyoung Oh",
+              "phone": "+82-10-8620-0510",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Seoul National University Bundang Hospital",
+          "geoPoint": {
+            "lat": 35.4421,
+            "lon": 126.46353
+          },
+          "zip": "13620"
+        },
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "jongilchoi@korea.ac.kr",
+              "name": "Jongil Choi",
+              "phone": "+82-10-2122-5476",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Korea University Anam Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "zip": "02855"
+        },
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "gbnam@amc.seoul.kr",
+              "name": "Gibyung Nam",
+              "phone": "+82-10-3127-5681",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Asan Medical Center",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "zip": "05505"
+        },
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "tomas9912@naver.com",
+              "name": "Donghyuk Kim",
+              "phone": "+82-10-2724-7740",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Ewha Womans University Seoul Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "zip": "07804"
+        },
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "rsy008@gmail.com",
+              "name": "Seungyoung Ro",
+              "phone": "+82-10-3612-6876",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Korea University Guro Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "zip": "08308"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Background:\n\nAtrial fibrillation (AF) is the most common arrhythmia, significantly contributing to complications such as stroke, heart failure, dementia, and increased mortality. Catheter ablation is widely used for treatment, but recurrence rates range from 15-50% within 12 months post-procedure. Conventional intermittent ECG monitoring lacks sufficient sensitivity to detect asymptomatic AF recurrence effectively.\n\nObjective:\n\nTo compare the recurrence rates of atrial tachyarrhythmias between a 1-day monitoring group and a 14-day monitoring group using MEMO Patch 2 after catheter ablation in AF patients. The study also evaluates the effectiveness and safety of early recurrence detection via remote monitoring.\n\nStudy Population:\n\nPatients diagnosed with AF and treated with catheter ablation.\n\nIntervention:\n\nParticipants will undergo three sessions of remote ECG monitoring using MEMO Patch 2 and MEMO Link (first session only), spanning approximately one year after catheter ablation.\n\nHypothesis:\n\nLong-term monitoring with MEMO Patch 2 will be more effective than 1-day monitoring in detecting the recurrence of atrial tachyarrhythmias (including AF, atrial flutter, and atrial tachycardia) following catheter ablation."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "SUPPORTIVE_CARE"
+      },
+      "enrollmentInfo": {
+        "count": 270,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* 1\\. Adults aged 19 years or older who have voluntarily provided written informed consent to participate in this clinical trial.\n\n  2\\. Individuals who have been diagnosed with atrial fibrillation prior to the date of informed consent acquisition.\n\n  3\\. Individuals who are scheduled to undergo catheter ablation for atrial fibrillation within three months from the date of informed consent acquisition.\n\nExclusion Criteria:\n\n* 1\\. Individuals with a history of catheter ablation prior to obtaining informed consent.\n\n  2\\. Individuals with sensitive skin, allergic skin conditions, skin cancer, rashes, or other dermatological disorders.\n\n  3\\. Individuals with implanted cardiac devices, such as pacemakers, implantable defibrillators, or other implantable electronic devices.\n\n  4\\. Individuals deemed by the investigator to be at an increased risk or otherwise unsuitable for participation in the clinical trial.\n\n  5\\. Individuals with cognitive impairments that make it difficult to understand trial information or voluntarily make an informed decision.\n\n  6\\. Pregnant or breastfeeding women.",
+      "healthyVolunteers": false,
+      "minimumAge": "19 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PREEMPT-AF",
+      "briefTitle": "Evaluation of the Effectiveness and Safety of Remote Electrocardiographic Monitoring in Patients with Atrial Fibrillation Following Ablation Therapy",
+      "nctId": "NCT06751459",
+      "officialTitle": "Patch ECG-based REcurrEnce Monitoring After Catheter Ablation in PaTients with Atrial Fibrillation (PREEMPT-AF) : a Multicenter, Randomized Controlled, Open-label, Prospective Trial",
+      "orgStudyIdInfo": {
+        "id": "PREEMPT-AF"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "HUINNO Co., Ltd"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "accessCriteria": "Qualified researchers may request access to the IPD by submitting a formal application. Requests must include a detailed research proposal and evidence of ethical approval. All requests will be reviewed by an independent committee to ensure appropriate and ethical use of the data. Once a suitable data-sharing platform or repository is designated, detailed instructions for access will be provided in the ClinicalTrials.gov record.",
+      "description": "De-identified individual participant data, including basic demographic data and primary research outcome data, will be shared. These data will specifically pertain to research conducted on remote monitoring and atrial fibrillation. The shared data will not contain any personal identifiers to ensure participant\n\nWhen the data are made available, a direct link to the external repository hosting the IPD will be provided in the References module of the Protocol Section on ClinicalTrials.gov.",
+      "ipdSharing": "YES"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The proportion of participants with atrial tachyarrhythmias (including atrial fibrillation, atrial flutter, or atrial tachycardia lasting 30 seconds or more) detected during ECG monitoring at 3 months after catheter ablation using the MEMO Patch 2. The primary measure focuses on comparing the detection rate between the 14-day monitoring group and the 1-day monitoring group.",
+          "measure": "Recurrence rate of atrial tachyarrhythmias 3 months post-catheter ablation",
+          "timeFrame": "3 months post-ablation"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Identification of clinical risk factors associated with early recurrence (within 3 months) and late recurrence (beyond 3 months) of atrial tachyarrhythmias following catheter ablation, using data collected through MEMO Patch 2 monitoring.",
+          "measure": "Risk Factors for Early and Late Recurrence of Atrial Tachyarrhythmias",
+          "timeFrame": "12 months post-ablation"
+        },
+        {
+          "description": "Proportion of participants requiring additional medical interventions such as anti-arrhythmic drug cessation, repeat ablation procedures, or unplanned clinical visits post-ablation.",
+          "measure": "Rate of Medical Interventions Following Catheter Ablation",
+          "timeFrame": "12 months post-ablation"
+        },
+        {
+          "description": "Proportion of participants experiencing atrial tachyarrhythmias (lasting 30 seconds or more) detected by MEMO Patch 2 within 12 months after catheter ablation.",
+          "measure": "Recurrence Rate of Atrial Tachyarrhythmias at 12 Months",
+          "timeFrame": "12 months post-ablation"
+        },
+        {
+          "description": "Proportion of participants with atrial tachyarrhythmias detected within 3 months post-ablation using MEMO Patch 2.",
+          "measure": "Early Recurrence Rate of Atrial Tachyarrhythmias",
+          "timeFrame": "3 months post-ablation"
+        },
+        {
+          "description": "Proportion of participants with non-atrial tachyarrhythmias, such as ventricular premature contractions or supraventricular tachycardia, detected during MEMO Patch 2 monitoring.",
+          "measure": "Detection Rate of Non-Atrial Tachyarrhythmias Using MEMO Patch 2",
+          "timeFrame": "12 months post-ablation"
+        },
+        {
+          "description": "The time interval from catheter ablation to the first detection of atrial tachyarrhythmias lasting 30 seconds or more during MEMO Patch 2 monitoring.",
+          "measure": "Time to First Recurrence of Atrial Tachyarrhythmias",
+          "timeFrame": "12 months post-ablation"
+        },
+        {
+          "description": "Percentage of successfully transmitted ECG signals during the monitoring period using the MEMO Link device.",
+          "measure": "ECG Signal Transmission Success Rate Using MEMO Link",
+          "timeFrame": "During all monitoring periods (up to 12 months post-ablation)"
+        },
+        {
+          "description": "Proportion of participants with atrial tachyarrhythmias detected using daily ECG monitoring reports during the first monitoring phase (up to 30 days post-ablation).",
+          "measure": "Detection Rate of Atrial Tachyarrhythmias in Daily Monitoring Reports",
+          "timeFrame": "30 days post-ablation (first monitoring phase)"
+        },
+        {
+          "description": "Rate of adverse events potentially related to the use of MEMO Patch 2 or MEMO Link during the study period, assessed through investigator reports.",
+          "measure": "Device-Related Adverse Events",
+          "timeFrame": "During all monitoring periods (up to 12 months post-ablation)"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "isUsExport": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "HUINNO Co., Ltd"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-03-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-12-31",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-12-26",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-08-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-01-06",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2024-12",
+      "studyFirstPostDateStruct": {
+        "date": "2024-12-27",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-12-20",
+      "studyFirstSubmitQcDate": "2024-12-20"
+    }
+  }
+}

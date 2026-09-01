@@ -1,0 +1,509 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05836987-inclusion-9e76b03e4f07622a",
+      "criterion_type": "inclusion",
+      "normalized_text": "22-85 years of age.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 43,
+        "start": 24
+      },
+      "source_text": "22-85 years of age."
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-bafcba245c96456b",
+      "criterion_type": "inclusion",
+      "normalized_text": "English speaking participants. Spanish-only speakers may be included in the future at select sites appropriately translated.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 171,
+        "start": 47
+      },
+      "source_text": "English speaking participants. Spanish-only speakers may be included in the future at select sites appropriately translated."
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-c5e4c5a8710871db",
+      "criterion_type": "inclusion",
+      "normalized_text": "History of non-permanent atrial fibrillation.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 220,
+        "start": 175
+      },
+      "source_text": "History of non-permanent atrial fibrillation."
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-cb3157b1e4d1ae7c",
+      "criterion_type": "inclusion",
+      "normalized_text": "CHA2DS2-VASC score of 1-4 for men and 2-4 for women without prior stroke or Transient Ischemic Attack (TIA), The CHA2DS2-VASc score is a point-based system used to stratify the risk of stroke in Atrial Fibrillation (AF) patients. The acronym CHA2DS2-VASc stands for congestive heart failure, hypertension, age ≥75 (doubled), diabetes, stroke (doubled), vascular disease, age 65 to 74 and sex category (female). Congestive heart failure defined as: The presence of signs and symptoms of either right (elevated central venous pressure, hepatomegaly, dependent edema) or left ventricular failure (exertional dyspnea, cough, fatigue, orthopnea, paroxysmal nocturnal dyspnea, cardiac enlargement, rales, gallop rhythm, pulmonary venous congestion) or both, confirmed by non-invasive or invasive measurements demonstrating objective evidence of cardiac dysfunction and/or ejection fraction < 40%.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1115,
+        "start": 224
+      },
+      "source_text": "CHA2DS2-VASC score of 1-4 for men and 2-4 for women without prior stroke or Transient Ischemic Attack (TIA), The CHA2DS2-VASc score is a point-based system used to stratify the risk of stroke in Atrial Fibrillation (AF) patients. The acronym CHA2DS2-VASc stands for congestive heart failure, hypertension, age ≥75 (doubled), diabetes, stroke (doubled), vascular disease, age 65 to 74 and sex category (female). Congestive heart failure defined as: The presence of signs and symptoms of either right (elevated central venous pressure, hepatomegaly, dependent edema) or left ventricular failure (exertional dyspnea, cough, fatigue, orthopnea, paroxysmal nocturnal dyspnea, cardiac enlargement, rales, gallop rhythm, pulmonary venous congestion) or both, confirmed by non-invasive or invasive measurements demonstrating objective evidence of cardiac dysfunction and/or ejection fraction \\< 40%."
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-a77cd0014268d1a0",
+      "criterion_type": "inclusion",
+      "normalized_text": "The participant is on a DOAC at the time of screening and willing to stay on DOAC for duration of study.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1223,
+        "start": 1119
+      },
+      "source_text": "The participant is on a DOAC at the time of screening and willing to stay on DOAC for duration of study."
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-d04b5c425732f2d3",
+      "criterion_type": "inclusion",
+      "normalized_text": "Willing and able to comply with the protocol, including:",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1283,
+        "start": 1227
+      },
+      "source_text": "Willing and able to comply with the protocol, including:"
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-954bf07cf09c8123",
+      "criterion_type": "inclusion",
+      "normalized_text": "Possession of a smart watch-compatible smart phone (iPhone that supports the latest shipping iOS) with a cellular service plan",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1416,
+        "start": 1290
+      },
+      "source_text": "Possession of a smart watch-compatible smart phone (iPhone that supports the latest shipping iOS) with a cellular service plan"
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-073eb535e035e13a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Be willing to wear the smart watch for the suggested minimum of 14 hours a day",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1500,
+        "start": 1422
+      },
+      "source_text": "Be willing to wear the smart watch for the suggested minimum of 14 hours a day"
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-a1941d8bcefb44ed",
+      "criterion_type": "inclusion",
+      "normalized_text": "Expected to be within cellular service range at least 80% of the time",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1575,
+        "start": 1506
+      },
+      "source_text": "Expected to be within cellular service range at least 80% of the time"
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-a199e7480e1e7e2c",
+      "criterion_type": "inclusion",
+      "normalized_text": "Willing and able to discontinue DOAC",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1615,
+        "start": 1579
+      },
+      "source_text": "Willing and able to discontinue DOAC"
+    },
+    {
+      "criterion_id": "nct05836987-inclusion-151a3b9e48e60459",
+      "criterion_type": "inclusion",
+      "normalized_text": "The participant is willing and able to provide informed consent.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1683,
+        "start": 1619
+      },
+      "source_text": "The participant is willing and able to provide informed consent."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-3450d81737a43bba",
+      "criterion_type": "exclusion",
+      "normalized_text": "Valvular or permanent atrial fibrillation.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1751,
+        "start": 1709
+      },
+      "source_text": "Valvular or permanent atrial fibrillation."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-b507982927ccde98",
+      "criterion_type": "exclusion",
+      "normalized_text": "Current treatment with warfarin and unwilling or unable to take a DOAC.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1826,
+        "start": 1755
+      },
+      "source_text": "Current treatment with warfarin and unwilling or unable to take a DOAC."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-5103a20ec2a78822",
+      "criterion_type": "exclusion",
+      "normalized_text": "The participant is a woman who is pregnant or nursing.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 1884,
+        "start": 1830
+      },
+      "source_text": "The participant is a woman who is pregnant or nursing."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-3aa0c9a07fb0ed8c",
+      "criterion_type": "exclusion",
+      "normalized_text": "The participant is being treated with chronic aspirin, another anti-platelet agent, or chronic NSAIDS outside of current medical guidelines (e.g., primary stroke prevention in patients with atrial fibrillation, primary prevention of cardiovascular events, pain relief, fever, gout) and is unwilling or unable to discontinue use for the study duration.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 2239,
+        "start": 1888
+      },
+      "source_text": "The participant is being treated with chronic aspirin, another anti-platelet agent, or chronic NSAIDS outside of current medical guidelines (e.g., primary stroke prevention in patients with atrial fibrillation, primary prevention of cardiovascular events, pain relief, fever, gout) and is unwilling or unable to discontinue use for the study duration."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-9cbc9d2b6145b11e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Existing cardiac rhythm device or indication for a permanent pacemaker, Implantable Cardioverter-Defibrillator (ICD) or Cardiac Resynchronization Therapy (CRT) device or planned insertable cardiac monitor. Insertable cardiac monitors are permitted unless they are being used to guide anticoagulation treatment.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 2553,
+        "start": 2243
+      },
+      "source_text": "Existing cardiac rhythm device or indication for a permanent pacemaker, Implantable Cardioverter-Defibrillator (ICD) or Cardiac Resynchronization Therapy (CRT) device or planned insertable cardiac monitor. Insertable cardiac monitors are permitted unless they are being used to guide anticoagulation treatment."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-0d98e12ea78c0f19",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known or suspected symptomatic or asymptomatic atrial fibrillation lasting ≥ 1 hour/month over the last 3 months.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 2670,
+        "start": 2557
+      },
+      "source_text": "Known or suspected symptomatic or asymptomatic atrial fibrillation lasting ≥ 1 hour/month over the last 3 months."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-01ce81ba2d0be514",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any documented single AF episode lasting ≥ 1 hour on standard of care or study-provided external cardiac monitor of > 6 days duration performed within 45 days prior to randomization. Shorter monitoring durations may be acceptable for inclusion at the discretion of the site PI based on the totality of monitoring data and approval of the study PI.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3022,
+        "start": 2674
+      },
+      "source_text": "Any documented single AF episode lasting ≥ 1 hour on standard of care or study-provided external cardiac monitor of \\> 6 days duration performed within 45 days prior to randomization. Shorter monitoring durations may be acceptable for inclusion at the discretion of the site PI based on the totality of monitoring data and approval of the study PI."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-2dd62ed1aaf19f36",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ablation for AF within the last 2 months.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3067,
+        "start": 3026
+      },
+      "source_text": "Ablation for AF within the last 2 months."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-a221cbd9f102ff5c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior or anticipated left atrial appendage occlusion or ligation.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3136,
+        "start": 3071
+      },
+      "source_text": "Prior or anticipated left atrial appendage occlusion or ligation."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-bb54fb14ba6ad8df",
+      "criterion_type": "exclusion",
+      "normalized_text": "Mechanical prosthetic valve(s) or severe valve disease.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3196,
+        "start": 3141
+      },
+      "source_text": "Mechanical prosthetic valve(s) or severe valve disease."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-5eb497f3b8ae9b7f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Hypertrophic cardiomyopathy.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3229,
+        "start": 3201
+      },
+      "source_text": "Hypertrophic cardiomyopathy."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-51097211155fc726",
+      "criterion_type": "exclusion",
+      "normalized_text": "Participant needs DOAC for reasons other than preventing stroke or arterial embolism resulting from AF (i.e., preventing Deep Vein Thrombosis (DVT) or PE) or needs permanent OAC (i.e., congenital heart defects, prosthetic heart valve).",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3469,
+        "start": 3234
+      },
+      "source_text": "Participant needs DOAC for reasons other than preventing stroke or arterial embolism resulting from AF (i.e., preventing Deep Vein Thrombosis (DVT) or PE) or needs permanent OAC (i.e., congenital heart defects, prosthetic heart valve)."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-9ff0cccfe5bc9179",
+      "criterion_type": "exclusion",
+      "normalized_text": "Participants deemed high risk for non-cardioembolic stroke (i.e., significant carotid artery disease defined as stenosis > 75%) based on the investigator's discretion.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 3642,
+        "start": 3474
+      },
+      "source_text": "Participants deemed high risk for non-cardioembolic stroke (i.e., significant carotid artery disease defined as stenosis \\> 75%) based on the investigator's discretion."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-132a47e6878683d9",
+      "criterion_type": "exclusion",
+      "normalized_text": "The participant is enrolled, has participated within the last 30 days, or is planning to participate in a concurrent drug and/or device study during the course of this clinical trial. Co-enrollment in concurrent trials is only allowed with documented pre-approval from the study manager; there is no concern that co-enrollment could confound the results of this trial.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4015,
+        "start": 3647
+      },
+      "source_text": "The participant is enrolled, has participated within the last 30 days, or is planning to participate in a concurrent drug and/or device study during the course of this clinical trial. Co-enrollment in concurrent trials is only allowed with documented pre-approval from the study manager; there is no concern that co-enrollment could confound the results of this trial."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-c8ec184423114566",
+      "criterion_type": "exclusion",
+      "normalized_text": "The participant has a tattoo, birthmark, or surgical scar over the dorsal wrist area on the ipsilateral side that the AFSW may be worn.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4155,
+        "start": 4020
+      },
+      "source_text": "The participant has a tattoo, birthmark, or surgical scar over the dorsal wrist area on the ipsilateral side that the AFSW may be worn."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-2243bc36af0e239c",
+      "criterion_type": "exclusion",
+      "normalized_text": "The participant has a tremor on their ipsilateral side that the AFSW may be worn.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4241,
+        "start": 4160
+      },
+      "source_text": "The participant has a tremor on their ipsilateral side that the AFSW may be worn."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-048f41ae67314e8b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any concomitant condition that, in the investigator's opinion, would not allow safe participation in the study (e.g., drug addiction, alcohol abuse).",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4395,
+        "start": 4246
+      },
+      "source_text": "Any concomitant condition that, in the investigator's opinion, would not allow safe participation in the study (e.g., drug addiction, alcohol abuse)."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-cf8784032a887bbe",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known hypersensitivity or contraindication to direct oral anticoagulants.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4473,
+        "start": 4400
+      },
+      "source_text": "Known hypersensitivity or contraindication to direct oral anticoagulants."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-e4c79824c047c975",
+      "criterion_type": "exclusion",
+      "normalized_text": "Documented prior stroke (ischemic or hemorrhagic) or transient ischemic attack.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4557,
+        "start": 4478
+      },
+      "source_text": "Documented prior stroke (ischemic or hemorrhagic) or transient ischemic attack."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-ffa3083e199ea880",
+      "criterion_type": "exclusion",
+      "normalized_text": "Reversible causes of AF (e.g., cardiac surgery, pulmonary embolism, untreated hyperthyroidism). AF ablation does not constitute reversible AF.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4704,
+        "start": 4562
+      },
+      "source_text": "Reversible causes of AF (e.g., cardiac surgery, pulmonary embolism, untreated hyperthyroidism). AF ablation does not constitute reversible AF."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-e72a4abfead59feb",
+      "criterion_type": "exclusion",
+      "normalized_text": "> 5% burden of premature atrial or ventricular depolarizations on pre-enrollment cardiac monitoring.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4810,
+        "start": 4709
+      },
+      "source_text": "\\> 5% burden of premature atrial or ventricular depolarizations on pre-enrollment cardiac monitoring."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-42c88b65482e9534",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of atrial flutter that has not been treated with ablation (participants in atrial flutter and have been ablated are eligible for enrollment).",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 4964,
+        "start": 4815
+      },
+      "source_text": "History of atrial flutter that has not been treated with ablation (participants in atrial flutter and have been ablated are eligible for enrollment)."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-1ccbb99b8f553b0a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Stage 4 or 5 chronic kidney disease.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5005,
+        "start": 4969
+      },
+      "source_text": "Stage 4 or 5 chronic kidney disease."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-eaae1bb9ab2ae521",
+      "criterion_type": "exclusion",
+      "normalized_text": "Conditions associated with an increased risk of bleeding:",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5067,
+        "start": 5010
+      },
+      "source_text": "Conditions associated with an increased risk of bleeding:"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-07228493413d0041",
+      "criterion_type": "exclusion",
+      "normalized_text": "Major surgery in the previous month",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5110,
+        "start": 5075
+      },
+      "source_text": "Major surgery in the previous month"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-4d80f5b4936b737d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Planned surgery or intervention in the next three months that would require cessation of anticoagulation > 2 weeks.",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5233,
+        "start": 5117
+      },
+      "source_text": "Planned surgery or intervention in the next three months that would require cessation of anticoagulation \\> 2 weeks."
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-e7d8fd298e943723",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of intracranial, intraocular, spinal, retroperitoneal, or atraumatic intra- articular bleeding",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5342,
+        "start": 5240
+      },
+      "source_text": "History of intracranial, intraocular, spinal, retroperitoneal, or atraumatic intra- articular bleeding"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-1296774cb63bad4e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Gastrointestinal hemorrhage within the past year unless the cause has been permanently eliminated (e.g., by surgery)",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5465,
+        "start": 5349
+      },
+      "source_text": "Gastrointestinal hemorrhage within the past year unless the cause has been permanently eliminated (e.g., by surgery)"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-dcdfef6783a79d58",
+      "criterion_type": "exclusion",
+      "normalized_text": "Symptomatic or endoscopically documented gastroduodenal ulcer disease in the previous 30 days",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5565,
+        "start": 5472
+      },
+      "source_text": "Symptomatic or endoscopically documented gastroduodenal ulcer disease in the previous 30 days"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-2d0b2d3527b66626",
+      "criterion_type": "exclusion",
+      "normalized_text": "Hemorrhagic disorder or bleeding diathesis",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5614,
+        "start": 5572
+      },
+      "source_text": "Hemorrhagic disorder or bleeding diathesis"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-aa9d4327a8ee3e33",
+      "criterion_type": "exclusion",
+      "normalized_text": "Need for anticoagulant treatment for disorders other than AF",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5681,
+        "start": 5621
+      },
+      "source_text": "Need for anticoagulant treatment for disorders other than AF"
+    },
+    {
+      "criterion_id": "nct05836987-exclusion-544dc99ceb8900aa",
+      "criterion_type": "exclusion",
+      "normalized_text": "Uncontrolled hypertension (Systolic Blood Pressure >180 mmHg and/or Diastolic Blood Pressure >100 mmHg)",
+      "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+      "source_span": {
+        "end": 5793,
+        "start": 5688
+      },
+      "source_text": "Uncontrolled hypertension (Systolic Blood Pressure \\>180 mmHg and/or Diastolic Blood Pressure \\>100 mmHg)"
+    }
+  ],
+  "eligibility_sha256": "7b6c42fd7f6009507ca3f813a0afbded40ce4e0065c41698b89da3e60fe32558",
+  "eligibility_text": "Inclusion Criteria:\n\n1. 22-85 years of age.\n2. English speaking participants. Spanish-only speakers may be included in the future at select sites appropriately translated.\n3. History of non-permanent atrial fibrillation.\n4. CHA2DS2-VASC score of 1-4 for men and 2-4 for women without prior stroke or Transient Ischemic Attack (TIA), The CHA2DS2-VASc score is a point-based system used to stratify the risk of stroke in Atrial Fibrillation (AF) patients. The acronym CHA2DS2-VASc stands for congestive heart failure, hypertension, age ≥75 (doubled), diabetes, stroke (doubled), vascular disease, age 65 to 74 and sex category (female). Congestive heart failure defined as: The presence of signs and symptoms of either right (elevated central venous pressure, hepatomegaly, dependent edema) or left ventricular failure (exertional dyspnea, cough, fatigue, orthopnea, paroxysmal nocturnal dyspnea, cardiac enlargement, rales, gallop rhythm, pulmonary venous congestion) or both, confirmed by non-invasive or invasive measurements demonstrating objective evidence of cardiac dysfunction and/or ejection fraction \\< 40%.\n5. The participant is on a DOAC at the time of screening and willing to stay on DOAC for duration of study.\n6. Willing and able to comply with the protocol, including:\n\n   * Possession of a smart watch-compatible smart phone (iPhone that supports the latest shipping iOS) with a cellular service plan\n   * Be willing to wear the smart watch for the suggested minimum of 14 hours a day\n   * Expected to be within cellular service range at least 80% of the time\n7. Willing and able to discontinue DOAC\n8. The participant is willing and able to provide informed consent.\n\nExclusion Criteria:\n\n1. Valvular or permanent atrial fibrillation.\n2. Current treatment with warfarin and unwilling or unable to take a DOAC.\n3. The participant is a woman who is pregnant or nursing.\n4. The participant is being treated with chronic aspirin, another anti-platelet agent, or chronic NSAIDS outside of current medical guidelines (e.g., primary stroke prevention in patients with atrial fibrillation, primary prevention of cardiovascular events, pain relief, fever, gout) and is unwilling or unable to discontinue use for the study duration.\n5. Existing cardiac rhythm device or indication for a permanent pacemaker, Implantable Cardioverter-Defibrillator (ICD) or Cardiac Resynchronization Therapy (CRT) device or planned insertable cardiac monitor. Insertable cardiac monitors are permitted unless they are being used to guide anticoagulation treatment.\n6. Known or suspected symptomatic or asymptomatic atrial fibrillation lasting ≥ 1 hour/month over the last 3 months.\n7. Any documented single AF episode lasting ≥ 1 hour on standard of care or study-provided external cardiac monitor of \\> 6 days duration performed within 45 days prior to randomization. Shorter monitoring durations may be acceptable for inclusion at the discretion of the site PI based on the totality of monitoring data and approval of the study PI.\n8. Ablation for AF within the last 2 months.\n9. Prior or anticipated left atrial appendage occlusion or ligation.\n10. Mechanical prosthetic valve(s) or severe valve disease.\n11. Hypertrophic cardiomyopathy.\n12. Participant needs DOAC for reasons other than preventing stroke or arterial embolism resulting from AF (i.e., preventing Deep Vein Thrombosis (DVT) or PE) or needs permanent OAC (i.e., congenital heart defects, prosthetic heart valve).\n13. Participants deemed high risk for non-cardioembolic stroke (i.e., significant carotid artery disease defined as stenosis \\> 75%) based on the investigator's discretion.\n14. The participant is enrolled, has participated within the last 30 days, or is planning to participate in a concurrent drug and/or device study during the course of this clinical trial. Co-enrollment in concurrent trials is only allowed with documented pre-approval from the study manager; there is no concern that co-enrollment could confound the results of this trial.\n15. The participant has a tattoo, birthmark, or surgical scar over the dorsal wrist area on the ipsilateral side that the AFSW may be worn.\n16. The participant has a tremor on their ipsilateral side that the AFSW may be worn.\n17. Any concomitant condition that, in the investigator's opinion, would not allow safe participation in the study (e.g., drug addiction, alcohol abuse).\n18. Known hypersensitivity or contraindication to direct oral anticoagulants.\n19. Documented prior stroke (ischemic or hemorrhagic) or transient ischemic attack.\n20. Reversible causes of AF (e.g., cardiac surgery, pulmonary embolism, untreated hyperthyroidism). AF ablation does not constitute reversible AF.\n21. \\> 5% burden of premature atrial or ventricular depolarizations on pre-enrollment cardiac monitoring.\n22. History of atrial flutter that has not been treated with ablation (participants in atrial flutter and have been ablated are eligible for enrollment).\n23. Stage 4 or 5 chronic kidney disease.\n24. Conditions associated with an increased risk of bleeding:\n\n    * Major surgery in the previous month\n    * Planned surgery or intervention in the next three months that would require cessation of anticoagulation \\> 2 weeks.\n    * History of intracranial, intraocular, spinal, retroperitoneal, or atraumatic intra- articular bleeding\n    * Gastrointestinal hemorrhage within the past year unless the cause has been permanently eliminated (e.g., by surgery)\n    * Symptomatic or endoscopically documented gastroduodenal ulcer disease in the previous 30 days\n    * Hemorrhagic disorder or bleeding diathesis\n    * Need for anticoagulant treatment for disorders other than AF\n    * Uncontrolled hypertension (Systolic Blood Pressure \\>180 mmHg and/or Diastolic Blood Pressure \\>100 mmHg)",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-08-25",
+  "maximum_age": "85 Years",
+  "minimum_age": "22 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05836987",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:41.260825Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05836987:eligibility:2026-08-25:7b6c42fd7f60",
+  "source_record_version": "2026-08-25:7b6c42fd7f60",
+  "source_url": "https://clinicaltrials.gov/study/NCT05836987",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "The Rhythm Evaluation for AntiCoagulaTion With Continuous Monitoring of Atrial Fibrillation"
+}

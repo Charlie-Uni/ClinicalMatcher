@@ -1,7 +1,7 @@
 # P5D test-source exposure record
 
-Status: **Plan A current-snapshot remediation frozen by owner approval;
-execution pending**
+Status: **remediated under owner-approved Plan A; replacement test source is
+frozen and verified; annotation has not started**
 
 Date: 2026-09-01
 
@@ -113,3 +113,30 @@ The parser, duplicate policy, quotas, trial cap, minimum-trial rule, headless
 handling, text-display prohibition, and no-manual-diagnosis rule are unchanged.
 No test catalog, annotation, model prediction, or metric may be created until
 the new snapshot and selection complete and independently validate.
+
+## Plan A execution outcome
+
+Plan A completed under builder commit
+`7d5f731bc7411a368293c09158fa80205ca93955`. The headless builder attempted the
+first 10 trials in the unchanged frozen remainder order; all 10 re-passed the
+current filters and parsed, and none was skipped. The unchanged quotas selected
+40 replacement test criteria from those 10 trials. No criterion text was
+displayed during build, metadata audit, or independent verification.
+
+The final replacement selection is
+`decomposition-selection-b83592f4e26d0874`, SHA-256
+`b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e`.
+Its test snapshot is `decomposition-test-source-a814e1019ffd0186`, SHA-256
+`a814e1019ffd0186999ff448f641dff6969fe15b2f986da9895004121246a941`,
+bound to ClinicalTrials.gov API version `2.0.5` and data timestamp
+`2026-08-31T09:00:04`. The preserved dev snapshot is
+`decomposition-dev-source-9d8d925255a65acd`, SHA-256
+`9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9`.
+
+All 10 current response hashes differ from their historical complete-search
+object hashes. This is retained as a provenance observation only, consistent
+with the approved source-identity change; it is not evidence for a particular
+cause. The old failed selection remains retired, and the old 1.0.0 failure
+report remains valid historical evidence. The exposure is now remediated for
+future P5D work, but the replacement test source must remain unseen during dev
+catalog annotation and prompt/model configuration.

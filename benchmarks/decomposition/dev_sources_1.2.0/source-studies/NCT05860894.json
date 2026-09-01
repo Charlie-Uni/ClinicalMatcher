@@ -1,0 +1,250 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D020969",
+          "term": "Disease Attributes"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D016638",
+          "term": "Critical Illness"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Adult patients with new onset atrial fibrillation occuring in the ICU will be implanted with an implantable ECG holter device (Biomonitor3, Biotronik) to monitor arrhythmia episodes up to 2 years after ICU discharge.",
+          "interventionNames": [
+            "Device: Implantable ECG holter device (Biomonitor3, Biotronik)"
+          ],
+          "label": "Implantable ECG holter device",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Implantable ECG holter device"
+          ],
+          "description": "Subcutaneous implantation of ECG holder device to monitor ECG",
+          "name": "Implantable ECG holter device (Biomonitor3, Biotronik)",
+          "type": "DEVICE"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "Critical Illness"
+      ],
+      "keywords": [
+        "intensive care unit",
+        "atrial fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "charles.monnin@edu.univ-fcomte.fr",
+          "name": "Charles Monnin, MD",
+          "phone": "33381668186",
+          "role": "CONTACT"
+        },
+        {
+          "email": "e1robert@chu-besancon.fr",
+          "name": "Elise Robert",
+          "phone": "33381219086",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Besançon",
+          "contacts": [
+            {
+              "email": "charles.monnin@edu.univ-fcomte.fr",
+              "name": "Charles Monnin, MD",
+              "role": "CONTACT"
+            },
+            {
+              "email": "mbadoz@chu-besancon.fr",
+              "name": "Marc Badoz, MD",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "France",
+          "facility": "Centre Hospitalier Universitaire de Besancon",
+          "geoPoint": {
+            "lat": 47.24878,
+            "lon": 6.01815
+          },
+          "status": "RECRUITING",
+          "zip": "25000"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Atrial fibrillation (AF) is a common heart rhythm disorder in the intensive care unit (ICU). It can be precipitated by multiple factors but it is unclear whether AF persists after discharge from the ICU, and long term. This study will investigate whether AF recurs up to one year after ICU discharge.",
+      "detailedDescription": "Atrial fibrillation (AF) is the most common heart rhythm disorder encountered in the intensive care unit (ICU). It can be precipitated by multiple factors present in critically ill patients, such as tissue hypoxia, metabolic disorders etc. There is a paucity of data regarding the persistence of AF in these patients after discharge from the ICU, and in the longer term. Therefore, this study will investigate whether AF recurs up to one year after ICU discharge using an implantable ECG Holter device in adult patients discharged alive from the ICU, with documented new onset AF."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "DIAGNOSTIC"
+      },
+      "enrollmentInfo": {
+        "count": 150,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age \\>18 years\n* New onset atrial fibrillation diagnosed in the ICU (12 lead ECG or documented episode of atrial fibrillation lasting at least 30 seconds)\n* Patient hospitalized in the ICU with at least one of the following two criteria:\n\n  * orotracheal intubation for mechanical ventilation\n  * AND/OR treatment with amines (vasopressors or inotropic agents)\n* Written informed consent\n* Patient affiliated to a social security regime (or beneficiary thereof)\n\nExclusion Criteria:\n\n* Documented history of atrial fibrillation\n* patients admitted to the ICU after cardiothoracic surgery\n* Patients with life expectancy \\<12 months\n* Patients under legal or judicial protection\n* Patients with no social security coverage\n* Patients within the exclusion period of another clinical trial",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "PIAF",
+      "briefTitle": "Post Intensive Care Unit Atrial Fibrillation",
+      "nctId": "NCT05860894",
+      "officialTitle": "Post Intensive Care Unit Atrial Fibrillation",
+      "orgStudyIdInfo": {
+        "id": "2022-A01292-41"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Centre Hospitalier Universitaire de Besancon"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Any episode of atrial fibrillation, atrial tachycardia or atrial flutter lasting at least 1 minute, as documented on the implantable device recordings",
+          "measure": "Rate of recurrence of atrial fibrillation",
+          "timeFrame": "up to 1 year after ICU discharge"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Burden of atrial fibrillation assessed as time (in days, hours and minutes), expressed as a absolute value",
+          "measure": "Burden of atrial fibrillation in absolute value",
+          "timeFrame": "up to 2 years after ICU discharge"
+        },
+        {
+          "description": "Burden of atrial fibrillation assessed as time (in days, hours and minutes) expressed as a percentage time spent in atrial fibrillation",
+          "measure": "Burden of atrial fibrillation (percentage of time spent in atrial fibrillation)",
+          "timeFrame": "up to 2 years after ICU discharge"
+        },
+        {
+          "description": "Ischemic or hemorrhagei stroke documented by imaging, major bleeding (ISTH classification) or documented peripheral emboli",
+          "measure": "Rate of Stroke",
+          "timeFrame": "up to 2 years after ICU discharge"
+        },
+        {
+          "description": "Changes in treatment due to the discovery of atrial fibrillation",
+          "measure": "Number of participants with Change in treatment",
+          "timeFrame": "up to 2 years after ICU discharge"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "INDUSTRY",
+          "name": "Biotronik SE & Co. KG"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Centre Hospitalier Universitaire de Besancon"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-12-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2024-02-01",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2024-01-31",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2023-09-19",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2024-01",
+      "studyFirstPostDateStruct": {
+        "date": "2023-05-16",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-01-27",
+      "studyFirstSubmitQcDate": "2023-05-12"
+    }
+  }
+}

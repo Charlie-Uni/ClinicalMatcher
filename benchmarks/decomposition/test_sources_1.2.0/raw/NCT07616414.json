@@ -1,0 +1,257 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D016769",
+          "term": "Embolism and Thrombosis"
+        },
+        {
+          "id": "D014652",
+          "term": "Vascular Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D013923",
+          "term": "Thromboembolism"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Participants in this arm will receive the stepwise edoxaban/rivaroxaban anticoagulation regimen: reduced-dose edoxaban/rivaroxaban from 24 hours after CIED surgery until postoperative day 7, followed by standard-dose edoxaban/rivaroxaban for the remainder of the 30-day follow-up period.",
+          "interventionNames": [
+            "Drug: Stepwise Anticoagulation Regimen"
+          ],
+          "label": "Stepwise Anticoagulation Group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Participants in this arm will receive the guideline-recommended standard edoxaban/rivaroxaban anticoagulation regimen: full standard-dose edoxaban/rivaroxaban resumed 24 hours after CIED surgery, continued throughout the 30-day follow-up period.",
+          "interventionNames": [
+            "Drug: Standard Anticoagulation Regimen"
+          ],
+          "label": "Standard Anticoagulation Group",
+          "type": "ACTIVE_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Stepwise Anticoagulation Group"
+          ],
+          "description": "Experimental Regimen: For participants randomized to the stepwise anticoagulation group:\n\n1. Discontinue edoxaban/rivaroxaban 1 day before CIED surgery (i.e., the last dose is administered on the day before surgery);\n2. Resume reduced-dose edoxaban/rivaroxaban 24 hours after surgery: (1) For edoxaban: 15mg once daily for patients with standard 30mg dose, 30mg once daily for patients with standard 60mg dose; (2) For rivaroxaban: 10mg once daily for patients with standard 15mg dose, 15mg once daily for patients with standard 20mg dose.\n3. Continue reduced-dose edoxaban/rivaroxaban until suture removal on postoperative day 7;\n4. Resume standard-dose edoxaban (30mg/60mg once daily) or rivaroxaban (15mg/20mg once daily) after suture removal.\n\nStandard dose reduction criteria are defined per the study protocol based on renal function, body weight, age, concomitant medications, and antiplatelet therapy.",
+          "name": "Stepwise Anticoagulation Regimen",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Standard Anticoagulation Group"
+          ],
+          "description": "Active Comparator Regimen: For participants randomized to the standard anticoagulation group:\n\n1. Discontinue edoxaban/rivaroxaban 1 day before CIED surgery(i.e., the last dose is administered on the day before surgery);\n2. Resume full standard-dose edoxaban (30mg/60mg once daily) or rivaroxaban (15mg/20mg once daily) 24 hours after surgery;\n3. Continue standard-dose edoxaban/rivaroxaban throughout the 30-day follow-up period.\n\nStandard dose criteria are defined per the study protocol based on renal function, body weight, age, concomitant medications, and antiplatelet therapy.",
+          "name": "Standard Anticoagulation Regimen",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Non-valvular Atrial Fibrillation (NVAF)",
+        "Thromboembolism",
+        "Cardiac Implantable Electronic Device",
+        "Perioperative Bleeding",
+        "Hematoma Postoperative"
+      ],
+      "keywords": [
+        "Non-valvular atrial fibrillation",
+        "Cardiac Implantable Electronic Device",
+        "CIED",
+        "Perioperative Anticoagulation",
+        "Non-Vitamin K Antagonist Oral Anticoagulant",
+        "NOAC",
+        "Stepwise Anticoagulation",
+        "Postoperative hematoma",
+        "Thromboembolism",
+        "Perioperative Bleeding",
+        "Randomized Controlled Trial",
+        "Edoxaban",
+        "Rivaroxaban"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "lixiaofei0103@163.com",
+          "name": "Xiaofei Li, Dr.",
+          "phone": "(+86)17801013995",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Beijing",
+          "contacts": [
+            {
+              "email": "lixiaofei0103@163.com",
+              "name": "Xiaofei Li, Dr.",
+              "phone": "(+86)010-88322405",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Xiaofei Li, M.D, Ph.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "China",
+          "facility": "Fuwai Hospital",
+          "geoPoint": {
+            "lat": 39.9075,
+            "lon": 116.39723
+          },
+          "state": "Beijing Municipality",
+          "zip": "100037"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "This is a multi-center, prospective, open-label, randomized controlled trial (STEP-AF) designed to evaluate the safety of a stepwise anticoagulation strategy compared with the guideline-recommended standard anticoagulation regimen in patients with non-valvular atrial fibrillation at high thromboembolic risk (CHA₂DS₂-VASc score ≥2) undergoing cardiac implantable electronic device (CIED) implantation. A total of 424 eligible patients will be randomized 1:1 to either the stepwise anticoagulation group (reduced-dose NOAC from 24 hours post-surgery to day 7, followed by standard-dose NOAC) or the standard anticoagulation group (standard-dose NOAC resumed 24 hours post-surgery). The primary endpoint is the incidence of clinically significant pocket hematoma within 30 days after surgery. Secondary endpoints include individual components of the primary endpoint and other composite outcomes of major perioperative bleeding events. The study aims to provide evidence-based data for optimizing perioperative anticoagulation regimens in Chinese patients undergoing CIED implantation.",
+      "detailedDescription": "This is an investigator-initiated, multi-center, prospective, open-label, randomized controlled clinical trial. The study plans to enroll patients with non-valvular atrial fibrillation and/or atrial flutter admitted for CIED implantation, who are assessed as having moderate to high arterial thromboembolic risk (CHA₂DS₂-VASc score ≥2 points) and have received NOACs for at least 5 days before surgery. CIED procedures include implantation and generator replacement; device types include pacemakers (single-chamber, dual-chamber, and cardiac resynchronization therapy pacemakers), defibrillators (single-chamber, dual-chamber, and cardiac resynchronization therapy defibrillators).\n\nEligible subjects will be enrolled after screening against the inclusion and exclusion criteria. Enrolled subjects will be randomized 1:1 to the intervention group (stepwise anticoagulation group) and the control group (standard anticoagulation group) using a web-based randomization system.\n\nAll enrolled subjects will discontinue anticoagulants 1 day before surgery and resume anticoagulant therapy 24 hours after surgery. All subjects receiving anticoagulant therapy will be applied a single elastic bandage compression after removal of the intraoperative compression bandage on the first postoperative day.\n\nFor the stepwise anticoagulation group: reduced-dose anticoagulation will be resumed 24 hours after surgery, and standard-dose anticoagulation will be restored on the 7th postoperative day. For the standard anticoagulation group: standard-dose anticoagulation will be resumed 24 hours after surgery.\n\nSubjects will be followed up daily during hospitalization for monitor of pacemaker pocket bleeding, bleeding at other sites, and systemic embolism events. On the day before discharge, the following indicators will be evaluated: complete blood count (hemoglobin, hematocrit \\[HCT\\]), length of hospital stay, and in-hospital pacemaker pocket intervention (e.g., additional compression beyond the standard compression protocol, pocket revision, pocket hematoma evacuation, etc.).\n\nOn the 7th postoperative day, subjects will return to the hospital for suture removal, during which the following will be evaluated: CIED pocket bleeding (visual assessment), bleeding at other sites, venous blood hemoglobin, hematocrit, symptomatic systemic embolism events (including symptomatic stroke and other systemic embolism events), venous thromboembolic events, all-cause mortality, CIED-related infection, and EuroQol health index scale.\n\nEndpoint events will be assessed by a trained team of physicians and nurses who are blinded to treatment allocation and not involved in clinical decision-making. The study will follow the intention-to-treat (ITT) principle (follow-up, assessment, and analysis based on randomization results). The superiority of the perioperative stepwise anticoagulation regimen versus the standard anticoagulation regimen for CIED procedures will be evaluated through the primary and secondary endpoints in multiple dimensions, in order to provide high-quality clinical evidence for perioperative anticoagulation decision-making for CIED implantation."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "SINGLE",
+          "whoMasked": [
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 424,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Aged 18 years or older at the time of screening, and able to provide written informed consent;\n2. Scheduled for any CIED procedure (implantation or generator replacement), including pacemakers, implantable cardioverter-defibrillators (ICDs), and cardiac resynchronization therapy (CRT) devices;\n3. Receiving NOAC therapy for at least 5 consecutive days prior to enrollment;\n4. Diagnosed with non-valvular atrial fibrillation (and/or atrial flutter) with a CHA₂DS₂-VASc score ≥2, or scheduled for cardioversion or defibrillation threshold testing during the CIED procedure.\n\nExclusion Criteria:\n\n1. Presence of active systemic or local infection at the time of screening;\n2. Estimated glomerular filtration rate (eGFR) \\<30 mL/min, or any other contraindication to NOAC use;\n3. Active bleeding (e.g., gastrointestinal bleeding);\n4. Severe thrombocytopenia, defined as platelet count \\< 50 × 10⁹/L at screening;\n5. Life expectancy \\<1 year;\n6. Pregnancy.",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "STEP-AF",
+      "briefTitle": "Stepwise vs Standard Anticoagulation for AF Patients Undergoing CIED Implantation (STEP-AF)",
+      "nctId": "NCT07616414",
+      "officialTitle": "Stepwise Versus Standard Antithrombotic Strategies in Patients With Atrial Fibrillation at High Thromboembolic Risk Undergoing CIED Procedures (STEP-AF Trial)",
+      "orgStudyIdInfo": {
+        "id": "2026-3143"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Fu Wai Hospital, Beijing, China"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Clinically significant pocket hematoma is defined as hematoma meeting any of the following criteria:\n\n1. Requiring surgical reintervention;\n2. Leading to prolonged hospital stay beyond the planned discharge date;\n3. Necessitating interruption of NOAC therapy.",
+          "measure": "Incidence of Clinically Significant Pocket Hematoma",
+          "timeFrame": "Within 30 days after CIED implantation"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Incidence of each individual component of the primary endpoint (hematoma requiring reoperation, prolonged hospital stay, NOAC interruption), composite outcomes of other major perioperative bleeding events (transient ischemic attack or stroke; deep vein thrombosis; pulmonary embolism; peripheral embolism of the extremities or other major organs) and other secondary outcomes (all-cause death; device-related infections requiring hospitalization; other complications related to device implantation \\[e.g., lead dislocation, perforation\\]).",
+          "measure": "Individual components of the primary endpoint and composite outcomes of other major perioperative bleeding events",
+          "timeFrame": "7 days and 30 days after surgery"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "Peking University First Hospital"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Fuwai Shenzhen Hospital"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Beijing Boai Hospital, China Rehabilitation Research Center"
+        }
+      ],
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Fu Wai Hospital, Beijing, China"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Fu Wai Hospital, Beijing, China",
+        "investigatorFullName": "Li Xiaofei",
+        "investigatorTitle": "Dr.",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-12-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-06-01",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-05-23",
+      "overallStatus": "NOT_YET_RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-12-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2026-05-26",
+        "type": "ESTIMATED"
+      },
+      "statusVerifiedDate": "2026-05",
+      "studyFirstPostDateStruct": {
+        "date": "2026-06-01",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-05-23",
+      "studyFirstSubmitQcDate": "2026-05-23"
+    }
+  }
+}

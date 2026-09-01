@@ -1,0 +1,344 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct02932007-inclusion-8a9b4816fa22f69e",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age 18 years and older",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 46,
+        "start": 24
+      },
+      "source_text": "Age 18 years and older"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "criterion_type": "inclusion",
+      "normalized_text": "History of symptomatic persistent AF Persistent AF - defined as continuous AF that is sustained more than 7 days but less than 12 months. Episodes of AF of ≥ 48 hours duration in which a decision is made to terminate with electrical or pharmacological cardioversion prior to 7 days will also be classified as persistent AF",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 372,
+        "start": 50
+      },
+      "source_text": "History of symptomatic persistent AF Persistent AF - defined as continuous AF that is sustained more than 7 days but less than 12 months. Episodes of AF of ≥ 48 hours duration in which a decision is made to terminate with electrical or pharmacological cardioversion prior to 7 days will also be classified as persistent AF"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-3449060b23561f00",
+      "criterion_type": "inclusion",
+      "normalized_text": "AF must be documented at least once either by ECG, event monitoring, loop recorder, telemetry, trans-telephonic monitoring, pacemaker or cardiac defibrillator readouts within 24 months prior to enrollment",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 580,
+        "start": 376
+      },
+      "source_text": "AF must be documented at least once either by ECG, event monitoring, loop recorder, telemetry, trans-telephonic monitoring, pacemaker or cardiac defibrillator readouts within 24 months prior to enrollment"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-a87b29150a5fc629",
+      "criterion_type": "inclusion",
+      "normalized_text": "Currently on anticoagulation therapy as indicated per local guidelines, which is considered optimal for stroke prevention in the opinion of the investigator",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 740,
+        "start": 584
+      },
+      "source_text": "Currently on anticoagulation therapy as indicated per local guidelines, which is considered optimal for stroke prevention in the opinion of the investigator"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "criterion_type": "inclusion",
+      "normalized_text": "Implanted dual chamber pacemaker/ICD capable of monitoring atrial arrhythmias or willingness to wear a 2 weeks event monitor if patient does not have a device capable of monitoring atrial arrhythmias",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 943,
+        "start": 744
+      },
+      "source_text": "Implanted dual chamber pacemaker/ICD capable of monitoring atrial arrhythmias or willingness to wear a 2 weeks event monitor if patient does not have a device capable of monitoring atrial arrhythmias"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-1c62b47f41d03742",
+      "criterion_type": "inclusion",
+      "normalized_text": "Signed informed consent",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 970,
+        "start": 947
+      },
+      "source_text": "Signed informed consent"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-0cc2909c6ed668b4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Age < 18 years",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1011,
+        "start": 996
+      },
+      "source_text": "Age \\< 18 years"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-c16439410cb6473f",
+      "criterion_type": "exclusion",
+      "normalized_text": "AF felt to be secondary to an obvious reversible cause such as, but not limited to, acute myocardial infarction, pulmonary embolism, recent surgery, pericarditis, alcohol intoxication, hypoxemia, or thyrotoxicosis",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1228,
+        "start": 1015
+      },
+      "source_text": "AF felt to be secondary to an obvious reversible cause such as, but not limited to, acute myocardial infarction, pulmonary embolism, recent surgery, pericarditis, alcohol intoxication, hypoxemia, or thyrotoxicosis"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-bef73c04cf7d4a75",
+      "criterion_type": "exclusion",
+      "normalized_text": "Structural heart disease including patients with artificial heart valves or valvular AF",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1319,
+        "start": 1232
+      },
+      "source_text": "Structural heart disease including patients with artificial heart valves or valvular AF"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-e03a96ee03ae28ea",
+      "criterion_type": "exclusion",
+      "normalized_text": "Obstructive coronary artery disease or history of any myocardial infarction",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1398,
+        "start": 1323
+      },
+      "source_text": "Obstructive coronary artery disease or history of any myocardial infarction"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-a2aaeb427b846c49",
+      "criterion_type": "exclusion",
+      "normalized_text": "Ejection fraction < 50% within 1 year of consent",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1451,
+        "start": 1402
+      },
+      "source_text": "Ejection fraction \\< 50% within 1 year of consent"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-a021a88b4a42794b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe or moderate to severe aortic stenosis, mitral stenosis, aortic regurgitation, or mitral regurgitation per PI discretion",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1581,
+        "start": 1455
+      },
+      "source_text": "Severe or moderate to severe aortic stenosis, mitral stenosis, aortic regurgitation, or mitral regurgitation per PI discretion"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-dd24c9f566c5591a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prolonged QTc of >460 msec on baseline ECG",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1628,
+        "start": 1585
+      },
+      "source_text": "Prolonged QTc of \\>460 msec on baseline ECG"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-4b55b39318f5219d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindications to quinolines",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1663,
+        "start": 1632
+      },
+      "source_text": "Contraindications to quinolines"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-ca20fe9adfdfd970",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known allergy or hypersensitivity to Chloroquine",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1715,
+        "start": 1667
+      },
+      "source_text": "Known allergy or hypersensitivity to Chloroquine"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-6c66f51885c42a4a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Use of amiodarone 12 months prior to enrollment",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1767,
+        "start": 1720
+      },
+      "source_text": "Use of amiodarone 12 months prior to enrollment"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-87b2409a549afa52",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of AF ablation within 30 days prior to enrollment",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1829,
+        "start": 1772
+      },
+      "source_text": "History of AF ablation within 30 days prior to enrollment"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-fdb4c599882ac1f2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Renal impairment (eGFR < 30 mL/min/1.73 m2 or Serum Creatinine > 1.25 mg/dL) for subjects over the age of 65",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 1944,
+        "start": 1834
+      },
+      "source_text": "Renal impairment (eGFR \\< 30 mL/min/1.73 m2 or Serum Creatinine \\> 1.25 mg/dL) for subjects over the age of 65"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-d279439c4d6f54ca",
+      "criterion_type": "exclusion",
+      "normalized_text": "Hepatic disease (ALT/AST 2X the upper normal limit)",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2000,
+        "start": 1949
+      },
+      "source_text": "Hepatic disease (ALT/AST 2X the upper normal limit)"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-478b8e8d1862564f",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of alcohol abuse and/or drug abuse per PI discretion",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2065,
+        "start": 2005
+      },
+      "source_text": "History of alcohol abuse and/or drug abuse per PI discretion"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-1510bbbfb46829ae",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pre-existing auditory damage",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2098,
+        "start": 2070
+      },
+      "source_text": "Pre-existing auditory damage"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-4bec6992a776403d",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of epilepsy",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2122,
+        "start": 2103
+      },
+      "source_text": "History of epilepsy"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-3924ab87b77ca2a6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Women of child-bearing potential (those who have had a menstrual period in the previous 12 months) who:",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2230,
+        "start": 2127
+      },
+      "source_text": "Women of child-bearing potential (those who have had a menstrual period in the previous 12 months) who:"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-c7aa60855907a89f",
+      "criterion_type": "exclusion",
+      "normalized_text": "are pregnant or breast-feeding or plan to become pregnant during study or",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2311,
+        "start": 2238
+      },
+      "source_text": "are pregnant or breast-feeding or plan to become pregnant during study or"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-561ae45738916d29",
+      "criterion_type": "exclusion",
+      "normalized_text": "who are not surgically sterile and are not practicing two acceptable methods of birth control, or do not plan to continue practicing two acceptable methods of birth control throughout the study (highly effective methods are listed under section 6.0 Pregnancy)",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2577,
+        "start": 2318
+      },
+      "source_text": "who are not surgically sterile and are not practicing two acceptable methods of birth control, or do not plan to continue practicing two acceptable methods of birth control throughout the study (highly effective methods are listed under section 6.0 Pregnancy)"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-87a0c1d6a4b17d19",
+      "criterion_type": "exclusion",
+      "normalized_text": "Current participation in another clinical study",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2629,
+        "start": 2582
+      },
+      "source_text": "Current participation in another clinical study"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+      "criterion_type": "exclusion",
+      "normalized_text": "Serious or active medical or psychiatric condition which, in the opinion of the investigator, may interfere with treatment, assessment, or compliance with the protocol",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2801,
+        "start": 2634
+      },
+      "source_text": "Serious or active medical or psychiatric condition which, in the opinion of the investigator, may interfere with treatment, assessment, or compliance with the protocol"
+    },
+    {
+      "criterion_id": "nct02932007-exclusion-8c9189daff008fe6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Not able to discontinue medications known to have significant interactions with chloroquine",
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2897,
+        "start": 2806
+      },
+      "source_text": "Not able to discontinue medications known to have significant interactions with chloroquine"
+    }
+  ],
+  "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Age 18 years and older\n2. History of symptomatic persistent AF Persistent AF - defined as continuous AF that is sustained more than 7 days but less than 12 months. Episodes of AF of ≥ 48 hours duration in which a decision is made to terminate with electrical or pharmacological cardioversion prior to 7 days will also be classified as persistent AF\n3. AF must be documented at least once either by ECG, event monitoring, loop recorder, telemetry, trans-telephonic monitoring, pacemaker or cardiac defibrillator readouts within 24 months prior to enrollment\n4. Currently on anticoagulation therapy as indicated per local guidelines, which is considered optimal for stroke prevention in the opinion of the investigator\n5. Implanted dual chamber pacemaker/ICD capable of monitoring atrial arrhythmias or willingness to wear a 2 weeks event monitor if patient does not have a device capable of monitoring atrial arrhythmias\n6. Signed informed consent\n\nExclusion Criteria:\n\n1. Age \\< 18 years\n2. AF felt to be secondary to an obvious reversible cause such as, but not limited to, acute myocardial infarction, pulmonary embolism, recent surgery, pericarditis, alcohol intoxication, hypoxemia, or thyrotoxicosis\n3. Structural heart disease including patients with artificial heart valves or valvular AF\n4. Obstructive coronary artery disease or history of any myocardial infarction\n5. Ejection fraction \\< 50% within 1 year of consent\n6. Severe or moderate to severe aortic stenosis, mitral stenosis, aortic regurgitation, or mitral regurgitation per PI discretion\n7. Prolonged QTc of \\>460 msec on baseline ECG\n8. Contraindications to quinolines\n9. Known allergy or hypersensitivity to Chloroquine\n10. Use of amiodarone 12 months prior to enrollment\n11. History of AF ablation within 30 days prior to enrollment\n12. Renal impairment (eGFR \\< 30 mL/min/1.73 m2 or Serum Creatinine \\> 1.25 mg/dL) for subjects over the age of 65\n13. Hepatic disease (ALT/AST 2X the upper normal limit)\n14. History of alcohol abuse and/or drug abuse per PI discretion\n15. Pre-existing auditory damage\n16. History of epilepsy\n17. Women of child-bearing potential (those who have had a menstrual period in the previous 12 months) who:\n\n    * are pregnant or breast-feeding or plan to become pregnant during study or\n    * who are not surgically sterile and are not practicing two acceptable methods of birth control, or do not plan to continue practicing two acceptable methods of birth control throughout the study (highly effective methods are listed under section 6.0 Pregnancy)\n18. Current participation in another clinical study\n19. Serious or active medical or psychiatric condition which, in the opinion of the investigator, may interfere with treatment, assessment, or compliance with the protocol\n20. Not able to discontinue medications known to have significant interactions with chloroquine",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2019-08-19",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT02932007",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+  "source_record_version": "2019-08-19:b4cf469ca0bd",
+  "source_url": "https://clinicaltrials.gov/study/NCT02932007",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Chloroquine for Patients With Symptomatic Persistent Atrial Fibrillation: A Prospective Pilot Study"
+}

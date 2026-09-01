@@ -1,0 +1,234 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06740539-inclusion-b41545e8a81a2265",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥18 years.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 37,
+        "start": 23
+      },
+      "source_text": "Age ≥18 years."
+    },
+    {
+      "criterion_id": "nct06740539-inclusion-df126f698add345f",
+      "criterion_type": "inclusion",
+      "normalized_text": "The patient is willing and able to comply with the protocol and has provided written informed consent.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 142,
+        "start": 40
+      },
+      "source_text": "The patient is willing and able to comply with the protocol and has provided written informed consent."
+    },
+    {
+      "criterion_id": "nct06740539-inclusion-db8fe7c358e032e2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Paroxysmal or persistent atrial fibrillation (AF).（Persistent AF was defined as AF which is sustained beyond 7 days, or lasting less than seven days but necessitating pharmacologic or electric cardioversion. Included within the category of persistent AF is 'long-standing persistent AF', defined as continuous AF of >1-year duration. AF episodes had to be documented in the last 3 months prior to enrollment by ECG, Holter ECG, Loop Recorder, memory of the implanted device (ICD/CRT-D), or any other suitable device.）",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 663,
+        "start": 145
+      },
+      "source_text": "Paroxysmal or persistent atrial fibrillation (AF).（Persistent AF was defined as AF which is sustained beyond 7 days, or lasting less than seven days but necessitating pharmacologic or electric cardioversion. Included within the category of persistent AF is 'long-standing persistent AF', defined as continuous AF of \\>1-year duration. AF episodes had to be documented in the last 3 months prior to enrollment by ECG, Holter ECG, Loop Recorder, memory of the implanted device (ICD/CRT-D), or any other suitable device.）"
+    },
+    {
+      "criterion_id": "nct06740539-inclusion-c01180c7523c8363",
+      "criterion_type": "inclusion",
+      "normalized_text": "Failure or intolerance of antiarrhythmic drug therapy or unwillingness to take antiarrhythmic drugs.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 766,
+        "start": 666
+      },
+      "source_text": "Failure or intolerance of antiarrhythmic drug therapy or unwillingness to take antiarrhythmic drugs."
+    },
+    {
+      "criterion_id": "nct06740539-inclusion-7c94a92156bd35e0",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosed with Heart Failure with Preserved Ejection Fraction (HFpEF).（(1) a history of hospitalization for HF with symptoms classified as New York Heart Association (NYHA) class II, III, or IV; (2) LVEF ≥ 50%; (3) at least one of the following cardiac structural abnormalities identified by echocardiography: left ventricular hypertrophy, left atrial enlargement, or diastolic dysfunction; and (4) elevated levels of N-terminal pro-brain natriuretic peptide (NT-proBNP), with a threshold of ≥400 pg/mL for pa-tients with SR at admission and ≥600 pg/mL for patients with AF at admis-sion.)",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1358,
+        "start": 769
+      },
+      "source_text": "Diagnosed with Heart Failure with Preserved Ejection Fraction (HFpEF).（(1) a history of hospitalization for HF with symptoms classified as New York Heart Association (NYHA) class II, III, or IV; (2) LVEF ≥ 50%; (3) at least one of the following cardiac structural abnormalities identified by echocardiography: left ventricular hypertrophy, left atrial enlargement, or diastolic dysfunction; and (4) elevated levels of N-terminal pro-brain natriuretic peptide (NT-proBNP), with a threshold of ≥400 pg/mL for pa-tients with SR at admission and ≥600 pg/mL for patients with AF at admis-sion.)"
+    },
+    {
+      "criterion_id": "nct06740539-inclusion-438bc67407ae3696",
+      "criterion_type": "inclusion",
+      "normalized_text": "New York Heart Association class II, III, or IV.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1409,
+        "start": 1361
+      },
+      "source_text": "New York Heart Association class II, III, or IV."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-cddb39cd4c47c462",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous left heart ablation procedure for AF.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1480,
+        "start": 1434
+      },
+      "source_text": "Previous left heart ablation procedure for AF."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-51cfd6f24d6d5f7c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindication to chronic anticoagulation therapy or heparin.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1546,
+        "start": 1483
+      },
+      "source_text": "Contraindication to chronic anticoagulation therapy or heparin."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-db762f04d38fa838",
+      "criterion_type": "exclusion",
+      "normalized_text": "Documented left atrial diameter >6 cm, optimally from the parasternal long-axis view.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1635,
+        "start": 1549
+      },
+      "source_text": "Documented left atrial diameter \\>6 cm, optimally from the parasternal long-axis view."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-e374f28742b5977e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Acute coronary syndrome, cardiac surgery, angioplasty, or cerebrovascular accident within 2 months prior to enrollment.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1757,
+        "start": 1638
+      },
+      "source_text": "Acute coronary syndrome, cardiac surgery, angioplasty, or cerebrovascular accident within 2 months prior to enrollment."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-e5b27c5b36b72da4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Planned cardiovascular intervention.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1796,
+        "start": 1760
+      },
+      "source_text": "Planned cardiovascular intervention."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-48729e4f8d215fc5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Listed for heart transplant.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1827,
+        "start": 1799
+      },
+      "source_text": "Listed for heart transplant."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-552b390babcc2ea6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Cardiac assist device implanted.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1862,
+        "start": 1830
+      },
+      "source_text": "Cardiac assist device implanted."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-0779d7bb8ecd5ae2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Life expectancy ≤ 12 months.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1893,
+        "start": 1865
+      },
+      "source_text": "Life expectancy ≤ 12 months."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-f213e2cc7cbdaafe",
+      "criterion_type": "exclusion",
+      "normalized_text": "Mental or physical inability to participate in the study.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 1953,
+        "start": 1896
+      },
+      "source_text": "Mental or physical inability to participate in the study."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-76f650b35990c3af",
+      "criterion_type": "exclusion",
+      "normalized_text": "Requirement for dialysis due to terminal renal failure.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 2011,
+        "start": 1956
+      },
+      "source_text": "Requirement for dialysis due to terminal renal failure."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-b744cd6b50d9f631",
+      "criterion_type": "exclusion",
+      "normalized_text": "Woman currently pregnant or breastfeeding or not using reliable contraceptive measures during fertility age.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 2122,
+        "start": 2014
+      },
+      "source_text": "Woman currently pregnant or breastfeeding or not using reliable contraceptive measures during fertility age."
+    },
+    {
+      "criterion_id": "nct06740539-exclusion-5dbbf52fc0d17c2c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Enrollment in another investigational drug or device study, or participation in another telemonitoring concept.",
+      "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+      "source_span": {
+        "end": 2236,
+        "start": 2125
+      },
+      "source_text": "Enrollment in another investigational drug or device study, or participation in another telemonitoring concept."
+    }
+  ],
+  "eligibility_sha256": "b80a508466e084a1c11458bed33567bd37883e41c013f8cb9d1ff5b1e7baa8ab",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age ≥18 years.\n* The patient is willing and able to comply with the protocol and has provided written informed consent.\n* Paroxysmal or persistent atrial fibrillation (AF).（Persistent AF was defined as AF which is sustained beyond 7 days, or lasting less than seven days but necessitating pharmacologic or electric cardioversion. Included within the category of persistent AF is 'long-standing persistent AF', defined as continuous AF of \\>1-year duration. AF episodes had to be documented in the last 3 months prior to enrollment by ECG, Holter ECG, Loop Recorder, memory of the implanted device (ICD/CRT-D), or any other suitable device.）\n* Failure or intolerance of antiarrhythmic drug therapy or unwillingness to take antiarrhythmic drugs.\n* Diagnosed with Heart Failure with Preserved Ejection Fraction (HFpEF).（(1) a history of hospitalization for HF with symptoms classified as New York Heart Association (NYHA) class II, III, or IV; (2) LVEF ≥ 50%; (3) at least one of the following cardiac structural abnormalities identified by echocardiography: left ventricular hypertrophy, left atrial enlargement, or diastolic dysfunction; and (4) elevated levels of N-terminal pro-brain natriuretic peptide (NT-proBNP), with a threshold of ≥400 pg/mL for pa-tients with SR at admission and ≥600 pg/mL for patients with AF at admis-sion.)\n* New York Heart Association class II, III, or IV.\n\nExclusion Criteria:\n\n* Previous left heart ablation procedure for AF.\n* Contraindication to chronic anticoagulation therapy or heparin.\n* Documented left atrial diameter \\>6 cm, optimally from the parasternal long-axis view.\n* Acute coronary syndrome, cardiac surgery, angioplasty, or cerebrovascular accident within 2 months prior to enrollment.\n* Planned cardiovascular intervention.\n* Listed for heart transplant.\n* Cardiac assist device implanted.\n* Life expectancy ≤ 12 months.\n* Mental or physical inability to participate in the study.\n* Requirement for dialysis due to terminal renal failure.\n* Woman currently pregnant or breastfeeding or not using reliable contraceptive measures during fertility age.\n* Enrollment in another investigational drug or device study, or participation in another telemonitoring concept.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2024-12-18",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06740539",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:43.210761Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06740539:eligibility:2024-12-18:b80a508466e0",
+  "source_record_version": "2024-12-18:b80a508466e0",
+  "source_url": "https://clinicaltrials.gov/study/NCT06740539",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Atrial Fibrillation with Heart Failure with Preserved Ejection Fraction: Treatment Strategies-Catheter Ablation Vs. Anti-Atrial Arrhythmia Drugs"
+}

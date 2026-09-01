@@ -1,0 +1,498 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06959121-inclusion-9d015e0db2eee38f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject must be between 18 and 85 years of age",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 69,
+        "start": 23
+      },
+      "source_text": "Subject must be between 18 and 85 years of age"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-b3a2463b70e1cfd9",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject is willing and capable of providing Informed Consent to undergo study procedures which include the potential for surgical AF ablation, and completion of follow-up visits as specified in the clinical study protocol",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 293,
+        "start": 72
+      },
+      "source_text": "Subject is willing and capable of providing Informed Consent to undergo study procedures which include the potential for surgical AF ablation, and completion of follow-up visits as specified in the clinical study protocol"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-e634ade0c1b1008e",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject has history of documented paroxysmal atrial fibrillation (AF that is intermittent and terminates within ≤ 7 days of onset) or persistent/longstanding persistent atrial fibrillation (AF that is continuous and sustains for > 7 days and requires intervention) within one year prior to enrollment. Documentation may include ECG, transtelephonic monitor (TTM), Holter monitor or telemetry strip from the study hospital or an outside physician",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 742,
+        "start": 296
+      },
+      "source_text": "Subject has history of documented paroxysmal atrial fibrillation (AF that is intermittent and terminates within ≤ 7 days of onset) or persistent/longstanding persistent atrial fibrillation (AF that is continuous and sustains for \\> 7 days and requires intervention) within one year prior to enrollment. Documentation may include ECG, transtelephonic monitor (TTM), Holter monitor or telemetry strip from the study hospital or an outside physician"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-4e0e3952c27e698e",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject is scheduled to undergo non-emergent cardiac surgical procedure(s) to be performed on cardiopulmonary bypass including open-heart surgery via sternotomy for one or more of the following: Mitral valve repair or replacement, Aortic valve repair or replacement, Ascending aortic aneurysms, Atrial Septal Defect (ASD)/Patent Foramen Ovale (PFO) or Coronary artery bypass procedures",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1130,
+        "start": 745
+      },
+      "source_text": "Subject is scheduled to undergo non-emergent cardiac surgical procedure(s) to be performed on cardiopulmonary bypass including open-heart surgery via sternotomy for one or more of the following: Mitral valve repair or replacement, Aortic valve repair or replacement, Ascending aortic aneurysms, Atrial Septal Defect (ASD)/Patent Foramen Ovale (PFO) or Coronary artery bypass procedures"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-303710348b13ec26",
+      "criterion_type": "inclusion",
+      "normalized_text": "Left ventricular ejection fraction ≥ 30% (determined by echocardiography or cardiac catheterization performed within 60 days of enrollment as documented in patient medical history)",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1313,
+        "start": 1133
+      },
+      "source_text": "Left ventricular ejection fraction ≥ 30% (determined by echocardiography or cardiac catheterization performed within 60 days of enrollment as documented in patient medical history)"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-34eacfadd912fc1b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject has a life expectancy of at least 5 years",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1365,
+        "start": 1316
+      },
+      "source_text": "Subject has a life expectancy of at least 5 years"
+    },
+    {
+      "criterion_id": "nct06959121-inclusion-6409bab4ba8e3d04",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject currently lives within a reasonable commuting distance of the investigational site and plans to remain geographically stable through 12 month follow up",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1527,
+        "start": 1368
+      },
+      "source_text": "Subject currently lives within a reasonable commuting distance of the investigational site and plans to remain geographically stable through 12 month follow up"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-bc09221a8320566a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has an implantable electronic medical device. (i.e., pacemaker, implantable cardioverter-defibrillator (ICD), or Cardiac Resynchronization Therapy (CRT) or left atrial appendage (LAA) device",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1750,
+        "start": 1552
+      },
+      "source_text": "Subject has an implantable electronic medical device. (i.e., pacemaker, implantable cardioverter-defibrillator (ICD), or Cardiac Resynchronization Therapy (CRT) or left atrial appendage (LAA) device"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-342eef4b393a94ca",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has history or known to have LAA clot",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1798,
+        "start": 1753
+      },
+      "source_text": "Subject has history or known to have LAA clot"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-bf591fc21363a296",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has a prosthetic heart valve",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1837,
+        "start": 1801
+      },
+      "source_text": "Subject has a prosthetic heart valve"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-7b602258693ad3bd",
+      "criterion_type": "exclusion",
+      "normalized_text": "Stand- alone AF without indication(s) for concomitant Coronary Artery Bypass Graft (CABG) and/or valve surgery",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 1950,
+        "start": 1840
+      },
+      "source_text": "Stand- alone AF without indication(s) for concomitant Coronary Artery Bypass Graft (CABG) and/or valve surgery"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-811f865d1f389dc2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior cardiac surgery including prior cardiac surgical ablation",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2016,
+        "start": 1953
+      },
+      "source_text": "Prior cardiac surgery including prior cardiac surgical ablation"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-b7456ca31aa619ba",
+      "criterion_type": "exclusion",
+      "normalized_text": "Left Atrial diameter ≥ 6cm",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2045,
+        "start": 2019
+      },
+      "source_text": "Left Atrial diameter ≥ 6cm"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-1042e72ff918d788",
+      "criterion_type": "exclusion",
+      "normalized_text": "Wolff-Parkinson-White syndrome or other Supra-Ventricular Arrhythmia, Atrioventricular (AV) nodal reentry",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2153,
+        "start": 2048
+      },
+      "source_text": "Wolff-Parkinson-White syndrome or other Supra-Ventricular Arrhythmia, Atrioventricular (AV) nodal reentry"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-c268d8f245c9e46a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Documented history of persistent or long standing persistent atrial fibrillation longer than 10 years",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2257,
+        "start": 2156
+      },
+      "source_text": "Documented history of persistent or long standing persistent atrial fibrillation longer than 10 years"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-fd9f4abea7544fe7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects requiring surgery other than CABG and/or cardiac valve surgery and/or atrial septal defect repair/PFO and ascending aorta",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2390,
+        "start": 2260
+      },
+      "source_text": "Subjects requiring surgery other than CABG and/or cardiac valve surgery and/or atrial septal defect repair/PFO and ascending aorta"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-8ca7a28c6f4bf3ae",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior history of medical procedure involving instrumentation of the left atrium (e.g., previous ablation)",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2498,
+        "start": 2393
+      },
+      "source_text": "Prior history of medical procedure involving instrumentation of the left atrium (e.g., previous ablation)"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-427de7550dbd7ef7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects that are on an AAD for ventricular arrhythmia.",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2556,
+        "start": 2501
+      },
+      "source_text": "Subjects that are on an AAD for ventricular arrhythmia."
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-1d88eaa9bf3c5a7f",
+      "criterion_type": "exclusion",
+      "normalized_text": "STS Predicted Risk of Mortality (STS PROM) of 10 or higher",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2617,
+        "start": 2559
+      },
+      "source_text": "STS Predicted Risk of Mortality (STS PROM) of 10 or higher"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-66343ad6ea1fd15c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Class III or IV New York Heart Association (NYHA) heart failure symptoms",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2692,
+        "start": 2620
+      },
+      "source_text": "Class III or IV New York Heart Association (NYHA) heart failure symptoms"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-8171a4c4b92d4eba",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior history of stroke within 6 months",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2734,
+        "start": 2695
+      },
+      "source_text": "Prior history of stroke within 6 months"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-07710fbb0dd6b354",
+      "criterion_type": "exclusion",
+      "normalized_text": "Documented ST-segment elevation Myocardial Infarction (MI) within the 6 weeks prior to study enrollment",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2840,
+        "start": 2737
+      },
+      "source_text": "Documented ST-segment elevation Myocardial Infarction (MI) within the 6 weeks prior to study enrollment"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-792b65bc6245456f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Need for emergent cardiac surgery (per sit-to-stand (STS) test definition)",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2917,
+        "start": 2843
+      },
+      "source_text": "Need for emergent cardiac surgery (per sit-to-stand (STS) test definition)"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-d04aeac835be05e7",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known carotid artery stenosis greater than 80%",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2966,
+        "start": 2920
+      },
+      "source_text": "Known carotid artery stenosis greater than 80%"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-304ca2e9e58dfb9c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Current diagnosis of active systemic infection",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3015,
+        "start": 2969
+      },
+      "source_text": "Current diagnosis of active systemic infection"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-9d3f52af8e1d3444",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe peripheral arterial occlusive disease defined as claudication with minimal exertion",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3108,
+        "start": 3018
+      },
+      "source_text": "Severe peripheral arterial occlusive disease defined as claudication with minimal exertion"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-10290e03a07f5d7f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Renal failure requiring dialysis or hepatic failure (significant liver dysfunction with markedly significant elevation of liver enzymes, such as cirrhosis with decompensation, portal hypertension, or a history of hepatic failure)",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3340,
+        "start": 3111
+      },
+      "source_text": "Renal failure requiring dialysis or hepatic failure (significant liver dysfunction with markedly significant elevation of liver enzymes, such as cirrhosis with decompensation, portal hypertension, or a history of hepatic failure)"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-99cb034b8a5e49e9",
+      "criterion_type": "exclusion",
+      "normalized_text": "A known drug and/or alcohol addiction",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3380,
+        "start": 3343
+      },
+      "source_text": "A known drug and/or alcohol addiction"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-4f2b19c20deadfec",
+      "criterion_type": "exclusion",
+      "normalized_text": "Mental impairment or other conditions that may not allow the subject to understand the nature, significance, and scope of the study",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3514,
+        "start": 3383
+      },
+      "source_text": "Mental impairment or other conditions that may not allow the subject to understand the nature, significance, and scope of the study"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-bdc3371c1ca91ba6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy or desire to get pregnant within 12 months of the study treatment",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3592,
+        "start": 3517
+      },
+      "source_text": "Pregnancy or desire to get pregnant within 12 months of the study treatment"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-cdd50b96ffe1081b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Preoperative need for an intra-aortic balloon pump or intravenous inotropes",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3670,
+        "start": 3595
+      },
+      "source_text": "Preoperative need for an intra-aortic balloon pump or intravenous inotropes"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-f1050cf03f24959b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects who have been treated with thoracic radiation",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3727,
+        "start": 3673
+      },
+      "source_text": "Subjects who have been treated with thoracic radiation"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-2da55b1c156a795b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects in current chemotherapy",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3762,
+        "start": 3730
+      },
+      "source_text": "Subjects in current chemotherapy"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-55756dfb5984e931",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects on long-term treatment with oral or injected steroids (not including intermittent use of inhaled steroids for respiratory diseases)",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3905,
+        "start": 3765
+      },
+      "source_text": "Subjects on long-term treatment with oral or injected steroids (not including intermittent use of inhaled steroids for respiratory diseases)"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-e4d9b087c4196d4c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with known hypertrophic obstructive cardiomyopathy",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 3967,
+        "start": 3908
+      },
+      "source_text": "Subjects with known hypertrophic obstructive cardiomyopathy"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-b41d8c108a445027",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subjects with known cold agglutinin",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4005,
+        "start": 3970
+      },
+      "source_text": "Subjects with known cold agglutinin"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-e0ab92822f49bd11",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has a contraindication to anticoagulation (e.g., a bleeding or clotting disorder such as Idiopathic Thrombocytopenic Purpura (ITP))",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4147,
+        "start": 4008
+      },
+      "source_text": "Subject has a contraindication to anticoagulation (e.g., a bleeding or clotting disorder such as Idiopathic Thrombocytopenic Purpura (ITP))"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-77b05562972c8982",
+      "criterion_type": "exclusion",
+      "normalized_text": "Solid organ or hematologic transplant, or currently being evaluated for an organ transplant",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4241,
+        "start": 4150
+      },
+      "source_text": "Solid organ or hematologic transplant, or currently being evaluated for an organ transplant"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-230de54415cdd2d8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Body mass index > 45 kg/m2",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4271,
+        "start": 4244
+      },
+      "source_text": "Body mass index \\> 45 kg/m2"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-9f0999c3f722dbaf",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any diagnosed connective tissue disorder",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4314,
+        "start": 4274
+      },
+      "source_text": "Any diagnosed connective tissue disorder"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-6da6593cd6e5acd5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe Chronic Obstructive Pulmonary Disease (COPD) per sit-to-stand (STS) test definition",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4407,
+        "start": 4317
+      },
+      "source_text": "Severe Chronic Obstructive Pulmonary Disease (COPD) per sit-to-stand (STS) test definition"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-1ea995059b1faf31",
+      "criterion_type": "exclusion",
+      "normalized_text": "Use of any other investigational drug, therapy, or device within 30 days before enrollment or concurrent participation in another research study",
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4554,
+        "start": 4410
+      },
+      "source_text": "Use of any other investigational drug, therapy, or device within 30 days before enrollment or concurrent participation in another research study"
+    }
+  ],
+  "eligibility_sha256": "07f58a303faaa38b3fc660e1892f05d9b1dbcd988eaadf22fe9bc1e3e5ba12db",
+  "eligibility_text": "Inclusion Criteria:\n\n* Subject must be between 18 and 85 years of age\n* Subject is willing and capable of providing Informed Consent to undergo study procedures which include the potential for surgical AF ablation, and completion of follow-up visits as specified in the clinical study protocol\n* Subject has history of documented paroxysmal atrial fibrillation (AF that is intermittent and terminates within ≤ 7 days of onset) or persistent/longstanding persistent atrial fibrillation (AF that is continuous and sustains for \\> 7 days and requires intervention) within one year prior to enrollment. Documentation may include ECG, transtelephonic monitor (TTM), Holter monitor or telemetry strip from the study hospital or an outside physician\n* Subject is scheduled to undergo non-emergent cardiac surgical procedure(s) to be performed on cardiopulmonary bypass including open-heart surgery via sternotomy for one or more of the following: Mitral valve repair or replacement, Aortic valve repair or replacement, Ascending aortic aneurysms, Atrial Septal Defect (ASD)/Patent Foramen Ovale (PFO) or Coronary artery bypass procedures\n* Left ventricular ejection fraction ≥ 30% (determined by echocardiography or cardiac catheterization performed within 60 days of enrollment as documented in patient medical history)\n* Subject has a life expectancy of at least 5 years\n* Subject currently lives within a reasonable commuting distance of the investigational site and plans to remain geographically stable through 12 month follow up\n\nExclusion Criteria:\n\n* Subject has an implantable electronic medical device. (i.e., pacemaker, implantable cardioverter-defibrillator (ICD), or Cardiac Resynchronization Therapy (CRT) or left atrial appendage (LAA) device\n* Subject has history or known to have LAA clot\n* Subject has a prosthetic heart valve\n* Stand- alone AF without indication(s) for concomitant Coronary Artery Bypass Graft (CABG) and/or valve surgery\n* Prior cardiac surgery including prior cardiac surgical ablation\n* Left Atrial diameter ≥ 6cm\n* Wolff-Parkinson-White syndrome or other Supra-Ventricular Arrhythmia, Atrioventricular (AV) nodal reentry\n* Documented history of persistent or long standing persistent atrial fibrillation longer than 10 years\n* Subjects requiring surgery other than CABG and/or cardiac valve surgery and/or atrial septal defect repair/PFO and ascending aorta\n* Prior history of medical procedure involving instrumentation of the left atrium (e.g., previous ablation)\n* Subjects that are on an AAD for ventricular arrhythmia.\n* STS Predicted Risk of Mortality (STS PROM) of 10 or higher\n* Class III or IV New York Heart Association (NYHA) heart failure symptoms\n* Prior history of stroke within 6 months\n* Documented ST-segment elevation Myocardial Infarction (MI) within the 6 weeks prior to study enrollment\n* Need for emergent cardiac surgery (per sit-to-stand (STS) test definition)\n* Known carotid artery stenosis greater than 80%\n* Current diagnosis of active systemic infection\n* Severe peripheral arterial occlusive disease defined as claudication with minimal exertion\n* Renal failure requiring dialysis or hepatic failure (significant liver dysfunction with markedly significant elevation of liver enzymes, such as cirrhosis with decompensation, portal hypertension, or a history of hepatic failure)\n* A known drug and/or alcohol addiction\n* Mental impairment or other conditions that may not allow the subject to understand the nature, significance, and scope of the study\n* Pregnancy or desire to get pregnant within 12 months of the study treatment\n* Preoperative need for an intra-aortic balloon pump or intravenous inotropes\n* Subjects who have been treated with thoracic radiation\n* Subjects in current chemotherapy\n* Subjects on long-term treatment with oral or injected steroids (not including intermittent use of inhaled steroids for respiratory diseases)\n* Subjects with known hypertrophic obstructive cardiomyopathy\n* Subjects with known cold agglutinin\n* Subject has a contraindication to anticoagulation (e.g., a bleeding or clotting disorder such as Idiopathic Thrombocytopenic Purpura (ITP))\n* Solid organ or hematologic transplant, or currently being evaluated for an organ transplant\n* Body mass index \\> 45 kg/m2\n* Any diagnosed connective tissue disorder\n* Severe Chronic Obstructive Pulmonary Disease (COPD) per sit-to-stand (STS) test definition\n* Use of any other investigational drug, therapy, or device within 30 days before enrollment or concurrent participation in another research study",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-01-12",
+  "maximum_age": "85 Years",
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06959121",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+  "source_record_version": "2026-01-12:07f58a303faa",
+  "source_url": "https://clinicaltrials.gov/study/NCT06959121",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "CellFX® Nanosecond Pulsed Field Ablation (nsPFA)™ Cardiac Surgery Clamp System to Treat Atrial Fibrillation"
+}

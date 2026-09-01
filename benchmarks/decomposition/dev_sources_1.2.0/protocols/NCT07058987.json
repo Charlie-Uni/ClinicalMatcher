@@ -1,0 +1,157 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07058987-inclusion-2e3a33e73e10609b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age between 40 and 80 years",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 50,
+        "start": 23
+      },
+      "source_text": "Age between 40 and 80 years"
+    },
+    {
+      "criterion_id": "nct07058987-inclusion-837e0da55832b2d2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Diagnosed with persistent or paroxysmal atrial fibrillation, confirmed by ECG or Holter",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 140,
+        "start": 53
+      },
+      "source_text": "Diagnosed with persistent or paroxysmal atrial fibrillation, confirmed by ECG or Holter"
+    },
+    {
+      "criterion_id": "nct07058987-inclusion-f24e899bae0a4858",
+      "criterion_type": "inclusion",
+      "normalized_text": "Stable medical condition and able to participate in cardiac rehabilitation and EECP therapy",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 234,
+        "start": 143
+      },
+      "source_text": "Stable medical condition and able to participate in cardiac rehabilitation and EECP therapy"
+    },
+    {
+      "criterion_id": "nct07058987-inclusion-05cc3df8af5d5f9b",
+      "criterion_type": "inclusion",
+      "normalized_text": "Provided written informed consent",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 270,
+        "start": 237
+      },
+      "source_text": "Provided written informed consent"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-6a2f06586f529fc4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Recent acute myocardial infarction, unstable angina, or decompensated heart failure within the past 4 weeks",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 402,
+        "start": 295
+      },
+      "source_text": "Recent acute myocardial infarction, unstable angina, or decompensated heart failure within the past 4 weeks"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-0a59455a39a56cc8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe valvular heart disease or left ventricular ejection fraction <30%",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 478,
+        "start": 405
+      },
+      "source_text": "Severe valvular heart disease or left ventricular ejection fraction \\<30%"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-f4452be48607e0ea",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe peripheral vascular disease or deep vein thrombosis",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 539,
+        "start": 481
+      },
+      "source_text": "Severe peripheral vascular disease or deep vein thrombosis"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-eb557c2d7a41a0c4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe pulmonary disease or active infection",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 586,
+        "start": 542
+      },
+      "source_text": "Severe pulmonary disease or active infection"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-48b5d6031fcee719",
+      "criterion_type": "exclusion",
+      "normalized_text": "History of bleeding disorders or contraindications to EECP",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 647,
+        "start": 589
+      },
+      "source_text": "History of bleeding disorders or contraindications to EECP"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-12841cc6d9918da9",
+      "criterion_type": "exclusion",
+      "normalized_text": "Cognitive impairment or psychiatric condition affecting study participation",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 725,
+        "start": 650
+      },
+      "source_text": "Cognitive impairment or psychiatric condition affecting study participation"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-0c83b3b2cd247a0d",
+      "criterion_type": "exclusion",
+      "normalized_text": "Participation in another clinical trial within the past 3 months",
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 792,
+        "start": 728
+      },
+      "source_text": "Participation in another clinical trial within the past 3 months"
+    }
+  ],
+  "eligibility_sha256": "97078e30003f0c18313317f780831dbdf85578230930f05e97aac49b73951930",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age between 40 and 80 years\n* Diagnosed with persistent or paroxysmal atrial fibrillation, confirmed by ECG or Holter\n* Stable medical condition and able to participate in cardiac rehabilitation and EECP therapy\n* Provided written informed consent\n\nExclusion Criteria:\n\n* Recent acute myocardial infarction, unstable angina, or decompensated heart failure within the past 4 weeks\n* Severe valvular heart disease or left ventricular ejection fraction \\<30%\n* Severe peripheral vascular disease or deep vein thrombosis\n* Severe pulmonary disease or active infection\n* History of bleeding disorders or contraindications to EECP\n* Cognitive impairment or psychiatric condition affecting study participation\n* Participation in another clinical trial within the past 3 months",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2025-07-14",
+  "maximum_age": "80 Years",
+  "minimum_age": "40 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07058987",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+  "source_record_version": "2025-07-14:97078e30003f",
+  "source_url": "https://clinicaltrials.gov/study/NCT07058987",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Effects of Enhanced External Counterpulsation Combined With Cardiac Rehabilitation in Patients With Atrial Fibrillation"
+}

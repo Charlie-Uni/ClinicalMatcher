@@ -1,0 +1,321 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "meshes": [
+        {
+          "id": "C023676",
+          "term": "chloroquine diphosphate"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "submissionTracking": {
+        "estimatedResultsFirstSubmitDate": "2021-11-03",
+        "submissionInfos": [
+          {
+            "mcpReleaseN": 8,
+            "releaseDate": "2021-11-03",
+            "resetDate": "2021-12-01"
+          }
+        ]
+      },
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Chloroquine Phosphate will be provided at 500 mg dosage strength for oral administration. Patient will be instructed to take 2 tablets per day on the first two days and 1 tablet each day for the next 12 days for a total of 14 days treatment.",
+          "interventionNames": [
+            "Drug: Chloroquine Phosphate"
+          ],
+          "label": "Chloroquine Phosphate",
+          "type": "EXPERIMENTAL"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Chloroquine Phosphate"
+          ],
+          "description": "Two tablets of study drug are to be taken on the day of study drug initiation and the next day, followed by one tablet each day for the next 12 days. Study drug to be orally administered and taken with food.",
+          "name": "Chloroquine Phosphate",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ],
+      "keywords": [
+        "persistent"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "thanhtran@health.usf.edu",
+          "name": "Thanh Tran, MPH",
+          "phone": "813-844-8544",
+          "role": "CONTACT"
+        },
+        {
+          "email": "snoujaim@health.usf.edu",
+          "name": "Sami Noujaim, PhD",
+          "phone": "813-974-6416",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Tampa",
+          "contacts": [
+            {
+              "email": "nntran@health.usf.edu",
+              "name": "Nhi Tran, MS",
+              "phone": "813-259-0628",
+              "role": "CONTACT"
+            },
+            {
+              "email": "jsiddoway@health.usf.edu",
+              "name": "Jacob Siddoway",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Sami Noujaim, PhD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            },
+            {
+              "name": "Bengt Herweg, MD",
+              "role": "SUB_INVESTIGATOR"
+            },
+            {
+              "name": "Dany Sayad, MD",
+              "role": "SUB_INVESTIGATOR"
+            }
+          ],
+          "country": "United States",
+          "facility": "University of South Florida",
+          "geoPoint": {
+            "lat": 27.94752,
+            "lon": -82.45843
+          },
+          "state": "Florida",
+          "status": "RECRUITING",
+          "zip": "33606"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "University of South Florida",
+          "name": "Sami Noujaim, PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The goal of this pilot study is to explore the efficacy of chloroquine in terminating persistent AF and assess its potential role as a pharmacological cardioversion agent for the management of AF.",
+      "detailedDescription": "This is an open-label, pilot study to explore the efficacy of chloroquine in terminating persistent AF within 2 weeks of drug administration and assess its potential role as a pharmacological cardioversion agent for the management of AF. Subjects will be followed for 2 weeks from the start of drug administration to study drug termination."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "NA",
+        "interventionModel": "SINGLE_GROUP",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 40,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE2"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Age 18 years and older\n2. History of symptomatic persistent AF Persistent AF - defined as continuous AF that is sustained more than 7 days but less than 12 months. Episodes of AF of ≥ 48 hours duration in which a decision is made to terminate with electrical or pharmacological cardioversion prior to 7 days will also be classified as persistent AF\n3. AF must be documented at least once either by ECG, event monitoring, loop recorder, telemetry, trans-telephonic monitoring, pacemaker or cardiac defibrillator readouts within 24 months prior to enrollment\n4. Currently on anticoagulation therapy as indicated per local guidelines, which is considered optimal for stroke prevention in the opinion of the investigator\n5. Implanted dual chamber pacemaker/ICD capable of monitoring atrial arrhythmias or willingness to wear a 2 weeks event monitor if patient does not have a device capable of monitoring atrial arrhythmias\n6. Signed informed consent\n\nExclusion Criteria:\n\n1. Age \\< 18 years\n2. AF felt to be secondary to an obvious reversible cause such as, but not limited to, acute myocardial infarction, pulmonary embolism, recent surgery, pericarditis, alcohol intoxication, hypoxemia, or thyrotoxicosis\n3. Structural heart disease including patients with artificial heart valves or valvular AF\n4. Obstructive coronary artery disease or history of any myocardial infarction\n5. Ejection fraction \\< 50% within 1 year of consent\n6. Severe or moderate to severe aortic stenosis, mitral stenosis, aortic regurgitation, or mitral regurgitation per PI discretion\n7. Prolonged QTc of \\>460 msec on baseline ECG\n8. Contraindications to quinolines\n9. Known allergy or hypersensitivity to Chloroquine\n10. Use of amiodarone 12 months prior to enrollment\n11. History of AF ablation within 30 days prior to enrollment\n12. Renal impairment (eGFR \\< 30 mL/min/1.73 m2 or Serum Creatinine \\> 1.25 mg/dL) for subjects over the age of 65\n13. Hepatic disease (ALT/AST 2X the upper normal limit)\n14. History of alcohol abuse and/or drug abuse per PI discretion\n15. Pre-existing auditory damage\n16. History of epilepsy\n17. Women of child-bearing potential (those who have had a menstrual period in the previous 12 months) who:\n\n    * are pregnant or breast-feeding or plan to become pregnant during study or\n    * who are not surgically sterile and are not practicing two acceptable methods of birth control, or do not plan to continue practicing two acceptable methods of birth control throughout the study (highly effective methods are listed under section 6.0 Pregnancy)\n18. Current participation in another clinical study\n19. Serious or active medical or psychiatric condition which, in the opinion of the investigator, may interfere with treatment, assessment, or compliance with the protocol\n20. Not able to discontinue medications known to have significant interactions with chloroquine",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Chloroquine for Patients With Symptomatic Persistent Atrial Fibrillation: A Prospective Pilot Study",
+      "nctId": "NCT02932007",
+      "officialTitle": "Chloroquine for Patients With Symptomatic Persistent Atrial Fibrillation: A Prospective Pilot Study",
+      "orgStudyIdInfo": {
+        "id": "Chloroquine AF"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "University of South Florida"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "measure": "Proportion of patients with termination of AF",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "AF burden reported on pacemaker/ICD interrogation or 2-week Holter reports from baseline and 2 weeks post drug initiation",
+          "measure": "Percentage of AF burden",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        },
+        {
+          "description": "From baseline, pre-treatment ECG compared to 2 weeks post treatment ECG",
+          "measure": "QT intervals",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        },
+        {
+          "description": "In days on pacemaker/ICD interrogation or Holter reports obtained at 2 weeks after study drug initiation",
+          "measure": "Time to AF termination",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        },
+        {
+          "description": "From pacemaker/ICD interrogation or Holter reports obtained at 2 weeks after study drug initiation",
+          "measure": "Percentages of classifications of rhythms identified",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        },
+        {
+          "description": "From baseline, pre-treatment ECG compared to 2 weeks post treatment ECG",
+          "measure": "PR interval",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        },
+        {
+          "description": "From baseline, pre-treatment ECG compared to 2 weeks post treatment ECG",
+          "measure": "QRS duration",
+          "timeFrame": "Within 2 weeks of study drug initiation"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": true,
+      "isUsExport": false,
+      "oversightHasDmc": true
+    },
+    "referencesModule": {
+      "references": [
+        {
+          "citation": "Nguyen T, Jolly U, Sidhu K, Yee R, Leong-Sit P. Atrial fibrillation management: evaluating rate vs rhythm control. Expert Rev Cardiovasc Ther. 2016 Jun;14(6):713-24. doi: 10.1586/14779072.2016.1164033. Epub 2016 Mar 30.",
+          "pmid": "26960034",
+          "type": "BACKGROUND"
+        },
+        {
+          "citation": "Boriani G, Laroche C, Diemberger I, Fantecchi E, Popescu MI, Rasmussen LH, Dan GA, Kalarus Z, Tavazzi L, Maggioni AP, Lip GY. 'Real-world' management and outcomes of patients with paroxysmal vs. non-paroxysmal atrial fibrillation in Europe: the EURObservational Research Programme-Atrial Fibrillation (EORP-AF) General Pilot Registry. Europace. 2016 May;18(5):648-57. doi: 10.1093/europace/euv390. Epub 2016 Jan 29.",
+          "pmid": "26826133",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Filgueiras-Rama D, Martins RP, Mironov S, Yamazaki M, Calvo CJ, Ennis SR, Bandaru K, Noujaim SF, Kalifa J, Berenfeld O, Jalife J. Chloroquine terminates stretch-induced atrial fibrillation more effectively than flecainide in the sheep heart. Circ Arrhythm Electrophysiol. 2012 Jun 1;5(3):561-70. doi: 10.1161/CIRCEP.111.966820. Epub 2012 Mar 30.",
+          "pmid": "22467674",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Lee YS, Hwang M, Song JS, Li C, Joung B, Sobie EA, Pak HN. The Contribution of Ionic Currents to Rate-Dependent Action Potential Duration and Pattern of Reentry in a Mathematical Model of Human Atrial Fibrillation. PLoS One. 2016 Mar 10;11(3):e0150779. doi: 10.1371/journal.pone.0150779. eCollection 2016.",
+          "pmid": "26964092",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Noujaim SF, Stuckey JA, Ponce-Balbuena D, Ferrer-Villada T, Lopez-Izquierdo A, Pandit S, Calvo CJ, Grzeda KR, Berenfeld O, Chapula JA, Jalife J. Specific residues of the cytoplasmic domains of cardiac inward rectifier potassium channels are effective antifibrillatory targets. FASEB J. 2010 Nov;24(11):4302-12. doi: 10.1096/fj.10-163246. Epub 2010 Jun 28.",
+          "pmid": "20585026",
+          "type": "RESULT"
+        },
+        {
+          "citation": "BURRELL ZL Jr, MARTINEZ AC. Chloroquine and hydroxychloroquine in the treatment of cardiac arrhythmias. N Engl J Med. 1958 Apr 17;258(16):798-800. doi: 10.1056/NEJM195804172581608. No abstract available.",
+          "pmid": "13541664",
+          "type": "RESULT"
+        },
+        {
+          "citation": "Harris L, Downar E, Shaikh NA, Chen T. Antiarrhythmic potential of chloroquine: new use for an old drug. Can J Cardiol. 1988 Sep;4(6):295-300.",
+          "pmid": "2460205",
+          "type": "RESULT"
+        }
+      ]
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "University of South Florida"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2020-09",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2019-08-19",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2019-08-15",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2020-03",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2017-03-28",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2018-10",
+      "studyFirstPostDateStruct": {
+        "date": "2016-10-13",
+        "type": "ESTIMATED"
+      },
+      "studyFirstSubmitDate": "2016-10-07",
+      "studyFirstSubmitQcDate": "2016-10-11"
+    }
+  }
+}

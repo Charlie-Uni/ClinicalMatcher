@@ -1,0 +1,163 @@
+{
+  "contract_id": "decomposition-test-remediation-047dd750572d6807",
+  "contract_sha256": "047dd750572d680711bcd4755e81be9b88402e5c2cca9cd6736a2a0df61d38f5",
+  "records": [
+    {
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "nct_id": "NCT02932007",
+      "protocol_file_sha256": "4e6999213dfdcb5407f810da9227da917c37ad87ae7866976295f784082fdd99",
+      "protocol_path": "protocols/NCT02932007.json",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "source_study_file_sha256": "19b9ad337dec922293108f560d0b7c3382d01d50288ca3c9cc5f383fc416b41a",
+      "source_study_path": "source-studies/NCT02932007.json",
+      "source_study_sha256": "9fbfb3dc6917fffdb27d9246281272c5fec1b35da713070ca96ae647a017b433"
+    },
+    {
+      "eligibility_sha256": "42a8201cb6a7c38bd57fc5e82323b7e34c488f544ca55978ab5cb9c2bd74301a",
+      "nct_id": "NCT05136131",
+      "protocol_file_sha256": "84045297bde7d8dcda68f548aceeb5079ffd0b8ddef2ea0b018d672490e6bbc7",
+      "protocol_path": "protocols/NCT05136131.json",
+      "protocol_sha256": "56f2a93e95b2c45d94d0682bd5b56242e525fb59a2c630ba7a85440b608c7e7f",
+      "source_study_file_sha256": "da6de4cd31ad5598913ab73482bea7350d3312a59a2f193ebef57db19b3f83fe",
+      "source_study_path": "source-studies/NCT05136131.json",
+      "source_study_sha256": "3bf343ae0b79bd639c18dd6aa708c017683a5c779efe1bb1e6a4bfb4f0fa0ca8"
+    },
+    {
+      "eligibility_sha256": "a338254941c90c284c465491e5d60606208e355e0e1670cfc8aaaa1319dd9a7c",
+      "nct_id": "NCT05860894",
+      "protocol_file_sha256": "e5887b842ac46dd21ee6ee5bdb95ba2852004bf1ff8f01ab626252064975cfca",
+      "protocol_path": "protocols/NCT05860894.json",
+      "protocol_sha256": "41d8fa5387eaf29f0b2d20e9dc5b3f0b8dd5bb032da19ab2eba0361d1a236b41",
+      "source_study_file_sha256": "44fccbe7e6356b8f73cbad50842b190b9f3b919bee031a3f0d71f812f8dd5feb",
+      "source_study_path": "source-studies/NCT05860894.json",
+      "source_study_sha256": "ce3ad57d7ee36704da18d56d44b7e9c9c21668b8441400194795cb3570c6bcbf"
+    },
+    {
+      "eligibility_sha256": "1e861dba3047f5bfaf43b237aab9bd304e6b49c6949c8b531edb63bf29e34c09",
+      "nct_id": "NCT06007872",
+      "protocol_file_sha256": "09cb19bd124424f601845ef33403a58b97c8c978cf3b1767393c46dac78f1b8a",
+      "protocol_path": "protocols/NCT06007872.json",
+      "protocol_sha256": "bddc80768ce96c2849e35bc3d670229150dbcdbeb5070405fbc10b427c590df0",
+      "source_study_file_sha256": "aa786f0dd95d715cf7204b001f2e87be07f27e4f95d30edc3404bdddb7d6f3f2",
+      "source_study_path": "source-studies/NCT06007872.json",
+      "source_study_sha256": "d372829ad86d448eb464fcfb11369b19486ea9ed6069363eb118efab251a0c80"
+    },
+    {
+      "eligibility_sha256": "780d5af5b1990db947f80c85120d38e785a0868edde03fd9c0b7e1f0a9042112",
+      "nct_id": "NCT06324188",
+      "protocol_file_sha256": "c0c897c31c6242abc02c989a5e3f088b7f43d870fbb09606a84eb56fca5c9748",
+      "protocol_path": "protocols/NCT06324188.json",
+      "protocol_sha256": "ef2f5a3ebc879f7e9735858915315530ae329ad0426a7855f42e1a221bb61236",
+      "source_study_file_sha256": "ef19c33503d8bbc3695c646a680446f27ef9bcda49d7c65e9df75c72411ae0dd",
+      "source_study_path": "source-studies/NCT06324188.json",
+      "source_study_sha256": "66452ad56f38363323f73f7fc3d567f7e254b4e6e28b6089e7bca5a203e36e2b"
+    },
+    {
+      "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+      "nct_id": "NCT06528262",
+      "protocol_file_sha256": "fa00e8eef76e2dc0e67a45a2770d608b9dda92a2f63973cf555294a90ab7be32",
+      "protocol_path": "protocols/NCT06528262.json",
+      "protocol_sha256": "b818ccfe6f4f06fe65bc93509c2231f269e11edec8a12ab58ccf32c40fb4f31c",
+      "source_study_file_sha256": "0ac4fe06f296f3d3504839f61573a344df38a732c11d08c06939cf25f2d2222d",
+      "source_study_path": "source-studies/NCT06528262.json",
+      "source_study_sha256": "4ec776bf005e150d3c32ac67529ea1ed91791c69f991e8ac99aee1a73be5fc7a"
+    },
+    {
+      "eligibility_sha256": "d2df0456c728c5211d76dad777e399638698259b43d20f2692ea493e38ce643d",
+      "nct_id": "NCT06751459",
+      "protocol_file_sha256": "f14b4d47699fb7926fa73af519f8ed0b44c8413294a0ebe76819b28b9c82990f",
+      "protocol_path": "protocols/NCT06751459.json",
+      "protocol_sha256": "b3e24ccc5cb1b72286ee8beee44a63ef8a07f839160c1bde176723d5f883de97",
+      "source_study_file_sha256": "7e3af9aadd8a81e50eece254d5a9add7211f483c96841ae0c1e05e3f915cd718",
+      "source_study_path": "source-studies/NCT06751459.json",
+      "source_study_sha256": "cab127e4118ece48b54e2967158abd30c8b48b349bc9162c3c13a2783a9b8ef1"
+    },
+    {
+      "eligibility_sha256": "2130031866cd21dd5401698466d637f24968f26179b2c0f93a7d98dc3d7b3d42",
+      "nct_id": "NCT06847932",
+      "protocol_file_sha256": "206ec875de7883613d096edc72b5ee22792b9332633515b394a61bad3ecc5e62",
+      "protocol_path": "protocols/NCT06847932.json",
+      "protocol_sha256": "153ced50adaa7bdde8c0af19b99c5d7227a73879c04594363d3f9df6af6cf9ba",
+      "source_study_file_sha256": "d7060cc7072c28392208ce08d5898cd7f01f0ab029d6b9a794b755db65f91c03",
+      "source_study_path": "source-studies/NCT06847932.json",
+      "source_study_sha256": "85907ddf7b3859274a9bd6fcb34aef198d388848ad7ec7e94c0bd8304f871dd2"
+    },
+    {
+      "eligibility_sha256": "07f58a303faaa38b3fc660e1892f05d9b1dbcd988eaadf22fe9bc1e3e5ba12db",
+      "nct_id": "NCT06959121",
+      "protocol_file_sha256": "1c255e2cef8cbaf5e20571d92d8fd3cd869d065969566718bc95a5672fc15218",
+      "protocol_path": "protocols/NCT06959121.json",
+      "protocol_sha256": "310f6409dc11946fa6f2978bac873ad24109332dfa8f07010de26c6628d2874a",
+      "source_study_file_sha256": "6936fbdb73c0dd73f03010fc394bdf9ac45f9dd00b98331c1f52d014f44fb890",
+      "source_study_path": "source-studies/NCT06959121.json",
+      "source_study_sha256": "0470dd91fddb1018c127f598f9e3029a6567ccdc88607223bfdfef51007a1405"
+    },
+    {
+      "eligibility_sha256": "97078e30003f0c18313317f780831dbdf85578230930f05e97aac49b73951930",
+      "nct_id": "NCT07058987",
+      "protocol_file_sha256": "4ebab9d2d7a4254a59d3f4ea35706120855bac1e9086fd462f33b51a459b0244",
+      "protocol_path": "protocols/NCT07058987.json",
+      "protocol_sha256": "37e10254efa015e52103873435014597f542c969a4e19a2ac065447b97dd1608",
+      "source_study_file_sha256": "c77374c308f2d4ea7e4f5cbd5ced7adb2698bf17c6362b551cdf2e983c7b81b5",
+      "source_study_path": "source-studies/NCT07058987.json",
+      "source_study_sha256": "89815fb55eb66f9e96578b1b324c497951d52c8e61c556b6309baccc34040e45"
+    },
+    {
+      "eligibility_sha256": "90895ed103568c221f941bfaa64805cc9938597c9cd996055d456beb50a94260",
+      "nct_id": "NCT07430956",
+      "protocol_file_sha256": "13c18008e36a2f94ea6c54252ab4084cd59d97e76a8d9d9ba17e48eec6151c78",
+      "protocol_path": "protocols/NCT07430956.json",
+      "protocol_sha256": "8d670b662c5a6cd930635baeb26801525fae838117e15c00d79439616cd20212",
+      "source_study_file_sha256": "b6351b8bb3e71a3f64425ec31e6217ce6984501346ac99a71eaac34dad2a80a9",
+      "source_study_path": "source-studies/NCT07430956.json",
+      "source_study_sha256": "0490a42765aeb70e3391c4c34a52e3d94f2cbd05beb2ab763fdc89faf3f195fe"
+    },
+    {
+      "eligibility_sha256": "377edee9637c58d181007ac0e2fbe5c9324270d161b1f39e0fb05fa98a3017ff",
+      "nct_id": "NCT07455539",
+      "protocol_file_sha256": "b5ef6da9ee0322164ff06e6e7824d0a9acd0870576cf9369922f527dd6fc5c86",
+      "protocol_path": "protocols/NCT07455539.json",
+      "protocol_sha256": "beae7559c81c5c6ec8a8a1932a259411cc3262acb0434c19671d24a53a454e48",
+      "source_study_file_sha256": "7dc4ee2db9d62dbbbef9e66d8eac058c7bf19ed7a5891d74bd0c0e4c18ec33a6",
+      "source_study_path": "source-studies/NCT07455539.json",
+      "source_study_sha256": "84fbd721b6545424d1cce6a4ad61ccb0b0bf5aaeaa21d8659f0d0755cdd4a706"
+    },
+    {
+      "eligibility_sha256": "6ed0e0c03bc257bf38e6d7d7e2d0b4d6abab68fa15384ae1fbabea5606d0d0a7",
+      "nct_id": "NCT07563257",
+      "protocol_file_sha256": "6da80180021567a0a117b526bdb71c13839140dbfb813899ae9c90e7d662f529",
+      "protocol_path": "protocols/NCT07563257.json",
+      "protocol_sha256": "96859f134e4c21fc2a635f5197d1d7e1630a308dcc3003b818029696ea38715e",
+      "source_study_file_sha256": "520ad96052d4e2ce0c49ba1680681eb35642d478514591afa5a1b49cc419f2f3",
+      "source_study_path": "source-studies/NCT07563257.json",
+      "source_study_sha256": "6fe085714f198596c98da4609dd53b6d87f2396de37fe767d9c7c643b38e7743"
+    },
+    {
+      "eligibility_sha256": "716699e7490c69e0916d7f2368f6daa2f0660773dae8d9c1b228dd77dc1addd5",
+      "nct_id": "NCT07687862",
+      "protocol_file_sha256": "bf5fdf4824b266f4d43a9c12ccf05c407831c19070e097a94afc45ffc585363f",
+      "protocol_path": "protocols/NCT07687862.json",
+      "protocol_sha256": "b77d0872c273e61b11778946c5b6af6dd28b344e147265b96c1597000648773c",
+      "source_study_file_sha256": "dd1f8cf344533fd97a706e1234df4075c798e9156341e97b8173da160f0d2c28",
+      "source_study_path": "source-studies/NCT07687862.json",
+      "source_study_sha256": "567900f099378169d10f01171b8993c59187054a08c0807998f46221a4bb7517"
+    },
+    {
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "nct_id": "NCT07715929",
+      "protocol_file_sha256": "31430fe432c9344dcdd72bc48219a69ca801a6d5ab9274c161c7ed56d7c090b0",
+      "protocol_path": "protocols/NCT07715929.json",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "source_study_file_sha256": "2e2873d3dfeb6edcaa1e220b070d4e225dc0ed7fb96392895fbb851d88ea6044",
+      "source_study_path": "source-studies/NCT07715929.json",
+      "source_study_sha256": "8d626f3f586b65b07d8a8da9d2a09ba02b5e4f3a04bf08fb209d96e09f722c40"
+    }
+  ],
+  "selected_dev_criterion_count": 40,
+  "selected_dev_trial_count": 15,
+  "snapshot_id": "decomposition-dev-source-9d8d925255a65acd",
+  "snapshot_sha256": "9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9",
+  "snapshot_version": "decomposition-dev-source-snapshot/1.0.0",
+  "source_snapshot_content_sha256": "15b1e8aff71f895ff1d7b2c9d06e8a16bb44fb350b6281116f2e800d046e5b7c",
+  "source_snapshot_id": "ctg-15b1e8aff71f895f"
+}

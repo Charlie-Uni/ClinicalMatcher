@@ -1,0 +1,256 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        },
+        {
+          "id": "D005117",
+          "term": "Cardiac Complexes, Premature"
+        },
+        {
+          "id": "D000075224",
+          "term": "Cardiac Conduction System Disease"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D018880",
+          "term": "Atrial Premature Complexes"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "All the patients' ECGs will receive AF-predict AI-ECG analysis. According to the AI-ECG analysis results, those with at least one high-risk ECG within one year will be called back and asked to undergo a continuous cardiac rhythm monitor for up to 7 days. Otherwise, the physicians can review the AI-ECG analysis results for all the patients in the intervention group.",
+          "interventionNames": [
+            "Other: AF-predict AI-ECG alert system guided management"
+          ],
+          "label": "AF-predict AI-ECG alert system",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Patients will receive the standard care, and their ECGs will not be analyzed by AI-ECG before the end of the study.",
+          "label": "Standard of care",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "AF-predict AI-ECG alert system"
+          ],
+          "description": "AF-predict AI-ECG alert system",
+          "name": "AF-predict AI-ECG alert system guided management",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation (AF)",
+        "Premature Atrial Complexes",
+        "Atrial Arrhythmias",
+        "Artificial Intelligence (AI)",
+        "Electrocardiogram"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "xup6fup@mail.ndmctsgh.edu.tw",
+          "name": "Chin Lin, PhD",
+          "phone": "+886-2-8792-3100 Ext. 18574",
+          "role": "CONTACT"
+        },
+        {
+          "email": "chiaochinlee@hotmail.com",
+          "name": "ChiaoChin Lee, MD",
+          "phone": "+886919614672",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Taipei",
+          "contacts": [
+            {
+              "email": "chenyh178@gmail.com",
+              "name": "Yuan-Hao Chen",
+              "phone": "+886287923311",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Chin Lin, PhD",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Taiwan",
+          "facility": "Tri-Service General Hospital",
+          "geoPoint": {
+            "lat": 25.05306,
+            "lon": 121.52639
+          },
+          "status": "RECRUITING",
+          "zip": "114"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "National Defense Medical Center",
+          "name": "Chin Lin, PhD",
+          "role": "PRINCIPAL_INVESTIGATOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Our study aimed to use an AF-predict AI-ECG alert system to help physicians identify patients who need to wear a continuous cardiac rhythm monitor for new diagnoses of atrial fibrillation (AF), atrial flutter (AFL), or atrial arrhythmia with high AF risk, including premature atrial complexes (PAC) ≥ 500/24hr, burst PACs \\> 20 beats, non-sustained AF/AFL."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "DIAGNOSTIC"
+      },
+      "enrollmentInfo": {
+        "count": 14726,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "NA"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients in the inpatient department or the outpatient department\n* Patients need to have at least one electrocardiogram within one year\n\nExclusion Criteria:\n\n* Diagnosis of atrial fibrillation/atrial flutter\n* History of atrial fibrillation/atrial flutter catheter ablation\n* Patients with cardiac implantable electronic devices\n* Any documented electrocardiogram showed atrial fibrillation/atrial flutter and pacing rhythm\n* History of received rhythm control medications for atrial arrhythmia, including Class I and Class III antiarrhythmic drugs\n* Any reasons indicate for anti-coagulant agents, including vitamin K antagonist and non-vitamin K antagonist oral anticoagulant",
+      "healthyVolunteers": false,
+      "maximumAge": "85 Days",
+      "minimumAge": "40 Days",
+      "sex": "ALL",
+      "stdAges": [
+        "CHILD"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "LATENT",
+      "briefTitle": "Leveraging AI-ECG Technology for Early Notification and Tracking of AF Development",
+      "nctId": "NCT06847932",
+      "officialTitle": "Leveraging AI-ECG Technology for Early Notification and Tracking of AF Development: a Randomized Control Trial",
+      "orgStudyIdInfo": {
+        "id": "A202205179"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "National Defense Medical Center, Taiwan"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "The primary outcome, latent atrial fibrillation, is a composite of new diagnoses of AF/AFL, atrial arrhythmia with high AF risk, including PACs ≥ 500/24hr, burst PACs \\> 20 beats, and non-sustained AF/AFL, within 90 days after enrollment. The results will be demonstrated as the rate of diagnoses of latent atrial fibrillation.",
+          "measure": "Latent atrial fibrillation",
+          "timeFrame": "Within 90 days after enrollment."
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Antiarrhythmic treatment may include newly prescribed beta-blockers or non-dihydropyridine calcium channel blockers, class Ia, Ic, and III antiarrhythmic drugs, and catheter ablation. Physicians can determine whether a patient requires antiarrhythmic treatment through clinical practice. The outcome is the rate of initiation of antiarrhythmic treatment.",
+          "measure": "Antiarrhythmic treatment",
+          "timeFrame": "Within 180 days after enrollment."
+        },
+        {
+          "description": "New diagnoses of atrial fibrillation or atrial flutter are defined as those documented by a 12-lead electrocardiogram or by continuous cardiac rhythm monitoring for ≥ 30 seconds. The result will be presented as the rate of new diagnoses of atrial fibrillation or atrial flutter.",
+          "measure": "90-days New diagnoses of atrial fibrillation/atrial flutter",
+          "timeFrame": "Within 90 days after enrollment."
+        },
+        {
+          "description": "Atrial arrhythmia with high AF risk is defined by the following criteria: premature atrial complexes more than 500 beats in 24 hours as recorded by a continuous cardiac rhythm monitor; burst premature atrial complexes exceeding 20 beats as documented in a continuous cardiac rhythm monitor or a 12-lead electrocardiogram, or documented non-sustained AF/AFL in either a continuous cardiac rhythm monitor or a 12-lead electrocardiogram. The result will be presented as the rate of diagnoses of atrial arrhythmia with high AF risk.",
+          "measure": "Atrial arrhythmia with high AF risk",
+          "timeFrame": "Within 90 days after enrollment."
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "National Defense Medical Center, Taiwan"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "National Defense Medical Center, Taiwan",
+        "investigatorFullName": "Chin Lin",
+        "investigatorTitle": "Associate Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2026-10-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2025-11-19",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2025-11-16",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2026-07-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-07-01",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2025-11",
+      "studyFirstPostDateStruct": {
+        "date": "2025-02-26",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2025-02-21",
+      "studyFirstSubmitQcDate": "2025-02-21"
+    }
+  }
+}

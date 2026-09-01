@@ -1,0 +1,223 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06279793-inclusion-65f7ed39e21fcb8f",
+      "criterion_type": "inclusion",
+      "normalized_text": "Written informed consent prior to study participation",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 77,
+        "start": 24
+      },
+      "source_text": "Written informed consent prior to study participation"
+    },
+    {
+      "criterion_id": "nct06279793-inclusion-dfa982305b9c9cf1",
+      "criterion_type": "inclusion",
+      "normalized_text": "Adult patients (≥ 18 years)",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 108,
+        "start": 81
+      },
+      "source_text": "Adult patients (≥ 18 years)"
+    },
+    {
+      "criterion_id": "nct06279793-inclusion-dfeeadcd887ddb33",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patients scheduled to undergo elective cardiac surgery with the use of CPB, who are defined as high risk based on having (i) one of the following surgical procedures: valvular heart surgery only, CABG, combined valve and CABG, multiple valve surgeries, combined cardiac procedures, aortic surgical procedures (aortic arch and/or descending aorta; aortic valve+ascending aorta) and (ii) at least one of the following additional risk factors: (a) a high perioperative risk profile, defined as predicted operative mortality of ≥8% (EuroSCORE II), (b) age ≥70, (c) Clinical Frailty Score 4 or more, (d) urgent surgery (defined as to be performed within 24-48 hours after admission), (e) left ventricular ejection fraction <35%",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 835,
+        "start": 112
+      },
+      "source_text": "Patients scheduled to undergo elective cardiac surgery with the use of CPB, who are defined as high risk based on having (i) one of the following surgical procedures: valvular heart surgery only, CABG, combined valve and CABG, multiple valve surgeries, combined cardiac procedures, aortic surgical procedures (aortic arch and/or descending aorta; aortic valve+ascending aorta) and (ii) at least one of the following additional risk factors: (a) a high perioperative risk profile, defined as predicted operative mortality of ≥8% (EuroSCORE II), (b) age ≥70, (c) Clinical Frailty Score 4 or more, (d) urgent surgery (defined as to be performed within 24-48 hours after admission), (e) left ventricular ejection fraction \\<35%"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-90dcdb1eb227184f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known hypersensitivity to fish oil/fish products or egg protein",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 924,
+        "start": 861
+      },
+      "source_text": "Known hypersensitivity to fish oil/fish products or egg protein"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-74155dcf5adf13ac",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnancy or lactation period",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 957,
+        "start": 928
+      },
+      "source_text": "Pregnancy or lactation period"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-77ed637cdc0ac3ce",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous history of chronic atrial fibrillation, atrial flutter and/or atrial tachyarrhythmia",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1054,
+        "start": 961
+      },
+      "source_text": "Previous history of chronic atrial fibrillation, atrial flutter and/or atrial tachyarrhythmia"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-c6bb3be42b7319d6",
+      "criterion_type": "exclusion",
+      "normalized_text": "Inability or unwillingness of individual to give written informed consent",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1131,
+        "start": 1058
+      },
+      "source_text": "Inability or unwillingness of individual to give written informed consent"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-3e7fcf70eae63db2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Not expected to survive an additional 48 hours from screening evaluation",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1207,
+        "start": 1135
+      },
+      "source_text": "Not expected to survive an additional 48 hours from screening evaluation"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-24ad4b277d022c62",
+      "criterion_type": "exclusion",
+      "normalized_text": "Lack of commitment to full, aggressive care (anticipated withholding or withdrawing treatments in the first week but isolated \"Do not Resuscitate\" \\[DNR\\] acceptable)",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1377,
+        "start": 1211
+      },
+      "source_text": "Lack of commitment to full, aggressive care (anticipated withholding or withdrawing treatments in the first week but isolated \"Do not Resuscitate\" \\[DNR\\] acceptable)"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-008d73586d56e1ce",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients admitted with diabetic ketoacidosis or non-ketotic hyperosmolar coma",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1458,
+        "start": 1381
+      },
+      "source_text": "Patients admitted with diabetic ketoacidosis or non-ketotic hyperosmolar coma"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-6f83a284861abbe5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients receiving extracorporeal mechanical assist device (e.g. ECLS, or IABP) or advanced heart failure therapies (e.g. TAH, VAD)",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1593,
+        "start": 1462
+      },
+      "source_text": "Patients receiving extracorporeal mechanical assist device (e.g. ECLS, or IABP) or advanced heart failure therapies (e.g. TAH, VAD)"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-a73e84264d63f551",
+      "criterion_type": "exclusion",
+      "normalized_text": "Enrolment in any other interventional trial will be discussed with the coordinating investigator on a case-by-case scenario and requires sponsor approval before inclusion",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1767,
+        "start": 1597
+      },
+      "source_text": "Enrolment in any other interventional trial will be discussed with the coordinating investigator on a case-by-case scenario and requires sponsor approval before inclusion"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-ae5b34a989944926",
+      "criterion_type": "exclusion",
+      "normalized_text": "Already receiving special FO-enriched medical nutrition products",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1836,
+        "start": 1772
+      },
+      "source_text": "Already receiving special FO-enriched medical nutrition products"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-609348dcf80982ea",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe malnutrition (as defined by the BMI <18.5)",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1891,
+        "start": 1841
+      },
+      "source_text": "Severe malnutrition (as defined by the BMI \\<18.5)"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-55f1bc1847c64aab",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe liver dysfunction defined by Child Pugh Class C.",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 1951,
+        "start": 1896
+      },
+      "source_text": "Severe liver dysfunction defined by Child Pugh Class C."
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-f3ce3137791646a3",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe chronic kidney dysfunction defined by the National Kidney Foundation (NKF) stage 4 and 5 by using the glomerular filtration rate (GFR <30ml/min)",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 2108,
+        "start": 1956
+      },
+      "source_text": "Severe chronic kidney dysfunction defined by the National Kidney Foundation (NKF) stage 4 and 5 by using the glomerular filtration rate (GFR \\<30ml/min)"
+    },
+    {
+      "criterion_id": "nct06279793-exclusion-ca7523b3a6f0a724",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known severe coagulation disorder",
+      "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+      "source_span": {
+        "end": 2146,
+        "start": 2113
+      },
+      "source_text": "Known severe coagulation disorder"
+    }
+  ],
+  "eligibility_sha256": "204c710f7ebb24e4e1386e9d974f01cbfa3bb2d4c3a26de63199ffe41d5f4026",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Written informed consent prior to study participation\n2. Adult patients (≥ 18 years)\n3. Patients scheduled to undergo elective cardiac surgery with the use of CPB, who are defined as high risk based on having (i) one of the following surgical procedures: valvular heart surgery only, CABG, combined valve and CABG, multiple valve surgeries, combined cardiac procedures, aortic surgical procedures (aortic arch and/or descending aorta; aortic valve+ascending aorta) and (ii) at least one of the following additional risk factors: (a) a high perioperative risk profile, defined as predicted operative mortality of ≥8% (EuroSCORE II), (b) age ≥70, (c) Clinical Frailty Score 4 or more, (d) urgent surgery (defined as to be performed within 24-48 hours after admission), (e) left ventricular ejection fraction \\<35%\n\nExclusion Criteria:\n\n1. Known hypersensitivity to fish oil/fish products or egg protein\n2. Pregnancy or lactation period\n3. Previous history of chronic atrial fibrillation, atrial flutter and/or atrial tachyarrhythmia\n4. Inability or unwillingness of individual to give written informed consent\n5. Not expected to survive an additional 48 hours from screening evaluation\n6. Lack of commitment to full, aggressive care (anticipated withholding or withdrawing treatments in the first week but isolated \"Do not Resuscitate\" \\[DNR\\] acceptable)\n7. Patients admitted with diabetic ketoacidosis or non-ketotic hyperosmolar coma\n8. Patients receiving extracorporeal mechanical assist device (e.g. ECLS, or IABP) or advanced heart failure therapies (e.g. TAH, VAD)\n9. Enrolment in any other interventional trial will be discussed with the coordinating investigator on a case-by-case scenario and requires sponsor approval before inclusion\n10. Already receiving special FO-enriched medical nutrition products\n11. Severe malnutrition (as defined by the BMI \\<18.5)\n12. Severe liver dysfunction defined by Child Pugh Class C.\n13. Severe chronic kidney dysfunction defined by the National Kidney Foundation (NKF) stage 4 and 5 by using the glomerular filtration rate (GFR \\<30ml/min)\n14. Known severe coagulation disorder",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-07-08",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06279793",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:38.542423Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06279793:eligibility:2026-07-08:204c710f7ebb",
+  "source_record_version": "2026-07-08:204c710f7ebb",
+  "source_url": "https://clinicaltrials.gov/study/NCT06279793",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Intravenous Fish Oil Based Lipid Emulsion to Enhance Recovery in High-Risk Cardiac Surgery Patients"
+}

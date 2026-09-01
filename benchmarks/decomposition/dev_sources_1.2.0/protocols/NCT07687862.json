@@ -1,0 +1,146 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥ 18 years;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 39,
+        "start": 24
+      },
+      "source_text": "Age ≥ 18 years;"
+    },
+    {
+      "criterion_id": "nct07687862-inclusion-2fe215239fd4ec51",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subjects diagnosed with acute decompensated heart failure (ADHF) : 1)Heart failure with reduced ejection fraction (HFrEF), defined as left ventricular ejection fraction (LVEF) ≤ 40%; 2)New York Heart Association (NYHA) functional class II-IV; 3)NT-proBNP > 2500 pg/mL or BNP > 600 pg/mL 3. Atrial fibrillation (AF) diagnosed during hospitalization (documented AF episode lasting > 30 seconds on electrocardiogram \\[ECG\\] within the past 12 months)",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 494,
+        "start": 43
+      },
+      "source_text": "Subjects diagnosed with acute decompensated heart failure (ADHF) :\n\n1)Heart failure with reduced ejection fraction (HFrEF), defined as left ventricular ejection fraction (LVEF) ≤ 40%; 2)New York Heart Association (NYHA) functional class II-IV; 3)NT-proBNP \\> 2500 pg/mL or BNP \\> 600 pg/mL 3. Atrial fibrillation (AF) diagnosed during hospitalization (documented AF episode lasting \\> 30 seconds on electrocardiogram \\[ECG\\] within the past 12 months)"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-5d88337e6a546f29",
+      "criterion_type": "exclusion",
+      "normalized_text": "Intolerance to heart failure pharmacotherapy;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 565,
+        "start": 520
+      },
+      "source_text": "Intolerance to heart failure pharmacotherapy;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-eebb7fbcbb208585",
+      "criterion_type": "exclusion",
+      "normalized_text": "Severe anemia or untreated thyroid disease;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 612,
+        "start": 569
+      },
+      "source_text": "Severe anemia or untreated thyroid disease;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-9115ffdc7e3f18c5",
+      "criterion_type": "exclusion",
+      "normalized_text": "ST-segment elevation myocardial infarction within 3 months;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 675,
+        "start": 616
+      },
+      "source_text": "ST-segment elevation myocardial infarction within 3 months;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-2ce048c544b4d330",
+      "criterion_type": "exclusion",
+      "normalized_text": "Known complex congenital heart disease; infiltrative cardiomyopathy (such as cardiac amyloidosis, sarcoidosis, lymphoma, or endomyocardial fibrosis); myocarditis; constrictive pericarditis; cardiac tamponade; hypertrophic cardiomyopathy; stress cardiomyopathy; or uncorrected primary valvular heart disease requiring surgical interventions;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 1019,
+        "start": 679
+      },
+      "source_text": "Known complex congenital heart disease; infiltrative cardiomyopathy (such as cardiac amyloidosis, sarcoidosis, lymphoma, or endomyocardial fibrosis); myocarditis; constrictive pericarditis; cardiac tamponade; hypertrophic cardiomyopathy; stress cardiomyopathy; or uncorrected primary valvular heart disease requiring surgical interventions;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-d528a3b6c99c3c01",
+      "criterion_type": "exclusion",
+      "normalized_text": "Prior major cardiac surgery or mechanical circulatory support, or planned within 6 months, including coronary artery bypass grafting, cardiac valve repair or replacement, ventricular assist device or mechanical circulatory support device implantation, and heart transplantation;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 1301,
+        "start": 1023
+      },
+      "source_text": "Prior major cardiac surgery or mechanical circulatory support, or planned within 6 months, including coronary artery bypass grafting, cardiac valve repair or replacement, ventricular assist device or mechanical circulatory support device implantation, and heart transplantation;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-acb24532a8fe9285",
+      "criterion_type": "exclusion",
+      "normalized_text": "Existing pacemaker or planned pacemaker implantation;",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 1358,
+        "start": 1305
+      },
+      "source_text": "Existing pacemaker or planned pacemaker implantation;"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-7cdce09ff75f1a6e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Contraindications to wearing a smartwatch (such as limb disability or known allergy to rubber/metal materials);",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 1473,
+        "start": 1362
+      },
+      "source_text": "Contraindications to wearing a smartwatch (such as limb disability or known allergy to rubber/metal materials);"
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-145cd2ae6bc2afdb",
+      "criterion_type": "exclusion",
+      "normalized_text": "Inability to access the Internet or lack of proficiency in operating smart devices.",
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 1560,
+        "start": 1477
+      },
+      "source_text": "Inability to access the Internet or lack of proficiency in operating smart devices."
+    }
+  ],
+  "eligibility_sha256": "716699e7490c69e0916d7f2368f6daa2f0660773dae8d9c1b228dd77dc1addd5",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Age ≥ 18 years;\n2. Subjects diagnosed with acute decompensated heart failure (ADHF) :\n\n1)Heart failure with reduced ejection fraction (HFrEF), defined as left ventricular ejection fraction (LVEF) ≤ 40%; 2)New York Heart Association (NYHA) functional class II-IV; 3)NT-proBNP \\> 2500 pg/mL or BNP \\> 600 pg/mL 3. Atrial fibrillation (AF) diagnosed during hospitalization (documented AF episode lasting \\> 30 seconds on electrocardiogram \\[ECG\\] within the past 12 months)\n\nExclusion Criteria:\n\n1. Intolerance to heart failure pharmacotherapy;\n2. Severe anemia or untreated thyroid disease;\n3. ST-segment elevation myocardial infarction within 3 months;\n4. Known complex congenital heart disease; infiltrative cardiomyopathy (such as cardiac amyloidosis, sarcoidosis, lymphoma, or endomyocardial fibrosis); myocarditis; constrictive pericarditis; cardiac tamponade; hypertrophic cardiomyopathy; stress cardiomyopathy; or uncorrected primary valvular heart disease requiring surgical interventions;\n5. Prior major cardiac surgery or mechanical circulatory support, or planned within 6 months, including coronary artery bypass grafting, cardiac valve repair or replacement, ventricular assist device or mechanical circulatory support device implantation, and heart transplantation;\n6. Existing pacemaker or planned pacemaker implantation;\n7. Contraindications to wearing a smartwatch (such as limb disability or known allergy to rubber/metal materials);\n8. Inability to access the Internet or lack of proficiency in operating smart devices.",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2026-07-09",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07687862",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+  "source_record_version": "2026-07-09:716699e7490c",
+  "source_url": "https://clinicaltrials.gov/study/NCT07687862",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Wearable Device-Assisted Remote Management to Improve Prognosis in Patients With Acute Heart Failure Complicated by Atrial Fibrillation: WARM-HF Trial (Stage 2)"
+}

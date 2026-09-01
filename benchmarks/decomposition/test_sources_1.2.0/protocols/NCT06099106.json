@@ -1,0 +1,212 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06099106-inclusion-a35b172d54cada0e",
+      "criterion_type": "inclusion",
+      "normalized_text": "calculated CHA2DS2-VASc score of 2 or greater.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 69,
+        "start": 23
+      },
+      "source_text": "calculated CHA2DS2-VASc score of 2 or greater."
+    },
+    {
+      "criterion_id": "nct06099106-inclusion-53e25694c094ed4c",
+      "criterion_type": "inclusion",
+      "normalized_text": "The subject is non-eligible or have an appropriate rationale to seek a non-pharmacologic alternative to chronic oral anticoagulants.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 204,
+        "start": 72
+      },
+      "source_text": "The subject is non-eligible or have an appropriate rationale to seek a non-pharmacologic alternative to chronic oral anticoagulants."
+    },
+    {
+      "criterion_id": "nct06099106-inclusion-88c94527d3d2dea9",
+      "criterion_type": "inclusion",
+      "normalized_text": "documented non-valvular atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 250,
+        "start": 207
+      },
+      "source_text": "documented non-valvular atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct06099106-inclusion-71d7a84ac14e672a",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject suitable for vascular/cardiac intervention procedure",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 313,
+        "start": 253
+      },
+      "source_text": "Subject suitable for vascular/cardiac intervention procedure"
+    },
+    {
+      "criterion_id": "nct06099106-inclusion-1e1a895de25d243f",
+      "criterion_type": "inclusion",
+      "normalized_text": "suitable LAA anatomical measurements for study device",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 369,
+        "start": 316
+      },
+      "source_text": "suitable LAA anatomical measurements for study device"
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-619726ebf5527593",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who requires anticoagulation for a condition other than AF.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 461,
+        "start": 394
+      },
+      "source_text": "Subject who requires anticoagulation for a condition other than AF."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-1840c62ef98a86e5",
+      "criterion_type": "exclusion",
+      "normalized_text": "NYHA classification IV.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 487,
+        "start": 464
+      },
+      "source_text": "NYHA classification IV."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-4b33c63f0a21e0c5",
+      "criterion_type": "exclusion",
+      "normalized_text": "Complex congenital heart disease.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 523,
+        "start": 490
+      },
+      "source_text": "Complex congenital heart disease."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-b0213dabe0a59f70",
+      "criterion_type": "exclusion",
+      "normalized_text": "Presence of circumflex coronary artery stent.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 571,
+        "start": 526
+      },
+      "source_text": "Presence of circumflex coronary artery stent."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-a45343ba461c302e",
+      "criterion_type": "exclusion",
+      "normalized_text": "The subject has a prosthetic valve in any position.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 625,
+        "start": 574
+      },
+      "source_text": "The subject has a prosthetic valve in any position."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-ddaa34e3c39309d3",
+      "criterion_type": "exclusion",
+      "normalized_text": "atrial septal defect closure or has an ASD/PFO device.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 682,
+        "start": 628
+      },
+      "source_text": "atrial septal defect closure or has an ASD/PFO device."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-530d43252bf955e1",
+      "criterion_type": "exclusion",
+      "normalized_text": "presence of intracardiac thrombus.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 719,
+        "start": 685
+      },
+      "source_text": "presence of intracardiac thrombus."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-81123dc1cb23176c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Any cardiac surgery in the past",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 753,
+        "start": 722
+      },
+      "source_text": "Any cardiac surgery in the past"
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-dfdf5eac2782ce0c",
+      "criterion_type": "exclusion",
+      "normalized_text": "LVEF < 35%.",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 768,
+        "start": 756
+      },
+      "source_text": "LVEF \\< 35%."
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-d890c3ca7a808d2f",
+      "criterion_type": "exclusion",
+      "normalized_text": "intracardiac thrombus",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 792,
+        "start": 771
+      },
+      "source_text": "intracardiac thrombus"
+    },
+    {
+      "criterion_id": "nct06099106-exclusion-776e3d45e9477e33",
+      "criterion_type": "exclusion",
+      "normalized_text": "moderate or severe mitral valve stenosis",
+      "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+      "source_span": {
+        "end": 835,
+        "start": 795
+      },
+      "source_text": "moderate or severe mitral valve stenosis"
+    }
+  ],
+  "eligibility_sha256": "bbba0db73e8afaaeb14038eb30665bd72ecf785886b8a91d6213800db973910a",
+  "eligibility_text": "Inclusion Criteria:\n\n* calculated CHA2DS2-VASc score of 2 or greater.\n* The subject is non-eligible or have an appropriate rationale to seek a non-pharmacologic alternative to chronic oral anticoagulants.\n* documented non-valvular atrial fibrillation\n* Subject suitable for vascular/cardiac intervention procedure\n* suitable LAA anatomical measurements for study device\n\nExclusion Criteria:\n\n* Subject who requires anticoagulation for a condition other than AF.\n* NYHA classification IV.\n* Complex congenital heart disease.\n* Presence of circumflex coronary artery stent.\n* The subject has a prosthetic valve in any position.\n* atrial septal defect closure or has an ASD/PFO device.\n* presence of intracardiac thrombus.\n* Any cardiac surgery in the past\n* LVEF \\< 35%.\n* intracardiac thrombus\n* moderate or severe mitral valve stenosis",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2025-08-17",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06099106",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:42.307367Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06099106:eligibility:2025-08-17:bbba0db73e8a",
+  "source_record_version": "2025-08-17:bbba0db73e8a",
+  "source_url": "https://clinicaltrials.gov/study/NCT06099106",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Safety and Performance of ENDOMATIC SEPIOLA Left Atrial Appendage (LAA) Closure Device"
+}

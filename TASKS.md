@@ -1019,9 +1019,15 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     approved protocol 1.2.0 / Plan A before new outcomes were viewed: preserve
     the same 506 NCT IDs and order, freeze one uniform current API snapshot,
     retain old hashes as provenance only, and revalidate every original filter.
-    The new contract and synthetic guard tests are being completed before any
-    live execution. P5D.4 remains blocked until that execution validates. The
-    original lexical-overlap report is
+    Contract 1.1.0 and its synthetic guards were committed and passed CI before
+    live access. Plan A then completed headlessly: the first 10 frozen remainder
+    trials all re-passed the original filters and parsed, the unchanged quotas
+    selected 40 replacement test criteria from 10 trials, and selection
+    `decomposition-selection-b83592f4e26d0874` independently verified. The
+    source-exposure block is resolved; annotation has not started. The next
+    P5D.4 action is to freeze the already completed dev catalog/issue-log drafts
+    without inspecting replacement test text. The original lexical-overlap
+    report is
     historical and cannot be reused for replacement test. Real annotation has
     not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and

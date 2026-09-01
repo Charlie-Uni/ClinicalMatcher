@@ -1,0 +1,102 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct06330480-inclusion-c1ce9664f06c36e7",
+      "criterion_type": "inclusion",
+      "normalized_text": "aged between 50 and 75 years",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 51,
+        "start": 23
+      },
+      "source_text": "aged between 50 and 75 years"
+    },
+    {
+      "criterion_id": "nct06330480-inclusion-77fc1ea5f3af0903",
+      "criterion_type": "inclusion",
+      "normalized_text": "living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 120,
+        "start": 54
+      },
+      "source_text": "living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)"
+    },
+    {
+      "criterion_id": "nct06330480-exclusion-0115f7670f653e1d",
+      "criterion_type": "exclusion",
+      "normalized_text": "age <50 years or >75 years",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 173,
+        "start": 145
+      },
+      "source_text": "age \\<50 years or \\>75 years"
+    },
+    {
+      "criterion_id": "nct06330480-exclusion-45e2671d70176c7b",
+      "criterion_type": "exclusion",
+      "normalized_text": "not living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 246,
+        "start": 176
+      },
+      "source_text": "not living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)"
+    },
+    {
+      "criterion_id": "nct06330480-exclusion-67034aa44abcd93a",
+      "criterion_type": "exclusion",
+      "normalized_text": "being institutionalized (e.g., subjects with intellectual disabilities or subjects living in nursing homes who have a limited life expectancy)",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 391,
+        "start": 249
+      },
+      "source_text": "being institutionalized (e.g., subjects with intellectual disabilities or subjects living in nursing homes who have a limited life expectancy)"
+    },
+    {
+      "criterion_id": "nct06330480-exclusion-d9ffb3dc8ebdc0ad",
+      "criterion_type": "exclusion",
+      "normalized_text": "participants of the previously conducted THOMAS Study (NL65228.042.18, METc 2018/687) will be excluded.",
+      "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+      "source_span": {
+        "end": 497,
+        "start": 394
+      },
+      "source_text": "participants of the previously conducted THOMAS Study (NL65228.042.18, METc 2018/687) will be excluded."
+    }
+  ],
+  "eligibility_sha256": "c2cbc41e831f861405dcdbbed6a9f40b668365915bf52b09310d88595a5dcbca",
+  "eligibility_text": "Inclusion Criteria:\n\n* aged between 50 and 75 years\n* living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)\n\nExclusion Criteria:\n\n* age \\<50 years or \\>75 years\n* not living in the selected regions (Breda, Utrecht, Arnhem, Eindhoven)\n* being institutionalized (e.g., subjects with intellectual disabilities or subjects living in nursing homes who have a limited life expectancy)\n* participants of the previously conducted THOMAS Study (NL65228.042.18, METc 2018/687) will be excluded.",
+  "healthy_volunteers": true,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2025-05-16",
+  "maximum_age": "75 Years",
+  "minimum_age": "50 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT06330480",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:37.505887Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT06330480:eligibility:2025-05-16:c2cbc41e831f",
+  "source_record_version": "2025-05-16:c2cbc41e831f",
+  "source_url": "https://clinicaltrials.gov/study/NCT06330480",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Check@Home: General Population Screening for Early Detection of Atrial Fibrillation and Chronic Kidney Disease"
+}

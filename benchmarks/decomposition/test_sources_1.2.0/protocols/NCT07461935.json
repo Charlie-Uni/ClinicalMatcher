@@ -1,0 +1,333 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07461935-inclusion-2e6988accadad767",
+      "criterion_type": "inclusion",
+      "normalized_text": "Male or female, ≥ 18 years of age at enrolment",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 70,
+        "start": 24
+      },
+      "source_text": "Male or female, ≥ 18 years of age at enrolment"
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-9dbedcbe3f002670",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject who has a Class I or II indication for implantation of a single chamber ventricular pacemaker according to ACC/AHA/HRS/EHRA guidelines:",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 217,
+        "start": 74
+      },
+      "source_text": "Subject who has a Class I or II indication for implantation of a single chamber ventricular pacemaker according to ACC/AHA/HRS/EHRA guidelines:"
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-c9c65223111a70b9",
+      "criterion_type": "inclusion",
+      "normalized_text": "Paroxysmal or permanent high-grade AV block in the presence of Atrial Fibrillation (AF)",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 311,
+        "start": 224
+      },
+      "source_text": "Paroxysmal or permanent high-grade AV block in the presence of Atrial Fibrillation (AF)"
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-920f75f51fc021e1",
+      "criterion_type": "inclusion",
+      "normalized_text": "Paroxysmal or permanent high-grade AV block in the absence of AF, as an alternative to dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 555,
+        "start": 317
+      },
+      "source_text": "Paroxysmal or permanent high-grade AV block in the absence of AF, as an alternative to dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy."
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-2030bf3d013701c7",
+      "criterion_type": "inclusion",
+      "normalized_text": "Symptomatic bradycardia-tachycardia syndrome or Sinus Node Dysfunction (sinus bradycardia or sinus pauses), as an alternative to atrial or dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 851,
+        "start": 561
+      },
+      "source_text": "Symptomatic bradycardia-tachycardia syndrome or Sinus Node Dysfunction (sinus bradycardia or sinus pauses), as an alternative to atrial or dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy."
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-a17790014345b0da",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject able and willing to undergo the study requirements and is expected to be geographically stable for the duration of the follow-up.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 992,
+        "start": 855
+      },
+      "source_text": "Subject able and willing to undergo the study requirements and is expected to be geographically stable for the duration of the follow-up."
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-23ac2191e9017530",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject with a life expectancy of more than 24 months.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1050,
+        "start": 996
+      },
+      "source_text": "Subject with a life expectancy of more than 24 months."
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-2b85cb7f6bad0c59",
+      "criterion_type": "inclusion",
+      "normalized_text": "Subject is able and willing to use the Home Monitor.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1106,
+        "start": 1054
+      },
+      "source_text": "Subject is able and willing to use the Home Monitor."
+    },
+    {
+      "criterion_id": "nct07461935-inclusion-2bdffc1392a15d34",
+      "criterion_type": "inclusion",
+      "normalized_text": "Written informed consent to participate in the study obtained from the subject, according to local regulations, prior to initiation of any study mandated procedure.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1274,
+        "start": 1110
+      },
+      "source_text": "Written informed consent to participate in the study obtained from the subject, according to local regulations, prior to initiation of any study mandated procedure."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-15a34dec2db0e5f2",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who is entirely pacemaker dependent (escape rhythm <30 bpm).",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1369,
+        "start": 1300
+      },
+      "source_text": "Subject who is entirely pacemaker dependent (escape rhythm \\<30 bpm)."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-bb62149dc7aece1b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has an existing or prior pacemaker, ICD, or CRT device implant.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1444,
+        "start": 1373
+      },
+      "source_text": "Subject has an existing or prior pacemaker, ICD, or CRT device implant."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-2f67aebfc4e60f1e",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject has unstable angina pectoris or has had an acute myocardial infarction (AMI) in the 30 days prior to eligibility assessment.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1580,
+        "start": 1448
+      },
+      "source_text": "Subject has unstable angina pectoris or has had an acute myocardial infarction (AMI) in the 30 days prior to eligibility assessment."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-7c1e8319429cfbf8",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject had recent cardiovascular or peripheral vascular surgery within 30 days prior to enrollment",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1683,
+        "start": 1584
+      },
+      "source_text": "Subject had recent cardiovascular or peripheral vascular surgery within 30 days prior to enrollment"
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-9a08b295431e6b9b",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with current implantation of a neurostimulator or any other chronically implanted device which uses current in the body. Note that a temporary pacing wire is allowed.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 1861,
+        "start": 1687
+      },
+      "source_text": "Subject with current implantation of a neurostimulator or any other chronically implanted device which uses current in the body. Note that a temporary pacing wire is allowed."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-e5fe3f2d47062a37",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with a prior intervention of the tricuspid valve, implanted vena cava filter that cannot be crossed, or left ventricular assist device (LVAD).",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2015,
+        "start": 1865
+      },
+      "source_text": "Subject with a prior intervention of the tricuspid valve, implanted vena cava filter that cannot be crossed, or left ventricular assist device (LVAD)."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-c4e648d4858d9424",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who is morbidly obese (BMI > 40).",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2061,
+        "start": 2019
+      },
+      "source_text": "Subject who is morbidly obese (BMI \\> 40)."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-1257216cda171a51",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who has a below normal BMI (BMI<18).",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2110,
+        "start": 2065
+      },
+      "source_text": "Subject who has a below normal BMI (BMI\\<18)."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-02b7eff1ebdad337",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject whose femoral venous anatomy is unable to accommodate a 24 French introducer sheath or an implant on the right side of the heart (for example, due to obstructions or severe tortuosity) in the opinion of the implanter.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2339,
+        "start": 2114
+      },
+      "source_text": "Subject whose femoral venous anatomy is unable to accommodate a 24 French introducer sheath or an implant on the right side of the heart (for example, due to obstructions or severe tortuosity) in the opinion of the implanter."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-192276a6a3992f2f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with ventricular dysfunction and LVEF ≤ 50",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2394,
+        "start": 2344
+      },
+      "source_text": "Subject with ventricular dysfunction and LVEF ≤ 50"
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-954b65c4b9753178",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who is considered as unable to tolerate an urgent sternotomy.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2468,
+        "start": 2399
+      },
+      "source_text": "Subject who is considered as unable to tolerate an urgent sternotomy."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-2b5337484ce1929c",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with a known intolerance to Titanium, titanium nitride, parylene C, PEEK, platinum-iridium alloy, heparin, or sensitivity to contrast media.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2621,
+        "start": 2473
+      },
+      "source_text": "Subject with a known intolerance to Titanium, titanium nitride, parylene C, PEEK, platinum-iridium alloy, heparin, or sensitivity to contrast media."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-32daf23e4a95aa96",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject for whom a single dose of 1.0 mg dexamethasone acetate may be contraindicated.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2712,
+        "start": 2626
+      },
+      "source_text": "Subject for whom a single dose of 1.0 mg dexamethasone acetate may be contraindicated."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-d7d1b35ebe407220",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with a life expectancy of less than 24 months.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2771,
+        "start": 2717
+      },
+      "source_text": "Subject with a life expectancy of less than 24 months."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-bd5bc9d7ff71856a",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with significant co-morbid conditions or other conditions which, at the discretion of the PI, are deemed to prohibit study entry",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 2912,
+        "start": 2776
+      },
+      "source_text": "Subject with significant co-morbid conditions or other conditions which, at the discretion of the PI, are deemed to prohibit study entry"
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-67b3dd451de174e4",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject who is currently enrolled or planning to participate in a potentially confounding drug or device trial during the course of this study. Co-enrollment in concurrent trials is only allowed when documented preapproval is obtained from the Cairdac study manager.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 3183,
+        "start": 2917
+      },
+      "source_text": "Subject who is currently enrolled or planning to participate in a potentially confounding drug or device trial during the course of this study. Co-enrollment in concurrent trials is only allowed when documented preapproval is obtained from the Cairdac study manager."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-3398d9064449b863",
+      "criterion_type": "exclusion",
+      "normalized_text": "Pregnant woman, or woman of childbearing potential and who is not on a reliable form of birth control.",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 3290,
+        "start": 3188
+      },
+      "source_text": "Pregnant woman, or woman of childbearing potential and who is not on a reliable form of birth control."
+    },
+    {
+      "criterion_id": "nct07461935-exclusion-21fd3117e4b1388f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Subject with exclusion criteria required by local law (e.g. age, breast feeding, etc.).",
+      "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+      "source_span": {
+        "end": 3382,
+        "start": 3295
+      },
+      "source_text": "Subject with exclusion criteria required by local law (e.g. age, breast feeding, etc.)."
+    }
+  ],
+  "eligibility_sha256": "e2e5bd0778eb17b29034f59d3ddd19408be0ce13dedda345651e4f06dec608ef",
+  "eligibility_text": "Inclusion Criteria:\n\n1. Male or female, ≥ 18 years of age at enrolment\n2. Subject who has a Class I or II indication for implantation of a single chamber ventricular pacemaker according to ACC/AHA/HRS/EHRA guidelines:\n\n   * Paroxysmal or permanent high-grade AV block in the presence of Atrial Fibrillation (AF)\n   * Paroxysmal or permanent high-grade AV block in the absence of AF, as an alternative to dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.\n   * Symptomatic bradycardia-tachycardia syndrome or Sinus Node Dysfunction (sinus bradycardia or sinus pauses), as an alternative to atrial or dual chamber pacing, when dual chamber transvenous pacing system is considered difficult, elevated risk, or not deemed necessary for effective therapy.\n3. Subject able and willing to undergo the study requirements and is expected to be geographically stable for the duration of the follow-up.\n4. Subject with a life expectancy of more than 24 months.\n5. Subject is able and willing to use the Home Monitor.\n6. Written informed consent to participate in the study obtained from the subject, according to local regulations, prior to initiation of any study mandated procedure.\n\nExclusion Criteria:\n\n1. Subject who is entirely pacemaker dependent (escape rhythm \\<30 bpm).\n2. Subject has an existing or prior pacemaker, ICD, or CRT device implant.\n3. Subject has unstable angina pectoris or has had an acute myocardial infarction (AMI) in the 30 days prior to eligibility assessment.\n4. Subject had recent cardiovascular or peripheral vascular surgery within 30 days prior to enrollment\n5. Subject with current implantation of a neurostimulator or any other chronically implanted device which uses current in the body. Note that a temporary pacing wire is allowed.\n6. Subject with a prior intervention of the tricuspid valve, implanted vena cava filter that cannot be crossed, or left ventricular assist device (LVAD).\n7. Subject who is morbidly obese (BMI \\> 40).\n8. Subject who has a below normal BMI (BMI\\<18).\n9. Subject whose femoral venous anatomy is unable to accommodate a 24 French introducer sheath or an implant on the right side of the heart (for example, due to obstructions or severe tortuosity) in the opinion of the implanter.\n10. Subject with ventricular dysfunction and LVEF ≤ 50\n11. Subject who is considered as unable to tolerate an urgent sternotomy.\n12. Subject with a known intolerance to Titanium, titanium nitride, parylene C, PEEK, platinum-iridium alloy, heparin, or sensitivity to contrast media.\n13. Subject for whom a single dose of 1.0 mg dexamethasone acetate may be contraindicated.\n14. Subject with a life expectancy of less than 24 months.\n15. Subject with significant co-morbid conditions or other conditions which, at the discretion of the PI, are deemed to prohibit study entry\n16. Subject who is currently enrolled or planning to participate in a potentially confounding drug or device trial during the course of this study. Co-enrollment in concurrent trials is only allowed when documented preapproval is obtained from the Cairdac study manager.\n17. Pregnant woman, or woman of childbearing potential and who is not on a reliable form of birth control.\n18. Subject with exclusion criteria required by local law (e.g. age, breast feeding, etc.).",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-03-10",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07461935",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:45.348365Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07461935:eligibility:2026-03-10:e2e5bd0778eb",
+  "source_record_version": "2026-03-10:e2e5bd0778eb",
+  "source_url": "https://clinicaltrials.gov/study/NCT07461935",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "ALPs Single ChambEr New Device"
+}

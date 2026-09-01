@@ -1,0 +1,252 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "meshes": [
+        {
+          "id": "C000729921",
+          "term": "Enavogliflozin"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-28"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Enavogliflozin as a study group",
+          "interventionNames": [
+            "Drug: Enavogliflozin"
+          ],
+          "label": "Enavogliflozin",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Placebo as a comparison group",
+          "interventionNames": [
+            "Drug: Placebo"
+          ],
+          "label": "Placebo",
+          "type": "PLACEBO_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Enavogliflozin"
+          ],
+          "description": "Patients hospitalized at Severance Hospital for atrial fibrillation catheter ablation, or those who had the procedure within the last three months, will be randomly assigned to receive either 0.3 mg of enavogliflozin once daily or a placebo for 360±30 days",
+          "name": "Enavogliflozin",
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Placebo"
+          ],
+          "description": "Patients hospitalized at Severance Hospital for atrial fibrillation catheter ablation, or those who had the procedure within the last three months, will be randomly assigned to receive either 0.3 mg of enavogliflozin once daily or a placebo for 360±30 days",
+          "name": "Placebo",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation"
+      ]
+    },
+    "contactsLocationsModule": {
+      "locations": [
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "yholee@yuhs.ac",
+              "name": "Yong-ho Lee, Ph.D.",
+              "phone": "82-2-2228-1943",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Severance Hospital",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "status": "RECRUITING"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "Objective: The purpose of this study is to determine if there is a difference in the recurrence rate of atrial fibrillation (AF) between a group of patients with AF and heart failure undergoing catheter ablation who are administered the SGLT2 inhibitor, Enavogliflozin, and a control group (placebo group). This study aims to investigate whether SGLT2 inhibitors can prevent the recurrence of AF after the procedure.\n\nBackground: AF is the most common arrhythmia requiring treatment, with its prevalence increasing with age. In the US, AF affected 5.2 million people in 2010 and is projected to reach 12.1 million by 2030. In South Korea, prevalence rose from 0.73% in 2006 to 1.53% in 2015. Early-stage AF patients benefit more from rhythm control therapy than from heart rate control alone, as shown by the 2020 EAST-AFNET-4 trial, which reported a 21% reduction in adverse cardiovascular events. Catheter ablation for rhythm control significantly reduces AF recurrence compared to antiarrhythmic drugs, leading to more patients undergoing this procedure. AF and heart failure often coexist, forming a vicious cycle that exacerbates both conditions and leads to poorer outcomes. They share common risk factors like hypertension, diabetes, ischemic heart disease, and valvular disease. Heart failure increases left atrial filling pressure and alters intracellular calcium levels, raising AF risk. Further research is needed on their pathophysiological link. SGLT2 inhibitors reduce glucose reabsorption in the kidneys to control hyperglycemia in diabetics and have been shown in large studies (DAPA-HF, EMPEROR-Reduced) to significantly reduce heart failure worsening and cardiovascular mortality, regardless of diabetes status. These benefits were seen in both HFrEF and HFpEF. In the DAPA-HF trial, 55% of participants were non-diabetic, and reductions in heart failure worsening or cardiovascular death were similar between those with and without diabetes (25% vs. 27%). Adverse events, including volume depletion and renal function decline, were not significantly different between diabetic and non-diabetic patients, and no hypoglycemia or ketoacidosis occurred in non-diabetic patients. Recent studies show SGLT2 inhibitors reduce AF incidence and benefit heart failure. A sub-analysis of the DECLARE-TIMI 58 trial reported a 19% reduction in AF risk among diabetic patients with SGLT2 inhibitors. Meta-analyses by Okunrintemi and Zheng showed an 18% reduction in AF risk irrespective of diabetes status. Interest is growing in the relationship between SGLT2 inhibitors and AF recurrence post-catheter ablation. Luo et al. reported a nearly 39% reduction in AF recurrence post-ablation with dapagliflozin in diabetic patients. Kishima et al. found a 49% reduction in AF recurrence post-ablation with SGLT2 inhibitors versus DPP-IV inhibitors in a small prospective randomized study. However, most studies were retrospective, sub-analyses, or small-scale studies limited to diabetics. Prospective randomized studies involving AF patients regardless of diabetes status are urgently needed for validation.",
+      "detailedDescription": "Study Design Overview:\n\n* Single-center, prospective, randomized controlled, double-blind study.\n* Patients who consent will be randomly assigned to either the intervention or control group.\n* The intervention group will receive Enavogliflozin 0.3 mg once daily. The control group will receive a placebo in the same form.\n* The administration period will be 360±30 days, targeting patients hospitalized for AF catheter ablation at Severance Hospital or those who have undergone the procedure within the past three months.\n* Target participants: 195 in the experimental group (SGLT2 inhibitor group), 195 in the control group (placebo group), totaling 390 participants.\n* Regular standard ECG examinations will be conducted at 1, 3, 6, and 12 months post-procedure, and as needed based on symptoms.\n* Wearable ECG patch (8-14 days) tests will be conducted at 3, 6, and 12 months follow-up visits.\n* Comparison of AF recurrence rates from 3 months to 1 year post-catheter ablation.\n* Comparison of AF burden from catheter ablation up to 1 year post-procedure."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "QUADRUPLE",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "INVESTIGATOR",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 390,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Adults aged 19 to under 85\n2. Patients who consent to participate in the study and can be followed up during the study\n3. Patients with AF and heart failure who have undergone atrial fibrillation catheter ablation within the last three months or are scheduled to undergo the procedure\n\nExclusion Criteria:\n\n1. Under 19 or over 85 years old\n2. Patients who have participated in another clinical trial within the last three months\n3. Life expectancy of less than one year\n4. Pregnant or breastfeeding women\n5. Currently being treated with an SGLT-2 inhibitor\n6. Three or more urinary or genital infections within the last year\n7. Uncontrolled hypertension: systolic blood pressure ≥ 180mmHg or diastolic blood pressure ≥ 110mmHg\n8. Systolic blood pressure \\< 90mmHg\n9. Acute cardiovascular event within the last 12 weeks\n10. Severe valvular disease or presence of artificial valves\n11. Renal impairment (eGFR CKD-EPI \\< 60 ml/min/1.73m²)\n12. Clinically confirmed liver dysfunction\n13. Uncontrolled thyroid dysfunction\n14. Patients with active cancer (including those undergoing treatment) or history of cancer within the last five years at the time of screening; however, borderline cancers are not excluded if successfully treated and recurrence-free for 2-3 years.\n15. Continuous use of oral prednisolone at 10mg/day or equivalent, or higher doses of steroids, within the last month\n16. Patients with hypersensitivity or history of hypersensitivity to the active or inactive ingredients of this drug\n17. Patients with type 1 diabetes or diabetic ketoacidosis\n18. History of alcohol or substance abuse\n19. Women of childbearing potential who do not agree to use adequate contraception during the clinical trial period",
+      "healthyVolunteers": false,
+      "maximumAge": "84 Years",
+      "minimumAge": "19 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "ENAVO-AF",
+      "briefTitle": "Effect of Enavogliflozin on Recurrence of Atrial Fibrillation After Catheter Ablation",
+      "nctId": "NCT06528262",
+      "officialTitle": "ENavogliflozin And preVention Of Atrial Fibrillation Recurrence After Catheter Ablation for Atrial Fibrillation With Heart Failure (ENAVO-AF): Prospective, Multicenter, Randomized, Placebo-controlled Double-blind Clinical Trial",
+      "orgStudyIdInfo": {
+        "id": "4-2024-0511"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Yonsei University"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "In subjects who have completed 12 months of follow-up or experienced AF recurrence, the difference in AF recurrence rates between the enavogliflozin group and the placebo group from 3 months to 1 year after catheter ablation will be investigated. AF recurrence is defined as atrial tachycardia/flutter/fibrillation lasting more than 30 seconds, as confirmed by ECG or Holter monitoring. Recurrences within the first 3 months post-procedure are considered part of the blanking period and are not included in the evaluation.",
+          "measure": "Difference in the recurrence rate of atrial fibrillation (AF) between the experimental group (enavogliflozin group) and the control group (placebo group) from 3 months to 1 year after catheter ablation",
+          "timeFrame": "12 months after catheter ablation"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Definition of total AF burden (%):\n\nDuration of the longest AF episode Number of AF episodes/total Holter monitoring period Time in AF/total Holter monitoring period",
+          "measure": "Difference in total AF burden (%) confirmed by Holter (wearable patch ECG) monitoring between the experimental group (enavogliflozin group) and the control group (placebo group) from 3 months to 1 year after catheter ablation",
+          "timeFrame": "At 3, 6, 12 months after catheter ablation"
+        },
+        {
+          "measure": "Difference in time to first AF recurrence between the experimental group (enavogliflozin group) and the control group (placebo group) from 3 months to 1 year after catheter ablation",
+          "timeFrame": "12 months after catheter ablation"
+        },
+        {
+          "measure": "Difference in the heart failure hospitalization rate after catheter ablation between the experimental group (enavogliflozin group) and the control group (placebo group)",
+          "timeFrame": "12 months after catheter ablation"
+        },
+        {
+          "measure": "The group difference in the AF symptom score (mEHRA) between baseline and 12 months after catheter ablation with enavogliflozin or placebo",
+          "timeFrame": "Baseline and 12 months after catheter ablation"
+        },
+        {
+          "measure": "The group difference in metabolic parameters, including glycated hemoglobin (HbA1c), body weight, insulin resistance (HOMA-IR), ketone bodies, and fatty liver index, between baseline and 12 months after catheter ablation with enavogliflozin or placebo",
+          "timeFrame": "Baseline and 12 months after catheter ablation"
+        },
+        {
+          "measure": "The group difference in serum NT-proBNP levels between baseline and 12 months after catheter ablation with enavogliflozin or placebo",
+          "timeFrame": "Baseline and 12 months after catheter ablation"
+        },
+        {
+          "measure": "Difference in adverse events, including hypoglycemia, diabetic ketoacidosis, and genitourinary infection rates, after catheter ablation between the experimental group (enavogliflozin group) and the control group (placebo group)",
+          "timeFrame": "12 months after catheter ablation"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Yonsei University"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-05-31",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-05-12",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-05-07",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-05-31",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2025-04-03",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-05",
+      "studyFirstPostDateStruct": {
+        "date": "2024-07-30",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2024-07-25",
+      "studyFirstSubmitQcDate": "2024-07-25"
+    }
+  }
+}

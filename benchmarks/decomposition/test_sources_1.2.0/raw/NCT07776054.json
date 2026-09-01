@@ -1,0 +1,275 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D045504",
+          "term": "Molecular Mechanisms of Pharmacological Action"
+        },
+        {
+          "id": "D020228",
+          "term": "Pharmacologic Actions"
+        },
+        {
+          "id": "D020164",
+          "term": "Chemical Actions and Uses"
+        },
+        {
+          "id": "D007004",
+          "term": "Hypoglycemic Agents"
+        },
+        {
+          "id": "D045505",
+          "term": "Physiological Effects of Drugs"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D000077203",
+          "term": "Sodium-Glucose Transporter 2 Inhibitors"
+        },
+        {
+          "id": "C529054",
+          "term": "dapagliflozin"
+        },
+        {
+          "id": "C570240",
+          "term": "empagliflozin"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Patients receive an SGLT2 inhibitor (empagliflozin or dapagliflozin) after successful DC cardioversion, in addition to guideline-directed anticoagulation and antiarrhythmic drugs for 1 month.",
+          "interventionNames": [
+            "Drug: SGLT2 inhibitors (Dapagliflozin and Empagliflozin)"
+          ],
+          "label": "SGLT2 inihibitor",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Patients receive guideline-directed anticoagulation and antiarrhythmic drugs after DC cardioversion, without an SGLT2 inhibitor.",
+          "label": "Control",
+          "type": "NO_INTERVENTION"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "SGLT2 inihibitor"
+          ],
+          "description": "Patients receive an SGLT2 inhibitor (empagliflozin or dapagliflozin) after successful DC cardioversion, in addition to guideline-directed anticoagulation and antiarrhythmic drugs for 1 month.",
+          "name": "SGLT2 inhibitors (Dapagliflozin and Empagliflozin)",
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Atrial Fibrillation",
+        "SGLT2 Inhibitor",
+        "DC Cardioversion"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "abcd186a@naver.com",
+          "name": "Juwon Kim",
+          "phone": "+82-2-3410-2578",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Seoul",
+          "contacts": [
+            {
+              "email": "abcd186a@naver.com",
+              "name": "Juwon Kim",
+              "phone": "+82-2-3410-2578",
+              "role": "CONTACT"
+            }
+          ],
+          "country": "South Korea",
+          "facility": "Samsung Medical Center",
+          "geoPoint": {
+            "lat": 37.566,
+            "lon": 126.9784
+          },
+          "state": "Seoul",
+          "status": "RECRUITING",
+          "zip": "06351"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "SGLT2 inhibitors improve outcomes in heart failure across the ejection fraction spectrum, but their effect on maintenance of sinus rhythm after rhythm-control therapy is largely unknown. This prospective, single-center, open-label randomized controlled trial evaluates whether an SGLT2 inhibitor started after successful electrical cardioversion reduces recurrence of atrial tachyarrhythmia at 1 month in patients with persistent atrial fibrillation and heart failure with preserved ejection fraction. 200 patients will be randomized 1:1 to receive an SGLT2 inhibitor or no SGLT2 inhibitor.",
+      "detailedDescription": "Patients with persistent atrial fibrillation who meet HFpEF diagnostic criteria (H2FPEF ≥6 or HFA-PEFF ≥5) are screened. After at least 4 weeks of anticoagulation and exclusion of intracardiac thrombus by transesophageal echocardiography, electrical cardioversion is performed with a biphasic defibrillator. Patients who restore sinus rhythm and provide written informed consent are randomized 1:1, stratified by AF duration and left atrial size. All patients receive anticoagulation and antiarrhythmic drugs for 1 month per current guidelines, at the discretion of the treating physician. The primary endpoint is recurrence of atrial tachyarrhythmia at 1 month, assessed by 12-lead ECG or continuous monitoring (≥30 seconds). Analyses follow the intention-to-treat principle, with per-protocol analysis as a sensitivity analysis. The sample size of 200 provides approximately 90% power at a two-sided alpha of 0.05 to detect a difference in recurrence (24% vs 47%)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "maskingInfo": {
+          "masking": "NONE"
+        },
+        "primaryPurpose": "TREATMENT"
+      },
+      "enrollmentInfo": {
+        "count": 200,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE4"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n* Age ≥19 years\n* Persistent atrial fibrillation\n* H2FPEF score ≥6 or HFA-PEFF score ≥5\n* Restoration of sinus rhythm after electrical cardioversion\n\nExclusion Criteria:\n\n* Previous use of an SGLT2 inhibitor\n* Intracardiac thrombus on transesophageal echocardiography\n* Refusal to participate",
+      "healthyVolunteers": false,
+      "minimumAge": "19 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "briefTitle": "Clinical Impact of SGLT2 Inhibitor After DC Cardioversion in Persistent AF With HFpEF",
+      "nctId": "NCT07776054",
+      "officialTitle": "Clinical Impact of SGLT2 Inhibitor After DC Cardioversion in Persistent Atrial Fibrillation Patients With Heart Failure With Preserved Ejection Fraction: A Randomized Controlled Trial",
+      "orgStudyIdInfo": {
+        "id": "SMC 2023-07-132"
+      },
+      "organization": {
+        "class": "OTHER",
+        "fullName": "Samsung Medical Center"
+      },
+      "secondaryIdInfos": [
+        {
+          "domain": "Korea National Institute of Health",
+          "id": "KCT0009157",
+          "type": "OTHER"
+        }
+      ]
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "primaryOutcomes": [
+        {
+          "description": "Composite of atrial fibrillation, atrial flutter, and atrial tachycardia, documented on 12-lead ECG or as an episode lasting ≥30 seconds on continuous ECG monitoring.",
+          "measure": "Recurrence of atrial tachyarrhythmia",
+          "timeFrame": "1 month after randomization (±1 week)"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "atrial fibrillation documented on 12-lead ECG or as an episode lasting ≥30 seconds on continuous ECG monitoring.",
+          "measure": "Recurrence of atrial fibrillation",
+          "timeFrame": "1 month after randomization (±1 week)"
+        },
+        {
+          "description": "atrial flutter documented on 12-lead ECG or as an episode lasting ≥30 seconds on continuous ECG monitoring.",
+          "measure": "Recurrence of atrial flutter",
+          "timeFrame": "1 month after randomization (±1 week)"
+        },
+        {
+          "description": "atrial tachycardia documented on 12-lead ECG or as an episode lasting ≥30 seconds on continuous ECG monitoring.",
+          "measure": "Recurrence of atrial tachycardia",
+          "timeFrame": "1 month after randomization (±1 week)"
+        },
+        {
+          "measure": "Stroke",
+          "timeFrame": "1 month after randomization (±1 week)"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "leadSponsor": {
+        "class": "OTHER",
+        "name": "Samsung Medical Center"
+      },
+      "responsibleParty": {
+        "investigatorAffiliation": "Samsung Medical Center",
+        "investigatorFullName": "Juwon Kim",
+        "investigatorTitle": "Assitant Professor",
+        "type": "PRINCIPAL_INVESTIGATOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2027-09-01",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-08-20",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-08-17",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2027-08-01",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-02-01",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-08",
+      "studyFirstPostDateStruct": {
+        "date": "2026-08-20",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2026-08-17",
+      "studyFirstSubmitQcDate": "2026-08-17"
+    }
+  }
+}

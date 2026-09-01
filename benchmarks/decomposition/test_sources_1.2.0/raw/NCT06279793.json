@@ -1,0 +1,784 @@
+{
+  "derivedSection": {
+    "conditionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D001145",
+          "term": "Arrhythmias, Cardiac"
+        },
+        {
+          "id": "D006331",
+          "term": "Heart Diseases"
+        },
+        {
+          "id": "D002318",
+          "term": "Cardiovascular Diseases"
+        },
+        {
+          "id": "D010335",
+          "term": "Pathologic Processes"
+        },
+        {
+          "id": "D013568",
+          "term": "Pathological Conditions, Signs and Symptoms"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D001281",
+          "term": "Atrial Fibrillation"
+        },
+        {
+          "id": "D001282",
+          "term": "Atrial Flutter"
+        }
+      ]
+    },
+    "interventionBrowseModule": {
+      "ancestors": [
+        {
+          "id": "D009821",
+          "term": "Oils"
+        },
+        {
+          "id": "D008055",
+          "term": "Lipids"
+        },
+        {
+          "id": "D002712",
+          "term": "Chlorides"
+        },
+        {
+          "id": "D006851",
+          "term": "Hydrochloric Acid"
+        },
+        {
+          "id": "D017606",
+          "term": "Chlorine Compounds"
+        },
+        {
+          "id": "D007287",
+          "term": "Inorganic Chemicals"
+        },
+        {
+          "id": "D017670",
+          "term": "Sodium Compounds"
+        }
+      ],
+      "meshes": [
+        {
+          "id": "D005395",
+          "term": "Fish Oils"
+        },
+        {
+          "id": "C568345",
+          "term": "fish oil triglycerides"
+        },
+        {
+          "id": "D012965",
+          "term": "Sodium Chloride"
+        }
+      ]
+    },
+    "miscInfoModule": {
+      "versionHolder": "2026-08-31"
+    }
+  },
+  "hasResults": false,
+  "protocolSection": {
+    "armsInterventionsModule": {
+      "armGroups": [
+        {
+          "description": "Patients will receive 0.20 g fish oil/kg BW/d (≙2 mL Omegaven®/kg BW/d).",
+          "interventionNames": [
+            "Drug: Fish Oil"
+          ],
+          "label": "Treatment group",
+          "type": "EXPERIMENTAL"
+        },
+        {
+          "description": "Patients will receive 0,9% NaCl in volume 2 mL/kg BW/d (placebo).",
+          "interventionNames": [
+            "Drug: Intravenous 0.9% Sodium Chloride"
+          ],
+          "label": "Control group",
+          "type": "PLACEBO_COMPARATOR"
+        }
+      ],
+      "interventions": [
+        {
+          "armGroupLabels": [
+            "Treatment group"
+          ],
+          "description": "Omegaven® is a 10% fish oil emulsion with a high percentage of long-chain n-3 fatty acids - mainly eicosapentaenoic acid and docosahexaenoic acid. It optimises the fatty acid pattern in parenteral nutrition and is a source of polyunsaturated n-3 fatty acids as cell membrane components and precursors for eicosanoids.\n\nOmegaven® is manufactured by Fresenius-Kabi, Germany and is available in 100 mL bottles for study purpose.\n\nEach 100 mL of Omegaven® contains 10 g of fish oil (0.1 g/mL).\n\nTimeframe: Day -1: 0.20 g fish oil/kg BW/d (the treatment should be started 24 to 3 h before surgery, can be given as 3-6 hours infusion); intraoperative day 0: no dose; postoperative day 0: 0.20 g fish oil/kg BW/d; postoperative days 1 to max. 7): 0.20 g fish oil/kg BW/d",
+          "name": "Fish Oil",
+          "otherNames": [
+            "Omegaven®"
+          ],
+          "type": "DRUG"
+        },
+        {
+          "armGroupLabels": [
+            "Control group"
+          ],
+          "description": "Intravenous 0.9% Sodium Chloride (volume 2 mL/kg BW/d) provided at the same timepoints as the intervention.",
+          "name": "Intravenous 0.9% Sodium Chloride",
+          "otherNames": [
+            "Saline Infusion"
+          ],
+          "type": "DRUG"
+        }
+      ]
+    },
+    "conditionsModule": {
+      "conditions": [
+        "Intensive Care Unit",
+        "Coronary Artery Bypass Grafting (CABG)",
+        "High Risk Patients",
+        "Cardiopulmonary Bypass",
+        "Elective Cardiac Surgery",
+        "Valvular Heart Surgery",
+        "Multiple Valve Surgeries",
+        "Combined Cardiac Procedures",
+        "Aortic Surgical Procedures",
+        "Adult Patients ≥ 18 Years",
+        "Combined Valve and CABG",
+        "Combined Cardiac and Aortic Surgical Procedures"
+      ],
+      "keywords": [
+        "intensive care unit",
+        "elective cardiac surgery",
+        "fish oil",
+        "medical nutrition therapy",
+        "atrial fibrillation",
+        "atrial flutter",
+        "atrial tachycardia"
+      ]
+    },
+    "contactsLocationsModule": {
+      "centralContacts": [
+        {
+          "email": "cstoppe@gcp-service.com",
+          "name": "Christian Stoppe, Prof. Dr.",
+          "phone": "49-931-20130001",
+          "role": "CONTACT"
+        },
+        {
+          "email": "Dresen_E@ukw.de",
+          "name": "Ellen Dresen, Dr.",
+          "phone": "+49 931-201 30392",
+          "role": "CONTACT"
+        }
+      ],
+      "locations": [
+        {
+          "city": "Augsburg",
+          "contacts": [
+            {
+              "email": "philipp.simon3@uk-augsburg.de",
+              "name": "Philipp Simon, Prof. Dr.",
+              "phone": "+49 821 400 - 2371",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Manfred.Weiss@uk-augsburg.de",
+              "name": "Manfred Weiss, Prof. Dr.",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Philipp Simon, Prof. Dr.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Hospital Augsburg",
+          "geoPoint": {
+            "lat": 48.37154,
+            "lon": 10.89851
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Berlin",
+          "contacts": [
+            {
+              "email": "sascha.ott@dhzc-charite.de",
+              "name": "Sascha Ott, M.D",
+              "phone": "49-30-4593-2600",
+              "role": "CONTACT"
+            },
+            {
+              "email": "maren.kleine-brueggeney@dhzc-charite.de",
+              "name": "Maren Kleine-Brüggeney, M.D",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Sascha Ott, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Charité Universitätsmedizin Berlin",
+          "geoPoint": {
+            "lat": 52.52437,
+            "lon": 13.41053
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Bonn",
+          "contacts": [
+            {
+              "email": "Florian.Piekarski@ukbonn.de",
+              "name": "Florian Piekarski, M.D",
+              "phone": "+49 171-3150966",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Christian.Bode@ukbonn.de",
+              "name": "Christian Bode, M.D",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Florian Piekarski, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University of Bonn",
+          "geoPoint": {
+            "lat": 50.73438,
+            "lon": 7.09549
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Göttingen",
+          "contacts": [
+            {
+              "email": "Reiner.Waeschle@med.uni-goettingen.de",
+              "name": "Reiner Wäschle, M.D",
+              "phone": "49-551-3967701",
+              "role": "CONTACT"
+            },
+            {
+              "email": "anselm.braeuer@med.uni-goettingen.de",
+              "name": "Anselm Bräuer, M.D.",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Reiner Waeschle, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Hospital Goettingen",
+          "geoPoint": {
+            "lat": 51.53443,
+            "lon": 9.93228
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Hamburg",
+          "contacts": [
+            {
+              "email": "b.saugel@uke.de",
+              "name": "Bernd Saugel, Prof. Dr.",
+              "phone": "+49 40 7410-52415",
+              "role": "CONTACT"
+            },
+            {
+              "email": "e.nekhaeva@uke.de",
+              "name": "Ekaterina Nekhaeva, Dr.",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Bernd Saugel, Prof. Dr.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Hospital Hamburg-Eppendorf",
+          "geoPoint": {
+            "lat": 53.55073,
+            "lon": 9.99302
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Kiel",
+          "contacts": [
+            {
+              "email": "David.Radke@uksh.de",
+              "name": "Radke David, M.D",
+              "phone": "49-431 - 500 20801",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Matthias.Lindner@uksh.de",
+              "name": "Matthias Lindner, M.D",
+              "role": "CONTACT"
+            },
+            {
+              "name": "David Radke, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Medical Center Schleswig-Holstein",
+          "geoPoint": {
+            "lat": 54.32133,
+            "lon": 10.13489
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Mainz",
+          "contacts": [
+            {
+              "email": "Daniel.Duerr@unimedizin-mainz.de",
+              "name": "Daniel Dürr, Prof. Dr.",
+              "phone": "+49 6131 17-2106",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Jan.Beer@unimedizin-mainz.de",
+              "name": "Jan Beer, Dr.",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Daniel Dürr",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Hospital Mainz",
+          "geoPoint": {
+            "lat": 49.98185,
+            "lon": 8.28008
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Münster",
+          "contacts": [
+            {
+              "email": "zarbock@uni-muenster.de",
+              "name": "Alexander Zarbock, M.D",
+              "phone": "49-251-83-44017",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Hendrik.Booke@ukmuenster.de",
+              "name": "Hendrik Booke, M.D",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Alexander Zarbock, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Hospital Muenster",
+          "geoPoint": {
+            "lat": 51.96236,
+            "lon": 7.62571
+          },
+          "status": "RECRUITING"
+        },
+        {
+          "city": "Rostock",
+          "contacts": [
+            {
+              "email": "Jens-Christian.Schewe@med.uni-rostock.de",
+              "name": "Jens-Christian Schewe, M.D.",
+              "phone": "49-431-500 20801",
+              "role": "CONTACT"
+            },
+            {
+              "email": "Benjamin.loeser@med.uni-rostock.de",
+              "name": "Benjamin Löser, M.D.",
+              "phone": "49-381-494 146234",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Jens-Christian Schewe, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "University Medical Center Rostock",
+          "geoPoint": {
+            "lat": 54.0887,
+            "lon": 12.14049
+          },
+          "status": "NOT_YET_RECRUITING"
+        },
+        {
+          "city": "Stuttgart",
+          "contacts": [
+            {
+              "email": "christian.wunder@rbk.de",
+              "name": "Christian Wunder, M.D.",
+              "phone": "49-711-8101 3484",
+              "role": "CONTACT"
+            },
+            {
+              "email": "magdalena.rufa@rbk.de",
+              "name": "Magdalena Rufa, M.D.",
+              "phone": "49-711-8101 5069",
+              "role": "CONTACT"
+            },
+            {
+              "name": "Christian Wunder, M.D.",
+              "role": "PRINCIPAL_INVESTIGATOR"
+            }
+          ],
+          "country": "Germany",
+          "facility": "Robert Bosch Medical Center",
+          "geoPoint": {
+            "lat": 48.78232,
+            "lon": 9.17702
+          },
+          "status": "RECRUITING"
+        }
+      ],
+      "overallOfficials": [
+        {
+          "affiliation": "Wuerzburg University Hospital",
+          "name": "Christian Stoppe, Prof. Dr.",
+          "role": "STUDY_DIRECTOR"
+        }
+      ]
+    },
+    "descriptionModule": {
+      "briefSummary": "The MODIFY CSX study is a prospective, randomized, placebo-controlled trial conducted in heart centers in Germany and Italy.\n\nA total of 550 high-risk cardiac surgery patients will receive either 0.20 g fish oil/kg body weight (BW) + standard of care versus same volume of placebo (NaCl) + standard of care.",
+      "detailedDescription": "The proposed hypothesis is that the therapeutic strategy tested in this randomized trial will decrease the occurrence of postoperative atrial fibrillation, which ultimately leads to faster time to discharge alive. This in turn significantly improves the patients' mid and long-term outcomes and dramatically reduces associated healthcare related costs.\n\nDuration of intervention: until discharge from ICU, death or postoperative day 7 on ICU, whichever comes first.\n\nTreatment Group: Patients will receive 0.20 g fish oil/kg BW/d (≙ 2 mL Omegaven®/kg BW/d).\n\nControl Group: Patients will receive 0,9% NaCl in dose 2 mL/kg BW/d (placebo).\n\nFollow-up per patient: at day 30, months 3, 6, and 12.\n\nPrimary endpoint (Phase II study):\n\nThe primary endpoint for this phase II clinical trial is the onset and occurence of atrial fibrillation after cardiac surgery (AFACS), incorporating atrial fibrillation, atrial flutter, and atrial tachycardia, until day 7 after surgery (on ICU and normal ward)."
+    },
+    "designModule": {
+      "designInfo": {
+        "allocation": "RANDOMIZED",
+        "interventionModel": "PARALLEL",
+        "interventionModelDescription": "Randomization will be stratified by site, employing a web-based system using a 1:1 ratio to either intravenous fish oil-based lipid emulsion (Omegaven®), or placebo.",
+        "maskingInfo": {
+          "masking": "TRIPLE",
+          "maskingDescription": "Patients as well as clinical staff and outcome assessors not involved in the study will be blinded to study intervention allocation.",
+          "whoMasked": [
+            "PARTICIPANT",
+            "CARE_PROVIDER",
+            "OUTCOMES_ASSESSOR"
+          ]
+        },
+        "primaryPurpose": "PREVENTION"
+      },
+      "enrollmentInfo": {
+        "count": 550,
+        "type": "ESTIMATED"
+      },
+      "phases": [
+        "PHASE2"
+      ],
+      "studyType": "INTERVENTIONAL"
+    },
+    "eligibilityModule": {
+      "eligibilityCriteria": "Inclusion Criteria:\n\n1. Written informed consent prior to study participation\n2. Adult patients (≥ 18 years)\n3. Patients scheduled to undergo elective cardiac surgery with the use of CPB, who are defined as high risk based on having (i) one of the following surgical procedures: valvular heart surgery only, CABG, combined valve and CABG, multiple valve surgeries, combined cardiac procedures, aortic surgical procedures (aortic arch and/or descending aorta; aortic valve+ascending aorta) and (ii) at least one of the following additional risk factors: (a) a high perioperative risk profile, defined as predicted operative mortality of ≥8% (EuroSCORE II), (b) age ≥70, (c) Clinical Frailty Score 4 or more, (d) urgent surgery (defined as to be performed within 24-48 hours after admission), (e) left ventricular ejection fraction \\<35%\n\nExclusion Criteria:\n\n1. Known hypersensitivity to fish oil/fish products or egg protein\n2. Pregnancy or lactation period\n3. Previous history of chronic atrial fibrillation, atrial flutter and/or atrial tachyarrhythmia\n4. Inability or unwillingness of individual to give written informed consent\n5. Not expected to survive an additional 48 hours from screening evaluation\n6. Lack of commitment to full, aggressive care (anticipated withholding or withdrawing treatments in the first week but isolated \"Do not Resuscitate\" \\[DNR\\] acceptable)\n7. Patients admitted with diabetic ketoacidosis or non-ketotic hyperosmolar coma\n8. Patients receiving extracorporeal mechanical assist device (e.g. ECLS, or IABP) or advanced heart failure therapies (e.g. TAH, VAD)\n9. Enrolment in any other interventional trial will be discussed with the coordinating investigator on a case-by-case scenario and requires sponsor approval before inclusion\n10. Already receiving special FO-enriched medical nutrition products\n11. Severe malnutrition (as defined by the BMI \\<18.5)\n12. Severe liver dysfunction defined by Child Pugh Class C.\n13. Severe chronic kidney dysfunction defined by the National Kidney Foundation (NKF) stage 4 and 5 by using the glomerular filtration rate (GFR \\<30ml/min)\n14. Known severe coagulation disorder",
+      "healthyVolunteers": false,
+      "minimumAge": "18 Years",
+      "sex": "ALL",
+      "stdAges": [
+        "ADULT",
+        "OLDER_ADULT"
+      ]
+    },
+    "identificationModule": {
+      "acronym": "MODIFY CSX",
+      "briefTitle": "Intravenous Fish Oil Based Lipid Emulsion to Enhance Recovery in High-Risk Cardiac Surgery Patients",
+      "nctId": "NCT06279793",
+      "officialTitle": "Intravenous Fish Oil Based Lipid Emulsion to Enhance Recovery in High-Risk Cardiac Surgery Patients: a Phase II Multicenter Trial - A Randomized, Placebo-controlled Trial -",
+      "orgStudyIdInfo": {
+        "id": "MODIFY CSX"
+      },
+      "organization": {
+        "class": "INDUSTRY",
+        "fullName": "GCP-Service International West GmbH"
+      }
+    },
+    "ipdSharingStatementModule": {
+      "ipdSharing": "NO"
+    },
+    "outcomesModule": {
+      "otherOutcomes": [
+        {
+          "description": "Ultrasound measurement of thigh skeletal muscle mass",
+          "measure": "Optional tertiary endpoint: Ultrasound measurement of thigh skeletal muscle mass",
+          "timeFrame": "Screening (preoperative day -7 until day -1), ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Functional Status Score for Intensive Care Unit (FSS-ICU)",
+          "measure": "Optional tertiary endpoint: Functional Status Score for Intensive Care Unit (FSS-ICU)",
+          "timeFrame": "Screening (preoperative day -7 until day -1), ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Short Physical Performance Battery test (SPPB)",
+          "measure": "Optional tertiary endpoint: Short Physical Performance Battery test (SPPB)",
+          "timeFrame": "Screening (preoperative day -7 until day -1), ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Hand grip/held dynamometer",
+          "measure": "Optional tertiary endpoint: Hand grip/held dynamometer",
+          "timeFrame": "Screening (preoperative day -7 until day -1), ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Inflammatory response and immune function (measured by markers of the clinical routine (e.g. interleukin \\[IL-\\] -6, IL-1β, IL-2, IL-15, interferon \\[IFN\\] -γ, monocyte chemotactic protein \\[MCP\\] -1, Ferritin, D-Dimer , IL-10, C-reactive protein \\[CRP\\], white blood cell count \\[WBC\\], procalcitonin \\[PCT\\], tumor necrosis factor-α \\[TNF-α\\]).",
+          "measure": "Optional tertiary endpoint: Inflammatory response",
+          "timeFrame": "Intraoperative day 0, postoperative days 0-7"
+        },
+        {
+          "description": "Left ventricular ejection fractLeft ventricular ejection fractionion",
+          "measure": "Optional tertiary endpoint: Left ventricular ejection fraction",
+          "timeFrame": "Preoperative day -1, hospital discharge (approximately 1-2 weeks after surgery), day 30 follow-up, 3 and 6 months follow-up"
+        },
+        {
+          "description": "Manual Muscle Testing (MMT)",
+          "measure": "Optional tertiary endpoint: Manual Muscle Testing (MMT)",
+          "timeFrame": "Screening (preoperative day -7 until day -1), ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Vasoactive-Inotropic Score (VIS)",
+          "measure": "Optional tertiary endpoint: Vasoactive-Inotropic Score (VIS)",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "A method for measuring workload and calculating costs in the ICU",
+          "measure": "Optional tertiary endpoint: Therapeutic Intervention Scoring System (TISS)",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Assessed by the CAM ICU score",
+          "measure": "Optional tertiary endpoint: Development of delirium",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Adequate hemodynamic support, as defined by stable Cardiac Index, cardiac output (CO), Cardiac Power Index, mean arterial pressure (MAP), central vein pressure (CVP), pulmonary artery diastolic pressure (to be measured every 8 hours for first 72 hours post-op or until removal of pulmonary artery catheter, whatever comes first",
+          "measure": "Optional tertiary endpoint: Hemodynamic parameters",
+          "timeFrame": "Intraoperative day 0, postoperative days 0-7"
+        },
+        {
+          "description": "A 9-point scale that quantifies frailty based on function in individual patients",
+          "measure": "Optional tertiary endpoint: Clinical frailty scale",
+          "timeFrame": "Screening (preoperative day -1 until day -7), day 30 follow-up, 3 months follow-up"
+        },
+        {
+          "description": "Estimates the probability of mortality for ICU patients on admission",
+          "measure": "Optional tertiary endpoint: Simplified Acute Physiology Score (SAPS)",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Further routine biomarkers: creatinine, urea, bilirubin, troponin, triglycerides if available",
+          "measure": "Optional tertiary endpoints: Further routine biomarkers",
+          "timeFrame": "Intraoperative day 0, postoperative days 0-7"
+        },
+        {
+          "description": "Serial blood samples and - if available - tissue samples from patients (if these result from the routine surgical procedure) will be collected in concerning patients at the day before (only blood samples), during surgery (only tissue sample if available), and once daily after surgery while the patients are on ICU (only blood samples):\n\n* Specialized pro-resolving mediators (SPMs) and more specific markers of the inflammatory response, such as the production of leukotriene B5 (LTB5), leukotriene B4 (LTB4), 5-hydroxyeicosapentaenoic acid (5-HEPE) and production of 5-hydroxyeicosatetraenoic acid (5-HETE)\n* SPMs, such as maserins and resolvins\n* Oxidative stress (oxidative reduction potential, Malondialdehyde)\n* Membrane incorporation of PUFAs (white blood cells) \\&amp;amp;amp;amp; tissue samples\n* Activation of survival kinases (such as extracellular-signal regulated",
+          "measure": "Separate Sub-study",
+          "timeFrame": "Preoperative day -1, intraoperative day 0, postoperative days 0-7, hospital discharge (approximately 1-2 weeks after surgery)"
+        }
+      ],
+      "primaryOutcomes": [
+        {
+          "description": "The primary objective is to demonstrate superiority of fish oil compared to placebo in the prevention of atrial fibrillation after cardiac surgery (AFACS), incorporating atrial fibrillation, atrial flutter and atrial tachycardia, until 7 days after surgery. This clinical endpoint is assessed as part of the clinical practice.",
+          "measure": "Atrial fibrillation",
+          "timeFrame": "Postoperative days 0-7"
+        }
+      ],
+      "secondaryOutcomes": [
+        {
+          "description": "Duration of mechanical ventilation",
+          "measure": "Mechanical ventilation",
+          "timeFrame": "Postoperative days 0-7, ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery), day 30 follow-up"
+        },
+        {
+          "description": "AEs leading to discontinuation/AEs at least possibly related to the IMP/SAEs",
+          "measure": "Adverse Events",
+          "timeFrame": "Preoperative day -1 to 12 months follow-up"
+        },
+        {
+          "description": "A scoring system that assesses the performance of several organ systems in the body (neurologic, blood, liver, kidney, and blood pressure/hemodynamics) and assigns a score based on the data obtained in each category.",
+          "measure": "Delta Sequential Organ Failure Assessment Score (SOFA) Score",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Incidence of stroke",
+          "measure": "Stroke",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Duration of inotropic/vasopressor support",
+          "measure": "Inotropics/vasopressors",
+          "timeFrame": "Postoperative days 0-7, ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery), day 30 follow-up"
+        },
+        {
+          "description": "Kidney Disease: Improving Global Outcomes \\[KDIGO\\] stages 1-3",
+          "measure": "Acute Kidney Injury",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Number of infections",
+          "measure": "Infection rate",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Overall survival",
+          "measure": "Survival status",
+          "timeFrame": "ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery), day 30 follow-up, months 3, 6, and 12 follow-up"
+        },
+        {
+          "description": "To measure the quality of life",
+          "measure": "Quality of Life (SF-36)",
+          "timeFrame": "Screening (preoperative day -7 until day -1), day 30 follow-up, 3, 6, and 12 months follow-up"
+        },
+        {
+          "description": "Bleeding after surgery",
+          "measure": "Postoperative bleeding",
+          "timeFrame": "Postoperative days 0-7"
+        },
+        {
+          "description": "Number of days alive in the ICU",
+          "measure": "Time to ICU discharge alive",
+          "timeFrame": "ICU discharge (approximately 3-4 days after surgery)"
+        },
+        {
+          "description": "Number of days alive in the hospital",
+          "measure": "Time to hospital discharge alive",
+          "timeFrame": "Hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Katz activities of daily living (ADL) and Lawton Instrumental ADL (IADL)",
+          "measure": "Physical activity assessment",
+          "timeFrame": "Screening (preoperative day -7 until day -1), day 30 follow-up, 3 and 6 months follow-up"
+        },
+        {
+          "description": "Time to be alive and discharge from hospital",
+          "measure": "Days alive and out of hospital",
+          "timeFrame": "Day 30 follow-up, 3, 6, and 12 months follow-up"
+        },
+        {
+          "description": "Time to be alive and discharged from ICU/hospital",
+          "measure": "Time to discharge alive",
+          "timeFrame": "ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery)"
+        },
+        {
+          "description": "Number of attempts to wean from CPB during surgery",
+          "measure": "Weaning from cardiopulmonary bypass (CPB)",
+          "timeFrame": "Intraoperative day 0 (during surgery)"
+        },
+        {
+          "description": "Requiring supportive technologies during the convalescent phase of critical illness",
+          "measure": "Persistent Organ Dysfunction + Death",
+          "timeFrame": "Postoperative days 0-7, ICU discharge (approximately 3-4 days after surgery), hospital discharge (approximately 1-2 weeks after surgery), day 30 follow-up"
+        },
+        {
+          "description": "Readmission to ICU",
+          "measure": "ICU Readmission rates",
+          "timeFrame": "Day 30 follow-up, 3, 6, and 12 months follow-up"
+        },
+        {
+          "description": "Readmission to hospital",
+          "measure": "Hospital Readmission rates",
+          "timeFrame": "Day 30 follow-up, 3, 6, and 12 months follow-up"
+        }
+      ]
+    },
+    "oversightModule": {
+      "isFdaRegulatedDevice": false,
+      "isFdaRegulatedDrug": false,
+      "oversightHasDmc": false
+    },
+    "sponsorCollaboratorsModule": {
+      "collaborators": [
+        {
+          "class": "OTHER",
+          "name": "University Hospital, Bonn"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Hospital Muenster"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Hospital Goettingen"
+        },
+        {
+          "class": "OTHER",
+          "name": "Charite University, Berlin, Germany"
+        },
+        {
+          "class": "OTHER",
+          "name": "Wuerzburg University Hospital"
+        },
+        {
+          "class": "OTHER",
+          "name": "Johannes Gutenberg University Mainz"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Hospital Augsburg"
+        },
+        {
+          "class": "OTHER",
+          "name": "Universitätsklinikum Hamburg-Eppendorf"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Medical Center Rostock"
+        },
+        {
+          "class": "OTHER",
+          "name": "University Hospital Schleswig-Holstein"
+        },
+        {
+          "class": "UNKNOWN",
+          "name": "Robert Bosch-Krankenhaus Stuttgart"
+        }
+      ],
+      "leadSponsor": {
+        "class": "INDUSTRY",
+        "name": "GCP-Service International West GmbH"
+      },
+      "responsibleParty": {
+        "type": "SPONSOR"
+      }
+    },
+    "statusModule": {
+      "completionDateStruct": {
+        "date": "2030-09",
+        "type": "ESTIMATED"
+      },
+      "expandedAccessInfo": {
+        "hasExpandedAccess": false
+      },
+      "lastUpdatePostDateStruct": {
+        "date": "2026-07-08",
+        "type": "ACTUAL"
+      },
+      "lastUpdateSubmitDate": "2026-07-07",
+      "overallStatus": "RECRUITING",
+      "primaryCompletionDateStruct": {
+        "date": "2030-03",
+        "type": "ESTIMATED"
+      },
+      "startDateStruct": {
+        "date": "2024-02-15",
+        "type": "ACTUAL"
+      },
+      "statusVerifiedDate": "2026-07",
+      "studyFirstPostDateStruct": {
+        "date": "2024-02-28",
+        "type": "ACTUAL"
+      },
+      "studyFirstSubmitDate": "2023-09-13",
+      "studyFirstSubmitQcDate": "2024-02-19"
+    }
+  }
+}

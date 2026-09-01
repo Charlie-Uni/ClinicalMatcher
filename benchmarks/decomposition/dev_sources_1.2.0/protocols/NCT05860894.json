@@ -1,0 +1,179 @@
+{
+  "api_data_timestamp": "2026-08-28T09:00:06",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age >18 years",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 37,
+        "start": 23
+      },
+      "source_text": "Age \\>18 years"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-1b77b8f63a510e20",
+      "criterion_type": "inclusion",
+      "normalized_text": "New onset atrial fibrillation diagnosed in the ICU (12 lead ECG or documented episode of atrial fibrillation lasting at least 30 seconds)",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 177,
+        "start": 40
+      },
+      "source_text": "New onset atrial fibrillation diagnosed in the ICU (12 lead ECG or documented episode of atrial fibrillation lasting at least 30 seconds)"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-2e27b65690e71c50",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patient hospitalized in the ICU with at least one of the following two criteria:",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 260,
+        "start": 180
+      },
+      "source_text": "Patient hospitalized in the ICU with at least one of the following two criteria:"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-2e5705789fbb4b1c",
+      "criterion_type": "inclusion",
+      "normalized_text": "orotracheal intubation for mechanical ventilation",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 315,
+        "start": 266
+      },
+      "source_text": "orotracheal intubation for mechanical ventilation"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-7e3616e94eb0ef7d",
+      "criterion_type": "inclusion",
+      "normalized_text": "AND/OR treatment with amines (vasopressors or inotropic agents)",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 383,
+        "start": 320
+      },
+      "source_text": "AND/OR treatment with amines (vasopressors or inotropic agents)"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-83b4b84c3a0bc30e",
+      "criterion_type": "inclusion",
+      "normalized_text": "Written informed consent",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 410,
+        "start": 386
+      },
+      "source_text": "Written informed consent"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-a5ee7fe7af20d092",
+      "criterion_type": "inclusion",
+      "normalized_text": "Patient affiliated to a social security regime (or beneficiary thereof)",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 484,
+        "start": 413
+      },
+      "source_text": "Patient affiliated to a social security regime (or beneficiary thereof)"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-08572f304775f574",
+      "criterion_type": "exclusion",
+      "normalized_text": "Documented history of atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 550,
+        "start": 509
+      },
+      "source_text": "Documented history of atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-82c5cd496c8c4203",
+      "criterion_type": "exclusion",
+      "normalized_text": "patients admitted to the ICU after cardiothoracic surgery",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 610,
+        "start": 553
+      },
+      "source_text": "patients admitted to the ICU after cardiothoracic surgery"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-ff1e3c215a6b8c98",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with life expectancy <12 months",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 654,
+        "start": 613
+      },
+      "source_text": "Patients with life expectancy \\<12 months"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-4faa5891f43ea471",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients under legal or judicial protection",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 700,
+        "start": 657
+      },
+      "source_text": "Patients under legal or judicial protection"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-23e022705890d078",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients with no social security coverage",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 744,
+        "start": 703
+      },
+      "source_text": "Patients with no social security coverage"
+    },
+    {
+      "criterion_id": "nct05860894-exclusion-16bcb96d3105168f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Patients within the exclusion period of another clinical trial",
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 809,
+        "start": 747
+      },
+      "source_text": "Patients within the exclusion period of another clinical trial"
+    }
+  ],
+  "eligibility_sha256": "a338254941c90c284c465491e5d60606208e355e0e1670cfc8aaaa1319dd9a7c",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age \\>18 years\n* New onset atrial fibrillation diagnosed in the ICU (12 lead ECG or documented episode of atrial fibrillation lasting at least 30 seconds)\n* Patient hospitalized in the ICU with at least one of the following two criteria:\n\n  * orotracheal intubation for mechanical ventilation\n  * AND/OR treatment with amines (vasopressors or inotropic agents)\n* Written informed consent\n* Patient affiliated to a social security regime (or beneficiary thereof)\n\nExclusion Criteria:\n\n* Documented history of atrial fibrillation\n* patients admitted to the ICU after cardiothoracic surgery\n* Patients with life expectancy \\<12 months\n* Patients under legal or judicial protection\n* Patients with no social security coverage\n* Patients within the exclusion period of another clinical trial",
+  "healthy_volunteers": false,
+  "importer_code_commit": "177a3144ee603cc049becdc2b62aed02321ffafd",
+  "last_update_posted": "2024-02-01",
+  "maximum_age": null,
+  "minimum_age": "18 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT05860894",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-28",
+  "retrieved_at": "2026-08-31T12:26:16.898901Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+  "source_record_version": "2024-02-01:a338254941c9",
+  "source_url": "https://clinicaltrials.gov/study/NCT05860894",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Post Intensive Care Unit Atrial Fibrillation"
+}

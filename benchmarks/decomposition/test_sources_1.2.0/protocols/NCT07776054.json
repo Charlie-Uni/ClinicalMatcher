@@ -1,0 +1,113 @@
+{
+  "api_data_timestamp": "2026-08-31T09:00:04",
+  "api_version": "2.0.5",
+  "attribution": "ClinicalTrials.gov, U.S. National Library of Medicine",
+  "criteria": [
+    {
+      "criterion_id": "nct07776054-inclusion-7734be5edf15fafe",
+      "criterion_type": "inclusion",
+      "normalized_text": "Age ≥19 years",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 36,
+        "start": 23
+      },
+      "source_text": "Age ≥19 years"
+    },
+    {
+      "criterion_id": "nct07776054-inclusion-a2102efcaea493b2",
+      "criterion_type": "inclusion",
+      "normalized_text": "Persistent atrial fibrillation",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 69,
+        "start": 39
+      },
+      "source_text": "Persistent atrial fibrillation"
+    },
+    {
+      "criterion_id": "nct07776054-inclusion-d380af0a59aa8fd8",
+      "criterion_type": "inclusion",
+      "normalized_text": "H2FPEF score ≥6 or HFA-PEFF score ≥5",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 108,
+        "start": 72
+      },
+      "source_text": "H2FPEF score ≥6 or HFA-PEFF score ≥5"
+    },
+    {
+      "criterion_id": "nct07776054-inclusion-4d4b9941e9a629f9",
+      "criterion_type": "inclusion",
+      "normalized_text": "Restoration of sinus rhythm after electrical cardioversion",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 169,
+        "start": 111
+      },
+      "source_text": "Restoration of sinus rhythm after electrical cardioversion"
+    },
+    {
+      "criterion_id": "nct07776054-exclusion-e1d2e3529ff15256",
+      "criterion_type": "exclusion",
+      "normalized_text": "Previous use of an SGLT2 inhibitor",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 228,
+        "start": 194
+      },
+      "source_text": "Previous use of an SGLT2 inhibitor"
+    },
+    {
+      "criterion_id": "nct07776054-exclusion-d0a7e4c7ee0bc854",
+      "criterion_type": "exclusion",
+      "normalized_text": "Intracardiac thrombus on transesophageal echocardiography",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 288,
+        "start": 231
+      },
+      "source_text": "Intracardiac thrombus on transesophageal echocardiography"
+    },
+    {
+      "criterion_id": "nct07776054-exclusion-2dca6d277681366f",
+      "criterion_type": "exclusion",
+      "normalized_text": "Refusal to participate",
+      "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+      "source_span": {
+        "end": 313,
+        "start": 291
+      },
+      "source_text": "Refusal to participate"
+    }
+  ],
+  "eligibility_sha256": "be22ec91cdd6e046c1cd54837ad7fb6b0e6a2f5c72b7b1b5e3c2f02e505d48ab",
+  "eligibility_text": "Inclusion Criteria:\n\n* Age ≥19 years\n* Persistent atrial fibrillation\n* H2FPEF score ≥6 or HFA-PEFF score ≥5\n* Restoration of sinus rhythm after electrical cardioversion\n\nExclusion Criteria:\n\n* Previous use of an SGLT2 inhibitor\n* Intracardiac thrombus on transesophageal echocardiography\n* Refusal to participate",
+  "healthy_volunteers": false,
+  "importer_code_commit": "7d5f731bc7411a368293c09158fa80205ca93955",
+  "last_update_posted": "2026-08-20",
+  "maximum_age": null,
+  "minimum_age": "19 Years",
+  "modifications": [
+    "Split eligibility markup by explicit inclusion/exclusion headings.",
+    "Removed list markers from criterion source spans.",
+    "Collapsed whitespace in normalized_text.",
+    "Unescaped ClinicalTrials.gov comparison markup in normalized_text.",
+    "Preserved the complete source eligibility text and character spans."
+  ],
+  "nct_id": "NCT07776054",
+  "protocol_version": "1.0.0",
+  "registry": "ClinicalTrials.gov",
+  "registry_snapshot_date": "2026-08-31",
+  "retrieved_at": "2026-09-01T04:53:44.514183Z",
+  "sex": "ALL",
+  "source_id": "clinicaltrials.gov:NCT07776054:eligibility:2026-08-20:be22ec91cdd6",
+  "source_record_version": "2026-08-20:be22ec91cdd6",
+  "source_url": "https://clinicaltrials.gov/study/NCT07776054",
+  "standard_ages": [
+    "ADULT",
+    "OLDER_ADULT"
+  ],
+  "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+  "title": "Clinical Impact of SGLT2 Inhibitor After DC Cardioversion in Persistent AF With HFpEF"
+}
