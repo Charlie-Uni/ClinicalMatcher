@@ -43,6 +43,9 @@ SELECTION_SCHEMA = (
 SNAPSHOT_SCHEMA = (
     "schemas/decomposition-test-source-snapshot-1.0.0.schema.json"
 )
+FAILURE_SCHEMA = (
+    "schemas/decomposition-test-remediation-failure-1.0.0.schema.json"
+)
 DEV_SNAPSHOT_SCHEMA = (
     "schemas/decomposition-dev-source-snapshot-1.0.0.schema.json"
 )
@@ -54,6 +57,15 @@ DEV_SNAPSHOT_VERSION = "decomposition-dev-source-snapshot/1.0.0"
 
 class DecompositionTestRemediationError(ValueError):
     """Raised when the approved replacement-test contract cannot be met."""
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        outcomes: Optional[Sequence[Dict[str, Any]]] = None,
+    ) -> None:
+        super().__init__(message)
+        self.outcomes = tuple(dict(item) for item in (outcomes or ()))
 
 
 def _canonical_bytes(value: Any) -> bytes:
@@ -460,8 +472,75 @@ def collect_replacement_sources(
 
     raise DecompositionTestRemediationError(
         "The complete frozen 506-trial remainder cannot satisfy replacement "
-        "test quotas; no selection artifact was created"
+        "test quotas; no selection artifact was created",
+        outcomes=outcomes,
     )
+
+
+def _failure_report_document(
+    *,
+    outcomes: Sequence[Dict[str, Any]],
+    source_audit: Mapping[str, Any],
+    contract: Mapping[str, Any],
+    created_at: str,
+    builder_code_commit: str,
+) -> Dict[str, Any]:
+    if len(outcomes) != contract["remainder"]["eligible_unfetched_count"]:
+        raise DecompositionTestRemediationError(
+            "A fail-closed report requires the complete frozen remainder"
+        )
+    safe_records = []
+    reason_counts: Dict[str, int] = {}
+    for outcome in outcomes:
+        safe = {
+            key: value
+            for key, value in outcome.items()
+            if key not in {"raw_path", "protocol_path"}
+        }
+        safe_records.append(safe)
+        reason = outcome["reason_code"] or "imported"
+        reason_counts[reason] = reason_counts.get(reason, 0) + 1
+    imported_count = sum(item["status"] == "imported" for item in outcomes)
+    document: Dict[str, Any] = {
+        "report_version": "decomposition-test-remediation-failure/1.0.0",
+        "created_at": created_at,
+        "builder_code_commit": builder_code_commit,
+        "contract_id": contract["contract_id"],
+        "contract_sha256": contract["contract_sha256"],
+        "source_audit_id": source_audit["selection_audit_id"],
+        "source_audit_sha256": source_audit["selection_audit_sha256"],
+        "selection_created": False,
+        "complete_remainder_exhausted": True,
+        "criterion_text_in_report": False,
+        "counts": {
+            "attempted": len(outcomes),
+            "imported": imported_count,
+            "skipped": len(outcomes) - imported_count,
+            "reason_counts": dict(sorted(reason_counts.items())),
+        },
+        "records": safe_records,
+    }
+    digest = _self_hash(document, "report_id", "report_sha256")
+    document["report_id"] = f"decomposition-test-failure-{digest[:16]}"
+    document["report_sha256"] = digest
+    validate_failure_report_document(document)
+    return document
+
+
+def validate_failure_report_document(document: Dict[str, Any]) -> None:
+    validate_document(document, FAILURE_SCHEMA)
+    expected = _self_hash(document, "report_id", "report_sha256")
+    if document["report_sha256"] != expected or document["report_id"] != (
+        f"decomposition-test-failure-{expected[:16]}"
+    ):
+        raise DecompositionTestRemediationError(
+            "Remediation failure report identity mismatch"
+        )
+    forbidden = {"source_text", "normalized_text", "eligibility_text"}
+    if any(forbidden.intersection(record) for record in document["records"]):
+        raise DecompositionTestRemediationError(
+            "Remediation failure report contains criterion text"
+        )
 
 
 def _snapshot_document(
@@ -735,6 +814,7 @@ def build_remediated_selection(
     dev_source_root: Path,
     test_source_root: Path,
     selection_output: Path,
+    failure_report_output: Optional[Path] = None,
     fetcher: Optional[
         Callable[[str], Tuple[Dict[str, Any], Dict[str, Any]]]
     ] = None,
@@ -749,6 +829,10 @@ def build_remediated_selection(
         dev_source_root.exists()
         or test_source_root.exists()
         or selection_output.exists()
+        or (
+            failure_report_output is not None
+            and failure_report_output.exists()
+        )
     ):
         raise FileExistsError("Refusing to overwrite remediation artifacts")
     predecessor = json.loads(predecessor_path.read_text(encoding="utf-8"))
@@ -768,13 +852,25 @@ def build_remediated_selection(
     commit = builder_code_commit or current_git_commit()
     if not re.fullmatch(r"[0-9a-f]{40}", commit):
         raise DecompositionTestRemediationError("Invalid builder Git commit")
-    imported, outcomes, selected = collect_replacement_sources(
-        predecessor=predecessor,
-        source_audit=source_audit,
-        fetcher=fetcher or ClinicalTrialsClient().fetch,
-        contract=frozen,
-        builder_code_commit=commit,
-    )
+    try:
+        imported, outcomes, selected = collect_replacement_sources(
+            predecessor=predecessor,
+            source_audit=source_audit,
+            fetcher=fetcher or ClinicalTrialsClient().fetch,
+            contract=frozen,
+            builder_code_commit=commit,
+        )
+    except DecompositionTestRemediationError as error:
+        if failure_report_output is not None and error.outcomes:
+            report = _failure_report_document(
+                outcomes=error.outcomes,
+                source_audit=source_audit,
+                contract=frozen,
+                created_at=created_at or _now(),
+                builder_code_commit=commit,
+            )
+            _write_json(failure_report_output, report)
+        raise
     timestamp = created_at or _now()
     snapshot = _snapshot_document(
         imported=imported,

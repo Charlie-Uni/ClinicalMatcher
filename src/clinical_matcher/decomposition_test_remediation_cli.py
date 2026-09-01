@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Optional, Sequence
 
 from .decomposition_test_remediation import (
+    DecompositionTestRemediationError,
     build_remediated_selection,
     validate_remediated_selection,
 )
@@ -24,6 +25,8 @@ def build_parser() -> argparse.ArgumentParser:
         command.add_argument("--dev-source-root", type=Path, required=True)
         command.add_argument("--test-source-root", type=Path, required=True)
         command.add_argument("--selection", type=Path, required=True)
+        if name == "build":
+            command.add_argument("--failure-report", type=Path, required=True)
     return parser
 
 
@@ -37,10 +40,21 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "test_source_root": args.test_source_root,
     }
     if args.command == "build":
-        document = build_remediated_selection(
-            **common,
-            selection_output=args.selection,
-        )
+        try:
+            document = build_remediated_selection(
+                **common,
+                selection_output=args.selection,
+                failure_report_output=args.failure_report,
+            )
+        except DecompositionTestRemediationError:
+            if not args.failure_report.is_file():
+                raise
+            print(
+                "Replacement failed closed after the frozen remainder; "
+                "a metadata-only failure report was written. No selection "
+                "or source snapshot was created."
+            )
+            return 2
         print(
             f"Built {document['selection_manifest_id']}: preserved "
             f"{document['counts']['preserved_dev_count']} dev items, retired "

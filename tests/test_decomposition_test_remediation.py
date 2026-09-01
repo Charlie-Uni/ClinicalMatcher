@@ -5,6 +5,7 @@ import unittest
 
 from clinical_matcher.decomposition_test_remediation import (
     DecompositionTestRemediationError,
+    _failure_report_document,
     _selection_document,
     _snapshot_document,
     collect_replacement_sources,
@@ -263,9 +264,12 @@ class DecompositionTestRemediationTest(unittest.TestCase):
 
     def test_quota_shortage_fails_closed(self):
         audit = source_audit({})
+        audit["selection_audit_sha256"] = (
+            "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7"
+        )
         with self.assertRaisesRegex(
             DecompositionTestRemediationError, "no selection artifact"
-        ):
+        ) as raised:
             collect_replacement_sources(
                 predecessor=predecessor(),
                 source_audit=audit,
@@ -273,6 +277,21 @@ class DecompositionTestRemediationTest(unittest.TestCase):
                 contract=self.contract,
                 builder_code_commit="a" * 40,
             )
+        self.assertEqual(506, len(raised.exception.outcomes))
+        report = _failure_report_document(
+            outcomes=raised.exception.outcomes,
+            source_audit=audit,
+            contract=self.contract,
+            created_at="2026-09-01T00:00:00Z",
+            builder_code_commit="a" * 40,
+        )
+        self.assertFalse(report["selection_created"])
+        self.assertEqual(
+            {"fetch_error": 506}, report["counts"]["reason_counts"]
+        )
+        self.assertFalse(
+            any("source_text" in item for item in report["records"])
+        )
 
 
 if __name__ == "__main__":

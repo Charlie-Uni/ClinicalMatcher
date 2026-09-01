@@ -1,6 +1,7 @@
 # P5D test-source exposure record
 
-Status: **owner-approved remediation frozen; replacement execution pending**
+Status: **owner-approved remediation blocked after a fail-closed execution;
+metadata-only failure report pending**
 
 Date: 2026-09-01
 
@@ -63,3 +64,16 @@ This record will be updated to `remediated` and bind the final replacement
 selection and test-source snapshot identities after execution passes
 verification. Until then, no test catalog, annotation, model output, or metric
 may be created.
+
+## First execution outcome
+
+The first execution under the frozen contract exhausted the complete 506-trial
+remainder without satisfying the replacement-test requirements. It created no
+selection, dev/test source directory, annotation, prediction, or metric. The
+initial implementation raised the correct fail-closed state but did not retain
+the required reason-code report. Before any retry, an audit-only reporting path
+was added: it preserves the unchanged contract, order, source-hash gate, parser,
+and quotas, and writes only NCT IDs, structural metadata, hashes, status, and
+reason codes. It never writes or displays criterion text. A second execution is
+permitted solely to materialize that missing report and does not authorize a
+selection-policy change.
