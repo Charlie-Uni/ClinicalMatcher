@@ -5,6 +5,7 @@ from typing import Optional, Sequence
 from .decomposition_test_remediation import (
     DecompositionTestRemediationError,
     build_remediated_selection,
+    load_remediation_contract,
     validate_remediated_selection,
 )
 
@@ -25,6 +26,11 @@ def build_parser() -> argparse.ArgumentParser:
         command.add_argument("--dev-source-root", type=Path, required=True)
         command.add_argument("--test-source-root", type=Path, required=True)
         command.add_argument("--selection", type=Path, required=True)
+        command.add_argument(
+            "--contract-version",
+            choices=("1.0.0", "1.1.0"),
+            default="1.1.0",
+        )
         if name == "build":
             command.add_argument("--failure-report", type=Path, required=True)
     return parser
@@ -38,6 +44,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "source_snapshot_root": args.source_snapshot_root,
         "dev_source_root": args.dev_source_root,
         "test_source_root": args.test_source_root,
+        "contract": load_remediation_contract(args.contract_version),
     }
     if args.command == "build":
         try:

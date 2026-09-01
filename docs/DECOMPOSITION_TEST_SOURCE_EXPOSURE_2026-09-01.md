@@ -1,6 +1,7 @@
 # P5D test-source exposure record
 
-Status: **owner-approved remediation failed closed; new owner decision required**
+Status: **Plan A current-snapshot remediation frozen by owner approval;
+execution pending**
 
 Date: 2026-09-01
 
@@ -94,3 +95,21 @@ outcomes, so it cannot distinguish registry-version drift from endpoint
 representation differences or study-content changes. No causal claim is made.
 Changing the source identity rule, querying a fresh pool, or accepting current
 hashes requires a new owner-reviewed contract; none occurs automatically.
+
+## Owner decision after the failed exact-hash execution
+
+The owner approved Plan A on 2026-09-01 before any new replacement membership,
+parser outcome, or quota result was observed. The same 506 never-downloaded NCT
+IDs and their frozen sampling order remain the only candidate pool. Contract
+`decomposition-test-remediation-contract/1.1.0` freezes a uniform current
+ClinicalTrials.gov individual-response snapshot instead of requiring equality
+to the historical complete-search object hashes.
+
+Historical hashes remain immutable provenance and are not claimed to equal the
+current responses. Every current response must have the requested NCT ID and
+must re-pass the original study-type, recruiting-status, first-posted-date, and
+eligibility-text filters. API version and data timestamp must remain uniform.
+The parser, duplicate policy, quotas, trial cap, minimum-trial rule, headless
+handling, text-display prohibition, and no-manual-diagnosis rule are unchanged.
+No test catalog, annotation, model prediction, or metric may be created until
+the new snapshot and selection complete and independently validate.

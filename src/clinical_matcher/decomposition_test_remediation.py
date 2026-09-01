@@ -8,7 +8,7 @@ import os
 import re
 import shutil
 import tempfile
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from importlib.resources import files
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Tuple
@@ -31,28 +31,37 @@ from .splits import current_git_commit
 from .validation import validate_document
 
 
-CONTRACT_RESOURCE = (
-    "resources/decomposition-test-remediation-contract-1.0.0.json"
-)
-CONTRACT_SCHEMA = (
-    "schemas/decomposition-test-remediation-contract-1.0.0.schema.json"
-)
-SELECTION_SCHEMA = (
-    "schemas/decomposition-selection-manifest-1.1.0.schema.json"
-)
-SNAPSHOT_SCHEMA = (
-    "schemas/decomposition-test-source-snapshot-1.0.0.schema.json"
-)
-FAILURE_SCHEMA = (
-    "schemas/decomposition-test-remediation-failure-1.0.0.schema.json"
-)
+CONTRACT_RESOURCES = {
+    "1.0.0": "resources/decomposition-test-remediation-contract-1.0.0.json",
+    "1.1.0": "resources/decomposition-test-remediation-contract-1.1.0.json",
+}
+CONTRACT_SCHEMAS = {
+    "decomposition-test-remediation-contract/1.0.0":
+        "schemas/decomposition-test-remediation-contract-1.0.0.schema.json",
+    "decomposition-test-remediation-contract/1.1.0":
+        "schemas/decomposition-test-remediation-contract-1.1.0.schema.json",
+}
+SELECTION_SCHEMAS = {
+    "1.1.0": "schemas/decomposition-selection-manifest-1.1.0.schema.json",
+    "1.2.0": "schemas/decomposition-selection-manifest-1.2.0.schema.json",
+}
+SNAPSHOT_SCHEMAS = {
+    "decomposition-test-source-snapshot/1.0.0":
+        "schemas/decomposition-test-source-snapshot-1.0.0.schema.json",
+    "decomposition-test-source-snapshot/1.1.0":
+        "schemas/decomposition-test-source-snapshot-1.1.0.schema.json",
+}
+FAILURE_SCHEMAS = {
+    "decomposition-test-remediation-failure/1.0.0":
+        "schemas/decomposition-test-remediation-failure-1.0.0.schema.json",
+    "decomposition-test-remediation-failure/1.1.0":
+        "schemas/decomposition-test-remediation-failure-1.1.0.schema.json",
+}
 DEV_SNAPSHOT_SCHEMA = (
     "schemas/decomposition-dev-source-snapshot-1.0.0.schema.json"
 )
-SELECTION_VERSION = "1.1.0"
-PROTOCOL_VERSION = "decomposition-benchmark-protocol/1.1.0"
-SNAPSHOT_VERSION = "decomposition-test-source-snapshot/1.0.0"
 DEV_SNAPSHOT_VERSION = "decomposition-dev-source-snapshot/1.0.0"
+CURRENT_SOURCE_MODE = "freeze_current_individual_response/1.0.0"
 
 
 class DecompositionTestRemediationError(ValueError):
@@ -117,15 +126,27 @@ def _digest(contract: Mapping[str, Any], *parts: str) -> str:
     return _bytes_hash("\0".join(components).encode("utf-8"))
 
 
-def load_remediation_contract() -> Dict[str, Any]:
-    resource = files("clinical_matcher").joinpath(CONTRACT_RESOURCE)
+def load_remediation_contract(version: str = "1.0.0") -> Dict[str, Any]:
+    try:
+        resource_name = CONTRACT_RESOURCES[version]
+    except KeyError as error:
+        raise DecompositionTestRemediationError(
+            f"Unsupported remediation contract version: {version}"
+        ) from error
+    resource = files("clinical_matcher").joinpath(resource_name)
     document = json.loads(resource.read_text(encoding="utf-8"))
     validate_remediation_contract(document)
     return document
 
 
 def validate_remediation_contract(document: Dict[str, Any]) -> None:
-    validate_document(document, CONTRACT_SCHEMA)
+    try:
+        schema = CONTRACT_SCHEMAS[document["contract_version"]]
+    except (KeyError, TypeError) as error:
+        raise DecompositionTestRemediationError(
+            "Unsupported remediation contract version"
+        ) from error
+    validate_document(document, schema)
     expected = _self_hash(document, "contract_id", "contract_sha256")
     if document["contract_sha256"] != expected:
         raise DecompositionTestRemediationError("Remediation contract hash mismatch")
@@ -365,6 +386,77 @@ def _test_record_metadata(record: Mapping[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _current_source_filter_reason(
+    study: Mapping[str, Any],
+    expected_nct_id: str,
+    contract: Mapping[str, Any],
+) -> Optional[str]:
+    """Return the first frozen filter failure without exposing source text."""
+    policy = contract["source_identity"]["current_filter_revalidation"]
+    protocol = study.get("protocolSection")
+    if not isinstance(protocol, Mapping):
+        return "nct_id_mismatch"
+    identification = protocol.get("identificationModule")
+    observed_nct_id = (
+        identification.get("nctId")
+        if isinstance(identification, Mapping)
+        else None
+    )
+    if observed_nct_id != expected_nct_id:
+        return "nct_id_mismatch"
+    design = protocol.get("designModule")
+    study_type = design.get("studyType") if isinstance(design, Mapping) else None
+    if study_type not in policy["study_types"]:
+        return "study_type_not_allowed"
+    status = protocol.get("statusModule")
+    overall_status = (
+        status.get("overallStatus") if isinstance(status, Mapping) else None
+    )
+    if overall_status not in policy["overall_statuses"]:
+        return "overall_status_not_allowed"
+    first_posted_struct = (
+        status.get("studyFirstPostDateStruct")
+        if isinstance(status, Mapping)
+        else None
+    )
+    first_posted = (
+        first_posted_struct.get("date")
+        if isinstance(first_posted_struct, Mapping)
+        else None
+    )
+    try:
+        observed_date = date.fromisoformat(first_posted)
+    except (TypeError, ValueError):
+        return "first_posted_missing_or_invalid"
+    if not (
+        date.fromisoformat(policy["first_posted_from"])
+        <= observed_date
+        <= date.fromisoformat(policy["first_posted_to"])
+    ):
+        return "first_posted_out_of_range"
+    eligibility = protocol.get("eligibilityModule")
+    eligibility_text = (
+        eligibility.get("eligibilityCriteria")
+        if isinstance(eligibility, Mapping)
+        else None
+    )
+    if not isinstance(eligibility_text, str) or not eligibility_text.strip():
+        return "eligibility_text_missing"
+    return None
+
+
+def _api_identity(version: Mapping[str, Any]) -> Tuple[str, str]:
+    api_version = version.get("apiVersion")
+    timestamp = version.get("dataTimestamp")
+    if not isinstance(api_version, str) or not api_version or not isinstance(
+        timestamp, str
+    ) or not timestamp:
+        raise DecompositionTestRemediationError(
+            "Current snapshot requires non-empty API version and data timestamp"
+        )
+    return api_version, timestamp
+
+
 def collect_replacement_sources(
     *,
     predecessor: Dict[str, Any],
@@ -384,6 +476,8 @@ def collect_replacement_sources(
     outcomes: List[Dict[str, Any]] = []
     remainder = ordered_unfetched_remainder(source_audit, contract)
     selected: Optional[List[Dict[str, Any]]] = None
+    current_source_mode = contract.get("source_identity", {}).get("mode")
+    uniform_api_identity: Optional[Tuple[str, str]] = None
 
     for rank, frozen_record in enumerate(remainder, start=1):
         nct_id = frozen_record["nct_id"]
@@ -399,12 +493,44 @@ def collect_replacement_sources(
         }
         try:
             study, version = fetcher(nct_id)
-        except (OSError, TimeoutError, TrialImportError, ValueError):
+        except TrialImportError as error:
+            if (
+                current_source_mode == CURRENT_SOURCE_MODE
+                and error.code == "api_version_changed"
+            ):
+                raise DecompositionTestRemediationError(
+                    "ClinicalTrials.gov API identity changed during current "
+                    "snapshot construction",
+                    outcomes=outcomes,
+                ) from error
+            outcome["reason_code"] = error.code
+            outcomes.append(outcome)
+            continue
+        except (OSError, TimeoutError, ValueError):
             outcomes.append(outcome)
             continue
         fetched_sha256 = _canonical_hash(study)
         outcome["fetched_source_study_sha256"] = fetched_sha256
-        if fetched_sha256 != frozen_record["source_study_sha256"]:
+        if current_source_mode == CURRENT_SOURCE_MODE:
+            identity = _api_identity(version)
+            if uniform_api_identity is None:
+                uniform_api_identity = identity
+            elif identity != uniform_api_identity:
+                raise DecompositionTestRemediationError(
+                    "ClinicalTrials.gov API identity changed during current "
+                    "snapshot construction",
+                    outcomes=outcomes,
+                )
+            outcome["api_version"], outcome["api_data_timestamp"] = identity
+            outcome["historical_source_hash_match"] = (
+                fetched_sha256 == frozen_record["source_study_sha256"]
+            )
+            reason = _current_source_filter_reason(study, nct_id, contract)
+            if reason is not None:
+                outcome["reason_code"] = reason
+                outcomes.append(outcome)
+                continue
+        elif fetched_sha256 != frozen_record["source_study_sha256"]:
             outcome["reason_code"] = "source_hash_mismatch"
             outcomes.append(outcome)
             continue
@@ -456,6 +582,16 @@ def collect_replacement_sources(
                 "eligibility_sha256": protocol["eligibility_sha256"],
             }
         )
+        if current_source_mode == CURRENT_SOURCE_MODE:
+            outcome.update(
+                {
+                    "current_filters_revalidated": True,
+                    "source_record_version": protocol[
+                        "source_record_version"
+                    ],
+                    "last_update_posted": protocol["last_update_posted"],
+                }
+            )
         outcomes.append(outcome)
         imported.append(
             {
@@ -502,7 +638,12 @@ def _failure_report_document(
         reason_counts[reason] = reason_counts.get(reason, 0) + 1
     imported_count = sum(item["status"] == "imported" for item in outcomes)
     document: Dict[str, Any] = {
-        "report_version": "decomposition-test-remediation-failure/1.0.0",
+        "report_version": (
+            "decomposition-test-remediation-failure/1.1.0"
+            if contract.get("source_identity", {}).get("mode")
+            == CURRENT_SOURCE_MODE
+            else "decomposition-test-remediation-failure/1.0.0"
+        ),
         "created_at": created_at,
         "builder_code_commit": builder_code_commit,
         "contract_id": contract["contract_id"],
@@ -528,7 +669,13 @@ def _failure_report_document(
 
 
 def validate_failure_report_document(document: Dict[str, Any]) -> None:
-    validate_document(document, FAILURE_SCHEMA)
+    try:
+        schema = FAILURE_SCHEMAS[document["report_version"]]
+    except (KeyError, TypeError) as error:
+        raise DecompositionTestRemediationError(
+            "Unsupported remediation failure report version"
+        ) from error
+    validate_document(document, schema)
     expected = _self_hash(document, "report_id", "report_sha256")
     if document["report_sha256"] != expected or document["report_id"] != (
         f"decomposition-test-failure-{expected[:16]}"
@@ -552,8 +699,14 @@ def _snapshot_document(
     builder_code_commit: str,
 ) -> Dict[str, Any]:
     records = [dict(outcome) for outcome in outcomes]
+    current_source_mode = contract.get("source_identity", {}).get("mode")
+    snapshot_version = (
+        "decomposition-test-source-snapshot/1.1.0"
+        if current_source_mode == CURRENT_SOURCE_MODE
+        else "decomposition-test-source-snapshot/1.0.0"
+    )
     document: Dict[str, Any] = {
-        "snapshot_version": SNAPSHOT_VERSION,
+        "snapshot_version": snapshot_version,
         "created_at": created_at,
         "builder_code_commit": builder_code_commit,
         "contract_id": contract["contract_id"],
@@ -565,6 +718,28 @@ def _snapshot_document(
         "skipped_trial_count": len(records) - len(imported),
         "records": records,
     }
+    if current_source_mode == CURRENT_SOURCE_MODE:
+        identities = {
+            (record.get("api_version"), record.get("api_data_timestamp"))
+            for record in records
+            if record.get("api_version") is not None
+        }
+        if len(identities) != 1:
+            raise DecompositionTestRemediationError(
+                "Current snapshot records do not share one API identity"
+            )
+        api_version, api_timestamp = identities.pop()
+        document.update(
+            {
+                "source_identity_mode": CURRENT_SOURCE_MODE,
+                "historical_source_hash_role": (
+                    "provenance_only_not_current_acceptance"
+                ),
+                "api_version": api_version,
+                "api_data_timestamp": api_timestamp,
+                "current_filters_revalidated": True,
+            }
+        )
     digest = _self_hash(document, "snapshot_id", "snapshot_sha256")
     document["snapshot_id"] = f"decomposition-test-source-{digest[:16]}"
     document["snapshot_sha256"] = digest
@@ -683,9 +858,16 @@ def _selection_document(
         )
         for stratum in STRATUM_ORDER
     }
+    current_source_mode = contract.get("source_identity", {}).get("mode")
     document: Dict[str, Any] = {
-        "selection_manifest_version": SELECTION_VERSION,
-        "protocol_version": PROTOCOL_VERSION,
+        "selection_manifest_version": (
+            "1.2.0" if current_source_mode == CURRENT_SOURCE_MODE else "1.1.0"
+        ),
+        "protocol_version": (
+            "decomposition-benchmark-protocol/1.2.0"
+            if current_source_mode == CURRENT_SOURCE_MODE
+            else "decomposition-benchmark-protocol/1.1.0"
+        ),
         "builder_code_commit": builder_code_commit,
         "contract_binding": {
             "contract_id": contract["contract_id"],
@@ -741,7 +923,13 @@ def _selection_document(
 
 
 def validate_test_source_snapshot_document(document: Dict[str, Any]) -> None:
-    validate_document(document, SNAPSHOT_SCHEMA)
+    try:
+        schema = SNAPSHOT_SCHEMAS[document["snapshot_version"]]
+    except (KeyError, TypeError) as error:
+        raise DecompositionTestRemediationError(
+            "Unsupported test-source snapshot version"
+        ) from error
+    validate_document(document, schema)
     expected = _self_hash(document, "snapshot_id", "snapshot_sha256")
     if document["snapshot_sha256"] != expected or document["snapshot_id"] != (
         f"decomposition-test-source-{expected[:16]}"
@@ -776,7 +964,13 @@ def validate_remediated_selection_document(
 ) -> None:
     frozen = contract or load_remediation_contract()
     validate_remediation_contract(frozen)
-    validate_document(document, SELECTION_SCHEMA)
+    try:
+        schema = SELECTION_SCHEMAS[document["selection_manifest_version"]]
+    except (KeyError, TypeError) as error:
+        raise DecompositionTestRemediationError(
+            "Unsupported remediated selection version"
+        ) from error
+    validate_document(document, schema)
     expected = _self_hash(
         document, "selection_manifest_id", "selection_manifest_sha256"
     )
@@ -861,7 +1055,9 @@ def build_remediated_selection(
             builder_code_commit=commit,
         )
     except DecompositionTestRemediationError as error:
-        if failure_report_output is not None and error.outcomes:
+        if failure_report_output is not None and len(error.outcomes) == frozen[
+            "remainder"
+        ]["eligible_unfetched_count"]:
             report = _failure_report_document(
                 outcomes=error.outcomes,
                 source_audit=source_audit,

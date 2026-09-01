@@ -13,6 +13,7 @@ from clinical_matcher.decomposition_test_remediation import (
     ordered_unfetched_remainder,
     validate_remediation_contract,
 )
+from clinical_matcher.ingestion.trials import TrialImportError
 
 
 VERSION = {
@@ -60,8 +61,11 @@ def synthetic_study(nct_id):
                 "briefTitle": f"Synthetic trial {nct_id}",
             },
             "statusModule": {
+                "overallStatus": "RECRUITING",
+                "studyFirstPostDateStruct": {"date": "2024-01-01"},
                 "lastUpdatePostDateStruct": {"date": "2026-08-01"}
             },
+            "designModule": {"studyType": "INTERVENTIONAL"},
             "eligibilityModule": {
                 "eligibilityCriteria": "\n".join(lines),
                 "sex": "ALL",
@@ -292,6 +296,174 @@ class DecompositionTestRemediationTest(unittest.TestCase):
         self.assertFalse(
             any("source_text" in item for item in report["records"])
         )
+
+
+class CurrentSnapshotRemediationTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.contract = load_remediation_contract("1.1.0")
+
+    def test_current_contract_is_self_authenticating(self):
+        validate_remediation_contract(self.contract)
+        self.assertEqual(
+            "freeze_current_individual_response/1.0.0",
+            self.contract["source_identity"]["mode"],
+        )
+
+    def test_current_snapshot_accepts_changed_hash_after_filter_revalidation(self):
+        studies = {
+            f"NCT{10000000 + index:08d}": synthetic_study(
+                f"NCT{10000000 + index:08d}"
+            )
+            for index in range(12)
+        }
+        audit = source_audit({})
+
+        def fetcher(nct_id):
+            if nct_id not in studies:
+                raise OSError("synthetic missing")
+            return studies[nct_id], VERSION
+
+        imported, outcomes, selected = collect_replacement_sources(
+            predecessor=predecessor(),
+            source_audit=audit,
+            fetcher=fetcher,
+            contract=self.contract,
+            builder_code_commit="a" * 40,
+        )
+        self.assertEqual(40, len(selected))
+        self.assertTrue(imported)
+        self.assertTrue(
+            all(not item["historical_source_hash_match"] for item in outcomes)
+        )
+        self.assertTrue(
+            all(item["current_filters_revalidated"] for item in outcomes)
+        )
+        snapshot = _snapshot_document(
+            imported=imported,
+            outcomes=outcomes,
+            contract=self.contract,
+            created_at="2026-09-01T00:00:00Z",
+            builder_code_commit="a" * 40,
+        )
+        self.assertEqual(
+            "decomposition-test-source-snapshot/1.1.0",
+            snapshot["snapshot_version"],
+        )
+        self.assertEqual(VERSION["apiVersion"], snapshot["api_version"])
+        audit["selection_audit_sha256"] = (
+            "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7"
+        )
+        selection = _selection_document(
+            predecessor=predecessor(),
+            source_audit=audit,
+            dev_snapshot={
+                "snapshot_id": "decomposition-dev-source-" + "1" * 16,
+                "snapshot_sha256": "1" * 64,
+            },
+            snapshot=snapshot,
+            selected=selected,
+            contract=self.contract,
+            builder_code_commit="a" * 40,
+        )
+        self.assertEqual("1.2.0", selection["selection_manifest_version"])
+
+    def test_current_filter_failure_is_reason_only_and_does_not_block_later_trials(self):
+        studies = {
+            f"NCT{10000000 + index:08d}": synthetic_study(
+                f"NCT{10000000 + index:08d}"
+            )
+            for index in range(13)
+        }
+        studies["NCT10000000"]["protocolSection"]["statusModule"][
+            "overallStatus"
+        ] = "COMPLETED"
+        audit = source_audit({})
+
+        def fetcher(nct_id):
+            if nct_id not in studies:
+                raise OSError("synthetic missing")
+            return studies[nct_id], VERSION
+
+        _, outcomes, selected = collect_replacement_sources(
+            predecessor=predecessor(),
+            source_audit=audit,
+            fetcher=fetcher,
+            contract=self.contract,
+            builder_code_commit="a" * 40,
+        )
+        self.assertEqual(40, len(selected))
+        self.assertEqual("overall_status_not_allowed", outcomes[0]["reason_code"])
+        self.assertFalse(
+            any(
+                key in outcomes[0]
+                for key in ("source_text", "normalized_text", "eligibility_text")
+            )
+        )
+
+    def test_current_snapshot_rejects_nct_mismatch(self):
+        wrong = synthetic_study("NCT19999999")
+        audit = source_audit({})
+
+        def fetcher(nct_id):
+            if nct_id == "NCT10000000":
+                return wrong, VERSION
+            raise OSError("synthetic missing")
+
+        with self.assertRaises(DecompositionTestRemediationError) as raised:
+            collect_replacement_sources(
+                predecessor=predecessor(),
+                source_audit=audit,
+                fetcher=fetcher,
+                contract=self.contract,
+                builder_code_commit="a" * 40,
+            )
+        self.assertEqual(
+            "nct_id_mismatch", raised.exception.outcomes[0]["reason_code"]
+        )
+
+    def test_current_snapshot_rejects_api_identity_change(self):
+        studies = {
+            f"NCT{10000000 + index:08d}": synthetic_study(
+                f"NCT{10000000 + index:08d}"
+            )
+            for index in range(2)
+        }
+
+        def fetcher(nct_id):
+            index = int(nct_id[-1])
+            return studies[nct_id], {
+                "apiVersion": VERSION["apiVersion"],
+                "dataTimestamp": f"timestamp-{index}",
+            }
+
+        with self.assertRaisesRegex(
+            DecompositionTestRemediationError, "API identity changed"
+        ):
+            collect_replacement_sources(
+                predecessor=predecessor(),
+                source_audit=source_audit({}),
+                fetcher=fetcher,
+                contract=self.contract,
+                builder_code_commit="a" * 40,
+            )
+
+    def test_client_level_api_identity_change_is_not_downgraded_to_skip(self):
+        def fetcher(_):
+            raise TrialImportError(
+                "changed", code="api_version_changed"
+            )
+
+        with self.assertRaisesRegex(
+            DecompositionTestRemediationError, "API identity changed"
+        ):
+            collect_replacement_sources(
+                predecessor=predecessor(),
+                source_audit=source_audit({}),
+                fetcher=fetcher,
+                contract=self.contract,
+                builder_code_commit="a" * 40,
+            )
 
 
 if __name__ == "__main__":

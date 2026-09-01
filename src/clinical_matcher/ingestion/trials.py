@@ -356,14 +356,21 @@ class ClinicalTrialsClient:
                 "NCT ID must match NCT followed by 8 digits",
                 code="invalid_nct_id",
             )
-        version = self._get_json(f"{self.api_base}/version")
+        version_before = self._get_json(f"{self.api_base}/version")
         query = urllib.parse.urlencode(
             {"format": "json", "markupFormat": "markdown"}
         )
         study = self._get_json(
             f"{self.api_base}/studies/{normalized_id}?{query}"
         )
-        return study, version
+        version_after = self._get_json(f"{self.api_base}/version")
+        if version_before != version_after:
+            raise TrialImportError(
+                "ClinicalTrials.gov API version changed during single-study "
+                "fetch",
+                code="api_version_changed",
+            )
+        return study, version_before
 
     def search(
         self,

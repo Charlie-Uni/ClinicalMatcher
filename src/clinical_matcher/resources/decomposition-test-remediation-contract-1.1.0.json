@@ -1,0 +1,98 @@
+{
+  "contract_version": "decomposition-test-remediation-contract/1.1.0",
+  "contract_id": "decomposition-test-remediation-047dd750572d6807",
+  "contract_sha256": "047dd750572d680711bcd4755e81be9b88402e5c2cca9cd6736a2a0df61d38f5",
+  "owner_approved_at": "2026-09-01",
+  "incident": {
+    "event_id": "p5d-test-source-exposure-2026-09-01",
+    "record_path": "docs/DECOMPOSITION_TEST_SOURCE_EXPOSURE_2026-09-01.md",
+    "classification": "public_source_timing_violation_not_privacy_incident"
+  },
+  "predecessor": {
+    "selection_path": "benchmarks/decomposition/af_decomposition_selection_1.0.0.json",
+    "selection_manifest_id": "decomposition-selection-befdca243400ea10",
+    "selection_manifest_sha256": "befdca243400ea10e7acda1f8fae6351917e4e4aca067b8c839b01a02c1963c3",
+    "selection_file_sha256": "df9bd0fdb6ed1eaabfc132ddff12d8065ce66c273a43adec53887c7ce0624234",
+    "source_audit_path": "benchmarks/decomposition/af_source_pool_2026-08-31/selection-audit.json",
+    "source_audit_id": "decomposition-source-selection-63afa142c97ec592",
+    "source_audit_sha256": "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7",
+    "source_audit_file_sha256": "4c4b82892a31197347cb94ddda8bd55dd1598afd92c75545ef4924e95843ab3f",
+    "source_snapshot_root": "benchmarks/decomposition/af_source_pool_2026-08-31",
+    "source_snapshot_manifest_sha256": "d802afdd8b80ac3489721cdf1bce043f4be16228ceddece02325a6edc18ea7fa",
+    "source_snapshot_id": "ctg-15b1e8aff71f895f",
+    "source_snapshot_content_sha256": "15b1e8aff71f895ff1d7b2c9d06e8a16bb44fb350b6281116f2e800d046e5b7c",
+    "preserved_dev_count": 40,
+    "retired_test_count": 40
+  },
+  "remainder": {
+    "registry_hit_count": 833,
+    "filter_passed_count": 546,
+    "original_sampled_count": 40,
+    "eligible_unfetched_count": 506,
+    "eligibility_rule": "filter_passed=true AND selected=false in the frozen source audit",
+    "trial_order": ["sampling_hash", "nct_id"]
+  },
+  "source_identity": {
+    "mode": "freeze_current_individual_response/1.0.0",
+    "frozen_historical_hash_role": "provenance_only_not_current_acceptance",
+    "require_uniform_api_identity": true,
+    "fetch_query_parameters": {
+      "format": "json",
+      "markupFormat": "markdown"
+    },
+    "current_filter_revalidation": {
+      "study_types": ["INTERVENTIONAL"],
+      "overall_statuses": [
+        "ENROLLING_BY_INVITATION",
+        "NOT_YET_RECRUITING",
+        "RECRUITING"
+      ],
+      "require_eligibility_text": true,
+      "first_posted_from": "2000-01-01",
+      "first_posted_to": "2026-08-31",
+      "reason_precedence": [
+        "nct_id_mismatch",
+        "study_type_not_allowed",
+        "overall_status_not_allowed",
+        "first_posted_missing_or_invalid",
+        "first_posted_out_of_range",
+        "eligibility_text_missing"
+      ]
+    }
+  },
+  "headless_processing": {
+    "display_criterion_text": false,
+    "persist_failed_source_text": false,
+    "failure_output": "reason_code_only",
+    "manual_text_diagnosis": "skip_trial_and_record_reason_code"
+  },
+  "selection": {
+    "algorithm": "sha256_replacement_test_prefix/1.0.0",
+    "salt": "clinicalmatcher-decomposition-test-remediation-v1",
+    "stop_rule": "first frozen trial-order prefix satisfying all quotas and minimum-trial count",
+    "stratum_order": [
+      "inclusion-low", "inclusion-medium", "inclusion-high",
+      "exclusion-low", "exclusion-medium", "exclusion-high"
+    ],
+    "quota": {
+      "inclusion-low": 5,
+      "inclusion-medium": 7,
+      "inclusion-high": 8,
+      "exclusion-low": 5,
+      "exclusion-medium": 7,
+      "exclusion-high": 8
+    },
+    "maximum_criteria_per_trial": 8,
+    "minimum_trials": 5,
+    "duplicate_policy": "preserved dev wins exact normalized-text conflicts; within replacement test retain lowest digest"
+  },
+  "storage": {
+    "dev_source_root": "benchmarks/decomposition/dev_sources_1.2.0",
+    "test_source_root": "benchmarks/decomposition/test_sources_1.2.0",
+    "selection_path": "benchmarks/decomposition/af_decomposition_selection_1.2.0.json",
+    "failure_report_path": "benchmarks/decomposition/af_decomposition_remediation_failure_1.1.0.json",
+    "test_text_in_selection": false,
+    "separate_dev_test_directories": true,
+    "search_exclusion_file": ".rgignore"
+  }
+}

@@ -1,10 +1,11 @@
 # Public criteria-decomposition benchmark protocol
 
-Status: **version 1.1.0 frozen by owner approval on 2026-09-01 to remediate a
-public test-source timing exposure; the predeclared single-annotator downgrade
-remains in force; real annotation has not started**
+Status: **version 1.2.0 frozen by owner approval on 2026-09-01; the replacement
+test source uses a uniform current API snapshot while preserving historical
+hashes as provenance; the predeclared single-annotator downgrade remains in
+force; real annotation has not started**
 
-Protocol version: `decomposition-benchmark-protocol/1.1.0`
+Protocol version: `decomposition-benchmark-protocol/1.2.0`
 
 This protocol defines the public P5D benchmark before any decomposition model
 output is generated or inspected. It covers ClinicalTrials.gov criterion text
@@ -112,6 +113,48 @@ entered parsing and no replacement selection exists. This is an infeasibility
 result for the exact version 1.1.0 source-identity contract, not permission to
 weaken it. A new source identity or snapshot policy requires explicit owner
 review before any further test construction.
+
+### Version 1.2.0 current-snapshot source identity
+
+After the exact historical object-hash policy failed closed, the owner approved
+Plan A before any replacement membership, parser outcome, or quota result was
+viewed. Contract `decomposition-test-remediation-contract/1.1.0`, ID
+`decomposition-test-remediation-047dd750572d6807`, SHA-256
+`047dd750572d680711bcd4755e81be9b88402e5c2cca9cd6736a2a0df61d38f5`,
+changes only the source-identity rule. It does not reinterpret or delete the
+1.0.0 contract, the 506 historical source hashes, or failure report
+`decomposition-test-failure-5f38e542e0d24b1c`.
+
+The replacement candidates remain the same 506 frozen NCT IDs in the same
+ascending `(sampling_hash, nct_id)` order. Current individual-study responses
+are fetched with `format=json` and `markupFormat=markdown`. The full current
+response hash is frozen as the new source artifact; the old complete-search
+object hash is retained only as historical provenance, and equality is neither
+required nor implied. The API `apiVersion` and `dataTimestamp` must be non-empty,
+must remain unchanged before and after each individual fetch, and must be
+identical across the complete accepted construction window. Any API-identity
+change fails the whole execution rather than skipping one trial.
+
+Each current response is revalidated, in frozen reason-code order, for exact NCT
+ID, `INTERVENTIONAL` study type, one of the three originally approved recruiting
+statuses, inclusive first-posted date 2000-01-01 through 2026-08-31, and
+non-empty eligibility text. A failed response is skipped without persisting or
+displaying its text. Successfully revalidated responses enter the unchanged
+parser, exact-normalized duplicate handling, 5/7/8 inclusion/exclusion quotas,
+eight-criteria-per-trial cap, five-trial minimum, and first-feasible-prefix stop
+rule. Registry response order, current update recency, criterion content, and
+historical-hash agreement never determine trial order.
+
+The new write-once outputs are
+`benchmarks/decomposition/dev_sources_1.2.0/`,
+`benchmarks/decomposition/test_sources_1.2.0/`, and
+`benchmarks/decomposition/af_decomposition_selection_1.2.0.json`. The locked
+test directory remains excluded from default repository search. Its raw current
+responses and parsed protocols are immutable, hash-bound public-source inputs;
+the public selection manifest remains text-free. Parser diagnosis requiring a
+human to view test candidate text is still prohibited. Quota shortage still
+fails closed without automatic query, filter, date, quota, or source-pool
+expansion.
 
 ## Concept catalog prerequisite
 

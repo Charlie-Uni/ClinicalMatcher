@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-test-remediation-contract-1.1.0.schema.json",
+  "title": "Current-snapshot decomposition locked-test remediation contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "contract_id", "contract_sha256", "owner_approved_at", "incident", "predecessor", "remainder", "source_identity", "headless_processing", "selection", "storage"],
+  "properties": {
+    "contract_version": {"const": "decomposition-test-remediation-contract/1.1.0"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-test-remediation-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "owner_approved_at": {"const": "2026-09-01"},
+    "incident": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_id", "record_path", "classification"],
+      "properties": {
+        "event_id": {"const": "p5d-test-source-exposure-2026-09-01"},
+        "record_path": {"const": "docs/DECOMPOSITION_TEST_SOURCE_EXPOSURE_2026-09-01.md"},
+        "classification": {"const": "public_source_timing_violation_not_privacy_incident"}
+      }
+    },
+    "predecessor": {"$ref": "#/$defs/predecessor"},
+    "remainder": {"$ref": "#/$defs/remainder"},
+    "source_identity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode", "frozen_historical_hash_role", "require_uniform_api_identity", "fetch_query_parameters", "current_filter_revalidation"],
+      "properties": {
+        "mode": {"const": "freeze_current_individual_response/1.0.0"},
+        "frozen_historical_hash_role": {"const": "provenance_only_not_current_acceptance"},
+        "require_uniform_api_identity": {"const": true},
+        "fetch_query_parameters": {"const": {"format": "json", "markupFormat": "markdown"}},
+        "current_filter_revalidation": {
+          "type": "object", "additionalProperties": false,
+          "required": ["study_types", "overall_statuses", "require_eligibility_text", "first_posted_from", "first_posted_to", "reason_precedence"],
+          "properties": {
+            "study_types": {"const": ["INTERVENTIONAL"]},
+            "overall_statuses": {"const": ["ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING", "RECRUITING"]},
+            "require_eligibility_text": {"const": true},
+            "first_posted_from": {"const": "2000-01-01"},
+            "first_posted_to": {"const": "2026-08-31"},
+            "reason_precedence": {"const": ["nct_id_mismatch", "study_type_not_allowed", "overall_status_not_allowed", "first_posted_missing_or_invalid", "first_posted_out_of_range", "eligibility_text_missing"]}
+          }
+        }
+      }
+    },
+    "headless_processing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["display_criterion_text", "persist_failed_source_text", "failure_output", "manual_text_diagnosis"],
+      "properties": {
+        "display_criterion_text": {"const": false},
+        "persist_failed_source_text": {"const": false},
+        "failure_output": {"const": "reason_code_only"},
+        "manual_text_diagnosis": {"const": "skip_trial_and_record_reason_code"}
+      }
+    },
+    "selection": {"$ref": "#/$defs/selection"},
+    "storage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["dev_source_root", "test_source_root", "selection_path", "failure_report_path", "test_text_in_selection", "separate_dev_test_directories", "search_exclusion_file"],
+      "properties": {
+        "dev_source_root": {"const": "benchmarks/decomposition/dev_sources_1.2.0"},
+        "test_source_root": {"const": "benchmarks/decomposition/test_sources_1.2.0"},
+        "selection_path": {"const": "benchmarks/decomposition/af_decomposition_selection_1.2.0.json"},
+        "failure_report_path": {"const": "benchmarks/decomposition/af_decomposition_remediation_failure_1.1.0.json"},
+        "test_text_in_selection": {"const": false},
+        "separate_dev_test_directories": {"const": true},
+        "search_exclusion_file": {"const": ".rgignore"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "predecessor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["selection_path", "selection_manifest_id", "selection_manifest_sha256", "selection_file_sha256", "source_audit_path", "source_audit_id", "source_audit_sha256", "source_audit_file_sha256", "source_snapshot_root", "source_snapshot_manifest_sha256", "source_snapshot_id", "source_snapshot_content_sha256", "preserved_dev_count", "retired_test_count"],
+      "properties": {
+        "selection_path": {"const": "benchmarks/decomposition/af_decomposition_selection_1.0.0.json"},
+        "selection_manifest_id": {"const": "decomposition-selection-befdca243400ea10"},
+        "selection_manifest_sha256": {"const": "befdca243400ea10e7acda1f8fae6351917e4e4aca067b8c839b01a02c1963c3"},
+        "selection_file_sha256": {"const": "df9bd0fdb6ed1eaabfc132ddff12d8065ce66c273a43adec53887c7ce0624234"},
+        "source_audit_path": {"const": "benchmarks/decomposition/af_source_pool_2026-08-31/selection-audit.json"},
+        "source_audit_id": {"const": "decomposition-source-selection-63afa142c97ec592"},
+        "source_audit_sha256": {"const": "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7"},
+        "source_audit_file_sha256": {"const": "4c4b82892a31197347cb94ddda8bd55dd1598afd92c75545ef4924e95843ab3f"},
+        "source_snapshot_root": {"const": "benchmarks/decomposition/af_source_pool_2026-08-31"},
+        "source_snapshot_manifest_sha256": {"const": "d802afdd8b80ac3489721cdf1bce043f4be16228ceddece02325a6edc18ea7fa"},
+        "source_snapshot_id": {"const": "ctg-15b1e8aff71f895f"},
+        "source_snapshot_content_sha256": {"const": "15b1e8aff71f895ff1d7b2c9d06e8a16bb44fb350b6281116f2e800d046e5b7c"},
+        "preserved_dev_count": {"const": 40},
+        "retired_test_count": {"const": 40}
+      }
+    },
+    "remainder": {
+      "type": "object", "additionalProperties": false,
+      "required": ["registry_hit_count", "filter_passed_count", "original_sampled_count", "eligible_unfetched_count", "eligibility_rule", "trial_order"],
+      "properties": {
+        "registry_hit_count": {"const": 833}, "filter_passed_count": {"const": 546}, "original_sampled_count": {"const": 40}, "eligible_unfetched_count": {"const": 506},
+        "eligibility_rule": {"const": "filter_passed=true AND selected=false in the frozen source audit"},
+        "trial_order": {"const": ["sampling_hash", "nct_id"]}
+      }
+    },
+    "selection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "salt", "stop_rule", "stratum_order", "quota", "maximum_criteria_per_trial", "minimum_trials", "duplicate_policy"],
+      "properties": {
+        "algorithm": {"const": "sha256_replacement_test_prefix/1.0.0"},
+        "salt": {"const": "clinicalmatcher-decomposition-test-remediation-v1"},
+        "stop_rule": {"const": "first frozen trial-order prefix satisfying all quotas and minimum-trial count"},
+        "stratum_order": {"const": ["inclusion-low", "inclusion-medium", "inclusion-high", "exclusion-low", "exclusion-medium", "exclusion-high"]},
+        "quota": {"const": {"inclusion-low": 5, "inclusion-medium": 7, "inclusion-high": 8, "exclusion-low": 5, "exclusion-medium": 7, "exclusion-high": 8}},
+        "maximum_criteria_per_trial": {"const": 8},
+        "minimum_trials": {"const": 5},
+        "duplicate_policy": {"const": "preserved dev wins exact normalized-text conflicts; within replacement test retain lowest digest"}
+      }
+    }
+  }
+}

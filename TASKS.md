@@ -1015,8 +1015,13 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     later retired after the recorded public-source timing exposure. Replacement
     execution under protocol 1.1.0 failed closed before parsing because all 506
     frozen remainder source hashes differed from the current individual-study
-    responses. No replacement membership exists; P5D.4 is blocked pending a
-    new owner decision. The original lexical-overlap report is
+    responses. No replacement membership exists. The owner subsequently
+    approved protocol 1.2.0 / Plan A before new outcomes were viewed: preserve
+    the same 506 NCT IDs and order, freeze one uniform current API snapshot,
+    retain old hashes as provenance only, and revalidate every original filter.
+    The new contract and synthetic guard tests are being completed before any
+    live execution. P5D.4 remains blocked until that execution validates. The
+    original lexical-overlap report is
     historical and cannot be reused for replacement test. Real annotation has
     not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and

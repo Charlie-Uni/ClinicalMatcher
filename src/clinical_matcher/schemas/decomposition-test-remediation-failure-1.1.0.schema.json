@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-test-remediation-failure-1.1.0.schema.json",
+  "title": "Metadata-only current-snapshot remediation failure report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_version", "report_id", "report_sha256", "created_at", "builder_code_commit", "contract_id", "contract_sha256", "source_audit_id", "source_audit_sha256", "selection_created", "complete_remainder_exhausted", "criterion_text_in_report", "counts", "records"],
+  "properties": {
+    "report_version": {"const": "decomposition-test-remediation-failure/1.1.0"},
+    "report_id": {"type": "string", "pattern": "^decomposition-test-failure-[0-9a-f]{16}$"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "builder_code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-test-remediation-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "source_audit_id": {"const": "decomposition-source-selection-63afa142c97ec592"},
+    "source_audit_sha256": {"const": "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7"},
+    "selection_created": {"const": false},
+    "complete_remainder_exhausted": {"const": true},
+    "criterion_text_in_report": {"const": false},
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["attempted", "imported", "skipped", "reason_counts"],
+      "properties": {
+        "attempted": {"const": 506},
+        "imported": {"type": "integer", "minimum": 0, "maximum": 506},
+        "skipped": {"type": "integer", "minimum": 0, "maximum": 506},
+        "reason_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "records": {"type": "array", "minItems": 506, "maxItems": 506, "items": {"$ref": "#/$defs/outcome"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "outcome": {
+      "type": "object", "additionalProperties": false,
+      "required": ["remainder_rank", "nct_id", "sampling_hash", "frozen_source_study_sha256", "status", "reason_code"],
+      "properties": {
+        "remainder_rank": {"type": "integer", "minimum": 1, "maximum": 506},
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "sampling_hash": {"$ref": "#/$defs/sha256"},
+        "frozen_source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "fetched_source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "historical_source_hash_match": {"type": "boolean"},
+        "status": {"enum": ["imported", "skipped"]},
+        "reason_code": {"type": ["string", "null"]},
+        "api_version": {"type": "string", "minLength": 1},
+        "api_data_timestamp": {"type": "string", "minLength": 1},
+        "current_filters_revalidated": {"type": "boolean"},
+        "source_record_version": {"type": "string", "minLength": 1},
+        "last_update_posted": {"type": "string", "format": "date"},
+        "criterion_count": {"type": "integer", "minimum": 1},
+        "criterion_type_counts": {"type": "object", "additionalProperties": false, "required": ["inclusion", "exclusion"], "properties": {"inclusion": {"type": "integer", "minimum": 0}, "exclusion": {"type": "integer", "minimum": 0}}},
+        "source_span_lengths": {"type": "array", "minItems": 1, "items": {"type": "integer", "minimum": 1}},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "protocol_sha256": {"$ref": "#/$defs/sha256"},
+        "protocol_file_sha256": {"$ref": "#/$defs/sha256"},
+        "eligibility_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

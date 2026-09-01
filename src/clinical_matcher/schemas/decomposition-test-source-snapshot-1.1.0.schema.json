@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-test-source-snapshot-1.1.0.schema.json",
+  "title": "Headless current-response replacement locked-test source snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["snapshot_version", "snapshot_id", "snapshot_sha256", "created_at", "builder_code_commit", "contract_id", "contract_sha256", "headless", "criterion_text_in_manifest", "source_identity_mode", "historical_source_hash_role", "api_version", "api_data_timestamp", "current_filters_revalidated", "attempted_remainder_prefix_count", "imported_trial_count", "skipped_trial_count", "records"],
+  "properties": {
+    "snapshot_version": {"const": "decomposition-test-source-snapshot/1.1.0"},
+    "snapshot_id": {"type": "string", "pattern": "^decomposition-test-source-[0-9a-f]{16}$"},
+    "snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "builder_code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-test-remediation-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "headless": {"const": true},
+    "criterion_text_in_manifest": {"const": false},
+    "source_identity_mode": {"const": "freeze_current_individual_response/1.0.0"},
+    "historical_source_hash_role": {"const": "provenance_only_not_current_acceptance"},
+    "api_version": {"type": "string", "minLength": 1},
+    "api_data_timestamp": {"type": "string", "minLength": 1},
+    "current_filters_revalidated": {"const": true},
+    "attempted_remainder_prefix_count": {"type": "integer", "minimum": 5, "maximum": 506},
+    "imported_trial_count": {"type": "integer", "minimum": 5, "maximum": 506},
+    "skipped_trial_count": {"type": "integer", "minimum": 0, "maximum": 501},
+    "records": {"type": "array", "minItems": 5, "maxItems": 506, "items": {"$ref": "#/$defs/outcome"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "baseOutcome": {
+      "type": "object",
+      "required": ["remainder_rank", "nct_id", "sampling_hash", "frozen_source_study_sha256", "status", "reason_code"],
+      "properties": {
+        "remainder_rank": {"type": "integer", "minimum": 1, "maximum": 506},
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "sampling_hash": {"$ref": "#/$defs/sha256"},
+        "frozen_source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "fetched_source_study_sha256": {"$ref": "#/$defs/sha256"},
+        "historical_source_hash_match": {"type": "boolean"},
+        "status": {"enum": ["imported", "skipped"]},
+        "reason_code": {"type": ["string", "null"]},
+        "api_version": {"type": "string", "minLength": 1},
+        "api_data_timestamp": {"type": "string", "minLength": 1},
+        "current_filters_revalidated": {"type": "boolean"},
+        "source_record_version": {"type": "string", "minLength": 1},
+        "last_update_posted": {"type": "string", "format": "date"},
+        "criterion_count": {"type": "integer", "minimum": 1},
+        "criterion_type_counts": {
+          "type": "object", "additionalProperties": false,
+          "required": ["inclusion", "exclusion"],
+          "properties": {"inclusion": {"type": "integer", "minimum": 0}, "exclusion": {"type": "integer", "minimum": 0}}
+        },
+        "source_span_lengths": {"type": "array", "minItems": 1, "items": {"type": "integer", "minimum": 1}},
+        "raw_path": {"type": "string", "pattern": "^raw/NCT[0-9]{8}\\.json$"},
+        "raw_sha256": {"$ref": "#/$defs/sha256"},
+        "protocol_path": {"type": "string", "pattern": "^protocols/NCT[0-9]{8}\\.json$"},
+        "protocol_sha256": {"$ref": "#/$defs/sha256"},
+        "protocol_file_sha256": {"$ref": "#/$defs/sha256"},
+        "eligibility_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "outcome": {
+      "oneOf": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/baseOutcome"},
+            {"properties": {"status": {"const": "skipped"}, "reason_code": {"type": "string", "minLength": 1}}}
+          ],
+          "unevaluatedProperties": false
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/baseOutcome"},
+            {
+              "required": ["fetched_source_study_sha256", "historical_source_hash_match", "api_version", "api_data_timestamp", "current_filters_revalidated", "source_record_version", "last_update_posted", "criterion_count", "criterion_type_counts", "source_span_lengths", "raw_path", "raw_sha256", "protocol_path", "protocol_sha256", "protocol_file_sha256", "eligibility_sha256"],
+              "properties": {"status": {"const": "imported"}, "reason_code": {"const": null}, "current_filters_revalidated": {"const": true}}
+            }
+          ],
+          "unevaluatedProperties": false
+        }
+      ]
+    }
+  }
+}

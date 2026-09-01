@@ -241,6 +241,7 @@ class ClinicalTrialsPaginationTest(unittest.TestCase):
 
         client._get_json = fake_get_json
         client.fetch("NCT12345678")
+        self.assertEqual(3, len(calls))
         self.assertEqual(
             (
                 "https://clinicaltrials.gov/api/v2/studies/NCT12345678?"
@@ -248,6 +249,24 @@ class ClinicalTrialsPaginationTest(unittest.TestCase):
             ),
             calls[1],
         )
+
+    def test_single_study_fetch_rejects_api_version_change(self) -> None:
+        client = ClinicalTrialsClient()
+        version_calls = 0
+
+        def fake_get_json(url):
+            nonlocal version_calls
+            if url.endswith("/version"):
+                version_calls += 1
+                return {
+                    "apiVersion": "2.0.5",
+                    "dataTimestamp": f"timestamp-{version_calls}",
+                }
+            return {"protocolSection": {}}
+
+        client._get_json = fake_get_json
+        with self.assertRaisesRegex(TrialImportError, "changed"):
+            client.fetch("NCT12345678")
 
     def test_cursor_pagination_and_limit_are_explicit(self) -> None:
         client = ClinicalTrialsClient()
