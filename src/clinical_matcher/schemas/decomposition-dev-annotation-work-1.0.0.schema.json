@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-dev-annotation-work-1.0.0.schema.json",
+  "title": "Mutable owner work file for public dev decomposition annotation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "annotation_work_version", "work_id", "work_sha256", "status",
+    "source_package_id", "source_package_sha256", "annotator_id",
+    "annotation_mode", "completion_attestation", "items"
+  ],
+  "properties": {
+    "annotation_work_version": {"const": "1.0.0"},
+    "work_id": {"type": "string", "pattern": "^decomposition-dev-work-[0-9a-f]{16}$"},
+    "work_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"enum": ["draft", "completed"]},
+    "source_package_id": {"type": "string", "pattern": "^decomposition-dev-package-[0-9a-f]{16}$"},
+    "source_package_sha256": {"$ref": "#/$defs/sha256"},
+    "annotator_id": {"const": "owner"},
+    "annotation_mode": {"const": "single_annotator"},
+    "completion_attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["human_authored_without_model_output", "test_source_not_inspected"],
+      "properties": {
+        "human_authored_without_model_output": {"type": "boolean"},
+        "test_source_not_inspected": {"const": true}
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 40,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "expression"],
+        "properties": {
+          "criterion_id": {"type": "string", "minLength": 1},
+          "expression": {"oneOf": [{"type": "null"}, {"type": "object"}]}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

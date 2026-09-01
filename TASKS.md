@@ -1028,8 +1028,13 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     log, 85-entry dev concept catalog, annotation guide 1.1.0, and 40-item
     single-owner dev annotation package are now frozen against selection 1.2.0
     and the separated dev snapshot. All 40 expressions remain null, so real
-    annotation and gold construction have not started. The next P5D.4 action is
-    owner annotation of the dev package under the frozen guide. The original
+    annotation and gold construction have not started. A model-free, resumable
+    owner workflow now creates a private mutable work copy, validates each tree
+    without suggesting repairs, reports progress, and requires complete
+    coverage plus explicit independence attestations before finalization. The
+    next P5D.4 action is owner annotation of the dev package under the frozen
+    guide, beginning with three workflow checks before continuing the remaining
+    dev items. The original
     lexical-overlap report is historical and cannot be reused for replacement
     test. Real annotation has not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and

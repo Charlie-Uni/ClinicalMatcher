@@ -84,3 +84,5 @@ Diagnostic report SHA-256:
 `e8520469215ee1f996ee803eac8509bcbf5252d71b5b65f921029b1a97b91ffc`.
 
 No completed decomposition annotation or gold tree is included yet.
+The manual dev workflow is documented in
+`docs/DECOMPOSITION_DEV_ANNOTATION_WORKFLOW.md`.
