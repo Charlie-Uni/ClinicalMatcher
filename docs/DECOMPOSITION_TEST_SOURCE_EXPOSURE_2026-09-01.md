@@ -1,7 +1,6 @@
 # P5D test-source exposure record
 
-Status: **owner-approved remediation blocked after a fail-closed execution;
-metadata-only failure report pending**
+Status: **owner-approved remediation failed closed; new owner decision required**
 
 Date: 2026-09-01
 
@@ -77,3 +76,21 @@ and quotas, and writes only NCT IDs, structural metadata, hashes, status, and
 reason codes. It never writes or displays criterion text. A second execution is
 permitted solely to materialize that missing report and does not authorize a
 selection-policy change.
+
+The evidence-only rerun produced validated report
+`decomposition-test-failure-5f38e542e0d24b1c`, SHA-256
+`5f38e542e0d24b1c88c6882cc4a5710d8e3540949956460bd6fcb17093425297`.
+It is bound to builder commit `1d4439f43e836b2fb18b8d97d0e5449567f49c0d`,
+the frozen remediation contract, and the original source audit. All 506
+remainder trials were attempted; all 506 were skipped with
+`source_hash_mismatch`, none reached parsing, and no selection or source
+snapshot was created. The report contains NCT IDs, structural metadata, hashes,
+and reason codes but no criterion, normalized, or eligibility text.
+
+This establishes only that current individual-study API object hashes do not
+reproduce the full-study object hashes stored by the 2026-08-31 complete-search
+audit. The run did not retain a current API-version field for hash-mismatch
+outcomes, so it cannot distinguish registry-version drift from endpoint
+representation differences or study-content changes. No causal claim is made.
+Changing the source identity rule, querying a fresh pool, or accepting current
+hashes requires a new owner-reviewed contract; none occurs automatically.

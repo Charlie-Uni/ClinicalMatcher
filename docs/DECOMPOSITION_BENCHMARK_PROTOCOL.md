@@ -105,6 +105,14 @@ that would require viewing candidate text is prohibited: the trial is skipped.
 These controls reduce accidental exposure; they do not make a deliberately
 opened test file a clean observation.
 
+Execution under this frozen contract failed closed. Metadata-only report
+`decomposition-test-failure-5f38e542e0d24b1c` records that all 506 remainder
+objects differed from their frozen complete-search object hashes, so none
+entered parsing and no replacement selection exists. This is an infeasibility
+result for the exact version 1.1.0 source-identity contract, not permission to
+weaken it. A new source identity or snapshot policy requires explicit owner
+review before any further test construction.
+
 ## Concept catalog prerequisite
 
 The frozen core schema permits a normalized `field` string but does not define a

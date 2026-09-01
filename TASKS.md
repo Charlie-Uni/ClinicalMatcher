@@ -947,7 +947,14 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     headless source-hash check, reason-code-only skips, unchanged quotas,
     metadata-only selection, separate test storage, and default search
     exclusion were frozen before replacement fetching. Candidate text may not
-    be inspected to diagnose a parser failure.
+    be inspected to diagnose a parser failure. The approved execution then
+    failed closed: every one of the 506 remainder studies had a current
+    individual-response object hash different from its frozen complete-search
+    object hash, so none reached parsing and no replacement selection was
+    created. Metadata-only report
+    `decomposition-test-failure-5f38e542e0d24b1c` records the result without
+    assigning a cause. A new owner-reviewed source identity/snapshot decision
+    is required before P5D.4 can resume.
 
 - [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
@@ -1006,8 +1013,10 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     source snapshot, and original deterministic 80-criterion selection were
     frozen; all original dev/test quotas passed. The original test split was
     later retired after the recorded public-source timing exposure. Replacement
-    execution under protocol 1.1.0 is in progress and must pass the unchanged
-    quotas before P5D.4 can continue. The original lexical-overlap report is
+    execution under protocol 1.1.0 failed closed before parsing because all 506
+    frozen remainder source hashes differed from the current individual-study
+    responses. No replacement membership exists; P5D.4 is blocked pending a
+    new owner decision. The original lexical-overlap report is
     historical and cannot be reused for replacement test. Real annotation has
     not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and
