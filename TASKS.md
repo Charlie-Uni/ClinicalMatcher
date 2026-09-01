@@ -940,6 +940,14 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     safeguards remain unchanged. The owner additionally froze the
     self-authenticating concept-catalog construction rules and human annotation
     guide on 2026-09-01, before any real catalog or annotation was authored.
+    A later public-source timing exposure invalidated the original test split's
+    unseen-source claim. Owner-approved protocol 1.1.0 preserves dev, retires
+    every original test item, and permits replacement only from the frozen
+    audit's 506 filter-passed trials absent from the original snapshot. The
+    headless source-hash check, reason-code-only skips, unchanged quotas,
+    metadata-only selection, separate test storage, and default search
+    exclusion were frozen before replacement fetching. Candidate text may not
+    be inspected to diagnose a parser failure.
 
 - [x] **P5D.2 Implement a versioned decomposition-gold contract and offline
   annotation workflow.** Represent independently human-produced expression
@@ -995,11 +1003,13 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     versioned decision manifest is schema-validated and self-hashed; outputs
     must be labelled `single_annotator_reference_gold`, with no IAA or
     adjudication claim. The verified 833-hit public query audit, 40-trial
-    source snapshot, and deterministic 80-criterion selection are now frozen;
-    all dev/test, polarity, complexity, per-trial, and minimum-trial quotas
-    passed. A disclosure-only exhaustive lexical-overlap report covers all
-    1,600 cross-split pairs and does not alter membership. Real concept-catalog
-    authoring and annotation have not started. The packaged catalog-rules and
+    source snapshot, and original deterministic 80-criterion selection were
+    frozen; all original dev/test quotas passed. The original test split was
+    later retired after the recorded public-source timing exposure. Replacement
+    execution under protocol 1.1.0 is in progress and must pass the unchanged
+    quotas before P5D.4 can continue. The original lexical-overlap report is
+    historical and cannot be reused for replacement test. Real annotation has
+    not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and
     SHA-256 binding; placeholder hashes are rejected.
   - Constraints: annotation disagreements and reviewer limitations are

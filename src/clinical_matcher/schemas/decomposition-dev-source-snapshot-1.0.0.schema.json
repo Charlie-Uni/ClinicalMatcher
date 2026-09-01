@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-dev-source-snapshot-1.0.0.schema.json",
+  "title": "Separated preserved development source snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_version", "snapshot_id", "snapshot_sha256", "contract_id",
+    "contract_sha256", "source_snapshot_id", "source_snapshot_content_sha256",
+    "selected_dev_criterion_count", "selected_dev_trial_count", "records"
+  ],
+  "properties": {
+    "snapshot_version": {"const": "decomposition-dev-source-snapshot/1.0.0"},
+    "snapshot_id": {"type": "string", "pattern": "^decomposition-dev-source-[0-9a-f]{16}$"},
+    "snapshot_sha256": {"$ref": "#/$defs/sha256"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-test-remediation-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "source_snapshot_id": {"const": "ctg-15b1e8aff71f895f"},
+    "source_snapshot_content_sha256": {"const": "15b1e8aff71f895ff1d7b2c9d06e8a16bb44fb350b6281116f2e800d046e5b7c"},
+    "selected_dev_criterion_count": {"const": 40},
+    "selected_dev_trial_count": {"type": "integer", "minimum": 5},
+    "records": {
+      "type": "array", "minItems": 5,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "nct_id", "source_study_path", "source_study_sha256",
+          "source_study_file_sha256", "protocol_path", "protocol_sha256",
+          "protocol_file_sha256", "eligibility_sha256"
+        ],
+        "properties": {
+          "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+          "source_study_path": {"type": "string", "pattern": "^source-studies/NCT[0-9]{8}\\.json$"},
+          "source_study_sha256": {"$ref": "#/$defs/sha256"},
+          "source_study_file_sha256": {"$ref": "#/$defs/sha256"},
+          "protocol_path": {"type": "string", "pattern": "^protocols/NCT[0-9]{8}\\.json$"},
+          "protocol_sha256": {"$ref": "#/$defs/sha256"},
+          "protocol_file_sha256": {"$ref": "#/$defs/sha256"},
+          "eligibility_sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-selection-manifest-1.1.0.schema.json",
+  "title": "Remediated public criteria-decomposition selection manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selection_manifest_version", "protocol_version", "selection_manifest_id",
+    "selection_manifest_sha256", "builder_code_commit", "contract_binding",
+    "predecessor_binding", "dev_source_snapshot", "test_source_snapshot", "dev_records",
+    "test_records", "retired_test_records", "counts"
+  ],
+  "properties": {
+    "selection_manifest_version": {"const": "1.1.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.1.0"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "builder_code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "contract_binding": {"$ref": "#/$defs/contractBinding"},
+    "predecessor_binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["selection_manifest_id", "selection_manifest_sha256", "source_audit_id", "source_audit_sha256"],
+      "properties": {
+        "selection_manifest_id": {"const": "decomposition-selection-befdca243400ea10"},
+        "selection_manifest_sha256": {"const": "befdca243400ea10e7acda1f8fae6351917e4e4aca067b8c839b01a02c1963c3"},
+        "source_audit_id": {"const": "decomposition-source-selection-63afa142c97ec592"},
+        "source_audit_sha256": {"const": "63afa142c97ec5920353068e0d73a82b646ac1d774bda918f9657c00eeedefb7"}
+      }
+    },
+    "dev_source_snapshot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["root", "manifest_path", "snapshot_id", "snapshot_sha256"],
+      "properties": {
+        "root": {"const": "benchmarks/decomposition/dev_sources_1.1.0"},
+        "manifest_path": {"const": "snapshot-manifest.json"},
+        "snapshot_id": {"type": "string", "pattern": "^decomposition-dev-source-[0-9a-f]{16}$"},
+        "snapshot_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "test_source_snapshot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["root", "manifest_path", "snapshot_id", "snapshot_sha256"],
+      "properties": {
+        "root": {"const": "benchmarks/decomposition/test_sources_1.1.0"},
+        "manifest_path": {"const": "snapshot-manifest.json"},
+        "snapshot_id": {"type": "string", "pattern": "^decomposition-test-source-[0-9a-f]{16}$"},
+        "snapshot_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "dev_records": {"type": "array", "minItems": 40, "maxItems": 40, "items": {"$ref": "#/$defs/oldRecord"}},
+    "test_records": {"type": "array", "minItems": 40, "maxItems": 40, "items": {"$ref": "#/$defs/testRecord"}},
+    "retired_test_records": {"type": "array", "minItems": 40, "maxItems": 40, "items": {"$ref": "#/$defs/retiredRecord"}},
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "preserved_dev_count", "replacement_test_count", "retired_test_count",
+        "replacement_test_trials", "replacement_test_by_stratum",
+        "remainder_prefix_attempted", "remainder_prefix_imported",
+        "remainder_prefix_skipped"
+      ],
+      "properties": {
+        "preserved_dev_count": {"const": 40},
+        "replacement_test_count": {"const": 40},
+        "retired_test_count": {"const": 40},
+        "replacement_test_trials": {"type": "integer", "minimum": 5},
+        "replacement_test_by_stratum": {"$ref": "#/$defs/quota"},
+        "remainder_prefix_attempted": {"type": "integer", "minimum": 5, "maximum": 506},
+        "remainder_prefix_imported": {"type": "integer", "minimum": 5, "maximum": 506},
+        "remainder_prefix_skipped": {"type": "integer", "minimum": 0, "maximum": 501}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "contractBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_id", "contract_sha256"],
+      "properties": {
+        "contract_id": {"type": "string", "pattern": "^decomposition-test-remediation-[0-9a-f]{16}$"},
+        "contract_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "complexity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unicode_codepoints", "length_points", "numeric_or_comparator", "connector", "negation", "temporal", "score", "tier"],
+      "properties": {
+        "unicode_codepoints": {"type": "integer", "minimum": 1},
+        "length_points": {"type": "integer", "minimum": 0, "maximum": 2},
+        "numeric_or_comparator": {"type": "boolean"},
+        "connector": {"type": "boolean"},
+        "negation": {"type": "boolean"},
+        "temporal": {"type": "boolean"},
+        "score": {"type": "integer", "minimum": 0, "maximum": 6},
+        "tier": {"enum": ["low", "medium", "high"]}
+      }
+    },
+    "oldRecordBase": {
+      "type": "object",
+      "required": [
+        "nct_id", "criterion_id", "criterion_type", "source_record_version",
+        "protocol_sha256", "eligibility_sha256", "source_text_sha256",
+        "normalized_text_sha256", "source_span_length", "complexity", "status"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "criterion_type": {"enum": ["inclusion", "exclusion"]},
+        "source_record_version": {"$ref": "#/$defs/nonEmptyString"},
+        "protocol_sha256": {"$ref": "#/$defs/sha256"},
+        "eligibility_sha256": {"$ref": "#/$defs/sha256"},
+        "source_text_sha256": {"$ref": "#/$defs/sha256"},
+        "normalized_text_sha256": {"$ref": "#/$defs/sha256"},
+        "source_span_length": {"type": "integer", "minimum": 1},
+        "complexity": {"$ref": "#/$defs/complexity"},
+        "status": {"enum": ["preserved_dev", "retired_test_source_exposure"]},
+        "incident_event_id": {"type": "string"},
+        "incident_record_path": {"type": "string"}
+      }
+    },
+    "oldRecord": {
+      "allOf": [
+        {"$ref": "#/$defs/oldRecordBase"},
+        {"properties": {"status": {"const": "preserved_dev"}}}
+      ],
+      "unevaluatedProperties": false
+    },
+    "retiredRecord": {
+      "allOf": [
+        {"$ref": "#/$defs/oldRecordBase"},
+        {
+          "required": ["incident_event_id", "incident_record_path"],
+          "properties": {
+            "status": {"const": "retired_test_source_exposure"},
+            "incident_event_id": {"const": "p5d-test-source-exposure-2026-09-01"},
+            "incident_record_path": {"const": "docs/DECOMPOSITION_TEST_SOURCE_EXPOSURE_2026-09-01.md"}
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "testRecord": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "nct_id", "criterion_id", "criterion_type", "source_id",
+        "source_record_version", "last_update_posted", "protocol_sha256",
+        "eligibility_sha256", "source_span_length", "source_text_sha256",
+        "normalized_text_sha256", "complexity", "criterion_digest"
+      ],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+        "criterion_type": {"enum": ["inclusion", "exclusion"]},
+        "source_id": {"$ref": "#/$defs/nonEmptyString"},
+        "source_record_version": {"$ref": "#/$defs/nonEmptyString"},
+        "last_update_posted": {"type": "string", "format": "date"},
+        "protocol_sha256": {"$ref": "#/$defs/sha256"},
+        "eligibility_sha256": {"$ref": "#/$defs/sha256"},
+        "source_span_length": {"type": "integer", "minimum": 1},
+        "source_text_sha256": {"$ref": "#/$defs/sha256"},
+        "normalized_text_sha256": {"$ref": "#/$defs/sha256"},
+        "complexity": {"$ref": "#/$defs/complexity"},
+        "criterion_digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "quota": {
+      "type": "object", "additionalProperties": false,
+      "required": ["inclusion-low", "inclusion-medium", "inclusion-high", "exclusion-low", "exclusion-medium", "exclusion-high"],
+      "properties": {
+        "inclusion-low": {"const": 5}, "inclusion-medium": {"const": 7}, "inclusion-high": {"const": 8},
+        "exclusion-low": {"const": 5}, "exclusion-medium": {"const": 7}, "exclusion-high": {"const": 8}
+      }
+    }
+  }
+}

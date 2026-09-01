@@ -1,0 +1,3 @@
+# Locked P5D test source is intentionally excluded from default text search.
+# Access after the model/prompt configuration is frozen must be explicit.
+/benchmarks/decomposition/test_sources_1.1.0/

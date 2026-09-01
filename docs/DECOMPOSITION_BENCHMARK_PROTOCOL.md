@@ -1,10 +1,10 @@
 # Public criteria-decomposition benchmark protocol
 
-Status: **frozen by owner approval on 2026-08-29; the owner approved the
-predeclared single-annotator downgrade on 2026-08-31 before any benchmark
-annotation was created; real annotation has not started**
+Status: **version 1.1.0 frozen by owner approval on 2026-09-01 to remediate a
+public test-source timing exposure; the predeclared single-annotator downgrade
+remains in force; real annotation has not started**
 
-Protocol version: `decomposition-benchmark-protocol/1.0.0`
+Protocol version: `decomposition-benchmark-protocol/1.1.0`
 
 This protocol defines the public P5D benchmark before any decomposition model
 output is generated or inspected. It covers ClinicalTrials.gov criterion text
@@ -60,6 +60,48 @@ timestamp, API version, API data timestamp, page count, and audit hash. A
 registry-total change, incomplete fetch, fewer than 40 filter-passed studies,
 or downstream criterion-quota failure stops execution. No automatic query,
 trial-count, date, status, or quota expansion is permitted.
+
+### Version 1.1.0 locked-test remediation
+
+On 2026-09-01, after the dev catalog draft had been completed, an over-broad
+local search touched the complete original 40-trial source snapshot. Because
+the terminal output was truncated, no trial in the original non-dev snapshot
+can retain an unseen-source claim. This was public ClinicalTrials.gov text, not
+patient data or a privacy incident, but it invalidated the original locked-test
+source timing. The event is recorded in
+`docs/DECOMPOSITION_TEST_SOURCE_EXPOSURE_2026-09-01.md`.
+
+The owner approved contract
+`decomposition-test-remediation-contract/1.0.0` before replacement source
+fetching or quota results were viewed. Its self-hash is
+`e1627f95ccb06591ae52c9141312ab751437a6bf96515e2fc3c0b693084a4da7`.
+Version 1.1.0 preserves the 40 selected
+dev criteria, retires all 40 original test criteria with an incident
+cross-reference, and draws replacement test trials only from the 506
+filter-passed records marked `selected=false` in the frozen 833-hit source
+audit. No member of the original 40-trial snapshot is eligible.
+
+Replacement trials are processed in ascending frozen `(sampling_hash, nct_id)`
+order. A live public response must reproduce the source-study SHA-256 already
+stored in the audit; a changed study is skipped with
+`source_hash_mismatch`. Fetch and parser failures record reason codes only.
+Their source text is not persisted, displayed, or inspected for diagnosis.
+After each successfully parsed trial, the selector tests the unchanged 5/7/8
+inclusion/exclusion complexity quotas, eight-per-trial cap, and five-trial
+minimum. It stops at the first frozen trial prefix satisfying all requirements.
+An exact normalized-text duplicate of a preserved dev item is ineligible;
+within replacement test candidates, the lowest frozen duplicate digest wins.
+Exhausting all 506 records without a feasible selection fails closed.
+
+Test source files live under
+`benchmarks/decomposition/test_sources_1.1.0/`, separately from dev artifacts,
+and that directory is excluded by `.rgignore` from default repository text
+search. The public selection manifest contains only test structural metadata,
+span lengths, identities, and hashes—never criterion or eligibility text.
+Commands print aggregate counts and artifact identities only. Parser debugging
+that would require viewing candidate text is prohibited: the trial is skipped.
+These controls reduce accidental exposure; they do not make a deliberately
+opened test file a clean observation.
 
 ## Concept catalog prerequisite
 
@@ -169,9 +211,10 @@ rejected.
 6. Require every exact quota and at least five selected trials per split. Any
    shortage fails closed; there is no cross-stratum or cross-split spillover.
 
-The selection implementation must recompute every digest, quota, duplicate
-group, cap, and split assignment during verification. The manifest freezes both
-split memberships before annotation begins.
+The version 1.0.0 selection implementation must recompute every digest, quota,
+duplicate group, cap, and split assignment during verification. Version 1.1.0
+supersedes only the test membership under the remediation contract above; the
+dev membership remains unchanged.
 
 ### Cross-split lexical-overlap disclosure
 
@@ -292,7 +335,7 @@ followed by the full adjudication protocol.
 
 The following order is mandatory:
 
-1. freeze source snapshot, selection manifest, annotation guide, catalog-
+1. freeze source snapshot, remediated selection manifest, annotation guide, catalog-
    construction rules, normalization, matching, and metrics;
 2. author and freeze the dev concept catalog from dev source text only;
 3. implement and test the schema validator and evaluator using synthetic trees;
@@ -455,10 +498,13 @@ IAA, and cannot contain an adjudication reference. No real selection, catalog,
 annotation, adjudication, or gold artifact was created by the implementation or
 staffing-decision stages.
 
-The later owner-approved public-source execution froze snapshot
+The original owner-approved public-source execution froze snapshot
 `ctg-15b1e8aff71f895f`, selection
 `decomposition-selection-befdca243400ea10`, and lexical-overlap report
 `decomposition-overlap-e8520469215ee1f9`. The selection contains exactly 80
 criteria with every predeclared quota satisfied; the report exhaustively covers
-all 1,600 cross-split pairs and remains disclosure-only. No real concept
-catalog, annotation, adjudication, gold, or model prediction has been created.
+all 1,600 original cross-split pairs and remains disclosure-only. Its test split
+is now retired by version 1.1.0 and that overlap report is historical, not a
+replacement-test diagnostic. No real annotation, gold, or model prediction has
+been created. The dev catalog and issue-log drafts predate the exposure and
+remain unfrozen and unchanged during remediation.
