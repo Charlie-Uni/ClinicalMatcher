@@ -74,7 +74,7 @@ source timing. The event is recorded in
 The owner approved contract
 `decomposition-test-remediation-contract/1.0.0` before replacement source
 fetching or quota results were viewed. Its self-hash is
-`e1627f95ccb06591ae52c9141312ab751437a6bf96515e2fc3c0b693084a4da7`.
+`10aae52ee5b7a8421e9e4baffc31e9c3e860a71d067cc9d4e59c18b57a960dbf`.
 Version 1.1.0 preserves the 40 selected
 dev criteria, retires all 40 original test criteria with an incident
 cross-reference, and draws replacement test trials only from the 506
@@ -82,7 +82,9 @@ filter-passed records marked `selected=false` in the frozen 833-hit source
 audit. No member of the original 40-trial snapshot is eligible.
 
 Replacement trials are processed in ascending frozen `(sampling_hash, nct_id)`
-order. A live public response must reproduce the source-study SHA-256 already
+order. Each individual fetch explicitly pins `format=json` and
+`markupFormat=markdown`, matching the original complete query representation.
+A live public response must reproduce the source-study SHA-256 already
 stored in the audit; a changed study is skipped with
 `source_hash_mismatch`. Fetch and parser failures record reason codes only.
 Their source text is not persisted, displayed, or inspected for diagnosis.

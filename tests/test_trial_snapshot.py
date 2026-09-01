@@ -227,6 +227,28 @@ class TrialSnapshotTest(unittest.TestCase):
 
 
 class ClinicalTrialsPaginationTest(unittest.TestCase):
+    def test_single_study_fetch_pins_json_markdown_representation(self) -> None:
+        client = ClinicalTrialsClient()
+        calls = []
+
+        def fake_get_json(url):
+            calls.append(url)
+            return (
+                {"apiVersion": "2.0.5", "dataTimestamp": "timestamp"}
+                if url.endswith("/version")
+                else {"protocolSection": {}}
+            )
+
+        client._get_json = fake_get_json
+        client.fetch("NCT12345678")
+        self.assertEqual(
+            (
+                "https://clinicaltrials.gov/api/v2/studies/NCT12345678?"
+                "format=json&markupFormat=markdown"
+            ),
+            calls[1],
+        )
+
     def test_cursor_pagination_and_limit_are_explicit(self) -> None:
         client = ClinicalTrialsClient()
         calls = []

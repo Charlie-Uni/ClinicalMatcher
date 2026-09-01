@@ -68,11 +68,19 @@
     "headless_processing": {
       "type": "object", "additionalProperties": false,
       "required": [
-        "require_frozen_source_hash_match", "display_criterion_text",
+        "require_frozen_source_hash_match", "fetch_query_parameters", "display_criterion_text",
         "persist_failed_source_text", "failure_output", "manual_text_diagnosis"
       ],
       "properties": {
         "require_frozen_source_hash_match": {"const": true},
+        "fetch_query_parameters": {
+          "type": "object", "additionalProperties": false,
+          "required": ["format", "markupFormat"],
+          "properties": {
+            "format": {"const": "json"},
+            "markupFormat": {"const": "markdown"}
+          }
+        },
         "display_criterion_text": {"const": false},
         "persist_failed_source_text": {"const": false},
         "failure_output": {"const": "reason_code_only"},

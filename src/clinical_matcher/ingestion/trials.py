@@ -357,7 +357,12 @@ class ClinicalTrialsClient:
                 code="invalid_nct_id",
             )
         version = self._get_json(f"{self.api_base}/version")
-        study = self._get_json(f"{self.api_base}/studies/{normalized_id}")
+        query = urllib.parse.urlencode(
+            {"format": "json", "markupFormat": "markdown"}
+        )
+        study = self._get_json(
+            f"{self.api_base}/studies/{normalized_id}?{query}"
+        )
         return study, version
 
     def search(

@@ -1,7 +1,7 @@
 {
   "contract_version": "decomposition-test-remediation-contract/1.0.0",
-  "contract_id": "decomposition-test-remediation-e1627f95ccb06591",
-  "contract_sha256": "e1627f95ccb06591ae52c9141312ab751437a6bf96515e2fc3c0b693084a4da7",
+  "contract_id": "decomposition-test-remediation-10aae52ee5b7a842",
+  "contract_sha256": "10aae52ee5b7a8421e9e4baffc31e9c3e860a71d067cc9d4e59c18b57a960dbf",
   "owner_approved_at": "2026-09-01",
   "incident": {
     "event_id": "p5d-test-source-exposure-2026-09-01",
@@ -34,6 +34,10 @@
   },
   "headless_processing": {
     "require_frozen_source_hash_match": true,
+    "fetch_query_parameters": {
+      "format": "json",
+      "markupFormat": "markdown"
+    },
     "display_criterion_text": false,
     "persist_failed_source_text": false,
     "failure_output": "reason_code_only",
