@@ -64,6 +64,7 @@ clinical-matcher-decomposition-benchmark = "clinical_matcher.decomposition_bench
 clinical-matcher-decomposition-source-pool = "clinical_matcher.decomposition_source_pool_cli:main"
 clinical-matcher-decomposition-annotation = "clinical_matcher.decomposition_annotation_cli:main"
 clinical-matcher-decomposition-test-remediation = "clinical_matcher.decomposition_test_remediation_cli:main"
+clinical-matcher-decomposition-dev-package = "clinical_matcher.decomposition_dev_package_cli:main"
 clinical-matcher-apixaban-single-trial = "clinical_matcher.apixaban_single_trial_evaluation_cli:main"
 
 [tool.setuptools.packages.find]

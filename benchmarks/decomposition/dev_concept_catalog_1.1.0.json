@@ -1,0 +1,627 @@
+{
+  "concept_catalog_id": "decomposition-catalog-dev-57dff640761ba61e",
+  "concept_catalog_sha256": "57dff640761ba61e110c04f913d6473a95d94a233f8d0c77f38b5d7638d8d009",
+  "concept_catalog_version": "1.1.0",
+  "construction_rules_sha256": "e68dfaa973391911b389149ba624b8a694c8f7ec6b9b1172fca23053816fffa9",
+  "construction_rules_version": "concept-catalog-rules/1.0.0",
+  "entries": [
+    {
+      "aliases": [
+        "Acute coronary syndrome",
+        "ACS"
+      ],
+      "definition": "An acute coronary syndrome clinical event.",
+      "field_id": "acute_coronary_syndrome"
+    },
+    {
+      "aliases": [
+        "Age"
+      ],
+      "definition": "A person's age.",
+      "field_id": "age"
+    },
+    {
+      "aliases": [
+        "allergic skin conditions"
+      ],
+      "definition": "An allergic condition affecting the skin.",
+      "field_id": "allergic_skin_condition"
+    },
+    {
+      "aliases": [
+        "anemia"
+      ],
+      "definition": "Anemia as a clinical condition.",
+      "field_id": "anemia"
+    },
+    {
+      "aliases": [
+        "contraindication to anticoagulation",
+        "contraindication to systemic anticoagulation"
+      ],
+      "definition": "A contraindication to anticoagulation.",
+      "field_id": "anticoagulation_contraindication"
+    },
+    {
+      "aliases": [
+        "anticoagulation therapy"
+      ],
+      "definition": "Treatment with anticoagulation therapy.",
+      "field_id": "anticoagulation_therapy"
+    },
+    {
+      "aliases": [
+        "atherosclerotic cardiovascular disease",
+        "ASCVD"
+      ],
+      "definition": "Atherosclerotic cardiovascular disease.",
+      "field_id": "atherosclerotic_cardiovascular_disease"
+    },
+    {
+      "aliases": [
+        "atrial fibrillation",
+        "AF"
+      ],
+      "definition": "Atrial fibrillation as a cardiac rhythm condition.",
+      "field_id": "atrial_fibrillation"
+    },
+    {
+      "aliases": [
+        "duration"
+      ],
+      "definition": "The duration of an atrial-fibrillation episode or continuous episode.",
+      "field_id": "atrial_fibrillation_duration"
+    },
+    {
+      "aliases": [
+        "symptomatic"
+      ],
+      "definition": "Whether atrial fibrillation is symptomatic.",
+      "field_id": "atrial_fibrillation_symptom_status"
+    },
+    {
+      "aliases": [
+        "atrial flutter"
+      ],
+      "definition": "Atrial flutter as a cardiac rhythm condition.",
+      "field_id": "atrial_flutter"
+    },
+    {
+      "aliases": [
+        "bleeding"
+      ],
+      "definition": "A disorder affecting bleeding.",
+      "field_id": "bleeding_disorder"
+    },
+    {
+      "aliases": [
+        "borderline cancers"
+      ],
+      "definition": "A cancer described by the source as borderline.",
+      "field_id": "borderline_cancer"
+    },
+    {
+      "aliases": [
+        "breastfeeding"
+      ],
+      "definition": "Breastfeeding status.",
+      "field_id": "breastfeeding"
+    },
+    {
+      "aliases": [
+        "BMI"
+      ],
+      "definition": "Body mass index.",
+      "field_id": "body_mass_index"
+    },
+    {
+      "aliases": [
+        "cancer"
+      ],
+      "definition": "Cancer as a clinical condition.",
+      "field_id": "cancer"
+    },
+    {
+      "aliases": [
+        "recurrence-free"
+      ],
+      "definition": "Recurrence status after cancer treatment.",
+      "field_id": "cancer_recurrence"
+    },
+    {
+      "aliases": [
+        "undergoing treatment"
+      ],
+      "definition": "Treatment for cancer.",
+      "field_id": "cancer_treatment"
+    },
+    {
+      "aliases": [
+        "dual chamber pacemaker/ICD"
+      ],
+      "definition": "An implanted device capable of monitoring atrial arrhythmias.",
+      "field_id": "cardiac_rhythm_monitoring_device"
+    },
+    {
+      "aliases": [
+        "electrical or pharmacological cardioversion"
+      ],
+      "definition": "Electrical or pharmacological cardioversion.",
+      "field_id": "cardioversion"
+    },
+    {
+      "aliases": [
+        "catheter ablation"
+      ],
+      "definition": "A catheter-ablation procedure.",
+      "field_id": "catheter_ablation"
+    },
+    {
+      "aliases": [
+        "CHA2DS2-VA"
+      ],
+      "definition": "The CHA2DS2-VA composite clinical score.",
+      "field_id": "cha2ds2_va_score"
+    },
+    {
+      "aliases": [
+        "documented in the patient's medical record"
+      ],
+      "definition": "Documentation in a patient's medical record.",
+      "field_id": "clinical_record_documentation"
+    },
+    {
+      "aliases": [
+        "clinical trial"
+      ],
+      "definition": "Participation in a clinical trial.",
+      "field_id": "clinical_trial_participation"
+    },
+    {
+      "aliases": [
+        "clotting disorder"
+      ],
+      "definition": "A disorder affecting clotting.",
+      "field_id": "clotting_disorder"
+    },
+    {
+      "aliases": [
+        "cognitive impairments"
+      ],
+      "definition": "A cognitive impairment.",
+      "field_id": "cognitive_impairment"
+    },
+    {
+      "aliases": [
+        "dermatological disorders"
+      ],
+      "definition": "A dermatological disorder.",
+      "field_id": "dermatological_disorder"
+    },
+    {
+      "aliases": [
+        "dyslipidemia"
+      ],
+      "definition": "Dyslipidemia as a clinical condition.",
+      "field_id": "dyslipidemia"
+    },
+    {
+      "aliases": [
+        "eGFR CKD-EPI"
+      ],
+      "definition": "Estimated glomerular filtration rate calculated using CKD-EPI.",
+      "field_id": "egfr_ckd_epi"
+    },
+    {
+      "aliases": [
+        "electrocardiogram",
+        "ECG"
+      ],
+      "definition": "An electrocardiogram record or finding.",
+      "field_id": "electrocardiogram"
+    },
+    {
+      "aliases": [
+        "willingness to wear"
+      ],
+      "definition": "Willingness to wear an event monitor.",
+      "field_id": "event_monitor_willingness"
+    },
+    {
+      "aliases": [
+        "can be followed up"
+      ],
+      "definition": "Ability to complete study follow-up.",
+      "field_id": "follow_up_ability"
+    },
+    {
+      "aliases": [
+        "follow-up visits"
+      ],
+      "definition": "Ability and willingness to complete follow-up visits.",
+      "field_id": "follow_up_visit_compliance"
+    },
+    {
+      "aliases": [
+        "hypertension"
+      ],
+      "definition": "Hypertension as a clinical condition.",
+      "field_id": "hypertension"
+    },
+    {
+      "aliases": [
+        "Idiopathic Thrombocytopenic Purpura",
+        "ITP"
+      ],
+      "definition": "Idiopathic thrombocytopenic purpura.",
+      "field_id": "idiopathic_thrombocytopenic_purpura"
+    },
+    {
+      "aliases": [
+        "implanted cardiac devices",
+        "implantable electronic devices"
+      ],
+      "definition": "An implanted cardiac or electronic device.",
+      "field_id": "implantable_cardiac_device"
+    },
+    {
+      "aliases": [
+        "informed consent"
+      ],
+      "definition": "Provision of informed consent for study participation.",
+      "field_id": "informed_consent"
+    },
+    {
+      "aliases": [
+        "infection"
+      ],
+      "definition": "An infection as a clinical condition.",
+      "field_id": "infection"
+    },
+    {
+      "aliases": [
+        "inpatient department"
+      ],
+      "definition": "Care in an inpatient department.",
+      "field_id": "inpatient_care"
+    },
+    {
+      "aliases": [
+        "intracardiac thrombus"
+      ],
+      "definition": "An intracardiac thrombus.",
+      "field_id": "intracardiac_thrombus"
+    },
+    {
+      "aliases": [
+        "device"
+      ],
+      "definition": "Use of an investigational device.",
+      "field_id": "investigational_device_use"
+    },
+    {
+      "aliases": [
+        "investigational drug"
+      ],
+      "definition": "Use of an investigational drug.",
+      "field_id": "investigational_drug_use"
+    },
+    {
+      "aliases": [
+        "therapy"
+      ],
+      "definition": "Use of an investigational therapy.",
+      "field_id": "investigational_therapy_use"
+    },
+    {
+      "aliases": [
+        "deemed by the investigator"
+      ],
+      "definition": "An investigator's assessment of suitability or risk for trial participation.",
+      "field_id": "investigator_participation_suitability"
+    },
+    {
+      "aliases": [
+        "interest of the patient"
+      ],
+      "definition": "An investigator's assessment of the patient's interest in trial participation.",
+      "field_id": "investigator_patient_interest_assessment"
+    },
+    {
+      "aliases": [
+        "interfere with treatment, assessment, or compliance with the protocol"
+      ],
+      "definition": "An investigator's assessment that a condition may interfere with protocol treatment, assessment, or compliance.",
+      "field_id": "investigator_protocol_interference_assessment"
+    },
+    {
+      "aliases": [
+        "considered optimal for stroke prevention in the opinion of the investigator"
+      ],
+      "definition": "An investigator's assessment of stroke-prevention treatment adequacy.",
+      "field_id": "investigator_stroke_prevention_assessment"
+    },
+    {
+      "aliases": [
+        "accommodate the LAmbre II LAA Occluder"
+      ],
+      "definition": "Anatomical compatibility with the LAmbre II LAA Occluder.",
+      "field_id": "lambre_ii_occluder_compatibility"
+    },
+    {
+      "aliases": [
+        "Left atrial appendage anatomy"
+      ],
+      "definition": "Anatomy of the left atrial appendage.",
+      "field_id": "left_atrial_appendage_anatomy"
+    },
+    {
+      "aliases": [
+        "left atrial appendage ligation/exclusion procedures",
+        "LAA closure"
+      ],
+      "definition": "A left-atrial-appendage ligation, exclusion, or closure procedure.",
+      "field_id": "left_atrial_appendage_closure_procedure"
+    },
+    {
+      "aliases": [
+        "suitable for LAA closure"
+      ],
+      "definition": "A clinical assessment of suitability for left-atrial-appendage closure.",
+      "field_id": "left_atrial_appendage_closure_suitability"
+    },
+    {
+      "aliases": [
+        "life expectancy"
+      ],
+      "definition": "Estimated life expectancy.",
+      "field_id": "life_expectancy"
+    },
+    {
+      "aliases": [
+        "long standing persistent atrial fibrillation"
+      ],
+      "definition": "Long-standing persistent atrial fibrillation as a distinct source concept.",
+      "field_id": "long_standing_persistent_atrial_fibrillation"
+    },
+    {
+      "aliases": [
+        "major cardiac surgery"
+      ],
+      "definition": "A major cardiac surgical procedure.",
+      "field_id": "major_cardiac_surgery"
+    },
+    {
+      "aliases": [
+        "medical"
+      ],
+      "definition": "A medical condition considered in the criterion.",
+      "field_id": "medical_condition"
+    },
+    {
+      "aliases": [
+        "myocardial infarction"
+      ],
+      "definition": "Myocardial infarction.",
+      "field_id": "myocardial_infarction"
+    },
+    {
+      "aliases": [
+        "obstructive sleep apnea syndrome",
+        "OSAS"
+      ],
+      "definition": "Obstructive sleep apnea syndrome.",
+      "field_id": "obstructive_sleep_apnea_syndrome"
+    },
+    {
+      "aliases": [
+        "bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits"
+      ],
+      "definition": "A shared assessment of the bleeding-risk and benefit balance of oral anticoagulant therapy.",
+      "field_id": "oral_anticoagulant_risk_benefit_assessment"
+    },
+    {
+      "aliases": [
+        "OAC therapy"
+      ],
+      "definition": "Suitability for oral anticoagulant therapy.",
+      "field_id": "oral_anticoagulant_suitability"
+    },
+    {
+      "aliases": [
+        "outpatient department"
+      ],
+      "definition": "Care in an outpatient department.",
+      "field_id": "outpatient_care"
+    },
+    {
+      "aliases": [
+        "pacing rhythm"
+      ],
+      "definition": "A paced cardiac rhythm.",
+      "field_id": "pacing_rhythm"
+    },
+    {
+      "aliases": [
+        "participating center"
+      ],
+      "definition": "Performance of a procedure at a participating center.",
+      "field_id": "participating_center"
+    },
+    {
+      "aliases": [
+        "persistent AF"
+      ],
+      "definition": "Persistent atrial fibrillation as a distinct source concept.",
+      "field_id": "persistent_atrial_fibrillation"
+    },
+    {
+      "aliases": [
+        "oral prednisolone"
+      ],
+      "definition": "The daily dose expressed as oral prednisolone or an equivalent steroid dose.",
+      "field_id": "prednisolone_equivalent_dose"
+    },
+    {
+      "aliases": [
+        "Pregnant"
+      ],
+      "definition": "Pregnancy status.",
+      "field_id": "pregnancy"
+    },
+    {
+      "aliases": [
+        "comply with all protocol requirements"
+      ],
+      "definition": "Ability and willingness to comply with protocol requirements.",
+      "field_id": "protocol_compliance"
+    },
+    {
+      "aliases": [
+        "psychiatric condition"
+      ],
+      "definition": "A psychiatric condition considered in the criterion.",
+      "field_id": "psychiatric_condition"
+    },
+    {
+      "aliases": [
+        "pulmonary disease"
+      ],
+      "definition": "Pulmonary disease as a clinical condition.",
+      "field_id": "pulmonary_disease"
+    },
+    {
+      "aliases": [
+        "research study"
+      ],
+      "definition": "Participation in a research study.",
+      "field_id": "research_study_participation"
+    },
+    {
+      "aliases": [
+        "Shared decision making",
+        "shared decision-making process"
+      ],
+      "definition": "A documented shared decision-making process between relevant participants and clinicians.",
+      "field_id": "shared_decision_making"
+    },
+    {
+      "aliases": [
+        "restoration of sinus rhythm"
+      ],
+      "definition": "Restoration of sinus rhythm after a procedure.",
+      "field_id": "sinus_rhythm_restoration"
+    },
+    {
+      "aliases": [
+        "skin cancer"
+      ],
+      "definition": "Cancer affecting the skin.",
+      "field_id": "skin_cancer"
+    },
+    {
+      "aliases": [
+        "rashes"
+      ],
+      "definition": "A skin rash.",
+      "field_id": "skin_rash"
+    },
+    {
+      "aliases": [
+        "sensitive skin"
+      ],
+      "definition": "Sensitive-skin status.",
+      "field_id": "skin_sensitivity"
+    },
+    {
+      "aliases": [
+        "stroke"
+      ],
+      "definition": "A stroke clinical event.",
+      "field_id": "stroke"
+    },
+    {
+      "aliases": [
+        "understand the study procedures",
+        "understand trial information"
+      ],
+      "definition": "Ability to understand study procedures or trial information.",
+      "field_id": "study_procedure_comprehension"
+    },
+    {
+      "aliases": [
+        "steroids"
+      ],
+      "definition": "Use of systemic steroid medication.",
+      "field_id": "systemic_steroid_use"
+    },
+    {
+      "aliases": [
+        "thyroid disease"
+      ],
+      "definition": "Thyroid disease as a clinical condition.",
+      "field_id": "thyroid_disease"
+    },
+    {
+      "aliases": [
+        "transient ischemic attack",
+        "TIA"
+      ],
+      "definition": "A transient ischemic attack.",
+      "field_id": "transient_ischemic_attack"
+    },
+    {
+      "aliases": [
+        "type 2 diabetes mellitus",
+        "T2DM"
+      ],
+      "definition": "Type 2 diabetes mellitus.",
+      "field_id": "type_2_diabetes_mellitus"
+    },
+    {
+      "aliases": [
+        "Valve disease"
+      ],
+      "definition": "Disease affecting a heart valve.",
+      "field_id": "valve_disease"
+    },
+    {
+      "aliases": [
+        "specific therapy"
+      ],
+      "definition": "Specific therapy for valve disease.",
+      "field_id": "valve_disease_therapy"
+    },
+    {
+      "aliases": [
+        "Vascular disease"
+      ],
+      "definition": "Vascular disease as a clinical condition.",
+      "field_id": "vascular_disease"
+    },
+    {
+      "aliases": [
+        "voluntarily make an informed decision"
+      ],
+      "definition": "Capacity to make a voluntary informed participation decision.",
+      "field_id": "voluntary_decision_capacity"
+    },
+    {
+      "aliases": [
+        "criteria for commercially available Watchman device implant"
+      ],
+      "definition": "Guideline-established criteria for a Watchman device implant.",
+      "field_id": "watchman_implant_criteria"
+    }
+  ],
+  "protocol_version": "decomposition-benchmark-protocol/1.2.0",
+  "selection_manifest_id": "decomposition-selection-b83592f4e26d0874",
+  "selection_manifest_sha256": "b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e",
+  "source_snapshot": {
+    "root": "benchmarks/decomposition/dev_sources_1.2.0",
+    "snapshot_id": "decomposition-dev-source-9d8d925255a65acd",
+    "snapshot_sha256": "9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9"
+  },
+  "split": "dev",
+  "supersedes_draft_sha256": "4091c7af21315482ca35ee75728691db64d9cd676911adbff478f1cbbf9617c3"
+}

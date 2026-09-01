@@ -1,0 +1,82 @@
+{
+  "annotation_guide_sha256": "6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925",
+  "annotation_guide_version": "decomposition-guide/1.1.0",
+  "artifact_status": "frozen_owner_approved",
+  "issue_log_id": "decomposition-issue-log-dev-44f675ac70a1335a",
+  "issue_log_sha256": "44f675ac70a1335a53df96e2f86512491967488084efd4834eb9761a8e112288",
+  "issue_log_version": "1.0.0",
+  "issues": [
+    {
+      "approved_resolution": "Encode the schema-representable structure using shared catalog concepts and the investigator-assessed interference condition; record unsupported serious, active, or other modifiers as modifier_loss. No criterion-specific field may be added.",
+      "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+      "exact_issue": "The source combines serious-or-active status, medical-versus-psychiatric alternatives, and an investigator-assessed interference relation. The frozen atom schema has no value vocabulary for preserving all modifiers without inventing criterion-specific catalog fields.",
+      "issue_type": "schema_granularity",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Encode the two source-defined operational alternatives as ANY(A, B). Do not create an additional parent-label atom.",
+      "criterion_id": "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "exact_issue": "The selected block states symptomatic persistent AF and then embeds two alternative operational definitions involving episode duration and cardioversion. It is unresolved whether every definitional clause belongs in the literal gold tree or whether the condition is one composite source concept.",
+      "issue_type": "definition_scope",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Do not map planned wear duration to time_window. Encode the representable monitoring concept and record the planned-duration distinction as known loss.",
+      "criterion_id": "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "exact_issue": "The two-week event-monitor phrase describes planned wear duration, while schema time_window represents timing relative to index_date. Treating planned duration as time_window would change its meaning.",
+      "issue_type": "schema_time_semantics",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Encode the explicitly stated 2-3 year interval as ALL of lower-bound >= 730 days and upper-bound <= 1095 days under the frozen 365-day year approximation. Preserve the source ambiguity in this log; do not choose one boundary.",
+      "criterion_id": "nct06528262-exclusion-08dc731ff1a6ea43",
+      "exact_issue": "The borderline-cancer exception says recurrence-free for 2-3 years without specifying whether the operative boundary is two years, three years, or a case-dependent interval.",
+      "issue_type": "ambiguous_exception_boundary",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Keep the frozen criterion as one prediction unit and encode the six numbered alternatives in one expression tree; do not split or replace the selected item.",
+      "criterion_id": "nct06751459-exclusion-6e586bcff5ca30ea",
+      "exact_issue": "One selected criterion contains six separately numbered exclusion rules. Treating them as one large ANY tree preserves the current source unit but makes this item structurally unlike the other selected units.",
+      "issue_type": "parser_grouped_list",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Use nearest syntactic attachment as the single-annotator default and encode pacing rhythm with its nearest clause. Preserve the alternative attachment in this issue record.",
+      "criterion_id": "nct06847932-exclusion-bf5951810876b3fd",
+      "exact_issue": "The phrase 'atrial fibrillation/atrial flutter and pacing rhythm' does not make clear whether pacing rhythm must co-occur with either arrhythmia on the same electrocardiogram or is a separate history condition.",
+      "issue_type": "operator_scope",
+      "resolution_flags": []
+    },
+    {
+      "approved_resolution": "Keep the selected text, encode only the complete condition before the dangling OR, and attach resolution flag incomplete_source_condition. Do not replace or complete the source.",
+      "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+      "exact_issue": "The selected source text ends with a dangling 'OR', so the criterion is not a complete standalone logical condition.",
+      "issue_type": "truncated_disjunction",
+      "resolution_flags": [
+        "incomplete_source_condition"
+      ]
+    },
+    {
+      "approved_resolution": "Keep the immutable source span, emit no atom for the included heading, and attach resolution flag source_span_contamination. Do not re-cut the span.",
+      "criterion_id": "nct07715929-exclusion-6fcd645b1ca00b43",
+      "exact_issue": "The selected source text includes the heading 'Tirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)' after the clinical condition, although the heading is not part of that condition.",
+      "issue_type": "source_span_contamination",
+      "resolution_flags": [
+        "source_span_contamination"
+      ]
+    }
+  ],
+  "model_output_inspected": false,
+  "protocol_version": "decomposition-benchmark-protocol/1.2.0",
+  "selection_manifest_id": "decomposition-selection-b83592f4e26d0874",
+  "selection_manifest_sha256": "b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e",
+  "source_snapshot": {
+    "root": "benchmarks/decomposition/dev_sources_1.2.0",
+    "snapshot_id": "decomposition-dev-source-9d8d925255a65acd",
+    "snapshot_sha256": "9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9"
+  },
+  "split": "dev",
+  "supersedes_draft_sha256": "b05b5e6b126a5f74a61f2e3a310a977cf8d56496562a2c23d7d9873a6b6ee238",
+  "test_source_inspected": false
+}

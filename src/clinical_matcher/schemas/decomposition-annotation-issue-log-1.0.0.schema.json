@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-annotation-issue-log-1.0.0.schema.json",
+  "title": "Owner-approved development decomposition issue resolutions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "issue_log_version", "issue_log_id", "issue_log_sha256",
+    "artifact_status", "protocol_version", "annotation_guide_version",
+    "annotation_guide_sha256", "selection_manifest_id",
+    "selection_manifest_sha256", "source_snapshot", "split",
+    "supersedes_draft_sha256", "test_source_inspected",
+    "model_output_inspected", "issues"
+  ],
+  "properties": {
+    "issue_log_version": {"const": "1.0.0"},
+    "issue_log_id": {"type": "string", "pattern": "^decomposition-issue-log-dev-[0-9a-f]{16}$"},
+    "issue_log_sha256": {"$ref": "#/$defs/sha256"},
+    "artifact_status": {"const": "frozen_owner_approved"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.2.0"},
+    "annotation_guide_version": {"const": "decomposition-guide/1.1.0"},
+    "annotation_guide_sha256": {"$ref": "#/$defs/sha256"},
+    "selection_manifest_id": {"type": "string", "pattern": "^decomposition-selection-[0-9a-f]{16}$"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "source_snapshot": {"$ref": "#/$defs/sourceSnapshot"},
+    "split": {"const": "dev"},
+    "supersedes_draft_sha256": {"$ref": "#/$defs/sha256"},
+    "test_source_inspected": {"const": false},
+    "model_output_inspected": {"const": false},
+    "issues": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "issue_type", "exact_issue", "approved_resolution", "resolution_flags"],
+        "properties": {
+          "criterion_id": {"$ref": "#/$defs/nonEmptyString"},
+          "issue_type": {"$ref": "#/$defs/nonEmptyString"},
+          "exact_issue": {"$ref": "#/$defs/nonEmptyString"},
+          "approved_resolution": {"$ref": "#/$defs/nonEmptyString"},
+          "resolution_flags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {"enum": ["incomplete_source_condition", "source_span_contamination"]}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sourceSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "snapshot_id", "snapshot_sha256"],
+      "properties": {
+        "root": {"const": "benchmarks/decomposition/dev_sources_1.2.0"},
+        "snapshot_id": {"type": "string", "pattern": "^decomposition-dev-source-[0-9a-f]{16}$"},
+        "snapshot_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

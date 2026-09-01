@@ -28,7 +28,7 @@ ClinicalTrials.gov is a live registry. Current records, recruitment statuses,
 and search totals may differ from this processed snapshot. Reproduction and
 evaluation must use the frozen local snapshot, not a live API response.
 
-## Criterion selection
+## Criterion selection and locked-test remediation
 
 `af_decomposition_selection_1.0.0.json` is a write-once manifest generated
 from the verified snapshot. It records 501 parsed candidates, one exact
@@ -44,6 +44,32 @@ Selection manifest SHA-256:
 These data measure only the frozen AF domain and must not be described as a
 disease-independent decomposition benchmark.
 
+The original locked-test membership was retired after a recorded public-source
+timing violation. Protocol 1.2.0 preserves the original 40-item dev split and
+uses a separate, headlessly constructed replacement test snapshot. The current
+selection is `af_decomposition_selection_1.2.0.json`, ID
+`decomposition-selection-b83592f4e26d0874`, SHA-256
+`b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e`.
+Locked-test sources are stored separately and excluded from default repository
+search; this README does not disclose their criterion text.
+
+## Frozen dev annotation inputs
+
+The dev-only concept catalog, owner-approved issue-resolution log, and
+single-owner annotation package are bound to selection 1.2.0 and dev snapshot
+`decomposition-dev-source-9d8d925255a65acd`. The catalog contains 85 shared
+concepts and passes source-grounded alias validation. The issue log freezes all
+eight pre-annotation ambiguity decisions. The package contains all 40 selected
+dev criteria with `expression=null`; it is an annotation input, not gold and
+not a model-generated artifact.
+
+- `dev_concept_catalog_1.1.0.json`
+  (`decomposition-catalog-dev-57dff640761ba61e`)
+- `dev_annotation_issue_log_1.0.0.json`
+  (`decomposition-issue-log-dev-44f675ac70a1335a`)
+- `dev_single_annotator_package_1.0.0.json`
+  (`decomposition-dev-package-0c421e65a08632af`)
+
 ## Cross-split lexical-overlap disclosure
 
 `af_decomposition_overlap_1.0.0.json` exhaustively compares all 1,600 dev/test
@@ -57,4 +83,4 @@ equivalence. Conversely, lexical Jaccard can miss paraphrases.
 Diagnostic report SHA-256:
 `e8520469215ee1f996ee803eac8509bcbf5252d71b5b65f921029b1a97b91ffc`.
 
-No decomposition annotation or gold tree is included yet.
+No completed decomposition annotation or gold tree is included yet.

@@ -1,0 +1,678 @@
+{
+  "annotation_guide_sha256": "6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925",
+  "annotation_guide_version": "decomposition-guide/1.1.0",
+  "annotation_mode": "single_annotator",
+  "annotator_id": "owner",
+  "concept_catalog_id": "decomposition-catalog-dev-57dff640761ba61e",
+  "concept_catalog_sha256": "57dff640761ba61e110c04f913d6473a95d94a233f8d0c77f38b5d7638d8d009",
+  "gold_label": "single_annotator_reference_gold",
+  "independence_attestation": {
+    "model_outputs_not_viewed": true,
+    "test_source_not_inspected": true
+  },
+  "issue_log_id": "decomposition-issue-log-dev-44f675ac70a1335a",
+  "issue_log_sha256": "44f675ac70a1335a53df96e2f86512491967488084efd4834eb9761a8e112288",
+  "items": [
+    {
+      "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "expression": null,
+      "nct_id": "NCT02932007",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_record_version": "2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 2801,
+        "start": 2634
+      },
+      "source_text": "Serious or active medical or psychiatric condition which, in the opinion of the investigator, may interfere with treatment, assessment, or compliance with the protocol"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-3449060b23561f00",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "expression": null,
+      "nct_id": "NCT02932007",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_record_version": "2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 580,
+        "start": 376
+      },
+      "source_text": "AF must be documented at least once either by ECG, event monitoring, loop recorder, telemetry, trans-telephonic monitoring, pacemaker or cardiac defibrillator readouts within 24 months prior to enrollment"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "expression": null,
+      "nct_id": "NCT02932007",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_record_version": "2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 372,
+        "start": 50
+      },
+      "source_text": "History of symptomatic persistent AF Persistent AF - defined as continuous AF that is sustained more than 7 days but less than 12 months. Episodes of AF of ≥ 48 hours duration in which a decision is made to terminate with electrical or pharmacological cardioversion prior to 7 days will also be classified as persistent AF"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-a87b29150a5fc629",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "expression": null,
+      "nct_id": "NCT02932007",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_record_version": "2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 740,
+        "start": 584
+      },
+      "source_text": "Currently on anticoagulation therapy as indicated per local guidelines, which is considered optimal for stroke prevention in the opinion of the investigator"
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "b4cf469ca0bd086b9706ec8a1c7ae8e26adb25ddeecefd97b19b586beeba6e10",
+      "expression": null,
+      "nct_id": "NCT02932007",
+      "protocol_sha256": "9ab7e5ab649589927545e06dbc10b6dde12a75499ca2224696dd505643752ca5",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+      "source_record_version": "2019-08-19:b4cf469ca0bd",
+      "source_span": {
+        "end": 943,
+        "start": 744
+      },
+      "source_text": "Implanted dual chamber pacemaker/ICD capable of monitoring atrial arrhythmias or willingness to wear a 2 weeks event monitor if patient does not have a device capable of monitoring atrial arrhythmias"
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-2f16526f17fb2859",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "42a8201cb6a7c38bd57fc5e82323b7e34c488f544ca55978ab5cb9c2bd74301a",
+      "expression": null,
+      "nct_id": "NCT05136131",
+      "protocol_sha256": "56f2a93e95b2c45d94d0682bd5b56242e525fb59a2c630ba7a85440b608c7e7f",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+      "source_record_version": "2026-07-01:42a8201cb6a7",
+      "source_span": {
+        "end": 794,
+        "start": 698
+      },
+      "source_text": "Patients for whom the investigator believes that the trial is not in the interest of the patient"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-83b4b84c3a0bc30e",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a338254941c90c284c465491e5d60606208e355e0e1670cfc8aaaa1319dd9a7c",
+      "expression": null,
+      "nct_id": "NCT05860894",
+      "protocol_sha256": "41d8fa5387eaf29f0b2d20e9dc5b3f0b8dd5bb032da19ab2eba0361d1a236b41",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_record_version": "2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 410,
+        "start": 386
+      },
+      "source_text": "Written informed consent"
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a338254941c90c284c465491e5d60606208e355e0e1670cfc8aaaa1319dd9a7c",
+      "expression": null,
+      "nct_id": "NCT05860894",
+      "protocol_sha256": "41d8fa5387eaf29f0b2d20e9dc5b3f0b8dd5bb032da19ab2eba0361d1a236b41",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+      "source_record_version": "2024-02-01:a338254941c9",
+      "source_span": {
+        "end": 37,
+        "start": 23
+      },
+      "source_text": "Age \\>18 years"
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-8a27abac4e0b299a",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "1e861dba3047f5bfaf43b237aab9bd304e6b49c6949c8b531edb63bf29e34c09",
+      "expression": null,
+      "nct_id": "NCT06007872",
+      "protocol_sha256": "bddc80768ce96c2849e35bc3d670229150dbcdbeb5070405fbc10b427c590df0",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_record_version": "2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 448,
+        "start": 341
+      },
+      "source_text": "Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures"
+    },
+    {
+      "criterion_id": "nct06007872-inclusion-e280adfc0698a565",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "1e861dba3047f5bfaf43b237aab9bd304e6b49c6949c8b531edb63bf29e34c09",
+      "expression": null,
+      "nct_id": "NCT06007872",
+      "protocol_sha256": "bddc80768ce96c2849e35bc3d670229150dbcdbeb5070405fbc10b427c590df0",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+      "source_record_version": "2025-10-21:1e861dba3047",
+      "source_span": {
+        "end": 171,
+        "start": 23
+      },
+      "source_text": "All patients who meet guideline established criteria for commercially available Watchman device implant and not enrolled in an active clinical trial"
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-8b80b7c07f28b121",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "780d5af5b1990db947f80c85120d38e785a0868edde03fd9c0b7e1f0a9042112",
+      "expression": null,
+      "nct_id": "NCT06324188",
+      "protocol_sha256": "ef2f5a3ebc879f7e9735858915315530ae329ad0426a7855f42e1a221bb61236",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_record_version": "2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 1126,
+        "start": 1080
+      },
+      "source_text": "E10. Valve disease requiring specific therapy."
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-cb02dc28e5f24a5b",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "780d5af5b1990db947f80c85120d38e785a0868edde03fd9c0b7e1f0a9042112",
+      "expression": null,
+      "nct_id": "NCT06324188",
+      "protocol_sha256": "ef2f5a3ebc879f7e9735858915315530ae329ad0426a7855f42e1a221bb61236",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_record_version": "2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 692,
+        "start": 505
+      },
+      "source_text": "E2. Participation in another clinical trial, either within the 3 months prior to enrolment or still on-going (participation in potential sub-studies connected to this trial is permitted)."
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-c8611183438ceabb",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "780d5af5b1990db947f80c85120d38e785a0868edde03fd9c0b7e1f0a9042112",
+      "expression": null,
+      "nct_id": "NCT06324188",
+      "protocol_sha256": "ef2f5a3ebc879f7e9735858915315530ae329ad0426a7855f42e1a221bb61236",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+      "source_record_version": "2026-01-08:780d5af5b199",
+      "source_span": {
+        "end": 388,
+        "start": 348
+      },
+      "source_text": "I5. Provision of signed informed consent"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-08dc731ff1a6ea43",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+      "expression": null,
+      "nct_id": "NCT06528262",
+      "protocol_sha256": "b818ccfe6f4f06fe65bc93509c2231f269e11edec8a12ab58ccf32c40fb4f31c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_record_version": "2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1288,
+        "start": 1044
+      },
+      "source_text": "Patients with active cancer (including those undergoing treatment) or history of cancer within the last five years at the time of screening; however, borderline cancers are not excluded if successfully treated and recurrence-free for 2-3 years."
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-bd5cfd93e6b4aedb",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+      "expression": null,
+      "nct_id": "NCT06528262",
+      "protocol_sha256": "b818ccfe6f4f06fe65bc93509c2231f269e11edec8a12ab58ccf32c40fb4f31c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_record_version": "2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 1406,
+        "start": 1293
+      },
+      "source_text": "Continuous use of oral prednisolone at 10mg/day or equivalent, or higher doses of steroids, within the last month"
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-f27e2b83c8f37329",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+      "expression": null,
+      "nct_id": "NCT06528262",
+      "protocol_sha256": "b818ccfe6f4f06fe65bc93509c2231f269e11edec8a12ab58ccf32c40fb4f31c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_record_version": "2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 959,
+        "start": 908
+      },
+      "source_text": "Renal impairment (eGFR CKD-EPI \\< 60 ml/min/1.73m²)"
+    },
+    {
+      "criterion_id": "nct06528262-inclusion-0426eaaa3ba61877",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "276ac77d4a8bda3afd80c8cb6f9ac9d2962c145123503bb49b8f37a04e3fcdb8",
+      "expression": null,
+      "nct_id": "NCT06528262",
+      "protocol_sha256": "b818ccfe6f4f06fe65bc93509c2231f269e11edec8a12ab58ccf32c40fb4f31c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+      "source_record_version": "2026-05-12:276ac77d4a8b",
+      "source_span": {
+        "end": 142,
+        "start": 54
+      },
+      "source_text": "Patients who consent to participate in the study and can be followed up during the study"
+    },
+    {
+      "criterion_id": "nct06751459-exclusion-6e586bcff5ca30ea",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "d2df0456c728c5211d76dad777e399638698259b43d20f2692ea493e38ce643d",
+      "expression": null,
+      "nct_id": "NCT06751459",
+      "protocol_sha256": "b3e24ccc5cb1b72286ee8beee44a63ef8a07f839160c1bde176723d5f883de97",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+      "source_record_version": "2024-12-31:d2df0456c728",
+      "source_span": {
+        "end": 1122,
+        "start": 451
+      },
+      "source_text": "1\\. Individuals with a history of catheter ablation prior to obtaining informed consent.\n\n  2\\. Individuals with sensitive skin, allergic skin conditions, skin cancer, rashes, or other dermatological disorders.\n\n  3\\. Individuals with implanted cardiac devices, such as pacemakers, implantable defibrillators, or other implantable electronic devices.\n\n  4\\. Individuals deemed by the investigator to be at an increased risk or otherwise unsuitable for participation in the clinical trial.\n\n  5\\. Individuals with cognitive impairments that make it difficult to understand trial information or voluntarily make an informed decision.\n\n  6\\. Pregnant or breastfeeding women."
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-bf5951810876b3fd",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "2130031866cd21dd5401698466d637f24968f26179b2c0f93a7d98dc3d7b3d42",
+      "expression": null,
+      "nct_id": "NCT06847932",
+      "protocol_sha256": "153ced50adaa7bdde8c0af19b99c5d7227a73879c04594363d3f9df6af6cf9ba",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_record_version": "2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 447,
+        "start": 355
+      },
+      "source_text": "Any documented electrocardiogram showed atrial fibrillation/atrial flutter and pacing rhythm"
+    },
+    {
+      "criterion_id": "nct06847932-inclusion-ca070c2648a408c4",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "2130031866cd21dd5401698466d637f24968f26179b2c0f93a7d98dc3d7b3d42",
+      "expression": null,
+      "nct_id": "NCT06847932",
+      "protocol_sha256": "153ced50adaa7bdde8c0af19b99c5d7227a73879c04594363d3f9df6af6cf9ba",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+      "source_record_version": "2025-11-19:2130031866cd",
+      "source_span": {
+        "end": 88,
+        "start": 23
+      },
+      "source_text": "Patients in the inpatient department or the outpatient department"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-1ea995059b1faf31",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "07f58a303faaa38b3fc660e1892f05d9b1dbcd988eaadf22fe9bc1e3e5ba12db",
+      "expression": null,
+      "nct_id": "NCT06959121",
+      "protocol_sha256": "310f6409dc11946fa6f2978bac873ad24109332dfa8f07010de26c6628d2874a",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_record_version": "2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4554,
+        "start": 4410
+      },
+      "source_text": "Use of any other investigational drug, therapy, or device within 30 days before enrollment or concurrent participation in another research study"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-c268d8f245c9e46a",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "07f58a303faaa38b3fc660e1892f05d9b1dbcd988eaadf22fe9bc1e3e5ba12db",
+      "expression": null,
+      "nct_id": "NCT06959121",
+      "protocol_sha256": "310f6409dc11946fa6f2978bac873ad24109332dfa8f07010de26c6628d2874a",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_record_version": "2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 2257,
+        "start": 2156
+      },
+      "source_text": "Documented history of persistent or long standing persistent atrial fibrillation longer than 10 years"
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-e0ab92822f49bd11",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "07f58a303faaa38b3fc660e1892f05d9b1dbcd988eaadf22fe9bc1e3e5ba12db",
+      "expression": null,
+      "nct_id": "NCT06959121",
+      "protocol_sha256": "310f6409dc11946fa6f2978bac873ad24109332dfa8f07010de26c6628d2874a",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+      "source_record_version": "2026-01-12:07f58a303faa",
+      "source_span": {
+        "end": 4147,
+        "start": 4008
+      },
+      "source_text": "Subject has a contraindication to anticoagulation (e.g., a bleeding or clotting disorder such as Idiopathic Thrombocytopenic Purpura (ITP))"
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-eb557c2d7a41a0c4",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "97078e30003f0c18313317f780831dbdf85578230930f05e97aac49b73951930",
+      "expression": null,
+      "nct_id": "NCT07058987",
+      "protocol_sha256": "37e10254efa015e52103873435014597f542c969a4e19a2ac065447b97dd1608",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+      "source_record_version": "2025-07-14:97078e30003f",
+      "source_span": {
+        "end": 586,
+        "start": 542
+      },
+      "source_text": "Severe pulmonary disease or active infection"
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-63bc1f4295df7606",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "90895ed103568c221f941bfaa64805cc9938597c9cd996055d456beb50a94260",
+      "expression": null,
+      "nct_id": "NCT07430956",
+      "protocol_sha256": "8d670b662c5a6cd930635baeb26801525fae838117e15c00d79439616cd20212",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_record_version": "2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 1156,
+        "start": 1115
+      },
+      "source_text": "Has a life expectancy less than 12 months"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "90895ed103568c221f941bfaa64805cc9938597c9cd996055d456beb50a94260",
+      "expression": null,
+      "nct_id": "NCT07430956",
+      "protocol_sha256": "8d670b662c5a6cd930635baeb26801525fae838117e15c00d79439616cd20212",
+      "resolution_flags": [
+        "incomplete_source_condition"
+      ],
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_record_version": "2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 410,
+        "start": 185
+      },
+      "source_text": "CHA2DS2-VA \\[C: Congestive heart failure; H: Hypertension; A2: Age ≥75 years (double points); D: Diabetes mellitus; S2: Stroke or TIA or Systemic embolism (double points); V: Vascular disease; A: Age 65-74 years\\] score ≥4 OR"
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-f63daeda8270071a",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "90895ed103568c221f941bfaa64805cc9938597c9cd996055d456beb50a94260",
+      "expression": null,
+      "nct_id": "NCT07430956",
+      "protocol_sha256": "8d670b662c5a6cd930635baeb26801525fae838117e15c00d79439616cd20212",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+      "source_record_version": "2026-06-23:90895ed10356",
+      "source_span": {
+        "end": 739,
+        "start": 506
+      },
+      "source_text": "Shared decision making between the participant and provider determining that the bleeding risk of Oral Anticoagulant (OAC) therapy outweighs the benefits, making the participant unsuitable for OAC therapy as described in the protocol"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-23639d187688b443",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "377edee9637c58d181007ac0e2fbe5c9324270d161b1f39e0fb05fa98a3017ff",
+      "expression": null,
+      "nct_id": "NCT07455539",
+      "protocol_sha256": "beae7559c81c5c6ec8a8a1932a259411cc3262acb0434c19671d24a53a454e48",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_record_version": "2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 2605,
+        "start": 2502
+      },
+      "source_text": "Recent (within 90 days prior to procedure) stroke, transient ischemic attack, or myocardial infarction;"
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-8fc9bee5152609cd",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "377edee9637c58d181007ac0e2fbe5c9324270d161b1f39e0fb05fa98a3017ff",
+      "expression": null,
+      "nct_id": "NCT07455539",
+      "protocol_sha256": "beae7559c81c5c6ec8a8a1932a259411cc3262acb0434c19671d24a53a454e48",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_record_version": "2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 3287,
+        "start": 3190
+      },
+      "source_text": "Left atrial appendage anatomy cannot accommodate the LAmbre II LAA Occluder per manufacturer IFU;"
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-83002ea75db4e52b",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "377edee9637c58d181007ac0e2fbe5c9324270d161b1f39e0fb05fa98a3017ff",
+      "expression": null,
+      "nct_id": "NCT07455539",
+      "protocol_sha256": "beae7559c81c5c6ec8a8a1932a259411cc3262acb0434c19671d24a53a454e48",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+      "source_record_version": "2026-03-06:377edee9637c",
+      "source_span": {
+        "end": 651,
+        "start": 415
+      },
+      "source_text": "The patient is deemed suitable for LAA closure by the site investigator and a clinician not a part of the procedural team in the shared decision-making process, and this determination has been documented in the patient's medical record;"
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-dd19e0140f02db24",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "6ed0e0c03bc257bf38e6d7d7e2d0b4d6abab68fa15384ae1fbabea5606d0d0a7",
+      "expression": null,
+      "nct_id": "NCT07563257",
+      "protocol_sha256": "96859f134e4c21fc2a635f5197d1d7e1630a308dcc3003b818029696ea38715e",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_record_version": "2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 570,
+        "start": 486
+      },
+      "source_text": "• Presence of intracardiac thrombus or contraindication to systemic anticoagulation."
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "6ed0e0c03bc257bf38e6d7d7e2d0b4d6abab68fa15384ae1fbabea5606d0d0a7",
+      "expression": null,
+      "nct_id": "NCT07563257",
+      "protocol_sha256": "96859f134e4c21fc2a635f5197d1d7e1630a308dcc3003b818029696ea38715e",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_record_version": "2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 364,
+        "start": 318
+      },
+      "source_text": "• Ability to provide written informed consent."
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "6ed0e0c03bc257bf38e6d7d7e2d0b4d6abab68fa15384ae1fbabea5606d0d0a7",
+      "expression": null,
+      "nct_id": "NCT07563257",
+      "protocol_sha256": "96859f134e4c21fc2a635f5197d1d7e1630a308dcc3003b818029696ea38715e",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+      "source_record_version": "2026-06-03:6ed0e0c03bc2",
+      "source_span": {
+        "end": 108,
+        "start": 42
+      },
+      "source_text": "• Documented persistent atrial fibrillation and/or atrial flutter."
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-eebb7fbcbb208585",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "716699e7490c69e0916d7f2368f6daa2f0660773dae8d9c1b228dd77dc1addd5",
+      "expression": null,
+      "nct_id": "NCT07687862",
+      "protocol_sha256": "b77d0872c273e61b11778946c5b6af6dd28b344e147265b96c1597000648773c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_record_version": "2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 612,
+        "start": 569
+      },
+      "source_text": "Severe anemia or untreated thyroid disease;"
+    },
+    {
+      "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "716699e7490c69e0916d7f2368f6daa2f0660773dae8d9c1b228dd77dc1addd5",
+      "expression": null,
+      "nct_id": "NCT07687862",
+      "protocol_sha256": "b77d0872c273e61b11778946c5b6af6dd28b344e147265b96c1597000648773c",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+      "source_record_version": "2026-07-09:716699e7490c",
+      "source_span": {
+        "end": 39,
+        "start": 24
+      },
+      "source_text": "Age ≥ 18 years;"
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-6fcd645b1ca00b43",
+      "criterion_type": "exclusion",
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "expression": null,
+      "nct_id": "NCT07715929",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "resolution_flags": [
+        "source_span_contamination"
+      ],
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_record_version": "2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 2134,
+        "start": 1947
+      },
+      "source_text": "Acute coronary syndrome (ACS), ischemic stroke/TIA, or major cardiac surgery within 6 months prior to screening\n\nTirzepatide-Specific Exclusion Criteria (per NMPA Prescribing Information)"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-0eaa5a137c984e76",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "expression": null,
+      "nct_id": "NCT07715929",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_record_version": "2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1071,
+        "start": 895
+      },
+      "source_text": "Undergoing catheter ablation for AF at a participating center, with confirmed successful restoration of sinus rhythm at the end of the procedure (as determined by the operator)"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "expression": null,
+      "nct_id": "NCT07715929",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_record_version": "2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 1238,
+        "start": 1074
+      },
+      "source_text": "Willing and able to understand the study procedures, provide written informed consent, and comply with all protocol requirements including 12-month follow-up visits"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-c62ef21c5c87b412",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "expression": null,
+      "nct_id": "NCT07715929",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_record_version": "2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 751,
+        "start": 313
+      },
+      "source_text": "Body weight criteria (aligned with NMPA-approved tirzepatide indication) meeting at least one of the following:\n\nBMI ≥28.0 kg/m² (obesity threshold per Chinese criteria), OR BMI ≥24.0 kg/m² and \\<28.0 kg/m² (overweight per Chinese criteria) with at least one weight-related comorbidity: hypertension, dyslipidemia, type 2 diabetes mellitus (T2DM), obstructive sleep apnea syndrome (OSAS), or atherosclerotic cardiovascular disease (ASCVD)"
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-c6ddf661e250f976",
+      "criterion_type": "inclusion",
+      "eligibility_sha256": "a13918011fce5af54e4e52d6a947554c52ccd8c002f5a8eca9b87c88f65b9362",
+      "expression": null,
+      "nct_id": "NCT07715929",
+      "protocol_sha256": "2d753c3a08a74dacc1fd33707fdb65a52a0401595d3d0920bb6b955eb9379b39",
+      "resolution_flags": [],
+      "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+      "source_record_version": "2026-07-21:a13918011fce",
+      "source_span": {
+        "end": 75,
+        "start": 23
+      },
+      "source_text": "Age ≥18 years and ≤75 years at the time of screening"
+    }
+  ],
+  "package_id": "decomposition-dev-package-0c421e65a08632af",
+  "package_sha256": "0c421e65a08632af90142dd81e99076df3f4283c82aa2c46379f812e83cbe22f",
+  "package_version": "1.0.0",
+  "protocol_version": "decomposition-benchmark-protocol/1.2.0",
+  "selection_manifest_id": "decomposition-selection-b83592f4e26d0874",
+  "selection_manifest_sha256": "b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e",
+  "single_annotator_decision": {
+    "decision_id": "decomposition-single-annotator-decision-57bc80ee4cee3aef",
+    "decision_sha256": "57bc80ee4cee3aeff3ccd7b51711d51727efa2e6939ef76893d0aa922f4df93e"
+  },
+  "source_snapshot": {
+    "root": "benchmarks/decomposition/dev_sources_1.2.0",
+    "snapshot_id": "decomposition-dev-source-9d8d925255a65acd",
+    "snapshot_sha256": "9d8d925255a65acd515d965dce1f3ad54e6426a78d917473a5604f2f291550d9"
+  },
+  "split": "dev",
+  "status": "draft_unannotated"
+}

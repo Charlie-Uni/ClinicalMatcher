@@ -1,0 +1,74 @@
+{
+  "guide_version": "decomposition-guide/1.1.0",
+  "protocol_version": "decomposition-benchmark-protocol/1.2.0",
+  "guide_id": "decomposition-guide-6ba373984446704f",
+  "guide_sha256": "6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925",
+  "status": "frozen_owner_approved",
+  "approved_on": "2026-09-01",
+  "supersedes": {
+    "guide_version": "decomposition-guide/1.0.0",
+    "guide_sha256": "c766ecace72d86c9527e8a2c87ccc41189ea4cc7a1dfa4abf837d23dffc8c958"
+  },
+  "annotation_scope": {
+    "input": "One immutable public ClinicalTrials.gov criterion plus the frozen split concept catalog.",
+    "output": "One literal ATOM, ALL, ANY, or NOT expression tree under the frozen annotation schema.",
+    "patient_or_restricted_data_allowed": false
+  },
+  "criterion_semantics": {
+    "exclusion": "The expression is true when the exclusion condition described by the source is present; do not invert it into an eligibility-safe condition.",
+    "inclusion": "The expression is true when the inclusion condition described by the source is satisfied.",
+    "literal_tree": "Encode the literal condition stated by the criterion, not the final patient eligibility decision.",
+    "prediction_unit": "One frozen criterion text block maps to one tree; grouped lists are not split into new prediction units."
+  },
+  "expression_rules": {
+    "and": "Use ALL when the source explicitly requires all connected conditions, including explicit both.",
+    "or": "Use ANY when the source explicitly allows alternatives, including explicit either.",
+    "embedded_definition": "When the source explicitly defines a condition as A or B, encode ANY(A, B) and do not add a separate parent-label atom.",
+    "unclear_scope": "Use nearest syntactic attachment as the single-annotator default and record the plausible alternative in the issue log; do not infer a clinically preferred grouping."
+  },
+  "atom_rules": {
+    "fact_selection_all": "Use all only when the source explicitly requires a universal condition across repeated facts.",
+    "fact_selection_any": "Use any for history, ever, or any-occurrence conditions.",
+    "fact_selection_latest": "Use latest for current or most-recent conditions.",
+    "negation": "Represent source negation as NOT around a positive-fact atom; do not encode negation as expected boolean false.",
+    "operator": "Use only the comparator stated by the source; do not strengthen or relax a boundary.",
+    "range": "Represent an explicit closed or open range as ALL of its stated lower and upper bound atoms."
+  },
+  "time_rules": {
+    "day": 1,
+    "week": 7,
+    "month": 30,
+    "year": 365,
+    "limitation": "Calendar months and years are approximated as fixed day counts because schema 1.0.0 stores integer days; this limitation is permanent for benchmark version 1.0.0.",
+    "planned_duration": "A planned device wear or procedure duration is not a time_window; time_window is reserved for timing relative to index_date."
+  },
+  "provenance_rules": {
+    "method": "Every atom uses human provenance and the current criterion source ID.",
+    "source_span": "Select the smallest continuous source substring that supports the complete atom, including comparator, value, unit, negation, and time language when present.",
+    "heading_contamination": "A heading accidentally included in an immutable source span produces no atom; record source_span_contamination in the issue log without changing the span."
+  },
+  "condition_id_rules": {
+    "format": "Use <criterion_id>:aNN with two-digit numbering starting at a01.",
+    "ordering": "Assign numbers by each atom's left-to-right source-span order; ties retain expression traversal order.",
+    "stability": "Do not renumber based on normalized tree order."
+  },
+  "ambiguity_resolution_rules": {
+    "modifier_loss": "Encode only distinctions representable by the frozen shared schema; record unsupported modifiers as known loss and never add criterion-specific catalog fields.",
+    "explicit_numeric_interval": "Encode every explicitly stated lower and upper bound as an ALL range; do not choose one clinically preferred boundary.",
+    "grouped_numbered_rules": "Keep the frozen source unit intact and encode its separately numbered alternatives as one tree.",
+    "nearest_attachment": "For unresolved modifier scope, use nearest syntactic attachment and preserve the alternative reading in the issue log.",
+    "truncated_disjunction": "Retain the selected item; encode only the complete condition stated before the dangling disjunction and flag incomplete_source_condition.",
+    "source_span_contamination": "Keep the immutable span, emit no atom for the contaminating heading, and flag source_span_contamination."
+  },
+  "unrepresentable_policy": {
+    "annotation_draft": "Leave expression null while the item remains unresolved.",
+    "completion_gate": "A completed annotation cannot contain an unresolved item; the owner must resolve it under the frozen schema or approve a schema and guide revision before annotation resumes.",
+    "issue_record": "Record the criterion ID, exact ambiguity or unsupported construct, approved resolution, and any source flag in the frozen issue log; do not force an unreviewed tree."
+  },
+  "independence_rules": {
+    "model_outputs_may_be_viewed": false,
+    "other_annotations_may_be_viewed": false,
+    "single_annotator_mode": "The frozen owner-approved downgrade applies; the result is single-annotator reference gold and has no IAA or adjudication claim.",
+    "validator_role": "A validator may report schema or contract failures but may not suggest atoms, operators, values, spans, or repairs."
+  }
+}

@@ -312,12 +312,15 @@ post-selection gate.
 
 ## Frozen human annotation guide
 
-The owner froze `decomposition-guide/1.0.0` on 2026-09-01 before real
-annotation. The packaged self-authenticating resource is
-`src/clinical_matcher/resources/decomposition-annotation-guide-1.0.0.json`
-with SHA-256
-`c766ecace72d86c9527e8a2c87ccc41189ea4cc7a1dfa4abf837d23dffc8c958`.
-Every annotation template and completed annotation must bind that exact
+The owner first froze `decomposition-guide/1.0.0` on 2026-09-01 before real
+annotation. After reviewing eight dev-only ambiguities and before writing any
+tree, the owner approved the additive `decomposition-guide/1.1.0`, SHA-256
+`6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925`.
+The latter is the executable guide for protocol 1.2.0. It retains the original
+literal-tree rules and additionally freezes prediction-unit preservation,
+embedded-definition `ANY`, nearest syntactic attachment, modifier-loss
+disclosure, planned-duration handling, truncated-source flags, and immutable
+span-contamination handling. Every protocol-1.2 annotation must bind this exact
 version/hash pair.
 
 The guide encodes the criterion's literal condition: inclusion trees are true
@@ -338,6 +341,22 @@ Ambiguous or schema-unrepresentable items remain `expression=null` in a draft
 and enter a separate owner-review issue log; they cannot enter a completed
 annotation until resolved under the frozen schema or an approved schema/guide
 revision.
+
+The owner-approved dev issue log contains exactly eight resolutions. The
+explicit 2-3 year phrase is encoded as an `ALL` interval with lower and upper
+bounds of 730 and 1095 days under the frozen 365-day approximation; it is not
+reduced to a selected endpoint. A grouped six-rule source block remains one
+prediction unit. A dangling disjunction and a heading-contaminated immutable
+span remain in the selected set with `incomplete_source_condition` and
+`source_span_contamination` flags respectively. These flags disclose source
+limitations and never repair or replace the text.
+
+The dev catalog is additionally bound to the separated dev snapshot and the
+remediated selection. Its validator requires each normalized alias to be a
+substring of the selected dev corpus and rejects aliases duplicated after
+normalization. The resulting annotation package contains 40 public dev items
+with `expression=null`; generating it freezes inputs but does not constitute
+annotation or gold.
 
 ## Annotation modes and current staffing
 
