@@ -68,6 +68,7 @@ clinical-matcher-decomposition-dev-package = "clinical_matcher.decomposition_dev
 clinical-matcher-decomposition-dev-annotate = "clinical_matcher.decomposition_dev_annotation_cli:main"
 clinical-matcher-decomposition-dev-assist = "clinical_matcher.decomposition_assisted_annotation_cli:main"
 clinical-matcher-decomposition-llama-dev = "clinical_matcher.decomposition_llm_cli:main"
+clinical-matcher-decomposition-disagreement = "clinical_matcher.decomposition_disagreement_cli:main"
 clinical-matcher-apixaban-single-trial = "clinical_matcher.apixaban_single_trial_evaluation_cli:main"
 
 [tool.setuptools.packages.find]

@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-disagreement-report-1.0.0.schema.json",
+  "title": "Dev-only decomposition disagreement analysis",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_version", "report_id", "report_sha256", "generated_at", "code_commit",
+    "protocol_version", "split", "source_artifacts", "model_roles",
+    "owner_review_outcome", "scope_statement", "claim_boundaries",
+    "retention_decision", "primary_attribution_policy", "population",
+    "primary_category_counts", "status_counts", "failure_reason_counts",
+    "component_diagnostics", "span_diagnostic", "provenance_diagnostic",
+    "information_asymmetry", "performance", "items", "limitations"
+  ],
+  "properties": {
+    "report_version": {"const": "1.0.0"},
+    "report_id": {"type": "string", "pattern": "^decomposition-disagreement-dev-[0-9a-f]{16}$"},
+    "report_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.3.0"},
+    "split": {"const": "dev"},
+    "source_artifacts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["analysis_contract", "predictions", "comparison_report", "assisted_silver", "silver_manifest"],
+      "properties": {
+        "analysis_contract": {"$ref": "#/$defs/artifactBinding"},
+        "predictions": {"$ref": "#/$defs/artifactBinding"},
+        "comparison_report": {"$ref": "#/$defs/artifactBinding"},
+        "assisted_silver": {"$ref": "#/$defs/artifactBinding"},
+        "silver_manifest": {"$ref": "#/$defs/artifactBinding"}
+      }
+    },
+    "model_roles": {
+      "type": "object", "additionalProperties": false,
+      "required": ["reference_draft_model_id", "evaluated_model_id", "relationship"],
+      "properties": {
+        "reference_draft_model_id": {"type": "string", "minLength": 1},
+        "evaluated_model_id": {"type": "string", "minLength": 1},
+        "relationship": {"type": "string", "minLength": 1}
+      }
+    },
+    "owner_review_outcome": {"$ref": "#/$defs/reviewOutcome"},
+    "scope_statement": {"type": "string", "minLength": 1},
+    "claim_boundaries": {"$ref": "#/$defs/claimBoundaries"},
+    "retention_decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["decision", "test_entry_gate_met", "locked_test_unlocked", "restart_conditions"],
+      "properties": {
+        "decision": {"const": "retain_initial_prompt_dev_only_negative_baseline"},
+        "test_entry_gate_met": {"const": false},
+        "locked_test_unlocked": {"const": false},
+        "restart_conditions": {"type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "primary_attribution_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policy_version", "universe", "precedence", "mutually_exclusive", "causal_proof_claimed", "component_diagnostics_change_primary_metrics"],
+      "properties": {
+        "policy_version": {"const": "decomposition-disagreement-primary-attribution/1.0.0"},
+        "universe": {"const": "all_40_dev_items_with_zero_exact_atom_matches"},
+        "precedence": {"$ref": "#/$defs/categoryArray"},
+        "mutually_exclusive": {"const": true},
+        "causal_proof_claimed": {"const": false},
+        "component_diagnostics_change_primary_metrics": {"const": false}
+      }
+    },
+    "population": {
+      "type": "object", "additionalProperties": false,
+      "required": ["criteria", "exact_atom_matches", "schema_valid_outputs", "semantic_valid_outputs"],
+      "properties": {
+        "criteria": {"const": 40},
+        "exact_atom_matches": {"const": 0},
+        "schema_valid_outputs": {"type": "integer", "minimum": 0, "maximum": 40},
+        "semantic_valid_outputs": {"type": "integer", "minimum": 0, "maximum": 40}
+      }
+    },
+    "primary_category_counts": {"$ref": "#/$defs/categoryCounts"},
+    "status_counts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}},
+    "failure_reason_counts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["reason", "count"], "properties": {"reason": {"type": "string", "minLength": 1}, "count": {"type": "integer", "minimum": 1}}}},
+    "component_diagnostics": {
+      "type": "object", "additionalProperties": false,
+      "required": ["scope", "criteria", "nonexclusive", "marginal_multiset_only", "dimensions"],
+      "properties": {
+        "scope": {"const": "semantic_valid_outputs_only"},
+        "criteria": {"type": "integer", "minimum": 0, "maximum": 40},
+        "nonexclusive": {"const": true},
+        "marginal_multiset_only": {"const": true},
+        "dimensions": {
+          "type": "object", "additionalProperties": false,
+          "required": ["field", "polarity", "operator", "value_type", "value", "unit", "time_window", "fact_selection"],
+          "properties": {
+            "field": {"$ref": "#/$defs/componentMetric"},
+            "polarity": {"$ref": "#/$defs/componentMetric"},
+            "operator": {"$ref": "#/$defs/componentMetric"},
+            "value_type": {"$ref": "#/$defs/componentMetric"},
+            "value": {"$ref": "#/$defs/componentMetric"},
+            "unit": {"$ref": "#/$defs/componentMetric"},
+            "time_window": {"$ref": "#/$defs/componentMetric"},
+            "fact_selection": {"$ref": "#/$defs/componentMetric"}
+          }
+        }
+      }
+    },
+    "span_diagnostic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["identity_matched_atoms", "status", "zero_value_interpretation"],
+      "properties": {
+        "identity_matched_atoms": {"const": 0},
+        "status": {"const": "not_evaluable_without_identity_matched_atoms"},
+        "zero_value_interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "provenance_diagnostic": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_valid_outputs_checked", "explicit_provenance_failure_count", "scope_limitation"],
+      "properties": {
+        "schema_valid_outputs_checked": {"type": "integer", "minimum": 0, "maximum": 40},
+        "explicit_provenance_failure_count": {"type": "integer", "minimum": 0},
+        "scope_limitation": {"type": "string", "minLength": 1}
+      }
+    },
+    "information_asymmetry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["item_count", "semantic_valid_outputs", "operator_topology_exact_rate", "atom_micro_f1", "causal_effect_claimed"],
+      "properties": {
+        "item_count": {"const": 8},
+        "semantic_valid_outputs": {"type": "integer", "minimum": 0, "maximum": 8},
+        "operator_topology_exact_rate": {"$ref": "#/$defs/rate"},
+        "atom_micro_f1": {"$ref": "#/$defs/rate"},
+        "causal_effect_claimed": {"const": false}
+      }
+    },
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["request_count", "total_duration_seconds", "latency_seconds_mean", "latency_seconds_p95", "prompt_tokens", "output_tokens", "hardware"],
+      "properties": {
+        "request_count": {"const": 40},
+        "total_duration_seconds": {"type": "number", "minimum": 0},
+        "latency_seconds_mean": {"type": "number", "minimum": 0},
+        "latency_seconds_p95": {"type": "number", "minimum": 0},
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "hardware": {"type": "object"}
+      }
+    },
+    "items": {"type": "array", "minItems": 40, "maxItems": 40, "items": {"$ref": "#/$defs/item"}},
+    "limitations": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "artifactBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "content_sha256", "file_sha256"],
+      "properties": {"id": {"type": "string", "minLength": 1}, "content_sha256": {"$ref": "#/$defs/sha256"}, "file_sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "reviewOutcome": {
+      "type": "object", "additionalProperties": false,
+      "required": ["total", "accepted_unchanged", "accepted_with_edits", "review_notes", "evidence_strength_limitation"],
+      "properties": {"total": {"const": 40}, "accepted_unchanged": {"const": 40}, "accepted_with_edits": {"const": 0}, "review_notes": {"const": 0}, "evidence_strength_limitation": {"type": "string", "minLength": 1}}
+    },
+    "claimBoundaries": {
+      "type": "object", "additionalProperties": false,
+      "required": ["independent_human_gold", "clinical_ground_truth", "inter_annotator_agreement", "decomposition_accuracy", "grpo_semantic_oracle", "permitted_claim"],
+      "properties": {"independent_human_gold": {"const": false}, "clinical_ground_truth": {"const": false}, "inter_annotator_agreement": {"const": false}, "decomposition_accuracy": {"const": false}, "grpo_semantic_oracle": {"const": false}, "permitted_claim": {"type": "string", "minLength": 1}}
+    },
+    "componentMetric": {
+      "type": "object", "additionalProperties": false,
+      "required": ["reference_count", "predicted_count", "matched_count", "precision", "recall", "f1"],
+      "properties": {"reference_count": {"type": "integer", "minimum": 0}, "predicted_count": {"type": "integer", "minimum": 0}, "matched_count": {"type": "integer", "minimum": 0}, "precision": {"$ref": "#/$defs/rate"}, "recall": {"$ref": "#/$defs/rate"}, "f1": {"$ref": "#/$defs/rate"}}
+    },
+    "categoryArray": {"type": "array", "minItems": 17, "maxItems": 17, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "categoryCounts": {"type": "object", "minProperties": 17, "maxProperties": 17, "additionalProperties": {"type": "integer", "minimum": 0}},
+    "item": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nct_id", "criterion_id", "information_asymmetry", "output_status", "primary_failure_category", "component_disagreement_types"],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"type": "string", "minLength": 1},
+        "information_asymmetry": {"type": "boolean"},
+        "output_status": {"enum": ["valid", "schema_invalid", "semantic_invalid", "runtime_error"]},
+        "primary_failure_category": {"type": "string", "minLength": 1},
+        "component_disagreement_types": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

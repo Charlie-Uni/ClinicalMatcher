@@ -1,0 +1,74 @@
+{
+  "approved_on": "2026-09-02",
+  "contract_id": "decomposition-disagreement-contract-36f83a4f8071a737",
+  "contract_sha256": "36f83a4f8071a73741a2147ab1dcac1b7fa57e76dbd0a6a7ab08c572bc2ff887",
+  "contract_version": "decomposition-disagreement-analysis/1.0.0",
+  "disclosures": {
+    "assisted_reference_label": "llm_assisted_owner_reviewed_silver",
+    "decomposition_accuracy_claimed": false,
+    "independent_gold_claimed": false,
+    "owner_accepted_unchanged": 40,
+    "owner_review_notes": 0,
+    "reference_draft_model_id": "openai-codex-conversational-assistant",
+    "test_source_inspected": false
+  },
+  "primary_attribution": {
+    "causal_proof_claimed": false,
+    "component_diagnostics_change_primary_metrics": false,
+    "mutually_exclusive": true,
+    "policy_version": "decomposition-disagreement-primary-attribution/1.0.0",
+    "precedence": [
+      "runtime_error",
+      "schema_invalid_output_budget_reached",
+      "schema_invalid_other",
+      "semantic_invalid_boolean_operator",
+      "semantic_invalid_negation_encoding",
+      "semantic_invalid_string_operator",
+      "semantic_invalid_other",
+      "valid_atom_count_mismatch",
+      "valid_field_mismatch",
+      "valid_polarity_mismatch",
+      "valid_operator_mismatch",
+      "valid_value_type_mismatch",
+      "valid_value_mismatch",
+      "valid_unit_mismatch",
+      "valid_time_window_mismatch",
+      "valid_fact_selection_mismatch",
+      "valid_structure_or_source_span_mismatch"
+    ],
+    "schema_output_token_limit": 4096,
+    "universe": "all_40_dev_items_with_zero_exact_atom_matches"
+  },
+  "protocol_version": "decomposition-benchmark-protocol/1.3.0",
+  "retention": {
+    "decision": "retain_initial_prompt_dev_only_negative_baseline",
+    "locked_test_unlocked": false,
+    "restart_conditions": [
+      "new_owner_frozen_stronger_prompt_contract",
+      "new_owner_frozen_larger_model_contract",
+      "truly_independent_decomposition_gold"
+    ],
+    "scope_statement": "Under the initial frozen prompt v1.0.0, zero-shot and with no few-shot examples, local Llama 3.1 8B produced a negative descriptive-agreement result against the assisted silver for strict typed-schema decomposition (atom F1 = 0); this result is limited to that configuration and does not evaluate the ceiling after prompt iteration.",
+    "test_entry_gate_met": false
+  },
+  "source_run": {
+    "comparison_markdown": {
+      "file_sha256": "f159fb77c6802038731bd7e4eba19835fb7f9f2e6f9ce8b90133e5af07f05b2d",
+      "filename": "comparison-report.md"
+    },
+    "comparison_report": {
+      "content_sha256": "316d6d90e9cbf680f9aa582186002b39e2be6008b5a9eba7c8fe28be35f1a965",
+      "file_sha256": "29beacfe8b131179a0bf57e09e464cf1f61eb728f2a4e19079f9040cef46885b",
+      "filename": "comparison-report.json",
+      "id": "decomposition-llama-comparison-dev-316d6d90e9cbf680"
+    },
+    "predictions": {
+      "content_sha256": "130da5c6941b9413e9df0e2f5ce6520fdd32a80d806016d5761f43dcb2d4713b",
+      "file_sha256": "61fa44c316fa4bfc59c84146636108633b3e6d24abcdb8be780b9e5251a97e23",
+      "filename": "predictions.json",
+      "id": "decomposition-llama-predictions-dev-130da5c6941b9413"
+    }
+  },
+  "split": "dev",
+  "status": "frozen_owner_approved"
+}
