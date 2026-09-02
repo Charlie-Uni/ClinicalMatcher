@@ -155,10 +155,15 @@ immutable ClinicalTrials.gov criterion text to the frozen typed
 LLM drafts followed by a recorded data-owner review. It is therefore labelled
 `llm_assisted_owner_reviewed_silver`, not independent human gold or clinical
 ground truth. Atom recovery, logical structure, and source-span alignment are
-evaluated separately from basic schema/verifier validity. The locked test
-source remains uninspected until the exact local Llama runtime, prompt, output
-schema, decoding settings, and code revision are frozen; see P5D in
-[TASKS.md](TASKS.md).
+evaluated separately from basic schema/verifier validity. Under the initial
+frozen zero-shot prompt, the pinned local Llama 3.1 8B run produced 37/40
+schema-valid and 26/40 semantic-valid outputs but no exact atom match with the
+assisted silver. This is retained as a configuration-specific negative
+descriptive baseline, not a claim about accuracy or the model's ceiling after
+prompt iteration. The test entry gate was not met, so the locked test remains
+uninspected and unrun. See the public
+[P5D result package](benchmarks/decomposition/llama_dev_initial_prompt_1.0.0/)
+and P5D in [TASKS.md](TASKS.md).
 
 ## Data access and reproducibility
 

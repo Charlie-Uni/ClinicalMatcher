@@ -82,6 +82,23 @@ the eight-item information-asymmetry subgroup, the post-observation lock, and
 all prohibited claims. It is always labelled
 `llm_assisted_owner_reviewed_silver`, never gold.
 
+## Initial-prompt local Llama dev result
+
+`llama_dev_initial_prompt_1.0.0/` retains the one frozen P5D.5 run and its
+P5D.6 disagreement analysis. The package contains the original self-hashed
+predictions and comparison report, plus a self-hashed deterministic diagnostic
+and human-readable summaries. All inputs are public ClinicalTrials.gov dev
+criteria; no patient or MIMIC data is present.
+
+The run compared pinned local Llama 3.1 8B with the Codex-drafted,
+owner-accepted assisted silver under initial prompt v1.0.0, zero-shot, without
+few-shot examples. It yielded zero exact atom matches and is retained as a
+dev-only negative descriptive baseline for that configuration. It does not
+measure independent-human-gold accuracy or the ceiling after prompt iteration.
+The owner outcome remains disclosed as 40/40 accepted unchanged with zero
+review notes. The test entry gate was not met; locked-test text was not
+inspected or run.
+
 ## Cross-split lexical-overlap disclosure
 
 `af_decomposition_overlap_1.0.0.json` exhaustively compares all 1,600 dev/test

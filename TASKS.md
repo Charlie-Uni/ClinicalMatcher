@@ -1082,7 +1082,7 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     records `independent_gold_claimed=false` and
     `grpo_semantic_oracle_claimed=false`.
 
-- [ ] **P5D.5 Run the pinned local Llama decomposition comparison.** Use the
+- [x] **P5D.5 Run the pinned local Llama decomposition comparison.** Use the
   existing loopback-only Ollama Llama-3.1-8B inference route with a new frozen
   decomposition prompt and constrained output contract.
   - Entry condition: the assisted dev silver is frozen; the local runtime and
@@ -1103,19 +1103,42 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     assisted/reference trees, owner reviews, and all eight item-specific issue
     resolutions. Synthetic tests cover the isolation boundary, strict output
     validation, invalid-output denominator, mandatory disclosures, subgroup,
-    and non-overwriting artifacts. The real 40-item dev run has not yet been
-    executed; test source remains locked.
+    and non-overwriting artifacts. The one frozen dev run completed for all 40
+    criteria and is retained under
+    `benchmarks/decomposition/llama_dev_initial_prompt_1.0.0/`. It produced 37
+    schema-valid and 26 semantic-valid outputs, zero exact atom matches, mean
+    latency 140.333 seconds/item, and P95 latency 552.965 seconds/item. These
+    are descriptive-agreement and runtime observations for the initial frozen
+    prompt only; they are not decomposition accuracy. The locked test was not
+    inspected or run.
 
-- [ ] **P5D.6 Perform assisted-reference disagreement analysis and decide
+- [x] **P5D.6 Perform assisted-reference disagreement analysis and decide
   retention.** Trace
   atom omissions/additions, value/operator mistakes, logical-structure errors,
-  and span/provenance failures without changing the frozen gold or evaluator.
+  and span/provenance failures without changing the frozen assisted silver or
+  evaluator.
   - Entry condition: P5D.5 completes once under the frozen contract.
   - Constraints: any prompt revision is a new development run and cannot
     overwrite prior predictions. The assisted silver is not an independent
     semantic oracle and cannot satisfy any X3/GRPO prerequisite.
   - Verify: JSON and Markdown reports reconcile, examples contain public trial
     text only, and the keep/revise decision names the observed failure modes.
+  - Completed: owner-approved contract
+    `decomposition-disagreement-analysis/1.0.0` assigns every one of the 40 dev
+    items to exactly one observable primary category under a frozen precedence.
+    Counts reconcile to 40: 15 valid outputs differed first in atom count; 11
+    outputs failed typed semantic rules; two invalid-JSON outputs reached the
+    frozen 4,096-token output limit; five valid outputs differed first in unit,
+    three in fact selection, two in value type, one in field, and one request
+    failed at runtime. Separately reported marginal component overlaps never
+    change the primary atom score. With zero identity-matched atoms, span
+    alignment is recorded as not evaluable rather than described as universally
+    wrong. The initial prompt v1.0.0 zero-shot run is retained as a dev-only
+    negative descriptive baseline; this scope does not estimate performance
+    after prompt iteration. It did not meet the test entry gate, so the locked
+    test remains closed. Any stronger prompt, larger model, or truly independent
+    decomposition reference requires a new versioned decision and cannot
+    overwrite this run.
 
 Acceptance: a public criterion can be transformed into a traceable typed
 expression tree, every LLM draft and owner edit remains auditable, and the

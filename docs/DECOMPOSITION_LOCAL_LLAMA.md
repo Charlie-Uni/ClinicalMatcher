@@ -63,3 +63,24 @@ bootstrap intervals; failure counts; latency and token totals; and the required
 claim limitations.
 
 This command has no test-split option. Locked-test text remains outside P5D.5.
+
+## Recorded dev result and retention
+
+The frozen run completed once for all 40 dev criteria. Its public package is
+`benchmarks/decomposition/llama_dev_initial_prompt_1.0.0/`. It records 37
+schema-valid outputs, 26 semantic-valid outputs, and zero exact atom matches;
+mean latency was 140.333 seconds/item and P95 latency was 552.965 seconds/item
+on the recorded Apple M3 environment.
+
+P5D.6 assigns each item to one mutually exclusive observable diagnostic under
+contract `decomposition-disagreement-analysis/1.0.0`. A separate marginal
+component-overlap table is explanatory only and cannot add partial primary
+credit. Because no atom identity matched, span alignment is not evaluable; a
+zero span value must not be paraphrased as every span being wrong.
+
+The result is retained as a negative descriptive baseline **only for initial
+prompt v1.0.0, zero-shot, without few-shot examples**. It does not establish a
+Llama 3.1 8B capability ceiling after prompt iteration. The test entry gate was
+not met, and locked test remains uninspected and unrun. A stronger prompt,
+larger model, or truly independent reference requires a new versioned decision
+and may not overwrite this run.

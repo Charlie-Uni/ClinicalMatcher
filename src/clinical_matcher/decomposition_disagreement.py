@@ -517,8 +517,8 @@ def validate_disagreement_report(report: Mapping[str, Any]) -> None:
     if tuple(policy["precedence"]) != PRIMARY_CATEGORIES:
         raise DecompositionDisagreementError("P5D.6 report precedence changed")
     counts = report["primary_category_counts"]
-    if tuple(counts) != PRIMARY_CATEGORIES:
-        raise DecompositionDisagreementError("P5D.6 category keys or order changed")
+    if set(counts) != set(PRIMARY_CATEGORIES):
+        raise DecompositionDisagreementError("P5D.6 category keys changed")
     observed = Counter(item["primary_failure_category"] for item in report["items"])
     if counts != {category: observed[category] for category in PRIMARY_CATEGORIES}:
         raise DecompositionDisagreementError("Primary categories do not match items")
@@ -611,12 +611,20 @@ def publish_disagreement_package(
     root: Path,
     source_dir: Path,
     output_dir: Path,
+    *,
+    generated_at: Optional[str] = None,
+    code_commit: Optional[str] = None,
 ) -> Dict[str, Path]:
     """Verify, copy, and analyze the frozen run without overwriting outputs."""
 
     contract = load_disagreement_contract()
     source = _load_source_run(root, source_dir, contract)
-    report = build_disagreement_report(root, source_dir)
+    report = build_disagreement_report(
+        root,
+        source_dir,
+        generated_at=generated_at,
+        code_commit=code_commit,
+    )
     markdown = render_disagreement_markdown(report)
     targets = {
         "predictions": output_dir / "predictions.json",

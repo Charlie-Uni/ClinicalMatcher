@@ -1,11 +1,23 @@
 import copy
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
 from clinical_matcher.decomposition_disagreement import (
+    DecompositionDisagreementError,
     PRIMARY_CATEGORIES,
     build_component_diagnostics,
     classify_primary_failure,
     load_disagreement_contract,
+    publish_disagreement_package,
+    validate_disagreement_report,
+)
+
+
+ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_RESULT = (
+    ROOT / "benchmarks" / "decomposition" / "llama_dev_initial_prompt_1.0.0"
 )
 
 
@@ -98,6 +110,43 @@ class DecompositionDisagreementTests(unittest.TestCase):
             [prediction(expression=predicted_expression)], {"criterion": reference}
         )
         self.assertEqual(1, result["dimensions"]["value"]["matched_count"])
+
+    def test_frozen_public_report_reconciles_and_keeps_test_closed(self):
+        report = json.loads(
+            (PUBLIC_RESULT / "disagreement-analysis.json").read_text(encoding="utf-8")
+        )
+        validate_disagreement_report(report)
+        self.assertEqual(40, sum(report["primary_category_counts"].values()))
+        self.assertFalse(report["retention_decision"]["locked_test_unlocked"])
+        self.assertEqual("62820f4", report["code_commit"][:7])
+
+        changed = copy.deepcopy(report)
+        changed["primary_category_counts"]["runtime_error"] += 1
+        with self.assertRaises(DecompositionDisagreementError):
+            validate_disagreement_report(changed)
+
+    def test_publication_is_write_once(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "published"
+            publish_disagreement_package(
+                ROOT,
+                PUBLIC_RESULT,
+                output,
+                generated_at="2026-09-02T00:00:00Z",
+                code_commit="a" * 40,
+            )
+            self.assertEqual(
+                (PUBLIC_RESULT / "predictions.json").read_bytes(),
+                (output / "predictions.json").read_bytes(),
+            )
+            with self.assertRaises(FileExistsError):
+                publish_disagreement_package(
+                    ROOT,
+                    PUBLIC_RESULT,
+                    output,
+                    generated_at="2026-09-02T00:00:00Z",
+                    code_commit="a" * 40,
+                )
 
 
 if __name__ == "__main__":

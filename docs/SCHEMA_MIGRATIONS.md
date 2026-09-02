@@ -42,6 +42,14 @@ annotation-package artifacts retain their original
 regenerating them as 1.3.0 is prohibited. New P5D.5 contracts and reports bind
 those immutable inputs while declaring protocol 1.3.0.
 
+P5D.6 introduces `decomposition-disagreement-report/1.0.0` as a new retained
+diagnostic artifact; it does not migrate or rescore the P5D.5 prediction or
+comparison schemas. Its primary categories are mutually exclusive and must
+reconcile to all 40 dev items. Component-level overlaps are explicitly
+non-primary marginal diagnostics. The report binds the unchanged P5D.5 files,
+assisted silver, disclosure manifest, analysis contract, and analysis code
+commit. It cannot unlock test or upgrade the assisted reference to gold.
+
 ## Apixaban abstention and error-attribution reports `1.0.0` to `1.1.0`
 
 Version `1.1.0` records the sole source-question exception permitting
