@@ -79,10 +79,11 @@ def _legacy_abstention_policy_1_0_0() -> Dict[str, Any]:
 
 
 def _invalid_model_schema(prediction: Mapping[str, Any]) -> bool:
+    trace_ids = prediction.get("trace_ids", [])
     return (
         prediction["abstention_reason"]
         == "invalid_model_structured_output"
-        or "local_llm.structured_invalid" in prediction["trace_ids"]
+        or "local_llm.structured_invalid" in trace_ids
     )
 
 
@@ -116,7 +117,9 @@ def _project_prediction(
     prediction: Mapping[str, Any], reason: Optional[str]
 ) -> Dict[str, Any]:
     projected = dict(prediction)
-    projected["trace_ids"] = list(prediction["trace_ids"])
+    source_trace_ids = prediction.get("trace_ids", prediction.get("rule_ids", []))
+    projected.pop("rule_ids", None)
+    projected["trace_ids"] = list(source_trace_ids)
     if reason is None:
         return projected
     projected.update(
@@ -128,7 +131,7 @@ def _project_prediction(
             "trace_ids": list(
                 dict.fromkeys(
                     [
-                        *prediction["trace_ids"],
+                        *source_trace_ids,
                         f"deterministic_abstention.{reason}",
                     ]
                 )

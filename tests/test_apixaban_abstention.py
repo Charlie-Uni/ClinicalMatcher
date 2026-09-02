@@ -211,6 +211,23 @@ class ApixabanAbstentionTests(unittest.TestCase):
         self.assertEqual(0, report["counts"]["decision_changed_count"])
         self.assertEqual(1, report["counts"]["metadata_changed_count"])
 
+    def test_rule_prediction_provenance_is_carried_into_projected_trace_ids(self):
+        predictions = prediction_set(self.catalog)
+        predictions["prediction_set_version"] = "1.1.0"
+        predictions["rule_set_sha256"] = predictions.pop(
+            "inference_config_sha256"
+        )
+        for row in predictions["predictions"]:
+            row["rule_ids"] = row.pop("trace_ids")
+
+        projection, _ = self.apply(predictions)
+
+        self.assertEqual("1.2.0", projection["prediction_set_version"])
+        self.assertNotIn("rule_ids", projection["predictions"][0])
+        self.assertEqual(
+            ["synthetic.model"], projection["predictions"][0]["trace_ids"]
+        )
+
     def test_schema_invalid_model_response_has_dedicated_reason(self):
         predictions = prediction_set(self.catalog)
         row = predictions["predictions"][0]
