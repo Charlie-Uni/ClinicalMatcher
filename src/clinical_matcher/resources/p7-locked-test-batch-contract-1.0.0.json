@@ -1,8 +1,8 @@
 {
   "contract_version": "1.0.0",
   "contract_id": "p7-apixaban-locked-test-single-batch-v1",
-  "contract_status": "owner_approved_pre_implementation_not_executable",
-  "contract_sha256": "b1dc390666373f54f9b9a353614c14cb6137c8a57729bcb2acad9b2c0d1bb3b3",
+  "contract_status": "implementation_complete_owner_review_required_not_executable",
+  "contract_sha256": "12dd0888613d7cc5eb74ac9d2b4a0f485a7c7a8d118f914191aff00e6ec835b3",
   "hash_scope": "canonical_json_excluding_contract_sha256",
   "protocol": {
     "version": "p7-locked-test-batch-plan/1.0.0",
@@ -183,9 +183,27 @@
     "lightrag_runtime"
   ],
   "implementation": {
-    "pin_status": "pending",
-    "code_commit": null,
-    "files": [],
+    "pin_status": "complete",
+    "code_commit": "b0119c1998c57b137f17cb30cca569ed50657639",
+    "files": [
+      {"path": "pyproject.toml", "sha256": "994631b9ac2e3b7c8af7fbce835deedf7ca61f0179481a7e35d06b9b1c1ed107"},
+      {"path": "src/clinical_matcher/p7_locked_test.py", "sha256": "a8d0c884fb13fe29261c3064ff72de0b6adc32602cb1b7421e096c1e05977b78"},
+      {"path": "src/clinical_matcher/p7_locked_test_runner.py", "sha256": "772f64faf5b855a979b349585fcd39424e04acec5fdc559918823f49ff3bc77b"},
+      {"path": "src/clinical_matcher/p7_locked_test_cli.py", "sha256": "17ab153b7bdf1228a83569f1b5368832caaf37704fe4f96951477c9cabd9d275"},
+      {"path": "src/clinical_matcher/apixaban_deterministic.py", "sha256": "dfeec8d5f82ca1a7697131dccee40683c1ad92c97ff357d7592880d2ac49324c"},
+      {"path": "src/clinical_matcher/apixaban_structured_llm.py", "sha256": "df3798c32a8636ac5228bd0978988edc54145a1229d5611896a4f0b140dbbca3"},
+      {"path": "src/clinical_matcher/apixaban_abstention.py", "sha256": "7a97217edcf57ed5ac4620926cd877723faeb20c4ade70468c57133c8a13fd10"},
+      {"path": "src/clinical_matcher/apixaban_evaluation.py", "sha256": "e6e116a5a809a6666fa906eeaabfb309a89b824f1a6c46fb1fd2b9fb6031c262"},
+      {"path": "src/clinical_matcher/apixaban_error_attribution.py", "sha256": "089f12ca785cd0288d220f56a3c256444c52130180c75415e01f9c0738fc59a8"},
+      {"path": "src/clinical_matcher/apixaban_single_trial_evaluation.py", "sha256": "43efeb59ae4e07bb210b33a32561550b22303d71c4598cf1a379f0b7b0e00a9d"},
+      {"path": "src/clinical_matcher/schemas/apixaban-single-trial-report-1.1.0.schema.json", "sha256": "bcee52eedeb771023bc601036cbb32cc74d02101a49f46dea5a7df877a2664f2"},
+      {"path": "src/clinical_matcher/schemas/p7-batch-state-event-1.0.0.schema.json", "sha256": "bd9dfe602456c08b5b38cc6f39cd96a8fa4c08773cd98d5c772f3af8fee22ae5"},
+      {"path": "src/clinical_matcher/schemas/p7-locked-test-batch-contract-1.0.0.schema.json", "sha256": "0f7759a6968b994dfbcf5f6e9d6c58b999afc8525803b888f51aba63f797b900"},
+      {"path": "src/clinical_matcher/schemas/p7-locked-test-batch-manifest-1.0.0.schema.json", "sha256": "5a4ed437eb56ce127dd20b9691a4f494bfa7c4903a65b9e947db2eeb3223a6fc"},
+      {"path": "src/clinical_matcher/schemas/p7-public-release-candidate-1.0.0.schema.json", "sha256": "6dd83a484f10e5e5cbae0ba7ba9c10b0c4f7c58db4982b71e938f7da0eaa5785"},
+      {"path": "src/clinical_matcher/schemas/p7-representative-case-package-1.0.0.schema.json", "sha256": "f709269ddc8acc203e363ad4382f78417bfce73d4663e9cae39eeb457848b0dc"},
+      {"path": "src/clinical_matcher/schemas/p7-request-latency-trace-1.0.0.schema.json", "sha256": "1764f9a3e4455b9d3751b78dd04f0c143407e95ef6c490cc77930816df5f1801"}
+    ],
     "hardware": {
       "system": "Darwin",
       "chip": "Apple M3",
