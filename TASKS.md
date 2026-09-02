@@ -1001,7 +1001,7 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     40-criterion denominator. P5D.5 still owns the final model-prediction
     artifact and inference CLI, so no model-output protocol was preempted here.
 
-- [ ] **P5D.4 Build the approved LLM-assisted, owner-reviewed public silver
+- [x] **P5D.4 Build the approved LLM-assisted, owner-reviewed public silver
   set.** Generate one disclosed LLM draft per item, require an owner decision,
   and freeze both versions before the descriptive model comparison.
   - Entry condition: P5D.1-P5D.3 pass and the owner has approved the workload.
@@ -1048,20 +1048,22 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     owner edits. It cannot support independent-human-gold, clinical-ground-
     truth, IAA, decomposition-accuracy, or GRPO-semantic-oracle claims. The
     previous `dev_owner_annotation_work.json` remains an ignored zero-expression
-    historical artifact and must not be finalized. The next P5D.4 action is to
-    owner-only 40-item batch is now generated and atomically validated as
-    `decomposition-dev-assisted-work-750aa254f3d4ed79` (work SHA-256
-    `750aa254f3d4ed79c418fa3b596f97c28f4449166d4740e85d8f4d4a317f1e35`;
-    draft-file SHA-256
-    `eff51837014f53243b494c31e42db54acb242eb49cfa3bb22162fa6b714d65fe`).
-    It contains 40 drafts and zero owner reviews; both files remain ignored and
-    mode `0600`. Two pre-review intermediate batches were retained as ignored
-    audit evidence after semantic self-review corrected one unsupported timing
-    atom plus negation-context and BMI span boundaries. The next P5D.4 action is for the
-    owner to review every frozen draft individually. The original
-    lexical-overlap report is historical and cannot be reused for replacement
-    test. LLM draft generation is complete; owner review has not started. The
-    packaged catalog-rules and
+    historical artifact and must not be finalized. The owner-only 40-item batch
+    was generated and atomically validated before review. Its draft-file
+    SHA-256 is
+    `eff51837014f53243b494c31e42db54acb242eb49cfa3bb22162fa6b714d65fe`.
+    Two pre-review intermediate batches remain ignored audit evidence after
+    semantic self-review corrected one unsupported timing atom plus
+    negation-context and BMI span boundaries. On 2026-09-02 the owner confirmed
+    all 40 frozen drafts as `accepted_unchanged`; the completed ignored artifact
+    is mode `0600`, has work ID
+    `decomposition-dev-assisted-work-9ab0b5fe571bca4b`, and file SHA-256
+    `ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52`.
+    It permanently records 40 drafts, 40 owner decisions,
+    `independent_gold_claimed=false`, and
+    `grpo_semantic_oracle_claimed=false`. The original lexical-overlap report
+    is historical and cannot be reused for replacement test. The packaged
+    catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and
     SHA-256 binding; placeholder hashes are rejected.
   - Constraints: model assistance and the unpinned conversational revision are

@@ -151,11 +151,14 @@ infrastructure are recorded in
 
 The active public mainline is now eligibility-criteria decomposition:
 immutable ClinicalTrials.gov criterion text to the frozen typed
-`ATOM/ALL/ANY/NOT` expression tree. The gold-first plan keeps human annotations
-independent of model output and evaluates atom recovery, logical structure, and
-source-span alignment separately from basic schema/verifier validity. The
-benchmark contract must be owner-approved before public gold is selected or a
-local Llama baseline is run; see P5D in [TASKS.md](TASKS.md).
+`ATOM/ALL/ANY/NOT` expression tree. The 40-item AF-only dev set uses disclosed
+LLM drafts followed by a recorded data-owner review. It is therefore labelled
+`llm_assisted_owner_reviewed_silver`, not independent human gold or clinical
+ground truth. Atom recovery, logical structure, and source-span alignment are
+evaluated separately from basic schema/verifier validity. The locked test
+source remains uninspected until the exact local Llama runtime, prompt, output
+schema, decoding settings, and code revision are frozen; see P5D in
+[TASKS.md](TASKS.md).
 
 ## Data access and reproducibility
 

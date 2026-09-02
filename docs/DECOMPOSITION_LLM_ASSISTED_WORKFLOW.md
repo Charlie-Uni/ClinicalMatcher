@@ -171,3 +171,10 @@ The completed artifact permanently records both the original LLM draft and the
 owner-reviewed expression, plus whether the owner changed it. It permanently
 sets `independent_gold_claimed=false` and
 `grpo_semantic_oracle_claimed=false`.
+
+The dev batch completed on 2026-09-02 after the owner confirmed all 40 frozen
+drafts as `accepted_unchanged`. The ignored mode-`0600` result has work ID
+`decomposition-dev-assisted-work-9ab0b5fe571bca4b` and file SHA-256
+`ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52`.
+This completion is an auditable owner decision over LLM drafts; it does not
+upgrade the artifact to independent gold.
