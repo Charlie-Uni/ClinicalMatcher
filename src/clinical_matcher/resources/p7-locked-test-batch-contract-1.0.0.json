@@ -1,8 +1,8 @@
 {
   "contract_version": "1.0.0",
   "contract_id": "p7-apixaban-locked-test-single-batch-v1",
-  "contract_status": "implementation_complete_owner_review_required_not_executable",
-  "contract_sha256": "12dd0888613d7cc5eb74ac9d2b4a0f485a7c7a8d118f914191aff00e6ec835b3",
+  "contract_status": "owner_approved_frozen_p7_1_and_p7_2_authorized",
+  "contract_sha256": "6c6298636941e15c717d63af25711aea181234728fe18a2826cf38dd95acc652",
   "hash_scope": "canonical_json_excluding_contract_sha256",
   "protocol": {
     "version": "p7-locked-test-batch-plan/1.0.0",
@@ -17,9 +17,9 @@
     ]
   },
   "authorization": {
-    "p7_1_frozen": false,
-    "p7_2_authorized": false,
-    "locked_test_access_allowed": false
+    "p7_1_frozen": true,
+    "p7_2_authorized": true,
+    "locked_test_access_allowed": true
   },
   "dataset": {
     "dataset_id": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions",
@@ -184,7 +184,7 @@
   ],
   "implementation": {
     "pin_status": "complete",
-    "code_commit": "b0119c1998c57b137f17cb30cca569ed50657639",
+    "code_commit": "251bf2fa2eceffa0c75878f5ef7c3f8caaeaa726",
     "files": [
       {"path": "pyproject.toml", "sha256": "994631b9ac2e3b7c8af7fbce835deedf7ca61f0179481a7e35d06b9b1c1ed107"},
       {"path": "src/clinical_matcher/p7_locked_test.py", "sha256": "a8d0c884fb13fe29261c3064ff72de0b6adc32602cb1b7421e096c1e05977b78"},

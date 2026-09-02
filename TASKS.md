@@ -1216,7 +1216,7 @@ from structured EHR or is honestly reported as unsupported and omitted.
 
 ## P7 — Final evaluation, public demo, and resume evidence
 
-- [ ] **P7.1 Freeze one final system configuration.** Select components using
+- [x] **P7.1 Freeze one final system configuration.** Select components using
   validation results and record the exact dataset, split, code, model, prompt,
   index, verifier, threshold, and hardware specification.
   - Entry condition: required mainline ablations and the P5D decomposition
@@ -1231,10 +1231,13 @@ from structured EHR or is honestly reported as unsupported and omitted.
     long-context P4.7 validation diagnostic are pinned without replacing any
     historical artifact. The machine-readable contract is intentionally
     `implementation_complete_owner_review_required_not_executable` with all
-    authorization flags false. A clean reinstall passed all 430 tests with 3
-    conditional MLX skips, and the public-data guard passed. P7.1 remains open
-    pending CI confirmation, the owner's personal D6 exclusion action, and
-    final owner review; no locked-test label or prediction has been accessed.
+    authorization flags were false during implementation review. A clean
+    reinstall passed all 430 tests with 3 conditional MLX skips, the
+    public-data guard passed, and CI run `33689386226` was green. The owner
+    personally completed D6 and explicitly froze P7.1 and authorized the one
+    P7.2 batch on 2026-09-03. The authorized contract SHA-256 is
+    `6c6298636941e15c717d63af25711aea181234728fe18a2826cf38dd95acc652`;
+    no locked-test label or prediction had been accessed at freeze time.
 
 - [ ] **P7.2 Run the locked test once and generate the final report.** Include
   mixed-type task metrics, patient-bootstrap intervals, coverage-risk, error

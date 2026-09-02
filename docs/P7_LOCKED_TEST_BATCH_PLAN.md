@@ -1,17 +1,17 @@
 # P7 locked-test single-batch plan
 
-Status: `implementation_complete_owner_review_required_not_executable`
+Status: `owner_approved_frozen_p7_1_and_p7_2_authorized`
 
 Protocol version: `p7-locked-test-batch-plan/1.0.0`
 
 Prepared: 2026-09-03, before any locked-test prediction, label, metric, or
 patient-level output was inspected.
 
-The project owner approved D1--D6 on 2026-09-03. The implementation and its
-machine-readable pins are complete, but this protocol is still not
-authorization to run the locked test. P7.1 must be explicitly frozen, the
-owner must complete D6 personally, and the owner must separately authorize
-P7.2 before execution can begin.
+The project owner approved D1--D6 on 2026-09-03, completed D6 personally, and
+then explicitly stated “P7.1 frozen; authorize the one P7.2 locked-test batch.”
+The implementation and its machine-readable pins are complete. This is the
+sole authorization for the one frozen P7.2 batch and does not authorize a
+second exposure, an arm change, or a threshold change.
 
 ## Purpose
 
@@ -333,15 +333,27 @@ required before P7.1 freeze**.
 5. **Complete:** generate the approved additive P4.3 `1.1.0` validation
    projections and P4.7 validation diagnostic without touching test.
 6. **Complete:** pin implementation commit
-   `b0119c1998c57b137f17cb30cca569ed50657639`, every executable code/resource
+   `251bf2fa2eceffa0c75878f5ef7c3f8caaeaa726`, every executable code/resource
    hash, the M3 24 GB hardware specification, and the complete command. The
-   non-executable contract SHA-256 is
+   pre-authorization contract SHA-256 was
    `12dd0888613d7cc5eb74ac9d2b4a0f485a7c7a8d118f914191aff00e6ec835b3`.
-7. **Local verification complete; remote verification pending:** a clean
+   The owner-authorized contract SHA-256 is
+   `6c6298636941e15c717d63af25711aea181234728fe18a2826cf38dd95acc652`.
+7. **Complete:** a clean
    reinstall passed all 430 tests with 3 conditional MLX skips, and the
-   public-data guard passed. Push and CI confirmation remain pending. A clean
-   Git status additionally requires the owner's personal D6 action.
-8. **Pending owner decision:** obtain the explicit statement “P7.1 frozen;
-   authorize the one P7.2 locked-test batch.”
+   public-data guard passed; the pre-authorization implementation and contract
+   were pushed and CI run `33689386226` passed. The owner personally completed
+   D6 and the worktree became clean.
+8. **Complete:** the owner explicitly stated “P7.1 frozen; authorize the one
+   P7.2 locked-test batch.” on 2026-09-03.
 
-Until all eight steps are complete, locked-test execution remains prohibited.
+The first authorization-state test was coupled to the checked-in contract's
+pre-authorization status. The post-authorization synthetic test caught this
+before any locked-test access. Commit
+`251bf2fa2eceffa0c75878f5ef7c3f8caaeaa726` replaced that assumption with an
+explicit synthetic unauthorized contract; the safety assertion itself is
+unchanged. This pre-execution repair is included in the final implementation
+pin and did not inspect any test member, label, prediction, or metric.
+
+All eight steps are complete. Execution is limited to the exact single batch
+encoded in the owner-authorized contract.
