@@ -174,11 +174,20 @@ class P7LockedTestTests(unittest.TestCase):
             allow_pre_gold_retry=kwargs.get("allow_pre_gold_retry", False),
         )
 
-    def test_checked_in_contract_blocks_before_any_path_is_resolved(self):
+    def test_unauthorized_contract_blocks_before_any_path_is_resolved(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             absent = root / "must-not-be-created"
             contract = load_p7_contract()
+            contract["contract_status"] = (
+                "implementation_complete_owner_review_required_not_executable"
+            )
+            contract["authorization"] = {
+                "p7_1_frozen": False,
+                "p7_2_authorized": False,
+                "locked_test_access_allowed": False,
+            }
+            contract = _rehash_contract(contract)
             with self.assertRaisesRegex(P7LockedTestError, "not authorized"):
                 _execute_locked_test_batch(
                     repository_root=absent,
