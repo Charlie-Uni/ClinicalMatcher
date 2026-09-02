@@ -544,6 +544,7 @@ def run_structured_llm_baseline(
     generated_at: Optional[str] = None,
     code_commit: Optional[str] = None,
     contract: Optional[Mapping[str, Any]] = None,
+    request_observer: Optional[Callable[[Mapping[str, Any]], None]] = None,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     if split_name not in {"train", "validation", "test"}:
         raise ApixabanStructuredLLMError("Unsupported split name")
@@ -621,7 +622,8 @@ def run_structured_llm_baseline(
         context_limit_reached_count += int(
             response_prompt_tokens >= decoding["num_ctx"]
         )
-        output_tokens += int(response.get("eval_count", 0) or 0)
+        response_output_tokens = int(response.get("eval_count", 0) or 0)
+        output_tokens += response_output_tokens
         evaluation_duration_ns += int(response.get("eval_duration", 0) or 0)
         content = response.get("message", {}).get("content")
         try:
@@ -636,6 +638,16 @@ def run_structured_llm_baseline(
             valid_count += 1
             predictions.extend(
                 _valid_predictions(patient["patient_id"], catalog, assessments)
+            )
+        if request_observer is not None:
+            request_observer(
+                {
+                    "request_index": index,
+                    "patient_id": patient["patient_id"],
+                    "latency_seconds": latency,
+                    "prompt_tokens": response_prompt_tokens,
+                    "output_tokens": response_output_tokens,
+                }
             )
         if progress:
             progress(index, len(patients))

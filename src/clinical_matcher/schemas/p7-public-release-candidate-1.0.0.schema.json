@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clinicalmatcher.local/schemas/p7-public-release-candidate-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_version",
+    "candidate_sha256",
+    "status",
+    "contract_sha256",
+    "policy",
+    "views",
+    "base_arm_latency",
+    "limitations"
+  ],
+  "properties": {
+    "candidate_version": {"const": "1.0.0"},
+    "candidate_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "unreviewed_public_release_candidate"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_level", "institutional_approval_claimed", "allowlist", "selection_after_result_forbidden"],
+      "properties": {
+        "policy_level": {"const": "project_level_validation_precedent_not_institutional"},
+        "institutional_approval_claimed": {"const": false},
+        "allowlist": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "typed_exact_match"},
+            {"const": "boolean_macro_f1"},
+            {"const": "numeric_status_macro_f1"},
+            {"const": "abstained_or_unknown_count"},
+            {"const": "latency_seconds_p50"},
+            {"const": "latency_seconds_p95"}
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "selection_after_result_forbidden": {"const": true}
+      }
+    },
+    "views": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["view_id", "typed_exact_match", "boolean_macro_f1", "numeric_status_macro_f1", "abstained_or_unknown_count"],
+        "properties": {
+          "view_id": {"type": "string", "minLength": 1},
+          "typed_exact_match": {"type": "number", "minimum": 0, "maximum": 1},
+          "boolean_macro_f1": {"type": "number", "minimum": 0, "maximum": 1},
+          "numeric_status_macro_f1": {"type": "number", "minimum": 0, "maximum": 1},
+          "abstained_or_unknown_count": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "base_arm_latency": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["arm_id", "latency_seconds_p50", "latency_seconds_p95"],
+        "properties": {
+          "arm_id": {"type": "string", "minLength": 1},
+          "latency_seconds_p50": {"type": "number", "minimum": 0},
+          "latency_seconds_p95": {"type": "number", "minimum": 0}
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 3,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

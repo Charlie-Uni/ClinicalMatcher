@@ -1,0 +1,163 @@
+{
+  "contract_version": "1.0.0",
+  "contract_id": "p7-apixaban-locked-test-single-batch-v1",
+  "contract_status": "owner_approved_pre_implementation_not_executable",
+  "contract_sha256": "ccb5144830ffa951a96c98d5488477215133c9098cbe84333cae5e599a333e34",
+  "hash_scope": "canonical_json_excluding_contract_sha256",
+  "protocol": {
+    "version": "p7-locked-test-batch-plan/1.0.0",
+    "approved_at": "2026-09-03",
+    "owner_decisions": [
+      "D1_recommended",
+      "D2_recommended",
+      "D3_recommended",
+      "D4_recommended",
+      "D5_amended_whole_split_allowlist",
+      "D6_recommended_owner_action"
+    ]
+  },
+  "authorization": {
+    "p7_1_frozen": false,
+    "p7_2_authorized": false,
+    "locked_test_access_allowed": false
+  },
+  "dataset": {
+    "dataset_id": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions",
+    "dataset_version": "1.0.0",
+    "benchmark_sha256": "0161fe1762ec48aff7a7c78f1fa72560dfec03bd91f885f2349ec65bca23503d",
+    "benchmark_manifest_sha256": "8b2c295c2a95dd2a2f8e87d8110146e80d958797594b916edecaeb02aabba3ea",
+    "staging_corpus_sha256": "f2a37e349bc0eabac2c8b8eae1cda4c859e31865a0c847384f7a125ea85109df",
+    "question_catalog_sha256": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+    "split_manifest_sha256": "2176996ac84c2df7c4766c0b489befde640921790cc36e25a3893ae443f8cebd",
+    "split_file_sha256": "1af03ef3696e5a709ec345456739ce23bf559b1660981ff05240a51c3ca78952",
+    "id_map_sha256": "f53673b45a9a066a23281398e1c6b020ecbd1c99218a4b0449b0bbe970b70adf",
+    "mentor_results_sha256": "f358d18feb47997d87d27b104b0c3490d08bba913e64b33b17b75ab2c65c59d3",
+    "mentor_candidate_csv_sha256": "ff3871060b9e0ec97952d4b5bff998cb9504e7d8e3fd461edc2c976d199d70ea"
+  },
+  "execution": {
+    "split_name": "test",
+    "expected_patient_count": 15,
+    "expected_question_count": 23,
+    "expected_row_count": 345,
+    "base_arm_order": [
+      "rules_1_0_0",
+      "llama31_structured_1_0_0",
+      "llama31_long_context_1_0_0"
+    ],
+    "view_order": [
+      "rules_1_0_0.raw",
+      "rules_1_0_0.p4_3",
+      "llama31_structured_1_0_0.raw",
+      "llama31_structured_1_0_0.p4_3",
+      "llama31_long_context_1_0_0.raw",
+      "llama31_long_context_1_0_0.p4_3"
+    ],
+    "only_locked_test_exposure": true,
+    "reuse_for_all_p5_p7_reports": true,
+    "post_start_arm_or_threshold_change_forbidden": true,
+    "intermediate_results_printed": false,
+    "pre_gold_max_attempts": 2,
+    "post_gold_retry_allowed": false,
+    "failure_is_measured": true
+  },
+  "base_arms": [
+    {
+      "arm_id": "rules_1_0_0",
+      "kind": "deterministic_rules",
+      "config_sha256": "ffd14a43f6e0d21b0c87b9e7facdfe68aeb7ab407a05269d1faca2b31e66c8f9",
+      "resource_path": "src/clinical_matcher/resources/apixaban-deterministic-rules-1.0.0.json",
+      "resource_file_sha256": "3bf64349427225e5fe54d8ec233bb39be08f854deb651fc77ab70c13009fc04e",
+      "validation_raw_artifact_sha256": "fcb43ec18a2f15d4e06cefe120a86ae1826aecc64363c2d969b94ef41b4876ab",
+      "request_latency_trace_required": true,
+      "latency_percentiles": [0.5, 0.95]
+    },
+    {
+      "arm_id": "llama31_structured_1_0_0",
+      "kind": "local_structured_llm",
+      "config_sha256": "d26f4b6554d15a03e6a2a241718147a41f2c76dcd75f5383051abff009c435b9",
+      "resource_path": "src/clinical_matcher/resources/apixaban-llama-structured-contract-1.0.0.json",
+      "resource_file_sha256": "421d94a4a8d05fc1147f1e4a2c9b3bbe3a1e6cdc841fa3f28f6d4a45cdeb76a2",
+      "validation_raw_artifact_sha256": "6fcc96bccd4ce52cff61cd849b9bd3db2cc029cd242a8570707f2e98d679a4f1",
+      "request_latency_trace_required": true,
+      "latency_percentiles": [0.5, 0.95]
+    },
+    {
+      "arm_id": "llama31_long_context_1_0_0",
+      "kind": "local_long_context_llm",
+      "config_sha256": "693452e427cda1210d9f280041cd2727a772a23c6f11f3082f03e5d920d02217",
+      "resource_path": "src/clinical_matcher/resources/apixaban-llama-long-context-contract-1.0.0.json",
+      "resource_file_sha256": "9c0c295b4a3c880c10a5d49d46e1732e0d61ef4852dbd082879cbe15b8c5112b",
+      "validation_raw_artifact_sha256": "29fad18ed6b864e4cdc40fa1a1a5db5d1255a4d87b2de9557b27649172a652d9",
+      "request_latency_trace_required": true,
+      "latency_percentiles": [0.5, 0.95]
+    }
+  ],
+  "p4_3_projection": {
+    "policy_version": "1.1.0",
+    "policy_sha256": "0946bb21ec4ab8e693c3abc15d6625ae09ead4acbd3700ae42e484b043f36fa8",
+    "verifier_conflict_status": "not_evaluable",
+    "verifier_conflict_keys_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "parent_binding": "same_batch_named_raw_artifact",
+    "config_hash_rule": "canonical_apixaban_abstention_configuration_v1_1_0",
+    "validation_regeneration_required": true
+  },
+  "evaluations": [
+    {
+      "evaluation_id": "p1_5_mixed_facts_1_0_0",
+      "views": [
+        "rules_1_0_0.raw",
+        "rules_1_0_0.p4_3",
+        "llama31_structured_1_0_0.raw",
+        "llama31_structured_1_0_0.p4_3",
+        "llama31_long_context_1_0_0.raw",
+        "llama31_long_context_1_0_0.p4_3"
+      ],
+      "claim_boundary": "exact_source_fact_extraction_not_clinical_equivalence"
+    },
+    {
+      "evaluation_id": "p4_5_observable_attribution_1_1_0",
+      "views": [
+        "rules_1_0_0.raw",
+        "rules_1_0_0.p4_3",
+        "llama31_structured_1_0_0.raw",
+        "llama31_structured_1_0_0.p4_3",
+        "llama31_long_context_1_0_0.raw",
+        "llama31_long_context_1_0_0.p4_3"
+      ],
+      "claim_boundary": "observable_mutually_exclusive_diagnostic_not_causal_attribution"
+    },
+    {
+      "evaluation_id": "p4_7_three_axis_1_1_0",
+      "views": ["llama31_long_context_1_0_0.p4_3"],
+      "claim_boundary": "legacy_rule_reference_agreement_not_clinical_accuracy"
+    }
+  ],
+  "disclosure": {
+    "policy_level": "project_level_validation_precedent_not_institutional",
+    "institutional_approval_claimed": false,
+    "whole_split_allowlist": [
+      "typed_exact_match",
+      "boolean_macro_f1",
+      "numeric_status_macro_f1",
+      "abstained_or_unknown_count",
+      "latency_seconds_p50",
+      "latency_seconds_p95"
+    ],
+    "all_other_test_values_owner_only": true,
+    "selection_after_result_forbidden": true
+  },
+  "exclusions": [
+    "bm25",
+    "medcpt",
+    "rrf",
+    "lora_sft",
+    "p5d_locked_test",
+    "probabilistic_calibration",
+    "medicalgpt_runtime",
+    "lightrag_runtime"
+  ],
+  "implementation": {
+    "pin_status": "pending",
+    "files": []
+  }
+}

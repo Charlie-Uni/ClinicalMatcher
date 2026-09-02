@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clinicalmatcher.local/schemas/p7-locked-test-batch-contract-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "contract_id",
+    "contract_status",
+    "contract_sha256",
+    "hash_scope",
+    "protocol",
+    "authorization",
+    "dataset",
+    "execution",
+    "base_arms",
+    "p4_3_projection",
+    "evaluations",
+    "disclosure",
+    "exclusions",
+    "implementation"
+  ],
+  "properties": {
+    "contract_version": {"const": "1.0.0"},
+    "contract_id": {"const": "p7-apixaban-locked-test-single-batch-v1"},
+    "contract_status": {
+      "enum": [
+        "owner_approved_pre_implementation_not_executable",
+        "owner_approved_frozen_p7_1_not_p7_2_authorized",
+        "owner_approved_frozen_p7_1_and_p7_2_authorized"
+      ]
+    },
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "hash_scope": {"const": "canonical_json_excluding_contract_sha256"},
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "approved_at", "owner_decisions"],
+      "properties": {
+        "version": {"const": "p7-locked-test-batch-plan/1.0.0"},
+        "approved_at": {"const": "2026-09-03"},
+        "owner_decisions": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "D1_recommended"},
+            {"const": "D2_recommended"},
+            {"const": "D3_recommended"},
+            {"const": "D4_recommended"},
+            {"const": "D5_amended_whole_split_allowlist"},
+            {"const": "D6_recommended_owner_action"}
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["p7_1_frozen", "p7_2_authorized", "locked_test_access_allowed"],
+      "properties": {
+        "p7_1_frozen": {"type": "boolean"},
+        "p7_2_authorized": {"type": "boolean"},
+        "locked_test_access_allowed": {"type": "boolean"}
+      }
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dataset_id",
+        "dataset_version",
+        "benchmark_sha256",
+        "benchmark_manifest_sha256",
+        "staging_corpus_sha256",
+        "question_catalog_sha256",
+        "split_manifest_sha256",
+        "split_file_sha256",
+        "id_map_sha256",
+        "mentor_results_sha256",
+        "mentor_candidate_csv_sha256"
+      ],
+      "properties": {
+        "dataset_id": {"const": "MIMIC-IV-Ext-Apixaban-Trial-Criteria-Questions"},
+        "dataset_version": {"const": "1.0.0"},
+        "benchmark_sha256": {"$ref": "#/$defs/sha256"},
+        "benchmark_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "staging_corpus_sha256": {"$ref": "#/$defs/sha256"},
+        "question_catalog_sha256": {"$ref": "#/$defs/sha256"},
+        "split_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "split_file_sha256": {"$ref": "#/$defs/sha256"},
+        "id_map_sha256": {"$ref": "#/$defs/sha256"},
+        "mentor_results_sha256": {"$ref": "#/$defs/sha256"},
+        "mentor_candidate_csv_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "split_name",
+        "expected_patient_count",
+        "expected_question_count",
+        "expected_row_count",
+        "base_arm_order",
+        "view_order",
+        "only_locked_test_exposure",
+        "reuse_for_all_p5_p7_reports",
+        "post_start_arm_or_threshold_change_forbidden",
+        "intermediate_results_printed",
+        "pre_gold_max_attempts",
+        "post_gold_retry_allowed",
+        "failure_is_measured"
+      ],
+      "properties": {
+        "split_name": {"const": "test"},
+        "expected_patient_count": {"const": 15},
+        "expected_question_count": {"const": 23},
+        "expected_row_count": {"const": 345},
+        "base_arm_order": {"$ref": "#/$defs/baseArmIds"},
+        "view_order": {"$ref": "#/$defs/viewIds"},
+        "only_locked_test_exposure": {"const": true},
+        "reuse_for_all_p5_p7_reports": {"const": true},
+        "post_start_arm_or_threshold_change_forbidden": {"const": true},
+        "intermediate_results_printed": {"const": false},
+        "pre_gold_max_attempts": {"const": 2},
+        "post_gold_retry_allowed": {"const": false},
+        "failure_is_measured": {"const": true}
+      }
+    },
+    "base_arms": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/baseArm"}
+    },
+    "p4_3_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_version",
+        "policy_sha256",
+        "verifier_conflict_status",
+        "verifier_conflict_keys_sha256",
+        "parent_binding",
+        "config_hash_rule",
+        "validation_regeneration_required"
+      ],
+      "properties": {
+        "policy_version": {"const": "1.1.0"},
+        "policy_sha256": {"$ref": "#/$defs/sha256"},
+        "verifier_conflict_status": {"const": "not_evaluable"},
+        "verifier_conflict_keys_sha256": {"$ref": "#/$defs/sha256"},
+        "parent_binding": {"const": "same_batch_named_raw_artifact"},
+        "config_hash_rule": {"const": "canonical_apixaban_abstention_configuration_v1_1_0"},
+        "validation_regeneration_required": {"const": true}
+      }
+    },
+    "evaluations": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/evaluation"}
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_level",
+        "institutional_approval_claimed",
+        "whole_split_allowlist",
+        "all_other_test_values_owner_only",
+        "selection_after_result_forbidden"
+      ],
+      "properties": {
+        "policy_level": {"const": "project_level_validation_precedent_not_institutional"},
+        "institutional_approval_claimed": {"const": false},
+        "whole_split_allowlist": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "typed_exact_match"},
+            {"const": "boolean_macro_f1"},
+            {"const": "numeric_status_macro_f1"},
+            {"const": "abstained_or_unknown_count"},
+            {"const": "latency_seconds_p50"},
+            {"const": "latency_seconds_p95"}
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "all_other_test_values_owner_only": {"const": true},
+        "selection_after_result_forbidden": {"const": true}
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "bm25"},
+        {"const": "medcpt"},
+        {"const": "rrf"},
+        {"const": "lora_sft"},
+        {"const": "p5d_locked_test"},
+        {"const": "probabilistic_calibration"},
+        {"const": "medicalgpt_runtime"},
+        {"const": "lightrag_runtime"}
+      ],
+      "items": false,
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pin_status", "files"],
+      "properties": {
+        "pin_status": {"enum": ["pending", "complete"]},
+        "files": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1},
+              "sha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "contract_status": {"const": "owner_approved_pre_implementation_not_executable"}
+        }
+      },
+      "then": {
+        "properties": {
+          "authorization": {
+            "properties": {
+              "p7_1_frozen": {"const": false},
+              "p7_2_authorized": {"const": false},
+              "locked_test_access_allowed": {"const": false}
+            }
+          },
+          "implementation": {
+            "properties": {
+              "pin_status": {"const": "pending"},
+              "files": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contract_status": {
+            "enum": [
+              "owner_approved_frozen_p7_1_not_p7_2_authorized",
+              "owner_approved_frozen_p7_1_and_p7_2_authorized"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "implementation": {
+            "properties": {
+              "pin_status": {"const": "complete"},
+              "files": {"minItems": 1}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "baseArmIds": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "rules_1_0_0"},
+        {"const": "llama31_structured_1_0_0"},
+        {"const": "llama31_long_context_1_0_0"}
+      ],
+      "items": false,
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "viewIds": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "rules_1_0_0.raw"},
+        {"const": "rules_1_0_0.p4_3"},
+        {"const": "llama31_structured_1_0_0.raw"},
+        {"const": "llama31_structured_1_0_0.p4_3"},
+        {"const": "llama31_long_context_1_0_0.raw"},
+        {"const": "llama31_long_context_1_0_0.p4_3"}
+      ],
+      "items": false,
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "baseArm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arm_id",
+        "kind",
+        "config_sha256",
+        "resource_path",
+        "resource_file_sha256",
+        "validation_raw_artifact_sha256",
+        "request_latency_trace_required",
+        "latency_percentiles"
+      ],
+      "properties": {
+        "arm_id": {"enum": ["rules_1_0_0", "llama31_structured_1_0_0", "llama31_long_context_1_0_0"]},
+        "kind": {"enum": ["deterministic_rules", "local_structured_llm", "local_long_context_llm"]},
+        "config_sha256": {"$ref": "#/$defs/sha256"},
+        "resource_path": {"type": "string", "minLength": 1},
+        "resource_file_sha256": {"$ref": "#/$defs/sha256"},
+        "validation_raw_artifact_sha256": {"$ref": "#/$defs/sha256"},
+        "request_latency_trace_required": {"const": true},
+        "latency_percentiles": {
+          "type": "array",
+          "prefixItems": [{"const": 0.5}, {"const": 0.95}],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluation_id", "views", "claim_boundary"],
+      "properties": {
+        "evaluation_id": {"enum": ["p1_5_mixed_facts_1_0_0", "p4_5_observable_attribution_1_1_0", "p4_7_three_axis_1_1_0"]},
+        "views": {
+          "oneOf": [
+            {"$ref": "#/$defs/viewIds"},
+            {
+              "type": "array",
+              "prefixItems": [{"const": "llama31_long_context_1_0_0.p4_3"}],
+              "items": false,
+              "minItems": 1,
+              "maxItems": 1
+            }
+          ]
+        },
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

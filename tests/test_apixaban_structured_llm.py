@@ -218,6 +218,7 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
         frozen, inputs = _frozen_candidate()
         corpus = inputs[2]
         client = _FakeClient(valid=True)
+        observed_requests = []
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             split_path = root / "split.json"
@@ -232,6 +233,7 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
                 hardware=self.contract["development_hardware"],
                 generated_at="2026-08-13T10:00:00Z",
                 code_commit="a" * 40,
+                request_observer=observed_requests.append,
             )
             self.assertEqual("1.2.0", predictions["prediction_set_version"])
             self.assertEqual(1.0, report["structured_output"]["schema_valid_rate"])
@@ -252,6 +254,12 @@ class ApixabanStructuredLLMTests(unittest.TestCase):
             self.assertTrue(
                 all(call["options"]["temperature"] == 0 for call in client.calls)
             )
+            self.assertEqual(
+                report["structured_output"]["request_count"],
+                len(observed_requests),
+            )
+            self.assertEqual(100, observed_requests[0]["prompt_tokens"])
+            self.assertEqual(50, observed_requests[0]["output_tokens"])
             output = root / "output"
             prediction_path, report_path = write_structured_llm_run(
                 predictions, report, output

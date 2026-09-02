@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clinicalmatcher.local/schemas/p7-locked-test-batch-manifest-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "manifest_sha256", "status", "contract_sha256", "attempt", "split_name", "patient_count", "row_count_per_view", "base_arms", "views", "p4_7", "representative_case_package", "public_candidate", "events", "only_locked_test_exposure", "reuse_for_all_p5_p7_reports", "owner_only"],
+  "properties": {
+    "manifest_version": {"const": "1.0.0"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"const": "complete_immutable_owner_review_required"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "attempt": {"type": "integer", "minimum": 1, "maximum": 2},
+    "split_name": {"const": "test"},
+    "patient_count": {"const": 15},
+    "row_count_per_view": {"const": 345},
+    "base_arms": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/baseArmArtifact"}
+    },
+    "views": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/viewArtifact"}
+    },
+    "p4_7": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view_id", "report_path", "report_sha256", "trace_path", "trace_sha256", "summary_path", "summary_sha256"],
+      "properties": {
+        "view_id": {"const": "llama31_long_context_1_0_0.p4_3"},
+        "report_path": {"$ref": "#/$defs/path"},
+        "report_sha256": {"$ref": "#/$defs/sha256"},
+        "trace_path": {"$ref": "#/$defs/path"},
+        "trace_sha256": {"$ref": "#/$defs/sha256"},
+        "summary_path": {"$ref": "#/$defs/path"},
+        "summary_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "representative_case_package": {"$ref": "#/$defs/pathArtifact"},
+    "public_candidate": {"$ref": "#/$defs/pathArtifact"},
+    "events": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/eventArtifact"}
+    },
+    "only_locked_test_exposure": {"const": true},
+    "reuse_for_all_p5_p7_reports": {"const": true},
+    "owner_only": {"const": true}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "path": {"type": "string", "pattern": "^[^/].+$"},
+    "pathArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "eventArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event", "attempt", "path", "sha256"],
+      "properties": {
+        "event": {"enum": ["attempt_started", "pre_gold_failed", "raw_complete", "gold_phase_started", "batch_complete"]},
+        "attempt": {"type": "integer", "minimum": 1, "maximum": 2},
+        "path": {"$ref": "#/$defs/path"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "baseArmArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["arm_id", "prediction_path", "prediction_sha256", "run_report_path", "run_report_sha256", "latency_trace_path", "latency_trace_sha256"],
+      "properties": {
+        "arm_id": {"type": "string", "minLength": 1},
+        "prediction_path": {"$ref": "#/$defs/path"},
+        "prediction_sha256": {"$ref": "#/$defs/sha256"},
+        "run_report_path": {"type": ["string", "null"]},
+        "run_report_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "latency_trace_path": {"$ref": "#/$defs/path"},
+        "latency_trace_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "viewArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view_id", "prediction_path", "prediction_sha256", "p1_5_report_path", "p1_5_report_sha256", "p4_5_report_path", "p4_5_report_sha256", "p4_3_report_path", "p4_3_report_sha256"],
+      "properties": {
+        "view_id": {"type": "string", "minLength": 1},
+        "prediction_path": {"$ref": "#/$defs/path"},
+        "prediction_sha256": {"$ref": "#/$defs/sha256"},
+        "p1_5_report_path": {"$ref": "#/$defs/path"},
+        "p1_5_report_sha256": {"$ref": "#/$defs/sha256"},
+        "p4_5_report_path": {"$ref": "#/$defs/path"},
+        "p4_5_report_sha256": {"$ref": "#/$defs/sha256"},
+        "p4_3_report_path": {"type": ["string", "null"]},
+        "p4_3_report_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

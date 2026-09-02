@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clinicalmatcher.local/schemas/p7-request-latency-trace-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_version",
+    "trace_sha256",
+    "arm_id",
+    "split_name",
+    "request_count",
+    "requests",
+    "summary",
+    "owner_only"
+  ],
+  "properties": {
+    "trace_version": {"const": "1.0.0"},
+    "trace_sha256": {"$ref": "#/$defs/sha256"},
+    "arm_id": {"enum": ["rules_1_0_0", "llama31_structured_1_0_0", "llama31_long_context_1_0_0"]},
+    "split_name": {"enum": ["validation", "test"]},
+    "request_count": {"type": "integer", "minimum": 1},
+    "requests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["request_index", "patient_id", "latency_seconds", "prompt_tokens", "output_tokens"],
+        "properties": {
+          "request_index": {"type": "integer", "minimum": 1},
+          "patient_id": {"type": "string", "pattern": "^patient-[0-9a-f]{24}$"},
+          "latency_seconds": {"type": "number", "minimum": 0},
+          "prompt_tokens": {"type": ["integer", "null"], "minimum": 0},
+          "output_tokens": {"type": ["integer", "null"], "minimum": 0}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latency_seconds_mean", "latency_seconds_p50", "latency_seconds_p95"],
+      "properties": {
+        "latency_seconds_mean": {"type": "number", "minimum": 0},
+        "latency_seconds_p50": {"type": "number", "minimum": 0},
+        "latency_seconds_p95": {"type": "number", "minimum": 0}
+      }
+    },
+    "owner_only": {"const": true}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

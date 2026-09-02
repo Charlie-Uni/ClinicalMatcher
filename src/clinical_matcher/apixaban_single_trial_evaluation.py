@@ -37,7 +37,10 @@ from .validation import validate_document
 REPORT_VERSION = "1.0.0"
 TRACE_VERSION = "1.0.0"
 SUMMARY_RENDERER_VERSION = "1.1.0"
-REPORT_SCHEMA = "schemas/apixaban-single-trial-report-1.0.0.schema.json"
+REPORT_SCHEMAS = {
+    "1.0.0": "schemas/apixaban-single-trial-report-1.0.0.schema.json",
+    "1.1.0": "schemas/apixaban-single-trial-report-1.1.0.schema.json",
+}
 RUN_CONTRACT_RESOURCE = (
     "resources/apixaban-single-trial-run-contract-1.0.0.json"
 )
@@ -527,7 +530,13 @@ def _no_patient_identifiers(value: Any) -> bool:
 
 
 def validate_single_trial_report(document: Mapping[str, Any]) -> None:
-    validate_document(dict(document), REPORT_SCHEMA)
+    report_version = document.get("report_version")
+    report_schema = REPORT_SCHEMAS.get(report_version)
+    if report_schema is None:
+        raise ApixabanSingleTrialEvaluationError(
+            "Unsupported single-trial report version"
+        )
+    validate_document(dict(document), report_schema)
     if _self_hash(document, "report_sha256") != document["report_sha256"]:
         raise ApixabanSingleTrialEvaluationError("Single-trial report hash mismatch")
     if not _no_patient_identifiers(document):
@@ -539,6 +548,14 @@ def validate_single_trial_report(document: Mapping[str, Any]) -> None:
         raise ApixabanSingleTrialEvaluationError(
             "Single-trial assessment denominator changed"
         )
+    if report_version == "1.1.0":
+        split_name = document["provenance"]["split_name"]
+        if document["provenance"]["locked_test_labels_used"] is not (
+            split_name == "test"
+        ):
+            raise ApixabanSingleTrialEvaluationError(
+                "Single-trial locked-test disclosure differs from split"
+            )
     expected_labels = {
         "axis_a_intended_gold_vs_mentor_reference": (
             set(REFERENCE_OUTCOMES), set(OUTCOMES)
@@ -731,7 +748,11 @@ def validate_single_trial_trace(document: Mapping[str, Any]) -> None:
         "restricted_local_only",
         "clinical_evidence_claim_allowed",
     }
-    if set(document) != required or document["trace_version"] != TRACE_VERSION:
+    if (
+        set(document) != required
+        or document["trace_version"] != TRACE_VERSION
+        or document["report_version"] not in REPORT_SCHEMAS
+    ):
         raise ApixabanSingleTrialEvaluationError("Single-trial trace fields changed")
     if _self_hash(document, "trace_sha256") != document["trace_sha256"]:
         raise ApixabanSingleTrialEvaluationError("Single-trial trace hash mismatch")
@@ -958,6 +979,251 @@ def build_single_trial_evaluation(
             "question_count": len(catalog["questions"]),
             "assessment_count": len(expected_keys),
             "complete_validation_grid": True,
+        },
+        "runtime_semantics": {
+            "technical_fact_carrier_is_clinical_evidence": False,
+            "technical_index_date": "1970-01-01",
+            "technical_index_date_used_for_time_filtering": False,
+            "reason": (
+                "The frozen rules contain no evaluator time windows and the "
+                "source questions already encode their own temporal intent."
+            ),
+        },
+        "adapter_diagnostics": {
+            "released_gold": gold_diagnostics,
+            "model_predictions": model_diagnostics,
+        },
+        "axes": {
+            "axis_a_intended_gold_vs_mentor_reference": _axis_metrics(
+                axis_a_rows,
+                reference_labels=REFERENCE_OUTCOMES,
+                candidate_labels=OUTCOMES,
+                conditional_known=True,
+            ),
+            "axis_b_intended_model_vs_intended_gold": {
+                **_axis_metrics(
+                    axis_b_rows,
+                    reference_labels=OUTCOMES,
+                    candidate_labels=OUTCOMES,
+                    conditional_known=False,
+                ),
+                "per_rule": _per_rule_metrics(
+                    gold_projection, model_projection, patient_ids
+                ),
+            },
+            "axis_c_intended_model_vs_mentor_reference": _axis_metrics(
+                axis_c_rows,
+                reference_labels=REFERENCE_OUTCOMES,
+                candidate_labels=OUTCOMES,
+                conditional_known=True,
+            ),
+        },
+        "interpretation": {
+            "axis_a_name": "observed_reference_discrepancy",
+            "axis_a_is_pure_semantic_distance": False,
+            "axis_b_name": "observed_fact_error_propagation",
+            "axis_b_is_causal_reasoning_attribution": False,
+            "axis_c_name": "combined_mentor_designated_project_reference_result",
+            "mentor_reference_is_independent_clinical_gold": False,
+            "clinical_eligibility_accuracy_claim_allowed": False,
+            "unit_compatibility_claim_allowed": False,
+            "required_report_wording": (
+                "The intended contract was specified by the owner through a "
+                "source-precedence rule and was not confirmed through "
+                "item-by-item qualified clinical review."
+            ),
+        },
+        "disclosure": {
+            "owner_only": True,
+            "patient_identifiers_in_report": False,
+            "row_level_trace_separate_and_owner_only": True,
+            "public_disclosure_requires_separate_review": True,
+        },
+    }
+    report["report_sha256"] = _self_hash(report, "report_sha256")
+    validate_single_trial_report(report)
+    return report, trace
+
+
+def build_single_trial_evaluation_v1_1(
+    benchmark: Mapping[str, Any],
+    split: Mapping[str, Any],
+    predictions: Mapping[str, Any],
+    mentor_reference: Mapping[str, str],
+    *,
+    split_name: str,
+    benchmark_sha256: str,
+    prediction_set_sha256: str,
+    mentor_results_sha256: str,
+    candidate_csv_sha256: str,
+    id_map_sha256: str,
+    p7_contract_sha256: str,
+    generated_at: Optional[str] = None,
+    code_commit: Optional[str] = None,
+) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    """Build the additive validation or final P7 report without rewriting 1.0.0."""
+
+    if split_name not in {"validation", "test"}:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial 1.1.0 supports validation or test only"
+        )
+    validate_apixaban_benchmark(dict(benchmark))
+    validate_prediction_set(dict(predictions))
+    if split["status"] != "frozen" or split["freeze"]["test_locked"] is not True:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial evaluation requires a frozen, test-locked split"
+        )
+    patient_ids = sorted(split["splits"][split_name]["patient_ids"])
+    if not patient_ids:
+        raise ApixabanSingleTrialEvaluationError("Single-trial split is empty")
+    if predictions["split_name"] != split_name:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial prediction split differs from requested split"
+        )
+    if predictions["prediction_set_version"] != "1.2.0" or not predictions[
+        "model_id"
+    ].endswith("+deterministic-abstention-1.1.0"):
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial 1.1.0 requires the current P4.3 projection"
+        )
+    if predictions["prompt_version"] != "apixaban-23-facts-structured-1.0.0":
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial 1.1.0 prompt version changed"
+        )
+    if predictions["benchmark_sha256"] != benchmark_sha256 or predictions[
+        "split_manifest_sha256"
+    ] != split["manifest_sha256"]:
+        raise ApixabanSingleTrialEvaluationError(
+            "Single-trial prediction provenance differs from inputs"
+        )
+
+    catalog = load_question_catalog()
+    expected_keys = {
+        (patient_id, question["question_id"])
+        for patient_id in patient_ids
+        for question in catalog["questions"]
+    }
+    gold_rows = [
+        row for row in benchmark["assessments"] if row["patient_id"] in patient_ids
+    ]
+    model_rows = list(predictions["predictions"])
+    for name, rows in (("gold", gold_rows), ("model", model_rows)):
+        keys = {(row["patient_id"], row["question_id"]) for row in rows}
+        if len(rows) != len(keys) or keys != expected_keys:
+            raise ApixabanSingleTrialEvaluationError(
+                f"{name} facts do not cover the complete {split_name} grid"
+            )
+    if set(mentor_reference) != set(benchmark["patient_ids"]):
+        raise ApixabanSingleTrialEvaluationError(
+            "Mentor reference does not align to benchmark cohort"
+        )
+
+    adapted_gold, gold_diagnostics = adapt_fact_rows(
+        gold_rows, source_name="released_gold"
+    )
+    adapted_model, model_diagnostics = adapt_fact_rows(
+        model_rows, source_name="model_predictions"
+    )
+    gold_projection = _project_patients(
+        adapted_gold, patient_ids, source_name="released-gold"
+    )
+    model_projection = _project_patients(
+        adapted_model, patient_ids, source_name="model-predictions"
+    )
+
+    axis_a_rows = [
+        {
+            "patient_id": patient_id,
+            "reference": mentor_reference[patient_id],
+            "candidate": gold_projection[patient_id]["class"],
+        }
+        for patient_id in patient_ids
+    ]
+    axis_b_rows = [
+        {
+            "patient_id": patient_id,
+            "reference": gold_projection[patient_id]["class"],
+            "candidate": model_projection[patient_id]["class"],
+        }
+        for patient_id in patient_ids
+    ]
+    axis_c_rows = [
+        {
+            "patient_id": patient_id,
+            "reference": mentor_reference[patient_id],
+            "candidate": model_projection[patient_id]["class"],
+        }
+        for patient_id in patient_ids
+    ]
+    trace: Dict[str, Any] = {
+        "trace_version": TRACE_VERSION,
+        "trace_sha256": "pending",
+        "report_version": "1.1.0",
+        "patient_count": len(patient_ids),
+        "rows": [
+            {
+                "patient_id": patient_id,
+                "intended_gold": gold_projection[patient_id],
+                "intended_model": model_projection[patient_id],
+                "mentor_reference_class": mentor_reference[patient_id],
+            }
+            for patient_id in patient_ids
+        ],
+        "restricted_local_only": True,
+        "clinical_evidence_claim_allowed": False,
+    }
+    trace["trace_sha256"] = _self_hash(trace, "trace_sha256")
+    validate_single_trial_trace(trace)
+
+    intended = load_intended_rule_contract()
+    unit_contract = load_unit_adapter_contract()
+    report: Dict[str, Any] = {
+        "report_version": "1.1.0",
+        "report_sha256": "pending",
+        "generated_at": generated_at or _now(),
+        "code_commit": code_commit or current_git_commit(),
+        "provenance": {
+            "benchmark_sha256": benchmark_sha256,
+            "split_manifest_sha256": split["manifest_sha256"],
+            "split_name": split_name,
+            "prediction_set_sha256": prediction_set_sha256,
+            "prediction_set_version": predictions["prediction_set_version"],
+            "model_id": predictions["model_id"],
+            "prompt_version": predictions["prompt_version"],
+            "mentor_results_sha256": mentor_results_sha256,
+            "mentor_candidate_csv_sha256": candidate_csv_sha256,
+            "id_map_sha256": id_map_sha256,
+            "intended_rule_contract_sha256": intended["contract_sha256"],
+            "unit_adapter_contract_sha256": unit_contract["contract_sha256"],
+            "run_contract_sha256": p7_contract_sha256,
+            "evaluation_protocol_version": (
+                "apixaban-single-trial-evaluation-1.1.0"
+            ),
+            "trace_sha256": trace["trace_sha256"],
+            "locked_test_labels_used": split_name == "test",
+        },
+        "model_selection": {
+            "selected_configuration": "llama31_long_context_1_0_0.p4_3",
+            "selection_basis": (
+                "pre_existing_p2_3_fact_level_validation_and_current_p4_3_policy"
+            ),
+            "selection_rationale": (
+                "Long context was selected from pre-existing P2.3 fact-level "
+                "validation results; P4.3 1.1.0 is used because it is the "
+                "current policy, independent of additive validation metrics."
+            ),
+            "single_trial_three_class_results_seen_before_selection": False,
+            "unselected_configuration": "llama31_structured_1_0_0.p4_3",
+            "unselected_artifact_evaluated": False,
+            "p4_3_policy_version": "1.1.0",
+            "configuration_selected_independent_of_additive_metrics": True,
+            "post_observation_additive": split_name == "validation",
+        },
+        "population": {
+            "patient_count": len(patient_ids),
+            "question_count": len(catalog["questions"]),
+            "assessment_count": len(expected_keys),
+            "complete_split_grid": True,
         },
         "runtime_semantics": {
             "technical_fact_carrier_is_clinical_evidence": False,

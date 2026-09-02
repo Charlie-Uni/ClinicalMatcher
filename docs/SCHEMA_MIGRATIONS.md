@@ -24,6 +24,27 @@ conversion command. A converter must preserve the original file, emit its
 source and target versions, and fail rather than invent required provenance or
 gold labels.
 
+## P7 locked-test batch contracts `1.0.0`
+
+P7 adds new, strict `1.0.0` contracts for the predeclared single locked-test
+batch, immutable state events, per-request latency traces, the complete batch
+manifest, the deterministic representative-case package, and the public
+release candidate. These are new audit artifacts; they do not migrate or
+reinterpret an earlier test result. The checked-in batch contract remains
+non-executable until its implementation hashes are complete, P7.1 is frozen,
+and the owner separately authorizes P7.2.
+
+The public-release schema admits only the six predeclared whole-split fields.
+All per-question, per-class, confusion-matrix, patient, rule, unit, P4.7, and
+representative-case values remain owner-only. The batch-manifest validator
+recomputes file hashes, raw-to-P4.3 parent/configuration derivation, and report
+bindings rather than trusting path labels.
+
+`apixaban-single-trial-report/1.1.0` is additive. It supports the current P4.3
+`1.1.0` projection on validation or the one P7 locked test and records whether
+locked labels were used. Historical report `1.0.0` remains valid and is never
+relabeled, replaced, or reinterpreted by the additive validation diagnostic.
+
 ## Decomposition benchmark protocol `1.2.0` to `1.3.0`
 
 Protocol `1.3.0` records the completed LLM-assisted dev reference and freezes

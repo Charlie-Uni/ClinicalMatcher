@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://clinicalmatcher.local/schemas/p7-batch-state-event-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_version", "event_sha256", "event", "contract_sha256", "attempt", "created_at", "gold_backed_phase_started", "details"],
+  "properties": {
+    "event_version": {"const": "1.0.0"},
+    "event_sha256": {"$ref": "#/$defs/sha256"},
+    "event": {"enum": ["attempt_started", "pre_gold_failed", "raw_complete", "gold_phase_started", "terminal_failed", "batch_complete"]},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "attempt": {"type": "integer", "minimum": 1, "maximum": 2},
+    "created_at": {"type": "string", "format": "date-time"},
+    "gold_backed_phase_started": {"type": "boolean"},
+    "details": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reason_code", "artifact_count"],
+      "properties": {
+        "reason_code": {"type": ["string", "null"]},
+        "artifact_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

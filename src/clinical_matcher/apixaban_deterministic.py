@@ -1,10 +1,11 @@
 import json
 import math
 import re
+import time
 from datetime import datetime, timezone
 from importlib.resources import files
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 from .apixaban_contract import load_question_catalog
 from .apixaban_evaluation import validate_prediction_set
@@ -355,6 +356,7 @@ def build_deterministic_prediction_set(
     split_name: str,
     generated_at: Optional[str] = None,
     code_commit: Optional[str] = None,
+    request_observer: Optional[Callable[[Mapping[str, Any]], None]] = None,
 ) -> Dict[str, Any]:
     if split_name not in {"train", "validation", "test"}:
         raise ApixabanDeterministicError("Unsupported split name")
@@ -380,11 +382,24 @@ def build_deterministic_prediction_set(
     ]
     if {patient["patient_id"] for patient in selected} != patient_ids:
         raise ApixabanDeterministicError("Split patient membership is incomplete")
-    predictions = [
-        prediction
-        for patient in sorted(selected, key=lambda item: item["patient_id"])
-        for prediction in extract_patient_predictions(patient, catalog, rule_set)
-    ]
+    predictions = []
+    for request_index, patient in enumerate(
+        sorted(selected, key=lambda item: item["patient_id"]), start=1
+    ):
+        started = time.monotonic()
+        patient_predictions = extract_patient_predictions(patient, catalog, rule_set)
+        latency_seconds = time.monotonic() - started
+        predictions.extend(patient_predictions)
+        if request_observer is not None:
+            request_observer(
+                {
+                    "request_index": request_index,
+                    "patient_id": patient["patient_id"],
+                    "latency_seconds": latency_seconds,
+                    "prompt_tokens": None,
+                    "output_tokens": None,
+                }
+            )
     document = {
         "prediction_set_version": PREDICTION_SET_VERSION,
         "benchmark_sha256": split["dataset"]["benchmark_sha256"],

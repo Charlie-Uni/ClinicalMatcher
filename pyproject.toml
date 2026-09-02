@@ -70,6 +70,7 @@ clinical-matcher-decomposition-dev-assist = "clinical_matcher.decomposition_assi
 clinical-matcher-decomposition-llama-dev = "clinical_matcher.decomposition_llm_cli:main"
 clinical-matcher-decomposition-disagreement = "clinical_matcher.decomposition_disagreement_cli:main"
 clinical-matcher-apixaban-single-trial = "clinical_matcher.apixaban_single_trial_evaluation_cli:main"
+clinical-matcher-p7-locked-test = "clinical_matcher.p7_locked_test_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

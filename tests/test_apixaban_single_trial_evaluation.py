@@ -17,6 +17,7 @@ from clinical_matcher.apixaban_single_trial_evaluation import (
     ApixabanSingleTrialEvaluationError,
     _validate_mentor_summary,
     build_single_trial_evaluation,
+    build_single_trial_evaluation_v1_1,
     load_single_trial_run_contract,
     validate_single_trial_report,
     validate_single_trial_run_contract,
@@ -286,6 +287,33 @@ class ApixabanSingleTrialEvaluationTest(unittest.TestCase):
             ApixabanSingleTrialEvaluationError, "reference counts"
         ):
             validate_single_trial_report(changed)
+
+    def test_additive_1_1_validation_uses_current_projection(self):
+        benchmark, split, predictions, reference = copy.deepcopy(self.inputs)
+        predictions["model_id"] = predictions["model_id"].replace(
+            "deterministic-abstention-1.0.0",
+            "deterministic-abstention-1.1.0",
+        )
+        report, trace = build_single_trial_evaluation_v1_1(
+            benchmark,
+            split,
+            predictions,
+            reference,
+            split_name="validation",
+            benchmark_sha256="3" * 64,
+            prediction_set_sha256="6" * 64,
+            mentor_results_sha256="7" * 64,
+            candidate_csv_sha256="8" * 64,
+            id_map_sha256="9" * 64,
+            p7_contract_sha256="b" * 64,
+            generated_at="2026-01-03T00:00:00Z",
+            code_commit="a" * 40,
+        )
+
+        self.assertEqual("1.1.0", report["report_version"])
+        self.assertFalse(report["provenance"]["locked_test_labels_used"])
+        self.assertTrue(report["model_selection"]["post_observation_additive"])
+        self.assertEqual("1.1.0", trace["report_version"])
 
     def test_incomplete_model_grid_fails_closed(self):
         benchmark, split, predictions, reference = copy.deepcopy(self.inputs)
