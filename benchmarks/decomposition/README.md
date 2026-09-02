@@ -68,6 +68,13 @@ not a model-generated artifact.
 - `dev_annotation_issue_log_1.0.0.json`
   (`decomposition-issue-log-dev-44f675ac70a1335a`)
 - `dev_single_annotator_package_1.0.0.json`
+  - remains the immutable zero-expression source package; its intended
+    independent route was withdrawn before execution on 2026-09-02
+
+The active engineering workflow is documented in
+`docs/DECOMPOSITION_LLM_ASSISTED_WORKFLOW.md`. Its owner-only work artifacts
+remain under ignored `artifacts/decomposition/` and are always labelled
+`llm_assisted_owner_reviewed_silver`, never gold.
   (`decomposition-dev-package-0c421e65a08632af`)
 
 ## Cross-split lexical-overlap disclosure

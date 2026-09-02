@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-dev-assisted-work-1.0.0.schema.json",
+  "title": "Mutable LLM-assisted owner-reviewed decomposition work",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "assisted_work_version", "work_id", "work_sha256", "status",
+    "source_package_id", "source_package_sha256", "decision_id", "decision_sha256",
+    "annotation_mode", "reference_label", "draft_generator", "completion_attestation", "items"
+  ],
+  "properties": {
+    "assisted_work_version": {"const": "1.0.0"},
+    "work_id": {"type": "string", "pattern": "^decomposition-dev-assisted-work-[0-9a-f]{16}$"},
+    "work_sha256": {"$ref": "#/$defs/sha256"},
+    "status": {"enum": ["draft", "completed"]},
+    "source_package_id": {"type": "string", "pattern": "^decomposition-dev-package-[0-9a-f]{16}$"},
+    "source_package_sha256": {"$ref": "#/$defs/sha256"},
+    "decision_id": {"type": "string", "pattern": "^decomposition-llm-assisted-decision-[0-9a-f]{16}$"},
+    "decision_sha256": {"$ref": "#/$defs/sha256"},
+    "annotation_mode": {"const": "llm_assisted_owner_review"},
+    "reference_label": {"const": "llm_assisted_owner_reviewed_silver"},
+    "draft_generator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_id", "revision_status", "prompt_version"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "revision_status": {"const": "session_managed_unpinned"},
+        "prompt_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "completion_attestation": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "llm_assistance_disclosed", "owner_reviewed_every_item",
+        "independent_gold_claimed", "grpo_semantic_oracle_claimed",
+        "test_source_not_inspected"
+      ],
+      "properties": {
+        "llm_assistance_disclosed": {"type": "boolean"},
+        "owner_reviewed_every_item": {"type": "boolean"},
+        "independent_gold_claimed": {"const": false},
+        "grpo_semantic_oracle_claimed": {"const": false},
+        "test_source_not_inspected": {"const": true}
+      }
+    },
+    "items": {
+      "type": "array", "minItems": 40, "maxItems": 40,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "criterion_id", "draft_expression", "review_status",
+          "reviewed_expression", "owner_review_note"
+        ],
+        "properties": {
+          "criterion_id": {"type": "string", "minLength": 1},
+          "draft_expression": {"oneOf": [{"type": "null"}, {"type": "object"}]},
+          "review_status": {"enum": ["pending", "accepted_unchanged", "accepted_with_edits"]},
+          "reviewed_expression": {"oneOf": [{"type": "null"}, {"type": "object"}]},
+          "owner_review_note": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1001,9 +1001,9 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     40-criterion denominator. P5D.5 still owns the final model-prediction
     artifact and inference CLI, so no model-output protocol was preempted here.
 
-- [ ] **P5D.4 Build and annotate the approved small public reference
-  set.** Annotate source text first, then freeze and hash the resulting gold
-  artifact before model inference.
+- [ ] **P5D.4 Build the approved LLM-assisted, owner-reviewed public silver
+  set.** Generate one disclosed LLM draft per item, require an owner decision,
+  and freeze both versions before the descriptive model comparison.
   - Entry condition: P5D.1-P5D.3 pass and the owner has approved the workload.
   - Current status: the owner approved the predeclared single-annotator
     downgrade on 2026-08-31 before any benchmark annotation was created. The
@@ -1032,46 +1032,61 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     owner workflow now creates a private mutable work copy, validates each tree
     without suggesting repairs, reports progress, and requires complete
     coverage plus explicit independence attestations before finalization. The
-    next P5D.4 action is owner annotation of the dev package under the frozen
-    guide, beginning with three workflow checks before continuing the remaining
-    dev items. The original
+    original planned next action was owner-only annotation under the frozen
+    guide. Before the first expression was saved, the owner withdrew that
+    unexecuted route on 2026-09-02 and approved decision
+    `decomposition-llm-assisted-decision-15e268461f4708ff`. The new route keeps
+    all frozen semantic rules but saves a conversational LLM draft and a
+    separate owner-reviewed expression for every item. Its fixed label is
+    `llm_assisted_owner_reviewed_silver`; atoms retain LLM provenance after
+    owner edits. It cannot support independent-human-gold, clinical-ground-
+    truth, IAA, decomposition-accuracy, or GRPO-semantic-oracle claims. The
+    previous `dev_owner_annotation_work.json` remains an ignored zero-expression
+    historical artifact and must not be finalized. The next P5D.4 action is to
+    create the separate assisted work file, generate one dev draft, and record
+    its owner review before proceeding. The original
     lexical-overlap report is historical and cannot be reused for replacement
     test. Real annotation has not started. The packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and
     SHA-256 binding; placeholder hashes are rejected.
-  - Constraints: annotation disagreements and reviewer limitations are
-    reported honestly; model-generated trees cannot become gold through human
+  - Constraints: model assistance and the unpinned conversational revision are
+    disclosed; owner edits never erase LLM provenance; test source remains
+    locked until runtime freeze. Assisted trees never become gold through owner
     acceptance after the fact.
-  - Verify: every selected criterion has the required annotation record, all
-    hashes and source spans revalidate, and the committed artifact passes the
-    public-data guard.
+  - Verify: every selected criterion retains its original draft, owner decision,
+    reviewed expression, hashes, and valid source spans; completion permanently
+    records `independent_gold_claimed=false` and
+    `grpo_semantic_oracle_claimed=false`.
 
-- [ ] **P5D.5 Run the pinned local Llama decomposition baseline.** Use the
+- [ ] **P5D.5 Run the pinned local Llama decomposition comparison.** Use the
   existing loopback-only Ollama Llama-3.1-8B inference route with a new frozen
   decomposition prompt and constrained output contract.
-  - Entry condition: gold is frozen and hidden from prompt/config decisions;
+  - Entry condition: the assisted dev silver is frozen; the local runtime and
+    prompt are then frozen before test source or assisted test silver is viewed;
     pin the exact local model manifest, Ollama version, prompt version, seed or
     deterministic decoding settings, and output schema.
   - Constraints: no new base-model selection, no training, no restricted data,
     and no external inference endpoint. Failed/invalid outputs remain measured
     failures rather than hand-corrected predictions.
   - Verify: a clean public run produces hash-bound machine-readable predictions
-    and a report separating schema validity from semantic gold metrics.
+    and a report separating schema validity from descriptive agreement with the
+    assisted silver. No metric is named accuracy against independent gold.
 
-- [ ] **P5D.6 Perform decomposition error analysis and decide retention.** Trace
+- [ ] **P5D.6 Perform assisted-reference disagreement analysis and decide
+  retention.** Trace
   atom omissions/additions, value/operator mistakes, logical-structure errors,
   and span/provenance failures without changing the frozen gold or evaluator.
   - Entry condition: P5D.5 completes once under the frozen contract.
   - Constraints: any prompt revision is a new development run and cannot
-    overwrite prior predictions. The decomposition gold may later satisfy one
-    semantic-oracle prerequisite for X3, but it does not by itself authorize
-    GRPO or any reward design.
+    overwrite prior predictions. The assisted silver is not an independent
+    semantic oracle and cannot satisfy any X3/GRPO prerequisite.
   - Verify: JSON and Markdown reports reconcile, examples contain public trial
     text only, and the keep/revise decision names the observed failure modes.
 
 Acceptance: a public criterion can be transformed into a traceable typed
-expression tree and evaluated against independently created decomposition gold;
-verifier validity and semantic accuracy remain separate claims.
+expression tree, every LLM draft and owner edit remains auditable, and the
+pinned local comparison is reported as assisted-reference agreement rather than
+independent semantic accuracy.
 
 ---
 

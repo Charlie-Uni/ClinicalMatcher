@@ -1,6 +1,12 @@
 # Dev decomposition annotation workflow
 
-Status: **manual dev annotation workflow; no completed annotations or gold yet**
+Status: **withdrawn unexecuted on 2026-09-02; retained for audit only**
+
+The owner replaced this model-free route before its first expression was saved.
+Do not continue this workflow or use its human-authorship finalization flags for
+the current project. The active route is
+`docs/DECOMPOSITION_LLM_ASSISTED_WORKFLOW.md`; its output is explicitly
+LLM-assisted owner-reviewed silver, never independent human gold.
 
 This workflow lets the owner annotate the 40 frozen public dev criteria without
 changing the immutable source package. It never reads the locked-test source

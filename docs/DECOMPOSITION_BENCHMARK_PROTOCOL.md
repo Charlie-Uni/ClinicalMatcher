@@ -426,6 +426,29 @@ version in which a second qualified annotator independently annotates every
 original source item without seeing the first annotation or model output,
 followed by the full adjudication protocol.
 
+### 2026-09-02 owner revision: LLM-assisted engineering track
+
+Before the first expression was saved and before any completed annotation or
+gold artifact existed, the owner withdrew the unexecuted single-annotator route
+and approved `decomposition-llm-assisted-decision/1.0.0`. The historical
+single-annotator decision and tooling remain immutable audit evidence; they are
+not represented as executed.
+
+The new route retains the frozen source selection, catalog, issue resolutions,
+and the semantic rule groups in decomposition guide `1.1.0`. It replaces only
+the prohibition on model drafts and all claims that depended on independence.
+Each item stores the conversational LLM draft, the owner-reviewed expression,
+and either `accepted_unchanged` or `accepted_with_edits`; edits require a note.
+All atoms retain LLM provenance even after owner modification.
+
+The resulting artifact is labelled
+`llm_assisted_owner_reviewed_silver`. It is not independent human gold,
+clinical ground truth, IAA evidence, or an independent semantic oracle for
+GRPO/DPO. Metrics against it may be reported only as descriptive agreement
+with the assisted silver reference. The test source remains locked until the
+local runtime and prompt are frozen; preserving that timing discipline reduces
+configuration leakage but does not restore reference independence.
+
 ## Leakage-safe dev/test timeline
 
 The following order is mandatory:
