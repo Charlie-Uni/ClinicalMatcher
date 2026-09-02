@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 from typing import Any, Callable, Dict, Mapping, Optional, Sequence, Tuple
 
@@ -34,6 +35,7 @@ from .apixaban_single_trial_evaluation import (
 )
 from .apixaban_split import load_apixaban_split_manifest, write_private_json
 from .apixaban_structured_llm import (
+    detect_hardware,
     load_long_context_contract,
     load_structured_llm_contract,
     run_structured_llm_baseline,
@@ -63,6 +65,38 @@ from .p7_locked_test import (
 
 RawPhase = Callable[..., Dict[str, Any]]
 GoldPhase = Callable[..., Dict[str, Any]]
+EnvironmentCheck = Callable[[Mapping[str, Any], Path], None]
+
+
+def _assert_frozen_execution_environment(
+    contract: Mapping[str, Any], repository_root: Path
+) -> None:
+    root = repository_root.resolve()
+    head = subprocess.run(
+        ["git", "-C", str(root), "rev-parse", "HEAD"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    if head != contract["implementation"]["code_commit"]:
+        raise P7LockedTestError("P7 repository commit differs from the frozen pin")
+    status = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=all",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout
+    if status:
+        raise P7LockedTestError("P7 requires a completely clean worktree")
+    if detect_hardware() != contract["implementation"]["hardware"]:
+        raise P7LockedTestError("P7 hardware differs from the frozen environment")
 
 
 def _private_directory(path: Path) -> Path:
@@ -525,12 +559,14 @@ def _execute_locked_test_batch(
     contract: Dict[str, Any],
     raw_phase: RawPhase,
     gold_phase: GoldPhase,
+    environment_check: EnvironmentCheck,
 ) -> Path:
     """Testable state machine; the public wrapper fixes both phase functions."""
 
     frozen_contract = dict(contract)
     require_locked_test_authorization(frozen_contract)
     validate_p7_contract(frozen_contract, repository_root=repository_root)
+    environment_check(frozen_contract, repository_root)
 
     assert_restricted_local_path(output_root)
     if output_root.exists() and not output_root.is_dir():
@@ -731,4 +767,5 @@ def execute_locked_test_batch(
         contract=load_p7_contract(),
         raw_phase=run_raw_phase,
         gold_phase=run_gold_phase,
+        environment_check=_assert_frozen_execution_environment,
     )

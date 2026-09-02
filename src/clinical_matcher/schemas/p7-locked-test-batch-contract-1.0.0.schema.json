@@ -233,9 +233,13 @@
     "implementation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["pin_status", "files"],
+      "required": ["pin_status", "code_commit", "files", "hardware", "command", "retry_command_addition"],
       "properties": {
         "pin_status": {"enum": ["pending", "complete"]},
+        "code_commit": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{40}$"
+        },
         "files": {
           "type": "array",
           "uniqueItems": true,
@@ -248,6 +252,30 @@
               "sha256": {"$ref": "#/$defs/sha256"}
             }
           }
+        },
+        "hardware": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["system", "chip", "cpu_cores", "memory_bytes", "architecture"],
+          "properties": {
+            "system": {"const": "Darwin"},
+            "chip": {"const": "Apple M3"},
+            "cpu_cores": {"const": 8},
+            "memory_bytes": {"const": 25769803776},
+            "architecture": {"const": "arm64"}
+          }
+        },
+        "command": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "retry_command_addition": {
+          "type": "array",
+          "prefixItems": [{"const": "--allow-single-pre-gold-retry"}],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
         }
       }
     }
@@ -271,6 +299,7 @@
           "implementation": {
             "properties": {
               "pin_status": {"const": "pending"},
+              "code_commit": {"type": "null"},
               "files": {"maxItems": 0}
             }
           }
@@ -295,6 +324,7 @@
           "implementation": {
             "properties": {
               "pin_status": {"const": "complete"},
+              "code_commit": {"type": "string"},
               "files": {"minItems": 1}
             }
           }
@@ -317,6 +347,7 @@
           "implementation": {
             "properties": {
               "pin_status": {"const": "complete"},
+              "code_commit": {"type": "string"},
               "files": {"minItems": 1}
             }
           }

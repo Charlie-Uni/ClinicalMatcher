@@ -118,6 +118,38 @@ VALIDATION_PROJECTION_PINS = (
         "storage": "owner_only_outside_repository",
     },
 )
+EXPECTED_HARDWARE = {
+    "system": "Darwin",
+    "chip": "Apple M3",
+    "cpu_cores": 8,
+    "memory_bytes": 25769803776,
+    "architecture": "arm64",
+}
+EXECUTION_COMMAND = (
+    "/Users/leaf/Documents/GitHub/ClinicalMatcher/.venv/bin/clinical-matcher-p7-locked-test",
+    "--repository-root",
+    "/Users/leaf/Documents/GitHub/ClinicalMatcher",
+    "--output-root",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/runs/p7-locked-test-single-batch-v1",
+    "--frozen-split",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/apixaban-split.frozen-70-15-15-seed17.json",
+    "--staging-corpus",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/apixaban-staging-corpus.json",
+    "--benchmark",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/apixaban-fact-benchmark.json",
+    "--benchmark-manifest",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/apixaban-fact-benchmark.manifest.json",
+    "--mentor-results",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/mentor-reference/screening_results.json",
+    "--mentor-candidate-csv",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/mentor-reference/ideal_candidates.csv",
+    "--id-map",
+    "/Users/leaf/Desktop/VRI1/ClinicalMatcher-local/apixaban-staging-corpus.id-map.json",
+    "--acknowledge-restricted-data-local-only",
+    "--acknowledge-only-locked-test-exposure",
+    "--acknowledge-no-arm-or-threshold-changes",
+    "--acknowledge-post-gold-failure-is-terminal",
+)
 
 
 class P7LockedTestError(ValueError):
@@ -229,6 +261,14 @@ def validate_p7_contract(
     implementation = document["implementation"]
     if implementation["pin_status"] == "complete" and not implementation["files"]:
         raise P7LockedTestError("Complete P7 implementation pin is empty")
+    if implementation["hardware"] != EXPECTED_HARDWARE:
+        raise P7LockedTestError("P7 execution hardware changed")
+    if tuple(implementation["command"]) != EXECUTION_COMMAND:
+        raise P7LockedTestError("P7 execution command changed")
+    if implementation["retry_command_addition"] != [
+        "--allow-single-pre-gold-retry"
+    ]:
+        raise P7LockedTestError("P7 retry command changed")
 
     if repository_root is not None:
         root = repository_root.resolve()

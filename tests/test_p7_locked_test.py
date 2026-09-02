@@ -122,15 +122,20 @@ class P7LockedTestTests(unittest.TestCase):
             "p7_2_authorized": True,
             "locked_test_access_allowed": True,
         }
-        contract["implementation"] = {
-            "pin_status": "complete",
-            "files": [
-                {
-                    "path": "pyproject.toml",
-                    "sha256": file_sha256(self.repository_root / "pyproject.toml"),
-                }
-            ],
-        }
+        contract["implementation"].update(
+            {
+                "pin_status": "complete",
+                "code_commit": "0" * 40,
+                "files": [
+                    {
+                        "path": "pyproject.toml",
+                        "sha256": file_sha256(
+                            self.repository_root / "pyproject.toml"
+                        ),
+                    }
+                ],
+            }
+        )
         for field, path in inputs.items():
             contract["dataset"][field] = file_sha256(path)
         return _rehash_contract(contract)
@@ -165,6 +170,7 @@ class P7LockedTestTests(unittest.TestCase):
             contract=contract,
             raw_phase=kwargs.get("raw_phase", _fake_raw_phase),
             gold_phase=kwargs.get("gold_phase", _fake_gold_phase),
+            environment_check=lambda _contract, _root: None,
             allow_pre_gold_retry=kwargs.get("allow_pre_gold_retry", False),
         )
 
@@ -188,6 +194,7 @@ class P7LockedTestTests(unittest.TestCase):
                     contract=contract,
                     raw_phase=_fake_raw_phase,
                     gold_phase=_fake_gold_phase,
+                    environment_check=lambda _contract, _root: None,
                     allow_pre_gold_retry=False,
                 )
             self.assertFalse(absent.exists())
