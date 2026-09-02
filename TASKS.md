@@ -1035,7 +1035,13 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     original planned next action was owner-only annotation under the frozen
     guide. Before the first expression was saved, the owner withdrew that
     unexecuted route on 2026-09-02 and approved decision
-    `decomposition-llm-assisted-decision-15e268461f4708ff`. The new route keeps
+    `decomposition-llm-assisted-decision-15e268461f4708ff`. That 1.0.0 route
+    saved one draft and zero owner reviews. Before review began, the owner
+    approved the additive batch decision
+    `decomposition-llm-assisted-decision-e99aee815c19aa83`: all 40 drafts must
+    validate and be written atomically before itemwise owner review begins.
+    Partial batches are forbidden and the earlier ignored work file is retained
+    only as history. The active route keeps
     all frozen semantic rules but saves a conversational LLM draft and a
     separate owner-reviewed expression for every item. Its fixed label is
     `llm_assisted_owner_reviewed_silver`; atoms retain LLM provenance after
@@ -1043,10 +1049,19 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     truth, IAA, decomposition-accuracy, or GRPO-semantic-oracle claims. The
     previous `dev_owner_annotation_work.json` remains an ignored zero-expression
     historical artifact and must not be finalized. The next P5D.4 action is to
-    create the separate assisted work file, generate one dev draft, and record
-    its owner review before proceeding. The original
+    owner-only 40-item batch is now generated and atomically validated as
+    `decomposition-dev-assisted-work-750aa254f3d4ed79` (work SHA-256
+    `750aa254f3d4ed79c418fa3b596f97c28f4449166d4740e85d8f4d4a317f1e35`;
+    draft-file SHA-256
+    `eff51837014f53243b494c31e42db54acb242eb49cfa3bb22162fa6b714d65fe`).
+    It contains 40 drafts and zero owner reviews; both files remain ignored and
+    mode `0600`. Two pre-review intermediate batches were retained as ignored
+    audit evidence after semantic self-review corrected one unsupported timing
+    atom plus negation-context and BMI span boundaries. The next P5D.4 action is for the
+    owner to review every frozen draft individually. The original
     lexical-overlap report is historical and cannot be reused for replacement
-    test. Real annotation has not started. The packaged catalog-rules and
+    test. LLM draft generation is complete; owner review has not started. The
+    packaged catalog-rules and
     annotation-guide resources are now frozen and enforced by exact version and
     SHA-256 binding; placeholder hashes are rejected.
   - Constraints: model assistance and the unpinned conversational revision are

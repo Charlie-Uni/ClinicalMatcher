@@ -434,6 +434,17 @@ and approved `decomposition-llm-assisted-decision/1.0.0`. The historical
 single-annotator decision and tooling remain immutable audit evidence; they are
 not represented as executed.
 
+Decision 1.0.0 subsequently saved one dev LLM draft and zero owner reviews.
+Before review began, the owner approved the additive sequence revision
+`decomposition-llm-assisted-decision/1.1.0`, SHA-256
+`e99aee815c19aa83f641a20a89d16acfb41b18d5985b12b9918cefd19bb9df51`.
+Under 1.1.0, exactly 40 drafts in frozen package order must validate and be
+written atomically before any owner review. Partial batches are invalid. The
+owner then reviews every frozen draft individually. The earlier one-draft work
+file is retained as ignored historical evidence and is not resumed or
+finalized. This changes sequence only; labels, semantic rules, provenance, and
+claim boundaries below do not change.
+
 The new route retains the frozen source selection, catalog, issue resolutions,
 and the semantic rule groups in decomposition guide `1.1.0`. It replaces only
 the prohibition on model drafts and all claims that depended on independence.

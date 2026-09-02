@@ -8,7 +8,7 @@ from clinical_matcher.decomposition_assisted_annotation import (
     finalize_assisted_work,
     load_assisted_decision,
     review_assisted_draft,
-    set_assisted_draft,
+    set_assisted_draft_batch,
     start_assisted_work,
     validate_assisted_work,
 )
@@ -62,6 +62,19 @@ class DecompositionAssistedAnnotationTest(unittest.TestCase):
             },
         }
 
+    def batch_for(self, work, *, method="llm", field=None):
+        return {
+            "drafts": [
+                {
+                    "criterion_id": item["criterion_id"],
+                    "expression": self.expression_for(
+                        item["criterion_id"], field=field, method=method
+                    ),
+                }
+                for item in work["items"]
+            ]
+        }
+
     def test_start_is_disclosed_silver_and_keeps_old_route_unexecuted(self):
         work = start_assisted_work(self.package, self.catalog)
         validate_assisted_work(self.package, self.catalog, work)
@@ -71,12 +84,19 @@ class DecompositionAssistedAnnotationTest(unittest.TestCase):
         self.assertFalse(work["completion_attestation"]["grpo_semantic_oracle_claimed"])
         self.assertEqual(0, assisted_progress(work)["drafted"])
         self.assertEqual(0, self.decision["superseded_route"]["saved_expression_count"])
+        self.assertEqual(
+            "decomposition-llm-assisted-decision/1.1.0",
+            self.decision["decision_version"],
+        )
+        self.assertFalse(self.decision["workflow_sequence"]["partial_batch_allowed"])
 
-    def test_draft_then_unchanged_owner_review(self):
+    def test_complete_batch_then_unchanged_owner_review(self):
         work = start_assisted_work(self.package, self.catalog)
         criterion_id = work["items"][0]["criterion_id"]
-        draft = self.expression_for(criterion_id)
-        work = set_assisted_draft(self.package, self.catalog, work, criterion_id, draft)
+        batch = self.batch_for(work)
+        draft = batch["drafts"][0]["expression"]
+        work = set_assisted_draft_batch(self.package, self.catalog, work, batch)
+        self.assertEqual(40, assisted_progress(work)["drafted"])
         self.assertEqual("owner_review", assisted_progress(work)["next_action"])
         work = review_assisted_draft(
             self.package,
@@ -88,31 +108,56 @@ class DecompositionAssistedAnnotationTest(unittest.TestCase):
         self.assertEqual(1, assisted_progress(work)["reviewed"])
         self.assertEqual(draft, work["items"][0]["reviewed_expression"])
 
-    def test_second_draft_is_blocked_until_first_owner_review(self):
+    def test_partial_or_repeated_batch_is_rejected(self):
         work = start_assisted_work(self.package, self.catalog)
-        first_id = work["items"][0]["criterion_id"]
-        second_id = work["items"][1]["criterion_id"]
-        work = set_assisted_draft(
-            self.package,
-            self.catalog,
-            work,
-            first_id,
-            self.expression_for(first_id),
-        )
+        partial = self.batch_for(work)
+        partial["drafts"].pop()
         with self.assertRaises(DecompositionAssistedAnnotationError):
-            set_assisted_draft(
+            set_assisted_draft_batch(self.package, self.catalog, work, partial)
+        self.assertEqual(0, assisted_progress(work)["drafted"])
+        complete = self.batch_for(work)
+        work = set_assisted_draft_batch(self.package, self.catalog, work, complete)
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            set_assisted_draft_batch(self.package, self.catalog, work, complete)
+
+    def test_batch_shape_order_and_membership_are_fail_closed(self):
+        work = start_assisted_work(self.package, self.catalog)
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            set_assisted_draft_batch(self.package, self.catalog, work, [])
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            set_assisted_draft_batch(
+                self.package, self.catalog, work, {"drafts": [], "extra": True}
+            )
+        reversed_batch = self.batch_for(work)
+        reversed_batch["drafts"].reverse()
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            set_assisted_draft_batch(
+                self.package, self.catalog, work, reversed_batch
+            )
+        duplicated = self.batch_for(work)
+        duplicated["drafts"][-1] = copy.deepcopy(duplicated["drafts"][0])
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            set_assisted_draft_batch(self.package, self.catalog, work, duplicated)
+        self.assertEqual(0, assisted_progress(work)["drafted"])
+
+    def test_review_is_blocked_before_complete_batch(self):
+        work = start_assisted_work(self.package, self.catalog)
+        criterion_id = work["items"][0]["criterion_id"]
+        with self.assertRaises(DecompositionAssistedAnnotationError):
+            review_assisted_draft(
                 self.package,
                 self.catalog,
                 work,
-                second_id,
-                self.expression_for(second_id),
+                criterion_id,
+                "accepted_unchanged",
             )
 
     def test_edited_review_requires_real_change_and_note(self):
         work = start_assisted_work(self.package, self.catalog)
         criterion_id = work["items"][0]["criterion_id"]
-        draft = self.expression_for(criterion_id)
-        work = set_assisted_draft(self.package, self.catalog, work, criterion_id, draft)
+        batch = self.batch_for(work)
+        draft = batch["drafts"][0]["expression"]
+        work = set_assisted_draft_batch(self.package, self.catalog, work, batch)
         with self.assertRaises(DecompositionAssistedAnnotationError):
             review_assisted_draft(
                 self.package,
@@ -138,23 +183,12 @@ class DecompositionAssistedAnnotationTest(unittest.TestCase):
 
     def test_human_provenance_and_unknown_field_are_rejected(self):
         work = start_assisted_work(self.package, self.catalog)
-        criterion_id = work["items"][0]["criterion_id"]
+        invalid = self.batch_for(work, method="human")
         with self.assertRaises(DecompositionAssistedAnnotationError):
-            set_assisted_draft(
-                self.package,
-                self.catalog,
-                work,
-                criterion_id,
-                self.expression_for(criterion_id, method="human"),
-            )
+            set_assisted_draft_batch(self.package, self.catalog, work, invalid)
+        invalid = self.batch_for(work, field="invented_field")
         with self.assertRaises(DecompositionAssistedAnnotationError):
-            set_assisted_draft(
-                self.package,
-                self.catalog,
-                work,
-                criterion_id,
-                self.expression_for(criterion_id, field="invented_field"),
-            )
+            set_assisted_draft_batch(self.package, self.catalog, work, invalid)
 
     def test_finalization_requires_all_owner_reviews_and_disclosure(self):
         work = start_assisted_work(self.package, self.catalog)
@@ -167,15 +201,11 @@ class DecompositionAssistedAnnotationTest(unittest.TestCase):
                 every_item_reviewed=True,
                 test_source_not_inspected=True,
             )
+        work = set_assisted_draft_batch(
+            self.package, self.catalog, work, self.batch_for(work)
+        )
         for item in list(work["items"]):
             criterion_id = item["criterion_id"]
-            work = set_assisted_draft(
-                self.package,
-                self.catalog,
-                work,
-                criterion_id,
-                self.expression_for(criterion_id),
-            )
             work = review_assisted_draft(
                 self.package,
                 self.catalog,

@@ -10,10 +10,9 @@ from typing import Any, Dict, Optional, Sequence, Tuple
 from .decomposition_assisted_annotation import (
     assisted_item_view,
     assisted_progress,
-    clear_assisted_item,
     finalize_assisted_work,
     review_assisted_draft,
-    set_assisted_draft,
+    set_assisted_draft_batch,
     start_assisted_work,
     validate_assisted_work,
 )
@@ -69,10 +68,9 @@ def _parser() -> argparse.ArgumentParser:
     catalog = commands.add_parser("catalog")
     catalog.add_argument("--query")
 
-    draft = commands.add_parser("set-draft")
+    draft = commands.add_parser("set-draft-batch")
     draft.add_argument("--work", type=Path, required=True)
-    draft.add_argument("--criterion-id", required=True)
-    draft.add_argument("--expression-json", type=Path, required=True)
+    draft.add_argument("--drafts-json", type=Path, required=True)
 
     review = commands.add_parser("review")
     review.add_argument("--work", type=Path, required=True)
@@ -84,10 +82,6 @@ def _parser() -> argparse.ArgumentParser:
     )
     review.add_argument("--expression-json", type=Path)
     review.add_argument("--note")
-
-    clear = commands.add_parser("clear-item")
-    clear.add_argument("--work", type=Path, required=True)
-    clear.add_argument("--criterion-id", required=True)
 
     finalize = commands.add_parser("finalize")
     finalize.add_argument("--work", type=Path, required=True)
@@ -144,13 +138,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if args.command == "validate":
         _print({**assisted_progress(work), "valid": True, "work_id": work["work_id"]})
         return 0
-    if args.command == "set-draft":
-        updated = set_assisted_draft(
+    if args.command == "set-draft-batch":
+        updated = set_assisted_draft_batch(
             package,
             catalog,
             work,
-            args.criterion_id,
-            read_object(args.expression_json),
+            read_object(args.drafts_json),
         )
     elif args.command == "review":
         edited = read_object(args.expression_json) if args.expression_json else None
@@ -163,8 +156,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             edited_expression=edited,
             note=args.note,
         )
-    elif args.command == "clear-item":
-        updated = clear_assisted_item(package, catalog, work, args.criterion_id)
     else:
         completed = finalize_assisted_work(
             package,

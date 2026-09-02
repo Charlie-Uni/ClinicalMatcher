@@ -20,8 +20,8 @@ from .validation import load_schema, validate_document
 
 WORK_VERSION = "1.0.0"
 WORK_SCHEMA = "schemas/decomposition-dev-assisted-work-1.0.0.schema.json"
-DECISION_RESOURCE = "resources/decomposition-llm-assisted-decision-1.0.0.json"
-DECISION_SCHEMA = "schemas/decomposition-llm-assisted-decision-1.0.0.schema.json"
+DECISION_RESOURCE = "resources/decomposition-llm-assisted-decision-1.1.0.json"
+DECISION_SCHEMA = "schemas/decomposition-llm-assisted-decision-1.1.0.schema.json"
 
 
 class DecompositionAssistedAnnotationError(ValueError):
@@ -178,6 +178,19 @@ def validate_assisted_work(
         raise DecompositionAssistedAnnotationError(
             "Assisted items must preserve the source package order and membership"
         )
+    drafted_count = sum(
+        item["draft_expression"] is not None for item in work["items"]
+    )
+    if drafted_count not in {0, len(work["items"])}:
+        raise DecompositionAssistedAnnotationError(
+            "Assisted work must contain either zero drafts or the complete draft batch"
+        )
+    if drafted_count == 0 and any(
+        item["review_status"] != "pending" for item in work["items"]
+    ):
+        raise DecompositionAssistedAnnotationError(
+            "Owner review cannot exist before the complete draft batch"
+        )
 
     completed = work["status"] == "completed"
     if require_completed and not completed:
@@ -284,35 +297,50 @@ def _find_item(work: Dict[str, Any], criterion_id: str) -> Dict[str, Any]:
     return matches[0]
 
 
-def set_assisted_draft(
+def set_assisted_draft_batch(
     package: Dict[str, Any],
     catalog: Dict[str, Any],
     work: Dict[str, Any],
-    criterion_id: str,
-    expression: Dict[str, Any],
+    draft_batch: Mapping[str, Any],
 ) -> Dict[str, Any]:
     validate_assisted_work(package, catalog, work)
     if work["status"] != "draft":
         raise DecompositionAssistedAnnotationError("Completed assisted work is immutable")
-    pending_reviews = [
-        item
-        for item in work["items"]
-        if item["draft_expression"] is not None and item["review_status"] == "pending"
-    ]
-    if pending_reviews:
+    if any(item["draft_expression"] is not None for item in work["items"]):
         raise DecompositionAssistedAnnotationError(
-            "Owner must review or clear the existing LLM draft before another draft"
+            "The all-or-none LLM draft batch may only be applied to fresh work"
         )
+    if (
+        not isinstance(draft_batch, Mapping)
+        or set(draft_batch) != {"drafts"}
+        or not isinstance(draft_batch["drafts"], list)
+    ):
+        raise DecompositionAssistedAnnotationError(
+            "Draft batch must contain exactly one drafts array"
+        )
+    drafts = draft_batch["drafts"]
+    expected_ids = [item["criterion_id"] for item in work["items"]]
+    observed_ids: list[str] = []
+    for index, draft in enumerate(drafts):
+        if not isinstance(draft, dict) or set(draft) != {"criterion_id", "expression"}:
+            raise DecompositionAssistedAnnotationError(
+                f"Draft batch item {index} must contain criterion_id and expression"
+            )
+        if not isinstance(draft["criterion_id"], str) or not isinstance(
+            draft["expression"], dict
+        ):
+            raise DecompositionAssistedAnnotationError(
+                f"Draft batch item {index} has invalid field types"
+            )
+        observed_ids.append(draft["criterion_id"])
+    if observed_ids != expected_ids or len(observed_ids) != len(set(observed_ids)):
+        raise DecompositionAssistedAnnotationError(
+            "Draft batch must cover every source item exactly once in package order"
+        )
+
     result = copy.deepcopy(work)
-    item = _find_item(result, criterion_id)
-    if item["draft_expression"] is not None:
-        raise DecompositionAssistedAnnotationError(
-            "Clear the existing item before replacing its LLM draft"
-        )
-    item["draft_expression"] = copy.deepcopy(expression)
-    item["review_status"] = "pending"
-    item["reviewed_expression"] = None
-    item["owner_review_note"] = None
+    for item, draft in zip(result["items"], drafts):
+        item["draft_expression"] = copy.deepcopy(draft["expression"])
     result = _rehash_work(result)
     validate_assisted_work(package, catalog, result)
     return result
@@ -331,6 +359,10 @@ def review_assisted_draft(
     validate_assisted_work(package, catalog, work)
     if work["status"] != "draft":
         raise DecompositionAssistedAnnotationError("Completed assisted work is immutable")
+    if any(item["draft_expression"] is None for item in work["items"]):
+        raise DecompositionAssistedAnnotationError(
+            "Owner review cannot begin until the complete LLM draft batch is frozen"
+        )
     result = copy.deepcopy(work)
     item = _find_item(result, criterion_id)
     if item["draft_expression"] is None:
@@ -358,28 +390,6 @@ def review_assisted_draft(
     return result
 
 
-def clear_assisted_item(
-    package: Dict[str, Any],
-    catalog: Dict[str, Any],
-    work: Dict[str, Any],
-    criterion_id: str,
-) -> Dict[str, Any]:
-    validate_assisted_work(package, catalog, work)
-    if work["status"] != "draft":
-        raise DecompositionAssistedAnnotationError("Completed assisted work is immutable")
-    result = copy.deepcopy(work)
-    item = _find_item(result, criterion_id)
-    item.update(
-        draft_expression=None,
-        review_status="pending",
-        reviewed_expression=None,
-        owner_review_note=None,
-    )
-    result = _rehash_work(result)
-    validate_assisted_work(package, catalog, result)
-    return result
-
-
 def assisted_progress(work: Mapping[str, Any]) -> Dict[str, Any]:
     drafted = [item for item in work["items"] if item["draft_expression"] is not None]
     reviewed = [item for item in work["items"] if item["review_status"] != "pending"]
@@ -397,14 +407,14 @@ def assisted_progress(work: Mapping[str, Any]) -> Dict[str, Any]:
         "remaining_drafts": len(missing_drafts),
         "remaining_reviews": len(work["items"]) - len(reviewed),
         "next_criterion_id": (
-            pending_reviews[0]["criterion_id"]
-            if pending_reviews
-            else (missing_drafts[0]["criterion_id"] if missing_drafts else None)
+            missing_drafts[0]["criterion_id"]
+            if missing_drafts
+            else (pending_reviews[0]["criterion_id"] if pending_reviews else None)
         ),
         "next_action": (
-            "owner_review"
-            if pending_reviews
-            else ("llm_draft" if missing_drafts else None)
+            "llm_draft_batch"
+            if missing_drafts
+            else ("owner_review" if pending_reviews else None)
         ),
     }
 

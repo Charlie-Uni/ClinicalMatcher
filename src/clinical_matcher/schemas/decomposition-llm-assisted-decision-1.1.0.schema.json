@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-llm-assisted-decision-1.1.0.schema.json",
+  "title": "Owner decision for batch LLM drafts followed by itemwise owner review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision_version", "decision_id", "decision_sha256", "decision_status",
+    "decided_on", "decided_by_role", "supersedes", "superseded_route",
+    "annotation_mode", "reference_label", "semantic_rules_base", "override_scope",
+    "workflow_sequence", "draft_generator", "owner_review", "claim_boundary"
+  ],
+  "properties": {
+    "decision_version": {"const": "decomposition-llm-assisted-decision/1.1.0"},
+    "decision_id": {"type": "string", "pattern": "^decomposition-llm-assisted-decision-[0-9a-f]{16}$"},
+    "decision_sha256": {"$ref": "#/$defs/sha256"},
+    "decision_status": {"const": "owner_approved_before_batch_generation"},
+    "decided_on": {"const": "2026-09-02"},
+    "decided_by_role": {"const": "data_owner_and_project_owner"},
+    "supersedes": {
+      "type": "object", "additionalProperties": false,
+      "required": ["decision_version", "decision_sha256", "prior_work_state"],
+      "properties": {
+        "decision_version": {"const": "decomposition-llm-assisted-decision/1.0.0"},
+        "decision_sha256": {"const": "15e268461f4708ffb11bafd8712913ee622ace80c380e5a0aee7915825de6dd1"},
+        "prior_work_state": {"const": "one_llm_draft_saved_zero_owner_reviews_completed"}
+      }
+    },
+    "superseded_route": {
+      "type": "object", "additionalProperties": false,
+      "required": ["annotation_mode", "saved_expression_count", "completed_artifact_exists", "status"],
+      "properties": {
+        "annotation_mode": {"const": "single_annotator"},
+        "saved_expression_count": {"const": 0},
+        "completed_artifact_exists": {"const": false},
+        "status": {"const": "withdrawn_unexecuted_not_gold"}
+      }
+    },
+    "annotation_mode": {"const": "llm_assisted_owner_review"},
+    "reference_label": {"const": "llm_assisted_owner_reviewed_silver"},
+    "semantic_rules_base": {
+      "type": "object", "additionalProperties": false,
+      "required": ["guide_version", "guide_sha256", "retained_rule_groups"],
+      "properties": {
+        "guide_version": {"const": "decomposition-guide/1.1.0"},
+        "guide_sha256": {"const": "6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925"},
+        "retained_rule_groups": {
+          "const": [
+            "criterion_semantics", "expression_rules", "atom_rules", "time_rules",
+            "provenance_rules", "condition_id_rules", "ambiguity_resolution_rules",
+            "unrepresentable_policy"
+          ]
+        }
+      }
+    },
+    "override_scope": {
+      "const": "This decision replaces only the guide's independence/model-output prohibition and resulting gold claim for this assisted workflow; all listed semantic rule groups remain frozen and unchanged."
+    },
+    "workflow_sequence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["draft_phase", "review_phase", "batch_write", "partial_batch_allowed"],
+      "properties": {
+        "draft_phase": {"const": "generate_and_validate_all_40_dev_drafts_before_owner_review"},
+        "review_phase": {"const": "owner_reviews_each_of_40_items_after_complete_batch_is_frozen"},
+        "batch_write": {"const": "atomic_all_or_none"},
+        "partial_batch_allowed": {"const": false}
+      }
+    },
+    "draft_generator": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_id", "revision_status", "prompt_version", "reproducibility_limit"],
+      "properties": {
+        "model_id": {"const": "openai-codex-conversational-assistant"},
+        "revision_status": {"const": "session_managed_unpinned"},
+        "prompt_version": {"const": "clinicalmatcher-assisted-decomposition-draft/1.0.0"},
+        "reproducibility_limit": {"const": "The conversational draft model revision is not owner-pinned; every draft and owner decision is retained for audit rather than represented as a reproducible model baseline."}
+      }
+    },
+    "owner_review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["review_every_item", "allowed_decisions", "edited_item_note_required", "model_provenance_retained_after_edit"],
+      "properties": {
+        "review_every_item": {"const": true},
+        "allowed_decisions": {"const": ["accepted_unchanged", "accepted_with_edits"]},
+        "edited_item_note_required": {"const": true},
+        "model_provenance_retained_after_edit": {"const": true}
+      }
+    },
+    "claim_boundary": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "independent_human_gold", "clinical_ground_truth", "inter_annotator_agreement",
+        "grpo_independent_semantic_oracle", "permitted_evaluation_wording",
+        "test_source_remains_locked_until_runtime_freeze"
+      ],
+      "properties": {
+        "independent_human_gold": {"const": false},
+        "clinical_ground_truth": {"const": false},
+        "inter_annotator_agreement": {"const": false},
+        "grpo_independent_semantic_oracle": {"const": false},
+        "permitted_evaluation_wording": {"const": "descriptive agreement with an LLM-assisted owner-reviewed silver reference"},
+        "test_source_remains_locked_until_runtime_freeze": {"const": true}
+      }
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

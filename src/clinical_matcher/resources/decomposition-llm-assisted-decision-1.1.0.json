@@ -1,0 +1,57 @@
+{
+  "annotation_mode": "llm_assisted_owner_review",
+  "claim_boundary": {
+    "clinical_ground_truth": false,
+    "grpo_independent_semantic_oracle": false,
+    "independent_human_gold": false,
+    "inter_annotator_agreement": false,
+    "permitted_evaluation_wording": "descriptive agreement with an LLM-assisted owner-reviewed silver reference",
+    "test_source_remains_locked_until_runtime_freeze": true
+  },
+  "decided_by_role": "data_owner_and_project_owner",
+  "decided_on": "2026-09-02",
+  "decision_id": "decomposition-llm-assisted-decision-e99aee815c19aa83",
+  "decision_sha256": "e99aee815c19aa83f641a20a89d16acfb41b18d5985b12b9918cefd19bb9df51",
+  "decision_status": "owner_approved_before_batch_generation",
+  "decision_version": "decomposition-llm-assisted-decision/1.1.0",
+  "draft_generator": {
+    "model_id": "openai-codex-conversational-assistant",
+    "prompt_version": "clinicalmatcher-assisted-decomposition-draft/1.0.0",
+    "reproducibility_limit": "The conversational draft model revision is not owner-pinned; every draft and owner decision is retained for audit rather than represented as a reproducible model baseline.",
+    "revision_status": "session_managed_unpinned"
+  },
+  "override_scope": "This decision replaces only the guide's independence/model-output prohibition and resulting gold claim for this assisted workflow; all listed semantic rule groups remain frozen and unchanged.",
+  "owner_review": {
+    "allowed_decisions": ["accepted_unchanged", "accepted_with_edits"],
+    "edited_item_note_required": true,
+    "model_provenance_retained_after_edit": true,
+    "review_every_item": true
+  },
+  "reference_label": "llm_assisted_owner_reviewed_silver",
+  "semantic_rules_base": {
+    "guide_sha256": "6ba373984446704f27969b83b2c0e7960839e32022d129758cb069e460289925",
+    "guide_version": "decomposition-guide/1.1.0",
+    "retained_rule_groups": [
+      "criterion_semantics", "expression_rules", "atom_rules", "time_rules",
+      "provenance_rules", "condition_id_rules", "ambiguity_resolution_rules",
+      "unrepresentable_policy"
+    ]
+  },
+  "superseded_route": {
+    "annotation_mode": "single_annotator",
+    "completed_artifact_exists": false,
+    "saved_expression_count": 0,
+    "status": "withdrawn_unexecuted_not_gold"
+  },
+  "supersedes": {
+    "decision_sha256": "15e268461f4708ffb11bafd8712913ee622ace80c380e5a0aee7915825de6dd1",
+    "decision_version": "decomposition-llm-assisted-decision/1.0.0",
+    "prior_work_state": "one_llm_draft_saved_zero_owner_reviews_completed"
+  },
+  "workflow_sequence": {
+    "batch_write": "atomic_all_or_none",
+    "draft_phase": "generate_and_validate_all_40_dev_drafts_before_owner_review",
+    "partial_batch_allowed": false,
+    "review_phase": "owner_reviews_each_of_40_items_after_complete_batch_is_frozen"
+  }
+}
