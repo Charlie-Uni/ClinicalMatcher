@@ -74,6 +74,50 @@ P4_3_POLICY_SHA256 = (
 EMPTY_CONFLICT_KEYS_SHA256 = (
     "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
 )
+VALIDATION_PROJECTION_PINS = (
+    {
+        "arm_id": "rules_1_0_0",
+        "prediction_sha256": (
+            "5f3975632eb7a74ec1542cde9ec6ff1af062ed54b8c3a2459102651761c5ce88"
+        ),
+        "inference_config_sha256": (
+            "01162d132746a18ca5e6ecea1ebcb5b6a50a0c7acb015fd7fdfde7f8725ee447"
+        ),
+        "report_sha256": (
+            "c7c77fd69129889ef715d8bf5e71629d0f25b4486d2f9445b7242cdd54403402"
+        ),
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository",
+    },
+    {
+        "arm_id": "llama31_structured_1_0_0",
+        "prediction_sha256": (
+            "499f6ec444b3b82204ce1826713b3ebd0d365b9f417f2937f3814a8ecf606fc5"
+        ),
+        "inference_config_sha256": (
+            "ab4716f4fd8c3dcc533853ad4528317a2579c8941fe621841ebf9157c82dc04c"
+        ),
+        "report_sha256": (
+            "0479f6581e09aeb2703396b62e6728fc67b46b311cbc2608655c3b3c786e91dd"
+        ),
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository",
+    },
+    {
+        "arm_id": "llama31_long_context_1_0_0",
+        "prediction_sha256": (
+            "cdbe3f8a028616b42ad4020fe6bbf23a54d1030091ac72362e863759dc5a3dd9"
+        ),
+        "inference_config_sha256": (
+            "d70d4fc37ee97848039664b0400f1f194cb2752796d70901ddfcf0afc3683a79"
+        ),
+        "report_sha256": (
+            "5586de9e9e06413801ff79fd6ff269f9b803a832cb47f080f0917744d544b827"
+        ),
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository",
+    },
+)
 
 
 class P7LockedTestError(ValueError):
@@ -113,6 +157,11 @@ def validate_p7_contract(
     authorization = document["authorization"]
     expected_authorization = {
         "owner_approved_pre_implementation_not_executable": (False, False, False),
+        "implementation_complete_owner_review_required_not_executable": (
+            False,
+            False,
+            False,
+        ),
         "owner_approved_frozen_p7_1_not_p7_2_authorized": (True, False, False),
         "owner_approved_frozen_p7_1_and_p7_2_authorized": (True, True, True),
     }[status]
@@ -153,6 +202,8 @@ def validate_p7_contract(
         raise P7LockedTestError("P7 contract P4.3 policy hash changed")
     if projection["verifier_conflict_keys_sha256"] != EMPTY_CONFLICT_KEYS_SHA256:
         raise P7LockedTestError("P7 verifier-conflict input is not frozen empty")
+    if tuple(projection["validation_projections"]) != VALIDATION_PROJECTION_PINS:
+        raise P7LockedTestError("P7 validation projection pins changed")
 
     evaluations = {item["evaluation_id"]: item for item in document["evaluations"]}
     if set(evaluations) != {
@@ -821,6 +872,10 @@ def write_private_text(value: str, path: Path) -> Path:
     assert_restricted_local_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-    with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
-        stream.write(value)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            stream.write(value)
+    except BaseException:
+        path.unlink(missing_ok=True)
+        raise
     return path

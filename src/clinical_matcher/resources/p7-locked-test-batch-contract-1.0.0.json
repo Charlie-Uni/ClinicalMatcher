@@ -2,7 +2,7 @@
   "contract_version": "1.0.0",
   "contract_id": "p7-apixaban-locked-test-single-batch-v1",
   "contract_status": "owner_approved_pre_implementation_not_executable",
-  "contract_sha256": "ccb5144830ffa951a96c98d5488477215133c9098cbe84333cae5e599a333e34",
+  "contract_sha256": "3b0a2d3ae5cdd0008ae37c6a188b9196599b16024ebed28965fad26ba674985e",
   "hash_scope": "canonical_json_excluding_contract_sha256",
   "protocol": {
     "version": "p7-locked-test-batch-plan/1.0.0",
@@ -99,7 +99,33 @@
     "verifier_conflict_keys_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
     "parent_binding": "same_batch_named_raw_artifact",
     "config_hash_rule": "canonical_apixaban_abstention_configuration_v1_1_0",
-    "validation_regeneration_required": true
+    "validation_regeneration_required": true,
+    "validation_projections": [
+      {
+        "arm_id": "rules_1_0_0",
+        "prediction_sha256": "5f3975632eb7a74ec1542cde9ec6ff1af062ed54b8c3a2459102651761c5ce88",
+        "inference_config_sha256": "01162d132746a18ca5e6ecea1ebcb5b6a50a0c7acb015fd7fdfde7f8725ee447",
+        "report_sha256": "c7c77fd69129889ef715d8bf5e71629d0f25b4486d2f9445b7242cdd54403402",
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository"
+      },
+      {
+        "arm_id": "llama31_structured_1_0_0",
+        "prediction_sha256": "499f6ec444b3b82204ce1826713b3ebd0d365b9f417f2937f3814a8ecf606fc5",
+        "inference_config_sha256": "ab4716f4fd8c3dcc533853ad4528317a2579c8941fe621841ebf9157c82dc04c",
+        "report_sha256": "0479f6581e09aeb2703396b62e6728fc67b46b311cbc2608655c3b3c786e91dd",
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository"
+      },
+      {
+        "arm_id": "llama31_long_context_1_0_0",
+        "prediction_sha256": "cdbe3f8a028616b42ad4020fe6bbf23a54d1030091ac72362e863759dc5a3dd9",
+        "inference_config_sha256": "d70d4fc37ee97848039664b0400f1f194cb2752796d70901ddfcf0afc3683a79",
+        "report_sha256": "5586de9e9e06413801ff79fd6ff269f9b803a832cb47f080f0917744d544b827",
+        "code_commit": "d8346fc2bf40e2b7011863083bb94d3dd4e15316",
+        "storage": "owner_only_outside_repository"
+      }
+    ]
   },
   "evaluations": [
     {

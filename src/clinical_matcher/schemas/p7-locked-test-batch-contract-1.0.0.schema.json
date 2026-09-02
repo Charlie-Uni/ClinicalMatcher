@@ -26,6 +26,7 @@
     "contract_status": {
       "enum": [
         "owner_approved_pre_implementation_not_executable",
+        "implementation_complete_owner_review_required_not_executable",
         "owner_approved_frozen_p7_1_not_p7_2_authorized",
         "owner_approved_frozen_p7_1_and_p7_2_authorized"
       ]
@@ -145,7 +146,8 @@
         "verifier_conflict_keys_sha256",
         "parent_binding",
         "config_hash_rule",
-        "validation_regeneration_required"
+        "validation_regeneration_required",
+        "validation_projections"
       ],
       "properties": {
         "policy_version": {"const": "1.1.0"},
@@ -154,7 +156,25 @@
         "verifier_conflict_keys_sha256": {"$ref": "#/$defs/sha256"},
         "parent_binding": {"const": "same_batch_named_raw_artifact"},
         "config_hash_rule": {"const": "canonical_apixaban_abstention_configuration_v1_1_0"},
-        "validation_regeneration_required": {"const": true}
+        "validation_regeneration_required": {"const": true},
+        "validation_projections": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["arm_id", "prediction_sha256", "inference_config_sha256", "report_sha256", "code_commit", "storage"],
+            "properties": {
+              "arm_id": {"enum": ["rules_1_0_0", "llama31_structured_1_0_0", "llama31_long_context_1_0_0"]},
+              "prediction_sha256": {"$ref": "#/$defs/sha256"},
+              "inference_config_sha256": {"$ref": "#/$defs/sha256"},
+              "report_sha256": {"$ref": "#/$defs/sha256"},
+              "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+              "storage": {"const": "owner_only_outside_repository"}
+            }
+          }
+        }
       }
     },
     "evaluations": {
@@ -252,6 +272,30 @@
             "properties": {
               "pin_status": {"const": "pending"},
               "files": {"maxItems": 0}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "contract_status": {"const": "implementation_complete_owner_review_required_not_executable"}
+        }
+      },
+      "then": {
+        "properties": {
+          "authorization": {
+            "properties": {
+              "p7_1_frozen": {"const": false},
+              "p7_2_authorized": {"const": false},
+              "locked_test_access_allowed": {"const": false}
+            }
+          },
+          "implementation": {
+            "properties": {
+              "pin_status": {"const": "complete"},
+              "files": {"minItems": 1}
             }
           }
         }
