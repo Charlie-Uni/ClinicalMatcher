@@ -1,16 +1,17 @@
 # P7 locked-test single-batch plan
 
-Status: `owner_approved_protocol_not_test_authorization`
+Status: `implementation_complete_owner_review_required_not_executable`
 
 Protocol version: `p7-locked-test-batch-plan/1.0.0`
 
 Prepared: 2026-09-03, before any locked-test prediction, label, metric, or
 patient-level output was inspected.
 
-The project owner approved D1--D6 on 2026-09-03. This protocol is still not
-authorization to run the locked test. The resulting machine-readable contract
-must pass its validator, P7.1 must be explicitly frozen, and the owner must
-separately authorize P7.2 before execution can begin.
+The project owner approved D1--D6 on 2026-09-03. The implementation and its
+machine-readable pins are complete, but this protocol is still not
+authorization to run the locked test. P7.1 must be explicitly frozen, the
+owner must complete D6 personally, and the owner must separately authorize
+P7.2 before execution can begin.
 
 ## Purpose
 
@@ -109,6 +110,25 @@ policy `1.0.0` artifacts:
 
 They must not be relabeled as `1.1.0`.
 
+The three additive validation projections required by D1 were generated under
+current policy `1.1.0` before P7.1 freeze. They do not replace the historical
+`1.0.0` artifacts and their metric values were not used to select the policy.
+
+| View | Additive validation projection file SHA-256 | Projection config SHA-256 | Evaluation report file SHA-256 |
+| --- | --- | --- | --- |
+| rules + P4.3 `1.1.0` | `5f3975632eb7a74ec1542cde9ec6ff1af062ed54b8c3a2459102651761c5ce88` | `01162d132746a18ca5e6ecea1ebcb5b6a50a0c7acb015fd7fdfde7f8725ee447` | `c7c77fd69129889ef715d8bf5e71629d0f25b4486d2f9445b7242cdd54403402` |
+| structured + P4.3 `1.1.0` | `499f6ec444b3b82204ce1826713b3ebd0d365b9f417f2937f3814a8ecf606fc5` | `ab4716f4fd8c3dcc533853ad4528317a2579c8941fe621841ebf9157c82dc04c` | `0479f6581e09aeb2703396b62e6728fc67b46b311cbc2608655c3b3c786e91dd` |
+| long-context + P4.3 `1.1.0` | `cdbe3f8a028616b42ad4020fe6bbf23a54d1030091ac72362e863759dc5a3dd9` | `d70d4fc37ee97848039664b0400f1f194cb2752796d70901ddfcf0afc3683a79` | `5586de9e9e06413801ff79fd6ff269f9b803a832cb47f080f0917744d544b827` |
+
+The additive P4.7 validation diagnostic used only the long-context projection,
+as frozen by D2. It is owner-only, explicitly post-observation, and records
+`locked_test_labels_used=false`. Its report, row trace, and Markdown summary
+file SHA-256 values are respectively
+`f5ed2173d33fe74e3ccb35677c30b4859b4ac3c9593e5a2d74271974429731d8`,
+`26d29ea7f3312ea4aa5639f68c17fdbd6a18035fe891b7b1719d40c9683c4b94`,
+and `3179e3e681f6b4ba28a171a8cb3e6208d4a29d50dae5c02b261d0cb5efc379cc`.
+No value from this diagnostic may revise the frozen configuration.
+
 A future P4.3 projection's `inference_config_sha256` includes the parent
 prediction file SHA-256. Its exact value therefore cannot exist before the raw
 locked-test artifact exists. The freeze must instead bind all of the following:
@@ -135,7 +155,7 @@ provenance completion, not a post-test configuration choice.
 | P4.3 coverage–risk operating points and reason counts | paired report | paired report | paired report | deterministic safety operating points, not calibrated confidence |
 | P4.5 mutually exclusive observable attribution `1.1.0` | both | both | both | diagnostic, not causal; five requested causal dimensions remain `not_evaluable` |
 | Runtime: latency, tokens, memory, truncation/exposure | every request + aggregate P50/P95 | every request + aggregate P50/P95; projection overhead separate | every request + aggregate P50/P95; projection overhead separate | projected views inherit the parent model run and must not double-count model inference |
-| P4.7 three-axis single-trial diagnostic | owner decision required | owner decision required | owner decision required | agreement with legacy rule-derived reference, not clinical accuracy |
+| P4.7 three-axis single-trial diagnostic | excluded | excluded | projected final view only | agreement with legacy rule-derived reference, not clinical accuracy |
 
 P1.5 must emit typed exact match, boolean accuracy/macro-F1/micro-F1/unknown-F1,
 numeric-status metrics, numeric value coverage/MAE/exact-source tolerance
@@ -300,22 +320,28 @@ outside the repository. A volatile temporary directory is prohibited.
 Owner decision: **approved as recommended on 2026-09-03; owner action remains
 required before P7.1 freeze**.
 
-## Work required after owner approval, before P7.1 can be frozen
+## Completion state before P7.1 can be frozen
 
-1. Preserve this approved protocol as version `1.0.0`.
-2. Add a strict JSON Schema and machine-readable locked-test batch contract.
-3. Implement a validator/orchestrator that has no conditional arm-selection
-   path and never prints intermediate results.
-4. Add synthetic-only tests for hash lineage, exact arm coverage, P4.3 parent
-   derivation, no-overwrite behavior, failure semantics, report reconciliation,
-   and public-output suppression.
-5. Generate the approved P4.3 `1.1.0` validation projections and any required
-   additive validation diagnostic without touching test.
-6. Pin the final implementation commit, every code/resource hash, hardware
-   specification, and complete command in the machine-readable contract.
-7. Reinstall the working tree, run the full public test suite and public-data
-   guard, require a genuinely clean Git status, push, and confirm CI green.
-8. Obtain a final explicit owner statement: “P7.1 frozen; authorize the one
-   P7.2 locked-test batch.”
+1. **Complete:** preserve this approved protocol as version `1.0.0`.
+2. **Complete:** add strict schemas and the machine-readable locked-test batch
+   contract.
+3. **Complete:** implement a validator/orchestrator with no conditional arm
+   selection and no intermediate-result display.
+4. **Complete:** add synthetic-only tests for lineage, exact arm coverage,
+   P4.3 parent derivation, no-overwrite behavior, failure semantics, report
+   reconciliation, and public-output suppression.
+5. **Complete:** generate the approved additive P4.3 `1.1.0` validation
+   projections and P4.7 validation diagnostic without touching test.
+6. **Complete:** pin implementation commit
+   `b0119c1998c57b137f17cb30cca569ed50657639`, every executable code/resource
+   hash, the M3 24 GB hardware specification, and the complete command. The
+   non-executable contract SHA-256 is
+   `12dd0888613d7cc5eb74ac9d2b4a0f485a7c7a8d118f914191aff00e6ec835b3`.
+7. **Local verification complete; remote verification pending:** a clean
+   reinstall passed all 430 tests with 3 conditional MLX skips, and the
+   public-data guard passed. Push and CI confirmation remain pending. A clean
+   Git status additionally requires the owner's personal D6 action.
+8. **Pending owner decision:** obtain the explicit statement “P7.1 frozen;
+   authorize the one P7.2 locked-test batch.”
 
 Until all eight steps are complete, locked-test execution remains prohibited.

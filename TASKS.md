@@ -1224,6 +1224,17 @@ from structured EHR or is honestly reported as unsupported and omitted.
   - Constraints: no post-test component swapping; conditional components that
     failed their keep criterion are excluded.
   - Verify: configuration hash is immutable and recreates the validation run.
+  - Current state: the owner-approved single-batch protocol, strict schemas,
+    fixed three-arm orchestrator, disclosure projection, latency trace,
+    deterministic case sampler, retry state machine, and synthetic tests are
+    implemented. Current P4.3 `1.1.0` validation projections and the additive
+    long-context P4.7 validation diagnostic are pinned without replacing any
+    historical artifact. The machine-readable contract is intentionally
+    `implementation_complete_owner_review_required_not_executable` with all
+    authorization flags false. A clean reinstall passed all 430 tests with 3
+    conditional MLX skips, and the public-data guard passed. P7.1 remains open
+    pending CI confirmation, the owner's personal D6 exclusion action, and
+    final owner review; no locked-test label or prediction has been accessed.
 
 - [ ] **P7.2 Run the locked test once and generate the final report.** Include
   mixed-type task metrics, patient-bootstrap intervals, coverage-risk, error
