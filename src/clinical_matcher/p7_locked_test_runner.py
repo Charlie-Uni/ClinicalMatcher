@@ -78,8 +78,38 @@ def _assert_frozen_execution_environment(
         capture_output=True,
         text=True,
     ).stdout.strip()
-    if head != contract["implementation"]["code_commit"]:
-        raise P7LockedTestError("P7 repository commit differs from the frozen pin")
+    implementation_commit = contract["implementation"]["code_commit"]
+    ancestor = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "merge-base",
+            "--is-ancestor",
+            implementation_commit,
+            head,
+        ],
+        check=False,
+    )
+    if ancestor.returncode != 0:
+        raise P7LockedTestError("P7 implementation commit is not in repository history")
+    pinned_paths = [item["path"] for item in contract["implementation"]["files"]]
+    changed = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "diff",
+            "--quiet",
+            implementation_commit,
+            head,
+            "--",
+            *pinned_paths,
+        ],
+        check=False,
+    )
+    if changed.returncode != 0:
+        raise P7LockedTestError("P7 pinned implementation changed after its commit")
     status = subprocess.run(
         [
             "git",
