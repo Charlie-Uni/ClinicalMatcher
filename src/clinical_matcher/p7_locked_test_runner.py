@@ -66,6 +66,12 @@ from .p7_locked_test import (
 RawPhase = Callable[..., Dict[str, Any]]
 GoldPhase = Callable[..., Dict[str, Any]]
 EnvironmentCheck = Callable[[Mapping[str, Any], Path], None]
+ALLOWED_POST_IMPLEMENTATION_PATHS = {
+    "TASKS.md",
+    "docs/P7_LOCKED_TEST_BATCH_PLAN.md",
+    "docs/SCHEMA_MIGRATIONS.md",
+    "src/clinical_matcher/resources/p7-locked-test-batch-contract-1.0.0.json",
+}
 
 
 def _assert_frozen_execution_environment(
@@ -110,6 +116,26 @@ def _assert_frozen_execution_environment(
     )
     if changed.returncode != 0:
         raise P7LockedTestError("P7 pinned implementation changed after its commit")
+    post_implementation_changes = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "diff",
+            "--name-only",
+            implementation_commit,
+            head,
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()
+    if not set(post_implementation_changes).issubset(
+        ALLOWED_POST_IMPLEMENTATION_PATHS
+    ):
+        raise P7LockedTestError(
+            "P7 code or contract dependency changed after implementation freeze"
+        )
     status = subprocess.run(
         [
             "git",
