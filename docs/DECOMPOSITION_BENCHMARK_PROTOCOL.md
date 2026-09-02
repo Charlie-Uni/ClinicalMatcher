@@ -1,11 +1,11 @@
 # Public criteria-decomposition benchmark protocol
 
-Status: **version 1.2.0 frozen by owner approval on 2026-09-01; the replacement
-test source uses a uniform current API snapshot while preserving historical
-hashes as provenance; the predeclared single-annotator downgrade remains in
-force; real annotation has not started**
+Status: **version 1.3.0 frozen by owner approval on 2026-09-02; the 40-item dev
+reference is disclosed LLM-assisted, owner-reviewed silver; the replacement
+test source remains locked; no independent-gold or clinical-accuracy claim is
+permitted**
 
-Protocol version: `decomposition-benchmark-protocol/1.2.0`
+Protocol version: `decomposition-benchmark-protocol/1.3.0`
 
 This protocol defines the public P5D benchmark before any decomposition model
 output is generated or inspected. It covers ClinicalTrials.gov criterion text
@@ -459,6 +459,46 @@ GRPO/DPO. Metrics against it may be reported only as descriptive agreement
 with the assisted silver reference. The test source remains locked until the
 local runtime and prompt are frozen; preserving that timing discipline reduces
 configuration leakage but does not restore reference independence.
+
+### Version 1.3.0 assisted-reference disclosure and observation lock
+
+The 40-item dev batch was finalized before the evaluated local model was run.
+The owner-review outcome is **40 of 40 `accepted_unchanged`, zero
+`accepted_with_edits`, and zero review notes**. This distribution is a required
+disclosure in the frozen silver manifest and every downstream comparison
+report. It is evidence of formal owner acceptance, but it does not establish
+the depth or independence of review and may reasonably be interpreted as a
+rubber-stamp risk. No later narrative may omit this limitation.
+
+The completed dev silver is now observation-locked. After any evaluated-model
+output or model-versus-silver disagreement is viewed, neither the original LLM
+drafts nor the owner-reviewed expressions may be edited, replaced, filtered, or
+silently re-finalized. A future corrected reference must use a new version,
+retain this version and its results, and be labelled post-observation
+exploratory. It may not replace the frozen comparison.
+
+The P5D.5 evaluated model receives only the immutable criterion source text,
+the frozen 85-entry dev concept catalog, and the common annotation guide. It
+receives no assisted-silver expression, item-level owner review, or approved
+item-specific issue resolution. It uses no few-shot example from the dev
+reference. Eight dev reference items embed pre-model, item-specific owner
+resolutions that the evaluated model cannot see. Results for those eight items
+must therefore be reported as a separate information-asymmetry subgroup;
+disagreement there is not attributable solely to model capability.
+
+Every P5D.5 report must identify both roles: the reference drafts were produced
+by `openai-codex-conversational-assistant` and accepted unchanged by the owner;
+the evaluated system is the pinned local Ollama Llama 3.1 8B baseline. The
+comparison is Llama agreement with Codex-drafted, owner-accepted silver, not
+Llama accuracy against human gold. P5D.5 is dev-only. Test criterion text and
+the test catalog remain uninspected until the prompt, model manifest, runtime,
+output schema, decoding settings, and code revision are frozen under the
+locked-test timeline.
+
+Version 1.3.0 is a governance and evaluation-disclosure revision. The frozen
+selection, source snapshots, dev catalog, issue log, and annotation package
+remain immutable 1.2.0 artifacts and retain their original protocol strings
+and hashes. They are referenced by 1.3.0; they are not relabelled or converted.
 
 ## Leakage-safe dev/test timeline
 

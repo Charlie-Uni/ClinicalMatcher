@@ -1,0 +1,61 @@
+{
+  "manifest_version": "1.0.0",
+  "protocol_version": "decomposition-benchmark-protocol/1.3.0",
+  "manifest_id": "decomposition-assisted-silver-manifest-dev-1247b283507aa2f4",
+  "manifest_sha256": "1247b283507aa2f46f6b93c101ca6cf6b8c1e0470db29652ceca6f9a0ff7f627",
+  "split": "dev",
+  "silver_path": "benchmarks/decomposition/dev_llm_assisted_silver_1.0.0.json",
+  "silver_file_sha256": "ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52",
+  "silver_work_id": "decomposition-dev-assisted-work-9ab0b5fe571bca4b",
+  "silver_work_sha256": "9ab0b5fe571bca4b9ab9412b32b5511acc87968a2911907d3a1fdbea71ffd3a1",
+  "source_package_id": "decomposition-dev-package-0c421e65a08632af",
+  "source_package_sha256": "0c421e65a08632af90142dd81e99076df3f4283c82aa2c46379f812e83cbe22f",
+  "reference_label": "llm_assisted_owner_reviewed_silver",
+  "draft_generator": {
+    "model_id": "openai-codex-conversational-assistant",
+    "prompt_version": "clinicalmatcher-assisted-decomposition-draft/1.0.0",
+    "revision_status": "session_managed_unpinned"
+  },
+  "evaluated_model": {
+    "role": "evaluated local baseline",
+    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+    "ollama_model_name": "llama3.1:latest",
+    "ollama_manifest_sha256": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+    "ollama_version": "0.32.6"
+  },
+  "owner_review_outcome": {
+    "total": 40,
+    "accepted_unchanged": 40,
+    "accepted_with_edits": 0,
+    "review_notes": 0,
+    "evidence_strength_limitation": "Formal owner acceptance does not establish independent or deep semantic review; the unanimous no-note distribution is disclosed as a rubber-stamp risk."
+  },
+  "information_asymmetry": {
+    "item_count": 8,
+    "criterion_ids": [
+      "nct02932007-exclusion-04393439bf6f2032",
+      "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "nct06528262-exclusion-08dc731ff1a6ea43",
+      "nct06751459-exclusion-6e586bcff5ca30ea",
+      "nct06847932-exclusion-bf5951810876b3fd",
+      "nct07430956-inclusion-918c40f64dad790a",
+      "nct07715929-exclusion-6fcd645b1ca00b43"
+    ],
+    "evaluated_model_receives_item_resolutions": false
+  },
+  "observation_lock": {
+    "frozen_before_evaluated_model_run": true,
+    "post_observation_edits_forbidden": true,
+    "future_corrections_require_new_post_observation_exploratory_version": true
+  },
+  "claim_boundaries": {
+    "independent_human_gold": false,
+    "clinical_ground_truth": false,
+    "inter_annotator_agreement": false,
+    "decomposition_accuracy": false,
+    "grpo_semantic_oracle": false,
+    "permitted_claim": "descriptive agreement with Codex-drafted, owner-accepted assisted silver"
+  },
+  "test_source_not_inspected": true
+}

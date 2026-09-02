@@ -24,6 +24,24 @@ conversion command. A converter must preserve the original file, emit its
 source and target versions, and fail rather than invent required provenance or
 gold labels.
 
+## Decomposition benchmark protocol `1.2.0` to `1.3.0`
+
+Protocol `1.3.0` records the completed LLM-assisted dev reference and freezes
+the disclosure and observation-lock rules for its descriptive local-model
+comparison. It adds four reporting obligations: the 40/40
+`accepted_unchanged` and zero-note owner-review distribution; the prohibition
+on changing silver after model disagreements are observed; the eight-item
+information-asymmetry subgroup whose owner resolutions are hidden from the
+evaluated model; and explicit identification of the Codex draft model and the
+evaluated local Llama model.
+
+This is a governance and evaluation-disclosure migration, not a data-schema
+conversion. Frozen selection, source snapshot, catalog, issue-log, and
+annotation-package artifacts retain their original
+`decomposition-benchmark-protocol/1.2.0` bindings and hashes. Relabelling or
+regenerating them as 1.3.0 is prohibited. New P5D.5 contracts and reports bind
+those immutable inputs while declaring protocol 1.3.0.
+
 ## Apixaban abstention and error-attribution reports `1.0.0` to `1.1.0`
 
 Version `1.1.0` records the sole source-question exception permitting

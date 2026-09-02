@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-assisted-silver-manifest-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "protocol_version", "manifest_id", "manifest_sha256", "split", "silver_path", "silver_file_sha256", "silver_work_id", "silver_work_sha256", "source_package_id", "source_package_sha256", "reference_label", "draft_generator", "evaluated_model", "owner_review_outcome", "information_asymmetry", "observation_lock", "claim_boundaries", "test_source_not_inspected"],
+  "properties": {
+    "manifest_version": {"const": "1.0.0"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.3.0"},
+    "manifest_id": {"type": "string", "pattern": "^decomposition-assisted-silver-manifest-dev-[0-9a-f]{16}$"},
+    "manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "split": {"const": "dev"},
+    "silver_path": {"const": "benchmarks/decomposition/dev_llm_assisted_silver_1.0.0.json"},
+    "silver_file_sha256": {"$ref": "#/$defs/sha256"},
+    "silver_work_id": {"type": "string", "pattern": "^decomposition-dev-assisted-work-[0-9a-f]{16}$"},
+    "silver_work_sha256": {"$ref": "#/$defs/sha256"},
+    "source_package_id": {"type": "string", "minLength": 1},
+    "source_package_sha256": {"$ref": "#/$defs/sha256"},
+    "reference_label": {"const": "llm_assisted_owner_reviewed_silver"},
+    "draft_generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "prompt_version", "revision_status"],
+      "properties": {
+        "model_id": {"const": "openai-codex-conversational-assistant"},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "revision_status": {"const": "session_managed_unpinned"}
+      }
+    },
+    "evaluated_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "model_id", "ollama_model_name", "ollama_manifest_sha256", "ollama_version"],
+      "properties": {
+        "role": {"const": "evaluated local baseline"},
+        "model_id": {"type": "string", "minLength": 1},
+        "ollama_model_name": {"const": "llama3.1:latest"},
+        "ollama_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "ollama_version": {"const": "0.32.6"}
+      }
+    },
+    "owner_review_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "accepted_unchanged", "accepted_with_edits", "review_notes", "evidence_strength_limitation"],
+      "properties": {
+        "total": {"const": 40},
+        "accepted_unchanged": {"const": 40},
+        "accepted_with_edits": {"const": 0},
+        "review_notes": {"const": 0},
+        "evidence_strength_limitation": {"type": "string", "minLength": 1}
+      }
+    },
+    "information_asymmetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["item_count", "criterion_ids", "evaluated_model_receives_item_resolutions"],
+      "properties": {
+        "item_count": {"const": 8},
+        "criterion_ids": {"type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "evaluated_model_receives_item_resolutions": {"const": false}
+      }
+    },
+    "observation_lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frozen_before_evaluated_model_run", "post_observation_edits_forbidden", "future_corrections_require_new_post_observation_exploratory_version"],
+      "properties": {
+        "frozen_before_evaluated_model_run": {"const": true},
+        "post_observation_edits_forbidden": {"const": true},
+        "future_corrections_require_new_post_observation_exploratory_version": {"const": true}
+      }
+    },
+    "claim_boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["independent_human_gold", "clinical_ground_truth", "inter_annotator_agreement", "decomposition_accuracy", "grpo_semantic_oracle", "permitted_claim"],
+      "properties": {
+        "independent_human_gold": {"const": false},
+        "clinical_ground_truth": {"const": false},
+        "inter_annotator_agreement": {"const": false},
+        "decomposition_accuracy": {"const": false},
+        "grpo_semantic_oracle": {"const": false},
+        "permitted_claim": {"type": "string", "minLength": 1}
+      }
+    },
+    "test_source_not_inspected": {"const": true}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

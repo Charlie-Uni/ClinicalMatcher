@@ -1055,11 +1055,15 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     Two pre-review intermediate batches remain ignored audit evidence after
     semantic self-review corrected one unsupported timing atom plus
     negation-context and BMI span boundaries. On 2026-09-02 the owner confirmed
-    all 40 frozen drafts as `accepted_unchanged`; the completed ignored artifact
-    is mode `0600`, has work ID
+    all 40 frozen drafts as `accepted_unchanged`, with zero edited items and
+    zero review notes. That unanimous no-note distribution is disclosed as a
+    rubber-stamp risk rather than evidence of review depth. The completed
+    private artifact is mode `0600`, has work ID
     `decomposition-dev-assisted-work-9ab0b5fe571bca4b`, and file SHA-256
     `ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52`.
-    It permanently records 40 drafts, 40 owner decisions,
+    A deterministic public copy and explicit disclosure manifest are frozen
+    under `benchmarks/decomposition/`. They permanently record 40 drafts, 40
+    owner decisions,
     `independent_gold_claimed=false`, and
     `grpo_semantic_oracle_claimed=false`. The original lexical-overlap report
     is historical and cannot be reused for replacement test. The packaged
@@ -1069,7 +1073,10 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   - Constraints: model assistance and the unpinned conversational revision are
     disclosed; owner edits never erase LLM provenance; test source remains
     locked until runtime freeze. Assisted trees never become gold through owner
-    acceptance after the fact.
+    acceptance after the fact. Protocol 1.3.0 additionally locks this silver
+    before evaluated-model observation: later disagreements may not be used to
+    rewrite it, and any correction must be a retained, post-observation
+    exploratory version.
   - Verify: every selected criterion retains its original draft, owner decision,
     reviewed expression, hashes, and valid source spans; completion permanently
     records `independent_gold_claimed=false` and

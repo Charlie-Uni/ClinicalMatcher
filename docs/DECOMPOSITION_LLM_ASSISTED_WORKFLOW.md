@@ -173,8 +173,12 @@ sets `independent_gold_claimed=false` and
 `grpo_semantic_oracle_claimed=false`.
 
 The dev batch completed on 2026-09-02 after the owner confirmed all 40 frozen
-drafts as `accepted_unchanged`. The ignored mode-`0600` result has work ID
-`decomposition-dev-assisted-work-9ab0b5fe571bca4b` and file SHA-256
+drafts as `accepted_unchanged`, with zero edited items and zero review notes.
+The private work copy remains mode `0600`; its deterministic completed public
+copy is `benchmarks/decomposition/dev_llm_assisted_silver_1.0.0.json`, with work
+ID `decomposition-dev-assisted-work-9ab0b5fe571bca4b` and file SHA-256
 `ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52`.
 This completion is an auditable owner decision over LLM drafts; it does not
-upgrade the artifact to independent gold.
+upgrade the artifact to independent gold. The companion public manifest records
+the unanimous no-note distribution as a rubber-stamp risk and forbids any
+post-observation rewrite of this silver version.

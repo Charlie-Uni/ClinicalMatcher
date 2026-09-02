@@ -72,10 +72,15 @@ not a model-generated artifact.
     independent route was withdrawn before execution on 2026-09-02
 
 The active engineering workflow is documented in
-`docs/DECOMPOSITION_LLM_ASSISTED_WORKFLOW.md`. Its owner-only work artifacts
-remain under ignored `artifacts/decomposition/` and are always labelled
+`docs/DECOMPOSITION_LLM_ASSISTED_WORKFLOW.md`. Mutable and superseded work files
+remain under ignored `artifacts/decomposition/`. The completed public dev
+reference is `dev_llm_assisted_silver_1.0.0.json` (file SHA-256
+`ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52`).
+Its companion `dev_llm_assisted_silver_manifest_1.0.0.json` explicitly records
+the 40/40 `accepted_unchanged`, zero-note review distribution, both model roles,
+the eight-item information-asymmetry subgroup, the post-observation lock, and
+all prohibited claims. It is always labelled
 `llm_assisted_owner_reviewed_silver`, never gold.
-  (`decomposition-dev-package-0c421e65a08632af`)
 
 ## Cross-split lexical-overlap disclosure
 
@@ -90,6 +95,6 @@ equivalence. Conversely, lexical Jaccard can miss paraphrases.
 Diagnostic report SHA-256:
 `e8520469215ee1f996ee803eac8509bcbf5252d71b5b65f921029b1a97b91ffc`.
 
-No completed decomposition annotation or gold tree is included yet.
-The manual dev workflow is documented in
-`docs/DECOMPOSITION_DEV_ANNOTATION_WORKFLOW.md`.
+No independent decomposition annotation or gold tree is included. The
+withdrawn manual route remains documented in
+`docs/DECOMPOSITION_DEV_ANNOTATION_WORKFLOW.md` as historical process evidence.
