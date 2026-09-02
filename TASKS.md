@@ -1095,6 +1095,16 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
   - Verify: a clean public run produces hash-bound machine-readable predictions
     and a report separating schema validity from descriptive agreement with the
     assisted silver. No metric is named accuracy against independent gold.
+  - Frozen dev contract: owner-approved
+    `decomposition-llama-dev-comparison/1.0.0` binds the local Llama manifest,
+    Ollama runtime, zero-shot prompt, decoding, item-bound output-schema
+    algorithm, complete dev catalog, common guide sections, public source
+    package, assisted silver, and disclosure manifest. Model input excludes the
+    assisted/reference trees, owner reviews, and all eight item-specific issue
+    resolutions. Synthetic tests cover the isolation boundary, strict output
+    validation, invalid-output denominator, mandatory disclosures, subgroup,
+    and non-overwriting artifacts. The real 40-item dev run has not yet been
+    executed; test source remains locked.
 
 - [ ] **P5D.6 Perform assisted-reference disagreement analysis and decide
   retention.** Trace

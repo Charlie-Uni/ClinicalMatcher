@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/decomposition-llama-predictions-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["prediction_version", "prediction_id", "prediction_sha256", "generated_at", "code_commit", "protocol_version", "split", "contract_id", "contract_sha256", "model_id", "prompt_version", "selection_manifest_sha256", "concept_catalog_sha256", "source_package_sha256", "predictions", "performance"],
+  "properties": {
+    "prediction_version": {"const": "1.0.0"},
+    "prediction_id": {"type": "string", "pattern": "^decomposition-llama-predictions-dev-[0-9a-f]{16}$"},
+    "prediction_sha256": {"$ref": "#/$defs/sha256"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "code_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "protocol_version": {"const": "decomposition-benchmark-protocol/1.3.0"},
+    "split": {"const": "dev"},
+    "contract_id": {"type": "string", "pattern": "^decomposition-llama-dev-contract-[0-9a-f]{16}$"},
+    "contract_sha256": {"$ref": "#/$defs/sha256"},
+    "model_id": {"type": "string", "minLength": 1},
+    "prompt_version": {"const": "clinicalmatcher-decomposition-local-llama/1.0.0"},
+    "selection_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "concept_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "source_package_sha256": {"$ref": "#/$defs/sha256"},
+    "predictions": {"type": "array", "minItems": 40, "maxItems": 40, "items": {"$ref": "#/$defs/prediction"}},
+    "performance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["request_count", "total_duration_seconds", "latency_seconds_mean", "latency_seconds_p95", "prompt_tokens", "output_tokens", "hardware"],
+      "properties": {
+        "request_count": {"const": 40},
+        "total_duration_seconds": {"type": "number", "minimum": 0},
+        "latency_seconds_mean": {"type": "number", "minimum": 0},
+        "latency_seconds_p95": {"type": "number", "minimum": 0},
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0},
+        "hardware": {"type": "object"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "prediction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nct_id", "criterion_id", "expression", "output_status", "failure_reason", "latency_seconds", "prompt_tokens", "output_tokens"],
+      "properties": {
+        "nct_id": {"type": "string", "pattern": "^NCT[0-9]{8}$"},
+        "criterion_id": {"type": "string", "minLength": 1},
+        "expression": {"oneOf": [{"type": "null"}, {"type": "object"}]},
+        "output_status": {"enum": ["valid", "schema_invalid", "semantic_invalid", "runtime_error"]},
+        "failure_reason": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1}]},
+        "latency_seconds": {"type": "number", "minimum": 0},
+        "prompt_tokens": {"type": "integer", "minimum": 0},
+        "output_tokens": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

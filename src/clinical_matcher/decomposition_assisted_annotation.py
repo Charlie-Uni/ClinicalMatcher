@@ -143,6 +143,26 @@ def _validate_one_expression(
         raise DecompositionAssistedAnnotationError(str(error)) from error
 
 
+def validate_llm_expression_for_item(
+    expression: Dict[str, Any],
+    *,
+    criterion_id: str,
+    source: Mapping[str, Any],
+    catalog: Mapping[str, Any],
+    model_id: str,
+    prompt_version: str,
+) -> None:
+    """Validate one generated tree with the same frozen assisted-tree rules."""
+    _validate_one_expression(
+        expression,
+        criterion_id=criterion_id,
+        source=source,
+        allowed_fields=_catalog_fields(catalog),
+        seen_condition_ids=set(),
+        generator={"model_id": model_id, "prompt_version": prompt_version},
+    )
+
+
 def validate_assisted_work(
     package: Dict[str, Any],
     catalog: Dict[str, Any],
