@@ -118,7 +118,7 @@ class DecompositionDisagreementTests(unittest.TestCase):
         validate_disagreement_report(report)
         self.assertEqual(40, sum(report["primary_category_counts"].values()))
         self.assertFalse(report["retention_decision"]["locked_test_unlocked"])
-        self.assertEqual("62820f4", report["code_commit"][:7])
+        self.assertRegex(report["code_commit"], r"^[0-9a-f]{40}$")
 
         changed = copy.deepcopy(report)
         changed["primary_category_counts"]["runtime_error"] += 1

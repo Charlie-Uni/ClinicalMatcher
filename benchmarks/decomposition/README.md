@@ -99,6 +99,12 @@ The owner outcome remains disclosed as 40/40 accepted unchanged with zero
 review notes. The test entry gate was not met; locked-test text was not
 inspected or run.
 
+The P5D.6 diagnostic has ID
+`decomposition-disagreement-dev-d92d0e52b21598a9`, content SHA-256
+`d92d0e52b21598a93442311fc7c7667e0c8d73240f9675528e69cc259e5f016a`,
+and file SHA-256
+`d2ad285afd6aa074026233068619e4eb9587f166f2dcc85fa9ad663922388504`.
+
 ## Cross-split lexical-overlap disclosure
 
 `af_decomposition_overlap_1.0.0.json` exhaustively compares all 1,600 dev/test

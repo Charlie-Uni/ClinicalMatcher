@@ -1136,9 +1136,11 @@ strong frozen baseline without degrading evidence linkage or unknown handling.
     wrong. The initial prompt v1.0.0 zero-shot run is retained as a dev-only
     negative descriptive baseline; this scope does not estimate performance
     after prompt iteration. It did not meet the test entry gate, so the locked
-    test remains closed. Any stronger prompt, larger model, or truly independent
-    decomposition reference requires a new versioned decision and cannot
-    overwrite this run.
+    test remains closed. The retained diagnostic is
+    `decomposition-disagreement-dev-d92d0e52b21598a9`, content SHA-256
+    `d92d0e52b21598a93442311fc7c7667e0c8d73240f9675528e69cc259e5f016a`.
+    Any stronger prompt, larger model, or truly independent decomposition
+    reference requires a new versioned decision and cannot overwrite this run.
 
 Acceptance: a public criterion can be transformed into a traceable typed
 expression tree, every LLM draft and owner edit remains auditable, and the

@@ -1,0 +1,1713 @@
+{
+  "code_commit": "68e2670bfa16e44bd25dedc662073acfa690bd72",
+  "concept_catalog_sha256": "57dff640761ba61e110c04f913d6473a95d94a233f8d0c77f38b5d7638d8d009",
+  "contract_id": "decomposition-llama-dev-contract-6fbe47fd0e9f79ba",
+  "contract_sha256": "6fbe47fd0e9f79ba24f416728108fa47432389bdcee047f4139566f6bb242c27",
+  "generated_at": "2026-09-02T11:14:19.941974Z",
+  "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+  "performance": {
+    "hardware": {
+      "architecture": "arm64",
+      "chip": "Apple M3",
+      "cpu_cores": 8,
+      "memory_bytes": 25769803776,
+      "system": "Darwin"
+    },
+    "latency_seconds_mean": 140.33337843228946,
+    "latency_seconds_p95": 552.9649343329947,
+    "output_tokens": 22212,
+    "prompt_tokens": 136131,
+    "request_count": 40,
+    "total_duration_seconds": 5613.335137291579
+  },
+  "prediction_id": "decomposition-llama-predictions-dev-130da5c6941b9413",
+  "prediction_sha256": "130da5c6941b9413e9df0e2f5ce6520fdd32a80d806016d5761f43dcb2d4713b",
+  "prediction_version": "1.0.0",
+  "predictions": [
+    {
+      "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+      "expression": {
+        "atom": {
+          "condition_id": "nct02932007-exclusion-04393439bf6f2032:a01",
+          "expected": {
+            "value": false,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "investigator_protocol_interference_assessment",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+            "source_span": {
+              "end": 123,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": "boolean atom requires == or !=",
+      "latency_seconds": 63.395490542054176,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "output_tokens": 257,
+      "prompt_tokens": 3488
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-3449060b23561f00",
+      "expression": null,
+      "failure_reason": "invalid_json",
+      "latency_seconds": 590.3489080830477,
+      "nct_id": "NCT02932007",
+      "output_status": "schema_invalid",
+      "output_tokens": 4096,
+      "prompt_tokens": 3502
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "expression": null,
+      "failure_reason": "invalid_json",
+      "latency_seconds": 552.9649343329947,
+      "nct_id": "NCT02932007",
+      "output_status": "schema_invalid",
+      "output_tokens": 4096,
+      "prompt_tokens": 3526
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-a87b29150a5fc629",
+      "expression": {
+        "atom": {
+          "condition_id": "nct02932007-inclusion-a87b29150a5fc629:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "investigator_stroke_prevention_assessment",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+            "source_span": {
+              "end": 123,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": "boolean atom requires == or !=",
+      "latency_seconds": 100.02377083408646,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "output_tokens": 257,
+      "prompt_tokens": 3485
+    },
+    {
+      "criterion_id": "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct02932007-inclusion-ce4fe9d7f97194cb:a01",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "cardiac_rhythm_monitoring_device",
+              "operator": "==",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+                "source_span": {
+                  "end": 34,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct02932007-inclusion-ce4fe9d7f97194cb:a02",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "event_monitor_willingness",
+              "operator": "==",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+                "source_span": {
+                  "end": 63,
+                  "start": 35
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct02932007-inclusion-ce4fe9d7f97194cb:a03",
+              "expected": {
+                "value": false,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "cardiac_rhythm_monitoring_device",
+              "operator": "==",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT02932007:eligibility:2019-08-19:b4cf469ca0bd",
+                "source_span": {
+                  "end": 96,
+                  "start": 64
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT",
+      "latency_seconds": 180.25676329201087,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "output_tokens": 773,
+      "prompt_tokens": 3502
+    },
+    {
+      "criterion_id": "nct05136131-exclusion-2f16526f17fb2859",
+      "expression": {
+        "atom": {
+          "condition_id": "nct05136131-exclusion-2f16526f17fb2859:a01",
+          "expected": {
+            "value": false,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "investigator_patient_interest_assessment",
+          "operator": "!=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT05136131:eligibility:2026-07-01:42a8201cb6a7",
+            "source_span": {
+              "end": 13,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT",
+      "latency_seconds": 75.80284941685386,
+      "nct_id": "NCT05136131",
+      "output_status": "semantic_invalid",
+      "output_tokens": 260,
+      "prompt_tokens": 3481
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-83b4b84c3a0bc30e",
+      "expression": {
+        "atom": {
+          "condition_id": "nct05860894-inclusion-83b4b84c3a0bc30e:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "informed_consent",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+            "source_span": {
+              "end": 24,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 75.04131470806897,
+      "nct_id": "NCT05860894",
+      "output_status": "valid",
+      "output_tokens": 257,
+      "prompt_tokens": 3464
+    },
+    {
+      "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+      "expression": {
+        "atom": {
+          "condition_id": "nct05860894-inclusion-93f9b176abd4e08d:a01",
+          "expected": {
+            "value": 18,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "age",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT05860894:eligibility:2024-02-01:a338254941c9",
+            "source_span": {
+              "end": 13,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 70.48355695814826,
+      "nct_id": "NCT05860894",
+      "output_status": "valid",
+      "output_tokens": 243,
+      "prompt_tokens": 3464
+    },
+    {
+      "criterion_id": "nct06007872-exclusion-8a27abac4e0b299a",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06007872-exclusion-8a27abac4e0b299a:a01",
+          "expected": {
+            "value": "Patients with prior incomplete surgical or percutaneous left atrial appendage ligation/exclusion procedures",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "left_atrial_appendage_closure_procedure",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+            "source_span": {
+              "end": 101,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 82.63584266696125,
+      "nct_id": "NCT06007872",
+      "output_status": "valid",
+      "output_tokens": 282,
+      "prompt_tokens": 3481
+    },
+    {
+      "criterion_id": "nct06007872-inclusion-e280adfc0698a565",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct06007872-inclusion-e280adfc0698a565:a01",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "watchman_implant_criteria",
+              "operator": "==",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+                "source_span": {
+                  "end": 47,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct06007872-inclusion-e280adfc0698a565:a02",
+              "expected": {
+                "value": false,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "clinical_trial_participation",
+              "operator": "!=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT06007872:eligibility:2025-10-21:1e861dba3047",
+                "source_span": {
+                  "end": 83,
+                  "start": 48
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT",
+      "latency_seconds": 109.95212054206058,
+      "nct_id": "NCT06007872",
+      "output_status": "semantic_invalid",
+      "output_tokens": 520,
+      "prompt_tokens": 3480
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-8b80b7c07f28b121",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06324188-exclusion-8b80b7c07f28b121:a01",
+          "expected": {
+            "value": "specific therapy",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "valve_disease_therapy",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+            "source_span": {
+              "end": 34,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 83.37611970794387,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "output_tokens": 263,
+      "prompt_tokens": 3473
+    },
+    {
+      "criterion_id": "nct06324188-exclusion-cb02dc28e5f24a5b",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06324188-exclusion-cb02dc28e5f24a5b:a01",
+          "expected": {
+            "value": "2026-01-08",
+            "value_type": "date"
+          },
+          "fact_selection": "all",
+          "field": "clinical_trial_participation",
+          "operator": "!=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+            "source_span": {
+              "end": 13,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 89.90470554097556,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "output_tokens": 265,
+      "prompt_tokens": 3502
+    },
+    {
+      "criterion_id": "nct06324188-inclusion-c8611183438ceabb",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06324188-inclusion-c8611183438ceabb:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "informed_consent",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06324188:eligibility:2026-01-08:780d5af5b199",
+            "source_span": {
+              "end": 34,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 82.76166741689667,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "output_tokens": 253,
+      "prompt_tokens": 3467
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-08dc731ff1a6ea43",
+      "expression": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "atom": {
+                      "condition_id": "nct06528262-exclusion-08dc731ff1a6ea43:a01",
+                      "expected": {
+                        "value": "5365-01-01",
+                        "value_type": "date"
+                      },
+                      "fact_selection": "latest",
+                      "field": "cancer",
+                      "operator": ">",
+                      "provenance": {
+                        "method": "llm",
+                        "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                        "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                        "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+                        "source_span": {
+                          "end": 34,
+                          "start": 0
+                        }
+                      }
+                    },
+                    "expression_type": "atom"
+                  },
+                  {
+                    "atom": {
+                      "condition_id": "nct06528262-exclusion-08dc731ff1a6ea43:a02",
+                      "expected": {
+                        "value": "5365-01-01",
+                        "value_type": "date"
+                      },
+                      "fact_selection": "latest",
+                      "field": "cancer_treatment",
+                      "operator": ">",
+                      "provenance": {
+                        "method": "llm",
+                        "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                        "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                        "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+                        "source_span": {
+                          "end": 63,
+                          "start": 35
+                        }
+                      }
+                    },
+                    "expression_type": "atom"
+                  }
+                ],
+                "expression_type": "any"
+              }
+            ],
+            "expression_type": "not"
+          },
+          {
+            "atom": {
+              "condition_id": "nct06528262-exclusion-08dc731ff1a6ea43:a03",
+              "expected": {
+                "value": false,
+                "value_type": "boolean"
+              },
+              "fact_selection": "latest",
+              "field": "borderline_cancer",
+              "operator": "!=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+                "source_span": {
+                  "end": 91,
+                  "start": 64
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT",
+      "latency_seconds": 141.17028299998492,
+      "nct_id": "NCT06528262",
+      "output_status": "semantic_invalid",
+      "output_tokens": 800,
+      "prompt_tokens": 3509
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-bd5cfd93e6b4aedb",
+      "expression": null,
+      "failure_reason": "ApixabanStructuredLLMError",
+      "latency_seconds": 600.0169412081596,
+      "nct_id": "NCT06528262",
+      "output_status": "runtime_error",
+      "output_tokens": 0,
+      "prompt_tokens": 0
+    },
+    {
+      "criterion_id": "nct06528262-exclusion-f27e2b83c8f37329",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06528262-exclusion-f27e2b83c8f37329:a01",
+          "expected": {
+            "value": 60,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "egfr_ckd_epi",
+          "operator": "<",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+            "source_span": {
+              "end": 49,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 77.26845924998634,
+      "nct_id": "NCT06528262",
+      "output_status": "valid",
+      "output_tokens": 251,
+      "prompt_tokens": 3489
+    },
+    {
+      "criterion_id": "nct06528262-inclusion-0426eaaa3ba61877",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06528262-inclusion-0426eaaa3ba61877:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "informed_consent",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06528262:eligibility:2026-05-12:276ac77d4a8b",
+            "source_span": {
+              "end": 47,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 80.151441416936,
+      "nct_id": "NCT06528262",
+      "output_status": "valid",
+      "output_tokens": 256,
+      "prompt_tokens": 3479
+    },
+    {
+      "criterion_id": "nct06751459-exclusion-6e586bcff5ca30ea",
+      "expression": {
+        "children": [
+          {
+            "children": [
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a01",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "all",
+                  "field": "catheter_ablation",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 34,
+                      "start": 0
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              }
+            ],
+            "expression_type": "not"
+          },
+          {
+            "children": [
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a02",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "any",
+                  "field": "allergic_skin_condition",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 53,
+                      "start": 35
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              },
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a03",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "any",
+                  "field": "skin_cancer",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 66,
+                      "start": 54
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              },
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a04",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "any",
+                  "field": "research_study_participation",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 83,
+                      "start": 67
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              },
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a05",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "any",
+                  "field": "cognitive_impairment",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 100,
+                      "start": 84
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              },
+              {
+                "atom": {
+                  "condition_id": "nct06751459-exclusion-6e586bcff5ca30ea:a06",
+                  "expected": {
+                    "value": "1970-01-01",
+                    "value_type": "date"
+                  },
+                  "fact_selection": "any",
+                  "field": "pregnancy",
+                  "operator": ">",
+                  "provenance": {
+                    "method": "llm",
+                    "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                    "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                    "source_id": "clinicaltrials.gov:NCT06751459:eligibility:2024-12-31:d2df0456c728",
+                    "source_span": {
+                      "end": 109,
+                      "start": 101
+                    }
+                  }
+                },
+                "expression_type": "atom"
+              }
+            ],
+            "expression_type": "any"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": null,
+      "latency_seconds": 278.5792474579066,
+      "nct_id": "NCT06751459",
+      "output_status": "valid",
+      "output_tokens": 1582,
+      "prompt_tokens": 3602
+    },
+    {
+      "criterion_id": "nct06847932-exclusion-bf5951810876b3fd",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06847932-exclusion-bf5951810876b3fd:a01",
+          "expected": {
+            "value": "atrial fibrillation/atrial flutter and pacing rhythm",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "electrocardiogram",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+            "source_span": {
+              "end": 83,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 77.47994174994528,
+      "nct_id": "NCT06847932",
+      "output_status": "valid",
+      "output_tokens": 266,
+      "prompt_tokens": 3475
+    },
+    {
+      "criterion_id": "nct06847932-inclusion-ca070c2648a408c4",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06847932-inclusion-ca070c2648a408c4:a01",
+          "expected": {
+            "value": "true",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "inpatient_care",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06847932:eligibility:2025-11-19:2130031866cd",
+            "source_span": {
+              "end": 53,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 74.52559954090975,
+      "nct_id": "NCT06847932",
+      "output_status": "valid",
+      "output_tokens": 254,
+      "prompt_tokens": 3467
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-1ea995059b1faf31",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06959121-exclusion-1ea995059b1faf31:a01",
+          "expected": {
+            "value": "3000-01-01",
+            "value_type": "date"
+          },
+          "fact_selection": "all",
+          "field": "investigational_device_use",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+            "source_span": {
+              "end": 30,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 80.81680812500417,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "output_tokens": 263,
+      "prompt_tokens": 3486
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-c268d8f245c9e46a",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06959121-exclusion-c268d8f245c9e46a:a01",
+          "expected": {
+            "value": 10,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "long_standing_persistent_atrial_fibrillation",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+            "source_span": {
+              "end": 83,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 126.51074904203415,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "output_tokens": 256,
+      "prompt_tokens": 3481
+    },
+    {
+      "criterion_id": "nct06959121-exclusion-e0ab92822f49bd11",
+      "expression": {
+        "atom": {
+          "condition_id": "nct06959121-exclusion-e0ab92822f49bd11:a01",
+          "expected": {
+            "value": "Idiopathic Thrombocytopenic Purpura (ITP)",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "anticoagulation_contraindication",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT06959121:eligibility:2026-01-12:07f58a303faa",
+            "source_span": {
+              "end": 123,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 98.85838758386672,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "output_tokens": 276,
+      "prompt_tokens": 3502
+    },
+    {
+      "criterion_id": "nct07058987-exclusion-eb557c2d7a41a0c4",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07058987-exclusion-eb557c2d7a41a0c4:a01",
+          "expected": {
+            "value": false,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "pulmonary_disease",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07058987:eligibility:2025-07-14:97078e30003f",
+            "source_span": {
+              "end": 44,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": "boolean atom requires == or !=",
+      "latency_seconds": 115.78404804109596,
+      "nct_id": "NCT07058987",
+      "output_status": "semantic_invalid",
+      "output_tokens": 260,
+      "prompt_tokens": 3470
+    },
+    {
+      "criterion_id": "nct07430956-exclusion-63bc1f4295df7606",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07430956-exclusion-63bc1f4295df7606:a01",
+          "expected": {
+            "value": 12,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "life_expectancy",
+          "operator": "<",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+            "source_span": {
+              "end": 39,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 114.96513533382677,
+      "nct_id": "NCT07430956",
+      "output_status": "valid",
+      "output_tokens": 245,
+      "prompt_tokens": 3467
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct07430956-inclusion-918c40f64dad790a:a01",
+              "expected": {
+                "value": 4,
+                "value_type": "number"
+              },
+              "fact_selection": "all",
+              "field": "cha2ds2_va_score",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+                "source_span": {
+                  "end": 13,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07430956-inclusion-918c40f64dad790a:a02",
+              "expected": {
+                "value": 4,
+                "value_type": "number"
+              },
+              "fact_selection": "any",
+              "field": "cha2ds2_va_score",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+                "source_span": {
+                  "end": 28,
+                  "start": 14
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": null,
+      "latency_seconds": 149.08211229089648,
+      "nct_id": "NCT07430956",
+      "output_status": "valid",
+      "output_tokens": 527,
+      "prompt_tokens": 3533
+    },
+    {
+      "criterion_id": "nct07430956-inclusion-f63daeda8270071a",
+      "expression": {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "atom": {
+                      "condition_id": "nct07430956-inclusion-f63daeda8270071a:a01",
+                      "expected": {
+                        "value": "benefits",
+                        "value_type": "string"
+                      },
+                      "fact_selection": "all",
+                      "field": "oral_anticoagulant_risk_benefit_assessment",
+                      "operator": ">",
+                      "provenance": {
+                        "method": "llm",
+                        "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                        "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                        "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+                        "source_span": {
+                          "end": 10,
+                          "start": 0
+                        }
+                      }
+                    },
+                    "expression_type": "atom"
+                  },
+                  {
+                    "atom": {
+                      "condition_id": "nct07430956-inclusion-f63daeda8270071a:a02",
+                      "expected": {
+                        "value": "OAC therapy",
+                        "value_type": "string"
+                      },
+                      "fact_selection": "all",
+                      "field": "oral_anticoagulant_suitability",
+                      "operator": "<",
+                      "provenance": {
+                        "method": "llm",
+                        "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                        "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                        "source_id": "clinicaltrials.gov:NCT07430956:eligibility:2026-06-23:90895ed10356",
+                        "source_span": {
+                          "end": 24,
+                          "start": 11
+                        }
+                      }
+                    },
+                    "expression_type": "atom"
+                  }
+                ],
+                "expression_type": "any"
+              }
+            ],
+            "expression_type": "not"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "string atom requires == or !=",
+      "latency_seconds": 145.18636254197918,
+      "nct_id": "NCT07430956",
+      "output_status": "semantic_invalid",
+      "output_tokens": 571,
+      "prompt_tokens": 3499
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-23639d187688b443",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07455539-exclusion-23639d187688b443:a01",
+          "expected": {
+            "value": "9000-01-01",
+            "value_type": "date"
+          },
+          "fact_selection": "all",
+          "field": "stroke",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+            "source_span": {
+              "end": 90,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 75.02206079196185,
+      "nct_id": "NCT07455539",
+      "output_status": "valid",
+      "output_tokens": 257,
+      "prompt_tokens": 3482
+    },
+    {
+      "criterion_id": "nct07455539-exclusion-8fc9bee5152609cd",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07455539-exclusion-8fc9bee5152609cd:a01",
+          "expected": {
+            "value": "can accommodate",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "left_atrial_appendage_anatomy",
+          "operator": "!=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+            "source_span": {
+              "end": 63,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 78.10385766695254,
+      "nct_id": "NCT07455539",
+      "output_status": "valid",
+      "output_tokens": 261,
+      "prompt_tokens": 3482
+    },
+    {
+      "criterion_id": "nct07455539-inclusion-83002ea75db4e52b",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct07455539-inclusion-83002ea75db4e52b:a01",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "left_atrial_appendage_closure_suitability",
+              "operator": ">",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+                "source_span": {
+                  "end": 123,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07455539-inclusion-83002ea75db4e52b:a02",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "shared_decision_making",
+              "operator": ">",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+                "source_span": {
+                  "end": 234,
+                  "start": 124
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07455539-inclusion-83002ea75db4e52b:a03",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "clinical_record_documentation",
+              "operator": ">",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07455539:eligibility:2026-03-06:377edee9637c",
+                "source_span": {
+                  "end": 234,
+                  "start": 235
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "boolean atom requires == or !=",
+      "latency_seconds": 140.35426745796576,
+      "nct_id": "NCT07455539",
+      "output_status": "semantic_invalid",
+      "output_tokens": 771,
+      "prompt_tokens": 3504
+    },
+    {
+      "criterion_id": "nct07563257-exclusion-dd19e0140f02db24",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07563257-exclusion-dd19e0140f02db24:a01",
+          "expected": {
+            "value": false,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "intracardiac_thrombus",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+            "source_span": {
+              "end": 47,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT",
+      "latency_seconds": 141.06289233383723,
+      "nct_id": "NCT07563257",
+      "output_status": "semantic_invalid",
+      "output_tokens": 261,
+      "prompt_tokens": 3486
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07563257-inclusion-84eeadc753b5318e:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "informed_consent",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+            "source_span": {
+              "end": 5,
+              "start": 1
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 100.63422795780934,
+      "nct_id": "NCT07563257",
+      "output_status": "valid",
+      "output_tokens": 257,
+      "prompt_tokens": 3473
+    },
+    {
+      "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07563257-inclusion-ca0bcbd47a554ba4:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "atrial_fibrillation",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07563257:eligibility:2026-06-03:6ed0e0c03bc2",
+            "source_span": {
+              "end": 44,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 101.48022283311002,
+      "nct_id": "NCT07563257",
+      "output_status": "valid",
+      "output_tokens": 258,
+      "prompt_tokens": 3479
+    },
+    {
+      "criterion_id": "nct07687862-exclusion-eebb7fbcbb208585",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07687862-exclusion-eebb7fbcbb208585:a01",
+          "expected": {
+            "value": true,
+            "value_type": "boolean"
+          },
+          "fact_selection": "all",
+          "field": "anemia",
+          "operator": "!=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+            "source_span": {
+              "end": 24,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 77.43507341691293,
+      "nct_id": "NCT07687862",
+      "output_status": "valid",
+      "output_tokens": 253,
+      "prompt_tokens": 3468
+    },
+    {
+      "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07687862-inclusion-c7a39fa346214846:a01",
+          "expected": {
+            "value": 18,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "age",
+          "operator": ">=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07687862:eligibility:2026-07-09:716699e7490c",
+            "source_span": {
+              "end": 13,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 76.58688933285885,
+      "nct_id": "NCT07687862",
+      "output_status": "valid",
+      "output_tokens": 242,
+      "prompt_tokens": 3464
+    },
+    {
+      "criterion_id": "nct07715929-exclusion-6fcd645b1ca00b43",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07715929-exclusion-6fcd645b1ca00b43:a01",
+          "expected": {
+            "value": "2022-07-21",
+            "value_type": "date"
+          },
+          "fact_selection": "latest",
+          "field": "major_cardiac_surgery",
+          "operator": ">",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+            "source_span": {
+              "end": 34,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 79.55472462507896,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "output_tokens": 252,
+      "prompt_tokens": 3503
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-0eaa5a137c984e76",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07715929-inclusion-0eaa5a137c984e76:a01",
+          "expected": {
+            "value": "true",
+            "value_type": "string"
+          },
+          "fact_selection": "all",
+          "field": "participating_center",
+          "operator": "==",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+            "source_span": {
+              "end": 47,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 79.4343532922212,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "output_tokens": 255,
+      "prompt_tokens": 3490
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct07715929-inclusion-544aaaaf9d6f82b8:a01",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "study_procedure_comprehension",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+                "source_span": {
+                  "end": 10,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07715929-inclusion-544aaaaf9d6f82b8:a02",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "informed_consent",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+                "source_span": {
+                  "end": 24,
+                  "start": 12
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07715929-inclusion-544aaaaf9d6f82b8:a03",
+              "expected": {
+                "value": true,
+                "value_type": "boolean"
+              },
+              "fact_selection": "all",
+              "field": "protocol_compliance",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+                "source_span": {
+                  "end": 38,
+                  "start": 26
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": "boolean atom requires == or !=",
+      "latency_seconds": 149.89671450015157,
+      "nct_id": "NCT07715929",
+      "output_status": "semantic_invalid",
+      "output_tokens": 767,
+      "prompt_tokens": 3485
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-c62ef21c5c87b412",
+      "expression": {
+        "atom": {
+          "condition_id": "nct07715929-inclusion-c62ef21c5c87b412:a01",
+          "expected": {
+            "value": 28.0,
+            "value_type": "number"
+          },
+          "fact_selection": "all",
+          "field": "body_mass_index",
+          "operator": ">=",
+          "provenance": {
+            "method": "llm",
+            "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+            "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+            "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+            "source_span": {
+              "end": 13,
+              "start": 0
+            }
+          }
+        },
+        "expression_type": "atom"
+      },
+      "failure_reason": null,
+      "latency_seconds": 78.96501895808615,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "output_tokens": 256,
+      "prompt_tokens": 3574
+    },
+    {
+      "criterion_id": "nct07715929-inclusion-c6ddf661e250f976",
+      "expression": {
+        "children": [
+          {
+            "atom": {
+              "condition_id": "nct07715929-inclusion-c6ddf661e250f976:a01",
+              "expected": {
+                "value": 18,
+                "value_type": "number"
+              },
+              "fact_selection": "all",
+              "field": "age",
+              "operator": ">=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+                "source_span": {
+                  "end": 7,
+                  "start": 0
+                }
+              }
+            },
+            "expression_type": "atom"
+          },
+          {
+            "atom": {
+              "condition_id": "nct07715929-inclusion-c6ddf661e250f976:a02",
+              "expected": {
+                "value": 75,
+                "value_type": "number"
+              },
+              "fact_selection": "all",
+              "field": "age",
+              "operator": "<=",
+              "provenance": {
+                "method": "llm",
+                "model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+                "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+                "source_id": "clinicaltrials.gov:NCT07715929:eligibility:2026-07-21:a13918011fce",
+                "source_span": {
+                  "end": 22,
+                  "start": 15
+                }
+              }
+            },
+            "expression_type": "atom"
+          }
+        ],
+        "expression_type": "all"
+      },
+      "failure_reason": null,
+      "latency_seconds": 117.46127349999733,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "output_tokens": 493,
+      "prompt_tokens": 3467
+    }
+  ],
+  "prompt_version": "clinicalmatcher-decomposition-local-llama/1.0.0",
+  "protocol_version": "decomposition-benchmark-protocol/1.3.0",
+  "selection_manifest_sha256": "b83592f4e26d0874ef61ab74f06ebc432f4059251f9da05eb5184bfeb2ffe97e",
+  "source_package_sha256": "0c421e65a08632af90142dd81e99076df3f4283c82aa2c46379f812e83cbe22f",
+  "split": "dev"
+}

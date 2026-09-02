@@ -1,0 +1,837 @@
+{
+  "claim_boundaries": {
+    "clinical_ground_truth": false,
+    "decomposition_accuracy": false,
+    "grpo_semantic_oracle": false,
+    "independent_human_gold": false,
+    "inter_annotator_agreement": false,
+    "permitted_claim": "descriptive agreement with Codex-drafted, owner-accepted assisted silver"
+  },
+  "code_commit": "757a8631c3c8142a10a311460d841a713f2b03ef",
+  "component_diagnostics": {
+    "criteria": 26,
+    "dimensions": {
+      "fact_selection": {
+        "f1": 0.019801980198019802,
+        "matched_count": 1,
+        "precision": 0.030303030303030304,
+        "predicted_count": 33,
+        "recall": 0.014705882352941176,
+        "reference_count": 68
+      },
+      "field": {
+        "f1": 0.5742574257425742,
+        "matched_count": 29,
+        "precision": 0.8787878787878788,
+        "predicted_count": 33,
+        "recall": 0.4264705882352941,
+        "reference_count": 68
+      },
+      "operator": {
+        "f1": 0.39603960396039606,
+        "matched_count": 20,
+        "precision": 0.6060606060606061,
+        "predicted_count": 33,
+        "recall": 0.29411764705882354,
+        "reference_count": 68
+      },
+      "polarity": {
+        "f1": 0.6138613861386139,
+        "matched_count": 31,
+        "precision": 0.9393939393939394,
+        "predicted_count": 33,
+        "recall": 0.45588235294117646,
+        "reference_count": 68
+      },
+      "time_window": {
+        "f1": 0.5940594059405941,
+        "matched_count": 30,
+        "precision": 0.9090909090909091,
+        "predicted_count": 33,
+        "recall": 0.4411764705882353,
+        "reference_count": 68
+      },
+      "unit": {
+        "f1": 0.5148514851485149,
+        "matched_count": 26,
+        "precision": 0.7878787878787878,
+        "predicted_count": 33,
+        "recall": 0.38235294117647056,
+        "reference_count": 68
+      },
+      "value": {
+        "f1": 0.2772277227722772,
+        "matched_count": 14,
+        "precision": 0.42424242424242425,
+        "predicted_count": 33,
+        "recall": 0.20588235294117646,
+        "reference_count": 68
+      },
+      "value_type": {
+        "f1": 0.29702970297029707,
+        "matched_count": 15,
+        "precision": 0.45454545454545453,
+        "predicted_count": 33,
+        "recall": 0.22058823529411764,
+        "reference_count": 68
+      }
+    },
+    "marginal_multiset_only": true,
+    "nonexclusive": true,
+    "scope": "semantic_valid_outputs_only"
+  },
+  "failure_reason_counts": [
+    {
+      "count": 1,
+      "reason": "ApixabanStructuredLLMError"
+    },
+    {
+      "count": 5,
+      "reason": "Boolean atoms must state a positive fact with expected=true; represent negation with NOT"
+    },
+    {
+      "count": 5,
+      "reason": "boolean atom requires == or !="
+    },
+    {
+      "count": 2,
+      "reason": "invalid_json"
+    },
+    {
+      "count": 1,
+      "reason": "string atom requires == or !="
+    }
+  ],
+  "generated_at": "2026-09-02T11:37:49.312877Z",
+  "information_asymmetry": {
+    "atom_micro_f1": 0.0,
+    "causal_effect_claimed": false,
+    "item_count": 8,
+    "operator_topology_exact_rate": 0.0,
+    "semantic_valid_outputs": 4
+  },
+  "items": [
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct02932007-exclusion-04393439bf6f2032",
+      "information_asymmetry": true,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_boolean_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "schema_invalid"
+      ],
+      "criterion_id": "nct02932007-inclusion-3449060b23561f00",
+      "information_asymmetry": false,
+      "nct_id": "NCT02932007",
+      "output_status": "schema_invalid",
+      "primary_failure_category": "schema_invalid_output_budget_reached"
+    },
+    {
+      "component_disagreement_types": [
+        "schema_invalid"
+      ],
+      "criterion_id": "nct02932007-inclusion-9fa662d9d6bd53f7",
+      "information_asymmetry": true,
+      "nct_id": "NCT02932007",
+      "output_status": "schema_invalid",
+      "primary_failure_category": "schema_invalid_output_budget_reached"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct02932007-inclusion-a87b29150a5fc629",
+      "information_asymmetry": false,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_boolean_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct02932007-inclusion-ce4fe9d7f97194cb",
+      "information_asymmetry": true,
+      "nct_id": "NCT02932007",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_negation_encoding"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct05136131-exclusion-2f16526f17fb2859",
+      "information_asymmetry": false,
+      "nct_id": "NCT05136131",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_negation_encoding"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection"
+      ],
+      "criterion_id": "nct05860894-inclusion-83b4b84c3a0bc30e",
+      "information_asymmetry": false,
+      "nct_id": "NCT05860894",
+      "output_status": "valid",
+      "primary_failure_category": "valid_fact_selection_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "unit"
+      ],
+      "criterion_id": "nct05860894-inclusion-93f9b176abd4e08d",
+      "information_asymmetry": false,
+      "nct_id": "NCT05860894",
+      "output_status": "valid",
+      "primary_failure_category": "valid_unit_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06007872-exclusion-8a27abac4e0b299a",
+      "information_asymmetry": false,
+      "nct_id": "NCT06007872",
+      "output_status": "valid",
+      "primary_failure_category": "valid_value_type_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct06007872-inclusion-e280adfc0698a565",
+      "information_asymmetry": false,
+      "nct_id": "NCT06007872",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_negation_encoding"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06324188-exclusion-8b80b7c07f28b121",
+      "information_asymmetry": false,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06324188-exclusion-cb02dc28e5f24a5b",
+      "information_asymmetry": false,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection"
+      ],
+      "criterion_id": "nct06324188-inclusion-c8611183438ceabb",
+      "information_asymmetry": false,
+      "nct_id": "NCT06324188",
+      "output_status": "valid",
+      "primary_failure_category": "valid_fact_selection_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct06528262-exclusion-08dc731ff1a6ea43",
+      "information_asymmetry": true,
+      "nct_id": "NCT06528262",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_negation_encoding"
+    },
+    {
+      "component_disagreement_types": [
+        "runtime_error"
+      ],
+      "criterion_id": "nct06528262-exclusion-bd5cfd93e6b4aedb",
+      "information_asymmetry": false,
+      "nct_id": "NCT06528262",
+      "output_status": "runtime_error",
+      "primary_failure_category": "runtime_error"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "unit"
+      ],
+      "criterion_id": "nct06528262-exclusion-f27e2b83c8f37329",
+      "information_asymmetry": false,
+      "nct_id": "NCT06528262",
+      "output_status": "valid",
+      "primary_failure_category": "valid_unit_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06528262-inclusion-0426eaaa3ba61877",
+      "information_asymmetry": false,
+      "nct_id": "NCT06528262",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06751459-exclusion-6e586bcff5ca30ea",
+      "information_asymmetry": true,
+      "nct_id": "NCT06751459",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06847932-exclusion-bf5951810876b3fd",
+      "information_asymmetry": true,
+      "nct_id": "NCT06847932",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06847932-inclusion-ca070c2648a408c4",
+      "information_asymmetry": false,
+      "nct_id": "NCT06847932",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06959121-exclusion-1ea995059b1faf31",
+      "information_asymmetry": false,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06959121-exclusion-c268d8f245c9e46a",
+      "information_asymmetry": false,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct06959121-exclusion-e0ab92822f49bd11",
+      "information_asymmetry": false,
+      "nct_id": "NCT06959121",
+      "output_status": "valid",
+      "primary_failure_category": "valid_value_type_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct07058987-exclusion-eb557c2d7a41a0c4",
+      "information_asymmetry": false,
+      "nct_id": "NCT07058987",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_boolean_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "unit"
+      ],
+      "criterion_id": "nct07430956-exclusion-63bc1f4295df7606",
+      "information_asymmetry": false,
+      "nct_id": "NCT07430956",
+      "output_status": "valid",
+      "primary_failure_category": "valid_unit_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07430956-inclusion-918c40f64dad790a",
+      "information_asymmetry": true,
+      "nct_id": "NCT07430956",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct07430956-inclusion-f63daeda8270071a",
+      "information_asymmetry": false,
+      "nct_id": "NCT07430956",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_string_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07455539-exclusion-23639d187688b443",
+      "information_asymmetry": false,
+      "nct_id": "NCT07455539",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07455539-exclusion-8fc9bee5152609cd",
+      "information_asymmetry": false,
+      "nct_id": "NCT07455539",
+      "output_status": "valid",
+      "primary_failure_category": "valid_field_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct07455539-inclusion-83002ea75db4e52b",
+      "information_asymmetry": false,
+      "nct_id": "NCT07455539",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_boolean_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct07563257-exclusion-dd19e0140f02db24",
+      "information_asymmetry": false,
+      "nct_id": "NCT07563257",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_negation_encoding"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection"
+      ],
+      "criterion_id": "nct07563257-inclusion-84eeadc753b5318e",
+      "information_asymmetry": false,
+      "nct_id": "NCT07563257",
+      "output_status": "valid",
+      "primary_failure_category": "valid_fact_selection_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07563257-inclusion-ca0bcbd47a554ba4",
+      "information_asymmetry": false,
+      "nct_id": "NCT07563257",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07687862-exclusion-eebb7fbcbb208585",
+      "information_asymmetry": false,
+      "nct_id": "NCT07687862",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "unit"
+      ],
+      "criterion_id": "nct07687862-inclusion-c7a39fa346214846",
+      "information_asymmetry": false,
+      "nct_id": "NCT07687862",
+      "output_status": "valid",
+      "primary_failure_category": "valid_unit_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07715929-exclusion-6fcd645b1ca00b43",
+      "information_asymmetry": true,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07715929-inclusion-0eaa5a137c984e76",
+      "information_asymmetry": false,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "semantic_invalid"
+      ],
+      "criterion_id": "nct07715929-inclusion-544aaaaf9d6f82b8",
+      "information_asymmetry": false,
+      "nct_id": "NCT07715929",
+      "output_status": "semantic_invalid",
+      "primary_failure_category": "semantic_invalid_boolean_operator"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "atom_omission_or_addition",
+        "fact_selection",
+        "field",
+        "operator",
+        "polarity",
+        "structure",
+        "time_window",
+        "unit",
+        "value",
+        "value_type"
+      ],
+      "criterion_id": "nct07715929-inclusion-c62ef21c5c87b412",
+      "information_asymmetry": false,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "primary_failure_category": "valid_atom_count_mismatch"
+    },
+    {
+      "component_disagreement_types": [
+        "atom_identity",
+        "fact_selection",
+        "unit"
+      ],
+      "criterion_id": "nct07715929-inclusion-c6ddf661e250f976",
+      "information_asymmetry": false,
+      "nct_id": "NCT07715929",
+      "output_status": "valid",
+      "primary_failure_category": "valid_unit_mismatch"
+    }
+  ],
+  "limitations": [
+    "The reference is Codex-drafted and was accepted unchanged by one owner; it is not independent human gold.",
+    "The 40/40 accepted-unchanged and zero-note review distribution is a disclosed rubber-stamp risk.",
+    "This was one zero-shot run under initial prompt v1.0.0; no prompt-iteration ceiling was measured.",
+    "Primary categories are mutually exclusive observable diagnostics selected by precedence, not causal explanations.",
+    "Component overlaps are marginal multiset diagnostics and do not award partial primary-metric credit.",
+    "The AF-only dev result does not establish clinical, disease-general, or model-family capability.",
+    "Eight assisted-reference items include owner resolutions hidden from the evaluated model; subgroup differences are not causal estimates.",
+    "The locked test was not inspected or executed."
+  ],
+  "model_roles": {
+    "evaluated_model_id": "ollama/llama3.1:8b-instruct-q4_k_m@sha256:46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+    "reference_draft_model_id": "openai-codex-conversational-assistant",
+    "relationship": "Llama compared with Codex-drafted, owner-accepted assisted silver; not accuracy against human gold"
+  },
+  "owner_review_outcome": {
+    "accepted_unchanged": 40,
+    "accepted_with_edits": 0,
+    "evidence_strength_limitation": "Formal owner acceptance does not establish independent or deep semantic review; the unanimous no-note distribution is disclosed as a rubber-stamp risk.",
+    "review_notes": 0,
+    "total": 40
+  },
+  "performance": {
+    "hardware": {
+      "architecture": "arm64",
+      "chip": "Apple M3",
+      "cpu_cores": 8,
+      "memory_bytes": 25769803776,
+      "system": "Darwin"
+    },
+    "latency_seconds_mean": 140.33337843228946,
+    "latency_seconds_p95": 552.9649343329947,
+    "output_tokens": 22212,
+    "prompt_tokens": 136131,
+    "request_count": 40,
+    "total_duration_seconds": 5613.335137291579
+  },
+  "population": {
+    "criteria": 40,
+    "exact_atom_matches": 0,
+    "schema_valid_outputs": 37,
+    "semantic_valid_outputs": 26
+  },
+  "primary_attribution_policy": {
+    "causal_proof_claimed": false,
+    "component_diagnostics_change_primary_metrics": false,
+    "mutually_exclusive": true,
+    "policy_version": "decomposition-disagreement-primary-attribution/1.0.0",
+    "precedence": [
+      "runtime_error",
+      "schema_invalid_output_budget_reached",
+      "schema_invalid_other",
+      "semantic_invalid_boolean_operator",
+      "semantic_invalid_negation_encoding",
+      "semantic_invalid_string_operator",
+      "semantic_invalid_other",
+      "valid_atom_count_mismatch",
+      "valid_field_mismatch",
+      "valid_polarity_mismatch",
+      "valid_operator_mismatch",
+      "valid_value_type_mismatch",
+      "valid_value_mismatch",
+      "valid_unit_mismatch",
+      "valid_time_window_mismatch",
+      "valid_fact_selection_mismatch",
+      "valid_structure_or_source_span_mismatch"
+    ],
+    "universe": "all_40_dev_items_with_zero_exact_atom_matches"
+  },
+  "primary_category_counts": {
+    "runtime_error": 1,
+    "schema_invalid_other": 0,
+    "schema_invalid_output_budget_reached": 2,
+    "semantic_invalid_boolean_operator": 5,
+    "semantic_invalid_negation_encoding": 5,
+    "semantic_invalid_other": 0,
+    "semantic_invalid_string_operator": 1,
+    "valid_atom_count_mismatch": 15,
+    "valid_fact_selection_mismatch": 3,
+    "valid_field_mismatch": 1,
+    "valid_operator_mismatch": 0,
+    "valid_polarity_mismatch": 0,
+    "valid_structure_or_source_span_mismatch": 0,
+    "valid_time_window_mismatch": 0,
+    "valid_unit_mismatch": 5,
+    "valid_value_mismatch": 0,
+    "valid_value_type_mismatch": 2
+  },
+  "protocol_version": "decomposition-benchmark-protocol/1.3.0",
+  "provenance_diagnostic": {
+    "explicit_provenance_failure_count": 0,
+    "schema_valid_outputs_checked": 37,
+    "scope_limitation": "Only explicit recorded first-failure reasons and fully valid outputs are observable; this is not proof that every rejected expression had correct provenance."
+  },
+  "report_id": "decomposition-disagreement-dev-d92d0e52b21598a9",
+  "report_sha256": "d92d0e52b21598a93442311fc7c7667e0c8d73240f9675528e69cc259e5f016a",
+  "report_version": "1.0.0",
+  "retention_decision": {
+    "decision": "retain_initial_prompt_dev_only_negative_baseline",
+    "locked_test_unlocked": false,
+    "restart_conditions": [
+      "new_owner_frozen_stronger_prompt_contract",
+      "new_owner_frozen_larger_model_contract",
+      "truly_independent_decomposition_gold"
+    ],
+    "test_entry_gate_met": false
+  },
+  "scope_statement": "Under the initial frozen prompt v1.0.0, zero-shot and with no few-shot examples, local Llama 3.1 8B produced a negative descriptive-agreement result against the assisted silver for strict typed-schema decomposition (atom F1 = 0); this result is limited to that configuration and does not evaluate the ceiling after prompt iteration.",
+  "source_artifacts": {
+    "analysis_contract": {
+      "content_sha256": "36f83a4f8071a73741a2147ab1dcac1b7fa57e76dbd0a6a7ab08c572bc2ff887",
+      "file_sha256": "1b55536211af9ba2fd0bf50e64afaa28bce96885a59f4e5aed8b7b44717fc697",
+      "id": "decomposition-disagreement-contract-36f83a4f8071a737"
+    },
+    "assisted_silver": {
+      "content_sha256": "9ab0b5fe571bca4b9ab9412b32b5511acc87968a2911907d3a1fdbea71ffd3a1",
+      "file_sha256": "ca76ddec254f0d7489dd3f38fa1c42d93acf519f444de06760bc3f136c456a52",
+      "id": "decomposition-dev-assisted-work-9ab0b5fe571bca4b"
+    },
+    "comparison_report": {
+      "content_sha256": "316d6d90e9cbf680f9aa582186002b39e2be6008b5a9eba7c8fe28be35f1a965",
+      "file_sha256": "29beacfe8b131179a0bf57e09e464cf1f61eb728f2a4e19079f9040cef46885b",
+      "id": "decomposition-llama-comparison-dev-316d6d90e9cbf680"
+    },
+    "predictions": {
+      "content_sha256": "130da5c6941b9413e9df0e2f5ce6520fdd32a80d806016d5761f43dcb2d4713b",
+      "file_sha256": "61fa44c316fa4bfc59c84146636108633b3e6d24abcdb8be780b9e5251a97e23",
+      "id": "decomposition-llama-predictions-dev-130da5c6941b9413"
+    },
+    "silver_manifest": {
+      "content_sha256": "1247b283507aa2f46f6b93c101ca6cf6b8c1e0470db29652ceca6f9a0ff7f627",
+      "file_sha256": "5ae3b77cecadd8e11301f68bb466e72638294fa2174dda2438a683c4dcd35a36",
+      "id": "decomposition-assisted-silver-manifest-dev-1247b283507aa2f4"
+    }
+  },
+  "span_diagnostic": {
+    "identity_matched_atoms": 0,
+    "status": "not_evaluable_without_identity_matched_atoms",
+    "zero_value_interpretation": "The reported zero span score has a zero matched-identity denominator; it does not show that every predicted span was wrong."
+  },
+  "split": "dev",
+  "status_counts": {
+    "runtime_error": 1,
+    "schema_invalid": 2,
+    "semantic_invalid": 11,
+    "valid": 26
+  }
+}
