@@ -56,6 +56,12 @@ fixture file hash. It consequently could not represent a field whose canonical
 document self-hash intentionally differs from its file-byte hash. That missing
 test case allowed the ambiguity to pass preflight and CI.
 
+The resulting review rule is broader than this one field: every hash must be
+audited as a producer/consumer semantic pair. Review must establish both what
+the producer stores and what the consumer assumes, because schema-valid length
+and hexadecimal format do not distinguish a canonical document self-hash from
+a byte-level file hash.
+
 ## Preserved owner-only raw artifacts
 
 The deterministic-rules, structured-Llama, and long-context-Llama raw

@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/clinicalmatcher/public-demo-report-1.0.0.schema.json",
+  "title": "ClinicalMatcher synthetic public demo report 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "demo_version",
+    "warning",
+    "fixture",
+    "runtime",
+    "claim_boundary",
+    "patients",
+    "safety_probes"
+  ],
+  "properties": {
+    "demo_version": {"const": "1.0.0"},
+    "warning": {
+      "const": "SYNTHETIC RESEARCH DEMO ONLY. Not medical advice, a medical device, or an autonomous enrollment or exclusion system."
+    },
+    "fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declaration",
+        "fixture_file_sha256",
+        "patient_count",
+        "trial_count"
+      ],
+      "properties": {
+        "declaration": {
+          "const": "Independently authored synthetic records and gold judgments; not derived from MIMIC or any real patient."
+        },
+        "fixture_file_sha256": {"$ref": "#/$defs/sha256"},
+        "patient_count": {"type": "integer", "minimum": 1},
+        "trial_count": {"type": "integer", "minimum": 2}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_required",
+        "model_required",
+        "cpu_only",
+        "retrieval",
+        "reasoning"
+      ],
+      "properties": {
+        "network_required": {"const": false},
+        "model_required": {"const": false},
+        "cpu_only": {"const": true},
+        "retrieval": {"type": "string", "minLength": 1},
+        "reasoning": {"type": "string", "minLength": 1}
+      }
+    },
+    "claim_boundary": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "patients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/patient"}
+    },
+    "safety_probes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/safety_probe"}
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["eligible", "ineligible", "unknown"]
+    },
+    "string_list": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "typed_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value_type", "value", "unit"],
+      "properties": {
+        "value_type": {
+          "type": "string",
+          "enum": ["number", "boolean", "string", "date"]
+        },
+        "value": {"type": ["number", "boolean", "string"]},
+        "unit": {"type": ["string", "null"]}
+      }
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fact_id",
+        "field",
+        "typed_value",
+        "observed_at",
+        "evidence_ids"
+      ],
+      "properties": {
+        "fact_id": {"type": "string", "minLength": 1},
+        "field": {"type": "string", "minLength": 1},
+        "typed_value": {"$ref": "#/$defs/typed_value"},
+        "observed_at": {
+          "oneOf": [
+            {"type": "string", "format": "date"},
+            {"type": "null"}
+          ]
+        },
+        "evidence_ids": {"$ref": "#/$defs/string_list"}
+      }
+    },
+    "retrieval_hit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "evidence_id",
+        "score",
+        "text",
+        "linked_to_deterministic_decision"
+      ],
+      "properties": {
+        "rank": {"type": "integer", "minimum": 1},
+        "evidence_id": {"type": "string", "minLength": 1},
+        "score": {"type": "number", "minimum": 0},
+        "text": {"type": "string", "minLength": 1},
+        "linked_to_deterministic_decision": {"type": "boolean"}
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "query", "top_k"],
+      "properties": {
+        "method": {"const": "patient-local-bm25"},
+        "query": {"type": "string", "minLength": 1},
+        "top_k": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/retrieval_hit"}
+        }
+      }
+    },
+    "atomic_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_id",
+        "truth_value",
+        "negated",
+        "evidence_ids",
+        "reason",
+        "issues"
+      ],
+      "properties": {
+        "condition_id": {"type": "string", "minLength": 1},
+        "truth_value": {
+          "type": "string",
+          "enum": ["true", "false", "unknown"]
+        },
+        "negated": {"type": "boolean"},
+        "evidence_ids": {"$ref": "#/$defs/string_list"},
+        "reason": {"type": "string", "minLength": 1},
+        "issues": {"$ref": "#/$defs/string_list"}
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "criterion_type",
+        "hard",
+        "source_text",
+        "retrieval",
+        "decision",
+        "reason",
+        "evidence_ids",
+        "atomic_coverage",
+        "issues",
+        "atomic_trace"
+      ],
+      "properties": {
+        "criterion_id": {"type": "string", "minLength": 1},
+        "criterion_type": {
+          "type": "string",
+          "enum": ["inclusion", "exclusion"]
+        },
+        "hard": {"type": "boolean"},
+        "source_text": {"type": "string", "minLength": 1},
+        "retrieval": {"$ref": "#/$defs/retrieval"},
+        "decision": {"$ref": "#/$defs/decision"},
+        "reason": {"type": "string", "minLength": 1},
+        "evidence_ids": {"$ref": "#/$defs/string_list"},
+        "atomic_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "issues": {"$ref": "#/$defs/string_list"},
+        "atomic_trace": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/atomic_trace"}
+        }
+      }
+    },
+    "trial_match": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "trial_id",
+        "title",
+        "decision",
+        "eligibility_score",
+        "coverage",
+        "atomic_coverage",
+        "abstained",
+        "abstention_reasons",
+        "data_quality_issues",
+        "criteria"
+      ],
+      "properties": {
+        "rank": {"type": "integer", "minimum": 1},
+        "trial_id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "decision": {"$ref": "#/$defs/decision"},
+        "eligibility_score": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "atomic_coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "abstained": {"type": "boolean"},
+        "abstention_reasons": {"$ref": "#/$defs/string_list"},
+        "data_quality_issues": {"$ref": "#/$defs/string_list"},
+        "criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/criterion"}
+        }
+      }
+    },
+    "patient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["patient_id", "index_date", "typed_facts", "ranked_trials"],
+      "properties": {
+        "patient_id": {"type": "string", "minLength": 1},
+        "index_date": {"type": "string", "format": "date"},
+        "typed_facts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fact"}
+        },
+        "ranked_trials": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/trial_match"}
+        }
+      }
+    },
+    "safety_probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "classification",
+        "purpose",
+        "criterion_id",
+        "decision",
+        "abstained",
+        "abstention_reasons",
+        "verifier_issues"
+      ],
+      "properties": {
+        "probe_id": {"type": "string", "minLength": 1},
+        "classification": {"const": "derived_synthetic_safety_probe"},
+        "purpose": {"type": "string", "minLength": 1},
+        "criterion_id": {"type": "string", "minLength": 1},
+        "decision": {"const": "unknown"},
+        "abstained": {"const": true},
+        "abstention_reasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "verifier_issues": {"$ref": "#/$defs/string_list"}
+      }
+    }
+  }
+}

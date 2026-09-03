@@ -172,3 +172,19 @@ versioned weak-diagnostic contract. It records only reconciled population
 exclusions and exact numeric-token occurrence@1/@3 counts/rates—never note
 text, patient IDs, per-row results, or evidence-relevance metrics. The report
 remains restricted because its aggregates are derived from MIMIC text/labels.
+
+## Public synthetic demo report `1.0.0`
+
+P7.3 introduces `public-demo-report-1.0.0` as a new public presentation
+artifact; it does not migrate the frozen trial-matching fixture or any
+restricted experiment schema. The report records the input fixture's
+byte-level file SHA-256 with the explicit field name `fixture_file_sha256`,
+offline/CPU/model-free runtime boundaries, patient-local BM25 candidates,
+typed facts, deterministic atomic and trial decisions, and two derived
+synthetic fail-closed probes.
+
+The report may contain fictional evidence text but no real patient content or
+performance claim. Its validator requires both safety probes to abstain as
+`unknown`. The fixture declaration is an input gate rather than proof that an
+arbitrary file is synthetic; the public command must not be used on clinical
+records.

@@ -1230,7 +1230,7 @@ from structured EHR or is honestly reported as unsupported and omitted.
     implemented. Current P4.3 `1.1.0` validation projections and the additive
     long-context P4.7 validation diagnostic are pinned without replacing any
     historical artifact. The machine-readable contract is intentionally
-    `implementation_complete_owner_review_required_not_executable` with all
+    `implementation_complete_owner_review_required_not_executable`, and all
     authorization flags were false during implementation review. A clean
     reinstall passed all 430 tests with 3 conditional MLX skips, the
     public-data guard passed, and CI run `33689386226` was green. The owner
@@ -1258,7 +1258,7 @@ from structured EHR or is honestly reported as unsupported and omitted.
     access. No locked-test performance number may be claimed; see
     `docs/P7_LOCKED_TEST_TERMINAL_FAILURE.md`.
 
-- [ ] **P7.3 Build a synthetic public demonstration.** Show evidence retrieval,
+- [x] **P7.3 Build a synthetic public demonstration.** Show evidence retrieval,
   typed facts, unknown reasons, verifier conflicts, and an audit trace on
   fictional patients.
   - Entry condition: final public interfaces are stable.
@@ -1267,17 +1267,34 @@ from structured EHR or is honestly reported as unsupported and omitted.
     synthetic unless adjudicated gold later exists.
   - Verify: clean-clone demo works CPU-only, offline where documented, includes
     research-only warnings, and fails safely on invalid input.
+  - Completion: `clinical-matcher-demo` runs the independently authored
+    fictional fixture through patient-local BM25 and the frozen typed verifier,
+    renders human-readable or machine-readable audit traces, and includes
+    derived missing-fact and unit-conflict probes that must fail closed as
+    `unknown`. The command needs no model, network, accelerator, API key, or
+    restricted data; invalid input produces no partial report. Typed facts are
+    declared fixture inputs rather than being misrepresented as BM25 output.
 
-- [ ] **P7.4 Complete the public research package.** Publish architecture,
+- [x] **P7.4 Complete the public research package.** Publish architecture,
   methods, experiment commands, aggregate results, model/data cards, licenses,
   reference attribution, limitations, and reproduction instructions.
-  - Entry condition: P7.2 and P7.3 pass.
+  - Original entry condition: P7.2 and P7.3 pass. P7.2 instead reached the
+    immutable terminal-failure/no-rerun state. After that disposition, the
+    owner explicitly approved final packaging with validation as the only
+    performance evidence and the failed locked test as a documented
+    limitation; this exception does not reclassify P7.2 as passed.
   - Constraints: distinguish implemented, evaluated, optional, and future work;
     do not claim that MedicalGPT or LightRAG components were used unless their
     corresponding experiment actually ran.
   - Verify: a fresh reviewer can identify every contribution, reproduce the
     synthetic path, understand the restricted-data path, and trace every public
     number to a run specification.
+  - Completion: `docs/RESEARCH_PACKAGE.md` supplies the architecture and
+    contribution matrix, integrated data/model cards, public and restricted
+    reproduction boundaries, validation-only result table with source links,
+    licenses, security controls, limitations, and explicit absent/deferred
+    components. It reports no locked-test metric and does not claim MedicalGPT
+    or LightRAG execution.
 
 Acceptance: the repository supports a defensible resume claim with runnable
 public code and evidence-backed restricted-data aggregate results.

@@ -59,6 +59,7 @@ uv run --no-sync python scripts/check_public_data.py
 uv run --no-sync clinical-matcher-validate fixtures/synthetic/trial_matching.json
 uv run --no-sync python -m unittest discover -s tests -v
 uv run --no-sync clinical-matcher-smoke --fixture fixtures/synthetic/trial_matching.json
+uv run --no-sync clinical-matcher-demo --fixture fixtures/synthetic/trial_matching.json --format markdown
 ```
 
 Reinstall the current worktree immediately before local verification; running
@@ -71,6 +72,11 @@ Windows paths, lock regeneration, and the GPU-environment separation policy.
 The smoke test evaluates two independently authored fictional patients against
 two fictional trials. It verifies criterion polarity, evidence links,
 abstention on missing facts, aggregation, and deterministic ranking.
+
+The final public demo adds patient-local BM25 results, typed-fact and atomic
+decision traces, explicit abstention reasons, and derived missing-fact/unit-
+conflict safety probes. It is deterministic, CPU-only, offline, and contains
+fictional data only. See [docs/PUBLIC_DEMO.md](docs/PUBLIC_DEMO.md).
 
 The frozen P1 `1.0.0` schema and aggregation semantics are documented in
 [docs/SCHEMA.md](docs/SCHEMA.md). Compound criteria use a restricted
@@ -160,10 +166,18 @@ frozen zero-shot prompt, the pinned local Llama 3.1 8B run produced 37/40
 schema-valid and 26/40 semantic-valid outputs but no exact atom match with the
 assisted silver. This is retained as a configuration-specific negative
 descriptive baseline, not a claim about accuracy or the model's ceiling after
-prompt iteration. The test entry gate was not met, so the locked test remains
-uninspected and unrun. See the public
+prompt iteration. The decomposition test-entry gate was not met, so that
+task's separate locked test remains uninspected and unrun. See the public
 [P5D result package](benchmarks/decomposition/llama_dev_initial_prompt_1.0.0/)
 and P5D in [TASKS.md](TASKS.md).
+
+The sole authorized P7 locked-test attempt ended in a terminal infrastructure
+failure after gold access began but before any test metric was created. The
+predeclared no-rerun rule was preserved; this repository claims no locked-test
+performance. The sanitized incident is recorded in
+[docs/P7_LOCKED_TEST_TERMINAL_FAILURE.md](docs/P7_LOCKED_TEST_TERMINAL_FAILURE.md).
+The final [research package](docs/RESEARCH_PACKAGE.md) maps every implemented,
+evaluated, deferred, and unimplemented component to its evidence and limits.
 
 ## Data access and reproducibility
 
