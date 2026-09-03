@@ -1,6 +1,6 @@
 # P7 locked-test single-batch plan
 
-Status: `owner_approved_frozen_p7_1_and_p7_2_authorized`
+Status: `terminal_failure_no_rerun_permitted`
 
 Protocol version: `p7-locked-test-batch-plan/1.0.0`
 
@@ -357,3 +357,18 @@ pin and did not inspect any test member, label, prediction, or metric.
 
 All eight steps are complete. Execution is limited to the exact single batch
 encoded in the owner-authorized contract.
+
+## Execution outcome
+
+The sole authorized attempt ran on 2026-09-03. All three frozen raw prediction
+arms completed, then the gold-backed phase failed terminally before any
+projection or metric was created. The cause was a frozen-contract mismatch
+between the benchmark manifest's canonical self-hash and its byte-level file
+hash. D4 prohibits a rerun after gold access began. The public incident scope,
+impact boundary, and no-rerun decision are recorded in
+`docs/P7_LOCKED_TEST_TERMINAL_FAILURE.md`; exact event and raw-artifact details
+remain owner-only.
+
+No locked-test performance number exists or may be claimed. The original
+machine-readable authorization contract and owner-only event chain remain
+unchanged as historical evidence.

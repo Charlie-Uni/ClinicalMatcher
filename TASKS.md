@@ -1250,6 +1250,13 @@ from structured EHR or is honestly reported as unsupported and omitted.
     P5 and P7 reports must reuse these immutable test artifacts.
   - Verify: JSON and Markdown reports agree, totals reconcile, the public-data
     guard passes, and no metric lacks dataset/split/model provenance.
+  - Status: terminally closed without completion. The sole authorized attempt
+    on 2026-09-03 completed all three raw prediction arms, entered the
+    gold-backed phase, and then failed before any projection or metric was
+    created because the contract confused the benchmark manifest's canonical
+    self-hash with its byte-level file hash. D4 prohibits rerun after gold
+    access. No locked-test performance number may be claimed; see
+    `docs/P7_LOCKED_TEST_TERMINAL_FAILURE.md`.
 
 - [ ] **P7.3 Build a synthetic public demonstration.** Show evidence retrieval,
   typed facts, unknown reasons, verifier conflicts, and an audit trace on
