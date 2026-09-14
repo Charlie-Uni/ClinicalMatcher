@@ -1301,6 +1301,43 @@ public code and evidence-backed restricted-data aggregate results.
 
 ---
 
+## P8 — Inference-side optimization (recorded restart)
+
+Scope and sequence: [P8 execution specification](docs/P8_INFERENCE_OPTIMIZATION_SPEC.md).
+This section does not reopen or replace any closed P5/P7 task. The owner has
+authorized staged implementation with a recorded self-review after each round;
+the final secondary-holdout batch still requires review of its concrete frozen
+configuration and an explicit owner authorization.
+
+- [ ] **P8.1 Freeze secondary-holdout identity and access guards.** Preserve the
+  original calibration reservation; establish historical independence from
+  metadata; enforce pre-read partition isolation and a project-lifetime single
+  exposure. Implementation includes typed hash pins, an owner-only registry,
+  default-closed development/holdout gates, and durable exposure/event writes.
+  Real source binding and the independence review remain pending; passing
+  synthetic guards is not proof of historical independence.
+- [ ] **P8.2 Evaluate frozen raw-only E0 arbitration.** Predeclare both LLM
+  sources × A1–A4, verify the complete truth table and equivalent aliases, select
+  on raw typed exact match, then apply P4.3 1.1.0 to the fixed winner. The
+  isolated-input CLI, raw provenance, P1.5 metric adapter and synthetic workflow
+  are implemented. No real validation E0 result is claimed.
+- [ ] **P8.3 Implement and evaluate per-question prompt v2.** Freeze train-fit
+  examples, supporting-quote validation, context budget, timing pilot, v2b,
+  latency and retry rules before real inference. Remains unimplemented in the
+  first guard/E0 round; v2 text is preserved in the execution specification.
+- [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
+  comparison, then evaluate an actual E3 combination on validation. No optional
+  model has been downloaded or run for P8.
+- [ ] **P8.5 Review and execute the sole secondary-holdout batch.** Freeze the
+  final configuration, arms, paired statistics and six-field disclosure; obtain
+  explicit owner authorization before content access. Not authorized and not
+  implemented as an executable batch. No second or replacement holdout exists.
+
+Self-review evidence and remaining entry conditions:
+[P8 implementation review](docs/P8_IMPLEMENTATION_REVIEW.md).
+
+---
+
 ## Deferred research extensions — not resume-release blockers
 
 - [ ] **X1 Multi-trial clinical gold.** Resume the frozen four-patient selector,

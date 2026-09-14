@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Charlie-Uni/ClinicalMatcher/schemas/p8-partition-artifact-1.0.0.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "self_sha256",
+    "hash_semantics",
+    "p8_partition_version",
+    "partition",
+    "kind",
+    "source_split_pin",
+    "reservation_pin",
+    "rows"
+  ],
+  "properties": {
+    "self_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hash_semantics": {
+      "const": {
+        "storage": "sha256_canonical_json_without_top_level_self_sha256",
+        "consumption": "remove_self_sha256_then_recompute_canonical_json",
+        "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan"
+      }
+    },
+    "p8_partition_version": {
+      "const": "1.0.0"
+    },
+    "partition": {
+      "enum": [
+        "train_fit",
+        "validation",
+        "secondary_holdout"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "evidence",
+        "gold",
+        "examples"
+      ]
+    },
+    "source_split_pin": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/hashPin"
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "self_field": {
+              "const": "manifest_sha256"
+            }
+          }
+        }
+      ]
+    },
+    "reservation_pin": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/hashPin"
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "self_field": {
+              "const": "manifest_sha256"
+            }
+          }
+        }
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "hashPin": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "file"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_exact_file_bytes"
+            },
+            "consumption": {
+              "const": "rehash_exact_file_bytes"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "content"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_canonical_json"
+            },
+            "consumption": {
+              "const": "rehash_canonical_json"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "storage": {
+              "const": "sha256_canonical_json_without_named_field"
+            },
+            "consumption": {
+              "const": "remove_named_field_then_rehash"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

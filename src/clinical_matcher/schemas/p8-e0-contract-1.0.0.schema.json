@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "const": {
+    "p8_e0_contract_version": "1.0.0",
+    "policy": {
+      "input_view": "raw",
+      "rule_set_version": "1.0.0",
+      "rule_prediction_schema_version": "1.1.0",
+      "raw_config_fields": {
+        "rules": "rule_set_sha256",
+        "structured": "inference_config_sha256",
+        "long_context": "inference_config_sha256"
+      },
+      "llm_sources": [
+        "long_context",
+        "structured"
+      ],
+      "candidates": [
+        "long_context.A1",
+        "long_context.A2",
+        "long_context.A3",
+        "long_context.A4",
+        "structured.A1",
+        "structured.A2",
+        "structured.A3",
+        "structured.A4"
+      ],
+      "equivalent_typed_policies": [
+        [
+          "A2",
+          "A3",
+          "A4"
+        ]
+      ],
+      "rule_available": "known_with_patient_local_citations_or_med_decisions_default",
+      "llm_available": "raw_known_without_preprojection",
+      "both_unknown": "keep_llm_row",
+      "agreement_source": {
+        "boolean": "llm",
+        "numeric": "rules"
+      },
+      "primary_metric": "raw_typed_exact_match",
+      "incumbent": "long_context",
+      "tie_order": [
+        "long_context",
+        "long_context.A1",
+        "long_context.A2",
+        "long_context.A3",
+        "long_context.A4",
+        "structured.A1",
+        "structured.A2",
+        "structured.A3",
+        "structured.A4"
+      ],
+      "safety_view": "apply_p4_3_1_1_0_after_raw_winner_fixed",
+      "invalid_model_output_retry": false,
+      "bootstrap_samples": 1000,
+      "bootstrap_seed": 17,
+      "claim": "development_diagnostic"
+    },
+    "catalog_pin": {
+      "kind": "self",
+      "value": "c51e07b98c6c380545685ae0585644fcb8eb5a5b5a2e2fee936f2e0dca15bc8f",
+      "self_field": "catalog_sha256",
+      "storage": "sha256_canonical_json_without_named_field",
+      "consumption": "remove_named_field_then_rehash"
+    },
+    "p4_3_policy_pin": {
+      "kind": "content",
+      "value": "0946bb21ec4ab8e693c3abc15d6625ae09ead4acbd3700ae42e484b043f36fa8",
+      "self_field": null,
+      "storage": "sha256_canonical_json",
+      "consumption": "rehash_canonical_json"
+    },
+    "evaluation_policy_pin": {
+      "kind": "content",
+      "value": "474a9d52210e0da4ca7745f07d4632db78124e95e7bce3a34ab8c3f69cbe76bf",
+      "self_field": null,
+      "storage": "sha256_canonical_json",
+      "consumption": "rehash_canonical_json"
+    },
+    "raw_configuration_pins": {
+      "rules": {
+        "kind": "content",
+        "value": "ffd14a43f6e0d21b0c87b9e7facdfe68aeb7ab407a05269d1faca2b31e66c8f9",
+        "self_field": null,
+        "storage": "sha256_canonical_json",
+        "consumption": "rehash_canonical_json"
+      },
+      "structured": {
+        "kind": "content",
+        "value": "d26f4b6554d15a03e6a2a241718147a41f2c76dcd75f5383051abff009c435b9",
+        "self_field": null,
+        "storage": "sha256_canonical_json",
+        "consumption": "rehash_canonical_json"
+      },
+      "long_context": {
+        "kind": "content",
+        "value": "693452e427cda1210d9f280041cd2727a772a23c6f11f3082f03e5d920d02217",
+        "self_field": null,
+        "storage": "sha256_canonical_json",
+        "consumption": "rehash_canonical_json"
+      }
+    },
+    "hash_semantics": {
+      "storage": "sha256_canonical_json_without_top_level_self_sha256",
+      "consumption": "remove_self_sha256_then_recompute_canonical_json",
+      "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan"
+    },
+    "self_sha256": "43578ba49ba68fe94ae20c7a08c34aa81efa454a66ce0202979c0ea175d35238"
+  }
+}

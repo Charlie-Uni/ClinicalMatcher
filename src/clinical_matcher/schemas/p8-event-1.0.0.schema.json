@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "p8_event_version",
+    "self_sha256",
+    "hash_semantics",
+    "sequence",
+    "previous_event_pin",
+    "event",
+    "attempt_id",
+    "config_pin",
+    "timestamp",
+    "details"
+  ],
+  "properties": {
+    "p8_event_version": {
+      "const": "1.0.0"
+    },
+    "self_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hash_semantics": {
+      "const": {
+        "storage": "sha256_canonical_json_without_top_level_self_sha256",
+        "consumption": "remove_self_sha256_then_recompute_canonical_json",
+        "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan"
+      }
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_event_pin": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/hashPin"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "event": {
+      "enum": [
+        "attempt_started",
+        "infrastructure_failed",
+        "retry_started",
+        "completed",
+        "failed",
+        "raw_winner_frozen",
+        "review_passed",
+        "review_failed",
+        "decision_recorded"
+      ]
+    },
+    "attempt_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_.-]+$"
+    },
+    "config_pin": {
+      "$ref": "#/$defs/hashPin"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "details": {
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "hashPin": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "file"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_exact_file_bytes"
+            },
+            "consumption": {
+              "const": "rehash_exact_file_bytes"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "content"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_canonical_json"
+            },
+            "consumption": {
+              "const": "rehash_canonical_json"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "storage": {
+              "const": "sha256_canonical_json_without_named_field"
+            },
+            "consumption": {
+              "const": "remove_named_field_then_rehash"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
