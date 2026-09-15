@@ -219,6 +219,28 @@ def compare_to_incumbent(rows: Sequence[dict], incumbent: Sequence[dict],
     }
 
 
+def public_e0_summary(report: dict) -> dict:
+    """Allowlist-only aggregate projection; never expose row/interval diagnostics."""
+    check_seal(report)
+    if (report.get("claim") != "development_diagnostic" or report.get("partition") != "validation"
+            or set(report["results"]) != {*ARMS, *CANDIDATES}
+            or report["raw_winner"] not in {"long_context", *CANDIDATES}):
+        raise P8Error("Unexpected E0 report for public projection")
+    def project(name, view, result):
+        metrics = result["metrics"]
+        return {"candidate": name, "view": view,
+                "typed_exact_match": metrics["typed_exact_match"],
+                "boolean_macro_f1": metrics["boolean"]["macro_f1"],
+                "numeric_status_macro_f1": metrics["numeric_status"]["macro_f1"],
+                "unknown_count": result["unknown_count"]}
+    rows = [project(name, "raw", report["results"][name]) for name in (*ARMS, *CANDIDATES)]
+    rows.append(project(report["raw_winner"], "p4_3_1_1_0", report["winner_safety_result"]))
+    return {"claim": "development_diagnostic", "partition": "validation",
+            "winner": report["raw_winner"], "rows": rows,
+            "latency": "not_applicable_no_new_inference",
+            "equivalent_typed_policies": [["A2", "A3", "A4"]]}
+
+
 def freeze_e0_run(manifest: dict, input_ids: Mapping[str, str], *, synthetic: bool = False) -> dict:
     require_development_ready(manifest, synthetic=synthetic)
     load_policy()

@@ -2,6 +2,12 @@
 
 Date: 2026-09-15. Status: `metadata_checks_passed_partition_export_blocked`.
 
+Historical review state above: the owner subsequently resolved the protocol
+blockers in the [1.1.0 amendment](P8_MECHANICAL_EXPORT_AMENDMENT_1.1.0.md).
+The mechanical export and evidence-limited declaration are authorized under
+that amendment; the [implementation review](P8_EXPORT_IMPLEMENTATION_REVIEW.md)
+records the subsequent code checks. This earlier diagnosis is preserved.
+
 This round follows the owner's supplied local-path inventory and the
 [P8 execution specification](P8_INFERENCE_OPTIMIZATION_SPEC.md). The reviewed
 implementation commit is `593980b176025b291ce6f94587da1359d17f0959`;

@@ -1,0 +1,292 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "self_sha256",
+    "hash_semantics",
+    "p8_export_receipt_version",
+    "status",
+    "contract_pin",
+    "policy_pin",
+    "source_split_pin",
+    "reservation_pin",
+    "source_file_pins",
+    "counts",
+    "discarded_test_patient_count",
+    "test_outputs",
+    "holdout_readback",
+    "artifacts",
+    "output_self_pins"
+  ],
+  "properties": {
+    "self_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hash_semantics": {
+      "const": {
+        "storage": "sha256_canonical_json_without_top_level_self_sha256",
+        "consumption": "remove_self_sha256_then_recompute_canonical_json",
+        "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan"
+      }
+    },
+    "p8_export_receipt_version": {
+      "const": "1.1.0"
+    },
+    "status": {
+      "const": "completed"
+    },
+    "contract_pin": {
+      "$ref": "#/$defs/hashPin"
+    },
+    "policy_pin": {
+      "$ref": "#/$defs/hashPin"
+    },
+    "source_split_pin": {
+      "$ref": "#/$defs/hashPin"
+    },
+    "reservation_pin": {
+      "$ref": "#/$defs/hashPin"
+    },
+    "source_file_pins": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "benchmark",
+        "staging"
+      ],
+      "properties": {
+        "benchmark": {
+          "$ref": "#/$defs/hashPin"
+        },
+        "staging": {
+          "$ref": "#/$defs/hashPin"
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "train_fit",
+        "validation",
+        "secondary_holdout"
+      ],
+      "properties": {
+        "train_fit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "validation": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "secondary_holdout": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "discarded_test_patient_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "test_outputs": {
+      "const": 0
+    },
+    "holdout_readback": {
+      "const": false
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_id",
+          "partition",
+          "kind",
+          "scope",
+          "path",
+          "file_pin",
+          "content_pin"
+        ],
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "partition": {
+            "enum": [
+              "train_fit",
+              "validation",
+              "secondary_holdout"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "evidence",
+              "gold",
+              "raw_predictions",
+              "examples"
+            ]
+          },
+          "scope": {
+            "const": "preisolated_partition_only"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "file_pin": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/hashPin"
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "file"
+                  }
+                }
+              }
+            ]
+          },
+          "content_pin": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/hashPin"
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "content"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "output_self_pins": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_id",
+          "self_pin"
+        ],
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "self_pin": {
+            "$ref": "#/$defs/hashPin"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "hashPin": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "file"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_exact_file_bytes"
+            },
+            "consumption": {
+              "const": "rehash_exact_file_bytes"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "content"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "null"
+            },
+            "storage": {
+              "const": "sha256_canonical_json"
+            },
+            "consumption": {
+              "const": "rehash_canonical_json"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "value",
+            "self_field",
+            "storage",
+            "consumption"
+          ],
+          "properties": {
+            "kind": {
+              "const": "self"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "self_field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "storage": {
+              "const": "sha256_canonical_json_without_named_field"
+            },
+            "consumption": {
+              "const": "remove_named_field_then_rehash"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

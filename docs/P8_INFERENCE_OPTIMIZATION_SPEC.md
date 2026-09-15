@@ -1,7 +1,7 @@
 # P8 — 推理侧准确率优化程序：完整执行规格
 
 日期：2026-09-15。规格版本：**1.1.0**（原版 1.0.0）。
-状态：`mechanical_export_amendment_authorized_pending_implementation`。
+状态：`mechanical_export_implementation_reviewed_pending_runtime`。
 迁移说明与一次性导出边界见 [1.1.0 修订](P8_MECHANICAL_EXPORT_AMENDMENT_1.1.0.md)。
 
 本文汇总已确认的设计校正、三项实质补充及两项运行补充，供实现侧按顺序执行。

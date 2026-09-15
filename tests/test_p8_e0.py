@@ -11,7 +11,7 @@ from clinical_matcher.apixaban_evaluation import records_from_documents, mixed_f
 from clinical_matcher.p8_e0 import (
     CANDIDATES, arbitrate_row, build_arbitrated_predictions, evaluate_rows,
     freeze_e0_run, indexed_grid, policy_contract, project_safety_rows,
-    run_e0, select_raw_winner, validate_arbitrated_predictions, compare_to_incumbent,
+    run_e0, select_raw_winner, validate_arbitrated_predictions, compare_to_incumbent, public_e0_summary,
 )
 from clinical_matcher.p8_safety import EventLedger, P8Error, make_pin, seal
 from tests.test_apixaban_neurosymbolic_audit import prediction_set, PATIENT_ID, EVIDENCE_ID
@@ -129,6 +129,19 @@ class P8E0TruthTests(unittest.TestCase):
         self.assertEqual({"corrected_count": 1, "introduced_error_count": 1, "decision_changed_count": 2},
                          compare_to_incumbent(after, before, gold, [PATIENT_ID]))
 
+    def test_public_projection_excludes_all_nonwhitelisted_diagnostics(self):
+        result = {'metrics': {'typed_exact_match': .5, 'boolean': {'macro_f1': .4, 'per_class': 'PRIVATE'},
+                              'numeric_status': {'macro_f1': .3}, 'per_question': 'PRIVATE'},
+                  'unknown_count': 1, 'bootstrap': 'PRIVATE', 'rows': 'PRIVATE'}
+        report = seal({'claim': 'development_diagnostic', 'partition': 'validation',
+                       'results': {name: result for name in ('rules', 'structured', 'long_context', *CANDIDATES)},
+                       'raw_winner': 'long_context', 'winner_safety_result': result})
+        public = public_e0_summary(report)
+        self.assertEqual(12, len(public['rows']))
+        self.assertNotIn('PRIVATE', json.dumps(public))
+        self.assertEqual({'candidate', 'view', 'typed_exact_match', 'boolean_macro_f1',
+                          'numeric_status_macro_f1', 'unknown_count'}, set(public['rows'][0]))
+
 
 class P8E0IntegrationTests(unittest.TestCase):
     def setUp(self):
@@ -145,6 +158,7 @@ class P8E0IntegrationTests(unittest.TestCase):
         for arm in ["rules", "structured", "long_context"]:
             source = prediction_set(self.catalog)
             source["split_manifest_sha256"] = self.manifest["source_split_pin"]["value"]
+            source["benchmark_sha256"] = self.manifest["source_metadata"]["split"]["dataset"]["benchmark_sha256"]
             source["inference_config_sha256"] = configs[arm]["value"]
             source["predictions"] = []
             for pid in self.ids:
@@ -204,6 +218,17 @@ class P8E0IntegrationTests(unittest.TestCase):
             run_e0(config, self.manifest, output_root=self.root / "output", ledger=ledger,
                    attempt_id="synthetic-failure", synthetic=True)
         self.assertEqual(["attempt_started", "failed"], [e["event"] for e in ledger.read()])
+
+    def test_raw_sources_cannot_agree_on_a_different_benchmark(self):
+        for arm in ["rules", "structured", "long_context"]:
+            self.inputs[arm]["benchmark_sha256"] = "0" * 64
+        self.register()
+        config = freeze_e0_run(self.manifest, {key: key for key in self.inputs}, synthetic=True)
+        with patch("clinical_matcher.p8_e0.evaluate_rows", side_effect=AssertionError) as score:
+            with self.assertRaises(P8Error):
+                run_e0(config, self.manifest, output_root=self.root / "output",
+                       ledger=EventLedger(self.root / "events"), attempt_id="synthetic-wrong-benchmark", synthetic=True)
+            score.assert_not_called()
 
     def test_symlink_output_parent_rejected_before_private_inputs(self):
         config = freeze_e0_run(self.manifest, {key: key for key in self.inputs}, synthetic=True)

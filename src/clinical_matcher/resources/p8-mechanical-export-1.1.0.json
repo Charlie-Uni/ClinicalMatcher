@@ -1,0 +1,29 @@
+{
+  "p8_export_policy_version": "1.1.0",
+  "policy": {
+    "version": "1.1.0",
+    "export_lifetime_limit": 1,
+    "partitions": [
+      "train_fit",
+      "validation",
+      "secondary_holdout"
+    ],
+    "test_output": false,
+    "clinical_label_checks": false,
+    "metrics": false,
+    "model_calls": false,
+    "content_display": false,
+    "holdout_readback": false,
+    "overwrite": false,
+    "retry": false,
+    "preserve_source_order": true,
+    "exposure_definition": "read_for_evaluation_not_mechanical_creation",
+    "independence_claim": "audited_inventory_and_owner_attestation"
+  },
+  "hash_semantics": {
+    "storage": "sha256_canonical_json_without_top_level_self_sha256",
+    "consumption": "remove_self_sha256_then_recompute_canonical_json",
+    "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan"
+  },
+  "self_sha256": "e8a1f7cf3f6d1da89d8b264c97061de9c3ef43256b30f8aba4ff2ce7fb443634"
+}

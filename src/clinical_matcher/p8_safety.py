@@ -185,11 +185,12 @@ def read_metadata(path: Path) -> dict:
 
 
 def build_access_manifest(split: dict, reservation: dict, *, review: dict,
-                          artifacts: list[dict], synthetic: bool = False) -> dict:
+                          artifacts: list[dict], synthetic: bool = False,
+                          export_receipt: dict | None = None) -> dict:
     """Bind pre-isolated artifacts using membership metadata only. No file reads."""
     validate_apixaban_calibration_reservation(reservation, split)
     manifest = seal({
-        "p8_access_version": "1.0.0", "synthetic": synthetic,
+        "p8_access_version": "1.1.0" if export_receipt else "1.0.0", "synthetic": synthetic,
         "catalog_pin": make_pin(load_question_catalog(), "self", self_field="catalog_sha256"),
         "source_split_pin": make_pin(split, "self", self_field="manifest_sha256"),
         "reservation_pin": make_pin(reservation, "self", self_field="manifest_sha256"),
@@ -205,12 +206,19 @@ def build_access_manifest(split: dict, reservation: dict, *, review: dict,
         "holdout_lifetime_exposures": 1,
         "replacement_holdout_forbidden": True,
     })
+    if export_receipt is not None:
+        manifest["mechanical_export_record"] = copy.deepcopy(export_receipt)
+        manifest["mechanical_export_pin"] = make_pin(export_receipt, "self", self_field="self_sha256")
+        manifest = seal(manifest)
     validate_access_manifest(manifest, synthetic=synthetic)
     return manifest
 
 
 def validate_access_manifest(document: dict, *, synthetic: bool = False) -> None:
-    validate_document(document, "schemas/p8-data-access-1.0.0.schema.json")
+    version = document.get("p8_access_version")
+    if version not in {"1.0.0", "1.1.0"}:
+        raise P8Error("Unknown P8 access version")
+    validate_document(document, f"schemas/p8-data-access-{version}.schema.json")
     check_seal(document)
     if document["synthetic"] != synthetic:
         raise P8Error("Synthetic access manifest is not a real-data authorization")
@@ -235,6 +243,14 @@ def validate_access_manifest(document: dict, *, synthetic: bool = False) -> None
     if not synthetic and [len(populations[key]) for key in PARTITIONS] != [55, 15, 15]:
         raise P8Error("P8 requires the original 55/15/15 populations")
     review = document["independence_review"]
+    if version == "1.1.0":
+        from .p8_export import validate_export_receipt
+        receipt = document["mechanical_export_record"]
+        check_pin(document["mechanical_export_pin"], receipt, kind="self")
+        validate_export_receipt(receipt, sources["split"], sources["reservation"])
+        exported = [a for a in document["artifacts"] if a["kind"] != "raw_predictions"]
+        if exported != receipt["artifacts"]:
+            raise P8Error("Partition registry differs from the mechanical export")
     if review["status"] == "verified":
         if (set(review["uses_checked"]) != set(REVIEW_USES)
                 or not review["evidence_pins"] or not review["review_record_id"]
@@ -257,6 +273,8 @@ def validate_access_manifest(document: dict, *, synthetic: bool = False) -> None
 
 def require_development_ready(manifest: dict, *, synthetic: bool = False) -> None:
     validate_access_manifest(manifest, synthetic=synthetic)
+    if not synthetic and manifest["p8_access_version"] != "1.1.0":
+        raise P8Error("Real P8 development requires the amended export-bound access gate")
     if manifest["independence_review"]["status"] != "verified":
         raise P8Error("P8.1 independence review is incomplete; real development is closed")
 
@@ -287,6 +305,8 @@ def read_development_artifact(manifest: dict, artifact_id: str, *, purpose: str,
     if artifact["kind"] == "raw_predictions":
         if result.get("split_name") != "validation":
             raise P8Error("Registered raw prediction has the wrong split")
+        if result.get("benchmark_sha256") != manifest["source_metadata"]["split"]["dataset"]["benchmark_sha256"]:
+            raise P8Error("Raw prediction benchmark differs from the frozen source")
         rows = result.get("predictions", [])
         observed = {row.get("patient_id") for row in rows}
     else:
