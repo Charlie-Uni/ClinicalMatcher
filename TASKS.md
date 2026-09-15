@@ -1335,6 +1335,10 @@ configuration and an explicit owner authorization.
 
 Self-review evidence and remaining entry conditions:
 [P8 implementation review](docs/P8_IMPLEMENTATION_REVIEW.md).
+The [source-binding review](docs/P8_SOURCE_BINDING_REVIEW.md) records successful
+metadata checks after local paths were supplied; partition-only payloads and
+the complete historical-independence attestation remain unresolved. No real E0
+evaluation has run.
 
 ---
 

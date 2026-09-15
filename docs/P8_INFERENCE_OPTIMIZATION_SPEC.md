@@ -1,6 +1,8 @@
 # P8 — 推理侧准确率优化程序：完整执行规格
 
-日期：2026-09-14。状态：`guards_and_e0_code_reviewed_real_data_binding_pending`。
+日期：2026-09-15。规格版本：**1.1.0**（原版 1.0.0）。
+状态：`mechanical_export_amendment_authorized_pending_implementation`。
+迁移说明与一次性导出边界见 [1.1.0 修订](P8_MECHANICAL_EXPORT_AMENDMENT_1.1.0.md)。
 
 本文汇总已确认的设计校正、三项实质补充及两项运行补充，供实现侧按顺序执行。
 本文落盘不代表机器可读契约已冻结、历史独立性已核实、实验已运行或 holdout 已获授权。
@@ -89,9 +91,11 @@ v2 同时改变请求单元、示例与指令，整体增益不能单独归因�
 记录核对范围、证据引用、未决项与 owner 确认；不能从“calibration-only”名称推导未使用。
 不为证明未使用而打开 holdout 笔记、标签或预测。
 
-证据支持后，冻结公开身份：
+1.1.0 使用有明确审计清单的证据限定式声明，另附 owner 关于无未记录人工
+查看、真实 SFT 导出与 silver 生成从未运行的时序声明。限定范围与全文见修订。
+原“untouched by all prior development”全称句不再使用。对外短标签为：
 
-> secondary holdout, single exposure, untouched by all prior development
+> secondary holdout, single exposure
 
 若历史记录不足或发现开发使用，P8.1 不得宣称已通过，先记录事实并交 owner 处理；
 不得换一批患者来制造新的干净 holdout。
@@ -101,11 +105,13 @@ v2 同时改变请求单元、示例与指令，整体增益不能单独归因�
 不能只检查 `--split validation`。当前
 [`evaluate_apixaban_predictions`](../src/clinical_matcher/apixaban_evaluation.py)
 会先读取整个 benchmark，再筛选 split；现有部分推理入口也先加载完整 staging corpus。
-新路径必须将获准分区隔离落实到 I/O 入口，不得先读取全量数据再过滤。
+开发与评测路径必须将获准分区隔离落实到 I/O 入口，不得先读取全量数据再过滤。
+唯一例外是 1.1.0 授权的项目生命周期一次性机械导出；其条件见修订，不能用于任何评测。
 
 可以复用 P1.5 指标计算内核；增加只接收 validation 或 train-fit 获准产物的加载/绑定路径，
 保持指标算法与容差不变。检查函数依赖，防止校验来源哈希时又隐式读取全量 benchmark。
-无预先隔离的可用产物时，记录缺少的材料及隔离方案，不能静默越界导出。
+无预先隔离的可用产物时，只能走已授权、已测试、已入库的机械导出入口。
+该入口执行后终止可用性，此后所有 P8 开发/评测只接收分区产物。
 原 reservation/membership 元数据的获准核对与 holdout 临床内容读取必须分别记录。
 
 新契约原生表示 secondary holdout 与其来源 reservation，不能将其伪装成旧 `test` split。
@@ -114,7 +120,9 @@ v2 同时改变请求单元、示例与指令，整体增益不能单独归因�
 ### 4.3 授权与项目生命周期限制
 
 holdout 授权默认 `false`，绑定最终配置哈希、代码身份、预声明臂集与报告范围。
-授权检查先于任何 holdout 内容读取，包括为计算文件哈希而读取内容。
+除修订明确授权的机械创建外，授权检查先于任何 holdout 内容读取，
+包括为评测校验文件哈希。曝光定义为为评测而读取；机械创建不算曝光，
+但无权把开发查看或任意重新读取伪装成机械创建。
 以合成测试证明未授权时零次受保护 I/O。
 
 > Secondary holdout 在本项目生命周期内仅此一次曝光，结果无论好坏即为最终。
@@ -401,7 +409,7 @@ P7 的历史授权、E2 的启动决定或本文确认均不能替代这次授�
 ### 11.2 一次性状态与失败
 
 授权前可反复进行不读取 holdout 内容的合成预检。
-首次 holdout 受保护内容读取前，必须原子化写入并持久化项目级曝光消耗事件。
+首次为 holdout 评测读取受保护内容前，必须原子化写入并持久化项目级曝光消耗事件。
 先检查授权和状态，再做受保护文件读取或字节哈希；一旦消耗，无自动恢复为未曝光路径。
 拒绝并发进程与换输出目录重启。曝光额度属于项目和原 reservation，而非某个本地目录。
 

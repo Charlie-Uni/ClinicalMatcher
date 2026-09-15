@@ -93,6 +93,12 @@ the CI-equivalent command inventory is `/tmp/clinicalmatcher-p8-smoke-summary.tx
 
 ## Real-run entry conditions still pending
 
+Update 2026-09-15: the owner supplied the source paths. Metadata checks are now
+recorded in the [source-binding review](P8_SOURCE_BINDING_REVIEW.md). Paths are
+no longer the blocker; missing pre-isolated payloads and the unresolved history
+scope prevent the real-data freeze. The discovery paragraph below records the
+earlier state, before those paths were supplied.
+
 Owner review accepted on 2026-09-15. The owner reported an independent
 post-reinstall full-suite run (466 tests, including 3 conditional skips) and
 passing public-data checks. The authorized sequence is commit/push and green
