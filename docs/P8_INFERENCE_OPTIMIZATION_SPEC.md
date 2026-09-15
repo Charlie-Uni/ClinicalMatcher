@@ -1,13 +1,14 @@
 # P8 — 推理侧准确率优化程序：完整执行规格
 
 日期：2026-09-15。规格版本：**1.1.0**（原版 1.0.0）。
-状态：`mechanical_export_implementation_reviewed_pending_runtime`。
+状态：`e0_owner_approved_v2_review_preparation`。
 迁移说明与一次性导出边界见 [1.1.0 修订](P8_MECHANICAL_EXPORT_AMENDMENT_1.1.0.md)。
 
 本文汇总已确认的设计校正、三项实质补充及两项运行补充，供实现侧按顺序执行。
 本文落盘不代表机器可读契约已冻结、历史独立性已核实、实验已运行或 holdout 已获授权。
 实现先做 P8.1 守卫与 E0 真值表；当前代码与验证状态见
-[阶段自审核记录](P8_IMPLEMENTATION_REVIEW.md)，真实数据绑定与评测仍待完成。
+[阶段自审核记录](P8_IMPLEMENTATION_REVIEW.md)；1.1.0 导出与 E0 已完成，
+当前状态见 [执行记录](P8_EXECUTION_STATUS.md)，E0 结果已获 owner 审阅通过。
 v2 文本须交规格提出方和 owner 各审阅一次，再形成冻结版本；二者为同一人时记录一次双重角色确认。
 
 执行节奏更新（owner 后续指示）：代码按阶段直接完成，每轮依据本文自审并留痕，
@@ -244,6 +245,9 @@ E0 无新增模型请求；不得虚构请求延迟为零。离线仲裁/投影�
 
 以下文本是 review draft，需规格提出方和 owner 审阅后才可冻结并运行。
 最终文件字节、模板与配置哈希一并固定。
+本轮具体提案、完整候选文本与实现边界见 [v2 审阅包](P8_V2_PROMPT_REVIEW.md)。
+下列文本保留为规格草案；新提案增加的 known-answer 引文约束仍待审阅，
+不因组件实现、测试或提交而自动成为已冻结的运行规则。
 
 ```text
 You extract note-grounded research facts for exactly one supplied question.

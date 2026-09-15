@@ -1309,22 +1309,29 @@ authorized staged implementation with a recorded self-review after each round;
 the final secondary-holdout batch still requires review of its concrete frozen
 configuration and an explicit owner authorization.
 
-- [ ] **P8.1 Freeze secondary-holdout identity and access guards.** Preserve the
+- [x] **P8.1 Freeze secondary-holdout identity and access guards.** Preserve the
   original calibration reservation; establish historical independence from
   metadata; enforce pre-read partition isolation and a project-lifetime single
   exposure. Implementation includes typed hash pins, an owner-only registry,
   default-closed development/holdout gates, and durable exposure/event writes.
-  Real source binding and the independence review remain pending; passing
-  synthetic guards is not proof of historical independence.
-- [ ] **P8.2 Evaluate frozen raw-only E0 arbitration.** Predeclare both LLM
+  Completed under the owner-approved 1.1.0 amendment: evidence-limited audit and
+  owner attestation, one mechanical export, sealed holdout creation without
+  readback, and receipt-bound partition-only access. No test artifact or
+  holdout evaluation was produced.
+- [x] **P8.2 Evaluate frozen raw-only E0 arbitration.** Predeclare both LLM
   sources × A1–A4, verify the complete truth table and equivalent aliases, select
   on raw typed exact match, then apply P4.3 1.1.0 to the fixed winner. The
   isolated-input CLI, raw provenance, P1.5 metric adapter and synthetic workflow
-  are implemented. No real validation E0 result is claimed.
+  completed in one real validation attempt. All candidates, raw selection,
+  winner safety view and event/hash chain remain owner-only. E0 results passed
+  owner review on 2026-09-15; the decision is linked in the restricted ledger.
 - [ ] **P8.3 Implement and evaluate per-question prompt v2.** Freeze train-fit
   examples, supporting-quote validation, context budget, timing pilot, v2b,
-  latency and retry rules before real inference. Remains unimplemented in the
-  first guard/E0 round; v2 text is preserved in the execution specification.
+  latency and retry rules before real inference. Review-stage request building,
+  strict parsing, mechanical quote projection and source-bound example selection
+  are implemented with synthetic tests. The [v2 review package](docs/P8_V2_PROMPT_REVIEW.md)
+  awaits both roles' text/protocol review. Actual token-budget verification,
+  the full runner and E1 inference remain pending; P8.3 is not complete.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
@@ -1335,10 +1342,9 @@ configuration and an explicit owner authorization.
 
 Self-review evidence and remaining entry conditions:
 [P8 implementation review](docs/P8_IMPLEMENTATION_REVIEW.md).
-The [source-binding review](docs/P8_SOURCE_BINDING_REVIEW.md) records successful
-metadata checks after local paths were supplied; partition-only payloads and
-the complete historical-independence attestation remain unresolved. No real E0
-evaluation has run.
+The [source-binding review](docs/P8_SOURCE_BINDING_REVIEW.md) preserves the
+original diagnosis; the [execution status](docs/P8_EXECUTION_STATUS.md) records
+completion after the 1.1.0 amendment resolved it.
 
 ---
 
