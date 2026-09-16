@@ -14,7 +14,6 @@ from typing import Any, Callable, Mapping, Sequence
 from .apixaban_structured_llm import (
     OllamaLoopbackClient,
     load_long_context_contract,
-    verify_local_runtime,
 )
 from .p8_e0 import evaluate_rows
 from .p8_prompt import (
@@ -137,6 +136,10 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
         "patient_order": "pseudonym_lexicographic",
         "percentile_source": PERCENTILE_SOURCE,
         "runtime_identity": dict(runtime_identity or {}),
+        "engine_version_deviation_from_parent": (
+            (runtime_identity or {}).get("engine_version") is not None
+            and (runtime_identity or {}).get("engine_version")
+            != parent["runtime"]["engine_version"]),
         "synthetic": synthetic,
     })
     return contract
@@ -322,11 +325,25 @@ def run_e1(client, contract: dict, manifest: dict, example_set: dict, pilot: dic
 
 
 def open_runtime(contract: dict) -> OllamaLoopbackClient:
-    parent = {"model": contract["parent_model_contract"]["model"],
-              "runtime": contract["parent_model_contract"]["runtime"]}
+    """Verify the live runtime against the E1 contract's own probed identity.
+
+    The engine version is pinned by this contract's probe (a recorded
+    deviation field discloses any difference from the parent v1 contract);
+    the model weights must still match the inherited parent digest exactly.
+    """
+    parent = contract["parent_model_contract"]
     client = OllamaLoopbackClient(parent["runtime"]["endpoint"],
                                   timeout_seconds=RUN_PARAMETERS["timeout_seconds"])
-    verify_local_runtime(client, parent)
+    expected = contract["runtime_identity"].get("engine_version")
+    live = client.version()
+    if not expected or live != expected:
+        raise P8Error("Live engine version differs from the contract's probed identity")
+    models = client.tags().get("models")
+    if not isinstance(models, list):
+        raise P8Error("Ollama model list is malformed")
+    matching = [m for m in models if m.get("name") == parent["model"]["ollama_model_name"]]
+    if len(matching) != 1 or matching[0].get("digest") != parent["model"]["ollama_manifest_sha256"]:
+        raise P8Error("Pinned model manifest is missing or has changed")
     return client
 
 

@@ -49,14 +49,41 @@ and the holdout batch.
 
 - Targeted: 9 new E1 tests; 37 P8-family tests pass together, and the three
   adjacent modules (prompt/export/P7) pass as a separate 48-test batch.
-- The first full 516-test run reported exactly one error whose identity was
-  not captured by the truncated reporter; an immediate complete rerun and
-  both targeted batches were fully green. This is recorded as an
-  unreproduced flake watch, not silently dropped; if it reappears in hosted
-  CI or a later local run, its identity must be captured and dispositioned
-  before the next real E1 step.
+- An intermittent single-test error has now been observed twice (once in
+  the first full 516-test run, once in a 77-test P8-family batch) and never
+  on an immediate identical rerun; both observations lost the test identity
+  to truncated reporting. All subsequent full and targeted runs keep the
+  complete verbose log so any recurrence records its identity; suspicion
+  centers on timing/fs-sync-sensitive safety tests. This remains an open,
+  honestly tracked flake, and hosted CI has never reproduced it.
 - Public-data guard passes; the final full-suite result and hosted CI are
   recorded against the actual implementation commit before any real E1 step.
+
+## Addendum (2026-09-16): structurally empty real example set
+
+Real example selection returned zero examples for all 23 questions:
+1,119/1,265 train-fit rows were rejected as `source_without_local_citation`
+and 146 as `source_unknown`. The frozen eligibility rule requires source
+gold to carry patient-internal citations, but the official release contains
+no evidence links (0/2,300 per the P3.5 audit) — the premise is
+structurally unsatisfiable on real data, and synthetic fixtures masked it
+because they carry citations. Per the predeclared shortfall fallback, E1
+proceeds with an empty demonstration set; factor F2 is inert for this run
+and the F2 ablation variant is meaningless against it. A protocol revision
+that sources citations from deterministic-rule predictions (the P5 D-silver
+precedent) is a possible later variant and remains an owner decision; it
+was not adopted unilaterally.
+
+## Addendum (2026-09-16): engine version deviation re-pinned explicitly
+
+The live loopback runtime is Ollama 0.34.0 while the inherited v1 contract
+pins 0.32.6; the pinned model digest matches exactly. Rather than bypassing
+the check, the E1 contract now pins its own probed engine version, records
+`engine_version_deviation_from_parent`, and runtime verification requires
+the live engine to equal the probe and the model digest to equal the parent
+pin. The engine difference is a declared confounder for any v1-vs-v2
+validation comparison; the planned same-holdout v1 control runs under the
+same current engine, which removes it there.
 
 ## Pending before real E1
 

@@ -194,6 +194,34 @@ class P8E1Tests(unittest.TestCase):
                          run["request_outcomes"])
         self.assertGreaterEqual(run["latency_seconds_p95"], run["latency_seconds_p50"])
 
+    def test_open_runtime_checks_probed_engine_and_parent_digest(self):
+        from unittest.mock import patch
+        from clinical_matcher.p8_e1 import open_runtime
+        parent = self.contract["parent_model_contract"]
+
+        class Probe:
+            def __init__(self, version_value, digest):
+                self._version, self._digest = version_value, digest
+
+            def version(self):
+                return self._version
+
+            def tags(self):
+                return {"models": [{"name": parent["model"]["ollama_model_name"],
+                                    "digest": self._digest}]}
+
+        good = Probe("test", parent["model"]["ollama_manifest_sha256"])
+        with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", lambda *a, **k: good):
+            self.assertIs(good, open_runtime(self.contract))
+        drifted = Probe("other-version", parent["model"]["ollama_manifest_sha256"])
+        with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", lambda *a, **k: drifted):
+            with self.assertRaises(P8Error):
+                open_runtime(self.contract)
+        swapped = Probe("test", "sha256:different")
+        with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", lambda *a, **k: swapped):
+            with self.assertRaises(P8Error):
+                open_runtime(self.contract)
+
     def test_run_rejects_mode_mismatch_with_pilot(self):
         client = FakeClient()
         pilot = run_pilot(client, self.contract, self.manifest, self.example_set,
