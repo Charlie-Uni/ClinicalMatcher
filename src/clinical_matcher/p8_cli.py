@@ -48,7 +48,34 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--output-root", type=Path, required=True)
     run.add_argument("--event-ledger", type=Path, required=True)
     run.add_argument("--attempt-id", required=True)
-    for command in (build, check, prepare, run, prep_export, do_export):
+    approve = sub.add_parser("approve-v2", help="Persist the sealed dual-review decision for the v2 proposal")
+    approve.add_argument("--review-record", required=True)
+    approve.add_argument("--output", type=Path, required=True)
+    plan = sub.add_parser("plan-examples", help="Persist the metadata-only example source plan before any read")
+    plan.add_argument("--access-manifest", type=Path, required=True)
+    plan.add_argument("--decision", type=Path, required=True)
+    plan.add_argument("--output", type=Path, required=True)
+    examples = sub.add_parser("build-examples", help="Select frozen train-fit demonstrations; prints counts only")
+    examples.add_argument("--access-manifest", type=Path, required=True)
+    examples.add_argument("--plan", type=Path, required=True)
+    examples.add_argument("--output", type=Path, required=True)
+    prep_e1 = sub.add_parser("prepare-e1", help="Freeze the complete E1 run contract; probes local runtime identity")
+    prep_e1.add_argument("--access-manifest", type=Path, required=True)
+    prep_e1.add_argument("--example-set", type=Path, required=True)
+    prep_e1.add_argument("--decision", type=Path, required=True)
+    prep_e1.add_argument("--mode", choices=("v2", "v2b"), required=True)
+    prep_e1.add_argument("--output", type=Path, required=True)
+    pilot = sub.add_parser("pilot-e1", help="Timed first-patient pilot after an explicit model unload")
+    run_e1_cmd = sub.add_parser("run-e1", help="Complete frozen validation run reusing the immutable pilot")
+    for command in (pilot, run_e1_cmd):
+        command.add_argument("--access-manifest", type=Path, required=True)
+        command.add_argument("--contract", type=Path, required=True)
+        command.add_argument("--example-set", type=Path, required=True)
+    pilot.add_argument("--output", type=Path, required=True)
+    run_e1_cmd.add_argument("--pilot", type=Path, required=True)
+    run_e1_cmd.add_argument("--output", type=Path, required=True)
+    for command in (build, check, prepare, run, prep_export, do_export,
+                    approve, plan, examples, prep_e1, pilot, run_e1_cmd):
         command.add_argument("--acknowledge-restricted-data-local-only", action="store_true", required=True)
     return parser
 
@@ -70,6 +97,55 @@ def main(argv: Sequence[str] | None = None) -> int:
                 export_once(read_metadata(args.export_contract), split, reservation,
                             output_root=args.output_root)
                 print("Mechanical export completed; all outputs remain private and holdout sealed.")
+        elif args.command == "approve-v2":
+            from .p8_e1 import v2_dual_review_decision
+            write_private(v2_dual_review_decision(args.review_record), args.output)
+            print("v2 dual-review decision sealed; no clinical content was opened.")
+        elif args.command in {"plan-examples", "build-examples", "prepare-e1",
+                              "pilot-e1", "run-e1"}:
+            from .p8_e1 import (build_e1_contract, open_runtime, run_e1, run_pilot,
+                                write_run)
+            from .p8_prompt import example_plan, review_proposal, select_registered_examples
+            manifest = read_metadata(args.access_manifest)
+            require_development_ready(manifest)
+            if args.command == "plan-examples":
+                plan = example_plan(review_proposal(), manifest, read_metadata(args.decision))
+                write_private(plan, args.output)
+                print("Example source plan persisted; no clinical content was opened.")
+            elif args.command == "build-examples":
+                example_set = select_registered_examples(args.plan, manifest)
+                write_private(example_set, args.output)
+                counts = {qid: len(items) for qid, items in example_set["examples"].items()}
+                print("Example set written (counts only):",
+                      sum(counts.values()), "examples;",
+                      sum(1 for c in counts.values() if c == 0), "questions with none.")
+            elif args.command == "prepare-e1":
+                from .apixaban_structured_llm import OllamaLoopbackClient, load_long_context_contract
+                parent = load_long_context_contract()
+                probe = OllamaLoopbackClient(parent["runtime"]["endpoint"])
+                contract = build_e1_contract(
+                    manifest, read_metadata(args.example_set), read_metadata(args.decision),
+                    mode=args.mode,
+                    runtime_identity={"engine_version": probe.version()})
+                write_private(contract, args.output)
+                print("E1 contract frozen for mode", args.mode)
+            elif args.command == "pilot-e1":
+                contract = read_metadata(args.contract)
+                pilot_doc = run_pilot(open_runtime(contract), contract, manifest,
+                                      read_metadata(args.example_set))
+                write_private(pilot_doc, args.output)
+                print("Pilot complete:", pilot_doc["timing_decision"])
+            else:
+                contract = read_metadata(args.contract)
+                run_doc = run_e1(open_runtime(contract), contract, manifest,
+                                 read_metadata(args.example_set), read_metadata(args.pilot))
+                write_run(run_doc, args.output.parent, args.output.name)
+                print("E1 complete. Aggregates:",
+                      {"typed_exact_match": run_doc["evaluation"]["metrics"].get("typed_exact_match"),
+                       "unknown_count": run_doc["evaluation"]["unknown_count"],
+                       "request_outcomes": run_doc["request_outcomes"],
+                       "latency_p50_s": round(run_doc["latency_seconds_p50"], 3),
+                       "latency_p95_s": round(run_doc["latency_seconds_p95"], 3)})
         elif args.command == "prepare-access":
             registry = read_metadata(args.artifact_registry_metadata)
             if set(registry) != {"artifacts"}:

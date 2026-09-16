@@ -1330,8 +1330,13 @@ configuration and an explicit owner authorization.
   latency and retry rules before real inference. Review-stage request building,
   strict parsing, mechanical quote projection and source-bound example selection
   are implemented with synthetic tests. The [v2 review package](docs/P8_V2_PROMPT_REVIEW.md)
-  awaits both roles' text/protocol review. Actual token-budget verification,
-  the full runner and E1 inference remain pending; P8.3 is not complete.
+  passed both roles' review (proposer 2026-09-16 with three recorded notes;
+  owner confirmation recorded in the dual-review decision). The E1 runner,
+  CLI, sealed ablation matrix, budget pre/post checks, transport-only retry,
+  pilot reuse and mode gating are implemented with synthetic tests
+  ([self-review](docs/P8_E1_IMPLEMENTATION_REVIEW.md)). Real example-set
+  persistence, the live-runtime contract, the timed pilot and E1 inference
+  remain pending; P8.3 is not complete.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
