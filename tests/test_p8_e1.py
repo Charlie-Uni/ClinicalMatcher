@@ -222,6 +222,45 @@ class P8E1Tests(unittest.TestCase):
             with self.assertRaises(P8Error):
                 open_runtime(self.contract)
 
+    def test_output_schema_variants_are_flat_and_numeric_never_absent(self):
+        from clinical_matcher.p8_prompt import output_schema
+        by_type = {q["question_type"]: q for q in QUESTIONS}
+        for kind, q in by_type.items():
+            schema = output_schema([q["question_id"]], evidence_ids=["e-1", "e-2"])
+            variants = schema["properties"]["assessments"]["items"]["oneOf"]
+            statuses = sorted(v["properties"]["fact_status"]["const"] for v in variants)
+            for variant in variants:
+                self.assertEqual(sorted(variant["required"]), sorted(variant["properties"]))
+                self.assertNotIn("oneOf", variant)
+                self.assertEqual(["e-1", "e-2"],
+                                 variant["properties"]["evidence_ids"]["items"]["enum"])
+                if variant["properties"]["fact_status"]["const"] == "present":
+                    self.assertEqual("string", variant["properties"]["supporting_quote"]["type"])
+            if kind == "numeric":
+                self.assertEqual(["present", "unknown"], statuses)
+            else:
+                self.assertEqual(["absent", "present", "unknown"], statuses)
+
+    def test_zero_duration_requests_still_count_toward_latency_percentiles(self):
+        from unittest.mock import patch
+        client = FakeClient()
+        # Freeze the clock so every request measures exactly 0.0 seconds.
+        with patch("clinical_matcher.p8_e1.time.monotonic", return_value=100.0):
+            pilot = run_pilot(client, self.contract, self.manifest, self.example_set,
+                              synthetic=True, sleeper=lambda s: None)
+            run = run_e1(client, self.contract, self.manifest, self.example_set, pilot,
+                         synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(0.0, run["latency_seconds_p50"])
+        self.assertEqual(0.0, run["latency_seconds_p95"])
+
+    def test_full_run_refuses_pilot_without_any_accepted_response(self):
+        client = FakeClient(invalid_content=True)
+        pilot = run_pilot(client, self.contract, self.manifest, self.example_set,
+                          synthetic=True, sleeper=lambda s: None)
+        with self.assertRaises(P8Error):
+            run_e1(client, self.contract, self.manifest, self.example_set, pilot,
+                   synthetic=True, sleeper=lambda s: None)
+
     def test_run_rejects_mode_mismatch_with_pilot(self):
         client = FakeClient()
         pilot = run_pilot(client, self.contract, self.manifest, self.example_set,

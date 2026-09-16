@@ -49,13 +49,17 @@ and the holdout batch.
 
 - Targeted: 9 new E1 tests; 37 P8-family tests pass together, and the three
   adjacent modules (prompt/export/P7) pass as a separate 48-test batch.
-- An intermittent single-test error has now been observed twice (once in
-  the first full 516-test run, once in a 77-test P8-family batch) and never
-  on an immediate identical rerun; both observations lost the test identity
-  to truncated reporting. All subsequent full and targeted runs keep the
-  complete verbose log so any recurrence records its identity; suspicion
-  centers on timing/fs-sync-sensitive safety tests. This remains an open,
-  honestly tracked flake, and hosted CI has never reproduced it.
+- An intermittent single-test error was observed three times (the first
+  full 516-test run, a 77-test and a 79-test P8-family batch) and never on
+  an immediate identical rerun; every sighting lost the identity to
+  truncated reporting, and every affected batch contained `test_p8_e1`.
+  Probable cause found by code review rather than capture: `run_e1`
+  filtered latency samples by the truthiness of `wall_seconds`, so a
+  synthetic request measuring exactly 0.0 seconds was dropped and, when all
+  non-cold-start samples measured 0.0, `_percentile` raised on an empty
+  list. The filter now keys on outcome only, and a frozen-clock regression
+  test forces every request to 0.0 seconds. If the flake recurs after this
+  fix, the retained verbose logs will name it; hosted CI never reproduced it.
 - Public-data guard passes; the final full-suite result and hosted CI are
   recorded against the actual implementation commit before any real E1 step.
 
@@ -84,6 +88,35 @@ the live engine to equal the probe and the model digest to equal the parent
 pin. The engine difference is a declared confounder for any v1-vs-v2
 validation comparison; the planned same-holdout v1 control runs under the
 same current engine, which removes it there.
+
+## Addendum (2026-09-16): E1 attempt #1 failed by a pipeline defect
+
+The first real E1 run (contract `45d95a41…`, engine 0.34.0) completed all
+345 requests, and every one was rejected as `invalid_output`
+(typed exact match 0.1188 = exactly the 41 gold-unknown rows). A synthetic
+replay showed the model emitting two-field objects such as
+`{"fact_status":"present","value":true}`. Root cause: the output schema
+placed an outer `required` list on the item object and refined status/value
+pairs in a nested `oneOf`; the runtime's schema-to-grammar conversion does
+not propagate the outer `required` through that refinement, so only the
+refined fields were generated. A minimal flat schema with nested
+`required`/`const`/`enum` was honored exactly on the same runtime.
+
+Disposition: `output_schema` now emits one complete flat variant per
+(question, status), which additionally encodes the known-answer quote
+requirement, the `med_decisions` exception, the patient's real evidence-ID
+enumeration and "numeric never absent" directly in the grammar;
+`uniqueItems` (unsupported by grammar converters) is dropped from the
+schema while the parser still enforces uniqueness. The E1 contract records
+`output_schema_version` and bumps to 1.0.1. Attempt #1 artifacts are kept
+unmodified as a failed attempt; a full-run rerun on validation is
+permitted development iteration and will be recorded as attempt #2.
+
+Process defect owned here: the full run was launched without inspecting
+the pilot's outcome distribution, which already showed 23/23
+`invalid_output`. The runner now refuses a full run whenever the pilot has
+zero accepted responses (tested), and the operating rule is that pilot
+outcomes are inspected before any full run.
 
 ## Pending before real E1
 

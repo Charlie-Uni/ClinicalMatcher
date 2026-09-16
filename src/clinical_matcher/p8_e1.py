@@ -17,6 +17,7 @@ from .apixaban_structured_llm import (
 )
 from .p8_e0 import evaluate_rows
 from .p8_prompt import (
+    OUTPUT_SCHEMA_VERSION,
     build_messages,
     output_schema,
     project_response,
@@ -38,7 +39,7 @@ from .p8_safety import (
 )
 
 
-E1_RUN_VERSION = "1.0.0"
+E1_RUN_VERSION = "1.0.1"
 DECISION_SCOPE = "v2_prompt_and_example_protocol"
 RUN_PARAMETERS = {
     "temperature": 0,
@@ -119,6 +120,7 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
         "mode": mode,
         "prompt_version": ("apixaban-23-facts-perq-2.0.0" if mode == "v2"
                            else "apixaban-23-facts-grouped-2.0.0"),
+        "output_schema_version": OUTPUT_SCHEMA_VERSION,
         "proposal_pin": make_pin(proposal, "self", self_field="self_sha256"),
         "decision_pin": make_pin(decision, "self", self_field="self_sha256"),
         "example_set_pin": make_pin(example_set, "self", self_field="self_sha256"),
@@ -187,7 +189,8 @@ def run_request(client, contract: dict, patient: dict, question_ids: list[str],
     """One frozen request slot; returns rows plus an aggregate-only log entry."""
     mode = contract["mode"]
     messages = build_messages(patient, question_ids, example_set, mode=mode)
-    schema = output_schema(question_ids, mode=mode)
+    schema = output_schema(question_ids, mode=mode,
+                           evidence_ids=[item["evidence_id"] for item in patient["evidence"]])
     estimate = _estimated_tokens(messages)
     limit = RUN_PARAMETERS["num_ctx"] - RUN_PARAMETERS["num_predict"]
     log: dict[str, Any] = {
@@ -284,6 +287,10 @@ def run_e1(client, contract: dict, manifest: dict, example_set: dict, pilot: dic
     check_pin(pilot["contract_pin"], contract, kind="self")
     if pilot["timing_decision"]["mode"] != contract["mode"]:
         raise P8Error("Contract mode differs from the pilot timing decision")
+    if not any(log.get("outcome") == "accepted" for log in pilot["slot_logs"]):
+        # Attempt #1 lesson: a pilot whose every response failed parsing must
+        # stop the full run before another request is sent.
+        raise P8Error("Pilot produced no accepted response; refusing the full run")
     evidence = read_development_artifact(manifest, "validation.evidence",
                                          purpose="inference", synthetic=synthetic)
     patients = sorted(evidence["rows"], key=lambda row: row["patient_id"])
@@ -303,9 +310,13 @@ def run_e1(client, contract: dict, manifest: dict, example_set: dict, pilot: dic
                                      purpose="evaluation", synthetic=synthetic)
     patient_ids = [patient["patient_id"] for patient in patients]
     evaluation = evaluate_rows(rows, gold["rows"], patient_ids, bootstrap=not synthetic)
+    # Filter by outcome, never by the truthiness of the duration: a measured
+    # 0.0-second request is a valid sample, and dropping it emptied the list
+    # intermittently under fast synthetic clients (the tracked flake).
     latency = [log["wall_seconds"] for log in logs
-               if not log.get("cold_start") and log.get("outcome") not in {"context_over_budget"}
-               and log.get("wall_seconds")]
+               if not log.get("cold_start")
+               and log.get("outcome") != "context_over_budget"
+               and isinstance(log.get("wall_seconds"), (int, float))]
     outcomes: dict[str, int] = {}
     for log in logs:
         outcomes[log["outcome"]] = outcomes.get(log["outcome"], 0) + 1

@@ -94,34 +94,60 @@ def _evidence(patient: dict) -> dict[str, str]:
     return result
 
 
-def output_schema(question_ids: list[str], *, mode: str = "v2") -> dict:
+OUTPUT_SCHEMA_VERSION = "2.0.1-flat-variants"
+
+
+def _flat_variant(q: dict, status: str, value: dict, *, quote_required: bool,
+                  minimum_citations: int, evidence_ids: list[str] | None) -> dict:
+    """One complete, self-contained object per (question, status).
+
+    Grammar converters do not propagate an outer `required` list through
+    `oneOf` refinements (attempt #1 emitted two-field objects for every
+    request), so every constraint lives inside each flat variant.
+    """
+    limit = _resource()["quote_max_characters"]
+    quote = ({"type": "string", "minLength": 1, "maxLength": limit} if quote_required
+             else {"type": ["string", "null"], "minLength": 1, "maxLength": limit})
+    citations = {"type": "array", "minItems": minimum_citations,
+                 "items": ({"type": "string", "enum": list(evidence_ids)} if evidence_ids
+                           else {"type": "string", "minLength": 1})}
+    return {
+        "type": "object", "additionalProperties": False,
+        "required": sorted(ANSWER_FIELDS),
+        "properties": {
+            "question_id": {"const": q["question_id"]},
+            "question_type": {"const": q["question_type"]},
+            "supporting_quote": quote,
+            "fact_status": {"const": status},
+            "value": value,
+            "unit": {"type": "null"},
+            "evidence_ids": citations,
+        },
+    }
+
+
+def output_schema(question_ids: list[str], *, mode: str = "v2",
+                  evidence_ids: list[str] | None = None) -> dict:
+    """Flat complete variants; numeric questions have no absent variant at all."""
     questions = _group(question_ids, mode)
-    alternatives = []
+    variants = []
     for q in questions:
-        variants = [("unknown", {"type": "null"})]
+        default = q["source_criterion_label"] == "med_decisions"
+        variants.append(_flat_variant(q, "unknown", {"type": "null"}, quote_required=False,
+                                      minimum_citations=0, evidence_ids=evidence_ids))
         if q["question_type"] == "boolean":
-            variants.extend([("present", {"const": True}), ("absent", {"const": False})])
+            variants.append(_flat_variant(q, "present", {"const": True}, quote_required=True,
+                                          minimum_citations=1, evidence_ids=evidence_ids))
+            variants.append(_flat_variant(q, "absent", {"const": False},
+                                          quote_required=not default,
+                                          minimum_citations=0 if default else 1,
+                                          evidence_ids=evidence_ids))
         else:
-            variants.append(("present", {"type": "number"}))
-        alternatives.append({
-            "type": "object", "additionalProperties": False,
-            "required": sorted(ANSWER_FIELDS),
-            "properties": {
-                "question_id": {"const": q["question_id"]},
-                "question_type": {"const": q["question_type"]},
-                "supporting_quote": {"type": ["string", "null"], "minLength": 1,
-                                     "maxLength": _resource()["quote_max_characters"]},
-                "fact_status": {"enum": q["allowed_fact_status"]},
-                "value": {}, "unit": {"type": "null"},
-                "evidence_ids": {"type": "array", "uniqueItems": True,
-                                 "items": {"type": "string", "minLength": 1}},
-            },
-            "oneOf": [{"properties": {"fact_status": {"const": status}, "value": value}}
-                      for status, value in variants],
-        })
+            variants.append(_flat_variant(q, "present", {"type": "number"}, quote_required=True,
+                                          minimum_citations=1, evidence_ids=evidence_ids))
     return {"type": "object", "additionalProperties": False, "required": ["assessments"],
             "properties": {"assessments": {"type": "array", "minItems": len(questions),
-                "maxItems": len(questions), "items": {"oneOf": alternatives}}}}
+                "maxItems": len(questions), "items": {"oneOf": variants}}}}
 
 
 def _check_answer(answer: dict, question: dict, evidence: dict[str, str]) -> None:
@@ -359,8 +385,11 @@ def build_messages(patient: dict, question_ids: list[str], example_set: dict, *,
     # One user message retains a literal common prefix through all note bytes.
     notes = json.dumps({"current_patient_evidence": patient["evidence"]}, ensure_ascii=False,
                        sort_keys=True, separators=(",", ":"), allow_nan=False)
+    current_ids = [item["evidence_id"] for item in patient["evidence"]]
     suffix = json.dumps({"demonstrations_not_current_patient_evidence": demonstrations,
-                        "questions": questions, "output_schema": output_schema(question_ids, mode=mode)},
+                        "questions": questions,
+                        "output_schema": output_schema(question_ids, mode=mode,
+                                                       evidence_ids=current_ids)},
                        ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
     return [{"role": "system", "content": system},
             {"role": "user", "content": notes + "\n" + suffix}]
