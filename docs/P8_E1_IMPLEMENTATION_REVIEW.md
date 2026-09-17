@@ -223,3 +223,57 @@ never used for a run). The contract embeds the runner version, so a4 is
 re-frozen as `e1-contract-v2-a4-r2.json` under 1.0.2 and the pilot is
 re-run before the full validation run. Cost: one additional 23-request
 pilot (about ten minutes); no result is discarded or reinterpreted.
+
+## Addendum (2026-09-17): a4 result — the quote constraint was not the problem
+
+The re-frozen a4 contract (`eed6d950…`, runner 1.0.2) passed its pilot
+again with 23/23 accepted and rows identical to the first a4 pilot in
+status, value and evidence (temperature 0, seed 17). The full run took
+3 h 30 min, not the pilot's 2 h 21 min estimate: the pilot patient was the
+fastest in the set (24.5 s median per request against 40 s overall, twenty
+requests above 60 s, longest 273 s). Progress is now read from the Ollama
+request log rather than extrapolated from the pilot.
+
+Result (validation development diagnostics, raw view): **345/345
+accepted, typed exact match 0.2522 (87/345)**, unknown 24, latency p50
+31.9 s / p95 70.7 s, bootstrap 95% CI 0.194–0.310. E3 (`prompt_v2.A1`,
+rules fill 8 abstentions) reaches 0.2696 raw and safety alike. Both remain
+far below the incumbent `long_context.A1` (0.6290) and the v1 raw reference
+(0.6116). The F4 removal did exactly what the matrix predicted for
+acceptance (206 invalid → 0) and almost nothing for accuracy
+(0.1855 → 0.2522). 176 of the 345 answers carried a quote that did not
+verify and was nulled; those rows are no worse than the verified ones
+(0.244 against 0.260), so the quote check was not filtering wrong answers
+in attempt #3 either. It was filtering answers that were mostly wrong
+anyway.
+
+Where the per-question family loses, against the same model's batched v1
+output on the same 345 rows (gold→prediction counts; no clinical content):
+
+| view | overall | boolean (225) | numeric (120) | gold-absent boolean answered absent (168) | gold-unknown numeric answered unknown (41) |
+|---|---|---|---|---|---|
+| v1 long-context raw | 0.612 | 0.707 | 0.433 | 118 | 25 |
+| structured raw | 0.542 | 0.596 | 0.442 | 90 | 22 |
+| v2-a4 raw | 0.252 | 0.253 | 0.250 | 11 | 0 |
+
+Asked one question at a time, the model answers "present" almost
+regardless: 141 of 168 gold-absent boolean rows and all 41 gold-unknown
+numeric rows come back present, and numeric values are exact for only
+30 of 78 predicted-present rows. Batched v1 keeps absent recall at 118/168.
+This is a systematic bias of the v2 request family, not a parsing or
+grounding failure, and it is present in every a4 patient.
+
+Attribution is still open between F1 (per-question split removes the
+cross-question contrast of a 23-question request), F3 (the loosened
+protocol-No absent semantics) and the rest of the v2 text. The sealed
+matrix's remaining single-factor variants a2 (batched) and a3 (explicit
+negation) both keep F4, which attempt #3 showed invalidates 60% of
+per-question responses and would invalidate whole 23-answer responses in
+batched form, so neither isolates its factor on real data. The next step
+is a matrix revision (1.1.0, before any holdout exposure, as rule 3
+allows) adding two-factor variants on top of a4: `a24` (batched, quotes
+optional; 15 requests, about 30 minutes) and `a34` (explicit negation,
+quotes optional). `a24` runs first because it is cheap and directly tests
+the spec's own unverified hypothesis that per-question requests help; the
+spec declared "no improvement" a valid outcome. E2 (a stronger model) and
+any cloud execution remain owner decisions and are not started here.

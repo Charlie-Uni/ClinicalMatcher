@@ -1349,8 +1349,13 @@ configuration and an explicit owner authorization.
   compared the pilot's affordability grouping literal against the variant
   mode and would have refused every `v2-a4` contract; runner 1.0.2 records
   `timing_grouping` separately and derives the run mode, with regression
-  tests, and a4 is re-frozen and re-piloted under 1.0.2. P8.3 remains open
-  until the a4 run is recorded.
+  tests, and a4 was re-frozen and re-piloted under 1.0.2. The a4 full run
+  accepted 345/345 but reached typed exact match 0.2522 (E3 0.2696): the
+  per-question family answers "present" on 141/168 gold-absent boolean
+  rows and all 41 gold-unknown numeric rows, where batched v1 keeps
+  118/168 and 25/41. F4 explains acceptance, not accuracy. Next: matrix
+  1.1.0 with two-factor variants `a24` (batched, quotes optional) and
+  `a34` (explicit negation, quotes optional), a24 first. P8.3 remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
