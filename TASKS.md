@@ -1359,8 +1359,11 @@ configuration and an explicit owner authorization.
   mode `v2-a24` (positional `prefixItems` schema, `$defs`-shared citations,
   grouped prompt phrases plus the a4 substitution) are implemented with
   synthetic tests and a live synthetic replay; one batched request costs
-  about 6–8 minutes, so the a24 validation run is a 1.5–2 hour step.
-  P8.3 remains open.
+  about 6–8 minutes on synthetic input; the first real a24 pilot request
+  exceeded the 600 s per-question transport timeout twice, so runner 1.0.3
+  gives grouped modes a 1,800 s timeout recorded in the contract, and a24
+  is re-frozen and re-piloted (full run roughly 2.5–3.5 hours). P8.3
+  remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

@@ -323,3 +323,31 @@ positional grammar while the full test suite ran alongside it, so the
 grammar-constrained generation, not the prompt, dominates the cost.
 Estimates for this run will be read from the Ollama request log as they
 were for a4.
+
+## Addendum (2026-09-17): a24 pilot #1 timed out; grouped-mode transport timeout
+
+The first a24 contract (`9afcd8ad…`, runner 1.0.2) was frozen against the
+CI-verified commit `fd517f0` and its pilot ran after an explicit unload. The
+single 23-question request for the first validation patient did not
+return within the frozen 600 s transport timeout, and neither did the one
+permitted retry; the Ollama request log shows both attempts closed at
+exactly 10 minutes with status 500 when the client gave up. The pilot
+document records one slot with outcome `transport_failure`, one retry and
+23 abstained rows; no model content was produced or read. The
+pre-send estimate for that request was 25,143 tokens at the conservative
+2.0 chars/token floor (within the 32,768 budget), so the real prompt is
+roughly 12k tokens; on the pinned runtime the synthetic replays needed
+about 190 s of prompt evaluation and 5 tokens/s of grammar-constrained
+generation, which puts a real 23-answer response beyond 600 s.
+
+The 600 s value was set for per-question requests. It is an operational
+budget, not one of the ablation factors, so runner 1.0.3 gives grouped
+modes (`v2b`, `v2-a24`) a 1,800 s transport timeout through
+`run_parameters_for(mode)`; the contract's `parameters` field records the
+value actually used and `open_runtime` now builds the client from the
+contract's parameters instead of the module default. All other parameters
+are unchanged. Tests cover the per-mode value, the unchanged v2/a4
+contracts and the client receiving the contract's timeout. The failed
+pilot stays on record as attempt a24-#1 (pilot only); a24 is re-frozen
+under 1.0.3 and re-piloted. The cost model for the full run is unchanged:
+15 requests at roughly 10–15 minutes each.

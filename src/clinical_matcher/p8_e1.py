@@ -41,7 +41,7 @@ from .p8_safety import (
 )
 
 
-E1_RUN_VERSION = "1.0.2"
+E1_RUN_VERSION = "1.0.3"
 DECISION_SCOPE = "v2_prompt_and_example_protocol"
 # Grouping families. The pilot's timing decision only says whether the
 # per-question grouping is affordable ("v2") or the grouped fallback is needed
@@ -99,6 +99,20 @@ RETRY_POLICY = {
     "model_content_never_retried": True,
 }
 PERCENTILE_SOURCE = "per_request_wall_seconds_excluding_flagged_cold_start"
+# A batched 23-question request evaluates a ~10k-token prompt and generates up
+# to num_predict tokens under a positional grammar at about 5 tokens/s on the
+# pinned runtime; the first real a24 pilot request hit the 600 s per-question
+# timeout. Grouped modes therefore carry a longer transport timeout. This is an
+# operational budget, not an experimental factor, and it is recorded in the
+# contract's parameters.
+GROUPED_TIMEOUT_SECONDS = 1800
+
+
+def run_parameters_for(mode: str) -> dict:
+    parameters = dict(RUN_PARAMETERS)
+    if mode in GROUPED_MODES:
+        parameters["timeout_seconds"] = GROUPED_TIMEOUT_SECONDS
+    return parameters
 
 
 class TransportFailure(RuntimeError):
@@ -171,7 +185,7 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
             "runtime": copy.deepcopy(parent["runtime"]),
             "license": copy.deepcopy(parent["license"]),
         },
-        "parameters": dict(RUN_PARAMETERS),
+        "parameters": run_parameters_for(mode),
         "budget_policy": dict(BUDGET_POLICY),
         "retry_policy": dict(RETRY_POLICY),
         "patient_order": "pseudonym_lexicographic",
@@ -387,7 +401,7 @@ def open_runtime(contract: dict) -> OllamaLoopbackClient:
     """
     parent = contract["parent_model_contract"]
     client = OllamaLoopbackClient(parent["runtime"]["endpoint"],
-                                  timeout_seconds=RUN_PARAMETERS["timeout_seconds"])
+                                  timeout_seconds=contract["parameters"]["timeout_seconds"])
     expected = contract["runtime_identity"].get("engine_version")
     live = client.version()
     if not expected or live != expected:

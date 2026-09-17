@@ -225,8 +225,15 @@ class P8E1Tests(unittest.TestCase):
                                     "digest": self._digest}]}
 
         good = Probe("test", parent["model"]["ollama_manifest_sha256"])
-        with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", lambda *a, **k: good):
+        seen = {}
+
+        def factory(*args, **kwargs):
+            seen.update(kwargs)
+            return good
+        with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", factory):
             self.assertIs(good, open_runtime(self.contract))
+        # The transport timeout comes from the contract's recorded parameters.
+        self.assertEqual(self.contract["parameters"]["timeout_seconds"], seen["timeout_seconds"])
         drifted = Probe("other-version", parent["model"]["ollama_manifest_sha256"])
         with patch("clinical_matcher.p8_e1.OllamaLoopbackClient", lambda *a, **k: drifted):
             with self.assertRaises(P8Error):
@@ -471,3 +478,15 @@ class P8E1AblationA24Tests(unittest.TestCase):
         self.assertEqual(("F4", ["F4"], "2.0.1-flat-variants"),
                          (a4["removed_factor"], a4["removed_factors"], a4["output_schema_version"]))
         self.assertEqual(load_ablation_matrix()["self_sha256"], contract["ablation_matrix_pin"]["value"])
+
+    def test_grouped_modes_carry_the_longer_transport_timeout(self):
+        from clinical_matcher.p8_e1 import GROUPED_TIMEOUT_SECONDS, RUN_PARAMETERS
+        contract = self._a24_contract()
+        self.assertEqual(GROUPED_TIMEOUT_SECONDS, contract["parameters"]["timeout_seconds"])
+        self.assertGreater(GROUPED_TIMEOUT_SECONDS, RUN_PARAMETERS["timeout_seconds"])
+        self.assertEqual(RUN_PARAMETERS["timeout_seconds"], self.contract["parameters"]["timeout_seconds"])
+        a4 = build_e1_contract(self.manifest, self.example_set, self.decision, mode="v2-a4",
+                               synthetic=True, runtime_identity={"engine_version": "test"})
+        self.assertEqual(RUN_PARAMETERS["timeout_seconds"], a4["parameters"]["timeout_seconds"])
+        others = {k: v for k, v in contract["parameters"].items() if k != "timeout_seconds"}
+        self.assertEqual({k: v for k, v in RUN_PARAMETERS.items() if k != "timeout_seconds"}, others)
