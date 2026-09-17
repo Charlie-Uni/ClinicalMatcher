@@ -18,6 +18,7 @@ from .apixaban_structured_llm import (
 from .p8_e0 import evaluate_rows
 from .p8_prompt import (
     OUTPUT_SCHEMA_VERSION,
+    output_schema_version,
     QUOTE_MATCH_POLICY,
     build_messages,
     output_schema,
@@ -46,7 +47,16 @@ DECISION_SCOPE = "v2_prompt_and_example_protocol"
 # per-question grouping is affordable ("v2") or the grouped fallback is needed
 # ("v2b"); the mode the full run must use also carries the ablation variant.
 PER_QUESTION_MODES = ("v2", "v2-a4")
-GROUPED_MODES = ("v2b",)
+GROUPED_MODES = ("v2b", "v2-a24")
+# Sealed-matrix ablation variants exposed as prompt modes. "removes" lists the
+# factors taken out of frozen v2; a24 and a34 are two-factor variants declared
+# in matrix 1.1.0 on top of a4 after a4 showed F4 controls acceptance only.
+ABLATION_VARIANTS = {
+    "v2-a4": {"variant_id": "2.0.0-a4", "removes": ["F4"],
+              "prompt_version": "apixaban-23-facts-perq-2.0.0-a4"},
+    "v2-a24": {"variant_id": "2.0.0-a24", "removes": ["F1", "F4"],
+               "prompt_version": "apixaban-23-facts-batched-2.0.0-a24"},
+}
 
 
 def run_mode_for(contract_mode: str, timing_grouping: str) -> str:
@@ -114,7 +124,7 @@ def load_ablation_matrix() -> dict:
 
     payload = json.loads(
         files("clinical_matcher.resources")
-        .joinpath("p8-e1-ablation-matrix-1.0.0.json")
+        .joinpath("p8-e1-ablation-matrix-1.1.0.json")
         .read_text(encoding="utf-8")
     )
     check_seal(payload)
@@ -135,18 +145,20 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
     if decision.get("scope") != DECISION_SCOPE or not (
             decision.get("owner_approved") and decision.get("proposer_approved")):
         raise P8Error("E1 requires the approved dual-review decision")
-    if mode not in {"v2", "v2b", "v2-a4"}:
+    if mode not in {"v2", "v2b", *ABLATION_VARIANTS}:
         raise P8Error("Unknown E1 mode")
+    variant = ABLATION_VARIANTS.get(mode)
     parent = load_long_context_contract()
     contract = seal({
         "p8_e1_contract_version": E1_RUN_VERSION,
         "mode": mode,
-        "prompt_version": {"v2": "apixaban-23-facts-perq-2.0.0",
-                           "v2b": "apixaban-23-facts-grouped-2.0.0",
-                           "v2-a4": "apixaban-23-facts-perq-2.0.0-a4"}[mode],
-        "ablation_variant": "2.0.0-a4" if mode == "v2-a4" else None,
-        "removed_factor": "F4" if mode == "v2-a4" else None,
-        "output_schema_version": OUTPUT_SCHEMA_VERSION,
+        "prompt_version": (variant["prompt_version"] if variant else
+                           {"v2": "apixaban-23-facts-perq-2.0.0",
+                            "v2b": "apixaban-23-facts-grouped-2.0.0"}[mode]),
+        "ablation_variant": variant["variant_id"] if variant else None,
+        "removed_factor": "+".join(variant["removes"]) if variant else None,
+        "removed_factors": list(variant["removes"]) if variant else [],
+        "output_schema_version": output_schema_version(mode),
         "quote_match_policy": QUOTE_MATCH_POLICY,
         "proposal_pin": make_pin(proposal, "self", self_field="self_sha256"),
         "decision_pin": make_pin(decision, "self", self_field="self_sha256"),
@@ -283,7 +295,9 @@ def run_pilot(client, contract: dict, manifest: dict, example_set: dict, *,
                              sleeper=sleeper)
         result["log"]["cold_start"] = index == 0
         slots.append(result)
-        requests.extend([result["log"]["wall_seconds"]] * len(group))
+        # Each slot carries its request's share so the estimate sums per-request
+        # wall time in grouped modes too (a 23-question request counts once).
+        requests.extend([result["log"]["wall_seconds"] / len(group)] * len(group))
     if len(requests) != 23:
         raise P8Error("Pilot must cover all 23 question slots")
     decision = timing_mode(requests)

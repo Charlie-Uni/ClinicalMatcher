@@ -277,3 +277,49 @@ quotes optional). `a24` runs first because it is cheap and directly tests
 the spec's own unverified hypothesis that per-question requests help; the
 spec declared "no improvement" a valid outcome. E2 (a stronger model) and
 any cloud execution remain owner decisions and are not started here.
+
+## Addendum (2026-09-17): matrix 1.1.0 and the batched a24 variant
+
+The ablation matrix is revised to 1.1.0 (sealed resource
+`p8-e1-ablation-matrix-1.1.0.json`; 1.0.0 stays in the package because
+every contract up to a4 pins it). It adds two two-factor variants on top of
+a4, each removing exactly one further factor while keeping a4's
+quote-optional parsing so acceptance stays comparable: `2.0.0-a24`
+(F1+F4: the v2 text as one batched 23-question request) and `2.0.0-a34`
+(F3+F4: v1 explicit-negation boolean semantics). The revision is declared
+on validation evidence only, before any secondary-holdout exposure, which
+matrix rule 3 permits; the revision history records the a4 result as its
+reason and the predecessor's self-hash.
+
+`a24` is implemented as prompt mode `v2-a24` with a positional output
+schema (`2.0.2-flat-variants-positional`): `prefixItems` binds each array
+position to one question's flat status variants, so the grammar itself
+enforces exactly one answer per question in catalog order. Two synthetic
+probes against the live Ollama 0.34.0 grammar converter decided the shape:
+`prefixItems` is honoured (the model followed the schema order even when
+the toy text listed questions in reverse), `items: false` is rejected
+("Unrecognized schema: false") and is not emitted, and `$defs`/`$ref` are
+honoured, so the repeated citation and quote sub-schemas are shared. The
+system prompt receives the same two grouped-mode phrase replacements as
+`v2b` (now checked to occur exactly once) plus the a4 quote sentence
+substitution; the sealed proposal resource is untouched, so every
+proposal, decision and example-set pin still verifies. The pilot's
+affordability estimate now sums per-request wall time (each slot carries
+its request's share), which leaves per-question modes unchanged and stops
+a 23-question request from being counted 23 times.
+
+A live synthetic replay of one full a24 request (fixture patient, no
+clinical content) was accepted with the order honoured and 23 rows, but
+took 459 s: 11,597 prompt tokens, of which the embedded 35 KB schema was
+the bulk, and 1,573 generated tokens under grammar constraint. Sharing
+sub-schemas through `$defs` only trims the schema to about 30 KB because
+each flat variant must stay a complete object (the attempt #1 lesson), so
+the realistic cost is 6–8 minutes per patient and 1.5–2 hours for the
+15-patient validation run, not the "about 30 minutes" I stated earlier
+from the request count alone. A second replay with the shared
+sub-schemas (29.8 KB schema, 10,165 prompt tokens) was again accepted in
+order; it generated the same 1,573 tokens at 4.8 tokens/s under the
+positional grammar while the full test suite ran alongside it, so the
+grammar-constrained generation, not the prompt, dominates the cost.
+Estimates for this run will be read from the Ollama request log as they
+were for a4.

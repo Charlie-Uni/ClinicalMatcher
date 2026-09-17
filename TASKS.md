@@ -1355,7 +1355,12 @@ configuration and an explicit owner authorization.
   rows and all 41 gold-unknown numeric rows, where batched v1 keeps
   118/168 and 25/41. F4 explains acceptance, not accuracy. Next: matrix
   1.1.0 with two-factor variants `a24` (batched, quotes optional) and
-  `a34` (explicit negation, quotes optional), a24 first. P8.3 remains open.
+  `a34` (explicit negation, quotes optional), a24 first. Matrix 1.1.0 and
+  mode `v2-a24` (positional `prefixItems` schema, `$defs`-shared citations,
+  grouped prompt phrases plus the a4 substitution) are implemented with
+  synthetic tests and a live synthetic replay; one batched request costs
+  about 6–8 minutes, so the a24 validation run is a 1.5–2 hour step.
+  P8.3 remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

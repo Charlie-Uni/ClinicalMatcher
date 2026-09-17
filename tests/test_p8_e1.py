@@ -380,3 +380,94 @@ class P8E1AblationA4Tests(unittest.TestCase):
         with self.assertRaises(P8Error):
             run_e1(client, contract, self.manifest, self.example_set, pilot,
                    synthetic=True, sleeper=lambda s: None)
+
+
+class P8E1AblationA24Tests(unittest.TestCase):
+    """Variant 2.0.0-a24 (matrix 1.1.0) removes F1 and F4 on top of a4."""
+
+    setUp = P8E1Tests.setUp
+
+    def _a24_contract(self):
+        return build_e1_contract(self.manifest, self.example_set, self.decision,
+                                 mode="v2-a24", synthetic=True,
+                                 runtime_identity={"engine_version": "test"})
+
+    def test_matrix_1_1_0_declares_two_factor_variants_on_top_of_a4(self):
+        matrix = load_ablation_matrix()
+        self.assertEqual("1.1.0", matrix["p8_e1_ablation_matrix_version"])
+        variants = {v["variant_id"]: v for v in matrix["two_factor_variants"]}
+        self.assertEqual({"2.0.0-a24", "2.0.0-a34"}, set(variants))
+        self.assertEqual(["F1", "F4"], variants["2.0.0-a24"]["removes"])
+        self.assertEqual(["F3", "F4"], variants["2.0.0-a34"]["removes"])
+        self.assertTrue(all(v["on_top_of"] == "2.0.0-a4" for v in variants.values()))
+        self.assertEqual("1.0.0", matrix["revision_history"][0]["version"])
+        self.assertEqual(4, len(matrix["single_factor_variants"]))
+
+    def test_a24_is_one_batched_request_with_positional_quote_optional_schema(self):
+        from clinical_matcher.p8_prompt import output_schema, question_groups
+        groups = question_groups("v2-a24")
+        self.assertEqual(1, len(groups))
+        self.assertEqual([q["question_id"] for q in QUESTIONS], groups[0])
+        schema = output_schema(groups[0], mode="v2-a24")["properties"]["assessments"]
+        self.assertNotIn("items", schema)
+        self.assertEqual((23, 23), (schema["minItems"], schema["maxItems"]))
+        self.assertEqual(23, len(schema["prefixItems"]))
+        for position, q in zip(schema["prefixItems"], QUESTIONS):
+            ids = {v["properties"]["question_id"]["const"] for v in position["oneOf"]}
+            self.assertEqual({q["question_id"]}, ids)
+            for v in position["oneOf"]:
+                self.assertEqual({"$ref": "#/$defs/quote_optional"}, v["properties"]["supporting_quote"])
+                self.assertIn(v["properties"]["evidence_ids"]["$ref"],
+                              {"#/$defs/citations_min0", "#/$defs/citations_min1"})
+        full = output_schema(groups[0], mode="v2-a24", evidence_ids=["e-1", "e-2"])
+        self.assertEqual(["string", "null"], full["$defs"]["quote_optional"]["type"])
+        self.assertEqual(["e-1", "e-2"], full["$defs"]["citations_min1"]["items"]["enum"])
+        self.assertEqual({"citations_min0", "citations_min1", "quote_optional"}, set(full["$defs"]))
+        # Existing modes keep the array/oneOf shape and version.
+        self.assertIn("items", output_schema([QUESTIONS[0]["question_id"]], mode="v2-a4")["properties"]["assessments"])
+
+    def test_a24_prompt_is_grouped_and_quote_optional(self):
+        from clinical_matcher.p8_prompt import build_messages, question_groups
+        patient = {"patient_id": self.validation_ids[0], "evidence": [
+            {"evidence_id": "c1", "text": "Synthetic sentence."}]}
+        system = build_messages(patient, question_groups("v2-a24")[0], self.example_set,
+                                mode="v2-a24")[0]["content"]
+        self.assertIn("each supplied question independently", system)
+        self.assertIn("for all supplied questions", system)
+        self.assertIn("A supporting_quote is optional", system)
+        self.assertNotIn("exactly one supplied question", system)
+
+    def test_a24_pilot_is_one_request_and_full_run_sends_one_per_patient(self):
+        import itertools
+        from unittest.mock import patch
+        client = FakeClient()
+        contract = self._a24_contract()
+        with patch("clinical_matcher.p8_e1.time.monotonic",
+                   side_effect=itertools.count(0.0, 10.0)):
+            pilot = run_pilot(client, contract, self.manifest, self.example_set,
+                              synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(1, len(client.calls))
+        self.assertEqual(1, len(pilot["slot_logs"]))
+        self.assertEqual(23, len(pilot["rows"]))
+        self.assertEqual("v2-a24", pilot["timing_decision"]["mode"])
+        # One 10 s request per patient: 15 x 10 s, not 15 x 23 x 10 s.
+        self.assertAlmostEqual(150.0, pilot["timing_decision"]["estimated_validation_seconds"])
+        run = run_e1(client, contract, self.manifest, self.example_set, pilot,
+                     synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(len(self.validation_ids), len(client.calls))
+        self.assertEqual(len(self.validation_ids) * 23, len(run["rows"]))
+        self.assertEqual("v2-a24", run["mode"])
+        self.assertTrue(all("p8.v2-a24.accepted" in row["trace_ids"] for row in run["rows"]))
+
+    def test_a24_contract_records_two_removed_factors_and_positional_schema(self):
+        contract = self._a24_contract()
+        self.assertEqual("2.0.0-a24", contract["ablation_variant"])
+        self.assertEqual("F1+F4", contract["removed_factor"])
+        self.assertEqual(["F1", "F4"], contract["removed_factors"])
+        self.assertEqual("apixaban-23-facts-batched-2.0.0-a24", contract["prompt_version"])
+        self.assertEqual("2.0.2-flat-variants-positional", contract["output_schema_version"])
+        a4 = build_e1_contract(self.manifest, self.example_set, self.decision, mode="v2-a4",
+                               synthetic=True, runtime_identity={"engine_version": "test"})
+        self.assertEqual(("F4", ["F4"], "2.0.1-flat-variants"),
+                         (a4["removed_factor"], a4["removed_factors"], a4["output_schema_version"]))
+        self.assertEqual(load_ablation_matrix()["self_sha256"], contract["ablation_matrix_pin"]["value"])

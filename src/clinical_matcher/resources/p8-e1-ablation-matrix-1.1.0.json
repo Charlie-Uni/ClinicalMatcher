@@ -1,0 +1,83 @@
+{
+  "factors": {
+    "F1": "per-question request split (v1 batched 23-in-1 -> v2 one question per request)",
+    "F2": "train-fit few-shot demonstrations",
+    "F3": "boolean absent semantics loosened from explicit-negation to protocol-No",
+    "F4": "known-answer verbatim supporting_quote hard constraint"
+  },
+  "hash_semantics": {
+    "canonicalization": "utf8_ensure_ascii_false_sort_keys_true_compact_no_nan",
+    "consumption": "remove_self_sha256_then_recompute_canonical_json",
+    "storage": "sha256_canonical_json_without_top_level_self_sha256"
+  },
+  "incumbent": {
+    "config": "long_context.A1",
+    "note": "development diagnostic; not a holdout or clinical figure",
+    "validation_typed_exact_match": 0.628986
+  },
+  "p8_e1_ablation_matrix_version": "1.1.0",
+  "revision_history": [
+    {
+      "date": "2026-09-16",
+      "note": "four single-factor variants; trigger on v2 <= incumbent",
+      "version": "1.0.0"
+    },
+    {
+      "date": "2026-09-17",
+      "note": "a4 accepted 345/345 at typed EM 0.2522: F4 controls acceptance, not accuracy; single-factor a2/a3 keep F4 and cannot isolate their factor on real data, so a24 and a34 are declared on top of a4",
+      "predecessor_self_sha256": "29df9e673bc4869dfa7ffb9d64cc25ddc00e606352b710d4a92f8bff75495183",
+      "version": "1.1.0"
+    }
+  ],
+  "rules": [
+    "Each triggered variant is a separately frozen contract; none runs by default.",
+    "Whole-v2 gains are never attributed to a single factor without the matching variant run.",
+    "Variant selection happens on validation only; no variant may be added after holdout exposure.",
+    "Two-factor variants keep a4's quote-optional parsing so that response acceptance is comparable across variants; each still removes exactly one further factor relative to a4.",
+    "Revision 1.1.0 was declared on validation evidence only, before any secondary-holdout exposure."
+  ],
+  "self_sha256": "65bc9d56690c4b0bd463368ec1653a03e901d2a29b527924348cdb600592dfe0",
+  "single_factor_variants": [
+    {
+      "description": "v2 without demonstrations",
+      "removes": "F2",
+      "variant_id": "2.0.0-a1"
+    },
+    {
+      "description": "v2 text applied as one batched 23-question request",
+      "removes": "F1",
+      "variant_id": "2.0.0-a2"
+    },
+    {
+      "description": "v2 with v1 explicit-negation boolean semantics",
+      "removes": "F3",
+      "variant_id": "2.0.0-a3"
+    },
+    {
+      "description": "v2 without the known-answer quote requirement",
+      "removes": "F4",
+      "variant_id": "2.0.0-a4"
+    }
+  ],
+  "trigger": "declared_only_if_v2_validation_typed_em_does_not_exceed_incumbent_0_628986",
+  "two_factor_variants": [
+    {
+      "description": "v2 text as one batched 23-question request with quotes optional; positional output schema",
+      "on_top_of": "2.0.0-a4",
+      "removes": [
+        "F1",
+        "F4"
+      ],
+      "variant_id": "2.0.0-a24"
+    },
+    {
+      "description": "v2 per-question requests with v1 explicit-negation boolean semantics and quotes optional",
+      "on_top_of": "2.0.0-a4",
+      "removes": [
+        "F3",
+        "F4"
+      ],
+      "variant_id": "2.0.0-a34"
+    }
+  ]
+}

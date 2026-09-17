@@ -64,7 +64,8 @@ def _questions(question_ids: list[str]) -> list[dict]:
 
 
 def question_groups(mode: str) -> list[list[str]]:
-    sizes = {"v2": [1] * 23, "v2b": [5, 5, 5, 4, 4], "v2-a4": [1] * 23}
+    sizes = {"v2": [1] * 23, "v2b": [5, 5, 5, 4, 4], "v2-a4": [1] * 23,
+             "v2-a24": [23]}
     if mode not in sizes:
         raise P8Error("Undeclared prompt mode")
     ids = [q["question_id"] for q in load_question_catalog()["questions"]]
@@ -96,6 +97,17 @@ def _evidence(patient: dict) -> dict[str, str]:
 
 
 OUTPUT_SCHEMA_VERSION = "2.0.1-flat-variants"
+# Modes whose variants remove factor F4 (the known-answer quote hard constraint).
+QUOTE_OPTIONAL_MODES = ("v2-a4", "v2-a24")
+# The batched a24 request fixes each array position to one question through
+# `prefixItems`, so the grammar itself enforces exactly one answer per question
+# in catalog order (live synthetic probe 2026-09-17: honoured by Ollama 0.34.0;
+# `items: false` is rejected by its converter and is therefore not emitted).
+POSITIONAL_SCHEMA_MODES = ("v2-a24",)
+
+
+def output_schema_version(mode: str) -> str:
+    return "2.0.2-flat-variants-positional" if mode in POSITIONAL_SCHEMA_MODES else OUTPUT_SCHEMA_VERSION
 
 
 def _flat_variant(q: dict, status: str, value: dict, *, quote_required: bool,
@@ -131,14 +143,14 @@ def output_schema(question_ids: list[str], *, mode: str = "v2",
                   evidence_ids: list[str] | None = None) -> dict:
     """Flat complete variants; numeric questions have no absent variant at all."""
     questions = _group(question_ids, mode)
-    # Ablation variant 2.0.0-a4 removes factor F4: quotes become optional for
-    # every status while citation requirements are unchanged.
-    quotes = mode != "v2-a4"
-    variants = []
+    # Ablation variants removing factor F4 make quotes optional for every
+    # status while citation requirements are unchanged.
+    quotes = mode not in QUOTE_OPTIONAL_MODES
+    per_question = []
     for q in questions:
         default = q["source_criterion_label"] == "med_decisions"
-        variants.append(_flat_variant(q, "unknown", {"type": "null"}, quote_required=False,
-                                      minimum_citations=0, evidence_ids=evidence_ids))
+        variants = [_flat_variant(q, "unknown", {"type": "null"}, quote_required=False,
+                                  minimum_citations=0, evidence_ids=evidence_ids)]
         if q["question_type"] == "boolean":
             variants.append(_flat_variant(q, "present", {"const": True}, quote_required=quotes,
                                           minimum_citations=1, evidence_ids=evidence_ids))
@@ -149,9 +161,41 @@ def output_schema(question_ids: list[str], *, mode: str = "v2",
         else:
             variants.append(_flat_variant(q, "present", {"type": "number"}, quote_required=quotes,
                                           minimum_citations=1, evidence_ids=evidence_ids))
-    return {"type": "object", "additionalProperties": False, "required": ["assessments"],
-            "properties": {"assessments": {"type": "array", "minItems": len(questions),
-                "maxItems": len(questions), "items": {"oneOf": variants}}}}
+        per_question.append(variants)
+    assessments = {"type": "array", "minItems": len(questions), "maxItems": len(questions)}
+    schema = {"type": "object", "additionalProperties": False, "required": ["assessments"],
+              "properties": {"assessments": assessments}}
+    if mode in POSITIONAL_SCHEMA_MODES:
+        assessments["prefixItems"] = [{"oneOf": variants} for variants in per_question]
+        _compact_shared_subschemas(schema, per_question)
+    else:
+        assessments["items"] = {"oneOf": [v for variants in per_question for v in variants]}
+    return schema
+
+
+def _compact_shared_subschemas(schema: dict, per_question: list[list[dict]]) -> None:
+    """Move the repeated citation and quote sub-schemas into `$defs`.
+
+    A 23-question positional schema repeats the evidence-id enum in every
+    variant (about 35 KB, roughly 10k prompt tokens, in the live synthetic
+    replay). `$ref` keeps the grammar identical while the embedded schema and
+    the prompt shrink; Ollama 0.34.0 honoured `$defs`/`$ref` in the same probe.
+    """
+    defs: dict = {}
+    def shared(name: str, value: dict) -> dict:
+        existing = defs.setdefault(name, value)
+        if existing != value:
+            raise P8Error("Conflicting shared sub-schema")
+        return {"$ref": f"#/$defs/{name}"}
+    for variants in per_question:
+        for variant in variants:
+            props = variant["properties"]
+            citations = props["evidence_ids"]
+            props["evidence_ids"] = shared(f"citations_min{citations['minItems']}", citations)
+            quote = props["supporting_quote"]
+            kind = "optional" if isinstance(quote["type"], list) else "required"
+            props["supporting_quote"] = shared(f"quote_{kind}", quote)
+    schema["$defs"] = dict(sorted(defs.items()))
 
 
 QUOTE_MATCH_POLICY = "whitespace-nfkc-normalized-verbatim/1.0.0"
@@ -220,7 +264,7 @@ def parse_response(payload: str, *, patient: dict, question_ids: list[str],
         if not isinstance(qid, str) or qid not in question_ids or qid in by_id:
             raise P8Error("Wrong or repeated response question")
         by_id[qid] = row
-    optional = mode == "v2-a4"
+    optional = mode in QUOTE_OPTIONAL_MODES
     for q in questions:
         if not _check_answer(by_id[q["question_id"]], q, evidence, quote_optional=optional):
             by_id[q["question_id"]]["supporting_quote"] = None
@@ -420,10 +464,13 @@ def build_messages(patient: dict, question_ids: list[str], example_set: dict, *,
                                    "evidence": [{"evidence_id": eid, "text": entry["excerpt"]}], "answer": answer})
     resource = _resource()
     system = resource["system_prompt"]
-    if mode == "v2b":
-        system = system.replace("exactly one supplied question", "each supplied question independently")
-        system = system.replace("for the supplied question", "for all supplied questions")
-    elif mode == "v2-a4":
+    if mode in ("v2b", "v2-a24"):
+        for old, new in (("exactly one supplied question", "each supplied question independently"),
+                         ("for the supplied question", "for all supplied questions")):
+            if system.count(old) != 1:
+                raise P8Error("grouped prompt anchor phrase not found exactly once")
+            system = system.replace(old, new)
+    if mode in QUOTE_OPTIONAL_MODES:
         pattern = (r"Otherwise,\s+a\s+known\s+answer\s+requires\s+a\s+quote\s+of\s+1\s+to\s+400\s+"
                    r"characters\s+from\s+a\s+cited\s+current\s+evidence\s+chunk\.")
         system, count = re.subn(pattern, "A supporting_quote is optional; use null whenever you "
