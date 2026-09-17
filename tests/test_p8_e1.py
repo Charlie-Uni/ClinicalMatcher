@@ -286,3 +286,52 @@ class P8E1Tests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class P8E1AblationA4Tests(unittest.TestCase):
+    """Variant 2.0.0-a4 removes only the quote hard constraint (factor F4)."""
+
+    setUp = P8E1Tests.setUp  # reuse the fixture without re-running the base tests
+
+    def _a4_contract(self):
+        return build_e1_contract(self.manifest, self.example_set, self.decision,
+                                 mode="v2-a4", synthetic=True,
+                                 runtime_identity={"engine_version": "test"})
+
+    def test_a4_groups_match_v2_and_schema_makes_quotes_optional(self):
+        from clinical_matcher.p8_prompt import output_schema, question_groups
+        self.assertEqual(question_groups("v2"), question_groups("v2-a4"))
+        q = next(x for x in QUESTIONS if x["question_type"] == "boolean")
+        for variant in output_schema([q["question_id"]], mode="v2-a4")["properties"]["assessments"]["items"]["oneOf"]:
+            self.assertEqual(["string", "null"], variant["properties"]["supporting_quote"]["type"])
+            if variant["properties"]["fact_status"]["const"] == "present":
+                self.assertEqual(1, variant["properties"]["evidence_ids"]["minItems"])
+
+    def test_a4_keeps_known_answers_without_or_with_unverified_quotes(self):
+        from clinical_matcher.p8_prompt import parse_response, project_response, build_messages
+        q = next(x for x in QUESTIONS if x["question_type"] == "boolean")
+        patient = {"patient_id": self.validation_ids[0],
+                   "evidence": [{"evidence_id": "p-e1", "text": "History of atrial fibrillation."}]}
+        base = {"question_id": q["question_id"], "question_type": "boolean",
+                "fact_status": "present", "value": True, "unit": None, "evidence_ids": ["p-e1"]}
+        no_quote = json.dumps({"assessments": [dict(base, supporting_quote=None)]})
+        paraphrase = json.dumps({"assessments": [dict(base, supporting_quote="AF history noted")]})
+        with self.assertRaises(P8Error):
+            parse_response(no_quote, patient=patient, question_ids=[q["question_id"]], mode="v2")
+        rows = parse_response(no_quote, patient=patient, question_ids=[q["question_id"]], mode="v2-a4")
+        self.assertEqual("present", rows[0]["fact_status"])
+        projected, outcome = project_response(paraphrase, patient=patient,
+                                              question_ids=[q["question_id"]], mode="v2-a4")
+        self.assertEqual("accepted", outcome)
+        self.assertEqual("present", projected[0]["fact_status"])
+        self.assertIn("p8.v2-a4.quote_unverified", projected[0]["trace_ids"])
+        system = build_messages(patient, [q["question_id"]], self.example_set, mode="v2-a4")[0]["content"]
+        self.assertIn("supporting_quote is optional", system)
+        self.assertNotIn("requires a quote", system)
+
+    def test_a4_contract_records_variant_and_removed_factor(self):
+        contract = self._a4_contract()
+        self.assertEqual("2.0.0-a4", contract["ablation_variant"])
+        self.assertEqual("F4", contract["removed_factor"])
+        self.assertEqual("apixaban-23-facts-perq-2.0.0-a4", contract["prompt_version"])
+        self.assertIsNone(self.contract["ablation_variant"])

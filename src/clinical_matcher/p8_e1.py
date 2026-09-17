@@ -113,14 +113,17 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
     if decision.get("scope") != DECISION_SCOPE or not (
             decision.get("owner_approved") and decision.get("proposer_approved")):
         raise P8Error("E1 requires the approved dual-review decision")
-    if mode not in {"v2", "v2b"}:
+    if mode not in {"v2", "v2b", "v2-a4"}:
         raise P8Error("Unknown E1 mode")
     parent = load_long_context_contract()
     contract = seal({
         "p8_e1_contract_version": E1_RUN_VERSION,
         "mode": mode,
-        "prompt_version": ("apixaban-23-facts-perq-2.0.0" if mode == "v2"
-                           else "apixaban-23-facts-grouped-2.0.0"),
+        "prompt_version": {"v2": "apixaban-23-facts-perq-2.0.0",
+                           "v2b": "apixaban-23-facts-grouped-2.0.0",
+                           "v2-a4": "apixaban-23-facts-perq-2.0.0-a4"}[mode],
+        "ablation_variant": "2.0.0-a4" if mode == "v2-a4" else None,
+        "removed_factor": "F4" if mode == "v2-a4" else None,
         "output_schema_version": OUTPUT_SCHEMA_VERSION,
         "quote_match_policy": QUOTE_MATCH_POLICY,
         "proposal_pin": make_pin(proposal, "self", self_field="self_sha256"),

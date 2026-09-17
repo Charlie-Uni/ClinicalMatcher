@@ -64,7 +64,7 @@ def _questions(question_ids: list[str]) -> list[dict]:
 
 
 def question_groups(mode: str) -> list[list[str]]:
-    sizes = {"v2": [1] * 23, "v2b": [5, 5, 5, 4, 4]}
+    sizes = {"v2": [1] * 23, "v2b": [5, 5, 5, 4, 4], "v2-a4": [1] * 23}
     if mode not in sizes:
         raise P8Error("Undeclared prompt mode")
     ids = [q["question_id"] for q in load_question_catalog()["questions"]]
@@ -131,20 +131,23 @@ def output_schema(question_ids: list[str], *, mode: str = "v2",
                   evidence_ids: list[str] | None = None) -> dict:
     """Flat complete variants; numeric questions have no absent variant at all."""
     questions = _group(question_ids, mode)
+    # Ablation variant 2.0.0-a4 removes factor F4: quotes become optional for
+    # every status while citation requirements are unchanged.
+    quotes = mode != "v2-a4"
     variants = []
     for q in questions:
         default = q["source_criterion_label"] == "med_decisions"
         variants.append(_flat_variant(q, "unknown", {"type": "null"}, quote_required=False,
                                       minimum_citations=0, evidence_ids=evidence_ids))
         if q["question_type"] == "boolean":
-            variants.append(_flat_variant(q, "present", {"const": True}, quote_required=True,
+            variants.append(_flat_variant(q, "present", {"const": True}, quote_required=quotes,
                                           minimum_citations=1, evidence_ids=evidence_ids))
             variants.append(_flat_variant(q, "absent", {"const": False},
-                                          quote_required=not default,
+                                          quote_required=quotes and not default,
                                           minimum_citations=0 if default else 1,
                                           evidence_ids=evidence_ids))
         else:
-            variants.append(_flat_variant(q, "present", {"type": "number"}, quote_required=True,
+            variants.append(_flat_variant(q, "present", {"type": "number"}, quote_required=quotes,
                                           minimum_citations=1, evidence_ids=evidence_ids))
     return {"type": "object", "additionalProperties": False, "required": ["assessments"],
             "properties": {"assessments": {"type": "array", "minItems": len(questions),
@@ -169,7 +172,9 @@ def quote_matches(quote: str, chunk_text: str) -> bool:
     return _normalize_quote_text(quote) in _normalize_quote_text(chunk_text)
 
 
-def _check_answer(answer: dict, question: dict, evidence: dict[str, str]) -> None:
+def _check_answer(answer: dict, question: dict, evidence: dict[str, str],
+                  *, quote_optional: bool = False) -> bool:
+    """Return True when the quote (if any) was verified verbatim."""
     if not isinstance(answer, dict) or set(answer) != ANSWER_FIELDS:
         raise P8Error("Unexpected response fields")
     validate_typed_row(answer, question)
@@ -178,20 +183,28 @@ def _check_answer(answer: dict, question: dict, evidence: dict[str, str]) -> Non
             or len(citations) != len(set(citations)) or not set(citations).issubset(evidence)):
         raise P8Error("Invalid current-patient citations")
     quote = answer["supporting_quote"]
+    verified = quote is not None
     if quote is not None:
         if (not isinstance(quote, str) or not quote.strip()
                 or len(quote) > _resource()["quote_max_characters"]
                 or not any(quote_matches(quote, evidence[e]) for e in citations)):
-            raise P8Error("Quote is not a bounded verbatim cited-current-evidence span")
+            if not quote_optional:
+                raise P8Error("Quote is not a bounded verbatim cited-current-evidence span")
+            verified = False  # a4: an unverified quote never invalidates the typed answer
     if answer["fact_status"] != "unknown":
         default = known_fact_allows_empty_evidence(question, answer) and not citations and quote is None
-        if not default and (not citations or quote is None):
+        if not default and (not citations or (quote is None and not quote_optional)):
             raise P8Error("Known answer lacks a quoted current-patient citation")
+    return verified
 
 
 def parse_response(payload: str, *, patient: dict, question_ids: list[str],
-                   mode: str = "v2") -> list[dict]:
-    """Strict response acceptance only; no semantic inference, repair or retry."""
+                   mode: str = "v2", unverified: set | None = None) -> list[dict]:
+    """Strict response acceptance only; no semantic inference, repair or retry.
+
+    Under ablation variant v2-a4 a non-verbatim quote is nulled mechanically
+    and its question id is added to `unverified`; the typed answer stands.
+    """
     questions, evidence = _group(question_ids, mode), _evidence(patient)
     if not isinstance(payload, str):
         raise P8Error("Model content must be a JSON string")
@@ -207,8 +220,12 @@ def parse_response(payload: str, *, patient: dict, question_ids: list[str],
         if not isinstance(qid, str) or qid not in question_ids or qid in by_id:
             raise P8Error("Wrong or repeated response question")
         by_id[qid] = row
+    optional = mode == "v2-a4"
     for q in questions:
-        _check_answer(by_id[q["question_id"]], q, evidence)
+        if not _check_answer(by_id[q["question_id"]], q, evidence, quote_optional=optional):
+            by_id[q["question_id"]]["supporting_quote"] = None
+            if unverified is not None:
+                unverified.add(q["question_id"])
     return [copy.deepcopy(by_id[q["question_id"]]) for q in questions]
 
 
@@ -217,8 +234,10 @@ def project_response(payload: str, *, patient: dict, question_ids: list[str],
     """Discard quote mechanically; any malformed response abstains for the group."""
     questions = _group(question_ids, mode)
     _evidence(patient)  # Bad caller input is a preflight failure, not a model failure.
+    unverified: set = set()
     try:
-        answers = parse_response(payload, patient=patient, question_ids=question_ids, mode=mode)
+        answers = parse_response(payload, patient=patient, question_ids=question_ids, mode=mode,
+                                 unverified=unverified)
         outcome = "accepted"
     except (P8Error, UnicodeError, OverflowError, RecursionError):
         outcome = "invalid_output"
@@ -230,9 +249,12 @@ def project_response(payload: str, *, patient: dict, question_ids: list[str],
         row = copy.deepcopy(answer)
         del row["supporting_quote"]
         unknown = row["fact_status"] == "unknown"
+        trace = [f"p8.{mode}.{outcome}"]
+        if row["question_id"] in unverified:
+            trace.append(f"p8.{mode}.quote_unverified")
         row.update(patient_id=patient["patient_id"], abstained=unknown,
                    abstention_reason=(outcome if outcome == "invalid_output" else "model_unknown") if unknown else None,
-                   trace_ids=[f"p8.{mode}.{outcome}"])
+                   trace_ids=trace)
         projected.append(row)
     return projected, outcome
 
@@ -401,6 +423,13 @@ def build_messages(patient: dict, question_ids: list[str], example_set: dict, *,
     if mode == "v2b":
         system = system.replace("exactly one supplied question", "each supplied question independently")
         system = system.replace("for the supplied question", "for all supplied questions")
+    elif mode == "v2-a4":
+        pattern = (r"Otherwise,\s+a\s+known\s+answer\s+requires\s+a\s+quote\s+of\s+1\s+to\s+400\s+"
+                   r"characters\s+from\s+a\s+cited\s+current\s+evidence\s+chunk\.")
+        system, count = re.subn(pattern, "A supporting_quote is optional; use null whenever you "
+                                "cannot copy an exact span.", system)
+        if count != 1:
+            raise P8Error("a4 prompt anchor sentence not found exactly once")
     # One user message retains a literal common prefix through all note bytes.
     notes = json.dumps({"current_patient_evidence": patient["evidence"]}, ensure_ascii=False,
                        sort_keys=True, separators=(",", ":"), allow_nan=False)

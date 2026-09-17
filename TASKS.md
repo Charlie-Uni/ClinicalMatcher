@@ -1334,9 +1334,17 @@ configuration and an explicit owner authorization.
   owner confirmation recorded in the dual-review decision). The E1 runner,
   CLI, sealed ablation matrix, budget pre/post checks, transport-only retry,
   pilot reuse and mode gating are implemented with synthetic tests
-  ([self-review](docs/P8_E1_IMPLEMENTATION_REVIEW.md)). Real example-set
-  persistence, the live-runtime contract, the timed pilot and E1 inference
-  remain pending; P8.3 is not complete.
+  ([self-review](docs/P8_E1_IMPLEMENTATION_REVIEW.md)). Real E1 ran three
+  times on validation: attempt #1 was invalidated by a schema-to-grammar
+  defect (345/345 invalid), attempt #2 stopped at its pilot by the
+  acceptance gate, and attempt #3 (flat-variant schema, whitespace-normalized
+  quote matching, Ollama 0.34.0 re-pinned explicitly) completed with
+  139/345 accepted, typed exact match 0.1855 and 215 unknowns; E3
+  (`prompt_v2.A1`) reached 0.3130. Both are development diagnostics below
+  the incumbent `long_context.A1` (0.6290), so the sealed ablation matrix
+  triggers variant `2.0.0-a4` (quote hard constraint removed, citations kept).
+  The real example set is structurally empty because the official gold has no
+  evidence links; F2 is inert. P8.3 remains open until the a4 run is recorded.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

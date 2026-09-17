@@ -148,9 +148,39 @@ incumbent, `2.0.0-a4` is triggered per the matrix rather than relaxing the
 parser further. The pilot-acceptance gate held: the full run was not
 started on a 1/23 pilot.
 
-## Pending before real E1
+## Current status (2026-09-17)
 
-Persist the real dual-review decision, example plan, and example set;
-freeze the run contract with a live runtime probe; timed pilot; full run.
-E2 remains an owner decision; the secondary holdout remains unauthorized
-and untouched.
+Persisted owner-side: the dual-review decision, example plan, the
+structurally empty example set, contracts for attempts #1 and #2, both
+pilots, and the attempt #1 full run (all 345 requests invalid). Attempt #2
+stopped at its pilot by the acceptance gate. Attempt #3 (flat-variant
+schema plus normalized quote matching) is the next real step: freeze a new
+contract against the CI-verified commit, run the pilot, inspect its outcome
+distribution, and only then run the full validation set. If frozen v2 does
+not beat the incumbent `long_context.A1` (0.6290), ablation variant
+`2.0.0-a4` is triggered per the sealed matrix; E3 applies the E0-selected
+A1 policy to whichever v2 run is retained. E2 remains an owner decision;
+the secondary holdout remains unauthorized and untouched.
+
+## Addendum (2026-09-17): attempt #3 result and the F4 ablation trigger
+
+Attempt #3 (contract `ff13c842…`, flat-variant schema, normalized quote
+matching, engine 0.34.0) completed all 345 validation requests:
+139 accepted, 206 `invalid_output`, typed exact match **0.1855** (64/345),
+unknown 215, request latency p50 26.6 s / p95 57.6 s. Applying the
+E0-selected A1 policy (E3, `prompt_v2.A1`) filled 70 abstentions from
+cited rule answers and reached 0.3130 raw and safety views alike. Both
+remain far below the incumbent `long_context.A1` (0.6290) and the v1
+reference (0.6116). These are validation development diagnostics.
+
+The sealed ablation matrix's trigger condition is therefore met. The
+evidence isolates factor F4: 60% of requests were rejected solely by the
+known-answer quote hard constraint after whitespace normalization, with
+paraphrase/case/punctuation failures dominating. Variant `2.0.0-a4`
+(quotes optional, citations still required, everything else identical) is
+triggered as the single-factor test of F4. It is implemented as prompt mode
+`v2-a4` with its own prompt version, recorded `ablation_variant` and
+`removed_factor` contract fields, a whitespace-tolerant single-sentence
+prompt substitution, and a parser that nulls unverified quotes with a
+`quote_unverified` trace marker instead of invalidating the typed answer.
+No other factor is changed, and no variant runs by default.
