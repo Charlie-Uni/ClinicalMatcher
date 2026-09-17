@@ -482,3 +482,36 @@ full run proceed. The module tests ran against the source tree because the
 local snapshot cannot be reinstalled while the local a24 run is in flight;
 CI runs the full suite. a34 runs next on a GPU instance (345 per-question
 requests, roughly 30 minutes there).
+
+## Addendum (2026-09-18): local a24 run and cross-hardware divergence
+
+The local a24 run under runner 1.0.3 budgets (`e1-run-v2-a24-r2.json`,
+contract `cd48e4bb…`, Metal, Ollama 0.34.0) finished after 2 h 16 min:
+5 accepted, 5 `context_over_budget`, 5 `invalid_output`, typed exact
+match 0.1304, unknown 259, latency p50 977 s / p95 1,266 s. It stays on
+record as the local 1.0.3 attempt and is not an accuracy result for the
+same budget reasons as the first GPU run.
+
+Comparing it patient by patient with the first GPU run under identical
+contract semantics (CUDA, Ollama 0.34.1): the pre-check skipped the same
+5 patients on both machines (it is deterministic), 3 patients were invalid
+on both, **2 patients were invalid locally but accepted on the GPU**, and
+of the 5 patients accepted on both only 1 has row-identical typed answers
+and citations. On those 5 patients (115 rows) the typed answer
+(status, value) agrees on 75 rows, citations on 71, both on 47; the typed
+differences are 21 unknown→present, 8 present→unknown and 11
+present→present with a different value. The pilot control (one patient,
+23 rows, byte-identical) was therefore necessary but not sufficient:
+temperature 0 and a fixed seed do not make long batched generations
+identical across Metal and CUDA, and the divergence is large enough to
+change request outcomes.
+
+Consequences recorded here and in amendment 1.2.0's spirit: results from
+the two runtimes are not pooled; every run states its runtime; a GPU
+result may be compared with the incumbent `long_context.A1` (produced on
+the local machine) only qualitatively until a same-runtime baseline
+exists, which means re-running the frozen v1 long-context candidate on the
+GPU before any cross-runtime claim of improvement. For the a24 verdict
+this changes nothing: 0.2435 (GPU) and 0.2522 (a4, local) are both far
+below 0.6290 and the absent-recall collapse appears on both runtimes.
+For E2 on a GPU instance the v1 control run becomes a prerequisite.
