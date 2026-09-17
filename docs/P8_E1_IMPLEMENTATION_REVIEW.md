@@ -368,3 +368,22 @@ records `timing_grouping: v2b`; a grouped contract keeps its own mode, and
 the full run was started as the pre-declared next step. Its progress is
 read from the Ollama request log; the pilot patient was the fastest in
 the a4 run, so 4–5 hours is the realistic range on the local machine.
+
+## Addendum (2026-09-18): a24 on the GPU instance — cross-hardware control passed
+
+Under [amendment 1.2.0](P8_CLOUD_EXECUTION_AMENDMENT_1.2.0.md) the a24
+contract was frozen on the rented instance (`a9c1542c…`, runner 1.0.3,
+live engine 0.34.1 probed and recorded, parent digest `46e0c10c…`
+verified, grouped timeout 1,800 s) and its pilot ran after an explicit
+unload: **accepted in 157.7 s** against 823 s on the local machine, with
+identical token counts (13,046 prompt, 3,001 generated) and status
+distribution (15 present, 8 unknown, no unverified quote). The canonical
+hash of the 23 projected rows (question, status, value, unit, sorted
+citations) is `06b9cda84abcc1cd` on both machines, so for this patient the
+CUDA and Metal runtimes produce byte-identical typed answers at
+temperature 0 / seed 17. That is the pre-declared control; it does not
+prove identity for the other 14 patients, which the two full runs will
+show directly. The GPU full run (estimate 15 × 158 s ≈ 40 min) was
+started; the local full run continues in parallel (2/14 requests done at
+14:07 UTC, about 16 minutes each) and stays on record as the local
+attempt. Nothing was read from the instance beyond aggregates and hashes.

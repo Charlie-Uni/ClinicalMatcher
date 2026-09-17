@@ -48,6 +48,19 @@ GPU 实例上执行推理侧实验，条件如下：
 - 安装脚本未能自动检测 GPU（缺 lspci/lshw）；首次运行前须确认推理落在
   GPU 上（`ollama ps` 显示 100% GPU 或服务日志的 inference compute 行）。
 
+## 传输与首次校验记录（2026-09-18）
+
+- 传输由 owner 在本机终端用 scp 逐文件完成（6 个文件，总计约 785 KB），
+  目录 0700、文件 0600，实例上文件计数 6。
+- 首次 `check-access` 被拒，原因是 manifest 校验要求二级 holdout 的登记
+  路径位于当前用户主目录下的守护金库（`~/.clinicalmatcher-p8-lifetime-state`）
+  之内，而实例上的主目录是 `/root`。处理方式不改代码：实例上的运行器进程
+  以 `HOME=/Users/leaf` 执行，使金库路径与本机逐字相同；该目录在实例上不
+  存在且永远不会被创建（holdout 文件不传输、任何步骤不打开）。对齐后
+  `check-access` 通过："P8.1 metadata gate passed"。
+- 实例上的契约文件以 `-gpu` 后缀命名（`e1-contract-v2-a24-gpu.json` 等），
+  结果拷回本机后与本机产物并列保存。
+
 ## 不改变的事项
 
 locked test 永久关闭；P7 封存件禁止读取；二级 holdout 未授权、单次曝光、
