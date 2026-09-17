@@ -63,7 +63,7 @@ def build_parser() -> argparse.ArgumentParser:
     prep_e1.add_argument("--access-manifest", type=Path, required=True)
     prep_e1.add_argument("--example-set", type=Path, required=True)
     prep_e1.add_argument("--decision", type=Path, required=True)
-    prep_e1.add_argument("--mode", choices=("v2", "v2b", "v2-a4", "v2-a24"), required=True)
+    prep_e1.add_argument("--mode", choices=("v2", "v2b", "v2-a4", "v2-a24", "v2-a34"), required=True)
     prep_e1.add_argument("--output", type=Path, required=True)
     pilot = sub.add_parser("pilot-e1", help="Timed first-patient pilot after an explicit model unload")
     run_e1_cmd = sub.add_parser("run-e1", help="Complete frozen validation run reusing the immutable pilot")

@@ -516,3 +516,56 @@ class P8E1AblationA24Tests(unittest.TestCase):
         chars = sum(len(m["content"]) for m in client.calls[-1]["messages"])
         self.assertEqual(int(chars / GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN) + 1,
                          result["log"]["estimated_prompt_tokens"])
+
+
+class P8E1AblationA34Tests(unittest.TestCase):
+    """Variant 2.0.0-a34 (matrix 1.1.0) restores v1 explicit-negation semantics on top of a4."""
+
+    setUp = P8E1Tests.setUp
+
+    def _a34_contract(self):
+        return build_e1_contract(self.manifest, self.example_set, self.decision,
+                                 mode="v2-a34", synthetic=True,
+                                 runtime_identity={"engine_version": "test"})
+
+    def test_a34_is_per_question_quote_optional_with_v1_boolean_sentence(self):
+        from clinical_matcher.p8_prompt import (V1_BOOLEAN_SEMANTICS, build_messages,
+                                                output_schema, question_groups)
+        self.assertEqual(question_groups("v2-a4"), question_groups("v2-a34"))
+        q = QUESTIONS[0]
+        schema = output_schema([q["question_id"]], mode="v2-a34")["properties"]["assessments"]
+        for v in schema["items"]["oneOf"]:
+            self.assertEqual(["string", "null"], v["properties"]["supporting_quote"]["type"])
+        patient = {"patient_id": self.validation_ids[0], "evidence": [
+            {"evidence_id": "c1", "text": "Synthetic sentence."}]}
+        # The resource wraps lines, so compare on whitespace-normalized text.
+        norm = lambda text: " ".join(text.split())
+        system = norm(build_messages(patient, [q["question_id"]], self.example_set, mode="v2-a34")[0]["content"])
+        self.assertIn(V1_BOOLEAN_SEMANTICS, system)
+        self.assertNotIn("supports No under that protocol", system)
+        self.assertIn("A supporting_quote is optional", system)
+        # a4 keeps the v2 sentence; only F3 differs between a4 and a34.
+        a4 = norm(build_messages(patient, [q["question_id"]], self.example_set, mode="v2-a4")[0]["content"])
+        v2_sentence = ("For boolean questions, return present/true when the evidence supports Yes "
+                       "under the question's protocol, and absent/false when it supports No under "
+                       "that protocol.")
+        self.assertIn(v2_sentence, a4)
+        self.assertNotIn(V1_BOOLEAN_SEMANTICS, a4)
+        self.assertEqual(a4.replace(v2_sentence, V1_BOOLEAN_SEMANTICS), system)
+
+    def test_a34_contract_and_full_run(self):
+        from clinical_matcher.p8_e1 import RUN_PARAMETERS
+        contract = self._a34_contract()
+        self.assertEqual(("2.0.0-a34", "F3+F4", ["F3", "F4"], "apixaban-23-facts-perq-2.0.0-a34"),
+                         (contract["ablation_variant"], contract["removed_factor"],
+                          contract["removed_factors"], contract["prompt_version"]))
+        self.assertEqual(RUN_PARAMETERS["num_predict"], contract["parameters"]["num_predict"])
+        self.assertEqual(RUN_PARAMETERS["timeout_seconds"], contract["parameters"]["timeout_seconds"])
+        client = FakeClient()
+        pilot = run_pilot(client, contract, self.manifest, self.example_set,
+                          synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("v2-a34", pilot["timing_decision"]["mode"])
+        run = run_e1(client, contract, self.manifest, self.example_set, pilot,
+                     synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(len(self.validation_ids) * 23, len(run["rows"]))
+        self.assertTrue(all("p8.v2-a34.accepted" in row["trace_ids"] for row in run["rows"]))

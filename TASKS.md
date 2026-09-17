@@ -1374,7 +1374,9 @@ configuration and an explicit owner authorization.
   a24 re-frozen on the instance under 1.0.4 accepted 15/15 requests and
   reached typed exact match 0.2435 (E3 0.2899): batching does not recover
   the incumbent, so the v2 text/schema semantics, not the request split,
-  are the cause. Only F3 remains untested (`a34`). P8.3 remains open.
+  are the cause. Only F3 remains untested: `a34` (v1 explicit-negation
+  sentence swapped in on top of a4, runner 1.0.5) is implemented with
+  tests and runs next on a GPU instance. P8.3 remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

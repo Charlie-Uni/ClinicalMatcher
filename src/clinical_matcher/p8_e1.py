@@ -41,12 +41,12 @@ from .p8_safety import (
 )
 
 
-E1_RUN_VERSION = "1.0.4"
+E1_RUN_VERSION = "1.0.5"
 DECISION_SCOPE = "v2_prompt_and_example_protocol"
 # Grouping families. The pilot's timing decision only says whether the
 # per-question grouping is affordable ("v2") or the grouped fallback is needed
 # ("v2b"); the mode the full run must use also carries the ablation variant.
-PER_QUESTION_MODES = ("v2", "v2-a4")
+PER_QUESTION_MODES = ("v2", "v2-a4", "v2-a34")
 GROUPED_MODES = ("v2b", "v2-a24")
 # Sealed-matrix ablation variants exposed as prompt modes. "removes" lists the
 # factors taken out of frozen v2; a24 and a34 are two-factor variants declared
@@ -56,6 +56,8 @@ ABLATION_VARIANTS = {
               "prompt_version": "apixaban-23-facts-perq-2.0.0-a4"},
     "v2-a24": {"variant_id": "2.0.0-a24", "removes": ["F1", "F4"],
                "prompt_version": "apixaban-23-facts-batched-2.0.0-a24"},
+    "v2-a34": {"variant_id": "2.0.0-a34", "removes": ["F3", "F4"],
+               "prompt_version": "apixaban-23-facts-perq-2.0.0-a34"},
 }
 
 

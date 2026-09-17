@@ -459,3 +459,26 @@ which the spec declared a valid outcome. E2 remains an owner decision.
 
 Cross-hardware note: the concurrent local run under 1.0.3 budgets stays on
 record for the 7-patient row-level comparison once it finishes.
+
+## Addendum (2026-09-18): a34 implemented — the last declared single-factor test
+
+Variant `2.0.0-a34` (matrix 1.1.0: F3 + F4 removed on top of a4) is
+implemented as per-question mode `v2-a34`. The only difference from a4 is
+factor F3: the v2 boolean sentence ("return present/true when the evidence
+supports Yes under the question's protocol, and absent/false when it
+supports No under that protocol") is replaced, with a whitespace-tolerant
+anchor that must match exactly once, by the frozen v1 long-context
+sentence quoted verbatim from the v1 runner: "For booleans, present
+requires explicit support; absent requires explicit negation, except the
+medical-decisions question explicitly defaults to absent. Otherwise use
+unknown." Quotes stay optional (a4 parsing), citations stay required, the
+schema and every other sentence are unchanged, and the sealed proposal
+resource is untouched. Runner 1.0.5 adds the mode to the variant table,
+the per-question mode set and the CLI; contracts record
+`removed_factors: ["F3", "F4"]` and `apixaban-23-facts-perq-2.0.0-a34`.
+Tests check that a34's system prompt equals a4's with exactly that one
+sentence swapped, that the schema is the a4 schema, and that a pilot and
+full run proceed. The module tests ran against the source tree because the
+local snapshot cannot be reinstalled while the local a24 run is in flight;
+CI runs the full suite. a34 runs next on a GPU instance (345 per-question
+requests, roughly 30 minutes there).

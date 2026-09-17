@@ -65,7 +65,7 @@ def _questions(question_ids: list[str]) -> list[dict]:
 
 def question_groups(mode: str) -> list[list[str]]:
     sizes = {"v2": [1] * 23, "v2b": [5, 5, 5, 4, 4], "v2-a4": [1] * 23,
-             "v2-a24": [23]}
+             "v2-a24": [23], "v2-a34": [1] * 23}
     if mode not in sizes:
         raise P8Error("Undeclared prompt mode")
     ids = [q["question_id"] for q in load_question_catalog()["questions"]]
@@ -98,7 +98,14 @@ def _evidence(patient: dict) -> dict[str, str]:
 
 OUTPUT_SCHEMA_VERSION = "2.0.1-flat-variants"
 # Modes whose variants remove factor F4 (the known-answer quote hard constraint).
-QUOTE_OPTIONAL_MODES = ("v2-a4", "v2-a24")
+QUOTE_OPTIONAL_MODES = ("v2-a4", "v2-a24", "v2-a34")
+# Variant a34 (matrix 1.1.0) restores v1's explicit-negation boolean
+# semantics (factor F3) on top of a4. The v1 sentence is quoted verbatim from
+# the frozen long-context prompt so the two families differ in nothing else.
+V1_BOOLEAN_SEMANTICS = ("For booleans, present requires explicit support; absent requires "
+                        "explicit negation, except the medical-decisions question explicitly "
+                        "defaults to absent. Otherwise use unknown.")
+EXPLICIT_NEGATION_MODES = ("v2-a34",)
 # The batched a24 request fixes each array position to one question through
 # `prefixItems`, so the grammar itself enforces exactly one answer per question
 # in catalog order (live synthetic probe 2026-09-17: honoured by Ollama 0.34.0;
@@ -470,6 +477,13 @@ def build_messages(patient: dict, question_ids: list[str], example_set: dict, *,
             if system.count(old) != 1:
                 raise P8Error("grouped prompt anchor phrase not found exactly once")
             system = system.replace(old, new)
+    if mode in EXPLICIT_NEGATION_MODES:
+        pattern = (r"For\s+boolean\s+questions,\s+return\s+present/true\s+when\s+the\s+evidence\s+"
+                   r"supports\s+Yes\s+under\s+the\s+question's\s+protocol,\s+and\s+absent/false\s+"
+                   r"when\s+it\s+supports\s+No\s+under\s+that\s+protocol\.")
+        system, count = re.subn(pattern, V1_BOOLEAN_SEMANTICS, system)
+        if count != 1:
+            raise P8Error("a34 boolean semantics anchor sentence not found exactly once")
     if mode in QUOTE_OPTIONAL_MODES:
         pattern = (r"Otherwise,\s+a\s+known\s+answer\s+requires\s+a\s+quote\s+of\s+1\s+to\s+400\s+"
                    r"characters\s+from\s+a\s+cited\s+current\s+evidence\s+chunk\.")
