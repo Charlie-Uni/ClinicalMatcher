@@ -387,3 +387,38 @@ show directly. The GPU full run (estimate 15 × 158 s ≈ 40 min) was
 started; the local full run continues in parallel (2/14 requests done at
 14:07 UTC, about 16 minutes each) and stays on record as the local
 attempt. Nothing was read from the instance beyond aggregates and hashes.
+
+## Addendum (2026-09-18): GPU a24 attempt #1 — budgets, not accuracy; runner 1.0.4
+
+The GPU full run (`e1-run-v2-a24-gpu.json`, contract `a9c1542c…`, runner
+1.0.3) finished in 13 minutes but is not an accuracy result: request
+outcomes were 7 accepted, **5 `context_over_budget` and 3
+`invalid_output`**, typed exact match 0.1362 with 225 unknowns. Recomputing
+the pre-send estimate for all 15 validation patients on the instance
+(aggregates only) shows the cause. The batched a24 prompt is 50–71k
+characters; at the frozen 2.0 chars/token floor that is 25–35k estimated
+tokens against a 28,672 limit (`num_ctx` − `num_predict`), so the five
+longest patients were never sent, although the pilot measured 3.85
+chars/token (13,046 tokens for 50,285 characters) and even at 3.5 the
+longest prompt is about 20k tokens. The three invalid responses come from
+patients with 54–57k-character prompts whose 23 quoted answers plausibly
+exceed the 4,096-token generation cap (the shortest patient already used
+3,001), so the JSON was cut off. Both limits were set for per-question
+requests and are operational budgets, not ablation factors. The accepted
+subset (161 rows, the seven shortest patients) is biased and is not
+compared with the incumbent. The concurrent local run under the same 1.0.3
+budgets is expected to reproduce these outcomes and stays on record.
+
+Runner 1.0.4 gives grouped modes a 3.0 chars/token pre-check floor (still
+conservative against the measured 3.85) and an 8,192-token generation cap
+with `num_ctx` unchanged; the post-check on the runtime's own
+`prompt_eval_count` still guards the context window (about 20k + 8,192 <
+32,768). The request path now reads `parameters` and `budget_policy` from
+the contract instead of module defaults, so the contract records what was
+actually used, and the run document now keeps the per-request logs
+(pseudonymous ids, counts, timings). Module tests cover the grouped values,
+the unchanged per-question contracts and the payload/pre-check reading the
+contract. The local snapshot could not be reinstalled while the local run
+is in flight, so the module tests ran against the source tree and CI runs
+the full suite. The instance is updated to the CI-verified commit before
+a24 is re-frozen there.

@@ -488,5 +488,31 @@ class P8E1AblationA24Tests(unittest.TestCase):
         a4 = build_e1_contract(self.manifest, self.example_set, self.decision, mode="v2-a4",
                                synthetic=True, runtime_identity={"engine_version": "test"})
         self.assertEqual(RUN_PARAMETERS["timeout_seconds"], a4["parameters"]["timeout_seconds"])
-        others = {k: v for k, v in contract["parameters"].items() if k != "timeout_seconds"}
-        self.assertEqual({k: v for k, v in RUN_PARAMETERS.items() if k != "timeout_seconds"}, others)
+        others = {k: v for k, v in contract["parameters"].items() if k not in ("timeout_seconds", "num_predict")}
+        self.assertEqual({k: v for k, v in RUN_PARAMETERS.items() if k not in ("timeout_seconds", "num_predict")}, others)
+
+    def test_grouped_modes_carry_generation_cap_and_precheck_floor_read_from_contract(self):
+        from clinical_matcher.p8_e1 import (BUDGET_POLICY, GROUPED_NUM_PREDICT,
+                                            GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN, RUN_PARAMETERS,
+                                            run_request)
+        contract = self._a24_contract()
+        self.assertEqual(GROUPED_NUM_PREDICT, contract["parameters"]["num_predict"])
+        self.assertEqual(GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN,
+                         contract["budget_policy"]["precheck_min_chars_per_token"])
+        self.assertEqual(RUN_PARAMETERS["num_ctx"], contract["parameters"]["num_ctx"])
+        self.assertEqual(RUN_PARAMETERS["num_predict"], self.contract["parameters"]["num_predict"])
+        self.assertEqual(BUDGET_POLICY["precheck_min_chars_per_token"],
+                         self.contract["budget_policy"]["precheck_min_chars_per_token"])
+        # The request reads the contract, not the module defaults: the payload
+        # carries the grouped generation cap and the pre-check uses the grouped floor.
+        client = FakeClient()
+        patient = {"patient_id": self.validation_ids[0], "evidence": [
+            {"evidence_id": "c1", "text": "Synthetic sentence."}]}
+        from clinical_matcher.p8_prompt import question_groups
+        result = run_request(client, contract, patient, question_groups("v2-a24")[0],
+                             self.example_set, sleeper=lambda s: None)
+        self.assertEqual("accepted", result["log"]["outcome"])
+        self.assertEqual(GROUPED_NUM_PREDICT, client.calls[-1]["options"]["num_predict"])
+        chars = sum(len(m["content"]) for m in client.calls[-1]["messages"])
+        self.assertEqual(int(chars / GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN) + 1,
+                         result["log"]["estimated_prompt_tokens"])

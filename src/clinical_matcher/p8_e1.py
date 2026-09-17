@@ -41,7 +41,7 @@ from .p8_safety import (
 )
 
 
-E1_RUN_VERSION = "1.0.3"
+E1_RUN_VERSION = "1.0.4"
 DECISION_SCOPE = "v2_prompt_and_example_protocol"
 # Grouping families. The pilot's timing decision only says whether the
 # per-question grouping is affordable ("v2") or the grouped fallback is needed
@@ -106,13 +106,32 @@ PERCENTILE_SOURCE = "per_request_wall_seconds_excluding_flagged_cold_start"
 # operational budget, not an experimental factor, and it is recorded in the
 # contract's parameters.
 GROUPED_TIMEOUT_SECONDS = 1800
+# The first GPU a24 run (runner 1.0.3) lost 5 of 15 patients to the pre-send
+# estimate (2.0 chars/token doubled the real 3.85 measured on the pilot and
+# pushed 58-71k-character prompts past num_ctx - num_predict) and 3 more to
+# invalid output consistent with the 4,096-token generation cap: 23 quoted
+# answers take about 3,000 tokens on the shortest patient. Grouped modes keep
+# num_ctx and get a still-conservative 3.0 chars/token floor plus an 8,192
+# generation cap; the post-check on the runtime's own prompt_eval_count is
+# unchanged (20k prompt tokens + 8,192 stays under 32,768). Budgets, not
+# factors; both are recorded in the contract and read back from it.
+GROUPED_NUM_PREDICT = 8192
+GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN = 3.0
 
 
 def run_parameters_for(mode: str) -> dict:
     parameters = dict(RUN_PARAMETERS)
     if mode in GROUPED_MODES:
         parameters["timeout_seconds"] = GROUPED_TIMEOUT_SECONDS
+        parameters["num_predict"] = GROUPED_NUM_PREDICT
     return parameters
+
+
+def budget_policy_for(mode: str) -> dict:
+    policy = dict(BUDGET_POLICY)
+    if mode in GROUPED_MODES:
+        policy["precheck_min_chars_per_token"] = GROUPED_PRECHECK_MIN_CHARS_PER_TOKEN
+    return policy
 
 
 class TransportFailure(RuntimeError):
@@ -186,7 +205,7 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
             "license": copy.deepcopy(parent["license"]),
         },
         "parameters": run_parameters_for(mode),
-        "budget_policy": dict(BUDGET_POLICY),
+        "budget_policy": budget_policy_for(mode),
         "retry_policy": dict(RETRY_POLICY),
         "patient_order": "pseudonym_lexicographic",
         "percentile_source": PERCENTILE_SOURCE,
@@ -200,9 +219,9 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
     return contract
 
 
-def _estimated_tokens(messages: Sequence[Mapping[str, str]]) -> int:
+def _estimated_tokens(messages: Sequence[Mapping[str, str]], contract: dict) -> int:
     characters = sum(len(item["content"]) for item in messages)
-    return int(characters / BUDGET_POLICY["precheck_min_chars_per_token"]) + 1
+    return int(characters / contract["budget_policy"]["precheck_min_chars_per_token"]) + 1
 
 
 def _abstained_rows(patient: dict, question_ids: list[str], mode: str, outcome: str) -> list[dict]:
@@ -214,17 +233,18 @@ def _abstained_rows(patient: dict, question_ids: list[str], mode: str, outcome: 
 
 
 def _chat_once(client, contract: dict, messages: list[dict], schema: dict) -> dict:
+    parameters = contract["parameters"]
     payload = {
         "model": contract["parent_model_contract"]["model"]["ollama_model_name"],
         "messages": messages,
-        "stream": RUN_PARAMETERS["stream"],
+        "stream": parameters["stream"],
         "format": schema,
-        "keep_alive": RUN_PARAMETERS["keep_alive"],
+        "keep_alive": parameters["keep_alive"],
         "options": {
-            "temperature": RUN_PARAMETERS["temperature"],
-            "seed": RUN_PARAMETERS["seed"],
-            "num_ctx": RUN_PARAMETERS["num_ctx"],
-            "num_predict": RUN_PARAMETERS["num_predict"],
+            "temperature": parameters["temperature"],
+            "seed": parameters["seed"],
+            "num_ctx": parameters["num_ctx"],
+            "num_predict": parameters["num_predict"],
         },
     }
     try:
@@ -244,8 +264,8 @@ def run_request(client, contract: dict, patient: dict, question_ids: list[str],
     messages = build_messages(patient, question_ids, example_set, mode=mode)
     schema = output_schema(question_ids, mode=mode,
                            evidence_ids=[item["evidence_id"] for item in patient["evidence"]])
-    estimate = _estimated_tokens(messages)
-    limit = RUN_PARAMETERS["num_ctx"] - RUN_PARAMETERS["num_predict"]
+    estimate = _estimated_tokens(messages, contract)
+    limit = contract["parameters"]["num_ctx"] - contract["parameters"]["num_predict"]
     log: dict[str, Any] = {
         "patient_id": patient["patient_id"], "question_ids": list(question_ids),
         "estimated_prompt_tokens": estimate, "retries": 0,
@@ -278,7 +298,7 @@ def run_request(client, contract: dict, patient: dict, question_ids: list[str],
                load_duration_ns=response.get("load_duration"),
                total_duration_ns=response.get("total_duration"))
     if (not isinstance(prompt_tokens, int)
-            or prompt_tokens + RUN_PARAMETERS["num_predict"] > RUN_PARAMETERS["num_ctx"]):
+            or prompt_tokens + contract["parameters"]["num_predict"] > contract["parameters"]["num_ctx"]):
         log["outcome"] = "context_over_budget"
         return {"rows": _abstained_rows(patient, question_ids, mode, "context_over_budget"),
                 "log": log}
@@ -386,6 +406,9 @@ def run_e1(client, contract: dict, manifest: dict, example_set: dict, pilot: dic
         "evaluation": evaluation,
         "request_outcomes": outcomes,
         "request_count": len(logs),
+        # Per-request logs (pseudonymous ids, counts and timings; no content)
+        # so a full run can be diagnosed without re-reading evidence.
+        "request_logs": logs,
         "latency_seconds_p50": _percentile(latency, 0.50),
         "latency_seconds_p95": _percentile(latency, 0.95),
         "percentile_source": PERCENTILE_SOURCE,
