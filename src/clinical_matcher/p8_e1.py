@@ -40,8 +40,30 @@ from .p8_safety import (
 )
 
 
-E1_RUN_VERSION = "1.0.1"
+E1_RUN_VERSION = "1.0.2"
 DECISION_SCOPE = "v2_prompt_and_example_protocol"
+# Grouping families. The pilot's timing decision only says whether the
+# per-question grouping is affordable ("v2") or the grouped fallback is needed
+# ("v2b"); the mode the full run must use also carries the ablation variant.
+PER_QUESTION_MODES = ("v2", "v2-a4")
+GROUPED_MODES = ("v2b",)
+
+
+def run_mode_for(contract_mode: str, timing_grouping: str) -> str:
+    """Mode the full run must use given the pilot's affordability decision.
+
+    A per-question contract keeps its own mode (including its ablation variant)
+    while affordable and falls back to the grouped mode otherwise; there is no
+    grouped ablation variant, so an over-budget variant pilot refuses the full
+    run. A grouped contract is already the fallback and keeps its mode.
+    """
+    if contract_mode in GROUPED_MODES:
+        return contract_mode
+    if contract_mode not in PER_QUESTION_MODES:
+        raise P8Error("Unknown E1 mode")
+    return contract_mode if timing_grouping == "v2" else GROUPED_MODES[0]
+
+
 RUN_PARAMETERS = {
     "temperature": 0,
     "seed": 17,
@@ -265,6 +287,8 @@ def run_pilot(client, contract: dict, manifest: dict, example_set: dict, *,
     if len(requests) != 23:
         raise P8Error("Pilot must cover all 23 question slots")
     decision = timing_mode(requests)
+    decision["timing_grouping"] = decision["mode"]
+    decision["mode"] = run_mode_for(contract["mode"], decision["timing_grouping"])
     return seal({
         "p8_e1_pilot_version": E1_RUN_VERSION,
         "contract_pin": make_pin(contract, "self", self_field="self_sha256"),

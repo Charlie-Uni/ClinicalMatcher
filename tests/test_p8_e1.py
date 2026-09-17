@@ -178,6 +178,20 @@ class P8E1Tests(unittest.TestCase):
         self.assertEqual(23, len(pilot["slot_logs"]))
         self.assertTrue(pilot["slot_logs"][0]["cold_start"])
         self.assertEqual("v2", pilot["timing_decision"]["mode"])
+        self.assertEqual("v2", pilot["timing_decision"]["timing_grouping"])
+
+    def test_grouped_contract_pilot_keeps_grouped_mode_and_runs(self):
+        client = FakeClient()
+        grouped = build_e1_contract(self.manifest, self.example_set, self.decision,
+                                    mode="v2b", synthetic=True,
+                                    runtime_identity={"engine_version": "test"})
+        pilot = run_pilot(client, grouped, self.manifest, self.example_set,
+                          synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("v2b", pilot["timing_decision"]["mode"])
+        self.assertEqual("v2", pilot["timing_decision"]["timing_grouping"])
+        run = run_e1(client, grouped, self.manifest, self.example_set, pilot,
+                     synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(len(self.validation_ids) * 23, len(run["rows"]))
 
     def test_run_reuses_pilot_and_reports_complete_grid(self):
         client = FakeClient()
@@ -335,3 +349,34 @@ class P8E1AblationA4Tests(unittest.TestCase):
         self.assertEqual("F4", contract["removed_factor"])
         self.assertEqual("apixaban-23-facts-perq-2.0.0-a4", contract["prompt_version"])
         self.assertIsNone(self.contract["ablation_variant"])
+
+    def test_a4_pilot_decides_a4_mode_and_full_run_proceeds(self):
+        # Regression: the real a4 pilot recorded mode "v2" (the affordability
+        # grouping) and the full run would have refused the "v2-a4" contract.
+        client = FakeClient()
+        contract = self._a4_contract()
+        pilot = run_pilot(client, contract, self.manifest, self.example_set,
+                          synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("v2-a4", pilot["timing_decision"]["mode"])
+        self.assertEqual("v2", pilot["timing_decision"]["timing_grouping"])
+        run = run_e1(client, contract, self.manifest, self.example_set, pilot,
+                     synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("v2-a4", run["mode"])
+        self.assertEqual(len(self.validation_ids) * 23, len(run["rows"]))
+
+    def test_a4_pilot_over_budget_falls_back_to_grouped_and_refuses_run(self):
+        import itertools
+        from unittest.mock import patch
+        client = FakeClient()
+        contract = self._a4_contract()
+        # Every monotonic() call advances 500 s, so each request measures 500 s
+        # and the 15-patient estimate far exceeds the 10,800 s budget.
+        with patch("clinical_matcher.p8_e1.time.monotonic",
+                   side_effect=itertools.count(0.0, 500.0)):
+            pilot = run_pilot(client, contract, self.manifest, self.example_set,
+                              synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("v2b", pilot["timing_decision"]["mode"])
+        self.assertEqual("v2b", pilot["timing_decision"]["timing_grouping"])
+        with self.assertRaises(P8Error):
+            run_e1(client, contract, self.manifest, self.example_set, pilot,
+                   synthetic=True, sleeper=lambda s: None)

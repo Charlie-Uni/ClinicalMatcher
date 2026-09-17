@@ -184,3 +184,42 @@ triggered as the single-factor test of F4. It is implemented as prompt mode
 prompt substitution, and a parser that nulls unverified quotes with a
 `quote_unverified` trace marker instead of invalidating the typed answer.
 No other factor is changed, and no variant runs by default.
+
+## Addendum (2026-09-17): a4 pilot passed, a mode-gate defect found before launch
+
+The a4 contract (`405fa85e…`, variant `2.0.0-a4`, engine 0.34.0) was frozen
+against the CI-verified commit `5b232e1` and its first-patient pilot ran
+after an explicit unload: **23/23 accepted** (attempt #3's pilot: 10/23),
+no `invalid_output`, prompt tokens 3,755–4,004 per request, wall p50
+24.5 s / max 44.0 s, estimated full validation 8,572 s (below the 10,800 s
+per-question budget). Pilot rows: 16 present, 2 absent, 5 unknown; every
+known answer carried at least one evidence citation. Aggregates only; no
+clinical content was displayed.
+
+Before starting the full run I inspected the pilot document and found a
+runner defect: `timing_mode` reports the affordability grouping ("v2"
+per-question affordable, "v2b" grouped fallback) and `run_e1` compared
+that literal against the contract mode, so every `v2-a4` contract would
+have been refused with "Contract mode differs from the pilot timing
+decision". The a4 tests covered grouping, schema, parsing and contract
+fields but not the pilot-to-run gate, which is the self-review miss. The
+same comparison would also have refused a `v2b` contract whose pilot came
+in under budget.
+
+Fix (runner 1.0.1 → 1.0.2): the pilot decision now records
+`timing_grouping` (the affordability verdict, unchanged semantics) and
+`mode` becomes the mode the full run must use: a per-question contract
+(`v2`, `v2-a4`) keeps its own mode while affordable and falls back to
+`v2b` otherwise; a grouped contract keeps `v2b`. There is no grouped
+ablation variant, so an over-budget variant pilot still refuses the full
+run. Regression tests: a4 pilot decides `v2-a4` and the full run proceeds;
+an over-budget a4 pilot (clock patched to 500 s per request) falls back
+and is refused; a `v2b` contract's pilot keeps `v2b` and runs. The E1/E3
+modules pass 23/23 after reinstalling the snapshot with nothing in flight.
+
+Consequence for the real chain: the sealed a4 pilot carries decision mode
+"v2" under runner 1.0.1 and stays on record as attempt a4-#1 (pilot only,
+never used for a run). The contract embeds the runner version, so a4 is
+re-frozen as `e1-contract-v2-a4-r2.json` under 1.0.2 and the pilot is
+re-run before the full validation run. Cost: one additional 23-request
+pilot (about ten minutes); no result is discarded or reinterpreted.

@@ -1344,7 +1344,13 @@ configuration and an explicit owner authorization.
   the incumbent `long_context.A1` (0.6290), so the sealed ablation matrix
   triggers variant `2.0.0-a4` (quote hard constraint removed, citations kept).
   The real example set is structurally empty because the official gold has no
-  evidence links; F2 is inert. P8.3 remains open until the a4 run is recorded.
+  evidence links; F2 is inert. The first a4 pilot accepted 23/23 requests
+  (estimate 8,572 s), but inspection before launch found that `run_e1`
+  compared the pilot's affordability grouping literal against the variant
+  mode and would have refused every `v2-a4` contract; runner 1.0.2 records
+  `timing_grouping` separately and derives the run mode, with regression
+  tests, and a4 is re-frozen and re-piloted under 1.0.2. P8.3 remains open
+  until the a4 run is recorded.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
