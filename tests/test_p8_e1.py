@@ -253,6 +253,17 @@ class P8E1Tests(unittest.TestCase):
         self.assertEqual(0.0, run["latency_seconds_p50"])
         self.assertEqual(0.0, run["latency_seconds_p95"])
 
+    def test_quote_matching_tolerates_whitespace_only_and_nothing_else(self):
+        from clinical_matcher.p8_prompt import quote_matches
+        chunk = "HISTORY:\nThe patient has a history of\natrial  fibrillation diagnosed in 2019.\nNo prior stroke."
+        self.assertTrue(quote_matches("atrial fibrillation diagnosed in 2019.", chunk))
+        self.assertTrue(quote_matches("history of atrial fibrillation", chunk))
+        self.assertFalse(quote_matches("Atrial fibrillation diagnosed in 2019.", chunk))  # case
+        self.assertFalse(quote_matches("atrial fibrillation, diagnosed in 2019.", chunk))  # punctuation
+        self.assertFalse(quote_matches("AF diagnosed in 2019.", chunk))  # paraphrase
+        self.assertEqual("whitespace-nfkc-normalized-verbatim/1.0.0",
+                         self.contract["quote_match_policy"])
+
     def test_full_run_refuses_pilot_without_any_accepted_response(self):
         client = FakeClient(invalid_content=True)
         pilot = run_pilot(client, self.contract, self.manifest, self.example_set,

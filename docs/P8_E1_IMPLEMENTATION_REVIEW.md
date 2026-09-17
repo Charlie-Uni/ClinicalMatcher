@@ -49,17 +49,22 @@ and the holdout batch.
 
 - Targeted: 9 new E1 tests; 37 P8-family tests pass together, and the three
   adjacent modules (prompt/export/P7) pass as a separate 48-test batch.
-- An intermittent single-test error was observed three times (the first
-  full 516-test run, a 77-test and a 79-test P8-family batch) and never on
-  an immediate identical rerun; every sighting lost the identity to
-  truncated reporting, and every affected batch contained `test_p8_e1`.
-  Probable cause found by code review rather than capture: `run_e1`
-  filtered latency samples by the truthiness of `wall_seconds`, so a
-  synthetic request measuring exactly 0.0 seconds was dropped and, when all
-  non-cold-start samples measured 0.0, `_percentile` raised on an empty
-  list. The filter now keys on outcome only, and a frozen-clock regression
-  test forces every request to 0.0 seconds. If the flake recurs after this
-  fix, the retained verbose logs will name it; hosted CI never reproduced it.
+- An intermittent single-test error was observed four times and never on an
+  isolated rerun. Retained verbose logging finally captured its identity:
+  `test_p8_e0...test_end_to_end_has_eight_candidates_and_selects_before_projection`
+  raising "Frozen E0 implementation, inputs or configuration changed". The
+  E0 freeze pins the exact bytes of every `.py`/`.json` file in the
+  installed package directory and re-derives them at validation time; on
+  several affected runs the operator (this agent) executed
+  `uv pip install --reinstall` while a background test run was in flight,
+  so the package bytes changed between the in-test freeze and its
+  validation. That check is working as designed. Operating rule from here:
+  no reinstall or package write of any kind while a test run is in
+  progress, and full-suite runs execute with nothing else touching the
+  environment. The earlier suspected latency-filter zero-duration bug was
+  real and is fixed with a frozen-clock regression test, but it was not
+  this flake's cause. Hosted CI, which never reinstalls mid-run, never
+  reproduced it.
 - Public-data guard passes; the final full-suite result and hosted CI are
   recorded against the actual implementation commit before any real E1 step.
 
@@ -117,6 +122,31 @@ the pilot's outcome distribution, which already showed 23/23
 `invalid_output`. The runner now refuses a full run whenever the pilot has
 zero accepted responses (tested), and the operating rule is that pilot
 outcomes are inspected before any full run.
+
+## Addendum (2026-09-17): attempt #2 pilot — quote matching and the F4 cost
+
+With the flat-variant schema the pilot's 23 real requests all produced
+complete seven-field objects (eval_count 86–172 vs 16–31 before), but
+22/23 were still rejected — every one by the supporting-quote check, per a
+content-free parser-error taxonomy. A synthetic multi-line note reproduced
+the mechanism: the model collapses runs of whitespace and line breaks when
+copying, so raw-substring identity fails on real note formatting. A
+content-free classification of the 22 failures: 9 differ only in
+whitespace/NFKC form, 1 only in case/punctuation, 1 quotes a chunk the
+model did not cite, and 11 are paraphrases or other non-verbatim copies.
+
+Disposition: the parser now compares quotes under whitespace-collapsed
+NFKC normalization (`quote_match_policy` =
+`whitespace-nfkc-normalized-verbatim/1.0.0`, recorded in the E1 contract);
+case, punctuation and wording must still match exactly, and the frozen
+`parse_policy` text is untouched because it never defined quote matching.
+The case/punctuation and paraphrase classes are deliberately not relaxed:
+they are the real cost of the owner-approved F4 hard constraint, which the
+sealed ablation matrix already anticipates as variant `2.0.0-a4`. The
+frozen v2 therefore runs as attempt #3 first; if it fails to beat the
+incumbent, `2.0.0-a4` is triggered per the matrix rather than relaxing the
+parser further. The pilot-acceptance gate held: the full run was not
+started on a 1/23 pilot.
 
 ## Pending before real E1
 

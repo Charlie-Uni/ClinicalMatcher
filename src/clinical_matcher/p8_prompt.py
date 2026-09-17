@@ -13,6 +13,7 @@ import hashlib
 import json
 import math
 import re
+import unicodedata
 from importlib.resources import files
 from pathlib import Path
 
@@ -150,6 +151,24 @@ def output_schema(question_ids: list[str], *, mode: str = "v2",
                 "maxItems": len(questions), "items": {"oneOf": variants}}}}
 
 
+QUOTE_MATCH_POLICY = "whitespace-nfkc-normalized-verbatim/1.0.0"
+
+
+def _normalize_quote_text(text: str) -> str:
+    return " ".join(unicodedata.normalize("NFKC", text).split())
+
+
+def quote_matches(quote: str, chunk_text: str) -> bool:
+    """Verbatim in content: every non-whitespace character in order.
+
+    Runs of whitespace and line breaks are formatting artifacts of the source
+    note that the model does not reproduce (attempt #2 pilot: 22/23 real
+    requests failed only this check, 9 of them differing solely in
+    whitespace). Case, punctuation and wording must still match exactly.
+    """
+    return _normalize_quote_text(quote) in _normalize_quote_text(chunk_text)
+
+
 def _check_answer(answer: dict, question: dict, evidence: dict[str, str]) -> None:
     if not isinstance(answer, dict) or set(answer) != ANSWER_FIELDS:
         raise P8Error("Unexpected response fields")
@@ -162,7 +181,7 @@ def _check_answer(answer: dict, question: dict, evidence: dict[str, str]) -> Non
     if quote is not None:
         if (not isinstance(quote, str) or not quote.strip()
                 or len(quote) > _resource()["quote_max_characters"]
-                or not any(quote in evidence[e] for e in citations)):
+                or not any(quote_matches(quote, evidence[e]) for e in citations)):
             raise P8Error("Quote is not a bounded verbatim cited-current-evidence span")
     if answer["fact_status"] != "unknown":
         default = known_fact_allows_empty_evidence(question, answer) and not citations and quote is None

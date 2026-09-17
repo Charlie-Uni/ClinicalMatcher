@@ -74,8 +74,12 @@ def build_parser() -> argparse.ArgumentParser:
     pilot.add_argument("--output", type=Path, required=True)
     run_e1_cmd.add_argument("--pilot", type=Path, required=True)
     run_e1_cmd.add_argument("--output", type=Path, required=True)
+    run_e3_cmd = sub.add_parser("run-e3", help="Apply the E0-selected arbitration to a sealed E1 run")
+    run_e3_cmd.add_argument("--access-manifest", type=Path, required=True)
+    run_e3_cmd.add_argument("--e1-run", type=Path, required=True)
+    run_e3_cmd.add_argument("--output", type=Path, required=True)
     for command in (build, check, prepare, run, prep_export, do_export,
-                    approve, plan, examples, prep_e1, pilot, run_e1_cmd):
+                    approve, plan, examples, prep_e1, pilot, run_e1_cmd, run_e3_cmd):
         command.add_argument("--acknowledge-restricted-data-local-only", action="store_true", required=True)
     return parser
 
@@ -146,6 +150,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                        "request_outcomes": run_doc["request_outcomes"],
                        "latency_p50_s": round(run_doc["latency_seconds_p50"], 3),
                        "latency_p95_s": round(run_doc["latency_seconds_p95"], 3)})
+        elif args.command == "run-e3":
+            from .p8_e3 import aggregates, build_e3_combination
+            manifest = read_metadata(args.access_manifest)
+            require_development_ready(manifest)
+            document = build_e3_combination(manifest, read_metadata(args.e1_run))
+            write_private(document, args.output)
+            print("E3 complete. Aggregates:", aggregates(document))
         elif args.command == "prepare-access":
             registry = read_metadata(args.artifact_registry_metadata)
             if set(registry) != {"artifacts"}:

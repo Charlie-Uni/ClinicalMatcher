@@ -18,6 +18,7 @@ from .apixaban_structured_llm import (
 from .p8_e0 import evaluate_rows
 from .p8_prompt import (
     OUTPUT_SCHEMA_VERSION,
+    QUOTE_MATCH_POLICY,
     build_messages,
     output_schema,
     project_response,
@@ -121,6 +122,7 @@ def build_e1_contract(manifest: dict, example_set: dict, decision: dict, *,
         "prompt_version": ("apixaban-23-facts-perq-2.0.0" if mode == "v2"
                            else "apixaban-23-facts-grouped-2.0.0"),
         "output_schema_version": OUTPUT_SCHEMA_VERSION,
+        "quote_match_policy": QUOTE_MATCH_POLICY,
         "proposal_pin": make_pin(proposal, "self", self_field="self_sha256"),
         "decision_pin": make_pin(decision, "self", self_field="self_sha256"),
         "example_set_pin": make_pin(example_set, "self", self_field="self_sha256"),
