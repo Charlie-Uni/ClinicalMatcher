@@ -422,3 +422,40 @@ contract. The local snapshot could not be reinstalled while the local run
 is in flight, so the module tests ran against the source tree and CI runs
 the full suite. The instance is updated to the CI-verified commit before
 a24 is re-frozen there.
+
+## Addendum (2026-09-18): a24 result — the request shape is not the cause
+
+Under runner 1.0.4 on the GPU instance (contract `f84ea42d…`, engine
+0.34.1, grouped budgets: 3.0 chars/token pre-check, 8,192 generation cap,
+1,800 s timeout) the batched a24 run accepted **15/15 requests** in
+24 minutes (prompt 13,046–18,710 tokens, generated 1,594–6,200 tokens, none
+at the cap; p50 86 s, p95 191 s). Result (validation development
+diagnostic, raw view): **typed exact match 0.2435 (84/345)**, unknown 101,
+115 quotes nulled as unverifiable. E3 (`prompt_v2.A1`) fills 36 rows from
+cited rule answers and reaches 0.2899 raw and safety alike. All GPU
+artifacts (`-gpu`, `-gpu-r2`) were copied back to the owner-only records
+directory and their seals verified.
+
+Against the same 345 rows (gold→prediction counts):
+
+| view | overall | boolean (225) | numeric (120) | gold-absent boolean → absent (168) | gold-unknown numeric → unknown (41) |
+|---|---|---|---|---|---|
+| v1 long-context raw | 0.612 | 0.707 | 0.433 | 118 | 25 |
+| v2-a4 per-question | 0.252 | 0.253 | 0.250 | 11 | 0 |
+| v2-a24 batched | 0.243 | 0.262 | 0.208 | 18 | 18 |
+
+Batching the 23 questions back into one request (removing F1) does not
+recover the incumbent: gold-absent boolean rows are still answered
+present 116 times out of 168, and numeric rows now flip toward unknown
+(36 of 79 gold-present numerics abstain). The per-question split therefore
+is not what collapsed accuracy; the v2 text and schema semantics are. Of
+the sealed factors only F3 (protocol-No absent semantics) remains
+untested; F2 is inert on real data and F4 controls acceptance only. The
+matrix's `a34` (explicit-negation semantics on top of a4) is the last
+declared single-factor test. If a34 does not move absent recall
+substantially toward v1's 118/168, the whole v2 family is falsified on
+validation and the incumbent `long_context.A1` (0.6290) is retained,
+which the spec declared a valid outcome. E2 remains an owner decision.
+
+Cross-hardware note: the concurrent local run under 1.0.3 budgets stays on
+record for the 7-patient row-level comparison once it finishes.

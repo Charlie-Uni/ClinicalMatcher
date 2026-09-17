@@ -1371,7 +1371,10 @@ configuration and an explicit owner authorization.
   runner 1.0.3 lost 5 patients to the 2.0 chars/token pre-check and 3 to
   the 4,096-token generation cap, so runner 1.0.4 gives grouped modes a
   3.0 floor and an 8,192 cap, both recorded in and read from the contract;
-  a24 is re-frozen on the instance under 1.0.4. P8.3 remains open.
+  a24 re-frozen on the instance under 1.0.4 accepted 15/15 requests and
+  reached typed exact match 0.2435 (E3 0.2899): batching does not recover
+  the incumbent, so the v2 text/schema semantics, not the request split,
+  are the cause. Only F3 remains untested (`a34`). P8.3 remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
