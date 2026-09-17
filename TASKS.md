@@ -1325,7 +1325,7 @@ configuration and an explicit owner authorization.
   completed in one real validation attempt. All candidates, raw selection,
   winner safety view and event/hash chain remain owner-only. E0 results passed
   owner review on 2026-09-15; the decision is linked in the restricted ledger.
-- [ ] **P8.3 Implement and evaluate per-question prompt v2.** Freeze train-fit
+- [x] **P8.3 Implement and evaluate per-question prompt v2.** Freeze train-fit
   examples, supporting-quote validation, context budget, timing pilot, v2b,
   latency and retry rules before real inference. Review-stage request building,
   strict parsing, mechanical quote projection and source-bound example selection
@@ -1374,9 +1374,13 @@ configuration and an explicit owner authorization.
   a24 re-frozen on the instance under 1.0.4 accepted 15/15 requests and
   reached typed exact match 0.2435 (E3 0.2899): batching does not recover
   the incumbent, so the v2 text/schema semantics, not the request split,
-  are the cause. Only F3 remains untested: `a34` (v1 explicit-negation
-  sentence swapped in on top of a4, runner 1.0.5) is implemented with
-  tests and runs next on a GPU instance. P8.3 remains open.
+  are the cause. `a34` (v1 explicit-negation sentence on top of a4,
+  runner 1.0.5, GPU) accepted 345/345 and reached 0.2261 (E3 0.2725),
+  absent recall 9/168. All four declared factors are tested: the v2
+  family does not beat the incumbent on validation and is not retained;
+  `long_context.A1` (0.6290) stays the validation-selected candidate.
+  P8.3 closes on that outcome (2026-09-18); see the
+  [self-review](docs/P8_E1_IMPLEMENTATION_REVIEW.md) verdict addendum.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

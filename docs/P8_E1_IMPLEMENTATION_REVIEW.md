@@ -515,3 +515,47 @@ GPU before any cross-runtime claim of improvement. For the a24 verdict
 this changes nothing: 0.2435 (GPU) and 0.2522 (a4, local) are both far
 below 0.6290 and the absent-recall collapse appears on both runtimes.
 For E2 on a GPU instance the v1 control run becomes a prerequisite.
+
+## Addendum (2026-09-18): a34 result and the P8.3 verdict — the v2 family is falsified on validation
+
+a34 (contract `ec3e977a…`, runner 1.0.5, GPU instance, engine 0.34.1)
+accepted all 345 per-question requests in 30 minutes (p50 4.3 s, prompt
+3,754–9,796 tokens, generated 75–303 tokens). Result (validation
+development diagnostic, raw view): **typed exact match 0.2261 (78/345)**,
+unknown 67, 200 quotes nulled as unverifiable; E3 (`prompt_v2.A1`) fills
+19 rows and reaches 0.2725. Restoring v1's explicit-negation sentence does
+not restore absent recall: gold-absent boolean rows are answered present
+107 times, unknown 52 and absent 9 out of 168, and all 41 gold-unknown
+numeric rows but two are answered present.
+
+All four declared factors have now been tested on real validation data:
+
+| variant | removes | runtime | typed EM | gold-absent boolean → absent (168) |
+|---|---|---|---|---|
+| frozen v2 (attempt #3) | — | local | 0.1855 | (60% of requests invalid) |
+| a4 | F4 quote constraint | local | 0.2522 | 11 |
+| a24 | F1 split + F4 | GPU | 0.2435 | 18 |
+| a34 | F3 semantics + F4 | GPU | 0.2261 | 9 |
+| v1 long-context raw (reference) | — | local | 0.6116 | 118 |
+| incumbent `long_context.A1` | — | local | 0.6290 | — |
+
+F2 is inert (no examples exist on real data), F4 controls acceptance only,
+and neither the request split (F1) nor the boolean semantics sentence
+(F3) explains the collapse. Whatever in the rewritten v2 instruction,
+schema and grammar makes this model answer "present" for most gold-absent
+rows is not isolated by the sealed matrix, and the matrix declares no
+further variants. Verdict for P8.3: **the v2 per-question prompt family
+does not beat the incumbent on validation and is not retained**; the
+E0-selected `long_context.A1` (0.6290, local runtime) remains the
+validation-selected candidate. The spec declared "no improvement" a valid
+outcome, and the P8.3 line closes on that outcome. GPU-runtime variants
+are compared with the local incumbent only qualitatively (see the
+cross-hardware addendum); the gap is far too large for the runtime to be
+the explanation.
+
+What remains in P8 is outside this line: E2 (a stronger model, owner
+decision, with a same-runtime v1 baseline as prerequisite on a GPU
+instance), the optional restoration of F2 through rule-cited examples
+(owner decision), and P8.5, the single secondary-holdout exposure of the
+validation-selected candidate, which requires explicit owner
+authorization and is recommended on the local runtime that produced it.
