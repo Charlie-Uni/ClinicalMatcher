@@ -1362,8 +1362,11 @@ configuration and an explicit owner authorization.
   about 6–8 minutes on synthetic input; the first real a24 pilot request
   exceeded the 600 s per-question transport timeout twice, so runner 1.0.3
   gives grouped modes a 1,800 s timeout recorded in the contract, and a24
-  is re-frozen and re-piloted (full run roughly 2.5–3.5 hours). P8.3
-  remains open.
+  is re-frozen and re-piloted; pilot #2 was accepted (823 s) and the local
+  full run is in progress. The owner authorized execution on a rented GPU
+  instance under [amendment 1.2.0](docs/P8_CLOUD_EXECUTION_AMENDMENT_1.2.0.md)
+  (minimum transfer set, same paths and permissions, re-pinned runtime,
+  cross-hardware pilot control, destroy on completion). P8.3 remains open.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

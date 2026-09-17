@@ -351,3 +351,20 @@ contracts and the client receiving the contract's timeout. The failed
 pilot stays on record as attempt a24-#1 (pilot only); a24 is re-frozen
 under 1.0.3 and re-piloted. The cost model for the full run is unchanged:
 15 requests at roughly 10–15 minutes each.
+
+## Addendum (2026-09-17): a24 pilot #2 accepted under runner 1.0.3
+
+The re-frozen a24 contract (`cd48e4bb…`, runner 1.0.3, grouped timeout
+1,800 s) passed its pilot: the single 23-question request for the first
+validation patient was **accepted** on the first attempt after 823 s
+(13,046 prompt tokens, 3,001 generated tokens), with 15 known answers and
+8 unknowns, every known answer cited, and every supporting quote verified
+verbatim after whitespace normalization. Under per-question a4 the same
+patient produced 18 known answers with several unverifiable quotes; the
+batched request appears to quote more faithfully, which is an observation
+on one patient, not a result. The affordability estimate is 12,351 s
+(15 × 823 s), above the 10,800 s per-question budget, so the decision
+records `timing_grouping: v2b`; a grouped contract keeps its own mode, and
+the full run was started as the pre-declared next step. Its progress is
+read from the Ollama request log; the pilot patient was the fastest in
+the a4 run, so 4–5 hours is the realistic range on the local machine.
