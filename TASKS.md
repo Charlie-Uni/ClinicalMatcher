@@ -1387,8 +1387,13 @@ configuration and an explicit owner authorization.
   prompt over four inputs on one GPU runtime (A full/batched baseline,
   B-m patient-level top-m by RRF score, C per-question top-3, D
   per-question full) with predeclared retention rules; implemented as
-  `p8_reader` with synthetic tests. Second-stage changes (dense truncation
-  fix, keyword-augmented queries) only if a retrieval arm is not worse than A.
+  `p8_reader` with synthetic tests. Ran on the RTX 5090 D instance
+  (2026-09-18): A 0.606, B3 0.638 (retained by the predeclared rule;
+  absent recall 123/168 vs 114; gain within bootstrap noise), B5 0.620
+  (absent recall 110, not retained), C 0.377 and D 0.371 (per-question
+  prompting itself collapses this model; retrieval is not the factor).
+  Second-stage changes (dense truncation fix, keyword-augmented queries)
+  are unlocked but queued behind E2.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
