@@ -61,6 +61,19 @@ GPU 实例上执行推理侧实验，条件如下：
 - 实例上的契约文件以 `-gpu` 后缀命名（`e1-contract-v2-a24-gpu.json` 等），
   结果拷回本机后与本机产物并列保存。
 
+## 第二台实例登记（2026-09-18）
+
+- 第一台实例（vGPU-32GB）数据目录已删除后由 owner 释放。
+- 第二台：AutoDL 容器 `autodl-container-txexpr46b5-52d3c69c`，SSH
+  `connect.weste.seetacloud.com:13746`（root，公钥登录，本机别名 `autodl`）。
+- GPU：NVIDIA GeForce RTX 5090 D，32,607 MiB，驱动 595.71.05；Ollama 日志
+  `library=CUDA compute=12.0`；208 逻辑核（共享）；数据盘 50 GB。
+- 运行时：Ollama 0.34.2（第一台 0.34.1，本机 0.34.0，父契约 0.32.6），模型
+  digest `46e0c10c039e0191…` 与父契约一致；仓库 `44915de`，runner 1.0.5，
+  CPython 3.11.16（因代理截断 GitHub 下载，改由本机下载构建包后 scp 到实例，
+  以 `UV_PYTHON_INSTALL_MIRROR=file://` 本地镜像安装；解释器版本不变）。
+- 最小传输集与目录/权限规则同第一台；`HOME=/Users/leaf` 对齐规则同前。
+
 ## 跨硬件对照结果（2026-09-18）
 
 单患者试验在两台机器上逐字一致，但同一契约语义下的整轮 a24（runner
