@@ -1399,7 +1399,11 @@ configuration and an explicit owner authorization.
   `qwen3:30b-a3b`, then `qwen3:32b`, everything else frozen (v1 prompt,
   schema, decoding, inputs A then B3); reader 1.1.0 pins the effective
   model digest, records the license and sends `think: false` for Qwen3
-  (see the proposal's section 8). Original task text follows.
+  (see the proposal's section 8). Result: qwen3:14b 0.125/0.122 and
+  qwen3:30b-a3b 0.267/0.214 (arms A/B3) against the 8B's 0.606/0.638 on the
+  same runtime; both Qwen3 models answer unknown for most rows under the
+  frozen prompt. Recorded as a negative result; qwen3:32b not pulled.
+  Original task text follows.
 - [ ] **P8.4 (original) Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.

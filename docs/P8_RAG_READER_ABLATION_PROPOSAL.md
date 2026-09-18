@@ -132,3 +132,21 @@ registry 探测的 manifest digest、家族、参数量、许可证、`think`）
 
 判定：每个模型的 A 与 B3 与 8B 的同运行时 A（0.606）/B3（0.638）比较；
 仍是 validation development diagnostic；选择只在 validation 上做；holdout 不动。
+
+### E2 结果（2026-09-18，5090，冻结 v1 提示，think 关，validation development diagnostics）
+
+| 模型 | digest | 臂 A | 臂 B3 | unknown（A / B3） |
+|---|---|---|---|---|
+| Llama-3.1-8B Q4（现任家族） | `46e0c10c…` | 0.606 | 0.638 | 70 / 17 |
+| qwen3:14b | `bdbd181c…` | 0.125 | 0.122 | 338 / 339 |
+| qwen3:30b-a3b | `ad815644…` | 0.267 | 0.214 | 277 / 300 |
+
+全部请求接受（14b 臂 A 有 1 个无效）。不是解码故障：合成小样本上 qwen3:14b
+能正确答 present 并引用；真实病历（23 题、约 12k 字符）上两个 Qwen3 模型都极度
+保守。首位患者的诊断（只看聚合数）：qwen3:14b think 关 19/23 unknown（8/23 对），
+think 开则 23 题全答 present（4/23 对），Llama-8B 同一患者 12/23 对。
+
+判定：在"除模型外全冻结"的 E2 规则下，Qwen3-14B 与 30B-A3B 均远低于现任家族
+的 8B；`qwen3:32b` 未拉取（预期同类行为，且数据盘余量不足）。E2 的模型线到此
+记为负结果；是否允许模型专属提示适配、或改测 `llama3.1:8b-instruct-fp16`
+（量化损失），由 owner 决定。12 个 E2 产物已拷回本机并验封。
