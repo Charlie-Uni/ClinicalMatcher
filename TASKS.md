@@ -1381,6 +1381,14 @@ configuration and an explicit owner authorization.
   `long_context.A1` (0.6290) stays the validation-selected candidate.
   P8.3 closes on that outcome (2026-09-18); see the
   [self-review](docs/P8_E1_IMPLEMENTATION_REVIEW.md) verdict addendum.
+- [ ] **P8.3b Reader-input ablation (RAG × 8B).** The P3 retrieval arms were
+  only ever read by the deterministic extractor; the owner-confirmed
+  [proposal](docs/P8_RAG_READER_ABLATION_PROPOSAL.md) runs the frozen v1
+  prompt over four inputs on one GPU runtime (A full/batched baseline,
+  B-m patient-level top-m by RRF score, C per-question top-3, D
+  per-question full) with predeclared retention rules; implemented as
+  `p8_reader` with synthetic tests. Second-stage changes (dense truncation
+  fix, keyword-augmented queries) only if a retrieval arm is not worse than A.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
