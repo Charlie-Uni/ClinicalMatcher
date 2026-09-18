@@ -111,3 +111,24 @@ runner `p8_reader` 1.0.0，提交 `9f932c9`（CI 绿）。产物 15 个（5 契�
 - validation 选定候选仍是现任 `long_context.A1`（本机运行时）；B3 是
   GPU 运行时下的替代输入策略候选，holdout 曝光前须由 owner 决定运行时与
   候选的组合，且只能曝光一次。
+
+## 8. E2：换模型（owner 决定 2026-09-18，原话「可以」）
+
+规则：除模型外一切冻结——v1 系统提示、用户消息布局、输出 schema、解码参数
+（temperature 0、seed 17、num_ctx 32768、num_predict 4096）、输入策略（先 A，
+再保留的 B3）、同一台 5090 运行时、同一份 validation。每个模型：
+
+| 顺序 | Ollama 标签 | 参数量 | 许可证 | 说明 |
+|---|---|---|---|---|
+| 1 | `qwen3:14b` | 14B | Apache-2.0 | 首选，显存余量大 |
+| 2 | `qwen3:30b-a3b` | 30B（MoE，3B 激活） | Apache-2.0 | 速度快 |
+| 3 | `qwen3:32b` | 32B | Apache-2.0 | 14B 有增益再跑；32k 上下文接近显存上限 |
+
+实现（reader 1.1.0）：契约字段 `effective_model`（模型名、冻结时从本地
+registry 探测的 manifest digest、家族、参数量、许可证、`think`）与
+`model_deviation_from_parent`；请求对 Qwen3 携带 `think: false`（关闭思考模式，
+语法约束 JSON 所需）；运行前校验引擎版本与 effective model 的 digest；
+运行文档记录 effective model。未在 `E2_MODELS` 中声明的模型拒绝冻结。
+
+判定：每个模型的 A 与 B3 与 8B 的同运行时 A（0.606）/B3（0.638）比较；
+仍是 validation development diagnostic；选择只在 validation 上做；holdout 不动。

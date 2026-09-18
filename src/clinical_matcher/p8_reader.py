@@ -44,9 +44,7 @@ from .p8_e1 import (
     RETRY_POLICY,
     RUN_PARAMETERS,
     TransportFailure,
-    _chat_once,
     _percentile,
-    unload_model,
 )
 from .p8_safety import (
     P8Error,
@@ -59,8 +57,25 @@ from .p8_safety import (
 )
 
 
-READER_VERSION = "1.0.0"
+READER_VERSION = "1.1.0"
 VALIDATION_PATIENTS = 15
+# E2 candidate models (owner decision 2026-09-18). Everything else stays frozen:
+# the v1 prompt, schema, decoding and input policy. Qwen3 models default to a
+# "thinking" mode that must be off for grammar-constrained JSON, so the request
+# carries `think: false` for them and the contract records it. The manifest
+# digest is probed from the local registry at freeze time and verified before
+# every request batch, as the parent model's digest is.
+E2_MODELS: dict[str, dict[str, Any]] = {
+    "qwen3:14b": {"family": "Qwen3", "provider": "Alibaba Qwen", "parameter_count": "14B",
+                  "think": False,
+                  "license": {"name": "Apache-2.0", "open_weight": True, "osi_open_source": True}},
+    "qwen3:30b-a3b": {"family": "Qwen3", "provider": "Alibaba Qwen",
+                      "parameter_count": "30B-A3B (mixture of experts, 3B active)", "think": False,
+                      "license": {"name": "Apache-2.0", "open_weight": True, "osi_open_source": True}},
+    "qwen3:32b": {"family": "Qwen3", "provider": "Alibaba Qwen", "parameter_count": "32B",
+                  "think": False,
+                  "license": {"name": "Apache-2.0", "open_weight": True, "osi_open_source": True}},
+}
 ARMS: dict[str, dict[str, Any]] = {
     "A": {"input_policy": "all-complete-evidence-batched", "batched": True, "top": None,
           "retrieval_required": False,
@@ -166,14 +181,38 @@ def probe_runtime_identity(client) -> dict:
             "accelerator": _accelerator()}
 
 
+def effective_model_for(parent: Mapping[str, Any], model: str | None,
+                        model_digest: str | None) -> dict:
+    """The model a reader contract actually sends requests to."""
+    if model is None:
+        if model_digest is not None:
+            raise P8Error("A model digest requires an E2 model override")
+        return {"source": "parent", "ollama_model_name": parent["model"]["ollama_model_name"],
+                "ollama_manifest_sha256": parent["model"]["ollama_manifest_sha256"],
+                "family": parent["model"]["family"], "provider": parent["model"]["provider"],
+                "parameter_count": parent["model"]["parameter_count"], "think": None,
+                "license": copy.deepcopy(parent["license"])}
+    if model not in E2_MODELS:
+        raise P8Error("Undeclared E2 model")
+    if not isinstance(model_digest, str) or len(model_digest) < 16:
+        raise P8Error("An E2 model override requires the probed manifest digest")
+    spec = E2_MODELS[model]
+    return {"source": "e2_override", "ollama_model_name": model,
+            "ollama_manifest_sha256": model_digest, "family": spec["family"],
+            "provider": spec["provider"], "parameter_count": spec["parameter_count"],
+            "think": spec["think"], "license": copy.deepcopy(spec["license"])}
+
+
 def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, Any] | None = None,
                           runtime_identity: Mapping[str, Any] | None = None,
+                          model: str | None = None, model_digest: str | None = None,
                           synthetic: bool = False) -> dict:
     require_development_ready(manifest, synthetic=synthetic)
     if arm not in ARMS:
         raise P8Error("Undeclared reader arm")
     spec = ARMS[arm]
     parent = load_long_context_contract()
+    effective_model = effective_model_for(parent, model, model_digest)
     retrieval_pin = None
     if spec["retrieval_required"]:
         if retrieval is None:
@@ -202,6 +241,8 @@ def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, A
         "output_schema_source": "clinical_matcher.apixaban_structured_llm.structured_output_schema",
         "access_pin": make_pin(manifest, "self", self_field="self_sha256"),
         "catalog_pin": copy.deepcopy(manifest["catalog_pin"]),
+        "effective_model": effective_model,
+        "model_deviation_from_parent": effective_model["source"] != "parent",
         "retrieval_pin": retrieval_pin,
         "retrieval_run_sha256": retrieval.get("run_sha256") if retrieval else None,
         "parent_model_contract": {
@@ -224,6 +265,73 @@ def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, A
             and identity.get("engine_version") != parent["runtime"]["engine_version"]),
         "synthetic": synthetic,
     })
+
+
+def chat_once(client, contract: dict, messages: list[dict], schema: dict) -> dict:
+    """One request to the contract's effective model; E1's transport taxonomy."""
+    parameters = contract["parameters"]
+    model = contract["effective_model"]
+    payload: dict[str, Any] = {
+        "model": model["ollama_model_name"],
+        "messages": messages,
+        "stream": parameters["stream"],
+        "format": schema,
+        "keep_alive": parameters["keep_alive"],
+        "options": {
+            "temperature": parameters["temperature"],
+            "seed": parameters["seed"],
+            "num_ctx": parameters["num_ctx"],
+            "num_predict": parameters["num_predict"],
+        },
+    }
+    if model.get("think") is False:
+        payload["think"] = False
+    try:
+        response = client.chat(payload)
+    except Exception as error:  # noqa: BLE001 - transport taxonomy is frozen in E1.
+        raise TransportFailure(str(error.__class__.__name__)) from error
+    message = response.get("message")
+    if not isinstance(message, dict) or not isinstance(message.get("content"), str):
+        raise TransportFailure("missing_model_content")
+    return response
+
+
+def unload_model(client, contract: dict) -> None:
+    """Explicit cold-start boundary before the timing pilot (effective model)."""
+    client.chat({"model": contract["effective_model"]["ollama_model_name"],
+                 "messages": [], "keep_alive": 0})
+
+
+def open_reader_runtime(contract: dict):
+    """Verify engine version against the contract probe and the effective model digest."""
+    from .apixaban_structured_llm import OllamaLoopbackClient
+    parent = contract["parent_model_contract"]
+    client = OllamaLoopbackClient(parent["runtime"]["endpoint"],
+                                  timeout_seconds=contract["parameters"]["timeout_seconds"])
+    expected = contract["runtime_identity"].get("engine_version")
+    if not expected or client.version() != expected:
+        raise P8Error("Live engine version differs from the contract's probed identity")
+    verify_model_digest(client, contract["effective_model"])
+    return client
+
+
+def verify_model_digest(client, model: Mapping[str, Any]) -> None:
+    models = client.tags().get("models")
+    if not isinstance(models, list):
+        raise P8Error("Ollama model list is malformed")
+    matching = [item for item in models if item.get("name") == model["ollama_model_name"]]
+    if len(matching) != 1 or matching[0].get("digest") != model["ollama_manifest_sha256"]:
+        raise P8Error("Pinned model manifest is missing or has changed")
+
+
+def probe_model_digest(client, model: str) -> str:
+    models = client.tags().get("models")
+    if not isinstance(models, list):
+        raise P8Error("Ollama model list is malformed")
+    matching = [item for item in models if item.get("name") == model]
+    if len(matching) != 1 or not isinstance(matching[0].get("digest"), str):
+        raise P8Error("Model is not present in the local registry exactly once")
+    return matching[0]["digest"]
 
 
 def _abstained_rows(arm: str, patient: Mapping[str, Any], ids: Sequence[str], outcome: str) -> list[dict]:
@@ -274,7 +382,7 @@ def run_request(client, contract: dict, patient: Mapping[str, Any], ids: Sequenc
         attempts += 1
         started = time.monotonic()
         try:
-            response = _chat_once(client, contract, messages, schema)
+            response = chat_once(client, contract, messages, schema)
         except TransportFailure as failure:
             if attempts <= RETRY_POLICY["maximum_retries"]:
                 log["retries"] += 1
@@ -400,6 +508,7 @@ def run_reader(client, contract: dict, manifest: dict, pilot: dict,
         "pilot_pin": make_pin(pilot, "self", self_field="self_sha256"),
         "arm": contract["arm"],
         "input_policy": contract["input_policy"],
+        "effective_model": copy.deepcopy(contract["effective_model"]),
         "runtime_identity": copy.deepcopy(contract["runtime_identity"]),
         "rows": rows,
         "evaluation": evaluation,
@@ -414,7 +523,8 @@ def run_reader(client, contract: dict, manifest: dict, pilot: dict,
 
 
 def aggregates(run: dict) -> dict:
-    return {"arm": run["arm"], "typed_exact_match": run["evaluation"]["metrics"].get("typed_exact_match"),
+    return {"arm": run["arm"], "model": run["effective_model"]["ollama_model_name"],
+            "typed_exact_match": run["evaluation"]["metrics"].get("typed_exact_match"),
             "unknown_count": run["evaluation"]["unknown_count"],
             "request_outcomes": run["request_outcomes"],
             "evidence_chunks_input_mean": round(run["evidence_chunks_input_mean"], 2),

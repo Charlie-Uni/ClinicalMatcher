@@ -209,5 +209,78 @@ class P8ReaderTests(unittest.TestCase):
             run_reader(client, contract, self.manifest, pilot, None, synthetic=True, sleeper=lambda s: None)
 
 
+class P8ReaderE2Tests(unittest.TestCase):
+    """E2: the reader contract can swap the model and nothing else."""
+
+    setUp = P8ReaderTests.setUp
+
+    def test_default_contract_uses_the_parent_model_without_think(self):
+        contract = build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                         runtime_identity={"engine_version": "test"})
+        self.assertEqual("parent", contract["effective_model"]["source"])
+        self.assertEqual("llama3.1:latest", contract["effective_model"]["ollama_model_name"])
+        self.assertFalse(contract["model_deviation_from_parent"])
+        client = FakeReaderClient()
+        run_request(client, contract, self.first, QIDS, None, sleeper=lambda s: None)
+        self.assertEqual("llama3.1:latest", client.calls[-1]["model"])
+        self.assertNotIn("think", client.calls[-1])
+
+    def test_e2_override_pins_digest_records_license_and_disables_thinking(self):
+        contract = build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                         runtime_identity={"engine_version": "test"},
+                                         model="qwen3:14b", model_digest="a" * 64)
+        model = contract["effective_model"]
+        self.assertEqual(("e2_override", "qwen3:14b", "a" * 64, False, "Apache-2.0"),
+                         (model["source"], model["ollama_model_name"], model["ollama_manifest_sha256"],
+                          model["think"], model["license"]["name"]))
+        self.assertTrue(contract["model_deviation_from_parent"])
+        # Prompt, schema and decoding are the frozen v1 ones.
+        self.assertEqual("apixaban-23-facts-structured-1.0.0", contract["prompt_version"])
+        self.assertEqual(4096, contract["parameters"]["num_predict"])
+        client = FakeReaderClient()
+        result = run_request(client, contract, self.first, QIDS, None, sleeper=lambda s: None)
+        self.assertEqual("accepted", result["log"]["outcome"])
+        self.assertEqual("qwen3:14b", client.calls[-1]["model"])
+        self.assertIs(False, client.calls[-1]["think"])
+        self.assertIn("absent requires explicit negation", client.calls[-1]["messages"][0]["content"])
+        run = run_reader(client, contract, self.manifest,
+                         run_pilot(client, contract, self.manifest, None, synthetic=True,
+                                   sleeper=lambda s: None), None, synthetic=True, sleeper=lambda s: None)
+        self.assertEqual("qwen3:14b", run["effective_model"]["ollama_model_name"])
+        with self.assertRaises(P8Error):
+            build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                  runtime_identity={"engine_version": "test"}, model="qwen3:14b")
+        with self.assertRaises(P8Error):
+            build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                  runtime_identity={"engine_version": "test"},
+                                  model="mystery:latest", model_digest="a" * 64)
+
+    def test_runtime_verifies_the_effective_model_digest(self):
+        from unittest.mock import patch
+        from clinical_matcher.p8_reader import open_reader_runtime
+        contract = build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                         runtime_identity={"engine_version": "test"},
+                                         model="qwen3:14b", model_digest="a" * 64)
+
+        class Probe:
+            def __init__(self, digest):
+                self._digest = digest
+
+            def version(self):
+                return "test"
+
+            def tags(self):
+                return {"models": [{"name": "qwen3:14b", "digest": self._digest},
+                                   {"name": "llama3.1:latest", "digest": "other"}]}
+
+        good = Probe("a" * 64)
+        with patch("clinical_matcher.apixaban_structured_llm.OllamaLoopbackClient", lambda *a, **k: good):
+            self.assertIs(good, open_reader_runtime(contract))
+        swapped = Probe("b" * 64)
+        with patch("clinical_matcher.apixaban_structured_llm.OllamaLoopbackClient", lambda *a, **k: swapped):
+            with self.assertRaises(P8Error):
+                open_reader_runtime(contract)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1394,7 +1394,13 @@ configuration and an explicit owner authorization.
   prompting itself collapses this model; retrieval is not the factor).
   Second-stage changes (dense truncation fix, keyword-augmented queries)
   are unlocked but queued behind E2.
-- [ ] **P8.4 Record the optional E2 decision after E1.** Pin any approved model
+- [ ] **P8.4 Record the optional E2 decision after E1.** Owner decided on
+  2026-09-18 to run E2 on the 5090 instance with `qwen3:14b`, then
+  `qwen3:30b-a3b`, then `qwen3:32b`, everything else frozen (v1 prompt,
+  schema, decoding, inputs A then B3); reader 1.1.0 pins the effective
+  model digest, records the license and sends `think: false` for Qwen3
+  (see the proposal's section 8). Original task text follows.
+- [ ] **P8.4 (original) Record the optional E2 decision after E1.** Pin any approved model
   comparison, then evaluate an actual E3 combination on validation. No optional
   model has been downloaded or run for P8.
 - [ ] **P8.5 Review and execute the sole secondary-holdout batch.** Freeze the

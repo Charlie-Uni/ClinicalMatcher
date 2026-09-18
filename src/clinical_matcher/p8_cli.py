@@ -80,6 +80,7 @@ def build_parser() -> argparse.ArgumentParser:
     run_e3_cmd.add_argument("--output", type=Path, required=True)
     prep_reader = sub.add_parser("prepare-reader", help="Freeze one reader-input ablation arm (v1 prompt); probes runtime")
     prep_reader.add_argument("--arm", choices=("A", "B3", "B5", "C", "D"), required=True)
+    prep_reader.add_argument("--model", help="E2 model override (declared Ollama tag); digest probed at freeze")
     prep_reader.add_argument("--output", type=Path, required=True)
     pilot_reader = sub.add_parser("pilot-reader", help="First-patient pilot for a reader arm after an explicit unload")
     run_reader_cmd = sub.add_parser("run-reader", help="Complete validation run for a reader arm reusing its pilot")
@@ -165,8 +166,8 @@ def main(argv: Sequence[str] | None = None) -> int:
                        "latency_p95_s": round(run_doc["latency_seconds_p95"], 3)})
         elif args.command in {"prepare-reader", "pilot-reader", "run-reader"}:
             from .apixaban_structured_llm import OllamaLoopbackClient, load_long_context_contract
-            from .p8_e1 import open_runtime
-            from .p8_reader import (aggregates, build_reader_contract, probe_runtime_identity,
+            from .p8_reader import (aggregates, build_reader_contract, open_reader_runtime,
+                                    probe_model_digest, probe_runtime_identity,
                                     run_pilot as run_reader_pilot, run_reader)
             manifest = read_metadata(args.access_manifest)
             require_development_ready(manifest)
@@ -174,20 +175,23 @@ def main(argv: Sequence[str] | None = None) -> int:
             if args.command == "prepare-reader":
                 parent = load_long_context_contract()
                 probe = OllamaLoopbackClient(parent["runtime"]["endpoint"])
+                digest = probe_model_digest(probe, args.model) if args.model else None
                 contract = build_reader_contract(manifest, arm=args.arm, retrieval=retrieval,
-                                                 runtime_identity=probe_runtime_identity(probe))
+                                                 runtime_identity=probe_runtime_identity(probe),
+                                                 model=args.model, model_digest=digest)
                 write_private(contract, args.output)
-                print("Reader contract frozen for arm", args.arm)
+                print("Reader contract frozen for arm", args.arm, "model",
+                      contract["effective_model"]["ollama_model_name"])
             elif args.command == "pilot-reader":
                 contract = read_metadata(args.contract)
-                pilot_doc = run_reader_pilot(open_runtime(contract), contract, manifest, retrieval)
+                pilot_doc = run_reader_pilot(open_reader_runtime(contract), contract, manifest, retrieval)
                 write_private(pilot_doc, args.output)
                 print("Reader pilot complete:", pilot_doc["timing_decision"],
                       {log["outcome"]: 1 for log in pilot_doc["slot_logs"]} and
                       {"outcomes": sorted({log["outcome"] for log in pilot_doc["slot_logs"]})})
             else:
                 contract = read_metadata(args.contract)
-                run_doc = run_reader(open_runtime(contract), contract, manifest,
+                run_doc = run_reader(open_reader_runtime(contract), contract, manifest,
                                      read_metadata(args.pilot), retrieval)
                 write_private(run_doc, args.output)
                 print("Reader run complete. Aggregates:", aggregates(run_doc))
