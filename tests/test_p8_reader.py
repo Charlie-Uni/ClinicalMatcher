@@ -282,5 +282,75 @@ class P8ReaderE2Tests(unittest.TestCase):
                 open_reader_runtime(contract)
 
 
+class P8ReaderRound1Tests(unittest.TestCase):
+    """Round-1 error-driven changes: one appended sentence per patch, fictional examples, hybrid input."""
+
+    setUp = P8ReaderTests.setUp
+
+    def _contract(self, arm="A", **kwargs):
+        retrieval = self.retrieval if ARMS[arm]["retrieval_required"] else None
+        return build_reader_contract(self.manifest, arm=arm, retrieval=retrieval, synthetic=True,
+                                     runtime_identity={"engine_version": "test"}, **kwargs)
+
+    def _system(self, contract):
+        client = FakeReaderClient()
+        run_request(client, contract, self.first, request_groups(contract["arm"])[0],
+                    load_retrieval_selection(self.retrieval) if contract["retrieval_pin"] else None,
+                    sleeper=lambda s: None)
+        return client.calls[-1]["messages"][0]["content"], client.calls[-1]
+
+    def test_patches_append_exactly_one_sentence_each_and_leave_v1_text_intact(self):
+        from clinical_matcher.p8_reader import PROMPT_PATCHES
+        base, _ = self._system(self._contract())
+        for patch in ("P1", "P2"):
+            patched, _ = self._system(self._contract(patches=[patch]))
+            self.assertEqual(base + " " + PROMPT_PATCHES[patch]["sentence"], patched)
+        both, _ = self._system(self._contract(patches=["P1", "P2"]))
+        self.assertEqual(base + " " + PROMPT_PATCHES["P1"]["sentence"] + " " + PROMPT_PATCHES["P2"]["sentence"], both)
+        contract = self._contract(patches=["P1"])
+        self.assertEqual("apixaban-23-facts-structured-1.0.0+P1", contract["prompt_version"])
+        self.assertEqual({"P1": PROMPT_PATCHES["P1"]["sentence"]}, contract["prompt_patch_sentences"])
+        with self.assertRaises(P8Error):
+            self._contract(patches=["P9"])
+        with self.assertRaises(P8Error):
+            self._contract(patches=["P1", "P1"])
+
+    def test_examples_are_fictional_and_appended_after_the_prompt(self):
+        from clinical_matcher.p8_reader import SYNTHETIC_EXAMPLES, SYNTHETIC_EXAMPLES_HEADER
+        base, _ = self._system(self._contract())
+        with_examples, call = self._system(self._contract(examples=True))
+        self.assertTrue(with_examples.startswith(base))
+        tail = with_examples[len(base):]
+        self.assertIn(SYNTHETIC_EXAMPLES_HEADER, tail)
+        for item in SYNTHETIC_EXAMPLES:
+            self.assertIn(item, tail)
+        self.assertEqual("apixaban-23-facts-structured-1.0.0+P4", self._contract(examples=True)["prompt_version"])
+        # The user message (questions + note) is untouched by the examples.
+        self.assertNotIn(SYNTHETIC_EXAMPLES_HEADER, call["messages"][1]["content"])
+
+    def test_hybrid_arm_prunes_boolean_group_only_and_sends_two_requests(self):
+        groups = request_groups("H")
+        self.assertEqual(2, len(groups))
+        self.assertEqual({"boolean"}, {QUESTIONS[QIDS.index(q)]["question_type"] for q in groups[0]})
+        self.assertEqual({"numeric"}, {QUESTIONS[QIDS.index(q)]["question_type"] for q in groups[1]})
+        self.assertEqual(sorted(QIDS), sorted(groups[0] + groups[1]))
+        index = load_retrieval_selection(self.retrieval)
+        pid = self.first["patient_id"]
+        self.assertEqual(self.chunks[pid][:3], [e["evidence_id"] for e in select_evidence("H", self.first, groups[0], index)])
+        self.assertEqual(self.chunks[pid], [e["evidence_id"] for e in select_evidence("H", self.first, groups[1], index)])
+        with self.assertRaises(P8Error):
+            select_evidence("H", self.first, [groups[0][0], groups[1][0]], index)
+        contract = self._contract(arm="H")
+        client = FakeReaderClient()
+        pilot = run_pilot(client, contract, self.manifest, self.retrieval, synthetic=True, sleeper=lambda s: None)
+        self.assertEqual(2, pilot["timing_decision"]["requests_per_patient"])
+        run = run_reader(client, contract, self.manifest, pilot, self.retrieval, synthetic=True,
+                         sleeper=lambda s: None)
+        self.assertEqual(len(self.validation_ids) * 2, len(client.calls))
+        self.assertEqual(len(self.validation_ids) * 23, len(run["rows"]))
+        self.assertEqual("hybrid-boolean-top3-numeric-full", run["input_policy"])
+        self.assertEqual([], run["prompt_patches"])
+
+
 if __name__ == "__main__":
     unittest.main()

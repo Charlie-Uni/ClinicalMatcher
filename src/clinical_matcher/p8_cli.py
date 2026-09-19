@@ -79,8 +79,11 @@ def build_parser() -> argparse.ArgumentParser:
     run_e3_cmd.add_argument("--e1-run", type=Path, required=True)
     run_e3_cmd.add_argument("--output", type=Path, required=True)
     prep_reader = sub.add_parser("prepare-reader", help="Freeze one reader-input ablation arm (v1 prompt); probes runtime")
-    prep_reader.add_argument("--arm", choices=("A", "B3", "B5", "C", "D"), required=True)
+    prep_reader.add_argument("--arm", choices=("A", "B3", "B5", "C", "D", "H"), required=True)
     prep_reader.add_argument("--model", help="E2 model override (declared Ollama tag); digest probed at freeze")
+    prep_reader.add_argument("--patch", action="append", default=[], choices=("P1", "P2"),
+                             help="Approved round-1 prompt patch; repeatable")
+    prep_reader.add_argument("--examples", action="store_true", help="Append the fictional P4 examples")
     prep_reader.add_argument("--output", type=Path, required=True)
     pilot_reader = sub.add_parser("pilot-reader", help="First-patient pilot for a reader arm after an explicit unload")
     run_reader_cmd = sub.add_parser("run-reader", help="Complete validation run for a reader arm reusing its pilot")
@@ -178,10 +181,11 @@ def main(argv: Sequence[str] | None = None) -> int:
                 digest = probe_model_digest(probe, args.model) if args.model else None
                 contract = build_reader_contract(manifest, arm=args.arm, retrieval=retrieval,
                                                  runtime_identity=probe_runtime_identity(probe),
-                                                 model=args.model, model_digest=digest)
+                                                 model=args.model, model_digest=digest,
+                                                 patches=args.patch, examples=args.examples)
                 write_private(contract, args.output)
-                print("Reader contract frozen for arm", args.arm, "model",
-                      contract["effective_model"]["ollama_model_name"])
+                print("Reader contract frozen for arm", args.arm, "prompt", contract["prompt_version"],
+                      "model", contract["effective_model"]["ollama_model_name"])
             elif args.command == "pilot-reader":
                 contract = read_metadata(args.contract)
                 pilot_doc = run_reader_pilot(open_reader_runtime(contract), contract, manifest, retrieval)
