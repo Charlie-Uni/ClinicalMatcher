@@ -1393,7 +1393,12 @@ configuration and an explicit owner authorization.
   (absent recall 110, not retained), C 0.377 and D 0.371 (per-question
   prompting itself collapses this model; retrieval is not the factor).
   Second-stage changes (dense truncation fix, keyword-augmented queries)
-  are unlocked but queued behind E2.
+  are unlocked but queued behind E2. Round 1 of the error-driven prompt loop
+  ran locally (2026-09-26): P1 ineffective, P2 raises EM to 0.652 by
+  answering more numerics (hallucination up, so not retained under the
+  predeclared rule), P4 examples collapse booleans to unknown, and the
+  hybrid input H (boolean top-3, numeric full) reaches 0.678 and is retained
+  against B3. Round 2 proposes H plus numeric-only examples.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Owner decided on
   2026-09-18 to run E2 on the 5090 instance with `qwen3:14b`, then
   `qwen3:30b-a3b`, then `qwen3:32b`, everything else frozen (v1 prompt,
