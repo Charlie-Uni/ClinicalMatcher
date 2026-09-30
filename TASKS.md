@@ -1398,7 +1398,14 @@ configuration and an explicit owner authorization.
   answering more numerics (hallucination up, so not retained under the
   predeclared rule), P4 examples collapse booleans to unknown, and the
   hybrid input H (boolean top-3, numeric full) reaches 0.678 and is retained
-  against B3. Round 2 proposes H plus numeric-only examples.
+  against B3. Round 2 (H plus numeric-only examples) leaves EM at 0.678
+  and is not retained. Round 3, predeclared before round 2 finished, is a
+  model-free arbitration: V1 turns boolean presents without rule support
+  into closed-world absents and reaches raw 0.768 (boolean false positives
+  38 -> 4) with the P4.3 safety view unchanged at 0.678; V2 reaches 0.780
+  raw but collapses the safety view and is not retained. The three-round
+  budget is spent; the validation-selected candidate is H + V1 on the
+  local runtime, to be reported only as a two-view result.
 - [ ] **P8.4 Record the optional E2 decision after E1.** Owner decided on
   2026-09-18 to run E2 on the 5090 instance with `qwen3:14b`, then
   `qwen3:30b-a3b`, then `qwen3:32b`, everything else frozen (v1 prompt,
