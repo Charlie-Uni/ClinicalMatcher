@@ -352,5 +352,48 @@ class P8ReaderRound1Tests(unittest.TestCase):
         self.assertEqual([], run["prompt_patches"])
 
 
+class P8ReaderRound2Tests(unittest.TestCase):
+    """Round 2: numeric-only examples, applied only to requests with a numeric question."""
+
+    setUp = P8ReaderTests.setUp
+
+    def test_numeric_only_examples_touch_only_requests_with_numeric_questions(self):
+        from clinical_matcher.p8_reader import (NUMERIC_EXAMPLE_INDEXES, SYNTHETIC_EXAMPLES,
+                                                SYNTHETIC_EXAMPLES_HEADER)
+        index = load_retrieval_selection(self.retrieval)
+        plain = build_reader_contract(self.manifest, arm="H", retrieval=self.retrieval, synthetic=True,
+                                      runtime_identity={"engine_version": "test"})
+        patched = build_reader_contract(self.manifest, arm="H", retrieval=self.retrieval, synthetic=True,
+                                        runtime_identity={"engine_version": "test"},
+                                        examples="numeric_only")
+        self.assertEqual("numeric_only", patched["synthetic_examples"])
+        self.assertEqual("requests_containing_a_numeric_question", patched["synthetic_examples_scope"])
+        self.assertEqual("apixaban-23-facts-structured-1.0.0+P4n", patched["prompt_version"])
+        boolean_group, numeric_group = request_groups("H")
+
+        def system(contract, group):
+            client = FakeReaderClient()
+            run_request(client, contract, self.first, group, index, sleeper=lambda s: None)
+            return client.calls[-1]["messages"][0]["content"]
+
+        # The boolean half of H is byte-identical with and without P4n.
+        self.assertEqual(system(plain, boolean_group), system(patched, boolean_group))
+        numeric_plain, numeric_patched = system(plain, numeric_group), system(patched, numeric_group)
+        self.assertTrue(numeric_patched.startswith(numeric_plain))
+        tail = numeric_patched[len(numeric_plain):]
+        self.assertIn(SYNTHETIC_EXAMPLES_HEADER, tail)
+        for number, item in enumerate(SYNTHETIC_EXAMPLES):
+            if number in NUMERIC_EXAMPLE_INDEXES:
+                self.assertIn(item, tail)
+            else:
+                self.assertNotIn(item, tail)
+        with self.assertRaises(P8Error):
+            build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                  runtime_identity={"engine_version": "test"}, examples="boolean_only")
+        legacy = build_reader_contract(self.manifest, arm="A", synthetic=True,
+                                       runtime_identity={"engine_version": "test"}, examples=True)
+        self.assertEqual(("all", "+P4"), (legacy["synthetic_examples"], legacy["prompt_version"][-3:]))
+
+
 if __name__ == "__main__":
     unittest.main()

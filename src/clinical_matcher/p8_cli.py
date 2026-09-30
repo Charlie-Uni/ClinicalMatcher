@@ -84,6 +84,8 @@ def build_parser() -> argparse.ArgumentParser:
     prep_reader.add_argument("--patch", action="append", default=[], choices=("P1", "P2"),
                              help="Approved round-1 prompt patch; repeatable")
     prep_reader.add_argument("--examples", action="store_true", help="Append the fictional P4 examples")
+    prep_reader.add_argument("--examples-numeric", action="store_true",
+                             help="Append only the two numeric fictional examples (P4n)")
     prep_reader.add_argument("--output", type=Path, required=True)
     pilot_reader = sub.add_parser("pilot-reader", help="First-patient pilot for a reader arm after an explicit unload")
     run_reader_cmd = sub.add_parser("run-reader", help="Complete validation run for a reader arm reusing its pilot")
@@ -94,9 +96,14 @@ def build_parser() -> argparse.ArgumentParser:
         command.add_argument("--contract", type=Path, required=True)
         command.add_argument("--output", type=Path, required=True)
     run_reader_cmd.add_argument("--pilot", type=Path, required=True)
+    round3 = sub.add_parser("run-round3", help="Deterministic boolean arbitration over a sealed reader run (no model call)")
+    round3.add_argument("--access-manifest", type=Path, required=True)
+    round3.add_argument("--reader-run", type=Path, required=True)
+    round3.add_argument("--policy", choices=("V1", "V2"), required=True)
+    round3.add_argument("--output", type=Path, required=True)
     for command in (build, check, prepare, run, prep_export, do_export,
                     approve, plan, examples, prep_e1, pilot, run_e1_cmd, run_e3_cmd,
-                    prep_reader, pilot_reader, run_reader_cmd):
+                    prep_reader, pilot_reader, run_reader_cmd, round3):
         command.add_argument("--acknowledge-restricted-data-local-only", action="store_true", required=True)
     return parser
 
@@ -182,7 +189,9 @@ def main(argv: Sequence[str] | None = None) -> int:
                 contract = build_reader_contract(manifest, arm=args.arm, retrieval=retrieval,
                                                  runtime_identity=probe_runtime_identity(probe),
                                                  model=args.model, model_digest=digest,
-                                                 patches=args.patch, examples=args.examples)
+                                                 patches=args.patch,
+                                                 examples=("numeric_only" if args.examples_numeric
+                                                           else args.examples))
                 write_private(contract, args.output)
                 print("Reader contract frozen for arm", args.arm, "prompt", contract["prompt_version"],
                       "model", contract["effective_model"]["ollama_model_name"])
@@ -199,6 +208,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                                      read_metadata(args.pilot), retrieval)
                 write_private(run_doc, args.output)
                 print("Reader run complete. Aggregates:", aggregates(run_doc))
+        elif args.command == "run-round3":
+            from .p8_round3 import aggregates as round3_aggregates, build_round3
+            manifest = read_metadata(args.access_manifest)
+            require_development_ready(manifest)
+            document = build_round3(manifest, read_metadata(args.reader_run), policy_id=args.policy)
+            write_private(document, args.output)
+            print("Round 3 complete. Aggregates:", round3_aggregates(document))
         elif args.command == "run-e3":
             from .p8_e3 import aggregates, build_e3_combination
             manifest = read_metadata(args.access_manifest)

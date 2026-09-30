@@ -57,7 +57,7 @@ from .p8_safety import (
 )
 
 
-READER_VERSION = "1.2.0"
+READER_VERSION = "1.3.0"
 # Round-1 error-driven prompt patches (owner approved P1-P4 on 2026-09-19). Each
 # patch appends exactly one sentence to the frozen v1 system prompt; nothing
 # else in the prompt changes, so a run's difference from its baseline arm is
@@ -90,20 +90,42 @@ SYNTHETIC_EXAMPLES: list[str] = [
     "CHADS2 question: unknown (never compute a score that is not written in the note).",
 ]
 SYNTHETIC_EXAMPLES_HEADER = "Fictional examples (invented, not about the current patient):"
+# Round 2 (owner approved 2026-09-30): round 1 showed the boolean examples push
+# most boolean answers to unknown while the numeric ones cut numeric
+# hallucination. "numeric_only" appends just the two numeric examples, and only
+# to requests that contain a numeric question, so a boolean-only request (the
+# boolean half of arm H) is byte-identical to its un-patched form.
+NUMERIC_EXAMPLE_INDEXES = (3, 4)
+EXAMPLE_MODES = (False, "all", "numeric_only")
 
 
-def patched_system_prompt(system: str, patches: Sequence[str], examples: bool) -> str:
-    """Append approved sentences and, optionally, the fictional examples; never edit v1 text."""
+def normalize_examples(examples: Any) -> Any:
+    mode = "all" if examples is True else examples
+    if mode not in EXAMPLE_MODES:
+        raise P8Error("Undeclared example mode")
+    return mode
+
+
+def patched_system_prompt(system: str, patches: Sequence[str], examples: Any,
+                          *, has_numeric_question: bool = True) -> str:
+    """Append approved sentences and, optionally, fictional examples; never edit v1 text."""
     for patch in patches:
         if patch not in PROMPT_PATCHES:
             raise P8Error("Undeclared prompt patch")
     if len(set(patches)) != len(patches):
         raise P8Error("Repeated prompt patch")
+    mode = normalize_examples(examples)
     text = system
     for patch in patches:
         text += " " + PROMPT_PATCHES[patch]["sentence"]
-    if examples:
-        text += "\n\n" + SYNTHETIC_EXAMPLES_HEADER + "\n" + "\n".join("- " + item for item in SYNTHETIC_EXAMPLES)
+    if mode == "all":
+        items = SYNTHETIC_EXAMPLES
+    elif mode == "numeric_only" and has_numeric_question:
+        items = [SYNTHETIC_EXAMPLES[index] for index in NUMERIC_EXAMPLE_INDEXES]
+    else:
+        items = []
+    if items:
+        text += "\n\n" + SYNTHETIC_EXAMPLES_HEADER + "\n" + "\n".join("- " + item for item in items)
     return text
 VALIDATION_PATIENTS = 15
 # E2 candidate models (owner decision 2026-09-18). Everything else stays frozen:
@@ -268,7 +290,7 @@ def effective_model_for(parent: Mapping[str, Any], model: str | None,
 def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, Any] | None = None,
                           runtime_identity: Mapping[str, Any] | None = None,
                           model: str | None = None, model_digest: str | None = None,
-                          patches: Sequence[str] = (), examples: bool = False,
+                          patches: Sequence[str] = (), examples: Any = False,
                           synthetic: bool = False) -> dict:
     require_development_ready(manifest, synthetic=synthetic)
     if arm not in ARMS:
@@ -276,8 +298,10 @@ def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, A
     spec = ARMS[arm]
     parent = load_long_context_contract()
     effective_model = effective_model_for(parent, model, model_digest)
-    patched_system_prompt("", patches, examples)  # validates the patch list
-    prompt_version = parent["prompt_version"] + "".join("+" + p for p in patches) + ("+P4" if examples else "")
+    patched_system_prompt("", patches, examples)  # validates the patch list and example mode
+    example_mode = normalize_examples(examples)
+    prompt_version = (parent["prompt_version"] + "".join("+" + p for p in patches)
+                      + {False: "", "all": "+P4", "numeric_only": "+P4n"}[example_mode])
     retrieval_pin = None
     if spec["retrieval_required"]:
         if retrieval is None:
@@ -304,7 +328,10 @@ def build_reader_contract(manifest: dict, *, arm: str, retrieval: Mapping[str, A
         "prompt_version": prompt_version,
         "prompt_patches": list(patches),
         "prompt_patch_sentences": {p: PROMPT_PATCHES[p]["sentence"] for p in patches},
-        "synthetic_examples": bool(examples),
+        "synthetic_examples": example_mode,
+        "synthetic_examples_scope": ("requests_containing_a_numeric_question"
+                                     if example_mode == "numeric_only" else
+                                     "every_request" if example_mode == "all" else None),
         "prompt_source": "clinical_matcher.apixaban_structured_llm.build_messages",
         "output_schema_source": "clinical_matcher.apixaban_structured_llm.structured_output_schema",
         "access_pin": make_pin(manifest, "self", self_field="self_sha256"),
@@ -431,8 +458,10 @@ def run_request(client, contract: dict, patient: Mapping[str, Any], ids: Sequenc
     catalog = catalog_subset(ids)
     evidence = select_evidence(arm, patient, ids, retrieval_index)
     messages = build_messages(catalog, evidence)
-    messages[0]["content"] = patched_system_prompt(messages[0]["content"], contract.get("prompt_patches", ()),
-                                                   contract.get("synthetic_examples", False))
+    messages[0]["content"] = patched_system_prompt(
+        messages[0]["content"], contract.get("prompt_patches", ()),
+        contract.get("synthetic_examples", False),
+        has_numeric_question=any(q["question_type"] == "numeric" for q in catalog["questions"]))
     schema = structured_output_schema(catalog, [item["evidence_id"] for item in evidence])
     characters = sum(len(item["content"]) for item in messages)
     estimate = int(characters / contract["budget_policy"]["precheck_min_chars_per_token"]) + 1
@@ -580,7 +609,7 @@ def run_reader(client, contract: dict, manifest: dict, pilot: dict,
         "input_policy": contract["input_policy"],
         "prompt_version": contract["prompt_version"],
         "prompt_patches": list(contract.get("prompt_patches", ())),
-        "synthetic_examples": bool(contract.get("synthetic_examples", False)),
+        "synthetic_examples": normalize_examples(contract.get("synthetic_examples", False)),
         "effective_model": copy.deepcopy(contract["effective_model"]),
         "runtime_identity": copy.deepcopy(contract["runtime_identity"]),
         "rows": rows,
